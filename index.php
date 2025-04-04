@@ -350,7 +350,7 @@ if (!is_bbpress() && !is_buddypress()) {
             the_content();
             echo '</div>';
             echo '<div class="col-lg-3">';
-            echo do_shortcode('forum_sidebar');
+            echo do_shortcode('[forum_sidebar]');
             echo '</div>';
             echo '</div>';
         endwhile;
