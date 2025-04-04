@@ -31,6 +31,14 @@
     </div>
 </section>
 
+
+
+
+<section class="featured-topics-section lg-padding">
+    <div class="container">
+        <?= do_shortcode('[featured_topics]') ?>
+    </div>
+</section>
 <seciton class="exclusive-articles">
     <div class="container">
         <a href="https://theribbonbox.com/latest-conversations/" class="d-block box-style-1 position-relative rounded overflow-hidden">
@@ -48,12 +56,4 @@
         </a>
     </div>
 </seciton>
-
-
-<section class="featured-topics-section lg-padding">
-    <div class="container">
-        <?= do_shortcode('[featured_topics]') ?>
-    </div>
-</section>
-
 <?php get_footer('community') ?>
