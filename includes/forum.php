@@ -939,7 +939,8 @@ function forum_sidebar()
         'post_type' => 'community-post',
         'posts_per_page' => 5,
         'orderby' => 'date',
-        'order' => 'DESC'
+        'order' => 'DESC',
+        'post_status' => 'any',
     ));
 ?>
     <div class="community-posts">
