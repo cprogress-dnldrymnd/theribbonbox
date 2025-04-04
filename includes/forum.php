@@ -794,7 +794,7 @@ function forum_bottom_sections()
 {
     ob_start();
 ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <section class="cta lg-padding bg-black text-center">
         <div class="container">
             <h2 class="mb-4"><i>Looking for expert advice?</i></h2>
@@ -805,27 +805,29 @@ function forum_bottom_sections()
             </div>
         </div>
     </section>
-<?= do_shortcode('[_giveaway_list]') ?>
-<section class="exclusive-articles">
-    <div class="container">
-        <a href="https://theribbonbox.com/latest-conversations/" class="d-block box-style-1 position-relative rounded overflow-hidden">
-            <div class="bg-image">
-                <?= wp_get_attachment_image(get_field('latest_conversation_background'), 'large') ?>
-            </div>
-            <div class="inner position-relative">
-                <div class="heading">
-                    <h2><?= get_field('latest_conversation_heading') ?></h2>
+    <section class="forum-giveaways lg-padding">
+        <?= do_shortcode('[_giveaway_list]') ?>
+    </section>
+    <section class="exclusive-articles">
+        <div class="container">
+            <a href="https://theribbonbox.com/latest-conversations/" class="d-block box-style-1 position-relative rounded overflow-hidden">
+                <div class="bg-image">
+                    <?= wp_get_attachment_image(get_field('latest_conversation_background'), 'large') ?>
                 </div>
-                <div class="subheading" style="text-decoration: underline">
-                    <?= get_field('latest_conversation_button_text') ?>
+                <div class="inner position-relative">
+                    <div class="heading">
+                        <h2><?= get_field('latest_conversation_heading') ?></h2>
+                    </div>
+                    <div class="subheading" style="text-decoration: underline">
+                        <?= get_field('latest_conversation_button_text') ?>
+                    </div>
                 </div>
-            </div>
-        </a>
-    </div>
-</section>
+            </a>
+        </div>
+    </section>
     <section class="events-section lg-padding" style="display: none">
         <div class="container text-center">
-            
+
         </div>
     </section>
     <section class="e-guides-community lg-padding">
@@ -833,7 +835,7 @@ function forum_bottom_sections()
             <?= do_shortcode('[e_guides_community]') ?>
         </div>
     </section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <?php
     return ob_get_clean();
 }
