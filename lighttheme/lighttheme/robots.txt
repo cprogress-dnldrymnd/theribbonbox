@@ -1,3 +1,0 @@
-Sitemap: https://theribbonbox.com
-User-agent: *
-Disallow: 
