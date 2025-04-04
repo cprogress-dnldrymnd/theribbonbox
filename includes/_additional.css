@@ -711,6 +711,9 @@ section.forum-welcome .welcome-text {
 	padding-top: 100px;
 	padding-bottom: 100px;
 }
+.lg-padding-bottom {
+	padding-bottom: 100px;
+}
 .text-heading.text-heading.text-heading {
 	font-family: "Work Sans", sans-serif;
 	font-size: 1rem;
@@ -2547,6 +2550,9 @@ form#profile-edit-form.standard-form input {
 		padding-top: 50px;
 		padding-bottom: 50px;
 	}
+	.lg-padding-bottom {
+		padding-bottom: 50px;
+	}
 	.post-type-podcasts.post-type-podcasts .blog-l-text-out .blog-l-text {
 		padding: 20px;
 	}
@@ -2615,6 +2621,9 @@ form#profile-edit-form.standard-form input {
 
 	.lg-padding {
 		padding-top: 35px;
+		padding-bottom: 35px;
+	}
+	.lg-padding-bottom { 
 		padding-bottom: 35px;
 	}
 	.activity-list.activity-list .activity-item .activity-content .activity-inner,
