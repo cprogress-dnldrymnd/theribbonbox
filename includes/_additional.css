@@ -757,9 +757,7 @@ section.forum-welcome .welcome-text {
 	width: 16px;
 	height: 16px;
 }
-.featured-box-holder {
-	gap: 20px;
-}
+
 .featured-box-holder a {
 	text-decoration: none;
 	color: var(--black-color);
