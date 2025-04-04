@@ -806,6 +806,23 @@ function forum_bottom_sections()
         </div>
     </section>
 <?= do_shortcode('[_giveaway_list]') ?>
+<section class="exclusive-articles">
+    <div class="container">
+        <a href="https://theribbonbox.com/latest-conversations/" class="d-block box-style-1 position-relative rounded overflow-hidden">
+            <div class="bg-image">
+                <?= wp_get_attachment_image(get_field('latest_conversation_background'), 'large') ?>
+            </div>
+            <div class="inner position-relative">
+                <div class="heading">
+                    <h2><?= get_field('latest_conversation_heading') ?></h2>
+                </div>
+                <div class="subheading" style="text-decoration: underline">
+                    <?= get_field('latest_conversation_button_text') ?>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
     <section class="events-section lg-padding" style="display: none">
         <div class="container text-center">
             
