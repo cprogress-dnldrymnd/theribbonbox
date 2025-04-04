@@ -1,0 +1,754 @@
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  UNDER 450 PIXELS WIDE             ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (max-width: 28.125em) {
+  /*.logo{
+          height: auto;
+          width: 200px;
+          margin-top:20px;
+      } */
+  .home-header-text h1 {
+    font-size: 1.8em;
+  }
+  .home-header-text {
+    margin-top: 80px;
+  }
+  .scroll-down {
+    bottom: 20px;
+  }
+  .index-services-links {
+    bottom: 40px;
+  }
+  .index-service {
+    height: 65px;
+    padding: 0.7em;
+  }
+  .index-service p {
+    font-size: 1.8em;
+  }
+  .index-service span {
+    font-size: 0.9em;
+    line-height: 1em;
+  }
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  UNDER 408 PIXELS WIDE             ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (max-width: 25.5em) {
+
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  UNDER 500 PIXELS WIDE             ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (max-width: 31.25em) {
+  .past-events h2,
+  .upcoming-events h2 {
+    margin-bottom: 3em;
+  }
+  .past-events {
+    width: 98%;
+  }
+  .upcoming-events {
+    width: 98%;
+  }
+  .event-item {
+    padding-top: 3.5em;
+  }
+  .event-date-outer {
+    position: absolute;
+    top: -2.2em;
+    left: 50%;
+    margin-left: -37.5px;
+  }
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  UNDER 700 PIXELS WIDE             ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (max-width: 43.75em) {
+  nav div > ul > li > a {
+    color: white;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+  nav div > ul > li {
+    background: #faf9f4 !important;
+  }
+  nav div > ul > li > ul > li > a {
+
+  }
+  nav div > ul > li > ul > li > a:hover, nav div > ul > li > ul > li > ul > li > a:hover {
+    background: rgb(210 210 210) !important;
+  }
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  OVER 400 PIXELS WIDE             ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (min-width: 25em) {
+
+  .client-section {
+    width: 48%;
+  }
+  /*.logo{
+          height: 70px;
+          margin-top: 15px;
+          margin-bottom: 15px;
+      }*/
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  OVER 500 PIXELS WIDE             ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (min-width: 31.25em) {
+
+  .client-popup {
+    position: fixed;
+    top: 50%;
+    max-width: 70%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: -227.5px;
+  }
+
+  .home-blog-list-outer {
+
+  }
+
+  .client-section {
+    width: 31.333%;
+  }
+
+  .studio-tab {
+    padding: 1em 2.3em;
+  }
+
+
+  .thid-item {
+    width: 99.8% !important;
+    overflow: hidden;
+  }
+
+  .services-home-section a,
+  .content-3-section .c-3-section,
+  .content-2-section .c-3-section {
+    width: 47%;
+  }
+
+
+  .content-3-section .c-3-section:last-child {
+    margin: 0 auto;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    float: none;
+    clear: both;
+  }
+  .c-logo {
+    width: 23%;
+    float: left;
+    margin: 1%;
+  }
+  .case-studies a {
+    width: 23%;
+    float: left;
+    margin: 1%;
+  }
+  /**************************************************************
+      ******************         GENERAL          *******************
+      **************************************************************/
+  /*html{
+          font-size: 1.5em;
+      }*/
+  /*.home-contact-inner{
+          width:80%;
+          padding:3.5em;
+      }*/
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  OVER 620 PIXELS WIDE             ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (min-width: 38.75em) {
+  .contact-office {
+    margin-bottom: 2em;
+    width: 46%;
+    float: left;
+    margin: 2%;
+    text-align: left;
+  }
+  .offices-section {
+    text-align: left;
+  }
+  .c-left {
+    width: 46%;
+    margin-right: 4%;
+  }
+  .c-right {
+    width: 46%;
+    margin-top: 0;
+    margin-left: 4%;
+  }
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  OVER 700 PIXELS WIDE             ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (min-width: 1000px) {
+
+
+  .client-section-banner span {
+    display: block;
+  }
+
+  .client-section {
+    width: 23%;
+  }
+
+  .client-section-home {
+    width: 31.333%;
+  }
+
+  .services-expand-close,
+  .services-expand-open {
+    display: none;
+  }
+  .services-nav {
+    display: block;
+    border-radius: 10px 0 0 10px;
+  }
+  .services-nav-outer {
+    position: fixed;
+    display: block;
+    right: 0;
+    top: 380px;
+    overflow: hidden;
+  }
+  .event-item {
+    padding: 3em;
+  }
+  .event-item h3 {
+    text-align: left;
+  }
+  .event-item p {
+    text-align: left;
+  }
+  .header-text h1 {
+    font-size: 3.8em;
+  }
+  .service-link,
+  .ser-link {
+    width: 33.333%;
+  }
+  .index-services-links {
+    width: 100%;
+  }
+  nav > div > ul > li.selected > a {
+    /*border-bottom: 3px solid;*/
+  }
+  nav > div > ul > li > ul > li.selected > a {
+    background: rgba(21, 32, 46, 0.9) !important;
+  }
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  OVER 850 PIXELS WIDE             ***********************************
+***************************                  - MENU CHANGE                    ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (min-width: 53.125em) {
+  .home-section-banner {
+    text-align: left;
+  }
+  .home-section-banner div .section-img {
+    width: 40%;
+    display: table-cell;
+  }
+  .home-section-banner .section-text {
+    width: 60%;
+    display: table-cell;
+    padding: 2.5em 0 2.5em 2.5em;
+  }
+  .contact-content {
+    float: left;
+    width: 40%;
+  }
+  .contact-office {
+    width: 96%;
+    text-align: center;
+  }
+  .offices-section {
+    text-align: center;
+    width: 60% !important;
+  }
+  .offices-section {
+    padding: 1em;
+    margin-top: 0;
+  }
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  OVER 900 PIXELS WIDE             ***********************************
+***************************                  - MENU CHANGE                    ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (min-width: 56.25em) {
+  .client-section {
+    width: 18%;
+  }
+
+  .content-4-section .c-4-section {
+    width: 47%;
+  }
+
+  .client-section-home {
+    width: 14.666%;
+  }
+
+
+  .services-home-section a,
+  .content-3-section .c-3-section {
+    width: 30.333%;
+  }
+
+
+  .content-3-section .c-3-section:last-child {
+    margin: 1.5%;
+    float: left;
+    clear: none;
+  }
+
+  .event-agenda {
+    width: 58%;
+  }
+  .event-venue {
+    width: 38%;
+  }
+  .event-speakers div {
+    width: 31.333%;
+  }
+  .event-past-videos div {
+    width: 31.333%;
+  }
+  .white-paper p {
+    line-height: 2em;
+    font-size: 1.4em;
+  }
+  .white-paper-img {
+    display: block;
+  }
+  .white-paper p {
+    width: 84%;
+  }
+  .service-summary {
+    width: 47%;
+    margin-right: 3%;
+    margin-left: 0;
+    float: left;
+  }
+  .services {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+  .service-benefits {
+    width: 47%;
+    margin-left: 3%;
+    margin-right: 0;
+    float: left;
+  }
+  .service-benefits h3 {
+    margin-top: 0;
+  }
+  .service-keyfeatures {
+    width: 100%;
+    float: left;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .logo-nav-bar {
+    /*padding-left:20px;
+          padding-right:20px;*/
+
+  }
+  .home-header-text h1 {
+    font-size: 3.6em;
+  }
+  .home-header-text p {
+    font-size: 2em;
+  }
+  .page-content h2,
+  .home-contact h2 {
+    font-size: 1.8em;
+  }
+  .page-content h3,
+  .home-contact h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.0em;
+  }
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  OVER 950 PIXELS WIDE             ***********************************
+***************************                  - MENU CHANGE                    ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (min-width: 59.375em) {
+
+
+  .client-popup {
+    max-width: 500px;
+  }
+
+  .year {
+    margin-bottom: 0.5em !important;
+    font-size: 1.8em !important;
+  }
+
+  .popup-txt {
+    font-size: 1em !important;
+    text-align: center;
+  }
+
+  .past-events h2 {
+    margin-top: 0;
+  }
+  .past-events {
+    width: 45%;
+    float: left;
+  }
+  .upcoming-events {
+    width: 45%;
+    float: right;
+  }
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  OVER 1000 PIXELS WIDE             ***********************************
+***************************                  - MENU CHANGE                    ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (min-width: 62.5em) {
+
+  nav ul {
+    text-align: right;
+  }
+
+  .phone-head {
+    position: absolute;
+    right: 20px;
+    left: auto;
+    top: 44px;
+    width: auto;
+    margin-top: 0;
+    /* top: 50%; */
+    margin-top: -7px;
+
+  }
+  .phone-head span {
+    display: block;
+    color: white;
+  }
+  .contact-office {
+    width: 46%;
+    text-align: left;
+  }
+  .offices-section {
+    text-align: left;
+  }
+  .p-last ul {
+    position: absolute !important;
+    text-align: right;
+    width: auto;
+    right: 0;
+  }
+  header[role="banner"] {
+    height: 100px !important;
+    text-align: left;
+  }
+  .head-inner {
+    padding: 0 1em;
+  }
+  .head-contact {
+    display: none;
+  }
+  .side-contact {
+    display: block;
+  }
+  /*****************   NAV   *****************/
+  .m-menu {
+    display: none;
+    top: unset;
+    bottom: 6px;
+  }
+  /*********************************
+      ******      GENERAL      ********
+      ********************************/
+  nav {
+    border-bottom: none;
+    display: block;
+    float: right;
+    background: transparent;
+    overflow-y: visible;
+    padding-bottom: 0;
+    position: relative;
+    text-align: right;
+    top: 0;
+    width: auto;
+    z-index: 1;
+    /*margin-right: 50px;*/
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 12%);
+  }
+  nav ul > li {
+    display: inline-block;
+  }
+  /* Remove dividing line between menu items - no longer needed */
+  nav div > ul li:not(:last-child) {
+    border-bottom: none;
+  }
+  /* Remove the dropdown from "parent" list items */
+  nav div > ul li.parent,
+  nav div > ul li ul li.parent,
+  nav div > ul li ul li ul li.parent {
+    background-image: none;
+  }
+  /* If the list item is a parent, make it full width again. No longer need a button to click to drop down a menu, hover instead on desktop layout */
+  nav div > ul li.parent > a {
+    width: 100%;
+  }
+  /* When a "parent" list item is hovered over, show its child menu */
+  li.parent:hover > ul {
+    display: block;
+  }
+  /* All child menus need to have this styling - regardless of what level they are */
+  nav div > ul > li ul {
+    position: absolute;
+    text-align: left;
+    width: auto;
+  }
+  /* Make the list items for child menus stack vertically ontop of each other, instead of side by side */
+  nav div > ul > li ul li {
+    display: block;
+  }
+  /* Make sure menu item labels all stay on one line */
+  nav div > ul > li ul li a {
+    white-space: nowrap;
+  }
+  /* When you hover over an li, change its colour. This is global but you can set it by level if required
+      nav div > ul li:hover{
+          color:#17a475 !important;
+      }
+
+          nav div > ul li a:hover{
+          color:#7eabc9 !important;
+      }
+
+  */
+  nav div > ul a {
+    background: transparent;
+  }
+  /* Set the height of everything so it matches the height of the header and the list item labels are vertically centered*/
+  nav,
+  nav div > ul,
+  nav div > ul > li {
+    /*height: @headerHeight;*/
+
+    height: 100%;
+  }
+
+  #menu-footermenu {
+
+  }
+
+  .footer-links li {
+    text-align: left;
+  }
+
+  #myMenu1, .menu:not(#menu-footermenu) {
+
+    right: 0px;
+    bottom: 0;
+    height: 100%;
+    display: table;
+    margin-right: 50px;
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .menu-mainmenu-container {
+    right: 0px;
+    bottom: 0;
+    height: 100%;
+    /* display: table; */
+    margin-right: 50px;
+    /* display: table; */
+    margin: 0 auto;
+    max-width: 1280px;
+    text-align: left;
+    padding: 0 1em;
+  }
+
+  nav div > ul > li {
+    display: table-cell;
+    white-space: nowrap;
+  }
+
+  nav div > ul > li > a {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    text-transform: uppercase;
+
+  }
+
+  nav div > ul > li:last-of-type > a {
+    /*  background: #fe6c2e;
+      color:#313131;*/
+  }
+
+  /*    nav,
+      nav div > ul,
+      nav div > ul > li{
+          height: @headerHeight;
+      }*/
+  nav div > ul > li > a {
+    /*line-height: 140px;*/
+
+    padding: 0 0.8em;
+  }
+  /*********************************
+      ******     1st LEVEL     ********
+      ********************************/
+  nav div > ul > li > a,
+  nav div > ul > li.parent {
+    background: transparent;
+  }
+  /*********************************
+      ******     2nd LEVEL     ********
+      ********************************/
+  nav div > ul > li > ul > li {
+    position: relative;
+  }
+  nav div > ul > li > ul > li > a {
+    background: transparent;
+  }
+  /*nav div > ul > li.menu-item-has-children:hover > a,*/
+  nav div > ul > li > ul > li,
+  nav div > ul > li > ul > li.parent {
+    background: #faf9f4 !important;
+    color: var(--colour-salmon);
+  }
+
+  .menu-item-has-children > a {
+    position: relative;
+    padding-right: 40px;
+  }
+
+  nav div > ul > li > ul > li > a {
+    color: black;
+
+    font-weight: 500;
+    padding: 5px 10px;
+    text-transform: uppercase;
+  }
+
+  .toggle-submenu {
+    background-color: none !important;
+  }
+
+  nav div > ul > li.menu-item-has-children:hover > a {
+
+  }
+
+  nav div > ul > li > ul > li:hover {
+    background: #1c2838;
+  }
+  /*********************************
+      ******     3rd LEVEL     ********
+      ********************************/
+  nav div > ul > li > ul > li > ul {
+    position: static;
+    left: 100%;
+    top: 0;
+    width: auto;
+  }
+  nav div > ul > li > ul > li > ul > li {
+    width: 100%;
+  }
+  nav div > ul > li > ul > li > ul > li > a {
+    background: transparent;
+  }
+  nav div > ul > li > ul > li > ul > li,
+  nav div > ul > li > ul > li > ul > li.parent {
+    background: #faf9f4;
+  }
+}
+
+/****************************************************************************************************************
+*****************************************************************************************************************
+***************************                  OVER 1100 PIXELS WIDE             ***********************************
+***************************                  - MENU CHANGE                    ***********************************
+*****************************************************************************************************************
+****************************************************************************************************************/
+@media (min-width: 68.75em) {
+
+  .content-4-section .c-4-section {
+    width: 22%;
+  }
+  .contact-office {
+    margin-bottom: 2em;
+    width: 46%;
+    float: left;
+    margin: 2%;
+    text-align: left;
+  }
+  .offices-section {
+    text-align: left;
+  }
+  .c-logo {
+    width: 10.5%;
+    float: left;
+    margin: 1%;
+  }
+  .case-studies a {
+    width: 10.5%;
+    float: left;
+    margin: 1%;
+  }
+  .service-link {
+    width: 16.666%;
+  }
+  .index-services-links {
+    width: 100%;
+  }
+  .event-speakers div {
+    width: 18%;
+  }
+  .event-speaker-spacer {
+    display: none;
+  }
+}
+  

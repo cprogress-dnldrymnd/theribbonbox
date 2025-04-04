@@ -1,0 +1,28 @@
+.portfolio-outer {
+
+}
+
+.portfolio-outer ul {
+  list-style: none;
+  text-align: center !important;
+}
+
+.portfolio-outer ul li {
+  max-width: 312px;
+  display: inline-block;
+  margin: 10px;
+  padding: 0 !important;
+  width: 90%;
+}
+
+.portfolio-outer ul li a {
+  display: block;
+}
+
+.portfolio-outer ul li:hover {
+  opacity: 0.8;
+}
+
+.hp-mx-wd .oth-strip-itm:hover {
+  opacity: 0.8;
+}

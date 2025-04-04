@@ -1,0 +1,214 @@
+
+.test-home-outer {
+  background: #f8f8f8;
+  padding: 2em;
+}
+
+.test-back {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.test-container {
+  position: relative;
+}
+
+.test-tbl {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.test-text {
+  text-align: center;
+  font-size: 18pt;
+  padding: 2em;
+  color: white;
+  line-height: 20pt;
+  max-width: 650px;
+  font-weight: 100;
+}
+
+.test-back .flex-control-nav {
+  width: 100%;
+  list-style: none;
+  right: 0;
+  text-align: right;
+}
+
+.test-container .slides {
+  display: flex;
+  align-items: center;
+}
+
+
+.test-home-outer {
+  background: url(/wp-content/themes/lighttheme/images/hp-testimonials.jpg) !important;
+}
+
+
+.test-home-outer .test-back {
+  border: 1px solid #c6b29b;
+  padding: 1em;
+  margin: 1em auto;
+}
+
+.test-home-outer .test-back > h3 {
+  color: #c6b29b;
+  font-size: 10pt !important;
+  text-transform: uppercase;
+  font-weight: 500 !important;
+  text-align: center;
+}
+
+.test-home-outer .test-back > h2 {
+  color: #c6b29b;
+  font-weight: 500 !important;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+.test-home-outer .flex-control-paging li a.flex-active {
+  background: #c6b29b !important
+}
+
+.oth-strip-in p {
+  font-size: 12pt;
+  color: white;
+}
+
+.hm-cont-itm h1 {
+  color: #131415 !important;
+  /* font-size: 21pt !important; */
+  margin-bottom: 1em !important;
+}
+
+.hm-test-itm:before {
+  color: #545454;
+  content: '"';
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+  position: absolute;
+  left: 16px;
+  top: 40px;
+  display: none;
+}
+
+.home-test-sec {
+  text-align: center;
+}
+
+.hm-test-itm img {
+  width: 28px;
+}
+
+.hm-test-itm {
+  border: 1px solid #efefef;
+  margin-bottom: 1em;
+  box-shadow: 1px 1px 19px #efefef;
+  background: white;
+  padding: 1em;
+  text-align: center;
+  /* width: 29%; */
+  display: inline-block;
+  margin: 1em;
+  vertical-align: top;
+  /* max-width: 300px; */
+  position: relative;
+  text-align: left;
+  padding-top: 2em;
+}
+
+// .home-test-sec {
+//   text-decoration: 
+// }
+
+.test-h3 {
+  color: black;
+  text-align: center !important;
+  font-size: 2.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.test-outer h3 {
+  display: none;
+}
+
+.test-inner .home-blog-itm table tr:last-of-type {
+  display: none;
+}
+
+.test-inner .home-blog-itm table tr:first-of-type td:first-of-type {
+  display: none;
+}
+
+.test-inner .home-blog-itm table tr:nth-child(1) {
+  display: table-footer-group;
+}
+
+.test-inner .home-blog-itm table tr:nth-child(2) {
+  display: table-header-group;
+}
+
+.test-inner .home-blog-itm table tr:nth-child(3) {
+  display: none;
+}
+
+.test-outer {
+  background: black;
+  margin: 0 auto;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  transform: rotate(-2deg);
+  width: 120%;
+  padding: 5em;
+  position: relative;
+  overflow: hidden;
+  left: -10%;
+  right: 0;
+}
+
+.test-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2em;
+  width: 90%;
+  transform: rotate(2deg);
+  text-align: center;
+}
+
+.test-inner .home-blog-itm {
+  width: 98%;
+  margin: 1%;
+  display: inline-block;
+  vertical-align: top;
+  background: black;
+  background: url(/images/quote.png);
+  background-position: top left;
+  padding-left: 50px;
+  background-repeat: no-repeat;
+  color: white !important;
+}
+
+.test-inner .home-blog-itm h4, .test-inner .home-blog-itm p {
+  color: white !important;
+  text-align: left;
+}
+
+.test-inner .home-blog-itm h4 {
+
+}
+
+.test-inner .home-blog-itm p {
+  font-size: 1.4em;
+  margin-bottom: 1em !important;
+}
+
+@media (min-width: 750px) {
+  .test-inner .home-blog-itm {
+    width: 47%;
+  }
+}

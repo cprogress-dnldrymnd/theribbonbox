@@ -1,0 +1,133 @@
+.vid-btn {
+  max-width: 70px;
+  height: 70px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  //margin-top: -35px;
+  //margin-left: -35px;
+  transform: translateY(-50%) translateX(-50%);
+
+  img {
+    aspect-ratio: 1/1 !important;
+    width: inherit;
+    height: inherit;
+  }
+}
+
+.vid-dark .blog-l-img {
+  position: relative;
+}
+
+.blog-item-vid {
+  background: none;
+  padding: 0;
+}
+
+.vid-dark .blog-nor-full .blog-btns a {
+  padding: 10px 15px;
+  display: table;
+  background: black;
+  text-align: center;
+  color: white;
+  margin: 0 auto;
+  width: 100%;
+  text-decoration: none;
+  border: 1px solid white;
+  max-width: 250px;
+  margin: 0;
+  margin-top: 1.5em;
+}
+
+
+.vid-dark .blog-nor .blog-l-text-out {
+  padding: 2em 0;
+}
+
+.vid-pod-page-cara {
+
+}
+
+.vid-pod-page-cara .expert-outer .button-expert {
+  background: var(--colour-salmon) !important;
+  color: black !important;
+}
+
+
+h2.vid-h2-tren {
+  color: black;
+  font-size: 18pt !important;
+  font-family: var(--font-sans);
+  font-family: var(--font-cursive);
+  font-weight: 100;
+  line-height: 22pt !important;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.hp-lgvid-h2 {
+  margin-top: 0 !important;
+}
+
+.vid-1-corner-border {
+  /* --b: 5px;
+   --c: var(--colour-salmon);
+   --w: 80px;
+   border: var(--b) solid black0;
+   --_g: black0 90deg, var(--c) 0;
+   --_p: var(--w) var(--w) border-box no-repeat;
+   display: block;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   background: conic-gradient(from 90deg at top var(--b) left var(--b),var(--_g)) 0 0 / var(--_p), conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100% / var(--_p); */
+
+  &::before {
+    content: '';
+    background: url(/wp-content/themes/lighttheme/images/rb-corner-br.png), url(/wp-content/themes/lighttheme/images/rb-corner-tl.png);
+    background-position: bottom right, top left;
+    background-repeat: no-repeat;
+    background-size: 80px;
+    inset: 0;
+    position: absolute;
+  }
+}
+
+.vid-1-corner .blog-l-img {
+  border-top: 0 !important;
+}
+
+.vid-dark .white-a {
+  font-family: var(--font-cursive);
+}
+
+.vid-1-corner {
+  width: 96%;
+  margin: 2%;
+}
+
+@media (max-width: 900px) {
+  .blog-nor-full.blog-item-vid .blog-l-img {
+    width: 100%;
+    float: none;
+    margin-bottom: 1.5em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    margin-top: 2em;
+    max-width: 400px;
+  }
+
+  .vid-1-corner {
+    padding: 2em 0.5em;
+  }
+}
+
+// Podcast Episodes section on Home pag
+.blog-tpl-52 {
+  // Only from uploads directory to avoid targeting icons
+  img[src*="/uploads"] {
+    aspect-ratio: 10 / 6;
+    object-fit: cover;
+  }
+}
