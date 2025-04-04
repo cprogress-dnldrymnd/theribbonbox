@@ -162,7 +162,7 @@ add_shortcode('post_action', 'post_action');
 function featured_topics()
 {
     ob_start();
-    $featured_topics = get_field('featured_community_posts');
+    $featured_topics = get_field('featured_community_topic');
 ?>
     <div class="featured-box">
         <div class="featured-box-heading">
