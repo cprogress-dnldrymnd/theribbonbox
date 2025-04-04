@@ -2308,7 +2308,7 @@ form#profile-edit-form.standard-form input {
 
 .forum-giveaways.forum-giveaways .giveaways-homepage{
 	padding-top: 0 !important;
-	padding-top: 0 !important;
+	padding-bottom: 0 !important;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
