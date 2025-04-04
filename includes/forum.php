@@ -805,7 +805,7 @@ function forum_bottom_sections()
             </div>
         </div>
     </section>
-    <section class="forum-giveaways lg-padding">
+    <section class="forum-giveaways lg-padding bg-white">
         <?= do_shortcode('[_giveaway_list]') ?>
     </section>
     <section class="exclusive-articles">
