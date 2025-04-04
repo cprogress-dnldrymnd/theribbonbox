@@ -346,8 +346,11 @@ if (!is_bbpress() && !is_buddypress()) {
             the_title();
             echo '</h1>';
             echo '<div class="row">';
-            echo '<div class="col-lg-8">';
+            echo '<div class="col-lg-9">';
             the_content();
+            echo '</div>';
+            echo '<div class="col-lg-3">';
+            echo do_shortcode('forum_sidebar');
             echo '</div>';
             echo '</div>';
         endwhile;
