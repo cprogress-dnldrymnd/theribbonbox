@@ -166,7 +166,7 @@ function featured_topics()
 ?>
     <div class="featured-box">
         <div class="featured-box-heading">
-            <h2 class="text-heading mb-0">Featured community posts</h2>
+            <h2 class="text-heading mb-0">Featured community topics</h2>
         </div>
 
         <div class="featured-box-holder d-flex flex-wrap">
@@ -931,3 +931,44 @@ function wpse27856_set_content_type()
     return "text/html";
 }
 add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
+
+
+function forum_sidebar()
+{
+    $community_posts = get_posts(array(
+        'post_type' => 'community-post',
+        'posts_per_page' => 5,
+        'orderby' => 'date',
+        'order' => 'DESC'
+    ));
+?>
+    <div class="community-posts">
+        <div class="featured-box">
+            <div class="featured-box-heading">
+                <h2 class="text-heading mb-0">Featured community posts</h2>
+            </div>
+
+            <div class="featured-box-holder d-flex flex-wrap">
+                <?php foreach ($community_posts as $community_post) { ?>
+                    <div class="featured-box-item post-box" post-id="<?= $community_post->ID ?>">
+                        <a href="<?= get_the_permalink($community_post->ID) ?>">
+                            <h3 class="mb-3"><?= get_the_title($community_post->ID) ?></h3>
+                        </a>
+                        <div class="topic-action d-flex align-items-center justify-content-between">
+                            <div class="left">
+                                <a class="read-more" href="<?= get_the_permalink($community_post->ID) ?>">
+                                    Read more
+                                </a>
+                            </div>
+                            <div class="right">
+                                <?= do_shortcode('[post_action id=' . $community_post->ID . ']') ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+
+        </div>
+    </div>
+<?php
+}
