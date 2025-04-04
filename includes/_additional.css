@@ -921,7 +921,9 @@ h2 span {
 		Work Sans,
 		sans-serif !important;
 }
-.bb-press-section .container {
+.bb-press-section .community-posts {
+	margin-top: 70px;
+	background-color: var(--white-color);
 }
 @media (min-width: 1500px) {
 	.bb-press-section .container {
