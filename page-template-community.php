@@ -23,6 +23,16 @@
                 </a>
             </div>
         <?php } ?>
+    </div>
+</section>
+<section class="forum-slider bg-purple lg-padding">
+    <div class="container">
+        <?= do_shortcode('[forum_slider]') ?>
+    </div>
+</section>
+
+<seciton class="exclusive-articles">
+    <div class="container">
         <a href="https://theribbonbox.com/latest-conversations/" class="d-block box-style-1 position-relative rounded overflow-hidden">
             <div class="bg-image">
                 <?= wp_get_attachment_image(get_field('latest_conversation_background'), 'large') ?>
@@ -37,12 +47,7 @@
             </div>
         </a>
     </div>
-</section>
-<section class="forum-slider bg-purple lg-padding">
-    <div class="container">
-        <?= do_shortcode('[forum_slider]') ?>
-    </div>
-</section>
+</seciton>
 
 
 <section class="featured-topics-section lg-padding">
