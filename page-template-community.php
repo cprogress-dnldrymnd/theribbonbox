@@ -11,9 +11,9 @@
     <div class="container text-center">
         <h1 class="mb-4"><?php the_title() ?></h1>
         <?php if (get_the_content()) { ?>
-            <p class="mb-5 welcome-text w-100">
+            <div class="mb-5 welcome-text w-100">
                 <?php the_content() ?>
-            </p>
+            </div>
         <?php } ?>
         <?php if (!is_user_logged_in()) { ?>
 
