@@ -972,3 +972,5 @@ function forum_sidebar()
     </div>
 <?php
 }
+
+add_shortcode('forum_sidebar', 'forum_sidebar');
