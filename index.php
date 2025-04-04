@@ -344,14 +344,16 @@ if (!is_bbpress() && !is_buddypress()) {
             the_post();
             echo '<h1>';
             the_title();
-             echo '</h1>';
-
+            echo '</h1>';
+            echo '<div class="row">';
+            echo '<div class="col-lg-8">';
             the_content();
+            echo '</div>';
+            echo '</div>';
         endwhile;
         echo '</div>';
         echo '</section>';
     endif;
     get_footer('community');
-
 }
- ?>
+    ?>
