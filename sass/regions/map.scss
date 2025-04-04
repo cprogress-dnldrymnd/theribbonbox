@@ -1,0 +1,252 @@
+.map_container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: block;
+}
+
+.map_container img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.map-marker {
+  position: absolute;
+  font-size: 15px;
+  text-shadow: 1px 1px 1px black;
+  text-decoration: none;
+  color: #ff0004;
+  opacity: 0.9;
+}
+
+.map-marker span {
+  position: relative;
+  color: white;
+  font-size: 14px;
+  display: none;
+  visibility: hidden;
+}
+
+.map-marker .hov-txt {
+  position: absolute;
+  background: #efefef;
+  display: block;
+  margin-left: 10px;
+  padding: 5px;
+  color: #58585a;
+  text-shadow: none;
+  top: 0;
+  left: 1px;
+  min-width: 200px;
+  display: none;
+  z-index: 3;
+  visibility: visible;
+}
+
+.map-marker:hover .hov-txt {
+  display: block;
+}
+
+.map-marker:before {
+  content: "\f111";
+  font-family: 'FontAwesome';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+}
+
+.map-gen-pins a {
+  /*width: 30px !important;
+height: 33px !important; */
+  background-image: url(/wp-content/themes/lighttheme/images/icons/map-pin.png);
+  position: absolute;
+  z-index: 2;
+  width: 1.54%;
+  height: 3.45%;
+}
+
+.map-header-ou {
+  text-align: center;
+  /* padding: 3em 1em !important; */
+
+  background: white !important;
+  border-bottom: 0 !important;
+  position: relative;
+}
+
+.map-img-para {
+  background: url(/wp-content/themes/lighttheme/images/map-scroller.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  background: url(/wp-content/themes/lighttheme/images/map-scroller.jpg) 50% 10% repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+
+.map-header-ou img {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.map-header-ou h2 {
+  text-align: center;
+}
+
+.home-map-image {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2em 0;
+  opacity: 0.7;
+}
+
+@media (min-width: 600px) {
+  .map-pop-img {
+    max-width: 35% !important;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    float: left;
+    margin-top: 2em;
+  }
+
+  .map-pop-text {
+    max-width: 63%;
+    margin-left: 2%;
+    float: left;
+  }
+
+  .map-pop-text-no {
+
+  }
+}
+
+
+.the-blog-itm1 {
+  text-align: center;
+}
+
+.the-blog-itm1 .home-blog-itm {
+  float: none !important;
+  display: inline-block;
+  margin: 0.5%;
+}
+
+.map-sectors {
+  background: #cb4146;
+  text-align: center;
+}
+
+.map-sectors ul li {
+  display: inline-block;
+  list-style: none;
+  cursor: pointer;
+  padding: 1em 0.5em;
+  color: white;
+  font-size: 11pt;
+}
+
+.map-sectors ul li.sel, .map-sectors ul li:hover {
+  background: #bd2a30;
+}
+
+.scope-images img {
+  width: 48%;
+  display: inline-block;
+}
+
+@media (min-width: 900px) {
+  .scope-images img {
+    width: 23%;
+    display: inline-block;
+  }
+}
+
+.scope-images {
+  text-align: center;
+  margin-top: 4em;
+}
+
+.scope-images br {
+  display: none;
+}
+
+.gm-style h3 {
+
+}
+
+.gm-style .gm-style-iw-c {
+  padding: 2em !important;
+}
+
+.gm-style .gm-style-iw-c button {
+  top: 6px !important;
+  right: 6px !important;
+  border: 1px solid #efefef;
+  border-top: 1px solid #efefef !important;
+}
+
+.map-wrapper {
+  margin-top: 2em;
+}
+
+.map-wrapper, .map {
+  height: 350px;
+  border-radius: 1em;
+  /* border: 1px solid #ec2027; */
+  overflow: hidden;
+  box-shadow: 0px 0px 12px 0px #3e3e3e;
+}
+
+.logo-ani {
+  max-width: 150px;
+  margin: 0 auto !important;
+  left: unset !important;
+}
+
+@media (min-width: 600px) {
+  .logo-ani {
+    max-width: 350px;
+  }
+}
+
+#loc-map {
+  height: 250px;
+}
+
+.map-overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.map-header-ou h3 {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  z-index: 9;
+  background: rgba(0, 0, 0, 0.5);
+  left: 0;
+  right: 0;
+  color: white !important;
+  font-size: 35pt !important;
+  padding: 1em;
+}
+
+@media (max-width: 550px) {
+  .map-header-ou h3 {
+    font-size: 18pt !important;
+  }
+}

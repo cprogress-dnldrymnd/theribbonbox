@@ -1,0 +1,116 @@
+.faq-outer1 table tr td {
+  padding: 0.5em;
+  vertical-align: top;
+  font-size: 14pt;
+  line-height: 1.6em;
+  color: #888;
+}
+
+.faq-outer1 table tr td img {
+  width: 200px;
+  min-width: 200px;
+}
+
+.faq-outer1 table tr td strong {
+  display: block;
+}
+
+
+@media (max-width: 600px) {
+  .faq-outer1 table tr td {
+    width: 100%;
+    display: block;
+  }
+
+  .faq-outer1 table tr td img {
+    width: 200px;
+    min-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+.faq-outer ul {
+  background: none;
+  padding: unset;
+}
+
+.faq-outer {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+.faq-outer ul {
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.faq-outer ul li {
+  list-style: none !important;
+  margin-bottom: 1em;
+  border: 1px solid #efefef;
+  padding: 1em;
+  position: relative;
+  padding-right: 60px;
+  background-position: left 28px;
+  background-image: none !important;
+}
+
+.faq-outer ul li p {
+  margin-bottom: 0 !important;
+}
+
+.faq-outer ul li > p {
+  font-size: 14pt !important;
+  font-weight: 500;
+  color: #525252;
+}
+
+.faq-outer ul li > h4 {
+  font-size: 16pt !important;
+  font-weight: 500;
+  color: #0b0a09;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.faq-outer ul li span p {
+  display: none;
+  margin-top: 1em;
+}
+
+.faq-outer ul {
+
+}
+
+.faq-outer ul li {
+  cursor: pointer;
+}
+
+.faq-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url(/wp-content/themes/lighttheme/images/icons/submenu.png);
+  background-color: #17120d !important;
+  height: 100%;
+  width: 50px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.faq-btn-open {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url(/wp-content/themes/lighttheme/images/icons/submenu-close.png);
+  background-color: #81672a !important;
+  height: 100%;
+  width: 50px;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}

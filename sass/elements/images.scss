@@ -1,0 +1,476 @@
+/* modal window for images */
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #999;
+  opacity: 0.5;
+}
+
+.modal-img {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 500;
+  max-width: 900px;
+  max-height: 540px;
+  padding: 20px;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.modal-img img {
+  max-width: 100%;
+}
+
+.modal-img a.close {
+  position: absolute;
+  right: 20px;
+  top: -29px;
+  display: block;
+  width: 49px;
+  height: 29px;
+  overflow: hidden;
+  background: black url("/images/modal-close.png") 50% 50% no-repeat;
+  text-indent: -50em;
+}
+
+.modal-img a.prev, .modal-img a.next {
+  position: absolute;
+  top: 50%;
+  display: block;
+  overflow: hidden;
+  width: 30px;
+  height: 60px;
+  margin: -30px 0 0;
+  background: url("/images/slider8-controls.png") no-repeat;
+  background-color: rgba(255, 255, 255, 0.6);
+  text-indent: -1000px;
+  outline: none;
+}
+
+.modal-img a.prev:hover, .modal-img a.next:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.modal-img a.prev {
+  left: 20px;
+  background-position: 0 50%;
+}
+
+.modal-img a.next {
+  right: 20px;
+  background-position: -30px 50%;
+}
+
+@media (max-width: 900px) {
+  .modal-img {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal-img {
+    max-width: 100%;
+    left: 0;
+    margin-left: -20px !important;
+  }
+}
+
+/* images for retina and other hi-density screens */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+
+  .hp-quote, blockquote.quote {
+    background-image: url("/images/quote@2x.png");
+    background-size: 40px 40px;
+  }
+  .testimonial > div > p:first-child {
+    background-image: url("/images/quotes@2x.png");
+    background-size: 22px 13px;
+  }
+  header nav ul ul li.parent > a {
+    background-image: url("/images/sm-arrow@2x.png");
+    background-size: 12px 7px;
+  }
+  header[role="banner"] .searchform button, aside .searchform button {
+    background-image: url("/images/search@2x.png");
+    background-size: 14px 14px;
+  }
+  .breadcrumb p a {
+    background-image: url("/images/bcrumb-arrow@2x.gif");
+    background-size: 4px 7px;
+  }
+  .social ul li a, ul.social li a {
+    background-image: url("/images/social@2x.png");
+    background-size: 632px 54px;
+  }
+  .soc-tooltip {
+    background-image: url("/images/social-tooltip@2x.png");
+    background-size: 12px 6px;
+  }
+  footer[role="banner"] {
+    background-image: url("/images/footer@2x.png");
+    background-size: 6px 8px;
+  }
+  .more a {
+    background-image: url("/images/more@2x.png");
+    background-size: 11px 11px;
+  }
+  a.go-top {
+    background-image: url("/images/go-top@2x.png");
+    background-size: 19px 10px;
+  }
+  ul.tick li {
+    background-image: url("/images/tick@2x.png");
+    background-size: 16px 16px;
+  }
+  .wp-pagenavi a.nextpostslink {
+    background-image: url("/images/more@2x.png");
+    background-size: 11px 11px;
+  }
+  .wp-pagenavi a.previouspostslink {
+    background-image: url("/images/back@2x.png");
+    background-size: 11px 11px;
+  }
+  .content-slider .next-prev a {
+    background-image: url("/images/slider2-controls@2x.png");
+    background-size: 44px 22px;
+  }
+  .content-slider.related article div ul li a {
+    background-image: url("/images/actions@2x.png");
+    background-size: 64px 30px;
+  }
+  .slider1 article p.cta {
+    background-image: url("/images/slider-cta-bg@2x.png");
+    background-size: 254px 59px;
+  }
+  .slider1 .next-prev a {
+    background-image: url("/images/slider1-controls@2x.png");
+    background-size: 60px 218px;
+  }
+  .slider-pager a {
+    background-image: url("/images/paginator-orange@2x.png");
+    background-size: 27px 11px;
+  }
+  .slider2 .next-prev a {
+    background-image: url("/images/slider2-controls@2x.png");
+    background-size: 44px 22px;
+  }
+  .slider3 > div {
+    background-image: url("/images/slider3-shadow@2x.png");
+    background-size: 864px 39px;
+  }
+  .slider3 .next-prev a {
+    background-image: url("/images/slider3-controls@2x.png");
+    background-size: 60px 70px;
+  }
+  .slider4 article > div {
+    background-image: url("/images/slider4-shadow@2x.png");
+    background-size: 578px 39px;
+  }
+  .slider6 > div {
+    background-image: url("/images/slider6-shadow@2x.png");
+    background-size: 998px 33px;
+  }
+  .slider6 .menu a.prev {
+    background-image: url("/images/up-down@2x.png");
+    background-size: 19px 34px;
+  }
+  .slider6 .menu a.next {
+    background-image: url("/images/up-down@2x.png");
+    background-size: 19px 34px;
+  }
+  .slider7 .controls ul a:before {
+    background-image: url("/images/icon-camera@2x.png");
+    background-size: 20px 15px;
+  }
+  .slider7 .controls ul a.info:before {
+    background-image: url("/images/icon-info@2x.png");
+    background-size: 19px 18px;
+  }
+  .slider7 .controls ul a.cart:before {
+    background-image: url("/images/icon-cart@2x.png");
+    background-size: 22px 16px;
+  }
+  .slider7 .controls ul a.people:before {
+    background-image: url("/images/icon-people@2x.png");
+    background-size: 20px 14px;
+  }
+  .slider7 .controls ul a.mail:before {
+    background-image: url("/images/icon-mail@2x.png");
+    background-size: 18px 14px;
+  }
+  .slider8 p a.cta {
+    background-image: url("/images/slider-cta-bg@2x.png");
+    background-size: 254px 59px;
+  }
+  .slider8 .next-prev a {
+    background-image: url("/images/slider8-controls@2x.png");
+    background-size: 60px 12px;
+  }
+  .slider9 article > div {
+    background-image: url("/images/slider4-shadow@2x.png");
+    background-size: 578px 39px;
+  }
+  .slider9 .slider-titles .active > a {
+    background-image: url("/images/arrow-up-gray@2x.png");
+    background-size: 13px 7px;
+  }
+  .slider10 > a {
+    background-image: url("/images/slider10-controls@2x.png");
+    background-size: 120px 60px;
+  }
+  .slider12 .slider {
+    background-image: url("/images/footer@2x.png");
+    background-size: 6px 8px;
+  }
+  .slider12 .next-prev li a {
+    background-image: url("/images/slider12controls@2x.png");
+    background-size: 40px 100px;
+  }
+  .slider12 .slider-pager a {
+    background-image: url("/images/paginator-slider12@2x.png");
+    background-size: 27px 11px;
+  }
+  .why-us li {
+    background-image: url("/images/tick@2x.png");
+    background-size: 16px 16px;
+  }
+  .hp-recent-work article div ul li a {
+    background-image: url("/images/actions@2x.png");
+    background-size: 64px 30px;
+  }
+  .portfolio article div ul li a {
+    background-image: url("/images/actions@2x.png");
+    background-size: 64px 30px;
+  }
+  .project-nav .prev {
+    background-image: url("/images/back@2x.png");
+    background-size: 11px 11px;
+  }
+  .project-nav .next {
+    background-image: url("/images/more@2x.png");
+    background-size: 11px 11px;
+  }
+  .post-meta a.comment-link {
+    background-image: url("/images/icon-comment@2x.png");
+    background-size: 10px 11px;
+  }
+  .product .product-meta span {
+    background-image: url("/images/stars@2x.png");
+    background-size: 18px 48px;
+  }
+  div.star-rating, div.star-rating a {
+    background-image: url("/images/stars@2x.png");
+    background-size: 18px 48px;
+  }
+  .events .rss-link a {
+    background-image: url("/images/rss@2x.png");
+    background-size: 16px 16px;
+  }
+  .events-head a span {
+    background-image: url("/images/slider2-controls@2x.png");
+    background-size: 44px 22px;
+  }
+  .content > aside section ul.tweets li {
+    background-image: url("/images/twitter@2x.png");
+    background-size: 17px 15px;
+  }
+  .content > aside section.menu > ul li.parent > a {
+    background-image: url("/images/nav-right@2x.png");
+    background-size: 11px 11px;
+  }
+  .content > aside section.menu > ul li.parent.expanded > a {
+    background-image: url("/images/nav-down@2x.png");
+    background-size: 11px 11px;
+  }
+  .landing-form form {
+    background-image: url("/images/footer@2x.png");
+    background-size: 6px 8px;
+  }
+  .p01 {
+    background-image: url("images/patterns/pattern01@2x.png");
+    background-size: 600px 120px;
+  }
+  .p02 {
+    background-image: url("images/patterns/pattern02@2x.png");
+    background-size: 55px 66px;
+  }
+  .p03 {
+    background-image: url("images/patterns/pattern03@2x.png");
+    background-size: 57px 154px;
+  }
+  .p04 {
+    background-image: url("images/patterns/pattern04@2x.png");
+    background-size: 16px 18px;
+  }
+  .p05 {
+    background-image: url("images/patterns/pattern05@2x.png");
+    background-size: 100px 100px;
+  }
+  .p06 {
+    background-image: url("images/patterns/pattern06@2x.png");
+    background-size: 8px 8px;
+  }
+  .p07 {
+    background-image: url("images/patterns/pattern07@2x.png");
+    background-size: 6px 8px;
+  }
+  .p08 {
+    background-image: url("images/patterns/pattern08@2x.png");
+    background-size: 372px 326px;
+  }
+  .p09 {
+    background-image: url("images/patterns/pattern09@2x.png");
+    background-size: 25px 25px;
+  }
+  .p10 {
+    background-image: url("images/patterns/pattern10@2x.png");
+    background-size: 106px 20px;
+  }
+  p.tooltip.dark span {
+    background-image: url("/images/tooltip-dark@2x.png");
+    background-size: 11px 6px;
+  }
+  p.tooltip.bright span {
+    background-image: url("/images/tooltip-bright@2x.png");
+    background-size: 13px 7px;
+  }
+  .msg a.hide {
+    background-image: url("/images/x@2x.png");
+    background-size: 12px 11px;
+  }
+  .msg.info {
+    background-image: url("/images/msg-info@2x.png");
+    background-size: 18px 18px;
+  }
+  .msg.success {
+    background-image: url("/images/msg-success@2x.png");
+    background-size: 18px 18px;
+  }
+  .msg.notice {
+    background-image: url("/images/msg-notice@2x.png");
+    background-size: 18px 18px;
+  }
+  .msg.error {
+    background-image: url("/images/msg-error@2x.png");
+    background-size: 18px 17px;
+  }
+  .box.info p {
+    background-image: url("/images/box-info@2x.png");
+    background-size: 32px 32px;
+  }
+  .box.confirm p {
+    background-image: url("/images/box-confirm@2x.png");
+    background-size: 34px 27px;
+  }
+  .box.alert p {
+    background-image: url("/images/box-alert@2x.png");
+    background-size: 32px 29px;
+  }
+  .box.warning p {
+    background-image: url("/images/box-warning@2x.png");
+    background-size: 34px 32px;
+  }
+  label.checkbox {
+    background-image: url("/images/input@2x.png");
+    background-size: 19px 110px;
+  }
+  label.radio {
+    background-image: url("/images/input@2x.png");
+    background-size: 19px 110px;
+  }
+  .file-input input.fake.file {
+    background-image: url("/images/input@2x.png");
+    background-size: 19px 110px;
+  }
+  .file-input a.empty {
+    background-image: url("/images/input@2x.png");
+    background-size: 19px 110px;
+  }
+  span.select span.value {
+    background-image: url("/images/select-arrow@2x.gif");
+    background-size: 16px 4px;
+  }
+  table.pricing tr.action td:first-child a {
+    background-image: url("/images/more@2x.png");
+    background-size: 11px 11px;
+  }
+  table.pricing span.yes {
+    background-image: url("/images/msg-success@2x.png");
+    background-size: 18px 18px;
+  }
+  table.pricing span.no {
+    background-image: url("/images/no@2x.png");
+    background-size: 18px 17px;
+  }
+  .modal-img a.close {
+    background-image: black url("/images/modal-close@2x.png");
+    background-size: 11px 11px;
+  }
+  .modal-img a.prev, .modal-img a.next {
+    background-image: url("/images/slider8-controls@2x.png");
+    background-size: 60px 12px;
+  }
+  .e404 button {
+    background-image: white url("/images/search-large@2x.png");
+    background-size: 16px 16px;
+  }
+  .modal-img a.prev, .modal-img a.next {
+    background-image: url("/images/slider8-controls@2x.png");
+    background-size: 60px 12px;
+  }
+  h2.t07 {
+    background-image: url("/images/patterns/pattern11@2x.png");
+    background-size: 5px 5px;
+  }
+  .content > aside h3.t07 {
+    background-image: url("/images/patterns/pattern11@2x.png");
+    background-size: 5px 5px;
+  }
+  .hp-intro p.cta {
+    background: ("/images/cta@2x.png");
+    background-size: 300px 79px;
+  }
+
+}
+
+.main-giveaway-img {
+
+}
+
+.main-giveaway-corner-border {
+  background: url(/wp-content/themes/lighttheme/images/rb-corner-br.png), url(/wp-content/themes/lighttheme/images/rb-corner-tl.png);
+  background-position: bottom right, top left;
+  background-repeat: no-repeat;
+  background-size: 80px;
+}
+
+// .logo{
+//     -ms-transform: translate(0%, -50%);
+//     -webkit-transform: translate(0%, -50%);
+//     transform: translate(0%, -50%);
+//     left: 80px;
+//     top: 50%;
+//     position: absolute;
+//     max-width: 300px;
+//     width: 100%;
+//     height: auto;
+//     }
+
+@media (max-width: 480px) {
+
+  .logo {
+    height: auto !important;
+    max-width: 190px !important;
+  }
+}
+
+.logo-h-a {
+  display: table;
+  margin: 0 auto;
+}
+        
