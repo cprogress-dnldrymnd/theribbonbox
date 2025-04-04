@@ -916,13 +916,22 @@ h2 span {
 	padding-bottom: 70px;
 }
 
-.bb-press-section .container {
-	max-width: 1000px;
-}
 .bb-press-section *:not(.bp-icon):not(.mce-ico):not(.bpfb_toolbarItem):not(.dashicons) {
 	font-family:
 		Work Sans,
 		sans-serif !important;
+}
+.bb-press-section .container {
+}
+@media (min-width: 1500px) {
+	.bb-press-section .container {
+		max-width: 1420px;
+	}
+}
+@media (min-width: 1600px) {
+	.bb-press-section .container {
+		max-width: 1520px;
+	}
 }
 .activity-list .activity-item .activity-meta.action .button {
 	border: none !important;
@@ -2306,7 +2315,7 @@ form#profile-edit-form.standard-form input {
 	display: none !important;
 }
 
-.forum-giveaways.forum-giveaways .giveaways-homepage{
+.forum-giveaways.forum-giveaways .giveaways-homepage {
 	padding-top: 0 !important;
 	padding-bottom: 0 !important;
 }
@@ -2623,7 +2632,7 @@ form#profile-edit-form.standard-form input {
 		padding-top: 35px;
 		padding-bottom: 35px;
 	}
-	.lg-padding-bottom { 
+	.lg-padding-bottom {
 		padding-bottom: 35px;
 	}
 	.activity-list.activity-list .activity-item .activity-content .activity-inner,
