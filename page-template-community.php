@@ -10,9 +10,11 @@
 <section class="forum-welcome py-5 mt-3 mt-lg-5">
     <div class="container text-center">
         <h1 class="mb-4"><?php the_title() ?></h1>
-        <p class="mb-5 welcome-text w-100">
-           <?php the_content() ?>
-        </p> 
+        <?php if (get_the_content()) { ?>
+            <p class="mb-5 welcome-text w-100">
+                <?php the_content() ?>
+            </p>
+        <?php } ?>
         <?php if (!is_user_logged_in()) { ?>
 
             <div class="button-box button-box-v2 button-accent mb-3">
