@@ -996,12 +996,15 @@ function forum_sidebar()
         $title = 'Related Topics';
     }
 
-    var_dump(bbpress_get_most_popular_topic_ids());
-    echo get_comment_count(39889)['all'] . '<br>';
-    echo get_comment_count(39891)['all'] . '<br>';
-    echo get_comment_count(39892)['all'] . '<br>';
-    echo get_comment_count(39908)['all'] . '<br>';
-    echo get_comment_count(39909)['all'] . '<br>';
+    // Example usage:
+    $most_liked_topic_ids = get_bbp_topic_ids_with_most_likes();
+
+    if (! empty($most_liked_topic_ids)) {
+        echo 'Topic IDs with most likes: ' . implode(', ', $most_liked_topic_ids);
+    } else {
+        echo 'No topics found with likes.';
+    }
+
 ?>
     <div class="community-posts">
         <div class="featured-box">
@@ -1035,42 +1038,48 @@ function forum_sidebar()
 }
 
 add_shortcode('forum_sidebar', 'forum_sidebar');
-
 /**
- * Get the IDs of the most popular bbPress topics based on reply count.
+ * Get topic IDs with the most likes in bbPress.
  *
- * @param int $number_of_topics The number of topic IDs to retrieve.
+ * This function assumes you are using a plugin or custom code that adds a "like" or "vote"
+ * functionality to bbPress topics, and stores the like count in topic meta data.
  *
- * @return array An array of topic IDs, or an empty array on error.
+ * @param int $limit The number of topic IDs to retrieve. Default is 10.
+ * @param string $meta_key The meta key used to store the like count. Default is '_topic_like_count'.
+ * @return array An array of topic IDs, or an empty array if no topics are found.
  */
-function bbpress_get_most_popular_topic_ids($number_of_topics = 5)
-{ // Default to 5 topics
+function get_bbp_topic_ids_with_most_likes($limit = 10, $meta_key = '_topic_like_count')
+{
 
+    global $wpdb;
 
-    $number_of_topics = absint($number_of_topics);
+    // Sanitize the limit and ensure it's a positive integer.
+    $limit = absint($limit);
 
-    if ($number_of_topics <= 0) {
-        $number_of_topics = 5; // Prevent errors with invalid number.
-    }
+    // Ensure the meta key is properly sanitized.
+    $meta_key = sanitize_key($meta_key);
 
-    $args = array(
-        'post_type'      => 'topic',
-        'posts_per_page' => $number_of_topics,
-        'orderby'        => 'comment_count', // Order by reply count
-        'order'          => 'DESC', // Descending order (most replies first)
+    // Build the SQL query to retrieve topic IDs and their like counts.
+    $query = $wpdb->prepare(
+        "SELECT post_id, meta_value
+        FROM $wpdb->postmeta
+        WHERE meta_key = %s
+        ORDER BY meta_value + 0 DESC
+        LIMIT %d",
+        $meta_key,
+        $limit
     );
 
-    $topic_ids = new WP_Query($args);
-    $ids = array();
-    // Check if the query returned any posts
-    while ($topic_ids->have_posts()) {
-        $topic_ids->the_post();
-        $ids[] = get_the_ID();
+    // Execute the query and retrieve the results.
+    $results = $wpdb->get_results($query);
+
+    // If no results are found, return an empty array.
+    if (empty($results)) {
+        return array();
     }
 
-    if ($ids) {
-        return $ids;
-    } else {
-        return array(); // Return empty array on error.
-    }
+    // Extract the topic IDs from the results.
+    $topic_ids = wp_list_pluck($results, 'post_id');
+
+    return $topic_ids;
 }
