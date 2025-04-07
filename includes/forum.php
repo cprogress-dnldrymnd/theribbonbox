@@ -995,7 +995,8 @@ function forum_sidebar()
     } else {
         $title = 'Related Topics';
     }
-echo do_shortcode('[bbp-single-view id="popular"]');
+
+    var_dump(bbpress_get_most_popular_topic_ids());
 ?>
     <div class="community-posts">
         <div class="featured-box">
@@ -1029,3 +1030,42 @@ echo do_shortcode('[bbp-single-view id="popular"]');
 }
 
 add_shortcode('forum_sidebar', 'forum_sidebar');
+
+/**
+ * Get the IDs of the most popular bbPress topics based on reply count.
+ *
+ * @param int $number_of_topics The number of topic IDs to retrieve.
+ *
+ * @return array An array of topic IDs, or an empty array on error.
+ */
+function bbpress_get_most_popular_topic_ids($number_of_topics = 5)
+{ // Default to 5 topics
+
+    // Ensure bbPress is active.
+    if (! function_exists('bbp_get_topic_ids')) {
+        return array();
+    }
+
+    $number_of_topics = absint($number_of_topics);
+
+    if ($number_of_topics <= 0) {
+        $number_of_topics = 5; // Prevent errors with invalid number.
+    }
+
+    $args = array(
+        'post_type'      => bbp_get_topic_post_type(),
+        'posts_per_page' => $number_of_topics,
+        'post_status'    => bbp_get_public_topic_statuses(), // Only public topics
+        'orderby'        => 'comment_count', // Order by reply count
+        'order'          => 'DESC', // Descending order (most replies first)
+        'fields'         => 'ids', // Only retrieve IDs
+    );
+
+    $topic_ids = get_posts($args);
+
+    if (is_array($topic_ids)) {
+        return $topic_ids;
+    } else {
+        return array(); // Return empty array on error.
+    }
+}
