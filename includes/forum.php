@@ -942,8 +942,8 @@ function forum_sidebar()
         'order' => 'DESC',
         'post_status' => 'any',
     ));
-
-    var_dump(bbp_get_user_favorites_topic_ids(get_current_user_id()));
+    $fav = bbp_get_user_favorites_topic_ids(get_current_user_id());
+    var_dump(get_user_meta(get_current_user_id()));
 
 ?>
     <div class="community-posts">
