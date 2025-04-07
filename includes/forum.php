@@ -117,8 +117,10 @@ function post_action($atts)
         $user_id = get_current_user_id();
         if (get_post_type($id) != 'topic') {
             $user_favorites = get_user_meta($user_id, 'user_favorites', true);
+            $count = get_posts_number_of_favorites($id);
         } else {
             $user_favorites = bbp_get_user_favorites_topic_ids(get_current_user_id());
+            $count = bbpress_get_topic_favorite_count($id);
         }
         $id = (int)$id;
         if ($user_favorites && in_array($id, $user_favorites)) {
@@ -147,7 +149,7 @@ function post_action($atts)
             <div class="icon-list d-flex align-items-center">
                 <a class="icon-holder d-flex align-items-center add-to-favorites-trigger <?= $class ?>" href="#">
                     <?= $heart . $heart_active ?>
-                    <span><?= get_posts_number_of_favorites($id) ?></span>
+                    <span><?= $count ?></span>
                 </a>
             </div>
         <?php } ?>
