@@ -2355,6 +2355,13 @@ span.bbp-admin-links.bbp-admin-links {
 	background-repeat: no-repeat;
 	background-position: center;
 }
+button#bbp_reply_submit {
+	font-size: 0 !important;
+}
+button#bbp_reply_submit:before {
+	font-size: 14px;
+	content: "Reply";
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
