@@ -943,7 +943,7 @@ function forum_sidebar()
         'post_status' => 'any',
     ));
 
-    var_dump(get_user_favorite_topics());
+    var_dump(bbp_get_user_favorites_topic_ids(get_current_user_id()));
 
 ?>
     <div class="community-posts">
