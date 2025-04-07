@@ -943,14 +943,15 @@ function forum_sidebar()
         'post_status' => 'any',
     ));
     $topic_id = 40093;
-    echo get_current_user_id();
     $is_favorited = bbp_is_topic_favorited_by_user($topic_id);
+    $favorites = bbp_get_user_favorites(get_current_user_id());
 
     if ($is_favorited) {
         echo "Topic $topic_id is favorited by the user.";
     } else {
         echo "Topic $topic_id is not favorited by the user.";
     }
+    var_dump($favorites);
 ?>
     <div class="community-posts">
         <div class="featured-box">
@@ -987,7 +988,7 @@ add_shortcode('forum_sidebar', 'forum_sidebar');
 
 /**
  * Check if a topic is favorited by a user in bbPress.
- *
+ *z
  * @param int $topic_id The ID of the topic to check.
  * @param int $user_id Optional. The ID of the user to check. Defaults to the current user.
  * @return bool True if the topic is favorited, false otherwise.
