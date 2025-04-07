@@ -118,15 +118,16 @@ function post_action($atts)
         if (get_post_type($id) != 'topic') {
             $user_favorites = get_user_meta($user_id, 'user_favorites', true);
             $count = get_posts_number_of_favorites($id);
+            $comment_count = get_comments_number($id);
         } else {
             $user_favorites = bbp_get_user_favorites_topic_ids(get_current_user_id());
             $count = bbpress_get_topic_favorite_count($id);
+            $comment_count = bbp_get_topic_reply_count($id, true);
         }
         $id = (int)$id;
         if ($user_favorites && in_array($id, $user_favorites)) {
             $class = 'is-user-favorite';
         }
-        $comment_count = get_comments_number($id);
     }
 ?>
     <div class="icon-lists post-action d-flex align-items-center">
