@@ -2333,7 +2333,7 @@ form#profile-edit-form.standard-form input {
 	background-image: url('data:image/svg+xml,<svg class="icon-active" xmlns="http://www.w3.org/2000/svg" width="29" height="24" viewBox="0 0 29 24" fill="none"><path d="M21.9902 0C28.2683 0 30.3474 7.27971 28.1546 11.2605C24.7892 17.441 14.503 24 14.503 24C14.503 24 4.17936 17.441 0.851488 11.2605C-1.34249 7.27971 0.700221 0 7.01592 0C12.8403 0 14.3143 5.04241 14.5042 5.80072C14.693 5.04241 16.1682 0 21.9926 0H21.9902Z" fill="%23F77D67"></path></svg>');
 }
 #bbpress-forums .bbp-topic-reply-link.bbp-topic-reply-link.bbp-topic-reply-link:before {
-	content: "";
+	content: url('data:image/svg+xml,<svg class="icon-active" xmlns="http://www.w3.org/2000/svg" width="29" height="24" viewBox="0 0 29 24" fill="none"><path d="M21.9902 0C28.2683 0 30.3474 7.27971 28.1546 11.2605C24.7892 17.441 14.503 24 14.503 24C14.503 24 4.17936 17.441 0.851488 11.2605C-1.34249 7.27971 0.700221 0 7.01592 0C12.8403 0 14.3143 5.04241 14.5042 5.80072C14.693 5.04241 16.1682 0 21.9926 0H21.9902Z" fill="%23F77D67"></path></svg>');
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
