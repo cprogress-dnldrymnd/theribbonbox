@@ -115,12 +115,15 @@ function post_action($atts)
 
     if (is_user_logged_in()) {
         $user_id = get_current_user_id();
-        $user_favorites = get_user_meta($user_id, 'user_favorites', true);
+        if (get_post_type($id) != 'topic') {
+            $user_favorites = get_user_meta($user_id, 'user_favorites', true);
+        } else {
+            $user_favorites = bbp_get_user_favorites_topic_ids(get_current_user_id());
+        }
         $id = (int)$id;
         if ($user_favorites && in_array($id, $user_favorites)) {
             $class = 'is-user-favorite';
         }
-
         $comment_count = get_comments_number($id);
     }
 ?>
@@ -978,7 +981,6 @@ function forum_sidebar()
         'order' => 'DESC',
         'post_status' => 'any',
     ));
-    $fav = bbp_get_user_favorites_topic_ids(get_current_user_id());
 
 ?>
     <div class="community-posts">
