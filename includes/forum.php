@@ -661,14 +661,16 @@ function add_to_favorites_ajax()
         }
 
         update_user_meta($user_id, 'user_favorites', $favorites);
+        $count = get_posts_number_of_favorites($post_id);
     } else {
         bbp_add_user_favorite($user_id, $post_id);
+        $count = bbpress_get_topic_favorite_count($post_id);
     }
 
     wp_send_json_success(
         array(
             'message' => $status,
-            'count' =>  get_posts_number_of_favorites($post_id)
+            'count' =>  $count
         )
     );
 
@@ -694,7 +696,37 @@ function get_posts_number_of_favorites($post_id)
     return $user_count;
 }
 
+/**
+ * Get the number of users who have favorited a specific topic.
+ *
+ * @param int $topic_id The ID of the topic.
+ *
+ * @return int The number of users who favorited the topic, or 0 on error.
+ */
+function bbpress_get_topic_favorite_count($topic_id)
+{
 
+    // Ensure bbPress is active and loaded.
+    if (! function_exists('bbp_is_favorites_active') || ! bbp_is_favorites_active()) {
+        return 0; // Return 0 if favorites are not active.
+    }
+
+    // Validate topic ID.
+    $topic_id = absint($topic_id);
+
+    if (empty($topic_id)) {
+        return 0; // Return 0 if topic ID is invalid.
+    }
+
+    // Get the array of user IDs who favorited the topic.
+    $favorited_by = bbp_get_topic_favoriters($topic_id);
+
+    if (is_array($favorited_by)) {
+        return count($favorited_by);
+    } else {
+        return 0; // Return 0 if there are no favorites or an error occurred.
+    }
+}
 
 add_action('wp_ajax_nopriv_community_posts', 'community_posts'); // for not logged in users
 add_action('wp_ajax_community_posts', 'community_posts');
