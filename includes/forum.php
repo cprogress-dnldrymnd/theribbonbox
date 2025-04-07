@@ -995,7 +995,7 @@ function forum_sidebar()
     } else {
         $title = 'Related Topics';
     }
-
+echo do_shortcode('[bbp-single-view id="popular"]');
 ?>
     <div class="community-posts">
         <div class="featured-box">
