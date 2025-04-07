@@ -810,7 +810,7 @@ function forum_bottom_sections()
     </section>
     <section class="exclusive-articles bg-white lg-padding-bottom text-center">
         <div class="container">
-            <a href="<?= get_the_permalink(39318) ?>" class="d-block box-style-1 position-relative rounded overflow-hidden">
+            <a href="<?= get_the_permalink(39546) ?>" class="d-block box-style-1 position-relative rounded overflow-hidden">
                 <div class="bg-image">
                     <?= wp_get_attachment_image(get_field('latest_conversation_background', 39318), 'large') ?>
                 </div>
