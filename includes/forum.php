@@ -942,17 +942,8 @@ function forum_sidebar()
         'order' => 'DESC',
         'post_status' => 'any',
     ));
-    $topic_id = 40093;
-    $is_favorited = bbp_is_topic_favorited_by_user($topic_id);
-    $favorites = get_user_meta(get_current_user_id(), '_bbp_user_favorites', true);
 
-
-    if ($is_favorited) {
-        echo "Topic $topic_id is favorited by the user.";
-    } else {
-        echo "Topic $topic_id is not favorited by the user.";
-    }
-    var_dump($favorites);
+    var_dump(get_user_favorite_topic());
 
 ?>
     <div class="community-posts">
@@ -987,33 +978,30 @@ function forum_sidebar()
 }
 
 add_shortcode('forum_sidebar', 'forum_sidebar');
-
 /**
- * Check if a topic is favorited by a user in bbPress (Robust version).
+ * Get users' favorite topics in bbPress.
  *
- * @param int $topic_id The ID of the topic to check.
- * @param int $user_id Optional. The ID of the user to check. Defaults to the current user.
- * @return bool True if the topic is favorited, false otherwise.
+ * This function retrieves the IDs of topics that a specific user has marked as favorites.
+ *
+ * @param int $user_id The ID of the user whose favorite topics to retrieve.
+ * @return array An array of topic IDs that the user has marked as favorites, or an empty array if none are found.
  */
-function bbp_is_topic_favorited_by_user($topic_id, $user_id = 0)
+function get_user_favorite_topics($user_id = 0)
 {
-    if (empty($topic_id)) {
-        return false;
-    }
 
     if (empty($user_id)) {
         $user_id = bbp_get_current_user_id();
     }
 
     if (empty($user_id)) {
-        return false;
+        return array(); // No user ID, return empty array.
     }
 
-    $favorites = get_user_meta($user_id, '_bbp_user_favorites', true);
+    $favorites = bbp_get_user_favorites($user_id, true); // Get favorites as an array of topic IDs.
 
     if (empty($favorites) || ! is_array($favorites)) {
-        return false;
+        return array(); // No favorites found, return empty array.
     }
 
-    return in_array($topic_id, $favorites, true);
+    return $favorites;
 }
