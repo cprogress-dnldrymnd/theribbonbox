@@ -990,7 +990,7 @@ function forum_sidebar()
         'order' => 'DESC',
         'post_status' => 'any',
     ));
-    if (bbp_is_forum_archive()) {
+    if (bbp_is_forum_archive() || bbp_is_topic_archive()) {
         $title = 'Popular Topics';
     } else {
         $title = 'Related Topics';
