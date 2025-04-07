@@ -942,7 +942,14 @@ function forum_sidebar()
         'order' => 'DESC',
         'post_status' => 'any',
     ));
-    echo bbp_is_topic_favorited_by_user(40093);
+    $topic_id = 40093;
+    $is_favorited = bbp_is_topic_favorited_by_user($topic_id);
+
+    if ($is_favorited) {
+        echo "Topic $topic_id is favorited by the user.";
+    } else {
+        echo "Topic $topic_id is not favorited by the user.";
+    }
 ?>
     <div class="community-posts">
         <div class="featured-box">
