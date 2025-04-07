@@ -947,7 +947,6 @@ function forum_sidebar()
         'post_status' => 'any',
     ));
     $fav = bbp_get_user_favorites_topic_ids(get_current_user_id());
-    var_dump(get_user_meta(get_current_user_id()));
 
 ?>
     <div class="community-posts">
@@ -982,30 +981,3 @@ function forum_sidebar()
 }
 
 add_shortcode('forum_sidebar', 'forum_sidebar');
-/**
- * Get users' favorite topics in bbPress.
- *
- * This function retrieves the IDs of topics that a specific user has marked as favorites.
- *
- * @param int $user_id The ID of the user whose favorite topics to retrieve.
- * @return array An array of topic IDs that the user has marked as favorites, or an empty array if none are found.
- */
-function get_user_favorite_topics($user_id = 0)
-{
-
-    if (empty($user_id)) {
-        $user_id = bbp_get_current_user_id();
-    }
-
-    if (empty($user_id)) {
-        return array(); // No user ID, return empty array.
-    }
-
-    $favorites = bbp_get_user_favorites($user_id, true); // Get favorites as an array of topic IDs.
-
-    if (empty($favorites) || ! is_array($favorites)) {
-        return array(); // No favorites found, return empty array.
-    }
-
-    return $favorites;
-}
