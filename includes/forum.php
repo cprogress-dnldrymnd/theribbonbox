@@ -664,10 +664,20 @@ function add_to_favorites_ajax()
             $status = 'added';
             $favorites[] = $post_id;
         }
-
         update_user_meta($user_id, 'user_favorites', $favorites);
         $count = get_posts_number_of_favorites($post_id);
     } else {
+        $favorites = bbp_get_user_favorites_topic_ids(get_current_user_id());
+        if (in_array($post_id, $favorites)) {
+            $key = array_search($post_id, $favorites);
+            $status = 'removed';
+            if ($key !== false) {
+                unset($favorites[$key]);
+            }
+        } else {
+            $status = 'added';
+            $favorites[] = $post_id;
+        }
         bbp_add_user_favorite($user_id, $post_id);
         $count = bbpress_get_topic_favorite_count($post_id);
     }
