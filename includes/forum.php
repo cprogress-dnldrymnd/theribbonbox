@@ -990,12 +990,17 @@ function forum_sidebar()
         'order' => 'DESC',
         'post_status' => 'any',
     ));
+    if (bbp_is_forum_archive()) {
+        $title = 'Popular Topics';
+    } else {
+        $title = 'Related Topics';
+    }
 
 ?>
     <div class="community-posts">
         <div class="featured-box">
             <div class="featured-box-heading">
-                <h2 class="text-heading mb-0">Featured community posts</h2>
+                <h2 class="text-heading mb-0"><?= $title ?></h2>
             </div>
 
             <div class="featured-box-holder d-flex flex-wrap">
