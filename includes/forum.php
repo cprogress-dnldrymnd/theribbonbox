@@ -670,10 +670,11 @@ function add_to_favorites_ajax()
         $favorites = bbp_get_user_favorites_topic_ids(get_current_user_id());
         if (in_array($post_id, $favorites)) {
             $status = 'removed';
+            bbp_remove_user_favorite($user_id, $post_id);
         } else {
+            bbp_add_user_favorite($user_id, $post_id);
             $status = 'added';
         }
-        bbp_add_user_favorite($user_id, $post_id);
         $count = bbpress_get_topic_favorite_count($post_id);
     }
 
