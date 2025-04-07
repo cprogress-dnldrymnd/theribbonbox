@@ -996,7 +996,7 @@ function forum_sidebar()
         $title = 'Related Topics';
     }
 
-    var_dump(bbp_get_popular_topics());
+    var_dump(bbpress_get_most_popular_topic_ids());
 ?>
     <div class="community-posts">
         <div class="featured-box">
