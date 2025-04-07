@@ -944,6 +944,7 @@ function forum_sidebar()
     ));
     $topic_id = 40093;
     $is_favorited = bbp_is_topic_favorited_by_user($topic_id);
+    $favorites = get_user_meta(get_current_user_id(), '_bbp_user_favorites', true);
 
 
     if ($is_favorited) {
@@ -951,6 +952,7 @@ function forum_sidebar()
     } else {
         echo "Topic $topic_id is not favorited by the user.";
     }
+    var_dump($favorites);
 
 ?>
     <div class="community-posts">
