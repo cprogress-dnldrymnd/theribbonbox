@@ -1053,13 +1053,18 @@ function bbpress_get_most_popular_topic_ids($number_of_topics = 5)
         'posts_per_page' => $number_of_topics,
         'orderby'        => 'comment_count', // Order by reply count
         'order'          => 'DESC', // Descending order (most replies first)
-        'fields'         => 'ids', // Only retrieve IDs
     );
 
     $topic_ids = new WP_Query($args);
+    $ids = array();
+    // Check if the query returned any posts
+    while ($topic_ids->have_posts()) {
+        $topic_ids->the_post();
+        $ids[] = get_the_ID();
+    }
 
-    if ($topic_ids) {
-        return $topic_ids;
+    if ($ids) {
+        return $ids;
     } else {
         return array(); // Return empty array on error.
     }
