@@ -644,22 +644,26 @@ function add_to_favorites_ajax()
     $user_id = get_current_user_id();
     $post_id = absint($_POST['post_id']);
 
-    // Use an appropriate method to store favorites. Here's an example using user meta:
-    $favorites = get_user_meta($user_id, 'user_favorites', true);
-    $favorites = $favorites ? (array) $favorites : array();
+    if (get_post_type($post_id) !== 'topic') {
+        // Use an appropriate method to store favorites. Here's an example using user meta:
+        $favorites = get_user_meta($user_id, 'user_favorites', true);
+        $favorites = $favorites ? (array) $favorites : array();
 
-    if (in_array($post_id, $favorites)) {
-        $key = array_search($post_id, $favorites);
-        $status = 'removed';
-        if ($key !== false) {
-            unset($favorites[$key]);
+        if (in_array($post_id, $favorites)) {
+            $key = array_search($post_id, $favorites);
+            $status = 'removed';
+            if ($key !== false) {
+                unset($favorites[$key]);
+            }
+        } else {
+            $status = 'added';
+            $favorites[] = $post_id;
         }
-    } else {
-        $status = 'added';
-        $favorites[] = $post_id;
-    }
 
-    update_user_meta($user_id, 'user_favorites', $favorites);
+        update_user_meta($user_id, 'user_favorites', $favorites);
+    } else {
+        bb_add_user_favorite($user_id, $post_id);
+    }
 
     wp_send_json_success(
         array(
