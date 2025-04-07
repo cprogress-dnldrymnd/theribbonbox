@@ -2340,7 +2340,8 @@ span.bbp-admin-links.bbp-admin-links {
 	gap: 5px;
 	flex-wrap: wrap;
 }
-#bbpress-forums .bbp-topic-reply-link.bbp-topic-reply-link.bbp-topic-reply-link {
+#bbpress-forums .bbp-topic-reply-link.bbp-topic-reply-link.bbp-topic-reply-link,
+#bbpress-forums .bbp-reply-to-link.bbp-reply-to-link.bbp-reply-to-link {
 	font-size: 0;
 }
 #bbpress-forums .bbp-topic-reply-link.bbp-topic-reply-link.bbp-topic-reply-link:before {
