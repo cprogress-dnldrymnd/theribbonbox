@@ -943,7 +943,7 @@ function forum_sidebar()
         'post_status' => 'any',
     ));
     $topic_id = 40093;
-    echo get_current_user_id()
+    echo get_current_user_id();
     $is_favorited = bbp_is_topic_favorited_by_user($topic_id);
 
     if ($is_favorited) {
