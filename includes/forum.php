@@ -1053,9 +1053,8 @@ function bbpress_get_most_popular_topic_ids($number_of_topics = 5)
     }
 
     $args = array(
-        'post_type'      => bbp_get_topic_post_type(),
+        'post_type'      => 'topic',
         'posts_per_page' => $number_of_topics,
-        'post_status'    => bbp_get_public_topic_statuses(), // Only public topics
         'orderby'        => 'comment_count', // Order by reply count
         'order'          => 'DESC', // Descending order (most replies first)
         'fields'         => 'ids', // Only retrieve IDs
