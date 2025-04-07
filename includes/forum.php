@@ -936,7 +936,7 @@ add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
 function forum_sidebar()
 {
     $community_posts = get_posts(array(
-        'post_type' => 'community-post',
+        'post_type' => 'topic',
         'posts_per_page' => 5,
         'orderby' => 'date',
         'order' => 'DESC',
