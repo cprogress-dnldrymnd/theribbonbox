@@ -1041,7 +1041,7 @@ add_shortcode('forum_sidebar', 'forum_sidebar');
 function bbpress_get_most_popular_topic_ids($number_of_topics = 5)
 { // Default to 5 topics
 
- 
+
     $number_of_topics = absint($number_of_topics);
 
     if ($number_of_topics <= 0) {
@@ -1056,7 +1056,7 @@ function bbpress_get_most_popular_topic_ids($number_of_topics = 5)
         'fields'         => 'ids', // Only retrieve IDs
     );
 
-    $topic_ids = get_posts($args);
+    $topic_ids = new WP_Query($args);
 
     if (is_array($topic_ids)) {
         return $topic_ids;
