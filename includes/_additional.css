@@ -2344,7 +2344,8 @@ span.bbp-admin-links.bbp-admin-links {
 #bbpress-forums .bbp-reply-to-link.bbp-reply-to-link.bbp-reply-to-link {
 	font-size: 0;
 }
-#bbpress-forums .bbp-topic-reply-link.bbp-topic-reply-link.bbp-topic-reply-link:before {
+#bbpress-forums .bbp-topic-reply-link.bbp-topic-reply-link.bbp-topic-reply-link:before,
+#bbpress-forums .bbp-reply-to-link.bbp-reply-to-link.bbp-reply-to-link:before {
 	background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 22.125C13.051 22.125 12.1345 22.0145 11.2538 21.8268L7.4285 24.1262L7.47969 20.357C4.54737 18.5939 2.625 15.6786 2.625 12.375C2.625 6.99056 7.71775 2.625 14 2.625C20.2822 2.625 25.375 6.99056 25.375 12.375C25.375 17.7603 20.2822 22.125 14 22.125ZM14 1C6.82075 1 1 6.09356 1 12.375C1 15.9654 2.90531 19.1626 5.875 21.2467V27L11.5698 23.5444C12.3579 23.6744 13.1688 23.75 14 23.75C21.1793 23.75 27 18.6572 27 12.375C27 6.09356 21.1793 1 14 1Z" fill="%23F77D67" stroke="%23F77D67" stroke-width="0.5"></path></svg>');
 	display: inline-block;
 	width: 16px;
