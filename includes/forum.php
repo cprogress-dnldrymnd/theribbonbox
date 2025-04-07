@@ -1051,7 +1051,6 @@ function bbpress_get_most_popular_topic_ids($number_of_topics = 5)
     $args = array(
         'post_type'      => 'topic',
         'posts_per_page' => $number_of_topics,
-        'orderby'        => 'comment_count', // Order by reply count
         'order'          => 'ASC', // Descending order (most replies first)
         'fields'         => 'ids', // Only retrieve IDs
     );
