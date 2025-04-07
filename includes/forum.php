@@ -1058,7 +1058,7 @@ function bbpress_get_most_popular_topic_ids($number_of_topics = 5)
 
     $topic_ids = new WP_Query($args);
 
-    if (is_array($topic_ids)) {
+    if ($topic_ids) {
         return $topic_ids;
     } else {
         return array(); // Return empty array on error.
