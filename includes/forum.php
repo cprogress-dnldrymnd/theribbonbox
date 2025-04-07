@@ -995,18 +995,17 @@ function forum_sidebar()
     } else {
         $title = 'Related Topics';
     }
+// Example usage:
+$top_favorite_ids = get_bbpress_top_favorite_topic_ids(5);
 
-    // Example usage: Get the top 5 favorite topic IDs.
-    $top_favorite_ids = get_bbpress_top_favorite_topic_ids(5);
-
-    if (! empty($top_favorite_ids)) {
-        echo "Top Favorite Topic IDs:<br>";
-        foreach ($top_favorite_ids as $topic_id) {
-            echo $topic_id . "<br>";
-        }
-    } else {
-        echo "No favorite topics found.";
+if (!empty($top_favorite_ids)) {
+    echo "Top Favorite Topic IDs:<br>";
+    foreach ($top_favorite_ids as $topic_id) {
+        echo esc_html($topic_id) . "<br>";
     }
+} else {
+    echo "No favorite topics found.";
+}
 ?>
     <div class="community-posts">
         <div class="featured-box">
@@ -1042,31 +1041,39 @@ function forum_sidebar()
 add_shortcode('forum_sidebar', 'forum_sidebar');
 
 /**
- * Get topic IDs with the most favorites in bbPress.
+ * Get topic IDs with the most favorites in bbPress (Improved).
  *
  * @param int $limit Number of topic IDs to retrieve. Defaults to 10.
- * @return array Array of topic IDs, sorted by favorite count in descending order.
+ * @return array Array of topic IDs, sorted by favorite count in descending order, or empty array on error.
  */
-function get_bbpress_top_favorite_topic_ids($limit = 10)
-{
+function get_bbpress_top_favorite_topic_ids( $limit = 10 ) {
     global $wpdb;
 
-    // Ensure limit is an integer and greater than 0.
-    $limit = absint($limit);
-    if ($limit <= 0) {
-        $limit = 10; // Default to 10 if invalid limit is provided.
+    // Sanitize and validate the limit.
+    $limit = absint( $limit );
+    if ( $limit <= 0 ) {
+        $limit = 10;
     }
 
-    $topic_ids = $wpdb->get_col($wpdb->prepare(
-        "SELECT post_id FROM $wpdb->postmeta
+    // Construct the query with proper table names and error handling.
+    $query = $wpdb->prepare(
+        "SELECT post_id FROM {$wpdb->postmeta}
         WHERE meta_key = '_bbp_favorite_count'
-        ORDER BY meta_value + 0 DESC
+        ORDER BY CAST(meta_value AS UNSIGNED) DESC
         LIMIT %d",
         $limit
-    ));
+    );
 
-    if (! empty($topic_ids)) {
-        return array_map('absint', $topic_ids); // Ensure IDs are integers.
+    // Execute the query and check for errors.
+    $topic_ids = $wpdb->get_col( $query );
+
+    if ( $wpdb->last_error ) {
+        error_log( 'Database error in get_bbpress_top_favorite_topic_ids: ' . $wpdb->last_error );
+        return array(); // Return empty array on error.
+    }
+
+    if ( ! empty( $topic_ids ) ) {
+        return array_map( 'absint', $topic_ids );
     } else {
         return array();
     }
