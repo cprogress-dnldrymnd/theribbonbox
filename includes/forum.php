@@ -997,11 +997,11 @@ function forum_sidebar()
     }
 
     var_dump(bbpress_get_most_popular_topic_ids());
-    echo get_comment_count(39889) . '<br>';
-    echo get_comment_count(39891) . '<br>';
-    echo get_comment_count(39892) . '<br>';
-    echo get_comment_count(39908) . '<br>';
-    echo get_comment_count(39909) . '<br>';
+    echo get_comment_count(39889)['all'] . '<br>';
+    echo get_comment_count(39891)['all'] . '<br>';
+    echo get_comment_count(39892)['all'] . '<br>';
+    echo get_comment_count(39908)['all'] . '<br>';
+    echo get_comment_count(39909)['all'] . '<br>';
 ?>
     <div class="community-posts">
         <div class="featured-box">
