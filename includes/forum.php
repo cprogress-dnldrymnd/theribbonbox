@@ -662,7 +662,7 @@ function add_to_favorites_ajax()
 
         update_user_meta($user_id, 'user_favorites', $favorites);
     } else {
-        bb_add_user_favorite($user_id, $post_id);
+        bbp_add_user_favorite($user_id, $post_id);
     }
 
     wp_send_json_success(
