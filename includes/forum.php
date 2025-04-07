@@ -1041,11 +1041,7 @@ add_shortcode('forum_sidebar', 'forum_sidebar');
 function bbpress_get_most_popular_topic_ids($number_of_topics = 5)
 { // Default to 5 topics
 
-    // Ensure bbPress is active.
-    if (! function_exists('bbp_get_topic_ids')) {
-        return array();
-    }
-
+ 
     $number_of_topics = absint($number_of_topics);
 
     if ($number_of_topics <= 0) {
