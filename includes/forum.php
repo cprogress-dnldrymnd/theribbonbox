@@ -987,6 +987,7 @@ function forum_sidebar()
     if (bbp_is_forum_archive()) {
         $title = 'Popular Topics';
         $topics = get_popular_topics();
+        $class = 'forum-archive';
     } else if (bbp_is_single_forum()) {
         $forum_id = get_the_ID();
         $title = get_the_title() . ' Popular Topics';
@@ -994,44 +995,50 @@ function forum_sidebar()
         // Check if the forum is a category or a forum
         if ($_bbp_forum_type == 'forum') {
             $topics = get_popular_topics($forum_id);
+            $class = 'forum-single-type--forum';
         } else {
             $forum_id = get_forums_under_category($forum_id);
             $topics = get_popular_topics($forum_id);
+            $class = 'forum-single-type--category';
         }
     } else {
+        $class = 'forum-single-topic';
         $title = 'Related Topics';
         $topics = get_related_topics();
     }
 
 ?>
-    <div class="community-posts">
-        <div class="featured-box">
-            <div class="featured-box-heading">
-                <h2 class="text-heading mb-0"><?= $title ?></h2>
-            </div>
+    <div id="forum-sidebar" class="<?= $class ?>">
 
-            <div class="featured-box-holder d-flex flex-wrap">
-                <?php foreach ($topics as $topic) { ?>
-                    <div class="featured-box-item post-box" post-id="<?= $topic ?>">
-                        <a href="<?= get_the_permalink($topic) ?>">
-                            <h3 class="mb-3"><?= get_the_title($topic) ?></h3>
-                        </a>
-                        <div class="topic-action d-flex align-items-center justify-content-between">
-                            <div class="left">
-                                <a class="read-more" href="<?= get_the_permalink($topic) ?>">
-                                    Read more
-                                </a>
-                            </div>
-                            <div class="right">
-                                <?= do_shortcode('[post_action id=' . $topic . ']') ?>
+        <div class="community-posts ">
+            <div class="featured-box">
+                <div class="featured-box-heading">
+                    <h2 class="text-heading mb-0"><?= $title ?></h2>
+                </div>
+
+                <div class="featured-box-holder d-flex flex-wrap">
+                    <?php foreach ($topics as $topic) { ?>
+                        <div class="featured-box-item post-box" post-id="<?= $topic ?>">
+                            <a href="<?= get_the_permalink($topic) ?>">
+                                <h3 class="mb-3"><?= get_the_title($topic) ?></h3>
+                            </a>
+                            <div class="topic-action d-flex align-items-center justify-content-between">
+                                <div class="left">
+                                    <a class="read-more" href="<?= get_the_permalink($topic) ?>">
+                                        Read more
+                                    </a>
+                                </div>
+                                <div class="right">
+                                    <?= do_shortcode('[post_action id=' . $topic . ']') ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php } ?>
+                    <?php } ?>
+                </div>
             </div>
-
         </div>
     </div>
+
 <?php
 }
 
