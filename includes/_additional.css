@@ -2371,6 +2371,15 @@ button#bbp_reply_submit:before {
 section.forum-guidelines {
 	padding-top: 100px;
 }
+.bbp-topic-form:before{
+    content: 'Create a post';
+    display: block;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: bold;
+	margin-top: 100px;
+
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
