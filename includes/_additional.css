@@ -919,9 +919,12 @@ h2 span {
 		Work Sans,
 		sans-serif !important;
 }
-.bb-press-section .community-posts {
-	margin-top: 85px;
+
+#forum-sidebar {
 	background-color: var(--white-color);
+}
+#forum-sidebar.forum-archive {
+	margin-top: 50px;
 }
 @media (min-width: 1500px) {
 	.bb-press-section .container {
