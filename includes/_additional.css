@@ -1604,8 +1604,7 @@ p.comment-form-comment {
 		Work Sans,
 		sans-serif;
 }
-.bbp-forum-title.bbp-forum-title,
-.bbp-forum-title.bbp-forum-title h3,
+.bbp-forum-title.bbp-forum-title, .bbp-forum-title.bbp-forum-title a,
 a.bbp-topic-permalink {
 	font-size: 20px;
 	text-decoration: none;
@@ -2748,8 +2747,7 @@ section.forum-guidelines .inner ul li strong {
 	#bbpress-forums li.bbp-body ul.topic {
 		padding: 20px;
 	}
-	.bbp-forum-title.bbp-forum-title,
-	.bbp-forum-title.bbp-forum-title h3,
+	.bbp-forum-title.bbp-forum-title, .bbp-forum-title.bbp-forum-title a,
 	a.bbp-topic-permalink {
 		font-size: 15px;
 	}
