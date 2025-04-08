@@ -999,9 +999,6 @@ function forum_sidebar()
         $title = 'Related Topics';
         $topics = get_related_topics();
     }
-    echo "<pre>";
-    var_dump(get_post_meta(get_the_ID()));
-    echo "</pre>";
 
     $category_id = 39766; // Replace with the actual ID of your forum category
 
