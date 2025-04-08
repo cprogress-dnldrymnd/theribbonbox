@@ -45,7 +45,7 @@ function forum_slider()
         'meta_value'  => 'category', // Get only forums with 'category' type
     ));
 ?>
-    <h2 class="text-heading mb-4">TOPICS + dISCUSSIONS</h2>
+    <h2 class="text-heading mb-4">FORUMS TOPICS & DISCUSSIONS</h2>
     <div class="swiper swiper-post-slider swiper-post-slider-nav-style-2">
         <div class="row g-4 swiper-wrapper">
             <?php foreach ($forums as $forum) { ?>
