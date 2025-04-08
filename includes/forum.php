@@ -1127,7 +1127,7 @@ function get_popular_topics($limit = 5)
     foreach ($topics as $topic) {
         $reply_count = bbp_get_topic_reply_count($topic, true);
         $fav_count = bbpress_get_topic_favorite_count($topic);
-        $topics_reply_count[$topic] = [$reply_count, $fav_count];
+        $topics_reply_count[] = $topic;
     }
 
     return $topics_reply_count;
