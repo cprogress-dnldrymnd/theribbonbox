@@ -340,6 +340,7 @@ function action_admin_head()
             .post-type-switcher,
             .misc-pub-curtime,
             .rank-math-seo-score,
+            .rank-math-lock-modified-date,
             #export-action,
             #minor-publishing-actions,
             #acf-group_67d2631c29e16,
