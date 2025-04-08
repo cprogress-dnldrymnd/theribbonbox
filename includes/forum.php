@@ -1114,12 +1114,12 @@ function get_popular_topics($limit = 5)
 
         ),
     ));
-    $topics_reply_count = array();
+    $topics_arr = array();
     foreach ($topics as $topic) {
-        $topics_reply_count[] = $topic;
+        $topics_arr[] = $topic;
     }
 
-    return $topics_reply_count;
+    return $topics_arr;
 }
 
 
@@ -1139,10 +1139,10 @@ function get_related_topics($limit = 5)
             ),
         ),
     ));
-    $topics_reply_count = array();
+    $topics_arr = array();
     foreach ($topics as $topic) {
-        $topics_reply_count[] = $topic;
+        $topics_arr[] = $topic;
     }
 
-    return $topics_reply_count;
+    return $topics_arr;
 }
