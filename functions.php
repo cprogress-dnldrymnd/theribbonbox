@@ -336,6 +336,7 @@ function action_admin_head()
     if (isset($_GET['post']) && $_GET['post'] == 39610) {
     ?>
         <style>
+            #titlediv,
             #postdivrich,
             #rank_math_metabox,
             #rank_math_metabox_content_ai,
@@ -348,7 +349,7 @@ function action_admin_head()
                 display: none !important;
             }
         </style>
-<?php
+    <?php
     }
 }
 
