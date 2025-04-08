@@ -2769,6 +2769,9 @@ section.forum-guidelines .inner ul li strong {
 	section.forum-guidelines .inner ul li {
 		width: 100%;
 	}
+	section.forum-guidelines .inner {
+		padding: 20px;
+	}
 	.buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset {
 		flex-direction: column;
 	}
