@@ -2438,7 +2438,7 @@ section.forum-guidelines .inner ul li strong {
 	content: "Reply to a post";
 }
 #bbp-search-results .bbp-forum-header {
-    background-color: #fff
+    background-color: #fff !important;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
