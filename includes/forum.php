@@ -988,6 +988,7 @@ function forum_sidebar()
         $topics = get_popular_topics();
     } else {
         $title = 'Related Topics';
+        $topics = get_related_topics();
     }
     echo "<pre>";
     var_dump(get_post_meta(get_the_ID()));
