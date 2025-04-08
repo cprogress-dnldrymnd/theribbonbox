@@ -32,10 +32,15 @@ $subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
     <div class="subscribe-outer-txt">
       <h2><?= $subscribe_popup_heading ?> </h2>
       <div class="cat-links">
-        <a href="/wellbeing">Wellbeing</a> |
-        <a href="/fertility">Fertility</a> |
-        <a href="/pregnancy">Pregnancy</a> |
-        <a href="/parenting">Parenting</a>
+        <?php foreach ($subscribe_popup_links as $link) { ?>
+          <?php
+          $page_id = url_to_postid($link);
+          $url = get_permalink($page_id);
+          $title = get_the_title($page_id);
+          ?>
+          <a href="<?= $url ?>"><?= $title ?></a> |
+        <?php } ?>
+  
       </div>
       <hr>
       <?= wpautop($subscribe_popup_description) ?>
