@@ -2386,6 +2386,7 @@ section.forum-guidelines .inner h2 {
 	color: var(--accent-color);
 	font-style: italic;
 	font-size: 30px;
+	margin-top: 0;
 }
 section.forum-guidelines .inner h3 {
 	color: var(--accent-color);
@@ -2393,6 +2394,8 @@ section.forum-guidelines .inner h3 {
 	font-size: 16px;
 	letter-spacing: 0;
 	font-weight: bold;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 section.forum-guidelines .inner ul {
 	display: flex;
@@ -2402,8 +2405,17 @@ section.forum-guidelines .inner ul {
 }
 section.forum-guidelines .inner ul li {
 	box-shadow: 9px 11px 29px rgba(125, 138, 152, 0.15);
-	padding: 10px;
+	padding: 20px;
 	border-radius: 10px;
+	font-family: "Work Sans", sans-serif;
+	font-size: 14px;
+	flex: 0 0 auto;
+	width: calc(100% / 5 - (10px * 4) / 5);
+}
+section.forum-guidelines .inner ul li strong {
+	color: var(--accent-color);
+	display: block;
+	margin-bottom: 20px;
 }
 .bbp-topic-form:before,
 .bbp-reply-form:before {
