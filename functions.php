@@ -336,6 +336,10 @@ function action_admin_head()
     if (isset($_GET['post']) && $_GET['post'] == 39610) {
     ?>
         <style>
+            .misc-pub-post-status,
+            #visibility,
+            #major-publishing-actions,
+            #delete-action,
             #titlediv,
             #postdivrich,
             #rank_math_metabox,
