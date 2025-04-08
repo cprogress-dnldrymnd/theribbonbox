@@ -339,6 +339,7 @@ function action_admin_head()
             .misc-pub-post-status,
             .post-type-switcher,
             .misc-pub-curtime,
+            #acf-group_67d2631c29e16,
             #postexcerpt,
             #bialty_post_options,
             #visibility,
