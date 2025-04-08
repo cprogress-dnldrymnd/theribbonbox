@@ -996,11 +996,6 @@ function forum_sidebar()
     } else {
         $title = 'Related Topics';
     }
-    echo '<pre>';
-    var_dump($topics);
-    var_dump(get_post_meta(40587));
-    echo '</pre>';
-
 ?>
     <div class="community-posts">
         <div class="featured-box">
