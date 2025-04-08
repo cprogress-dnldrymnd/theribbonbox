@@ -990,7 +990,7 @@ function forum_sidebar()
         $forum_id = get_the_ID();
         $title = get_the_title() . ' Popular Topics';
         $_bbp_forum_type = get_post_meta($forum_id, '_bbp_forum_type', true);
-        if($_bbp_forum_type == 'forum') {
+        if ($_bbp_forum_type == 'forum') {
             $topics = get_popular_topics($forum_id);
         } else {
             $topics = get_popular_topics();
@@ -1002,6 +1002,25 @@ function forum_sidebar()
     echo "<pre>";
     var_dump(get_post_meta(get_the_ID()));
     echo "</pre>";
+
+    $category_id = 39766; // Replace with the actual ID of your forum category
+
+    $forums = get_posts(array(
+        'post_type'   => 'forum',
+        'numberposts' => -1, // Get all forums
+        'post_parent' => $category_id,
+    ));
+
+    $forum_ids = array();
+    if ($forums) {
+        foreach ($forums as $forum) {
+            $forum_ids[] = $forum->ID;
+        }
+        // $forum_ids now contains an array of forum IDs under the specified category
+        print_r($forum_ids);
+    } else {
+        echo "No forums found under this category.";
+    }
 ?>
     <div class="community-posts">
         <div class="featured-box">
