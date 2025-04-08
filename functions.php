@@ -361,8 +361,7 @@ function theme_options_admin_menu()
         __('Theme Options', 'your-text-domain'), // Page title
         __('Theme Options', 'your-text-domain'), // Menu title
         'manage_options',                       // Capability required
-        'theme-options',                        // Menu slug (unique identifier)
-        'theme_options_page_callback',          // Function to display the page content (optional, since we are redirecting)
+        'https://theribbonbox.com/wp-admin/post.php?post=39610&action=edit',                        // Menu slug (unique identifier)
         'dashicons-admin-generic',              // Icon (optional - see https://developer.wordpress.org/resource/dashicons/)
         25                                      // Menu position (optional - adjust as needed)
     );
