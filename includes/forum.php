@@ -989,6 +989,9 @@ function forum_sidebar()
     } else {
         $title = 'Related Topics';
     }
+    echo "<pre>";
+    var_dump(get_post_meta());
+    echo "</pre>";
 ?>
     <div class="community-posts">
         <div class="featured-box">
@@ -1081,6 +1084,46 @@ function get_bbpress_top_favorite_topic_ids($limit = 10)
 
 
 function get_popular_topics($limit = 5)
+{
+    $topics = get_posts(array(
+        'post_type' => 'topic',
+        'posts_per_page' => $limit,
+        'post_status' => 'any',
+        'fields' => 'ids',
+        'meta_key' => '_bbp_reply_count',
+        'orderby' => 'meta_value_num',
+        'orderby'   => array(
+            '_bbp_reply_count'  => 'DESC',
+            '_bbp_favorite' => 'DESC',
+            '_bbp_engagement' => 'DESC',
+            '_bbp_voice_count' => 'DESC',
+        ),
+        'meta_query' => array(
+            array(
+                'key' => '_bbp_reply_count',
+            ),
+            array(
+                'key' => '_bbp_favorite',
+            ),
+            array(
+                'key' => '_bbp_engagement',
+            ),
+            array(
+                'key' => '_bbp_voice_count',
+            ),
+
+        ),
+    ));
+    $topics_reply_count = array();
+    foreach ($topics as $topic) {
+        $topics_reply_count[] = $topic;
+    }
+
+    return $topics_reply_count;
+}
+
+
+function get_related_topics($limit = 5)
 {
     $topics = get_posts(array(
         'post_type' => 'topic',
