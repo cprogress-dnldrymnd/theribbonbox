@@ -989,7 +989,7 @@ add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
 function forum_sidebar()
 {
     // Check if the current page is a forum archive or a single forum page
-    if (bbp_is_forum_archive()) {
+    if (bbp_is_forum_archive() || bbp_is_search_results()) {
         $title = 'Popular Topics';
         $topics = get_popular_topics();
         $class = 'forum-archive';
