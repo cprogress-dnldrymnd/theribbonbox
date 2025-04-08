@@ -352,9 +352,11 @@ if (!is_bbpress() && !is_buddypress()) {
             echo '<div class="col-lg-9">';
             the_content();
             echo '</div>';
-            echo '<div class="col-lg-3">';
-            echo do_shortcode('[forum_sidebar]');
-            echo '</div>';
+            if (!bp_is_user_profile()) {
+                echo '<div class="col-lg-3">';
+                echo do_shortcode('[forum_sidebar]');
+                echo '</div>';
+            }
             echo '</div>';
         endwhile;
         echo '</div>';
