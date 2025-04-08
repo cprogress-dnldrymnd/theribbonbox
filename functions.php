@@ -10,30 +10,6 @@ function action_after_theme_setup()
 }
 add_action('after_setup_theme', 'action_after_theme_setup');
 
-include 'functions/core.php';
-include 'functions/custom-shortcodes.php';
-include 'functions/menus.php';
-include 'functions/blog.php';
-include 'functions/lazyload.php';
-include 'functions/next-prev-links.php';
-include 'functions/home.php';
-include 'functions/hide-shippen-when-free.php';
-include 'functions/load_cate_posts.php';
-include 'functions/widgets.php';
-include 'functions/commerce.php';
-include 'functions/sitemap.php';
-include 'functions/pw.php';
-include 'functions/products.php';
-include 'functions/custom-post-types.php';
-include 'functions/custom-taxonomies.php';
-include 'functions/forms.php';
-include 'functions/unique-pages.php';
-include 'functions/b2b-content.php';
-include 'functions/landing-page-header.php';
-include 'functions/e-guides.php';
-include 'functions/b2b-discounts.php';
-//include 'functions/experts-slide.php';
-include 'shortcodes/member-login-button.php';
 
 add_action('wp_enqueue_scripts', 'load_scripts');
 function load_scripts()
