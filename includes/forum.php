@@ -988,7 +988,6 @@ function forum_sidebar()
         'posts_per_page' => 5,
         'orderby' => 'date',
         'order' => 'DESC',
-        'post_status' => 'any',
     ));
     if (bbp_is_forum_archive() || bbp_is_topic_archive()) {
         $title = 'Popular Topics';
