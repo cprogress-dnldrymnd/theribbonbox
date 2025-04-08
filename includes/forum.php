@@ -1069,11 +1069,19 @@ function get_popular_topics($forum_id = false, $limit = 5)
         'key' => '_bbp_voice_count',
     );
     if ($forum_id) {
-        $meta_query[] = array(
-            'key' => '_bbp_forum_id',
-            'value' => $forum_id,
-            'compare' => '='
-        );
+        if (is_array($forum_id)) {
+            $meta_query[] = array(
+                'key' => '_bbp_forum_id',
+                'value' => $forum_id,
+                'compare' => 'IN'
+            );
+        } else {
+            $meta_query[] = array(
+                'key' => '_bbp_forum_id',
+                'value' => $forum_id,
+                'compare' => '='
+            );
+        }
     }
     $topics = get_posts(array(
         'post_type' => 'topic',
