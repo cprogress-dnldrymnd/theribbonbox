@@ -990,9 +990,6 @@ function forum_sidebar()
         $title = 'Related Topics';
         $topics = get_related_topics();
     }
-    echo "<pre>";
-    var_dump(get_post_meta(get_the_ID()));
-    echo "</pre>";
 ?>
     <div class="community-posts">
         <div class="featured-box">
