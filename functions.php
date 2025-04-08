@@ -35,7 +35,6 @@ include 'functions/b2b-discounts.php';
 //include 'functions/experts-slide.php';
 include 'shortcodes/member-login-button.php';
 
-add_filter('wp_enqueue_scripts', 'insert_jquery', 1);
 add_action('wp_enqueue_scripts', 'load_scripts', 9999999);
 function load_scripts()
 {
