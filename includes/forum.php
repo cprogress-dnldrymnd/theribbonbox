@@ -1101,10 +1101,10 @@ function get_top_topics()
         'post_status' => 'any',
         'fields' => 'ids',
     ));
-    $topics_reply_count = [];
+    $topics_reply_count = array();
     foreach ($topics as $topic) {
         $reply_count = bbp_get_topic_reply_count($topic->ID, true);
-        $topics_reply_count[$topic->ID] = $topic->ID;
+        $topics_reply_count[$topic] = $reply_count;
     }
 
     return $topics_reply_count;
