@@ -1,4 +1,5 @@
 const giveawayPopupDelay = 30 * 1000; // 30 seconds
+
 $(document).ready(function() {
 
     //localStorage.removeItem("hidegiveawayDate", "true");

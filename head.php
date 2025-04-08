@@ -60,7 +60,9 @@
     <meta name="google-site-verification" content="DMhoe3uKxPI_ZseNUmb43TFD3cPqyNnCCGxJUIx1rAw" />
 
     <link rel="stylesheet" href="<?php echo (get_template_directory_uri()) ?>/css/trb.css">
-
+    <script>
+        var $ = jQuery;
+    </script>
     <?php $title = the_title('', '', false);
     if ($title == "Contact" || $title == "Newsletter"): ?>
         <script src='https://www.google.com/recaptcha/api.js'></script>
