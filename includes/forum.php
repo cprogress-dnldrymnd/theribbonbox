@@ -1104,6 +1104,7 @@ function get_topics_with_most_replies($limit = 5)
         'orderby'   => array(
             '_bbp_reply_count'  => 'DESC',
             '_bbp_favorite' => 'DESC',
+            '_bbp_engagement' => 'DESC',
         ),
         'meta_query' => array(
             array(
@@ -1112,6 +1113,10 @@ function get_topics_with_most_replies($limit = 5)
             array(
                 'key' => '_bbp_favorite',
             ),
+            array(
+                'key' => '_bbp_engagement',
+            ),
+
         ),
     ));
     $topics_reply_count = array();
