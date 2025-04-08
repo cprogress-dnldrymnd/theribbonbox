@@ -341,6 +341,7 @@ function action_admin_head()
             .misc-pub-curtime,
             .rank-math-seo-score,
             .rank-math-lock-modified-date,
+            #screen-meta-links,
             #export-action,
             #minor-publishing-actions,
             #acf-group_67d2631c29e16,
