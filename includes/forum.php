@@ -983,11 +983,12 @@ add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
 
 function forum_sidebar()
 {
-    if (bbp_is_forum_archive() || bbp_is_topic_archive()) {
+    if (bbp_is_forum_archive()) {
         $title = 'Popular Topics';
         $topics = get_popular_topics();
     } else if (bbp_is_single_forum()) {
         $forum_id = get_the_ID();
+        $title = 'Popular Topics';
         $topics = get_popular_topics($forum_id);
     } else {
         $title = 'Related Topics';
