@@ -342,7 +342,7 @@ function action_admin_head()
             #postexcerpt,
             #bialty_post_options,
             #visibility,
-            #major-publishing-actions,
+            #delete-action,
             #delete-action,
             #titlediv,
             #postdivrich,
