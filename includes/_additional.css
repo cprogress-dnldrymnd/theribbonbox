@@ -1604,7 +1604,7 @@ p.comment-form-comment {
 		Work Sans,
 		sans-serif;
 }
-a.bbp-forum-title,
+.bbp-forum-title.bbp-forum-title,
 a.bbp-topic-permalink {
 	font-size: 20px;
 	text-decoration: none;
@@ -2747,7 +2747,7 @@ section.forum-guidelines .inner ul li strong {
 	#bbpress-forums li.bbp-body ul.topic {
 		padding: 20px;
 	}
-	a.bbp-forum-title,
+	.bbp-forum-title.bbp-forum-title,
 	a.bbp-topic-permalink {
 		font-size: 15px;
 	}
