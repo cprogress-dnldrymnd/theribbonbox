@@ -2437,7 +2437,7 @@ section.forum-guidelines .inner ul li strong {
 .bbp-reply-form:before {
 	content: "Reply to a post";
 }
-#bbp-search-results .bbp-forum-header {
+#bbp-search-results .bbp-forum-header, #bbp-search-results .bbp-topic-header {
     background-color: #fff !important;
 	padding: 20px 40px;
 }
