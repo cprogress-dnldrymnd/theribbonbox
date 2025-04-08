@@ -983,14 +983,23 @@ add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
 
 function forum_sidebar()
 {
-
+    $community_posts = get_posts(array(
+        'post_type' => 'topic',
+        'posts_per_page' => 5,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'post_status' => 'any',
+    ));
     if (bbp_is_forum_archive() || bbp_is_topic_archive()) {
         $title = 'Popular Topics';
-        $topics = get_popular_topics();
     } else {
         $title = 'Related Topics';
     }
-    var_dump($topics);
+    $topics = get_popular_topics();
+    echo '<pre>';
+    var_dump($get_top_topics);
+    var_dump(get_post_meta(40587));
+    echo '</pre>';
 
 ?>
     <div class="community-posts">
@@ -1000,19 +1009,19 @@ function forum_sidebar()
             </div>
 
             <div class="featured-box-holder d-flex flex-wrap">
-                <?php foreach ($topics as $topic) { ?>
-                    <div class="featured-box-item post-box" post-id="<?= $topic ?>">
-                        <a href="<?= get_the_permalink($topic) ?>">
-                            <h3 class="mb-3"><?= get_the_title($topic) ?></h3>
+                <?php foreach ($community_posts as $community_post) { ?>
+                    <div class="featured-box-item post-box" post-id="<?= $community_post->ID ?>">
+                        <a href="<?= get_the_permalink($community_post->ID) ?>">
+                            <h3 class="mb-3"><?= get_the_title($community_post->ID) ?></h3>
                         </a>
                         <div class="topic-action d-flex align-items-center justify-content-between">
                             <div class="left">
-                                <a class="read-more" href="<?= get_the_permalink($topic) ?>">
+                                <a class="read-more" href="<?= get_the_permalink($community_post->ID) ?>">
                                     Read more
                                 </a>
                             </div>
                             <div class="right">
-                                <?= do_shortcode('[post_action id=' . $topic . ']') ?>
+                                <?= do_shortcode('[post_action id=' . $community_post->ID . ']') ?>
                             </div>
                         </div>
                     </div>
@@ -1095,6 +1104,8 @@ function get_popular_topics($limit = 5)
         'orderby'   => array(
             '_bbp_reply_count'  => 'DESC',
             '_bbp_favorite' => 'DESC',
+            '_bbp_engagement' => 'DESC',
+            '_bbp_voice_count' => 'DESC',
         ),
         'meta_query' => array(
             array(
@@ -1103,13 +1114,20 @@ function get_popular_topics($limit = 5)
             array(
                 'key' => '_bbp_favorite',
             ),
-       
+            array(
+                'key' => '_bbp_engagement',
+            ),
+            array(
+                'key' => '_bbp_voice_count',
+            ),
 
         ),
     ));
     $topics_reply_count = array();
     foreach ($topics as $topic) {
-        $topics_reply_count[] = $topic;
+        $reply_count = bbp_get_topic_reply_count($topic, true);
+        $fav_count = bbpress_get_topic_favorite_count($topic);
+        $topics_reply_count[$topic] = [$reply_count, $fav_count];
     }
 
     return $topics_reply_count;
