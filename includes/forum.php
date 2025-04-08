@@ -1099,12 +1099,18 @@ function get_popular_topics($forum_id = false, $limit = 5)
     $meta_query[] = array(
         'key' => '_bbp_voice_count',
     );
+    if ($forum_id) {
+        $meta_query[] = array(
+            'key' => '_bbp_forum_id',
+            'value' => $forum_id,
+            'compare' => '='
+        );
+    }
     $topics = get_posts(array(
         'post_type' => 'topic',
         'posts_per_page' => $limit,
         'post_status' => 'any',
         'fields' => 'ids',
-        'meta_key' => '_bbp_reply_count',
         'orderby' => 'meta_value_num',
         'orderby'   => array(
             '_bbp_reply_count'  => 'DESC',
