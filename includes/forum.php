@@ -1112,7 +1112,7 @@ function get_popular_topics($forum_id = false, $limit = 5)
             '_bbp_engagement' => 'DESC',
             '_bbp_voice_count' => 'DESC',
         ),
-        'meta_query' => $meta_query,
+        'meta_query' => [$meta_query],
     ));
     $topics_arr = array();
     foreach ($topics as $topic) {
