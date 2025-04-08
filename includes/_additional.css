@@ -2538,6 +2538,9 @@ section.forum-guidelines .inner ul li strong {
 	}
 }
 @media (max-width: 999px) {
+	section.forum-guidelines .inner ul li {
+		width: calc(100% / 2 - (10px * 1) / 2);
+	}
 	section.forum-guidelines {
 		padding-top: 50px;
 	}
@@ -2763,6 +2766,9 @@ section.forum-guidelines .inner ul li strong {
 	}
 }
 @media (max-width: 575px) {
+	section.forum-guidelines .inner ul li {
+		width: 100%;
+	}
 	.buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset {
 		flex-direction: column;
 	}
