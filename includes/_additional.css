@@ -1635,14 +1635,14 @@ span.bbp-topic-freshness-author > a {
 }
 #main #bbpress-forums ul.bbp-topics li.bbp-header,
 #main #bbpress-forums ul.bbp-topics li.bbp-footer,
-#main #bbpress-forums ul.bbp-forums li.bbp-header,
-#main #bbpress-forums ul.bbp-forums li.bbp-footer,
+#main #bbpress-forums ul li.bbp-header,
+#main #bbpress-forums ul li.bbp-footer,
 #main #bbpress-forums ul.bbp-replies li.bbp-header,
 #main #bbpress-forums ul.bbp-replies li.bbp-footer,
 #main .bbpress-forums_widget ul.bbp-topics li.bbp-header,
 #main .bbpress-forums_widget ul.bbp-topics li.bbp-footer,
-#main .bbpress-forums_widget ul.bbp-forums li.bbp-header,
-#main .bbpress-forums_widget ul.bbp-forums li.bbp-footer,
+#main .bbpress-forums_widget ul li.bbp-header,
+#main .bbpress-forums_widget ul li.bbp-footer,
 #main .bbpress-forums_widget ul.bbp-replies li.bbp-header,
 #main .bbpress-forums_widget ul.bbp-replies li.bbp-footer {
 	background: var(--accent-color);
@@ -1667,10 +1667,10 @@ span.bbp-topic-freshness-author > a {
 	margin-bottom: 30px;
 }
 #main #bbpress-forums ul.bbp-topics li.bbp-body,
-#main #bbpress-forums ul.bbp-forums li.bbp-body,
+#main #bbpress-forums ul li.bbp-body,
 #main #bbpress-forums ul.bbp-replies li.bbp-body,
 #main .bbpress-forums_widget ul.bbp-topics li.bbp-body,
-#main .bbpress-forums_widget ul.bbp-forums li.bbp-body,
+#main .bbpress-forums_widget ul li.bbp-body,
 #main .bbpress-forums_widget ul.bbp-replies li.bbp-body {
 	padding: 0px;
 }
@@ -2730,14 +2730,14 @@ section.forum-guidelines .inner ul li strong {
 	}
 	#main #bbpress-forums ul.bbp-topics li.bbp-header,
 	#main #bbpress-forums ul.bbp-topics li.bbp-footer,
-	#main #bbpress-forums ul.bbp-forums li.bbp-header,
-	#main #bbpress-forums ul.bbp-forums li.bbp-footer,
+	#main #bbpress-forums ul li.bbp-header,
+	#main #bbpress-forums ul li.bbp-footer,
 	#main #bbpress-forums ul.bbp-replies li.bbp-header,
 	#main #bbpress-forums ul.bbp-replies li.bbp-footer,
 	#main .bbpress-forums_widget ul.bbp-topics li.bbp-header,
 	#main .bbpress-forums_widget ul.bbp-topics li.bbp-footer,
-	#main .bbpress-forums_widget ul.bbp-forums li.bbp-header,
-	#main .bbpress-forums_widget ul.bbp-forums li.bbp-footer,
+	#main .bbpress-forums_widget ul li.bbp-header,
+	#main .bbpress-forums_widget ul li.bbp-footer,
 	#main .bbpress-forums_widget ul.bbp-replies li.bbp-header,
 	#main .bbpress-forums_widget ul.bbp-replies li.bbp-footer {
 		padding: 20px;
