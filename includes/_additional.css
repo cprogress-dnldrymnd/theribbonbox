@@ -2362,6 +2362,9 @@ button#bbp_reply_submit:before {
 	font-size: 14px;
 	content: "Reply";
 }
+section.forum-guidelines {
+	padding-top: 100px;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
@@ -2462,6 +2465,9 @@ button#bbp_reply_submit:before {
 	}
 }
 @media (max-width: 999px) {
+	section.forum-guidelines {
+		padding-top: 50px;
+	}
 	.head-acc.head-acc {
 		display: none !important;
 	}
