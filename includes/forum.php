@@ -988,7 +988,7 @@ function forum_sidebar()
         $topics = get_popular_topics();
     } else if (bbp_is_single_forum()) {
         $forum_id = get_the_ID();
-        $title = 'Popular Topics';
+        $title = get_the_title() . ' Popular Topics';
         $topics = get_popular_topics($forum_id);
     } else {
         $title = 'Related Topics';
