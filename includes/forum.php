@@ -995,17 +995,17 @@ function forum_sidebar()
     } else {
         $title = 'Related Topics';
     }
-// Example usage:
-$top_favorite_ids = get_bbpress_top_favorite_topic_ids(5);
+    // Example usage:
+    $top_favorite_ids = get_bbpress_top_favorite_topic_ids(5);
 
-if (!empty($top_favorite_ids)) {
-    echo "Top Favorite Topic IDs:<br>";
-    foreach ($top_favorite_ids as $topic_id) {
-        echo esc_html($topic_id) . "<br>";
+    if (!empty($top_favorite_ids)) {
+        echo "Top Favorite Topic IDs:<br>";
+        foreach ($top_favorite_ids as $topic_id) {
+            echo esc_html($topic_id) . "<br>";
+        }
+    } else {
+        echo "No favorite topics found.";
     }
-} else {
-    echo "No favorite topics found.";
-}
 ?>
     <div class="community-posts">
         <div class="featured-box">
@@ -1040,18 +1040,35 @@ if (!empty($top_favorite_ids)) {
 
 add_shortcode('forum_sidebar', 'forum_sidebar');
 
+function forum_guidelines()
+{
+    ob_start();
+    global $theme_option_page;
+    $forum_guidelines = get_field('forum_guidelines', $theme_option_page);
+?>
+    <section class="forum-guidelines">
+        <div class="container">
+            <?= wpautop($forum_guidelines) ?>
+        </div>
+    </section>
+<?php
+    return ob_get_clean();
+}
+add_shortcode('forum_guidelines', 'forum_guidelines');
+
 /**
  * Get topic IDs with the most favorites in bbPress (Improved).
  *
  * @param int $limit Number of topic IDs to retrieve. Defaults to 10.
  * @return array Array of topic IDs, sorted by favorite count in descending order, or empty array on error.
  */
-function get_bbpress_top_favorite_topic_ids( $limit = 10 ) {
+function get_bbpress_top_favorite_topic_ids($limit = 10)
+{
     global $wpdb;
 
     // Sanitize and validate the limit.
-    $limit = absint( $limit );
-    if ( $limit <= 0 ) {
+    $limit = absint($limit);
+    if ($limit <= 0) {
         $limit = 10;
     }
 
@@ -1065,15 +1082,15 @@ function get_bbpress_top_favorite_topic_ids( $limit = 10 ) {
     );
 
     // Execute the query and check for errors.
-    $topic_ids = $wpdb->get_col( $query );
+    $topic_ids = $wpdb->get_col($query);
 
-    if ( $wpdb->last_error ) {
-        error_log( 'Database error in get_bbpress_top_favorite_topic_ids: ' . $wpdb->last_error );
+    if ($wpdb->last_error) {
+        error_log('Database error in get_bbpress_top_favorite_topic_ids: ' . $wpdb->last_error);
         return array(); // Return empty array on error.
     }
 
-    if ( ! empty( $topic_ids ) ) {
-        return array_map( 'absint', $topic_ids );
+    if (! empty($topic_ids)) {
+        return array_map('absint', $topic_ids);
     } else {
         return array();
     }

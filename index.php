@@ -338,6 +338,9 @@ if (!is_bbpress() && !is_buddypress()) {
 } else {
     get_header('community');
     if (have_posts()) :
+        if (bbp_is_forum_archive()) {
+            echo do_shortcode('[forum_guidelines]');
+        }
         echo '<section class="bb-press-section">';
         echo '<div class="container">';
         while (have_posts()) :
