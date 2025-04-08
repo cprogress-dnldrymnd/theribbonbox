@@ -993,14 +993,15 @@ function forum_sidebar()
         if ($_bbp_forum_type == 'forum') {
             $topics = get_popular_topics($forum_id);
         } else {
-            $topics = get_popular_topics();
+            $forum_id = get_forums_under_category($forum_id);
+            $topics = get_popular_topics($forum_id);
         }
     } else {
         $title = 'Related Topics';
         $topics = get_related_topics();
     }
 
-    var_dump(get_forums_under_category(get_the_ID()));
+
 
 ?>
     <div class="community-posts">
