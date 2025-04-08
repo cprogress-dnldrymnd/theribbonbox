@@ -927,7 +927,8 @@ h2 span {
 #forum-sidebar.forum-single-type--category {
 	margin-top: 50px;
 }
-#forum-sidebar.forum-single-type--forum {
+#forum-sidebar.forum-single-type--forum,
+#forum-sidebar.forum-single-topic {
 	margin-top: 85px;
 }
 @media (min-width: 1500px) {
