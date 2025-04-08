@@ -983,14 +983,14 @@ add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
 
 function forum_sidebar()
 {
-    if (bbp_is_forum_archive() || bbp_is_topic_archive()) {
+    if (bbp_is_forum_archive() || bbp_is_topic_archive() || bbp_is_single_forum()) {
         $title = 'Popular Topics';
         $topics = get_popular_topics();
     } else {
         $title = 'Related Topics';
         $topics = get_related_topics();
     }
-    echo get_post_type();
+
 ?>
     <div class="community-posts">
         <div class="featured-box">
