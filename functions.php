@@ -337,6 +337,10 @@ function action_admin_head()
     ?>
         <style>
             .misc-pub-post-status,
+            .post-type-switcher,
+            .misc-pub-curtime,
+            #postexcerpt,
+            #bialty_post_options,
             #visibility,
             #major-publishing-actions,
             #delete-action,
