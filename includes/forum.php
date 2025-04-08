@@ -990,6 +990,7 @@ function forum_sidebar()
     } else {
         $title = 'Related Topics';
     }
+    var_dump($topics);
 
 ?>
     <div class="community-posts">
