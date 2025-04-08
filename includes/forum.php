@@ -1100,6 +1100,9 @@ function get_top_topics()
         'posts_per_page' => -1,
         'post_status' => 'any',
         'fields' => 'ids',
+        'meta_key' => '_bbp_reply_count',
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC',
         'meta_query' => array(
             array(
                 'key' => '_bbp_reply_count',
