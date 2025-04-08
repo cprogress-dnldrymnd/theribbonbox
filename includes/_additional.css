@@ -2437,6 +2437,9 @@ section.forum-guidelines .inner ul li strong {
 .bbp-reply-form:before {
 	content: "Reply to a post";
 }
+#bbp-search-results .bbp-forum-header {
+    background-color: #fff
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
