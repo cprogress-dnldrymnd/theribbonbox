@@ -1049,11 +1049,19 @@ function forum_sidebar()
 
 add_shortcode('forum_sidebar', 'forum_sidebar');
 
-function forum_guidelines()
+function forum_guidelines($atts)
 {
     ob_start();
+    extract(
+        shortcode_atts(
+            array(
+                'id' => 'forum_guidelines',
+            ),
+            $atts
+        )
+    );
     global $theme_option_page;
-    $forum_guidelines = get_field('forum_guidelines', $theme_option_page);
+    $forum_guidelines = get_field($id, $theme_option_page);
 ?>
     <section class="forum-guidelines large-container">
         <div class="container">
