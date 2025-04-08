@@ -147,7 +147,7 @@ add_shortcode('e_guides_post', 'e_guides_post');
 function create_item_socials_v2($url, $title, $icon='<img class="me-2" src="https://theribbonbox.com/wp-content/uploads/2024/11/share.png"
 						alt="">', $text='SHARE')
 {
-	$rtn = '<div class="post-share"><a class="post-share-btn" href=""><div class="share d-flex align-items-center">
+	$rtn = '<div class="post-share"><a class="post-share-btn" href="#"><div class="share d-flex align-items-center">
 					'.$icon.'
 					'.$text.'
 				</div></a><div class="post-share-items" style="display:none;"><div class="social-icons"> 
