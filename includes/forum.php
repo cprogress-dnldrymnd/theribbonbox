@@ -1000,24 +1000,8 @@ function forum_sidebar()
         $topics = get_related_topics();
     }
 
-    $category_id = 39766; // Replace with the actual ID of your forum category
+    var_dump(get_forums_under_category(get_the_ID()));
 
-    $forums = get_posts(array(
-        'post_type'   => 'forum',
-        'numberposts' => -1, // Get all forums
-        'post_parent' => $category_id,
-    ));
-
-    $forum_ids = array();
-    if ($forums) {
-        foreach ($forums as $forum) {
-            $forum_ids[] = $forum->ID;
-        }
-        // $forum_ids now contains an array of forum IDs under the specified category
-        print_r($forum_ids);
-    } else {
-        echo "No forums found under this category.";
-    }
 ?>
     <div class="community-posts">
         <div class="featured-box">
@@ -1067,46 +1051,6 @@ function forum_guidelines()
     return ob_get_clean();
 }
 add_shortcode('forum_guidelines', 'forum_guidelines');
-
-/**
- * Get topic IDs with the most favorites in bbPress (Improved).
- *
- * @param int $limit Number of topic IDs to retrieve. Defaults to 10.
- * @return array Array of topic IDs, sorted by favorite count in descending order, or empty array on error.
- */
-function get_bbpress_top_favorite_topic_ids($limit = 10)
-{
-    global $wpdb;
-
-    // Sanitize and validate the limit.
-    $limit = absint($limit);
-    if ($limit <= 0) {
-        $limit = 10;
-    }
-
-    // Construct the query with proper table names and error handling.
-    $query = $wpdb->prepare(
-        "SELECT post_id FROM {$wpdb->postmeta}
-        WHERE meta_key = '_bbp_favorite_count'
-        ORDER BY CAST(meta_value AS UNSIGNED) DESC
-        LIMIT %d",
-        $limit
-    );
-
-    // Execute the query and check for errors.
-    $topic_ids = $wpdb->get_col($query);
-
-    if ($wpdb->last_error) {
-        error_log('Database error in get_bbpress_top_favorite_topic_ids: ' . $wpdb->last_error);
-        return array(); // Return empty array on error.
-    }
-
-    if (! empty($topic_ids)) {
-        return array_map('absint', $topic_ids);
-    } else {
-        return array();
-    }
-}
 
 
 function get_popular_topics($forum_id = false, $limit = 5)
@@ -1176,4 +1120,26 @@ function get_related_topics($limit = 5)
     }
 
     return $topics_arr;
+}
+
+function get_forums_under_category($category_id = false, $limit = 5)
+{
+
+    $forums = get_posts(array(
+        'post_type'   => 'forum',
+        'numberposts' => -1, // Get all forums
+        'post_parent' => $category_id,
+    ));
+
+    $forum_ids = array();
+
+    if ($forums) {
+        foreach ($forums as $forum) {
+            $forum_ids[] = $forum->ID;
+        }
+        // $forum_ids now contains an array of forum IDs under the specified category
+        print_r($forum_ids);
+    }
+
+    return $forum_ids;
 }
