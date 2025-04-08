@@ -341,7 +341,7 @@ if (!is_bbpress() && !is_buddypress()) {
         if (bbp_is_forum_archive()) {
             echo do_shortcode('[forum_guidelines]');
         }
-        echo '<section class="bb-press-section">';
+        echo '<section class="bb-press-section ' . !bp_is_user_profile() ? 'bb-press-profile' : '' . '">';
         echo '<div class="container">';
         while (have_posts()) :
             the_post();
