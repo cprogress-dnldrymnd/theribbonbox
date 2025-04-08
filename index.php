@@ -349,7 +349,11 @@ if (!is_bbpress() && !is_buddypress()) {
             the_title();
             echo '</h1>';
             echo '<div class="row">';
-            echo '<div class="col-lg-9">';
+            if (!bp_is_user_profile()) {
+                echo '<div class="col-lg-9">';
+            } else {
+                echo '<div class="col-lg-12">';
+            }
             the_content();
             echo '</div>';
             if (!bp_is_user_profile()) {
