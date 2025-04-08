@@ -995,8 +995,7 @@ function forum_sidebar()
     } else {
         $title = 'Related Topics';
     }
-    // Example usage:
-    $get_top_topics = get_top_topics();
+    $get_top_topics = get_topics_with_most_replies();
     echo '<pre>';
     var_dump($get_top_topics);
     var_dump(get_post_meta(40587));
@@ -1093,20 +1092,25 @@ function get_bbpress_top_favorite_topic_ids($limit = 10)
 }
 
 
-function get_top_topics()
+function get_topics_with_most_replies($limit = 5)
 {
     $topics = get_posts(array(
         'post_type' => 'topic',
-        'posts_per_page' => -1,
+        'posts_per_page' => $limit,
         'post_status' => 'any',
         'fields' => 'ids',
         'meta_key' => '_bbp_reply_count',
         'orderby' => 'meta_value_num',
-        'order' => 'DESC',
+        'orderby'   => array(
+            '_bbp_reply_count'  => 'DESC',
+            '_bbp_favorite' => 'DESC', 
+        ),
         'meta_query' => array(
             array(
                 'key' => '_bbp_reply_count',
-                'compare' => 'EXISTS',
+            ),
+            array(
+                'key' => '_bbp_favorite',
             ),
         ),
     ));
