@@ -17,12 +17,20 @@
                                 </div>
                     </div>
                     */ ?>
+<?php
+global $theme_option_page;
+$subscribe_popup_heading = get_field('subscribe_popup_heading', $theme_option_page);
+$subscribe_popup_description = get_field('subscribe_popup_description', $theme_option_page);
+$subscribe_popup_links = get_field('subscribe_popup_links', $theme_option_page);
+$subscribe_popup_image = get_field('subscribe_popup_image', $theme_option_page);
+$subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
+?>
 <div id="subscribe-outer" class="post-follow-us insider-outer subscibe-outer">
   <div class="subscribe-outer-close"><img src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu-close.png"></div>
   <div class="post-follow-us-inner">
     <div class="subscribe-outer-img"><img src="<?php echo (get_template_directory_uri()) ?>/images/subscribe-image-ph-1.jpg"></div>
     <div class="subscribe-outer-txt">
-      <h2>Become an Insider</h2>
+      <h2>Become an Insiders</h2>
       <div class="cat-links">
         <a href="/wellbeing">Wellbeing</a> |
         <a href="/fertility">Fertility</a> |
