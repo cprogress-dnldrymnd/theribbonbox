@@ -56,7 +56,7 @@ function forum_slider()
         </div>
         <div class="swiper-pagination"></div>
     </div>
-    <div class="button-box button-accent">
+    <div class="button-box button-accent text-center">
         <a href="/forums">
             VISIT FORUMS
         </a>
