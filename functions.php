@@ -10,11 +10,40 @@ function action_after_theme_setup()
 }
 add_action('after_setup_theme', 'action_after_theme_setup');
 
+include 'functions/core.php';
+include 'functions/custom-shortcodes.php';
+include 'functions/menus.php';
+include 'functions/blog.php';
+include 'functions/lazyload.php';
+include 'functions/next-prev-links.php';
+include 'functions/home.php';
+include 'functions/hide-shippen-when-free.php';
+include 'functions/load_cate_posts.php';
+include 'functions/widgets.php';
+include 'functions/commerce.php';
+include 'functions/sitemap.php';
+include 'functions/pw.php';
+include 'functions/products.php';
+include 'functions/custom-post-types.php';
+include 'functions/custom-taxonomies.php';
+include 'functions/forms.php';
+include 'functions/unique-pages.php';
+include 'functions/b2b-content.php';
+include 'functions/landing-page-header.php';
+include 'functions/e-guides.php';
+include 'functions/b2b-discounts.php';
+//include 'functions/experts-slide.php';
+include 'shortcodes/member-login-button.php';
 
-add_action('wp_enqueue_scripts', 'load_scripts');
+add_action('wp_enqueue_scripts', 'load_scripts', 9999999);
 function load_scripts()
 {
 
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('splide_init', get_stylesheet_directory_uri() . '/js/splide.js');
+
+    wp_register_script('splide_script', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js');
+    wp_enqueue_script('splide_script');
 }
 
 add_action('wp_head', 'load_styles', 99);
@@ -253,7 +282,16 @@ function match_expert_form()
         </div>
     </div>
 
-   
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('input[name="help-type"]').change(function() {
+                selected = $("input[name='help-type']:checked").val();
+                jQuery('.match-expert-form').addClass('active').find('h3').text(selected);
+                jQuery('.form-holder[form="' + selected + '"]').addClass('active');
+
+            });
+        });
+    </script>
 
     <?php
     return ob_get_clean();
@@ -268,8 +306,10 @@ function enqueue_scripts()
 {
     if (is_community_page()) {
         wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+        wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js');
         wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css');
     }
+    wp_enqueue_script('additional', get_stylesheet_directory_uri() . '/includes/_additional.js');
     wp_enqueue_style('additional', get_stylesheet_directory_uri() . '/includes/_additional.css');
 }
 
