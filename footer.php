@@ -30,7 +30,7 @@ $subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
   <div class="post-follow-us-inner">
     <div class="subscribe-outer-img"><img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>"></div>
     <div class="subscribe-outer-txt">
-      <h2><?= $subscribe_popup_heading ?> Insider</h2>
+      <h2><?= $subscribe_popup_heading ?> </h2>
       <div class="cat-links">
         <a href="/wellbeing">Wellbeing</a> |
         <a href="/fertility">Fertility</a> |
