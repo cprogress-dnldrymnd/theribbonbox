@@ -1006,7 +1006,8 @@ function forum_sidebar()
             $topics = get_popular_topics($forum_id);
             $class = 'forum-single-type--category';
         }
-        if(!$topics) {
+        if (!$topics) {
+            $title = 'Popular Topics';
             $topics = get_popular_topics();
         }
     } else {
