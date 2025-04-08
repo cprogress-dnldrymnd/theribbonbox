@@ -1657,6 +1657,7 @@ span.bbp-topic-freshness-author > a {
 }
 #main #bbpress-forums .bbp-topics,
 #main #bbpress-forums .bbp-forums,
+#main #bbpress-forums .forums,
 #main .bbpress-forums_widget .bbp-topics,
 #main .bbpress-forums_widget .bbp-forums {
 	box-shadow: 9px 11px 29px rgba(125, 138, 152, 0.15);
