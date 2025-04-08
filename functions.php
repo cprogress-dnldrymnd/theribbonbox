@@ -354,17 +354,16 @@ function action_admin_head()
 
 add_action('admin_head', 'action_admin_head');
 
+add_action('admin_menu', 'linked_url');
 
-function theme_options_admin_menu()
+function linked_url()
 {
-    add_menu_page(
-        __('Theme Options', 'your-text-domain'), // Page title
-        __('Theme Options', 'your-text-domain'), // Menu title
-        'manage_options',                       // Capability required
-        'theme-options',                        // Menu slug (unique identifier)
-        'theme_options_page_callback',          // Function to display the page content (optional, since we are redirecting)
-        'dashicons-admin-generic',              // Icon (optional - see https://developer.wordpress.org/resource/dashicons/)
-        25                                      // Menu position (optional - adjust as needed)
-    );
+    add_menu_page('linked_url', 'External link', 'read', 'my_slug', '', 'dashicons-text', 1);
 }
-add_action('admin_menu', 'theme_options_admin_menu');
+
+add_action('admin_menu', 'linkedurl_function');
+function linkedurl_function()
+{
+    global $menu;
+    $menu[1][2] = "http://www.example.com";
+}
