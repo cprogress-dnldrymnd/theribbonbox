@@ -2415,7 +2415,6 @@ section.forum-guidelines .inner ul li {
 section.forum-guidelines .inner ul li strong {
 	color: var(--accent-color);
 	display: block;
-	margin-bottom: 20px;
 }
 .bbp-topic-form:before,
 .bbp-reply-form:before {
