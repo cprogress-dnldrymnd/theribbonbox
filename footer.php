@@ -28,9 +28,9 @@ $subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
 <div id="subscribe-outer" class="post-follow-us insider-outer subscibe-outer">
   <div class="subscribe-outer-close"><img src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu-close.png"></div>
   <div class="post-follow-us-inner">
-    <div class="subscribe-outer-img"><img src="<?php echo (get_template_directory_uri()) ?>/images/subscribe-image-ph-1.jpg"></div>
+    <div class="subscribe-outer-img"><img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>"></div>
     <div class="subscribe-outer-txt">
-      <h2>Become an Insiders</h2>
+      <h2><?= $subscribe_popup_heading ?> Insider</h2>
       <div class="cat-links">
         <a href="/wellbeing">Wellbeing</a> |
         <a href="/fertility">Fertility</a> |
@@ -38,10 +38,9 @@ $subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
         <a href="/parenting">Parenting</a>
       </div>
       <hr>
-      <p>Subscribe To Our Weekly Newsletter Of Tailored Expert Advice, Tips And Giveaways - Straight To Your Inbox</p>
+      <?= wpautop($subscribe_popup_description) ?>
       <div class="sub---form">
-        <?php /*echo do_shortcode('[wpforms id="28522" title="false"]');*/ ?>
-        <?php echo do_shortcode('[mc-subscribe-form]'); ?>
+        <?= do_shortcode($subscribe_popup_form); ?>
       </div>
     </div>
   </div>
