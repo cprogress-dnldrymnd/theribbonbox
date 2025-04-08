@@ -35,7 +35,7 @@ include 'functions/b2b-discounts.php';
 //include 'functions/experts-slide.php';
 include 'shortcodes/member-login-button.php';
 
-add_action('wp_enqueue_scripts', 'load_scripts', 9999999);
+add_action('wp_enqueue_scripts', 'load_scripts');
 function load_scripts()
 {
 
@@ -45,6 +45,14 @@ function load_scripts()
     
     wp_register_script('splide_script', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js');
     wp_enqueue_script('splide_script');
+
+    if (is_community_page()) {
+        wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+        wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js');
+        wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css');
+    }
+    wp_enqueue_script('additional', get_stylesheet_directory_uri() . '/includes/_additional.js');
+    wp_enqueue_style('additional', get_stylesheet_directory_uri() . '/includes/_additional.css');
 }
 
 add_action('wp_head', 'load_styles', 99);
@@ -300,21 +308,6 @@ function match_expert_form()
 
 add_shortcode('match_expert_form', 'match_expert_form');
 
-/*-----------------------------------------------------------------------------------*/
-/* Enqueue Styles and Scripts
-/*-----------------------------------------------------------------------------------*/
-function enqueue_scripts()
-{
-    if (is_community_page()) {
-        wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-        wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js');
-        wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css');
-    }
-    wp_enqueue_script('additional', get_stylesheet_directory_uri() . '/includes/_additional.js');
-    wp_enqueue_style('additional', get_stylesheet_directory_uri() . '/includes/_additional.css');
-}
-
-add_action('wp_enqueue_scripts', 'enqueue_scripts', 99999);
 
 function is_community_page()
 {
