@@ -2486,6 +2486,9 @@ section.forum-guidelines .inner ul li strong {
 	.community-nav svg {
 		height: 15px;
 	}
+	section.forum-guidelines .inner ul li {
+		width: calc(100% / 3 - (10px * 2) / 3);
+	}
 }
 @media (min-width: 1000px) {
 	.trending-this-week {
