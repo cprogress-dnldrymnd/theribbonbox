@@ -2381,6 +2381,28 @@ section.forum-guidelines .inner {
 	padding: 30px 40px;
 	background: #fff;
 }
+section.forum-guidelines .inner h2 {
+	color: var(--accent-color);
+	font-style: italic;
+	font-size: 30px;
+}
+section.forum-guidelines .inner h3 {
+	color: var(--accent-color);
+	font-family: "Work Sans", sans-serif;
+	font-size: 16px;
+	letter-spacing: 0;
+	font-weight: bold;
+}
+section.forum-guidelines .inner ul {
+	display: flex;
+	padding: 0;
+	list-style: none;
+	gap: 10px;
+}
+section.forum-guidelines .inner ul li {
+	box-shadow: 9px 11px 29px rgba(125, 138, 152, 0.15);
+	padding: 10px;
+}
 .bbp-topic-form:before,
 .bbp-reply-form:before {
 	display: block;
