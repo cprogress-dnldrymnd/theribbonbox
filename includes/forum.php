@@ -1138,8 +1138,6 @@ function get_forums_under_category($category_id = false, $limit = 5)
         foreach ($forums as $forum) {
             $forum_ids[] = $forum->ID;
         }
-        // $forum_ids now contains an array of forum IDs under the specified category
-        print_r($forum_ids);
     }
 
     return $forum_ids;
