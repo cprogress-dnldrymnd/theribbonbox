@@ -39,11 +39,6 @@ add_action('wp_enqueue_scripts', 'load_scripts');
 function load_scripts()
 {
 
-    wp_enqueue_script('jquery');
-    wp_enqueue_script('splide_init', get_stylesheet_directory_uri() . '/js/splide.js');
-
-    wp_register_script('splide_script', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js');
-    wp_enqueue_script('splide_script');
 }
 
 add_action('wp_head', 'load_styles', 99);
