@@ -2382,6 +2382,9 @@ section.forum-guidelines .inner {
 	background: #fff;
 	border-radius: 10px;
 }
+section.forum-guidelines .inner p br {
+	display: block !important;
+}
 section.forum-guidelines .inner h2 {
 	color: var(--accent-color);
 	font-style: italic;
