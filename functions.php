@@ -354,16 +354,16 @@ function action_admin_head()
 
 add_action('admin_head', 'action_admin_head');
 
-add_action('admin_menu', 'linked_url');
+add_action('admin_menu', 'theme_options');
 
-function linked_url()
+function theme_options()
 {
-    add_menu_page('linked_url', 'External link', 'read', 'my_slug', '', 'dashicons-text', 1);
+    add_menu_page('theme_options', 'Theme Options', 'read', 'theme_options', '', 'dashicons-admin-generic', 1);
 }
 
-add_action('admin_menu', 'linkedurl_function');
-function linkedurl_function()
+add_action('admin_menu', 'theme_options_function');
+function theme_options_function()
 {
     global $menu;
-    $menu[1][2] = "http://www.example.com";
+    $menu[1][2] = "https://theribbonbox.com/wp-admin/post.php?post=39610&action=edit";
 }
