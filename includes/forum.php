@@ -988,6 +988,7 @@ function forum_sidebar()
         'posts_per_page' => 5,
         'orderby' => 'date',
         'order' => 'DESC',
+        'post_status' => 'any',
     ));
     if (bbp_is_forum_archive() || bbp_is_topic_archive()) {
         $title = 'Popular Topics';
@@ -1098,7 +1099,6 @@ function get_top_topics()
     $topics = get_posts(array(
         'post_type' => 'topic',
         'posts_per_page' => -1,
-        'post_status' => 'any',
         'fields' => 'ids',
     ));
     $topics = [];
