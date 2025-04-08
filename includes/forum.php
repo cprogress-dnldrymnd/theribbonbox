@@ -1125,33 +1125,18 @@ function get_popular_topics($limit = 5)
 
 function get_related_topics($limit = 5)
 {
+    $_bbp_forum_id = get_post_meta(get_the_ID(), '_bbp_forum_id', true);
     $topics = get_posts(array(
         'post_type' => 'topic',
         'posts_per_page' => $limit,
         'post_status' => 'any',
         'fields' => 'ids',
-        'meta_key' => '_bbp_reply_count',
-        'orderby' => 'meta_value_num',
-        'orderby'   => array(
-            '_bbp_reply_count'  => 'DESC',
-            '_bbp_favorite' => 'DESC',
-            '_bbp_engagement' => 'DESC',
-            '_bbp_voice_count' => 'DESC',
-        ),
         'meta_query' => array(
             array(
-                'key' => '_bbp_reply_count',
+                'key' => '_bbp_forum_id',
+                'value' => $_bbp_forum_id,
+                'compare' => '='
             ),
-            array(
-                'key' => '_bbp_favorite',
-            ),
-            array(
-                'key' => '_bbp_engagement',
-            ),
-            array(
-                'key' => '_bbp_voice_count',
-            ),
-
         ),
     ));
     $topics_reply_count = array();
