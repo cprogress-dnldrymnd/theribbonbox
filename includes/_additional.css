@@ -2407,6 +2407,7 @@ section.forum-guidelines .inner ul {
 	list-style: none;
 	gap: 10px;
 	margin-bottom: 30px;
+	margin-top: 30px;
 }
 section.forum-guidelines .inner ul li {
 	box-shadow: 9px 11px 29px rgba(125, 138, 152, 0.15);
