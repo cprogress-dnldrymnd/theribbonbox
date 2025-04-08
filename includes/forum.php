@@ -1086,19 +1086,6 @@ function get_bbpress_top_favorite_topic_ids($limit = 10)
 
 function get_popular_topics($forum_id = false, $limit = 5)
 {
-    $meta_query[] =  array(
-        'key' => '_bbp_reply_count',
-    );
-    $meta_query[] =  array(
-        'key' => '_bbp_favorite',
-    );
-    $meta_query[] =  array(
-        'key' => '_bbp_engagement',
-    );
-    $meta_query[] =  array(
-        'key' => '_bbp_voice_count',
-    );
-
     $topics = get_posts(array(
         'post_type' => 'topic',
         'posts_per_page' => $limit,
@@ -1112,7 +1099,21 @@ function get_popular_topics($forum_id = false, $limit = 5)
             '_bbp_engagement' => 'DESC',
             '_bbp_voice_count' => 'DESC',
         ),
-        'meta_query' => [$meta_query],
+        'meta_query' => array(
+            array(
+                'key' => '_bbp_reply_count',
+            ),
+            array(
+                'key' => '_bbp_favorite',
+            ),
+            array(
+                'key' => '_bbp_engagement',
+            ),
+            array(
+                'key' => '_bbp_voice_count',
+            ),
+
+        ),
     ));
     $topics_arr = array();
     foreach ($topics as $topic) {
