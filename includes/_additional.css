@@ -923,8 +923,11 @@ h2 span {
 #forum-sidebar {
 	background-color: var(--white-color);
 }
-#forum-sidebar.forum-archive {
+#forum-sidebar.forum-archive, #forum-sidebar.forum-single-type--category {
 	margin-top: 50px;
+}
+#forum-sidebar.forum-single-type--forum {
+	margin-top: 85px;
 }
 @media (min-width: 1500px) {
 	.bb-press-section .container {
