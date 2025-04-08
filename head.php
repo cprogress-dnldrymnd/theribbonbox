@@ -46,10 +46,6 @@
     <!-- <link rel="stylesheet" href="<?php echo(get_template_directory_uri())?>/stylesheet/style23.css"> -->
     <link rel="stylesheet" href="<?php echo(get_template_directory_uri())?>/css/trb.css">
 
-    <!--<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>-->
-    <script src="<?php echo(get_template_directory_uri())?>/js/jquery-3.0.0.min.js"></script>
-    <!--<script src=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js "></script>
-    <link href=" https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css " rel="stylesheet"></script>-->
 
     <?php $title = the_title('','',false);
     if ($title == "Contact" || $title == "Newsletter"): ?>
