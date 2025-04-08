@@ -17,7 +17,7 @@
         <?php } ?>
         <?php if (!is_user_logged_in()) { ?>
 
-            <div class="button-box button-box-v2 button-accent mb-3">
+            <div class="button-box button-box-v2 button-accent mb-3 mt-3">
                 <a href="<?= get_the_permalink(39747) ?>">
                     LOGIN / CREATE AN ACCOUNT
                 </a>
