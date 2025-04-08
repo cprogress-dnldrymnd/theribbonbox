@@ -1102,7 +1102,7 @@ function get_top_topics()
     ));
     $topics = [];
     foreach ($topics as $topic) {
-        $reply_count = bbp_get_topic_reply_count($topic->ID, true);
+        $reply_count = get_post_meta($topic->ID, '_bbp_reply_count', true);
         $topics[$topic->ID] = $reply_count;
     }
 
