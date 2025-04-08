@@ -998,7 +998,7 @@ function forum_sidebar()
     // Example usage:
     $get_top_topics = get_top_topics();
     echo '<pre>';
-    var_dump($get_top_topics);
+    var_dump(get_post_meta(40587));
     echo '</pre>';
 
 ?>
