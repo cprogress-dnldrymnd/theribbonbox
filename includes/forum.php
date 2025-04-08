@@ -1050,7 +1050,7 @@ function forum_guidelines()
     global $theme_option_page;
     $forum_guidelines = get_field('forum_guidelines', $theme_option_page);
 ?>
-    <section class="forum-guidelines">
+    <section class="forum-guidelines large-container">
         <div class="container">
             <div class="inner">
                 <?= wpautop($forum_guidelines) ?>

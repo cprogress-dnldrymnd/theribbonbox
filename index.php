@@ -348,7 +348,7 @@ if (!is_bbpress() && !is_buddypress()) {
             $section_class = '';
             $class = 'col-lg-9';
         }
-        echo '<section class="bb-press-section '.$section_class.'">';
+        echo '<section class="bb-press-section large-container'.$section_class.'">';
         echo '<div class="container">';
         while (have_posts()) :
             the_post();
