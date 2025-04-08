@@ -998,8 +998,6 @@ function forum_sidebar()
     // Example usage:
     $get_top_topics = get_top_topics();
     echo '<pre>';
-    
-    var_dump($get_top_topics);
     var_dump(get_post_meta(40587));
     echo '</pre>';
 
@@ -1099,13 +1097,14 @@ function get_top_topics()
     $topics = get_posts(array(
         'post_type' => 'topic',
         'posts_per_page' => -1,
+        'post_status' => 'any',
         'fields' => 'ids',
     ));
-    $topics = [];
+    $topics_reply_count = [];
     foreach ($topics as $topic) {
-        $reply_count = get_post_meta($topic->ID, '_bbp_reply_count', true);
-        $topics[$topic->ID] = $reply_count;
+        $reply_count = bbp_get_topic_reply_count($topic->ID, true);
+        $topics_reply_count[$topic->ID] = $reply_count;
     }
 
-    return $topics;
+    return $topics_reply_count;
 }
