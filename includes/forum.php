@@ -1096,7 +1096,7 @@ function get_top_topics()
 {
     $topics = get_posts(array(
         'post_type' => 'topic',
-        'posts_per_page' => 5,
+        'posts_per_page' => -1,
         'post_status' => 'any',
         'fields' => 'ids',
     ));
