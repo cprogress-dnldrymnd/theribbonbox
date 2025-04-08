@@ -30,7 +30,7 @@
         <?= do_shortcode('[forum_slider]') ?>
     </div>
 </section>
-
+<?= do_shortcode('[forum_guidelines]') ?>
 <section class="featured-topics-section lg-padding">
     <div class="container">
         <?= do_shortcode('[featured_topics]') ?>
