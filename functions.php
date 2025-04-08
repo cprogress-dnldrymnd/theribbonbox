@@ -35,11 +35,15 @@ include 'functions/b2b-discounts.php';
 //include 'functions/experts-slide.php';
 include 'shortcodes/member-login-button.php';
 
+function insert_jquery()
+{
+    wp_enqueue_script('jquery', false, array(), false, false);
+}
+add_filter('wp_enqueue_scripts', 'insert_jquery', 1);
 add_action('wp_enqueue_scripts', 'load_scripts', 9999999);
 function load_scripts()
 {
 
-    wp_enqueue_script('jquery');
     wp_enqueue_script('splide_init', get_stylesheet_directory_uri() . '/js/splide.js');
 
     wp_register_script('splide_script', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js');
@@ -315,19 +319,21 @@ function enqueue_scripts()
 
 add_action('wp_enqueue_scripts', 'enqueue_scripts', 99999);
 
-function is_community_page() {
-     if (get_post_type() == 'community-post' || is_bbpress() || is_buddypress() || get_page_template_slug() == 'page-template-e-guides.php' || get_page_template_slug() == 'page-template-community.php' || get_page_template_slug() == 'page-template-latest-conversations.php' || get_page_template_slug() == 'page-community-header-footer.php') {
+function is_community_page()
+{
+    if (get_post_type() == 'community-post' || is_bbpress() || is_buddypress() || get_page_template_slug() == 'page-template-e-guides.php' || get_page_template_slug() == 'page-template-community.php' || get_page_template_slug() == 'page-template-latest-conversations.php' || get_page_template_slug() == 'page-community-header-footer.php') {
         return true;
-     } else {
+    } else {
         return false;
-     }
+    }
 }
-add_filter( 'body_class', 'custom_class' );
-function custom_class( $classes ) {
-	if ( is_community_page()) {
+add_filter('body_class', 'custom_class');
+function custom_class($classes)
+{
+    if (is_community_page()) {
         $classes[] = 'is-community-page';
     }
-	return $classes;
+    return $classes;
 }
 /*-----------------------------------------------------------------------------------*/
 /* Require Files
