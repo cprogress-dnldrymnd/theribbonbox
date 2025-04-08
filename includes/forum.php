@@ -1052,7 +1052,9 @@ function forum_guidelines()
 ?>
     <section class="forum-guidelines">
         <div class="container">
-            <?= wpautop($forum_guidelines) ?>
+            <div class="inner">
+                <?= wpautop($forum_guidelines) ?>
+            </div>
         </div>
     </section>
 <?php

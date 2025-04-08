@@ -2375,6 +2375,12 @@ button#bbp_reply_submit:before {
 section.forum-guidelines {
 	padding-top: 100px;
 }
+section.forum-guidelines .inner {
+	box-shadow: 9px 11px 29px rgba(125, 138, 152, 0.15);
+	border-radius: 5px;
+	padding: 30px 40px;
+	background: #fff;
+}
 .bbp-topic-form:before,
 .bbp-reply-form:before {
 	display: block;
