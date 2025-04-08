@@ -992,10 +992,10 @@ function forum_sidebar()
     ));
     if (bbp_is_forum_archive() || bbp_is_topic_archive()) {
         $title = 'Popular Topics';
+        $topics = get_popular_topics();
     } else {
         $title = 'Related Topics';
     }
-    $topics = get_popular_topics();
     echo '<pre>';
     var_dump($topics);
     var_dump(get_post_meta(40587));
@@ -1009,19 +1009,19 @@ function forum_sidebar()
             </div>
 
             <div class="featured-box-holder d-flex flex-wrap">
-                <?php foreach ($community_posts as $community_post) { ?>
-                    <div class="featured-box-item post-box" post-id="<?= $community_post->ID ?>">
-                        <a href="<?= get_the_permalink($community_post->ID) ?>">
-                            <h3 class="mb-3"><?= get_the_title($community_post->ID) ?></h3>
+                <?php foreach ($topics as $topic) { ?>
+                    <div class="featured-box-item post-box" post-id="<?= $topic ?>">
+                        <a href="<?= get_the_permalink($topic) ?>">
+                            <h3 class="mb-3"><?= get_the_title($topic) ?></h3>
                         </a>
                         <div class="topic-action d-flex align-items-center justify-content-between">
                             <div class="left">
-                                <a class="read-more" href="<?= get_the_permalink($community_post->ID) ?>">
+                                <a class="read-more" href="<?= get_the_permalink($topic) ?>">
                                     Read more
                                 </a>
                             </div>
                             <div class="right">
-                                <?= do_shortcode('[post_action id=' . $community_post->ID . ']') ?>
+                                <?= do_shortcode('[post_action id=' . $topic . ']') ?>
                             </div>
                         </div>
                     </div>
