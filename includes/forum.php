@@ -983,13 +983,6 @@ add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
 
 function forum_sidebar()
 {
-    $community_posts = get_posts(array(
-        'post_type' => 'topic',
-        'posts_per_page' => 5,
-        'orderby' => 'date',
-        'order' => 'DESC',
-        'post_status' => 'any',
-    ));
     if (bbp_is_forum_archive() || bbp_is_topic_archive()) {
         $title = 'Popular Topics';
         $topics = get_popular_topics();
