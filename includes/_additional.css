@@ -923,7 +923,8 @@ h2 span {
 #forum-sidebar {
 	background-color: var(--white-color);
 }
-#forum-sidebar.forum-archive, #forum-sidebar.forum-single-type--category {
+#forum-sidebar.forum-archive,
+#forum-sidebar.forum-single-type--category {
 	margin-top: 50px;
 }
 #forum-sidebar.forum-single-type--forum {
@@ -2371,14 +2372,19 @@ button#bbp_reply_submit:before {
 section.forum-guidelines {
 	padding-top: 100px;
 }
-.bbp-topic-form:before{
-    content: 'Create a post';
-    display: block;
-    margin-bottom: 20px;
-    font-size: 25px;
-    font-weight: bold;
+.bbp-topic-form:before,
+.bbp-reply-form:before {
+	display: block;
+	margin-bottom: 20px;
+	font-size: 25px;
+	font-weight: bold;
 	margin-top: 100px;
-
+}
+.bbp-topic-form:before {
+	content: "Create a post";
+}
+.bbp-reply-form:before {
+	content: "Reply to a post";
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
