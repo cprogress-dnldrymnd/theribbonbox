@@ -56,7 +56,7 @@ function forum_slider()
         </div>
         <div class="swiper-pagination"></div>
     </div>
-    <div class="mt-4">
+    <div class="mt-4 text-center">
         <a href="/forums" class="bubble-style-1" style="--bg-color: #fff; color: #000">
             Visit Forums
         </a>
