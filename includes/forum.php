@@ -1095,8 +1095,6 @@ function get_popular_topics($limit = 5)
         'orderby'   => array(
             '_bbp_reply_count'  => 'DESC',
             '_bbp_favorite' => 'DESC',
-            '_bbp_engagement' => 'DESC',
-            '_bbp_voice_count' => 'DESC',
         ),
         'meta_query' => array(
             array(
@@ -1105,12 +1103,7 @@ function get_popular_topics($limit = 5)
             array(
                 'key' => '_bbp_favorite',
             ),
-            array(
-                'key' => '_bbp_engagement',
-            ),
-            array(
-                'key' => '_bbp_voice_count',
-            ),
+       
 
         ),
     ));
