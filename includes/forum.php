@@ -1103,7 +1103,7 @@ function get_topics_with_most_replies($limit = 5)
         'orderby' => 'meta_value_num',
         'orderby'   => array(
             '_bbp_reply_count'  => 'DESC',
-            '_bbp_favorite' => 'DESC', 
+            '_bbp_favorite' => 'DESC',
         ),
         'meta_query' => array(
             array(
@@ -1117,7 +1117,8 @@ function get_topics_with_most_replies($limit = 5)
     $topics_reply_count = array();
     foreach ($topics as $topic) {
         $reply_count = bbp_get_topic_reply_count($topic, true);
-        $topics_reply_count[$topic] = $reply_count;
+        $fav_count = bbpress_get_topic_favorite_count($topic);
+        $topics_reply_count[$topic] = [$reply_count, $fav_count];
     }
 
     return $topics_reply_count;
