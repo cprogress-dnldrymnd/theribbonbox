@@ -35,17 +35,15 @@ include 'functions/b2b-discounts.php';
 //include 'functions/experts-slide.php';
 include 'shortcodes/member-login-button.php';
 
-function insert_jquery()
-{
-    wp_enqueue_script('jquery', false, array(), false, false);
-}
 add_filter('wp_enqueue_scripts', 'insert_jquery', 1);
 add_action('wp_enqueue_scripts', 'load_scripts', 9999999);
 function load_scripts()
 {
 
+    wp_enqueue_script('jquery');
     wp_enqueue_script('splide_init', get_stylesheet_directory_uri() . '/js/splide.js');
-
+    wp_enqueue_script('jcrop2', 'https://theribbonbox.com/staging/wp-includes/js/jcrop/jquery.Jcrop.min.css?ver=0.9.15');
+    
     wp_register_script('splide_script', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js');
     wp_enqueue_script('splide_script');
 }
