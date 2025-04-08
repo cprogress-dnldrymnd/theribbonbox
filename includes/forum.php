@@ -57,7 +57,7 @@ function forum_slider()
         <div class="swiper-pagination"></div>
     </div>
     <div class="mt-4 text-center button-box button-box-v2 button-accent">
-        <a href="/forums" >
+        <a href="/forums">
             Visit Forums
         </a>
     </div>
@@ -1005,6 +1005,9 @@ function forum_sidebar()
             $forum_id = get_forums_under_category($forum_id);
             $topics = get_popular_topics($forum_id);
             $class = 'forum-single-type--category';
+        }
+        if(!$topics) {
+            $topics = get_popular_topics();
         }
     } else {
         $class = 'forum-single-topic';
