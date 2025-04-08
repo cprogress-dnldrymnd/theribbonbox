@@ -985,6 +985,7 @@ function forum_sidebar()
 {
     if (bbp_is_forum_archive() || bbp_is_topic_archive()) {
         $title = 'Popular Topics';
+        $topics = get_popular_topics();
     } else if (bbp_is_single_forum()) {
         $forum_id = get_the_ID();
         $topics = get_popular_topics($forum_id);
@@ -1086,6 +1087,18 @@ function get_bbpress_top_favorite_topic_ids($limit = 10)
 
 function get_popular_topics($forum_id = false, $limit = 5)
 {
+    $meta_query[] = array(
+        'key' => '_bbp_reply_count',
+    );
+    $meta_query[] = array(
+        'key' => '_bbp_favorite',
+    );
+    $meta_query[] = array(
+        'key' => '_bbp_engagement',
+    );
+    $meta_query[] = array(
+        'key' => '_bbp_voice_count',
+    );
     $topics = get_posts(array(
         'post_type' => 'topic',
         'posts_per_page' => $limit,
@@ -1099,21 +1112,7 @@ function get_popular_topics($forum_id = false, $limit = 5)
             '_bbp_engagement' => 'DESC',
             '_bbp_voice_count' => 'DESC',
         ),
-        'meta_query' => array(
-            array(
-                'key' => '_bbp_reply_count',
-            ),
-            array(
-                'key' => '_bbp_favorite',
-            ),
-            array(
-                'key' => '_bbp_engagement',
-            ),
-            array(
-                'key' => '_bbp_voice_count',
-            ),
-
-        ),
+        'meta_query' => $meta_query;
     ));
     $topics_arr = array();
     foreach ($topics as $topic) {
