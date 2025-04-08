@@ -983,6 +983,7 @@ add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
 
 function forum_sidebar()
 {
+    // Check if the current page is a forum archive or a single forum page
     if (bbp_is_forum_archive()) {
         $title = 'Popular Topics';
         $topics = get_popular_topics();
@@ -990,6 +991,7 @@ function forum_sidebar()
         $forum_id = get_the_ID();
         $title = get_the_title() . ' Popular Topics';
         $_bbp_forum_type = get_post_meta($forum_id, '_bbp_forum_type', true);
+        // Check if the forum is a category or a forum
         if ($_bbp_forum_type == 'forum') {
             $topics = get_popular_topics($forum_id);
         } else {
@@ -1000,8 +1002,6 @@ function forum_sidebar()
         $title = 'Related Topics';
         $topics = get_related_topics();
     }
-
-
 
 ?>
     <div class="community-posts">
