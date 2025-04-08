@@ -2439,6 +2439,10 @@ section.forum-guidelines .inner ul li strong {
 }
 #bbp-search-results .bbp-forum-header {
     background-color: #fff !important;
+	padding: 20px 40px;
+}
+#bbp-search-results .bbp-forum-content {
+	margin: 0 !important;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
@@ -2455,7 +2459,7 @@ section.forum-guidelines .inner ul li strong {
 	header#header-community .menu-item-has-children .sub-menu:before {
 		content: "";
 		position: absolute;
-		left: 50%;
+		left: 50%;z
 		top: 0;
 		bottom: 0;
 		background-color: var(--accent-color);
