@@ -1129,6 +1129,7 @@ function get_related_topics($limit = 5)
         'posts_per_page' => $limit,
         'post_status' => 'any',
         'fields' => 'ids',
+        'orderby' => 'rand',
         'meta_query' => array(
             array(
                 'key' => '_bbp_forum_id',
