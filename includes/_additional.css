@@ -2380,6 +2380,7 @@ section.forum-guidelines .inner {
 	border-radius: 5px;
 	padding: 30px 40px;
 	background: #fff;
+	border-radius: 10px;
 }
 section.forum-guidelines .inner h2 {
 	color: var(--accent-color);
@@ -2402,6 +2403,7 @@ section.forum-guidelines .inner ul {
 section.forum-guidelines .inner ul li {
 	box-shadow: 9px 11px 29px rgba(125, 138, 152, 0.15);
 	padding: 10px;
+	border-radius: 10px;
 }
 .bbp-topic-form:before,
 .bbp-reply-form:before {
