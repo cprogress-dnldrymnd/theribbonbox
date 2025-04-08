@@ -996,16 +996,11 @@ function forum_sidebar()
         $title = 'Related Topics';
     }
     // Example usage:
-    $top_favorite_ids = get_bbpress_top_favorite_topic_ids(5);
+    $get_top_topics = get_top_topics();
+    echo '<pre>';
+    var_dump($get_top_topics);
+    echo '</pre>';
 
-    if (!empty($top_favorite_ids)) {
-        echo "Top Favorite Topic IDs:<br>";
-        foreach ($top_favorite_ids as $topic_id) {
-            echo esc_html($topic_id) . "<br>";
-        }
-    } else {
-        echo "No favorite topics found.";
-    }
 ?>
     <div class="community-posts">
         <div class="featured-box">
@@ -1094,4 +1089,22 @@ function get_bbpress_top_favorite_topic_ids($limit = 10)
     } else {
         return array();
     }
+}
+
+
+function get_top_topics()
+{
+    $topics = get_posts(array(
+        'post_type' => 'topic',
+        'posts_per_page' => 5,
+        'post_status' => 'any',
+        'fields' => 'ids',
+    ));
+    $topics = [];
+    foreach ($topics as $topic) {
+        $reply_count = bbp_get_topic_reply_count($topic->ID, true);
+        $topics[$topic->ID] = $reply_count;
+    }
+
+    return $topics;
 }
