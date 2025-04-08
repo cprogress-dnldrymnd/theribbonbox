@@ -2399,6 +2399,7 @@ section.forum-guidelines .inner h3 {
 }
 section.forum-guidelines .inner ul {
 	display: flex;
+	flex-wrap: wrap;
 	padding: 0;
 	list-style: none;
 	gap: 10px;
