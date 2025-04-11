@@ -363,7 +363,7 @@ function action_admin_head()
                 display: none !important;
             }
         </style>
-<?php
+    <?php
     }
 }
 
@@ -422,3 +422,73 @@ function get_images_without_alt_text()
 }
 
 add_shortcode('get_images_without_alt_text', 'get_images_without_alt_text');
+
+
+function bulk_update_image_alt_text()
+{
+    if (!current_user_can('upload_files')) {
+        wp_die(__('You do not have permission to access this page.'));
+    }
+
+    ?>
+    <div class="wrap">
+        <h1><?php esc_html_e('Bulk Update Image Alt Text', 'bulk-alt-text'); ?></h1>
+        <p><?php esc_html_e('This tool will find all images in your media library that do not have alt text and automatically set their alt text to their filename (without the extension).', 'bulk-alt-text'); ?></p>
+        <form method="post">
+            <?php wp_nonce_field('bulk_alt_text_action', 'bulk_alt_text_nonce'); ?>
+            <p class="submit">
+                <input type="submit" name="bulk_update_alt" class="button button-primary" value="<?php esc_attr_e('Bulk Update Alt Text', 'bulk-alt-text'); ?>">
+            </p>
+        </form>
+
+        <?php
+        if (isset($_POST['bulk_update_alt']) && check_admin_referer('bulk_alt_text_action', 'bulk_alt_text_nonce')) {
+            $args = array(
+                'post_type' => 'attachment',
+                'post_mime_type' => 'image/*',
+                'posts_per_page' => -1,
+            );
+
+            $images = get_posts($args);
+            $updated_count = 0;
+
+            if ($images) {
+                foreach ($images as $image) {
+                    $attachment_id = $image->ID;
+                    $alt_text = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
+
+                    if (empty($alt_text)) {
+                        $filename_with_ext = basename(get_attached_file($attachment_id));
+                        $filename_without_ext = pathinfo($filename_with_ext, PATHINFO_FILENAME);
+
+                        if (update_post_meta($attachment_id, '_wp_attachment_image_alt', sanitize_text_field($filename_without_ext))) {
+                            $updated_count++;
+                        }
+                    }
+                }
+
+                if ($updated_count > 0) {
+                    echo '<div class="notice notice-success is-dismissible"><p>' . sprintf(esc_html__('%d images updated with their filename as alt text.', 'bulk-alt-text'), $updated_count) . '</p></div>';
+                } else {
+                    echo '<div class="notice notice-info is-dismissible"><p>' . esc_html__('No images found without alt text.', 'bulk-alt-text') . '</p></div>';
+                }
+            } else {
+                echo '<div class="notice notice-warning is-dismissible"><p>' . esc_html__('No images found in the media library.', 'bulk-alt-text') . '</p></div>';
+            }
+        }
+        ?>
+    </div>
+<?php
+}
+
+function bulk_alt_text_menu()
+{
+    add_media_page(
+        __('Bulk Update Alt Text', 'bulk-alt-text'),
+        __('Bulk Update Alt Text', 'bulk-alt-text'),
+        'upload_files',
+        'bulk-update-alt-text',
+        'bulk_update_image_alt_text'
+    );
+}
+add_action('admin_menu', 'bulk_alt_text_menu');
