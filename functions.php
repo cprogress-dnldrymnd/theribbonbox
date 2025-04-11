@@ -415,7 +415,11 @@ function get_images_without_alt_text()
         }
     }
     echo '<pre>';
-    var_dump($images_without_alt);
+    foreach ($images_without_alt as $image_id) {
+        $url = get_edit_post_link($image_id);
+        echo "<a href='$url'>$image_id</a>";
+        echo '<br>';
+    }
     echo '</pre>';
     echo '<br>';
     return ob_get_clean();
