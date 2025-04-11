@@ -415,10 +415,14 @@ function get_images_without_alt_text()
         }
     }
     echo '<pre>';
-    foreach ($images_without_alt as $image_id) {
-        $url = get_edit_post_link($image_id);
-        echo "<a href='$url'>$image_id</a>";
-        echo '<br>';
+    if (!empty($images_without_alt)) {
+        foreach ($images_without_alt as $image_id) {
+            $url = get_edit_post_link($image_id);
+            echo "<a href='$url'>$image_id</a>";
+            echo '<br>';
+        }
+    } else {
+        echo 'No images without alt text';
     }
     echo '</pre>';
     echo '<br>';
