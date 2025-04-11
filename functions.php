@@ -471,19 +471,19 @@ function bulk_update_image_alt_text_extended()
                         $description = $image->post_content;
                         $new_alt_text = '';
 
+                        $filename_with_ext = basename(get_attached_file($attachment_id));
+                        $filename_without_ext = pathinfo($filename_with_ext, PATHINFO_FILENAME);
+                        $file_name = sanitize_text_field($filename_without_ext);
+
                         if (!empty($caption)) {
                             $new_alt_text = sanitize_text_field($caption);
                         } elseif (!empty($description)) {
                             $new_alt_text = sanitize_text_field($description);
                         } else {
-                            $filename_with_ext = basename(get_attached_file($attachment_id));
-                            $filename_without_ext = pathinfo($filename_with_ext, PATHINFO_FILENAME);
-                            $new_alt_text = sanitize_text_field($filename_without_ext);
+                            $new_alt_text = $file_name;
                         }
                         if (!$new_alt_text) {
-                            $filename_with_ext = basename(get_attached_file($attachment_id));
-                            $filename_without_ext = pathinfo($filename_with_ext, PATHINFO_FILENAME);
-                            $new_alt_text = sanitize_text_field($filename_without_ext);
+                            $new_alt_text = $file_name;
                         }
 
                         if (!empty($new_alt_text) && update_post_meta($attachment_id, '_wp_attachment_image_alt', $new_alt_text)) {
