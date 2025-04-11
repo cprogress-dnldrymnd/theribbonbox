@@ -363,7 +363,7 @@ function action_admin_head()
                 display: none !important;
             }
         </style>
-    <?php
+<?php
     }
 }
 
@@ -389,31 +389,36 @@ function theme_options_function()
  *
  * @return array An array of image attachment IDs without alt text.
  */
-function get_images_without_alt_text() {
-	$images_without_alt = array();
+function get_images_without_alt_text()
+{
+    ob_start();
+    $images_without_alt = array();
 
-	// Query for all image attachments.
-	$args = array(
-		'post_type'      => 'attachment',
-		'post_mime_type' => 'image',
-		'posts_per_page' => -1, // Get all images.
-	);
+    // Query for all image attachments.
+    $args = array(
+        'post_type'      => 'attachment',
+        'post_mime_type' => 'image',
+        'posts_per_page' => -1, // Get all images.
+    );
 
-	$attachments = get_posts( $args );
+    $attachments = get_posts($args);
 
-	if ( $attachments ) {
-		foreach ( $attachments as $attachment ) {
-			// Get the alt text for the current image.
-			$alt_text = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
+    if ($attachments) {
+        foreach ($attachments as $attachment) {
+            // Get the alt text for the current image.
+            $alt_text = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
 
-			// If the alt text is empty, add the image ID to the array.
-			if ( empty( $alt_text ) ) {
-				$images_without_alt[] = $attachment->ID;
-			}
-		}
-	}
-
-	return var_dump($images_without_alt);
+            // If the alt text is empty, add the image ID to the array.
+            if (empty($alt_text)) {
+                $images_without_alt[] = $attachment->ID;
+            }
+        }
+    }
+    echo '<pre>';
+    var_dump($images_without_alt);
+    echo '</pre>';
+    echo '<br>';
+    return ob_get_clean();
 }
 
 add_shortcode('get_images_without_alt_text', 'get_images_without_alt_text');
