@@ -413,5 +413,7 @@ function get_images_without_alt_text() {
 		}
 	}
 
-	return $images_without_alt;
+	return var_dump($images_without_alt);
 }
+
+add_shortcode('get_images_without_alt_text', 'get_images_without_alt_text');
