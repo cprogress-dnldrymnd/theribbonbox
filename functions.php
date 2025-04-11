@@ -480,6 +480,11 @@ function bulk_update_image_alt_text_extended()
                             $filename_without_ext = pathinfo($filename_with_ext, PATHINFO_FILENAME);
                             $new_alt_text = sanitize_text_field($filename_without_ext);
                         }
+                        if (!$new_alt_text) {
+                            $filename_with_ext = basename(get_attached_file($attachment_id));
+                            $filename_without_ext = pathinfo($filename_with_ext, PATHINFO_FILENAME);
+                            $new_alt_text = sanitize_text_field($filename_without_ext);
+                        }
 
                         if (!empty($new_alt_text) && update_post_meta($attachment_id, '_wp_attachment_image_alt', $new_alt_text)) {
                             $updated_count++;
