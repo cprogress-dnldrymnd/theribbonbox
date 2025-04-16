@@ -65,7 +65,6 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     $categories = get_categories($cat_args);
 
 
-
     $category_id = $categories[0]->term_id;
     $atts['categoryId'] = $category_id;
 
