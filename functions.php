@@ -549,7 +549,7 @@ function add_image_to_menu_item($item_output, $item, $depth, $args)
     // to your menu items in the WordPress admin.  I'm using 'menu_image' here,
     // but you can use any name you like.
     $x = get_field('icon', $item->object_id);
-    $item_output .= $x;
+    $item_output .= "<div style='display: none'>$x</div>";
     if ($image_url) {
         //  Important: Adjust the image size and styling as needed.  This example
         //  uses a small inline style.  For more complex styling, use CSS in your
