@@ -548,8 +548,8 @@ function add_image_to_menu_item($item_output, $item, $depth, $args)
     // Get the image URL from a custom field.  You'll need to add a custom field
     // to your menu items in the WordPress admin.  I'm using 'menu_image' here,
     // but you can use any name you like.
-    $id = get_post_meta($item->ID, '_menu_item_object_id', true);
-    $image_url = get_field('icon', $id);
+    $pageId = get_post_meta($item->ID, '_menu_item_object_id', true);
+    $image_url = get_field('icon', $pageId);
     if ($image_url) {
         //  Important: Adjust the image size and styling as needed.  This example
         //  uses a small inline style.  For more complex styling, use CSS in your
