@@ -534,6 +534,6 @@ class Walker_Nav_Pointers extends Walker_Nav_Menu
     function end_lvl(&$output, $depth = 0, $args = array())
     {
         $indent = str_repeat("\t", $depth);
-        $output .= "$indent</ul>\n</li>\n" . ($depth ? "$indent</div>\n" : "");
+        $output .= "$indent</ul>\n</li>\n" . ($depth ? "$indent</ul>\n" : "");
     }
 }
