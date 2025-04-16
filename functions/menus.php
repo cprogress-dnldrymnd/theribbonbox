@@ -40,6 +40,13 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     $title = $item->title;
     //set_trb_message("$id: '$title'");
 
+    if ($item->menu_item_parent == 0) {
+        $object_id = $item->object_id;
+    } else {
+        $parent_menu_item_id = $item->menu_item_parent;
+        $object_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
+    }
+
     $cat_args = array(
         'orderby' => 'name',
         'order' => 'ASC',
@@ -57,14 +64,7 @@ function trb_av_menu_link_attributes($atts, $item, $args)
 
     $atts['pageId'] = $item->object_id;
 
-    if ($item->menu_item_parent == 0) {
-    } else {
-        $parent_menu_item_id = $item->menu_item_parent;
-        $page_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
-        if ($page_id) {
-            $atts['data-parent-page-id'] = $page_id;
-        }
-    }
+
     $category_id = $categories[0]->term_id;
     $atts['categoryId'] = $category_id;
 
