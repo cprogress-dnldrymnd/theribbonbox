@@ -58,8 +58,18 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     $atts['pageId'] = $item->object_id;
 
     if ($item->menu_item_parent == 0) {
-        $category_id = $categories[0]->term_id;
+    } else {
+        $parent_menu_item_id = $item->menu_item_parent;
+        $parent_menu_item = get_post($parent_menu_item_id);
+
+        if ($parent_menu_item && $parent_menu_item->object === 'page') {
+            $parent_page_id = $parent_menu_item->object_id;
+            // You can now use $parent_page_id for further processing
+            // For example, adding it as a data attribute:
+            $atts['data-parent-page-id'] = $parent_page_id;
+        }
     }
+    $category_id = $categories[0]->term_id;
     $atts['categoryId'] = $category_id;
 
 
