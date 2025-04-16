@@ -50,7 +50,7 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
 
       </div>
       <hr>
-      <div style="color: <?= $subscribe_popup_description_colour ?> !important">
+      <div id="subscribe-outer-desc" style="color: <?= $subscribe_popup_description_colour ?> !important">
         <?= wpautop($subscribe_popup_description) ?>
       </div>
       <div class="sub---form" style="color: <?= $subscribe_popup_form_colour ?> !important">
