@@ -58,19 +58,10 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     $atts['pageId'] = $item->object_id;
 
     if ($item->menu_item_parent == 0) {
-        $atts['categoryId'] = $categories[0]->term_id;
-    } else {
-        if ($item->menu_item_parent == "24548") {
-            $atts['categoryId'] = "1159";
-        } else if ($item->menu_item_parent == "24549") {
-            $atts['categoryId'] = "1164";
-        } else if ($item->menu_item_parent == "24550") {
-            $atts['categoryId'] = "1165";
-        } else if ($item->menu_item_parent == "24551") {
-            $atts['categoryId'] = "1163";
-        }
+        $category_id = $categories[0]->term_id;
     }
-    $atts['categoryId_tes'] = $item->menu_item_parent;
+    $atts['categoryId'] = $category_id;
+
 
 
     if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
