@@ -53,7 +53,7 @@ function trb_av_menu_link_attributes($atts, $item, $args)
         'meta_query' => array(
             array(
                 'key'     => 'page_category',
-                'value'   =>  $item->object_id,
+                'value'   =>  $object_id,
                 'compare' => 'LIKE'
             )
         ),
