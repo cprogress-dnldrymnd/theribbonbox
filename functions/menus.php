@@ -42,9 +42,11 @@ function trb_av_menu_link_attributes($atts, $item, $args)
 
     if ($item->menu_item_parent == 0) {
         $object_id = $item->object_id;
+        $atts['pageId'] = $object_id;
     } else {
         $parent_menu_item_id = $item->menu_item_parent;
         $object_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
+        $atts['pageId'] = $object_id;
     }
 
     $cat_args = array(
@@ -62,7 +64,6 @@ function trb_av_menu_link_attributes($atts, $item, $args)
 
     $categories = get_categories($cat_args);
 
-    $atts['pageId'] = $item->object_id;
 
 
     $category_id = $categories[0]->term_id;
