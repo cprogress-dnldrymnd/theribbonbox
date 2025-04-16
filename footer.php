@@ -182,21 +182,7 @@ if (get_the_ID() != "22808" && get_the_ID() != "22810" && get_the_ID() != "22812
     -->
 
 <script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
-<script>
-  /*
-  jQuery(document).ready(function() {
-    if (jQuery('body').hasClass('page-id-41256')) {
-      jQuery('#header-main-site #menu-mainmenu > .menu-item-has-children').each(function(index, element) {
-        var $this = jQuery(this);
-        $title = $this.find('>a').text();
-        console.log($title);
-        $wrapper = jQuery('<li class="submenu-wrapper"><div class="left-col"><ul class="menu-items-holder"> </ul></div> <div class="right-col"> <div class="menu-post-holder"> <ul></ul> </div> <div class="cta">  </div> </div></li>');
-        $wrapper.prependTo($this.find('>.sub-menu'));
-        $this.find('>.sub-menu >.menu-item').appendTo($this.find('.menu-items-holder'));
-      });
-    }
-  });*/
-</script>
+
 <?php if (is_front_page()) {
   $_SESSION['homepage_array'] = "";
 } ?>
