@@ -58,8 +58,21 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     $atts['pageId'] = $item->object_id;
 
     if ($item->menu_item_parent == 0) {
-        $atts['categoryId'] = $categories[0]->term_id;
-
+        if ($id == "24548") {
+            $atts['categoryId'] = "1159";
+            $atts['categoryIdxx'] = "xxx2asdsd";
+        } else if ($id == "24549") {
+            $atts['categoryId'] = "1164";
+            $atts['categoryIdxx'] = "xxx2asdsd";
+        } else if ($id == "24550") {
+            $atts['categoryId'] = "1165";
+            $atts['categoryIdxx'] = "xxx2asdsd";
+        } else if ($id == "24551") {
+            $atts['categoryId'] = "1163";
+            $atts['categoryIdxx'] = "xxx2asdsd";
+        } else if ($categories) {
+            $atts['categoryId'] = $categories[0]->term_id;
+        }
     } else {
         if ($item->menu_item_parent == "24548") {
             $atts['categoryId'] = "1159";
@@ -69,11 +82,11 @@ function trb_av_menu_link_attributes($atts, $item, $args)
             $atts['categoryId'] = "1165";
         } else if ($item->menu_item_parent == "24551") {
             $atts['categoryId'] = "1163";
-        } 
+        }
     }
     $atts['categoryId_tes'] = $item->menu_item_parent;
 
-    
+
     if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
         $atts['post_type'] = "videos/podcasts";
         $atts['cus_post'] = "1";
