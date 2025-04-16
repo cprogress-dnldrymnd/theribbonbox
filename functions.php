@@ -521,79 +521,18 @@ function bulk_alt_text_extended_menu()
     );
 }
 add_action('admin_menu', 'bulk_alt_text_extended_menu');
-/**
- * Function to wrap sub-menu elements with custom div structure.
- *
- * This function hooks into the 'wp_nav_menu_args' filter to modify
- * the arguments passed to wp_nav_menu and then uses the
- * 'wp_nav_menu_objects' filter to wrap the sub-menu items.
- *
- * @param array $args Array of wp_nav_menu() arguments.
- * @return array Modified array of wp_nav_menu() arguments.
- */
-function my_wrap_submenu( $args ) {
-	// Store the original walker if it exists.
-	$original_walker = $args['walker'] ?? null;
 
-	// Use a custom walker to wrap the sub-menu.
-	$args['walker'] = new My_Submenu_Wrapper_Walker( $original_walker );
-
-	return $args;
-}
-add_filter( 'wp_nav_menu_args', 'my_wrap_submenu' );
-
-/**
- * Custom Walker class to wrap sub-menu items.
- */
-class My_Submenu_Wrapper_Walker extends Walker_Nav_Menu {
-
-	protected $original_walker;
-
-	public function __construct( $original_walker = null ) {
-		$this->original_walker = $original_walker;
-	}
-
-	public function start_lvl( &$output, $depth = 0, $args = null ) {
-		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
-			$t = '';
-			$n = '';
-		} else {
-			$t = "\t";
-			$n = "\n";
-		}
-		$indent = ( $depth > 0 ? str_repeat( $t, $depth ) : '' );
-
-		// Wrap the sub-menu with the desired div structure.
-		$output .= $n . $indent . '<div class="submenu-wrapper"><ul class="menu-items-holder">' . $n;
-
-		// If there was an original walker, call its start_lvl method.
-		if ( $this->original_walker && method_exists( $this->original_walker, 'start_lvl' ) ) {
-			$this->original_walker->start_lvl( $output, $depth, $args );
-		}
-	}
-
-	public function end_lvl( &$output, $depth = 0, $args = null ) {
-		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
-			$t = '';
-			$n = '';
-		} else {
-			$t = "\t";
-			$n = "\n";
-		}
-		$indent = ( $depth > 0 ? str_repeat( $t, $depth ) : '' );
-
-		// Close the wrapping div structure.
-		$output .= $indent . '</ul></div>' . $n;
-
-		// If there was an original walker, call its end_lvl method.
-		if ( $this->original_walker && method_exists( $this->original_walker, 'end_lvl' ) ) {
-			$this->original_walker->end_lvl( $output, $depth, $args );
-		}
-	}
-
-	// You can optionally override other Walker_Nav_Menu methods
-	// (start_el, end_el, etc.) if you need further customization
-	// of the individual menu items. If you don't need to modify
-	// the individual items, you can rely on the parent class
-	// or the original walker.
+class Walker_Nav_Pointers extends Walker_Nav_Menu
+{
+    function start_lvl( &$output, $depth = 0, $args = array() )
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul class=\"sub-menu\">\n";
+        $output .= "\n<div class=\"column\">\n";
+    }
+    function end_lvl( &$output, $depth = 0, $args = array() )
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</ul>\n".($depth ? "$indent</div>\n" : "");
+    }
 }
