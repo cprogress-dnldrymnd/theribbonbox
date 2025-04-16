@@ -60,14 +60,9 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     if ($item->menu_item_parent == 0) {
     } else {
         $parent_menu_item_id = $item->menu_item_parent;
-        $parent_menu_item = get_post($parent_menu_item_id);
-        $atts['data-parent-page-idx'] = $parent_menu_item_id;
-
-        if ($parent_menu_item) {
-            $parent_page_id = $parent_menu_item->object_id;
-            // You can now use $parent_page_id for further processing
-            // For example, adding it as a data attribute:
-            $atts['data-parent-page-id'] = $parent_page_id;
+        $page_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
+        if ($page_id) {
+            $atts['data-parent-page-id'] = $page_id;
         }
     }
     $category_id = $categories[0]->term_id;
