@@ -70,6 +70,16 @@ function trb_av_menu_link_attributes($atts, $item, $args)
         } else if ($categories) {
             $atts['categoryId'] = $categories[0]->term_id;
         }
+    } else {
+        if ($item->menu_item_parent == "24548") {
+            $atts['categoryId'] = "1159";
+        } else if ($item->menu_item_parent == "24549") {
+            $atts['categoryId'] = "1164";
+        } else if ($item->menu_item_parent == "24550") {
+            $atts['categoryId'] = "1165";
+        } else if ($item->menu_item_parent == "24551") {
+            $atts['categoryId'] = "1163";
+        } 
     }
 
     if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
