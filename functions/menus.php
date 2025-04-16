@@ -69,7 +69,6 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     $atts['categoryId'] = $category_id;
 
 
-
     if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
         $atts['post_type'] = "videos/podcasts";
         $atts['cus_post'] = "1";
@@ -83,7 +82,7 @@ function trb_av_menu_link_attributes($atts, $item, $args)
         || $title == 'Parenting Videos'
 
     ) {
-        $atts['post_type'] = "videos";
+        $atts['post_type'] = "videos/podcasts";
         $atts['cus_post'] = "1";
     } else if (
         $title == 'The Ribbon Box Podcast'
@@ -92,7 +91,7 @@ function trb_av_menu_link_attributes($atts, $item, $args)
         || ($title == 'Pregnancy' && $id == '23887')
         || ($title == 'Parenting' && $id == '23889')
     ) {
-        $atts['post_type'] = "podcasts";
+        $atts['post_type'] = "videos/podcasts";
         $atts['cus_post'] = "1";
     } else if (
         $title == 'All Experts'
@@ -109,13 +108,13 @@ function trb_av_menu_link_attributes($atts, $item, $args)
         $atts['post_type'] = "offer-items/giveaway-items/events";
         $atts['cus_post'] = "1";
     } else if ($title == 'Giveaways') {
-        $atts['post_type'] = "giveaway-items";
+        $atts['post_type'] = "offer-items/giveaway-items/events";
         $atts['cus_post'] = "1";
     } else if ($title == 'Discounts') {
-        $atts['post_type'] = "offer-items";
+        $atts['post_type'] = "offer-items/giveaway-items/events";
         $atts['cus_post'] = "1";
     } else if ($title == 'Events') {
-        $atts['post_type'] = "events";
+        $atts['post_type'] = "offer-items/giveaway-items/events";
         $atts['cus_post'] = "1";
     } else {
         $atts['post_type'] = "post";
