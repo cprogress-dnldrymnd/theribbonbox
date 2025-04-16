@@ -1,26 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" style="margin-top: 0 !important;">
 <?php require 'head.php'; ?>
-<?php
-if (is_page(41256)) {
-    echo '<style id="nav-styles">';
-    $menuLocations = get_nav_menu_locations();
-    $menuID = $menuLocations['header-menu'];
-    $primaryNav = wp_get_nav_menu_items($menuID);
-    foreach ($primaryNav as $nav) {
-        $id =  $nav->object_id;
-        $icon = get_field('icon', $id);
-        if ($icon) {
-            $url = $icon['url'];
-            echo 'a[pageid="' . $id . '"]:before { ';
-            echo 'content: "";';
-            echo 'background-image: url(' . $url . ');';
-            echo '}';
-        }
-    }
-    echo '</style>';
-}
-?>
 <?php global $wp; ?>
 
 <body data-path="<?= $wp->request ?>" <?php body_class(); ?>>
