@@ -52,7 +52,7 @@ function trb_av_menu_link_attributes( $atts, $item, $args ) {
     $categories=get_categories($cat_args);
 
     $atts['pageId'] = $item->object_id;
-    $atts['pageIdx'] = $item->parent;
+    $atts['pageIdx'] = $item->object_id;
     //$atts['categoryId'] = $categories[0]->term_id;
 
 //    if (! isset($categories[0])) {
