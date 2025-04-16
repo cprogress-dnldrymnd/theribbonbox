@@ -524,16 +524,15 @@ add_action('admin_menu', 'bulk_alt_text_extended_menu');
 
 class Walker_Nav_Pointers extends Walker_Nav_Menu
 {
-    function start_lvl(&$output, $depth = 0, $args = array())
+    function start_lvl( &$output, $depth = 0, $args = array() )
     {
         $indent = str_repeat("\t", $depth);
         $output .= "\n$indent<ul class=\"sub-menu\">\n";
         $output .= "\n<li class=\"submenu-wrapper\">\n";
-        $output .= "\n<ul class=\"menu-items-holder\">\n";
     }
-    function end_lvl(&$output, $depth = 0, $args = array())
+    function end_lvl( &$output, $depth = 0, $args = array() )
     {
         $indent = str_repeat("\t", $depth);
-        $output .= "$indent</ul>\n</li>\n" . ($depth ? "$indent</ul>\n" : "");
+        $output .= "$indent</ul>\n".($depth ? "$indent</li>\n" : "");
     }
 }
