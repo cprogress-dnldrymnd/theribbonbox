@@ -522,15 +522,17 @@ function bulk_alt_text_extended_menu()
 }
 add_action('admin_menu', 'bulk_alt_text_extended_menu');
 
-
-class Custom_Button_Walker extends Walker_Nav_Menu {
-    // We only care about the "end level" part of the menu, where closing </ul> tags are generated
-    public function end_lvl( &$output, $depth = 0, $args = array() ) {
-        // This is from WP core code
+class Walker_Nav_Pointers extends Walker_Nav_Menu
+{
+    function start_lvl(&$output, $depth = 0, $args = array())
+    {
         $indent = str_repeat("\t", $depth);
-        // This line ensures we only add it on the proper level
-        $button = (0 == $depth) ? "{$indent}<button type=\"button\">Click Me!</button>\n" : '';
-        // This line is modified to include the button markup
-        $output .= "{$indent}</ul>\n{$button}";
+        $output .= "\n$indent<ul class=\"sub-menu\">\n";
+        $output .= "\n<div class=\"column\">\n";
+    }
+    function end_lvl(&$output, $depth = 0, $args = array())
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</ul>\n" . ($depth ? "$indent</div>\n" : "");
     }
 }
