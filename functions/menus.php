@@ -56,7 +56,6 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     $categories = get_categories($cat_args);
 
     $atts['pageId'] = $item->object_id;
-    $atts['pageIdx'] = get_post($item->menu_item_parent)->ID;
 
     if ($item->menu_item_parent == 0) {
         if ($id == "24548") {
