@@ -58,11 +58,10 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     $atts['pageId'] = $item->object_id;
 
     if ($item->menu_item_parent == 0) {
-
     } else {
         $parent_menu_item_id = $item->menu_item_parent;
         $parent_menu_item = get_post($parent_menu_item_id);
-            $atts['data-parent-page-idx'] = $parent_menu_item;
+        $atts['data-parent-page-idx'] = $parent_menu_item_id;
 
         if ($parent_menu_item) {
             $parent_page_id = $parent_menu_item->object_id;
