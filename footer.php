@@ -24,8 +24,15 @@ $subscribe_popup_description = get_field('subscribe_popup_description', $theme_o
 $subscribe_popup_links = get_field('subscribe_popup_links', $theme_option_page);
 $subscribe_popup_image = get_field('subscribe_popup_image', $theme_option_page);
 $subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
+
+$subscribe_popup__heading_colour = get_field('subscribe_popup__heading_colour', $theme_option_page);
+$subscribe_popup_description_colour = get_field('subscribe_popup_description_colour', $theme_option_page);
+$subscribe_popup_links_colour = get_field('subscribe_popup_links_colour', $theme_option_page);
+$subscribe_popup_form_colour = get_field('subscribe_popup_form_colour', $theme_option_page);
+$subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_option_page);
+
 ?>
-<div id="subscribe-outer" class="post-follow-us insider-outer subscibe-outer">
+<div id="subscribe-outer" class="post-follow-us insider-outer subscibe-outer" style="background-color: <?= $subscribe_popup_bg_colour ?>">
   <div class="subscribe-outer-close"><img src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu-close.png"></div>
   <div class="post-follow-us-inner">
     <div class="subscribe-outer-img"><img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>"></div>
@@ -40,7 +47,7 @@ $subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
           ?>
           <a href="<?= $url ?>"><?= $title ?></a> |
         <?php } ?>
-  
+
       </div>
       <hr>
       <?= wpautop($subscribe_popup_description) ?>
