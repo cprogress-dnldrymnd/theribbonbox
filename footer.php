@@ -37,7 +37,7 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
   <div class="post-follow-us-inner">
     <div class="subscribe-outer-img"><img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>"></div>
     <div class="subscribe-outer-txt">
-      <h2><?= $subscribe_popup_heading ?> </h2>
+      <h2 style="color: <?= $subscribe_popup__heading_colour ?>"><?= $subscribe_popup_heading ?> </h2>
       <div class="cat-links">
         <?php foreach ($subscribe_popup_links as $link) { ?>
           <?php
@@ -45,12 +45,14 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
           $url = get_permalink($page_id);
           $title = get_the_title($page_id);
           ?>
-          <a href="<?= $url ?>"><?= $title ?></a> |
+          <a href="<?= $url ?>" style="color: <?= $subscribe_popup_links_colour ?>"><?= $title ?></a> |
         <?php } ?>
 
       </div>
       <hr>
-      <?= wpautop($subscribe_popup_description) ?>
+      <div style="color: <?= $subscribe_popup_description_colour ?>">
+        <?= wpautop($subscribe_popup_description) ?>
+      </div>
       <div class="sub---form">
         <?= do_shortcode($subscribe_popup_form); ?>
       </div>
