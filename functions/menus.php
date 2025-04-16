@@ -81,7 +81,9 @@ function trb_av_menu_link_attributes($atts, $item, $args)
             $atts['categoryId'] = "1163";
         } 
     }
+    $atts['categoryId_tes'] = $item->menu_item_parent;
 
+    
     if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
         $atts['post_type'] = "videos/podcasts";
         $atts['cus_post'] = "1";
