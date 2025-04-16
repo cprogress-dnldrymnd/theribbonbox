@@ -98,7 +98,7 @@ if (is_page(41256)) {
                     <?php wp_nav_menu(
                         array(
                             'theme_location' => 'header-menu',
-                            'walker' => new Walker_Nav_Pointers()
+                            'walker' => new My_Submenu_Wrapper_Walker()
                         )
                     ); ?>
                     <div class="navigation-footer-sec">
