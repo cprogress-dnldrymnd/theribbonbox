@@ -330,7 +330,7 @@ function latest_topics()
     <div class="blogs-holder">
         <div class="row g-4 ">
             <?php foreach ($posts as $post) { ?>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <?= do_shortcode('[blog_box id=' . $post->ID . ' author=' . $post->post_author . ']') ?>
                 </div>
             <?php } ?>
