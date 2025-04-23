@@ -1052,6 +1052,10 @@ function forum_sidebar()
             $title = 'Popular Topics';
             $topics = get_popular_topics();
         }
+    } else if (bp_is_user_profile()) {
+        $class = 'forum-single-topic';
+        $title = 'Test';
+        $topics = get_related_topics();
     } else {
         $class = 'forum-single-topic';
         $title = 'Related Topics';
