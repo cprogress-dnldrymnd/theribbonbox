@@ -2494,6 +2494,9 @@ button.accordion-button.accordion-button:after{
 .guidelines-holder p {
 	margin-top: 20px;
 }
+.guidelines-holder.active + .button-box {
+	display: none;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
