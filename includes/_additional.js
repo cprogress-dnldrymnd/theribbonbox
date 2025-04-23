@@ -4,6 +4,7 @@ jQuery(document).ready(function ($) {
     e_guides_ajax_trigger();
     swiper_sliders();
     header_sticky();
+    guidelines();
 });
 
 function guidelines() {
