@@ -2480,6 +2480,7 @@ button.accordion-button.accordion-button:after{
 .accordion-item.accordion-item.accordion-item {
 	border: none;
 	border-bottom: 1px solid lightgray;
+	border-radius: 0;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
