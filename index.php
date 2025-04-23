@@ -339,7 +339,7 @@ if (!is_bbpress() && !is_buddypress()) {
     get_header('community');
     if (have_posts()) :
         if (bbp_is_forum_archive()) {
-            echo do_shortcode('[forum_guidelines]');
+            echo do_shortcode('[forum_guidelines autop=0]');
         }
         if (bp_is_user_profile()) {
             $section_class = 'bb-press-profile';

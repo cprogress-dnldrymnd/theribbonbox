@@ -1102,6 +1102,7 @@ function forum_guidelines($atts)
         shortcode_atts(
             array(
                 'id' => 'forum_guidelines',
+                'autop' => true
             ),
             $atts
         )
@@ -1112,7 +1113,13 @@ function forum_guidelines($atts)
     <section class="forum-guidelines large-container">
         <div class="container">
             <div class="inner">
-                <?= wpautop($forum_guidelines) ?>
+                <?php
+                if ($autop == false) {
+                    echo $forum_guidelines;
+                } else {
+                    echo wpautop($forum_guidelines);
+                }
+                ?>
             </div>
         </div>
     </section>
