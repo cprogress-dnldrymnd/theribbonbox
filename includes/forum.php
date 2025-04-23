@@ -1064,7 +1064,6 @@ function forum_sidebar()
 
 ?>
     <div id="forum-sidebar" class="<?= $class ?>">
-
         <div class="community-posts ">
             <div class="featured-box">
                 <div class="featured-box-heading">
@@ -1092,6 +1091,16 @@ function forum_sidebar()
                 </div>
             </div>
         </div>
+        <?php if ($title == 'Posted Topics' && !$topics) { ?>
+            <div class="forum-cta">
+                <h3>Not topic posted yet</h3>
+                <div class="mt-4 text-center button-box button-box-v2 button-accent">
+                    <a href="/forums">
+                        Visit Forums
+                    </a>
+                </div>
+            </div>
+        <?php } ?>
     </div>
 
 <?php
@@ -1212,7 +1221,6 @@ function get_related_topics($limit = 5)
 
 function get_user_topics($user_id, $limit = 5)
 {
-    $_bbp_forum_id = get_post_meta(get_the_ID(), '_bbp_forum_id', true);
     $topics = get_posts(array(
         'post_type' => 'topic',
         'posts_per_page' => $limit,
@@ -1220,7 +1228,7 @@ function get_user_topics($user_id, $limit = 5)
         'fields' => 'ids',
         'orderby' => 'rand',
         'author' => $user_id,
-    
+
     ));
     $topics_arr = array();
     foreach ($topics as $topic) {
