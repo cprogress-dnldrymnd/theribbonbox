@@ -127,7 +127,7 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
             <main class="main-content-outer" id="main">
 
                 <?php
-                if (bp_is_my_profile()) {
+                if (bp_is_member()) {
                     $class = 'forum-single-topic';
                     $title = 'Test';
                     echo 'test';
