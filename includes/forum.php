@@ -1219,7 +1219,7 @@ function get_user_topics($user_id, $limit = 5)
         'post_status' => 'any',
         'fields' => 'ids',
         'orderby' => 'rand',
-        'post_author' => $user_id,
+        'author' => $user_id,
     
     ));
     $topics_arr = array();
