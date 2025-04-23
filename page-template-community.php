@@ -30,7 +30,7 @@
         <?= do_shortcode('[forum_slider]') ?>
     </div>
 </section>
-<section class="exclusive-articles bg-white lg-padding-bottom text-center">
+<section class="exclusive-articles bg-white lg-padding-bottomlg-padding-top text-center">
         <div class="container">
             <a href="<?= get_the_permalink(39546) ?>" class="d-block box-style-1 position-relative rounded overflow-hidden">
                 <div class="bg-image">
