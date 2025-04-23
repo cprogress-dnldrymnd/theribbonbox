@@ -361,23 +361,7 @@ function blog_box($atts)
         'field'     => 'Name',
         'user_id'   => $author
     ));
-    $topic_id = $id;// Get the current topic ID within the loop, or specify a topic ID.
 
-    if ( bbp_is_topic( $topic_id ) ) {
-        $forum_id = bbp_get_topic_forum_id( $topic_id );
-    
-        if ( ! empty( $forum_id ) ) {
-            $forum_title = bbp_get_forum_title( $forum_id );
-            $forum_permalink = bbp_get_forum_permalink( $forum_id );
-    
-            echo 'This topic belongs to the forum: <a href="' . esc_url( $forum_permalink ) . '">' . esc_html( $forum_title ) . '</a>';
-        } else {
-            echo 'This topic does not seem to belong to a valid forum.';
-        }
-    } else {
-        echo 'This is not a bbPress topic.';
-    }
-    
 ?>
     <div class="blogs-box d-flex post-box" post-id="<?= $id ?>">
         <?php if (get_the_post_thumbnail_url($id, 'large')) { ?>
@@ -414,6 +398,7 @@ function blog_box($atts)
                             <?= get_the_title($id) ?>
                         </h3>
                     </a>
+                    <?= get_topic_forum($id) ?>
                 </div>
             </div>
             <div class="bottom">
@@ -439,6 +424,18 @@ function blog_box($atts)
 }
 add_shortcode('blog_box', 'blog_box');
 
+function get_topic_forum($topic_id)
+{
+    if (bbp_is_topic($topic_id)) {
+        $forum_id = bbp_get_topic_forum_id($topic_id);
+
+        if (! empty($forum_id)) {
+            $forum_title = bbp_get_forum_title($forum_id);
+            $forum_permalink = bbp_get_forum_permalink($forum_id);
+            return '<a href="' . esc_url($forum_permalink) . '">' . esc_html($forum_title) . '</a>';
+        }
+    }
+}
 
 function action_bp_before_member_header_meta()
 {
