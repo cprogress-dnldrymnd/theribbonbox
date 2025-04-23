@@ -47,7 +47,10 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
                                         <a href="<?= get_the_permalink(39747) ?>">
                                             <span class="hide-mobile">LOGIN / CREATE AN ACCOUNT</span>
                                             <span class="mobile-only">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" viewBox="0 0 21 23" fill="none"> <path d="M10.3719 11.5C13.2752 11.5 15.6288 9.14633 15.6288 6.24299C15.6288 3.33965 13.2752 0.986023 10.3719 0.986023C7.46855 0.986023 5.11493 3.33965 5.11493 6.24299C5.11493 9.14633 7.46855 11.5 10.3719 11.5Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M0.699921 22.0139C1.29961 19.946 2.53771 18.1207 4.23723 16.7989C5.93673 15.4771 8.01063 14.7264 10.1625 14.6542C14.4942 14.6542 18.1846 17.7137 19.625 22.0139" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path> </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" viewBox="0 0 21 23" fill="none">
+                                                    <path d="M10.3719 11.5C13.2752 11.5 15.6288 9.14633 15.6288 6.24299C15.6288 3.33965 13.2752 0.986023 10.3719 0.986023C7.46855 0.986023 5.11493 3.33965 5.11493 6.24299C5.11493 9.14633 7.46855 11.5 10.3719 11.5Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    <path d="M0.699921 22.0139C1.29961 19.946 2.53771 18.1207 4.23723 16.7989C5.93673 15.4771 8.01063 14.7264 10.1625 14.6542C14.4942 14.6542 18.1846 17.7137 19.625 22.0139" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                </svg>
                                             </span>
                                         </a>
                                     </div>
@@ -72,13 +75,13 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
                             <img id="h-search-close" class="h-search-close" src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu-close.png">
                         </div>
                     </div>
-                    <?php if (!is_user_logged_in()) { 
+                    <?php if (!is_user_logged_in()) {
                     ?>
-                    <div class="button-box button-box-v2 button-accent button-mobile-login mobile-header-width mobile-only ">
-                        <a class="w-100" href="<?= get_the_permalink(39747) ?>">
-                            LOGIN / CREATE AN ACCOUNT
-                        </a>
-                    </div>
+                        <div class="button-box button-box-v2 button-accent button-mobile-login mobile-header-width mobile-only ">
+                            <a class="w-100" href="<?= get_the_permalink(39747) ?>">
+                                LOGIN / CREATE AN ACCOUNT
+                            </a>
+                        </div>
                     <?php } ?>
                     <div class="mobile-only pt-0 py-3 mobile-header-width px-3">
                         <?= do_shortcode('[community_nav]') ?>
@@ -86,17 +89,17 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
                     <div class="trending-this-week">
                         <div class="title mobile-only">
                             <div class="title-inner">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.3335 4.2503C9.97231 4.90655 9.53992 6.76768 9.69231 7.94998C8.008 6.01903 8.07692 3.7988 8.07692 0.599976C2.67508 2.58605 3.93131 8.31118 3.76923 10.05C2.41069 8.96585 2.15385 6.37498 2.15385 6.37498C0.719385 7.09475 0 9.01625 0 10.575C0 14.3445 3.13385 17.4 7 17.4C10.8662 17.4 14 14.3445 14 10.575C14 8.3348 12.313 7.3016 12.3335 4.2503Z" fill="#F77D67" />
-                            </svg>
-                            Trending This Week
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="18" viewBox="0 0 14 18" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.3335 4.2503C9.97231 4.90655 9.53992 6.76768 9.69231 7.94998C8.008 6.01903 8.07692 3.7988 8.07692 0.599976C2.67508 2.58605 3.93131 8.31118 3.76923 10.05C2.41069 8.96585 2.15385 6.37498 2.15385 6.37498C0.719385 7.09475 0 9.01625 0 10.575C0 14.3445 3.13385 17.4 7 17.4C10.8662 17.4 14 14.3445 14 10.575C14 8.3348 12.313 7.3016 12.3335 4.2503Z" fill="#F77D67" />
+                                </svg>
+                                Trending This Week
                             </div>
                             <div class="bordered-bottom mobile-only"></div>
                         </div>
                         <?php wp_nav_menu(array('theme_location' => 'community-menu')); ?>
                     </div>
                     <footer class="mobile-header-width community-social-header mobile-only">
-                         FOLLOW US
+                        FOLLOW US
                         <?php echo do_shortcode("[get_socials]"); ?>
                     </footer>
                 </nav>
@@ -122,3 +125,13 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
                 <script src='<?php echo (get_template_directory_uri()) ?>/js/header.js'></script>
             </header>
             <main class="main-content-outer" id="main">
+
+                <?php
+                if (bp_is_user_profile()) {
+                    $class = 'forum-single-topic';
+                    $title = 'Test';
+                    echo 'test';
+                } else {
+                    echo 'test2';
+                }
+                ?>
