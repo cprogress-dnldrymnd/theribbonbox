@@ -22,6 +22,12 @@
                     LOGIN / CREATE AN ACCOUNT
                 </a>
             </div>
+        <?php } else { ?>
+            <div class="button-box button-box-v2 button-accent mb-3 mt-3">
+                <a href="/forums">
+                    Write Post
+                </a>
+            </div>
         <?php } ?>
     </div>
 </section>
@@ -31,22 +37,22 @@
     </div>
 </section>
 <section class="exclusive-articles bg-white lg-padding-bottom lg-padding-top text-center">
-        <div class="container">
-            <a href="<?= get_the_permalink(39546) ?>" class="d-block box-style-1 position-relative rounded overflow-hidden">
-                <div class="bg-image">
-                    <?= wp_get_attachment_image(get_field('latest_conversation_background', 39318), 'large') ?>
+    <div class="container">
+        <a href="<?= get_the_permalink(39546) ?>" class="d-block box-style-1 position-relative rounded overflow-hidden">
+            <div class="bg-image">
+                <?= wp_get_attachment_image(get_field('latest_conversation_background', 39318), 'large') ?>
+            </div>
+            <div class="inner position-relative">
+                <div class="heading">
+                    <h2><?= get_field('latest_conversation_heading', 39318) ?></h2>
                 </div>
-                <div class="inner position-relative">
-                    <div class="heading">
-                        <h2><?= get_field('latest_conversation_heading', 39318) ?></h2>
-                    </div>
-                    <div class="subheading" style="text-decoration: underline">
-                        <?= get_field('latest_conversation_button_text', 39318) ?>
-                    </div>
+                <div class="subheading" style="text-decoration: underline">
+                    <?= get_field('latest_conversation_button_text', 39318) ?>
                 </div>
-            </a>
-        </div>
-    </section>
+            </div>
+        </a>
+    </div>
+</section>
 <?= do_shortcode('[forum_guidelines id="forum_guidelines_home"]') ?>
 <section class="featured-topics-section lg-padding">
     <div class="container">
