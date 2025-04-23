@@ -902,7 +902,7 @@ function forum_bottom_sections()
     <section class="forum-giveaways lg-padding bg-white">
         <?= do_shortcode('[_giveaway_list]') ?>
     </section>
-    <section class="exclusive-articles bg-white lg-padding-bottom lg-padding-top text-center">
+    <section class="exclusive-articles bg-white lg-padding-bottom  text-center">
         <div class="container">
             <a href="<?= get_the_permalink(39546) ?>" class="d-block box-style-1 position-relative rounded overflow-hidden">
                 <div class="bg-image">
