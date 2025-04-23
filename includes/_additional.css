@@ -2472,7 +2472,6 @@ button.accordion-button.accordion-button{
 button.accordion-button.accordion-button:hover, button.accordion-button.accordion-button:active, button.accordion-button.accordion-button:focus{
 	background-color: transparent;
 	color: var(--accent-color) !important;
- 
 }
 button.accordion-button.accordion-button:after{
 	width: 20px;
