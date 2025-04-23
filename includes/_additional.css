@@ -2455,6 +2455,10 @@ section.forum-guidelines .inner ul li strong {
 .forum-latest {
 	background-color: var(--colour-breeze);
 }
+.topic--forum {
+	display: inline-block;
+	margin-bottom: 20px;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
