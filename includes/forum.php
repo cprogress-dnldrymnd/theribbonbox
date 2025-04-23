@@ -363,23 +363,25 @@ function blog_box($atts)
     ));
 ?>
     <div class="blogs-box d-flex post-box" post-id="<?= $id ?>">
-        <div class="image-box">
-            <div class="category-holder">
-                <div class="row">
-                    <?php foreach ($terms as $term) { ?>
-                        <?php
-                        if (in_array($term->term_id, $include_terms)) {
-                            $category_colour = get_field('blog_cat_community_bg_color', $term);
-                        ?>
-                            <div class="col-auto <?= $term->slug ?>" style="--color: <?= $category_colour ?>"> <span><?= $term->name ?></span> </div>
+        <?php if (get_the_post_thumbnail_url($id, 'large')) { ?>
+            <div class="image-box">
+                <div class="category-holder">
+                    <div class="row">
+                        <?php foreach ($terms as $term) { ?>
+                            <?php
+                            if (in_array($term->term_id, $include_terms)) {
+                                $category_colour = get_field('blog_cat_community_bg_color', $term);
+                            ?>
+                                <div class="col-auto <?= $term->slug ?>" style="--color: <?= $category_colour ?>"> <span><?= $term->name ?></span> </div>
+                            <?php } ?>
                         <?php } ?>
-                    <?php } ?>
+                    </div>
                 </div>
+                <a href="<?= get_permalink($id) ?>">
+                    <img src="<?= get_the_post_thumbnail_url($id, 'large') ?>" alt="">
+                </a>
             </div>
-            <a href="<?= get_permalink($id) ?>">
-                <img src="<?= get_the_post_thumbnail_url($id, 'large') ?>" alt="">
-            </a>
-        </div>
+        <?php } ?>
         <div class="blog-content d-flex">
             <div class="top">
                 <div class="date-box d-flex align-items-center">
@@ -872,7 +874,7 @@ function forum_bottom_sections()
     ob_start();
 ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <!--
+    <!--
     <section class="cta lg-padding bg-black text-center">
         <div class="container">
             <h2 class="mb-4"><i>Looking for expert advice?</i></h2>
@@ -886,7 +888,7 @@ function forum_bottom_sections()
     <section class="forum-giveaways lg-padding bg-white">
         <?= do_shortcode('[_giveaway_list]') ?>
     </section>
-   
+
     <!--
     <section class="events-section lg-padding" style="display: none">
         <div class="container text-center">
