@@ -2466,8 +2466,8 @@ button.accordion-button.accordion-button{
 	border-radius: 0;
 }
 button.accordion-button.accordion-button:hover, button.accordion-button.accordion-button:active, button.accordion-button.accordion-button:focus{
-	background-color: var(--accent-color);
-    color: #fff !important;
+	background-color: transparent;
+	color: var(--accent-color) !important;
  
 }
 .accordion-item.accordion-item.accordion-item {
