@@ -2491,6 +2491,9 @@ button.accordion-button.accordion-button:after{
 .guidelines-holder:not(.active) p {
 	display: none;
 }
+.guidelines-holder p {
+	margin-top: 20px;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
