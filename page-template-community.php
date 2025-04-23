@@ -25,7 +25,7 @@
         <?php } else { ?>
             <div class="button-box button-box-v2 button-accent mb-3 mt-3">
                 <a href="/forums">
-                    Write Post
+                    Write Topic
                 </a>
             </div>
         <?php } ?>
