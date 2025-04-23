@@ -10,6 +10,7 @@ jQuery(document).ready(function ($) {
 function guidelines() {
     jQuery('#guidelines-readmore').click(function (e) {
         jQuery('.guidelines-holder').addClass('active');
+        jQuery(this).hide();
         e.preventDefault();
     });
 }
