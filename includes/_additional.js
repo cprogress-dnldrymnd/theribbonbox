@@ -6,6 +6,12 @@ jQuery(document).ready(function ($) {
     header_sticky();
 });
 
+function guidelines() {
+    jQuery('#guidelines-readmore').click(function (e) {
+        jQuery('.guidelines-holder').addClass('active');
+        e.preventDefault();
+    });
+}
 function header_sticky() {
     if (window.innerWidth > 999) {
         var lastScrollTop = 0;

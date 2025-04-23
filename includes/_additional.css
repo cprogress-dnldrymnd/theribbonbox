@@ -2488,7 +2488,7 @@ button.accordion-button.accordion-button:after{
 .forum-cta {
 	padding: 20px;
 }
-.guidelines-holder p {
+.guidelines-holder:not(.active) p {
 	display: none;
 }
 /*responsive*/
