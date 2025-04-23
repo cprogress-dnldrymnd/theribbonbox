@@ -902,7 +902,23 @@ function forum_bottom_sections()
     <section class="forum-giveaways lg-padding bg-white">
         <?= do_shortcode('[_giveaway_list]') ?>
     </section>
-
+    <section class="exclusive-articles bg-white lg-padding-bottom lg-padding-top text-center">
+        <div class="container">
+            <a href="<?= get_the_permalink(39546) ?>" class="d-block box-style-1 position-relative rounded overflow-hidden">
+                <div class="bg-image">
+                    <?= wp_get_attachment_image(get_field('latest_conversation_background', 39318), 'large') ?>
+                </div>
+                <div class="inner position-relative">
+                    <div class="heading">
+                        <h2><?= get_field('latest_conversation_heading', 39318) ?></h2>
+                    </div>
+                    <div class="subheading" style="text-decoration: underline">
+                        <?= get_field('latest_conversation_button_text', 39318) ?>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
     <!--
     <section class="events-section lg-padding" style="display: none">
         <div class="container text-center">
