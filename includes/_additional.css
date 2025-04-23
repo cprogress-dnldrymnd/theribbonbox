@@ -2485,6 +2485,9 @@ button.accordion-button.accordion-button:after{
 .bp-user #forum-sidebar{
 	margin-top: 0 !important;
 }
+.forum-cta {
+	padding: 20px;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';

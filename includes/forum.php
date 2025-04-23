@@ -1094,7 +1094,7 @@ function forum_sidebar()
         <?php if ($title == 'Posted Topics' && !$topics) { ?>
             <div class="forum-cta">
                 <h3>Not topic posted yet</h3>
-                <div class="mt-4 text-center button-box button-box-v2 button-accent">
+                <div class="mt-4 button-box button-box-v2 button-accent">
                     <a href="/forums">
                         Visit Forums
                     </a>
