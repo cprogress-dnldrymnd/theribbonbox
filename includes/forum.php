@@ -361,7 +361,7 @@ function blog_box($atts)
         'field'     => 'Name',
         'user_id'   => $author
     ));
-    $topic_id = get_the_ID(); // Get the current topic ID within the loop, or specify a topic ID.
+    $topic_id = $id;// Get the current topic ID within the loop, or specify a topic ID.
 
     if ( bbp_is_topic( $topic_id ) ) {
         $forum_id = bbp_get_topic_forum_id( $topic_id );
