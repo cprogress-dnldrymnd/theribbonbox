@@ -317,6 +317,30 @@ function blogs()
 }
 add_shortcode('blogs', 'blogs');
 
+function latest_topics()
+{
+    ob_start();
+    $posts = get_posts(array(
+        'post_type' => 'topics',
+        'numberposts' => 4,
+        'post_status' => array('publish')
+    ));
+
+?>
+    <div class="blogs-holder">
+        <div class="row g-4 ">
+            <?php foreach ($posts as $post) { ?>
+                <div class="col-lg-4">
+                    <?= do_shortcode('[blog_box id=' . $post->ID . ' author=' . $post->post_author . ']') ?>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+<?php
+    return ob_get_clean();
+}
+add_shortcode('latest_topics', 'latest_topics');
+
 
 function blog_box($atts)
 {
