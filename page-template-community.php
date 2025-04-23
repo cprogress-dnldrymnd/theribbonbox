@@ -31,6 +31,11 @@
         <?php } ?>
     </div>
 </section>
+<section class="forum-latest">
+    <div class="container">
+        <h2 class="text-heading mb-4">Latest Topics & Discussions</h2>
+    </div>
+</section>
 <section class="forum-slider bg-purple lg-padding">
     <div class="container">
         <?= do_shortcode('[forum_slider]') ?>
