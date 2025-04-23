@@ -2471,7 +2471,6 @@ button.accordion-button.accordion-button{
 }
 button.accordion-button.accordion-button:hover, button.accordion-button.accordion-button:active, button.accordion-button.accordion-button:focus{
 	background-color: transparent;
-	color: var(--accent-color) !important;
 }
 button.accordion-button.accordion-button:after{
 	width: 20px;
@@ -2480,6 +2479,7 @@ button.accordion-button.accordion-button:after{
 }
 .accordion-item.accordion-item.accordion-item {
 	border: none;
+	border-bottom: 1px solid lightgray;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
