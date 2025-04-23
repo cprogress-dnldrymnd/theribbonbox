@@ -2499,7 +2499,7 @@ button.accordion-button.accordion-button:after {
 	margin-top: 20px;
 }
 
-.guidelines-holder.active + .button-box {
+.guidelines-holder.active + .button-link {
 	display: none;
 }
 .button-link a {
