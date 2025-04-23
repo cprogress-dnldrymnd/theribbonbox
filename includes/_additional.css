@@ -2452,6 +2452,9 @@ section.forum-guidelines .inner ul li strong {
 	margin: 0 !important;
 	padding: 20px 34px !important;
 }
+.forum-latest {
+	background-color: var(--colour-breeze);
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
