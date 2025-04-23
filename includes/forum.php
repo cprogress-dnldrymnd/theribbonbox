@@ -1210,7 +1210,7 @@ function get_related_topics($limit = 5)
     return $topics_arr;
 }
 
-function get_user_topics($user_id, $limit=5)
+function get_user_topics($user_id, $limit = 5)
 {
     $_bbp_forum_id = get_post_meta(get_the_ID(), '_bbp_forum_id', true);
     $topics = get_posts(array(
@@ -1219,6 +1219,7 @@ function get_user_topics($user_id, $limit=5)
         'post_status' => 'any',
         'fields' => 'ids',
         'orderby' => 'rand',
+        'post_author' => $user_id,
         'meta_query' => array(
             array(
                 'key' => '_bbp_forum_id',
