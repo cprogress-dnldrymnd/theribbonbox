@@ -31,7 +31,7 @@
         <?php } ?>
     </div>
 </section>
-<section class="forum-latest">
+<section class="forum-latest lg-padding">
     <div class="container">
         <h2 class="text-heading mb-4">Latest Topics & Discussions</h2>
     </div>
