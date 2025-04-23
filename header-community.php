@@ -125,14 +125,3 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
                 <script src='<?php echo (get_template_directory_uri()) ?>/js/header.js'></script>
             </header>
             <main class="main-content-outer" id="main">
-
-                <?php
-                if (bp_is_user()) {
-                    $class = 'forum-single-topic';
-                    $title = 'Test';
-                    echo 'test';
-                } else {
-                    echo 'test2';
-                }
-                echo bp_displayed_user_id();
-                ?>
