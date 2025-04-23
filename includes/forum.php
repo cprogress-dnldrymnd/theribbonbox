@@ -1220,13 +1220,7 @@ function get_user_topics($user_id, $limit = 5)
         'fields' => 'ids',
         'orderby' => 'rand',
         'post_author' => $user_id,
-        'meta_query' => array(
-            array(
-                'key' => '_bbp_forum_id',
-                'value' => $_bbp_forum_id,
-                'compare' => '='
-            ),
-        ),
+    
     ));
     $topics_arr = array();
     foreach ($topics as $topic) {
