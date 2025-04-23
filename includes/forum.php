@@ -432,7 +432,7 @@ function get_topic_forum($topic_id)
         if (! empty($forum_id)) {
             $forum_title = bbp_get_forum_title($forum_id);
             $forum_permalink = bbp_get_forum_permalink($forum_id);
-            return '<a href="' . esc_url($forum_permalink) . '">' . esc_html($forum_title) . '</a>';
+            return '<a class="topic--forum" href="' . esc_url($forum_permalink) . '">' . esc_html($forum_title) . '</a>';
         }
     }
 }
