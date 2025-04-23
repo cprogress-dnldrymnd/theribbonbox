@@ -2461,7 +2461,7 @@ section.forum-guidelines .inner ul li strong {
 }
 button.accordion-button.accordion-button{
 	color: #000 !important;
-	padding: 10px;
+	padding: 0;
     height: auto;
 	border-radius: 0;
 }
@@ -2469,6 +2469,9 @@ button.accordion-button.accordion-button:hover, button.accordion-button.accordio
 	background-color: var(--accent-color);
     color: #fff !important;
  
+}
+.accordion-item.accordion-item.accordion-item {
+	border: none;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
