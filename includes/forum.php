@@ -1055,7 +1055,7 @@ function forum_sidebar()
     } else if (bp_is_user()) {
         $class = 'forum-single-topic';
         $title = 'Posted Topics';
-        $topics = get_user_topics();
+        $topics = get_user_topics(bp_displayed_user_id());
     } else {
         $class = 'forum-single-topic';
         $title = 'Related Topics';
