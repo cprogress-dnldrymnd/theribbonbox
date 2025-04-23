@@ -2493,7 +2493,7 @@ button.accordion-button.accordion-button:after {
 	padding: 20px;
 }
 .guidelines-holder:not(.active) { 
-	display: none;
+	display: none !important;
 }
 .guidelines-holder p {
 	margin-top: 20px;
