@@ -321,7 +321,7 @@ function latest_topics()
 {
     ob_start();
     $posts = get_posts(array(
-        'post_type' => 'topics',
+        'post_type' => 'topic',
         'numberposts' => 4,
         'post_status' => array('publish')
     ));
