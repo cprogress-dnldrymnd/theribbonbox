@@ -134,4 +134,5 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
                 } else {
                     echo 'test2';
                 }
+                echo bp_displayed_user_id();
                 ?>

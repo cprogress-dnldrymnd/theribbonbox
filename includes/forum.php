@@ -1054,7 +1054,8 @@ function forum_sidebar()
         }
     } else if (bp_is_user()) {
         $class = 'forum-single-topic';
-        $title = 'Test';
+        $title = 'Posted Topics';
+        $topics = get_user_topics();
     } else {
         $class = 'forum-single-topic';
         $title = 'Related Topics';
@@ -1185,6 +1186,31 @@ function get_popular_topics($forum_id = false, $limit = 5)
 
 
 function get_related_topics($limit = 5)
+{
+    $_bbp_forum_id = get_post_meta(get_the_ID(), '_bbp_forum_id', true);
+    $topics = get_posts(array(
+        'post_type' => 'topic',
+        'posts_per_page' => $limit,
+        'post_status' => 'any',
+        'fields' => 'ids',
+        'orderby' => 'rand',
+        'meta_query' => array(
+            array(
+                'key' => '_bbp_forum_id',
+                'value' => $_bbp_forum_id,
+                'compare' => '='
+            ),
+        ),
+    ));
+    $topics_arr = array();
+    foreach ($topics as $topic) {
+        $topics_arr[] = $topic;
+    }
+
+    return $topics_arr;
+}
+
+function get_user_topics($user_id, $limit=5)
 {
     $_bbp_forum_id = get_post_meta(get_the_ID(), '_bbp_forum_id', true);
     $topics = get_posts(array(
