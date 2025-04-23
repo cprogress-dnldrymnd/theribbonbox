@@ -2464,11 +2464,20 @@ button.accordion-button.accordion-button{
 	padding: 0;
     height: auto;
 	border-radius: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
 }
 button.accordion-button.accordion-button:hover, button.accordion-button.accordion-button:active, button.accordion-button.accordion-button:focus{
 	background-color: transparent;
 	color: var(--accent-color) !important;
  
+}
+button.accordion-button.accordion-button:after{
+	width: 20px;
+    height: 20px;
+    display: inline-block;
 }
 .accordion-item.accordion-item.accordion-item {
 	border: none;
