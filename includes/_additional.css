@@ -1607,7 +1607,8 @@ p.comment-form-comment {
 		Work Sans,
 		sans-serif;
 }
-.bbp-forum-title.bbp-forum-title, .bbp-forum-title.bbp-forum-title a,
+.bbp-forum-title.bbp-forum-title,
+.bbp-forum-title.bbp-forum-title a,
 a.bbp-topic-permalink {
 	font-size: 20px;
 	text-decoration: none;
@@ -2441,8 +2442,9 @@ section.forum-guidelines .inner ul li strong {
 	content: "Reply to a post";
 }
 
-#bbp-search-results .bbp-forum-header, #bbp-search-results .bbp-topic-header {
-    background-color: #fff !important;
+#bbp-search-results .bbp-forum-header,
+#bbp-search-results .bbp-topic-header {
+	background-color: #fff !important;
 	padding: 20px 40px;
 }
 #bbp-search-results .bbp-forum-header {
@@ -2459,30 +2461,32 @@ section.forum-guidelines .inner ul li strong {
 	display: inline-block;
 	margin-bottom: 20px;
 }
-button.accordion-button.accordion-button{
+button.accordion-button.accordion-button {
 	color: #000 !important;
 	padding: 0;
-    height: auto;
+	height: auto;
 	border-radius: 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 20px;
 }
-button.accordion-button.accordion-button:hover, button.accordion-button.accordion-button:active, button.accordion-button.accordion-button:focus{
+button.accordion-button.accordion-button:hover,
+button.accordion-button.accordion-button:active,
+button.accordion-button.accordion-button:focus {
 	background-color: transparent;
 }
-button.accordion-button.accordion-button:after{
+button.accordion-button.accordion-button:after {
 	width: 20px;
-    height: 20px;
-    display: inline-block;
+	height: 20px;
+	display: inline-block;
 }
 .accordion-item.accordion-item.accordion-item {
 	border: none;
 	border-bottom: 1px solid lightgray;
 	border-radius: 0;
 }
-.bp-user #forum-sidebar{
+.bp-user #forum-sidebar {
 	margin-top: 0 !important;
 }
 .forum-cta {
@@ -2493,6 +2497,10 @@ button.accordion-button.accordion-button:after{
 }
 .guidelines-holder p {
 	margin-top: 20px;
+}
+.guidelines-holder li:before {
+	content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-plus-circle' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16'/%3E%3Cpath d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4'/%3E%3C/svg%3E");
+	position: absolute;
 }
 .guidelines-holder.active + .button-box {
 	display: none;
@@ -2512,7 +2520,7 @@ button.accordion-button.accordion-button:after{
 	header#header-community .menu-item-has-children .sub-menu:before {
 		content: "";
 		position: absolute;
-		left: 50%;z
+		left: 50%;
 		top: 0;
 		bottom: 0;
 		background-color: var(--accent-color);
@@ -2810,7 +2818,8 @@ button.accordion-button.accordion-button:after{
 	#bbpress-forums li.bbp-body ul.topic {
 		padding: 20px;
 	}
-	.bbp-forum-title.bbp-forum-title, .bbp-forum-title.bbp-forum-title a,
+	.bbp-forum-title.bbp-forum-title,
+	.bbp-forum-title.bbp-forum-title a,
 	a.bbp-topic-permalink {
 		font-size: 15px;
 	}
