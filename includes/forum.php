@@ -362,9 +362,6 @@ function blog_box($atts)
         'user_id'   => $author
     ));
 
-    echo '<pre>';
-    var_dump(get_post_meta(get_the_ID()));
-    echo '</pre>';
 ?>
     <div class="blogs-box d-flex post-box" post-id="<?= $id ?>">
         <?php if (get_the_post_thumbnail_url($id, 'large')) { ?>
