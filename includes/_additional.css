@@ -2488,6 +2488,9 @@ button.accordion-button.accordion-button:after{
 .forum-cta {
 	padding: 20px;
 }
+.guidelines-holder p {
+	display: none;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
