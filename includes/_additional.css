@@ -2459,8 +2459,8 @@ section.forum-guidelines .inner ul li strong {
 	display: inline-block;
 	margin-bottom: 20px;
 }
-.accordion .accordion-button.accordion-button{
-
+button.accordion-button.accordion-button{
+	color: #000 !important;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
