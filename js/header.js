@@ -65,6 +65,7 @@ $("nav div ul li a").mouseover(function (e) {
     }
     // console.log('menuItemId:' + menuItemId);
     console.log(hasparent_post);
+    console.log(menuItemId);
 
     const submenu = $(currentElement).parents().children(".sub-menu");
     const hasCusPosts = $(this).attr("cus_post");
