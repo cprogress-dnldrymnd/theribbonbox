@@ -103,7 +103,6 @@ function trb_av_menu_link_attributes($atts, $item, $args)
         || ($title == 'Match With an Expert')
     ) {
         $atts['post_type'] = "expert_profiles";
-        $atts['cus_post'] = "1";
     }  else {
         $atts['post_type'] = "post";
     }
