@@ -54,12 +54,16 @@ $("nav div ul li a").mouseover(function (e) {
     //console.log('categoryId:', categoryId);
     const postTypes = $(this).attr("post_type");
     // console.log('postTypes', postTypes);
+
+
+    const hasparent_post = $(this).attr("parent_post");
+
     const menuItemId = $(this).parent().attr("id");
     // console.log('menuItemId:' + menuItemId);
+    console.log(menuItemId);
 
     const submenu = $(currentElement).parents().children(".sub-menu");
     const hasCusPosts = $(this).attr("cus_post");
-    const hasparent_post = $(this).attr("parent_post");
 
 
 
@@ -110,13 +114,12 @@ $("nav div ul li a").mouseover(function (e) {
         //     }
         //     //console.log('entry:', entry);
         // });
-        console.log(menuItemId);
         const entry = recentPostsJson.find((post) => {
             return (post.id === parseInt(categoryId) && !hasCusPosts)
                 || ('menu-item-' + post.menuItemId === menuItemId)
         })
-        console.log('entry.id:', entry.id)
-        console.log('entry.html:', entry.html.substring(0, 100))
+        //console.log('entry.id:', entry.id)
+        //console.log('entry.html:', entry.html.substring(0, 100))
 
         const hasRecentPostsWrapper = (submenu.children('.menu-posts').length > 0);
         if (hasRecentPostsWrapper) {
