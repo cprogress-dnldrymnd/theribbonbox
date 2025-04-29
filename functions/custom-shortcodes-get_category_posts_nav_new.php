@@ -99,7 +99,7 @@ function get_category_posts_nav_new_function()
     $html .= '<div class="menu-cta-content">';
     $html .= '<h3>Become part of the Community</h3>';
     $html .= '<div class="button-box button-accent button-small text-end button-box-v2 ">
-            <a href="/e-guides">JOIN TODAY</a>
+            <a href="/community">JOIN TODAY</a>
         </div>';
     $html .= '</div>';
     $html .= '</div>';
