@@ -56,7 +56,7 @@ $('.level-0').each(function (index, element) {
     }
 
 });
-$('.menu-item-has-children .level-1').each(function (index, element) {
+$('.menu-item-has-children.level-1').each(function (index, element) {
     $parent_width = jQuery(this).parent().outerWidth();
     jQuery(this).parent().css('--parent-width', $parent_width);
 
