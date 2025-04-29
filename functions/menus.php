@@ -29,6 +29,14 @@ function trb_register_nav_menus()
     ));
 }
 
+function trb_add_first_level_menu_class( $classes, $item, $args, $depth ) {
+    if ( 0 === $depth ) {
+        $classes[] = 'first-level'; // Add your custom class here
+    }
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'trb_add_first_level_menu_class', 10, 4 );
+
 
 add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 4);
 /*
