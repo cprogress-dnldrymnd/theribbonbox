@@ -105,13 +105,7 @@ function trb_av_menu_link_attributes($atts, $item, $args)
     ) {
         $atts['post_type'] = "expert_profiles";
         $atts['cus_post'] = "1";
-    }  else if ($title == 'Discounts') {
-        $atts['post_type'] = "offer-items/giveaway-items/events";
-        $atts['cus_post'] = "1";
-    } else if ($title == 'Events') {
-        $atts['post_type'] = "offer-items/giveaway-items/events";
-        $atts['cus_post'] = "1";
-    } else {
+    }  else {
         $atts['post_type'] = "post";
     }
 
