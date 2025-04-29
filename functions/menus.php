@@ -104,6 +104,7 @@ function trb_av_menu_link_attributes($atts, $item, $args, $depth)
 
         if ($depth == 2) {
             $object_id = get_top_level_menu_id($parent_menu_item_id);
+        }
         $atts['pageId'] = $object_id;
     }
 
