@@ -67,7 +67,6 @@ function trb_av_menu_link_attributes($atts, $item, $args)
 
     $category_id = $categories[0]->term_id;
     $atts['categoryId'] = $category_id;
-    $atts['xxxxx'] = 'dsdsds';
 
 
     if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
@@ -101,7 +100,7 @@ function trb_av_menu_link_attributes($atts, $item, $args)
         || ($title == 'Fertility' && $id == '22814')
         || ($title == 'Pregnancy' && $id == '22816')
         || ($title == 'Parenting' && $id == '22818')
-        || ($title == 'Match With an Expert')
+        || ($title == 'Match With An Expert')
     ) {
         $atts['post_type'] = "expert_profiles";
         if ($title == 'Experts') {
