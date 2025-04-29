@@ -45,8 +45,8 @@ $("#h-search-close1").click(function (e) {
 var loadingMenu = false;
 
 $('.first-level').each(function (index, element) {
-    pageid = jQuery(this).attr('pageid');
-    categoryid = jQuery(this).attr('categoryid');
+    pageid = jQuery(this).find('a[level="first"]').attr('pageid');
+    categoryid = jQuery(this).find('a[level="first"]').attr('categoryid');
 
     if(pageid) {
         jQuery(this).find('a[level="not-first"]').attr('pageid', pageid);
