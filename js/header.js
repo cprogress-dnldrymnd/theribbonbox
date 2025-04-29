@@ -56,14 +56,12 @@ $("nav div ul li a").mouseover(function (e) {
     // console.log('postTypes', postTypes);
 
 
-    const hasparent_post = $(this).attr("parent_post");
     if ($(this).attr("level") == 'not-first') {
         var menuItemId = $(this).parent().parents('.first-level').attr("id");
     } else {
         var menuItemId = $(this).parent().attr("id");
     }
     // console.log('menuItemId:' + menuItemId);
-    console.log(hasparent_post);
     console.log(menuItemId);
 
     const submenu = $(currentElement).parents().children(".sub-menu");
