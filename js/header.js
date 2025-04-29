@@ -45,7 +45,6 @@ $("#h-search-close1").click(function (e) {
 var loadingMenu = false;
 
 
-
 $("nav div ul li a").mouseover(function (e) {
     e.preventDefault();
     const currentElement = this;
@@ -60,7 +59,7 @@ $("nav div ul li a").mouseover(function (e) {
     const hasparent_post = $(this).attr("parent_post");
     if ($(this).attr("level") == 'not-first') {
         c
-        var menuItemId = $(this).parents('[level="first"]').attr("id");
+        var menuItemId = $(this).parent().parents('.first-level').attr("id");
     } else {
         var menuItemId = $(this).parent().attr("id");
     }
