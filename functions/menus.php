@@ -46,30 +46,23 @@ add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 4);
 function trb_av_menu_link_attributes($atts, $item, $args, $depth)
 {
 
+    if (0 === $depth) {
+        $atts['level'] = 'first';
+        $object_id = $item->object_id;
+        $atts['pageId'] = $object_id;
+    } else {
+        $atts['level'] = 'not-first';
+        $parent_menu_item_id = $item->menu_item_parent;
+        $object_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
+        $atts['pageId'] = $object_id;
+    }
 
     $id = $item->object_id;
     $title = $item->title;
     //set_trb_message("$id: '$title'");
 
 
-
-    if (0 === $depth) {
-        // Add your desired attribute and value here
-        $atts['level'] = 'first';
-    } else if ($depth == 1) {
-        $atts['depth'] = $depth;
-    } else {
-        $atts['level'] = 'not-first';
-    }
-
-    if ($item->menu_item_parent == 0) {
-        $object_id = $item->object_id;
-        $atts['pageId'] = $object_id;
-    } else {
-        $parent_menu_item_id = $item->menu_item_parent;
-        $object_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
-        $atts['pageId'] = $object_id;
-    }
+   
 
     $cat_args = array(
         'orderby' => 'name',
