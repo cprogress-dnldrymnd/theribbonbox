@@ -34,7 +34,7 @@ add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 3);
 /*
  * Filters the HTML attributes applied to a menu item's anchor element.
  */
-function trb_av_menu_link_attributes($atts, $item, $args)
+function trb_av_menu_link_attributes($atts, $item, $args,  $depth)
 {
     $id = $item->object_id;
     $title = $item->title;
@@ -67,7 +67,7 @@ function trb_av_menu_link_attributes($atts, $item, $args)
 
     $category_id = $categories[0]->term_id;
     $atts['categoryId'] = $category_id;
-
+    $atts['data-level'] = $depth;
 
     if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
         $atts['post_type'] = "videos/podcasts";
