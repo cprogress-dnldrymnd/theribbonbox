@@ -59,6 +59,9 @@ $("nav div ul li a").mouseover(function(e){
 
     const submenu = $(currentElement).parents().children(".sub-menu");
     const hasCusPosts = $(this).attr("cus_post");
+    const hasparent_post = $(this).attr("parent_post");
+
+    
 
     // If the menu item has one of these attributes: categoryId, cus_post
     // In other words, if it's a category

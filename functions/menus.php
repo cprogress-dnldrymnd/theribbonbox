@@ -107,6 +107,7 @@ function trb_av_menu_link_attributes($atts, $item, $args)
         if ($title == 'Experts') {
             $atts['cus_post'] = "1";
         } else {
+            $atts['cus_post'] = "1";
             $atts['parent_post'] = "1";
         }
     } else {
