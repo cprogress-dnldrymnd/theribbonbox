@@ -103,7 +103,7 @@ function trb_av_menu_link_attributes($atts, $item, $args, $depth)
         $object_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
 
         if ($depth == 2) {
-            $object_id = get_top_level_menu_id($parent_menu_item_id);
+            $object_id = 1;
         }
         $atts['pageId'] = $object_id;
     }
