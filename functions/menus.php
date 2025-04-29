@@ -33,6 +33,9 @@ function trb_add_first_level_menu_class($classes, $item, $args, $depth)
 {
     if (0 === $depth) {
         $classes[] = 'first-level'; // Add your custom class here
+    } 
+    if (2 === $depth) {
+        $classes[] = 'third-level'; // Add your custom class here
     }
     return $classes;
 }
@@ -61,6 +64,8 @@ function trb_av_menu_link_attributes($atts, $item, $args, $depth)
         $object_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
         $atts['pageId'] = $object_id;
     }
+
+    
 
     $cat_args = array(
         'orderby' => 'name',
