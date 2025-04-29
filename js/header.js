@@ -55,13 +55,14 @@ $('.level-0').each(function (index, element) {
         jQuery(this).find('a[level="not-first"]').attr('categoryid', categoryid);
     }
 
-});
-$('.menu-item-has-children.level-1').each(function (index, element) {
-    $parent_width = jQuery(this).parent().outerWidth();
-    console.log('xxxx');
-    jQuery(this).parent().css('--parent-width', $parent_width + 'px');
+    $(this).mouseover(function (e) {
+        $parent_width = jQuery(this).find('.menu-item-has-children.level-1').parent().outerWidth();
+        console.log('xxxx');
+        jQuery(this).parent().css('--parent-width', $parent_width + 'px');
+    });
 
 });
+
 $("nav div ul li a").mouseover(function (e) {
     e.preventDefault();
     const currentElement = this;
