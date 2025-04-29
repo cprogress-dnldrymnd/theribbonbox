@@ -58,7 +58,8 @@ $('.level-0').each(function (index, element) {
 });
 $('.menu-item-has-children.level-1').each(function (index, element) {
     $parent_width = jQuery(this).parent().outerWidth();
-    jQuery(this).parent().css('--parent-width', $parent_width);
+    console.log('xxxx');
+    jQuery(this).parent().css('--parent-width', $parent_width + 'px');
 
 });
 $("nav div ul li a").mouseover(function (e) {
