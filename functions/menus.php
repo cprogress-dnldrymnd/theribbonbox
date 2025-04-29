@@ -31,12 +31,7 @@ function trb_register_nav_menus()
 
 function trb_add_first_level_menu_class($classes, $item, $args, $depth)
 {
-    if (0 === $depth) {
-        $classes[] = 'first-level'; // Add your custom class here
-    } 
-    if (2 === $depth) {
-        $classes[] = 'third-level'; // Add your custom class here
-    }
+    $classes[] = 'level-' . $depth; // Add your custom class here
     return $classes;
 }
 add_filter('nav_menu_css_class', 'trb_add_first_level_menu_class', 10, 4);
@@ -65,7 +60,7 @@ function trb_av_menu_link_attributes($atts, $item, $args, $depth)
         $atts['pageId'] = $object_id;
     }
 
-    
+
 
     $cat_args = array(
         'orderby' => 'name',
