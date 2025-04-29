@@ -57,9 +57,9 @@ $("nav div ul li a").mouseover(function (e) {
 
 
     const hasparent_post = $(this).attr("parent_post");
-    console.log($(this).parent().attr("data-level"));
-    if ($(this).parent().attr("data-level") == 'not-first') {
-        var menuItemId = $(this).parent().parents('[data-level="first"]').attr("id");
+    console.log($(this).parent().attr("level"));
+    if ($(this).parent().attr("level") == 'not-first') {
+        var menuItemId = $(this).parent().parents('[level="first"]').attr("id");
     } else {
         var menuItemId = $(this).parent().attr("id");
     }

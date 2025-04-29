@@ -39,9 +39,9 @@ function trb_av_menu_link_attributes($atts, $item, $args, $depth)
 
     if (0 === $depth) {
         // Add your desired attribute and value here
-        $atts['data-level'] = 'first';
+        $atts['level'] = 'first';
     } else {
-        $atts['data-level'] = 'not-first';
+        $atts['level'] = 'not-first';
     }
 
     $id = $item->object_id;
