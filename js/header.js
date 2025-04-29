@@ -110,7 +110,7 @@ $("nav div ul li a").mouseover(function(e){
         //     }
         //     //console.log('entry:', entry);
         // });
-
+console.log(post);
         const entry = recentPostsJson.find((post) => {
             return (post.id === parseInt(categoryId) && !hasCusPosts)
                 || ('menu-item-' + post.menuItemId === menuItemId)
