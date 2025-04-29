@@ -43,6 +43,48 @@ add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 4);
 /*
  * Filters the HTML attributes applied to a menu item's anchor element.
  */
+
+/**
+ * Gets the top-level menu item ID for a given menu item ID.
+ *
+ * @param int   $menu_item_id The ID of the menu item to start from.
+ * @param array $menu_items   (Optional) Array of menu items.  If not provided,
+ * it will be fetched using wp_get_nav_menu_items().
+ * @param int   $menu_id      (Optional) The ID of the menu. Required if $menu_items is not provided.
+ * @return int|false The ID of the top-level menu item, or false on failure.
+ */
+function get_top_level_menu_id($menu_item_id, $menu_items = array(), $menu_id = 0)
+{
+    if (empty($menu_items)) {
+        if (empty($menu_id)) {
+            return false; // Need either $menu_items or $menu_id
+        }
+        $menu_items = wp_get_nav_menu_items($menu_id);
+        if (empty($menu_items) || is_wp_error($menu_items)) {
+            return false; // Handle errors or empty menu
+        }
+    }
+
+    $current_id = $menu_item_id;
+
+    while ($current_id != 0) {
+        $found = false;
+        foreach ($menu_items as $menu_item) {
+            if ((int)$menu_item->ID === (int)$current_id) {
+                $current_id = (int)$menu_item->menu_item_parent;
+                $found = true;
+                if ($current_id == 0) {
+                    return (int)$menu_item->ID;
+                }
+                break; // Important: Exit the foreach loop
+            }
+        }
+        if (!$found) {
+            return false; // safety check in case item ID is not found
+        }
+    }
+    return false; // Should not reach here, but included for completeness
+}
 function trb_av_menu_link_attributes($atts, $item, $args, $depth)
 {
 
@@ -61,7 +103,7 @@ function trb_av_menu_link_attributes($atts, $item, $args, $depth)
         $object_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
 
         if ($depth == 2) {
-            $object_id = get_post_meta($object_id, '_menu_item_object_id', true);
+            $object_id = get_post_meta(get_top_level_menu_id($parent_menu_item_id), '_menu_item_object_id', true);
         }
         $atts['pageId'] = $object_id;
     }
