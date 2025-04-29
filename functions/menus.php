@@ -34,8 +34,28 @@ add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 3);
 /*
  * Filters the HTML attributes applied to a menu item's anchor element.
  */
-function trb_av_menu_link_attributes($atts, $item, $args,  $depth)
+function trb_av_menu_link_attributes($atts, $item, $args)
 {
+
+    $level = 0;
+    $parent_id = $item->menu_item_parent;
+    $menu_items = wp_get_nav_menu_items($item->menu_id); // Get all items in the current menu
+
+    while ($parent_id != 0) {
+        foreach ($menu_items as $menu_item) {
+            if ($menu_item->ID == $parent_id) {
+                $parent_id = $menu_item->menu_item_parent;
+                $level++;
+                break;
+            }
+        }
+        // Avoid infinite loops in case of data inconsistencies
+        if ($level > 100) {
+            break;
+        }
+    }
+    $atts['data-level-alt'] = $level;
+
     $id = $item->object_id;
     $title = $item->title;
     //set_trb_message("$id: '$title'");
