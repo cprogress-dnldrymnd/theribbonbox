@@ -44,7 +44,7 @@ $("#h-search-close1").click(function (e) {
 
 var loadingMenu = false;
 
-$('.level-1').each(function (index, element) {
+$('.level-0').each(function (index, element) {
     pageid = jQuery(this).find('a[level="first"]').attr('pageid');
     categoryid = jQuery(this).find('a[level="first"]').attr('categoryid');
 
@@ -68,7 +68,7 @@ $("nav div ul li a").mouseover(function (e) {
 
 
     if ($(this).attr("level") == 'not-first') {
-        var menuItemId = $(this).parent().parents('.level-1').attr("id");
+        var menuItemId = $(this).parent().parents('.level-0').attr("id");
     } else {
         var menuItemId = $(this).parent().attr("id");
     }
