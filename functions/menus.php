@@ -34,7 +34,7 @@ add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 3);
 /*
  * Filters the HTML attributes applied to a menu item's anchor element.
  */
-function trb_av_menu_link_attributes($atts, $item, $args, $depth)
+function trb_av_menu_link_attributes($atts, $item, $args)
 {
 
    
