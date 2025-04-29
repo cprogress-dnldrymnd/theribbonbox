@@ -44,7 +44,18 @@ $("#h-search-close1").click(function (e) {
 
 var loadingMenu = false;
 
+$('.first-level').each(function (index, element) {
+    pageid = jQuery(this).attr('pageid');
+    categoryid = jQuery(this).attr('categoryid');
 
+    if(pageid) {
+        jQuery(this).find('a[level="not-first"]').attr('pageid', pageid);
+    }
+    if(categoryid) {
+        jQuery(this).find('a[level="not-first"]').attr('categoryid', categoryid);
+    }
+
+});
 $("nav div ul li a").mouseover(function (e) {
     e.preventDefault();
     const currentElement = this;
