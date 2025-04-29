@@ -36,8 +36,6 @@ add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 3);
  */
 function trb_av_menu_link_attributes($atts, $item, $args)
 {
-
- 
     $id = $item->object_id;
     $title = $item->title;
     //set_trb_message("$id: '$title'");
@@ -69,6 +67,7 @@ function trb_av_menu_link_attributes($atts, $item, $args)
 
     $category_id = $categories[0]->term_id;
     $atts['categoryId'] = $category_id;
+
 
     if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
         $atts['post_type'] = "videos/podcasts";
