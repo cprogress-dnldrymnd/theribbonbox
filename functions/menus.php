@@ -37,11 +37,7 @@ add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 3);
 function trb_av_menu_link_attributes($atts, $item, $args, $depth)
 {
 
-    if ( 0 === $depth ) {
-        // Add your desired attribute and value here
-        $atts['data-level'] = 'first';
-        $atts['aria-label'] = 'First level link: ' . $item->title;
-    }
+   
 
     $id = $item->object_id;
     $title = $item->title;
