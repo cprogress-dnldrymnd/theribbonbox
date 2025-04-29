@@ -69,7 +69,6 @@ function trb_av_menu_link_attributes($atts, $item, $args)
 
     $category_id = $categories[0]->term_id;
     $atts['categoryId'] = $category_id;
-    $atts['data-level'] = $depth;
 
     if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
         $atts['post_type'] = "videos/podcasts";
