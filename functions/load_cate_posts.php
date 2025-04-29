@@ -3,7 +3,7 @@
 add_action( 'wp_ajax_load_cate_posts', 'load_cate_posts' );
 add_action( 'wp_ajax_nopriv_load_cate_posts', 'load_cate_posts' );
 function load_cate_posts() {
-    $categoryId  = $_POST['categoryId'];
+    $categoryId  = 1;
     $post_type  = $_POST['post_type'] ?? null;
 
     $return = "<h2>Trending This Week</h2>";
