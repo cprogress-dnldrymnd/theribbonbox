@@ -29,13 +29,14 @@ function trb_register_nav_menus()
     ));
 }
 
-function trb_add_first_level_menu_class( $classes, $item, $args, $depth ) {
-    if ( 0 === $depth ) {
+function trb_add_first_level_menu_class($classes, $item, $args, $depth)
+{
+    if (0 === $depth) {
         $classes[] = 'first-level'; // Add your custom class here
     }
     return $classes;
 }
-add_filter( 'nav_menu_css_class', 'trb_add_first_level_menu_class', 10, 4 );
+add_filter('nav_menu_css_class', 'trb_add_first_level_menu_class', 10, 4);
 
 
 add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 4);
@@ -45,16 +46,21 @@ add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 4);
 function trb_av_menu_link_attributes($atts, $item, $args, $depth)
 {
 
-    if (0 === $depth) {
-        // Add your desired attribute and value here
-        $atts['level'] = 'first';
-    } else {
-        $atts['level'] = 'not-first';
-    }
 
     $id = $item->object_id;
     $title = $item->title;
     //set_trb_message("$id: '$title'");
+
+
+
+    if (0 === $depth) {
+        // Add your desired attribute and value here
+        $atts['level'] = 'first';
+    } else if ($depth == 1) {
+        $atts['depth'] = $depth;
+    } else {
+        $atts['level'] = 'not-first';
+    }
 
     if ($item->menu_item_parent == 0) {
         $object_id = $item->object_id;
