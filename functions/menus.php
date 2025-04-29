@@ -96,18 +96,15 @@ function trb_av_menu_link_attributes($atts, $item, $args, $depth)
     if (0 === $depth) {
         $atts['level'] = 'first';
         $object_id = $item->object_id;
-        $atts['pageId'] = $object_id;
     } else {
         $atts['level'] = 'not-first';
         $parent_menu_item_id = $item->menu_item_parent;
         $object_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
-
         if ($depth == 2) {
-            $object_id = 1;
+            $object_id = get_top_level_menu_id($parent_menu_item_id);
         }
-        $atts['pageId'] = $object_id;
     }
-
+    $atts['pageId'] = $object_id;
 
     $cat_args = array(
         'orderby' => 'name',
