@@ -58,7 +58,7 @@ $("nav div ul li a").mouseover(function (e) {
 
     const hasparent_post = $(this).attr("parent_post");
 
-    if($(this).parent().parent().hasclass('menu-items-holder')) {
+    if ($(this).parent().parent().hasClass('menu-items-holder')) {
         console.log('mama mo');
     }
     if (hasparent_post == '1') {
