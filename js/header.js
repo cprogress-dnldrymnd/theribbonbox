@@ -118,9 +118,7 @@ $("nav div ul li a").mouseover(function(e){
         const hasRecentPostsWrapper = (submenu.children('.menu-posts').length > 0);
         if (hasRecentPostsWrapper){
             submenu.children('.menu-posts').html(entry.html);
-        } else{
-            submenu.prepend('<li class="menu-posts">'+entry.html+'</li>');
-        }
+        } 
 
         // submenu.children().remove();
         // if (entry) {
