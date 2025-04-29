@@ -48,12 +48,17 @@ $('.level-0').each(function (index, element) {
     pageid = jQuery(this).find('a[level="first"]').attr('pageid');
     categoryid = jQuery(this).find('a[level="first"]').attr('categoryid');
 
-    if(pageid) {
+    if (pageid) {
         jQuery(this).find('a[level="not-first"]').attr('pageid', pageid);
     }
-    if(categoryid) {
+    if (categoryid) {
         jQuery(this).find('a[level="not-first"]').attr('categoryid', categoryid);
     }
+
+});
+$('.menu-item-has-children .level-1').each(function (index, element) {
+    $parent_width = jQuery(this).parent().outerWidth();
+    jQuery(this).parent().css('--parent-width', $parent_width);
 
 });
 $("nav div ul li a").mouseover(function (e) {
