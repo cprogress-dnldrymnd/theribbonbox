@@ -58,8 +58,8 @@ $("nav div ul li a").mouseover(function (e) {
 
     const hasparent_post = $(this).attr("parent_post");
 
-    if ($(this).parent().parent().hasClass('menu-items-holder')) {
-        var menuItemId = $(this).parent().parents('.menu-item').attr("id");
+    if ($(this).parent().attr("data-level") == 'not-first') {
+        var menuItemId = $(this).parent().parents('[data-level="first"]').attr("id");
     } else {
         var menuItemId = $(this).parent().attr("id");
     }
