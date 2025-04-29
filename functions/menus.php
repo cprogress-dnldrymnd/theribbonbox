@@ -30,14 +30,17 @@ function trb_register_nav_menus()
 }
 
 
-add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 3);
+add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 4);
 /*
  * Filters the HTML attributes applied to a menu item's anchor element.
  */
-function trb_av_menu_link_attributes($atts, $item, $args)
+function trb_av_menu_link_attributes($atts, $item, $args, $depth)
 {
 
-   
+    if (0 === $depth) {
+        // Add your desired attribute and value here
+        $atts['data-level'] = 'first';
+    }
 
     $id = $item->object_id;
     $title = $item->title;
