@@ -106,6 +106,8 @@ function trb_av_menu_link_attributes($atts, $item, $args)
         $atts['post_type'] = "expert_profiles";
         if ($title == 'Experts') {
             $atts['cus_post'] = "1";
+        } else {
+            $atts['parent_post'] = "1";
         }
     } else {
         $atts['post_type'] = "post";
