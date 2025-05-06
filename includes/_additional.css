@@ -2551,7 +2551,7 @@ button.accordion-button.accordion-button:after {
 	align-items: center;
 	gap: 20px;
 }
-.checkbox-options {
+.checkbox-options label{
     display: flex;
     align-items: center;
 }
