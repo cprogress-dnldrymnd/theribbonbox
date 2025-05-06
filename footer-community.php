@@ -70,10 +70,14 @@
 
 <script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
 <pre>
-<?php
-echo wp_get_post_parent_id(get_the_ID());
-?>
+
 </pre>
+
+<?php if (is_forum()) { ?>
+sdsds
+
+<?php } ?>
+
 <script>
     jQuery(document).ready(function($) {
 
