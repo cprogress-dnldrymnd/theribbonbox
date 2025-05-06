@@ -2586,7 +2586,6 @@ button.accordion-button.accordion-button:after {
 
 	header#header-community .menu-item-has-children .toggle-submenu {
 		display: inline-block;
-		top: 8px;
 		filter: brightness(0%);
 	}
 
