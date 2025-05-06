@@ -55,7 +55,7 @@ function forum_slider()
         </div>
         <div class="swiper-pagination"></div>
     </div>
-  
+
 <?php
     return ob_get_clean();
 }
@@ -471,8 +471,16 @@ function action_bp_before_member_header_meta()
         'field'     => 'Tiktok URL',
         'user_id'   => bp_displayed_user_id()
     ));
+    $bio = bp_get_profile_field_data(array(
+        'field'     => 'bio',
+        'user_id'   => bp_displayed_user_id()
+    ));
 ?>
     <div class="before-member-header-meta">
+        <?php if($bio) { ?>
+            <div class="bio">
+               <?=wpautop( $bio) ?>
+            </div>
         <div class="social-icons">
             <ul class="f-xl">
                 <?php if ($facebook_url) { ?>
