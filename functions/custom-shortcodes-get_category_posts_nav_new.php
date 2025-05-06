@@ -1,7 +1,8 @@
 <?php
 
 add_shortcode('get_category_posts_nav_new', 'get_category_posts_nav_new_function');
-function get_category_posts_nav_new_function(){
+function get_category_posts_nav_new_function()
+{
   //set_trb_message('get_category_posts_nav_new_function()');
 
   $cat_html = [];
@@ -23,13 +24,13 @@ function get_category_posts_nav_new_function(){
     'post_status' => 'publish',
   );
 
-  $categories=get_categories($cat_args);
+  $categories = get_categories($cat_args);
   //set_trb_message('Categories: ' . count($categories));
 
   $excluded_posts = get_excluded_b2b_posts();
 
   // Should loop approximately 60 times
-  foreach($categories as $category) {
+  foreach ($categories as $category) {
     $categoryid = $category->cat_ID;
     //var_dump('$category->cat_name: ' . $category->cat_name . '<br>');
     //$currentcatname = $category->cat_name;
@@ -57,7 +58,7 @@ function get_category_posts_nav_new_function(){
 
     $preferred_post_type = 'post';
     global $categories_post_types;
-    $categories_post_type_info = array_filter($categories_post_types, function($var) use ($categoryid) {
+    $categories_post_type_info = array_filter($categories_post_types, function ($var) use ($categoryid) {
       return $var['categoryid'] == $categoryid;
     });
     if (is_array($categories_post_type_info) && $categories_post_type_info) {
@@ -82,44 +83,34 @@ function get_category_posts_nav_new_function(){
     if ($categoryid == 22814) {
       set_trb_message(count($recent_posts));
     }
-    if(!is_page(41256)) { 
-    $html = "<h2 data-category='" . $category->cat_name. "'>Trending This Week</h2>";
-    //$html = "<h2>".$categoryid."</h2>";
-    } else {
-      $html = '';
-    }
+    $html = '';
     $html .= '<div class="menu-posts-outer">';
 
     // Should loop 4 * 60 = 240
-    if(is_page(41256)) { 
-     $html .= '<div class="menu-post-left">';
-    $html .= "<h2 data-category='" . $category->cat_name. "'>Trending This Week</h2>";
-
-    }
+    $html .= '<div class="menu-post-left">';
+    $html .= "<h2 data-category='" . $category->cat_name . "'>Trending This Week</h2>";
     foreach ($recent_posts as $post) {
       $html .= renderRecentPost($post);
     }
-    if(is_page(41256)) { 
-     $html .= '</div>';
-     $html .= '<div class="menu-cta">';
-     $html .= '<div class="menu-cta-inner">';
-     $html .= '<div class="bg-image"> '.wp_get_attachment_image(41297, 'large').' </div>';
-     $html .= '<div class="menu-cta-content">';
-     $html .= '<h3>Become part of the Community</h3>';
-     $html .= '<div class="button-box button-accent button-small text-end button-box-v2 ">
-            <a href="/e-guides">JOIN TODAY</a>
+    $html .= '</div>';
+    $html .= '<div class="menu-cta">';
+    $html .= '<div class="menu-cta-inner">';
+    $html .= '<div class="bg-image"> ' . wp_get_attachment_image(41297, 'large') . ' </div>';
+    $html .= '<div class="menu-cta-content">';
+    $html .= '<h3>Become part of the Community</h3>';
+    $html .= '<div class="button-box button-accent button-small text-end button-box-v2 ">
+            <a href="/community">JOIN TODAY</a>
         </div>';
-     $html .= '</div>';
-     $html .= '</div>';
-     $html .= '</div>';
-    }
+    $html .= '</div>';
+    $html .= '</div>';
+    $html .= '</div>';
     //if ($category->cat_name === 'Parenting') {
     //    var_dump($html);
     //}
     wp_reset_query();
     $html .= '</div>';
 
-    
+
 
     $recent_posts_data = [
       'id' => $categoryid,
@@ -135,7 +126,8 @@ function get_category_posts_nav_new_function(){
   // Build post lists for non-category menu items (e.g. Experts)
   $nonCatMenuItems = [];
   $types = 'expert_profiles';
-  array_push($nonCatMenuItems,
+  array_push(
+    $nonCatMenuItems,
     ['id' => 22846, 'name' => 'Experts',                        'post_type' => $types, 'category' => null,],
     ['id' => 30447, 'name' => 'Experts > All experts',          'post_type' => $types, 'category' => null,],
     ['id' => 22852, 'name' => 'Experts > Wellbeing',            'post_type' => $types, 'category' => 1159,],
@@ -145,12 +137,14 @@ function get_category_posts_nav_new_function(){
     ['id' => 22849, 'name' => 'Experts > Match with an expert', 'post_type' => $types, 'category' => null,],
   );
   $types = ['videos', 'podcasts'];
-  array_push($nonCatMenuItems,
+  array_push(
+    $nonCatMenuItems,
     ['id' => 22855, 'name' => 'Watch & listen', 'post_type' => $types, 'category' => null],
     ['id' => 27090, 'name' => 'Videos & podcasts', 'post_type' => $types, 'category' => null],
   );
   $types = 'podcasts';
-  array_push($nonCatMenuItems,
+  array_push(
+    $nonCatMenuItems,
     ['id' => 22861, 'name' => 'The Ribbon Box Podcast', 'post_type' => $types, 'category' => null],
     ['id' => 23893, 'name' => 'Podcast > Wellbeing', 'post_type' => $types, 'category' => 1159],
     ['id' => 23894, 'name' => 'Podcast > Fertility', 'post_type' => $types, 'category' => 1164],
@@ -158,14 +152,16 @@ function get_category_posts_nav_new_function(){
     ['id' => 23891, 'name' => 'Podcast > Parenting', 'post_type' => $types, 'category' => 1163],
   );
   $types = 'videos';
-  array_push($nonCatMenuItems,
+  array_push(
+    $nonCatMenuItems,
     ['id' => 22856, 'name' => 'Videos', 'post_type' => $types, 'category' => null],
     ['id' => 22866, 'name' => 'Videos > Wellbeing', 'post_type' => $types, 'category' => 1159],
     ['id' => 22865, 'name' => 'Videos > Fertility', 'post_type' => $types, 'category' => 1164],
     ['id' => 22864, 'name' => 'Videos > Pregnancy', 'post_type' => $types, 'category' => 1165],
     ['id' => 22863, 'name' => 'Videos > Parenting', 'post_type' => $types, 'category' => 1163],
   );
-  array_push($nonCatMenuItems,
+  array_push(
+    $nonCatMenuItems,
     ['id' => 23831, 'name' => 'Offers',     'post_type' => ['offer-items', 'giveaway-items', 'events'], 'category' => null],
     ['id' => 22884, 'name' => 'Giveaways',  'post_type' => 'giveaway-items',  'category' => null],
     ['id' => 22883, 'name' => 'Discounts',  'post_type' => 'offer-items',     'category' => null],
@@ -184,36 +180,26 @@ function get_category_posts_nav_new_function(){
       $args['category'] = $item['category'];
     }
     $recent_posts = wp_get_recent_posts($args);
-if(!is_page(41256)) { 
-
-    $html = "<h2>Trending This Week</h2>";
-}     else {
-  $html ='';
-}
+    $html = '';
     $html .= '<div class="menu-posts-outer">';
-    if(is_page(41256)) { 
-     $html .= '<div class="menu-post-left">';
+    $html .= '<div class="menu-post-left">';
     $html .= "<h2>Trending This Week</h2>";
-
-    }
     foreach ($recent_posts as $post) {
       $html .= renderRecentPost($post);
     }
 
-    if(is_page(41256)) { 
-     $html .= '</div>';
-     $html .= '<div class="menu-cta">';
-     $html .= '<div class="menu-cta-inner">';
-     $html .= '<div class="bg-image"> '.wp_get_attachment_image(41297, 'large').' </div>';
-     $html .= '<div class="menu-cta-content">';
-     $html .= '<h3>Become part of the Community</h3>';
-     $html .= '<div class="button-box button-accent button-small text-end button-box-v2 ">
-            <a href="/e-guides">JOIN TODAY</a>
+    $html .= '</div>';
+    $html .= '<div class="menu-cta">';
+    $html .= '<div class="menu-cta-inner">';
+    $html .= '<div class="bg-image"> ' . wp_get_attachment_image(41297, 'large') . ' </div>';
+    $html .= '<div class="menu-cta-content">';
+    $html .= '<h3>Become part of the Community</h3>';
+    $html .= '<div class="button-box button-accent button-small text-end button-box-v2 ">
+            <a href="/community">JOIN TODAY</a>
         </div>';
-     $html .= '</div>';
-     $html .= '</div>';
-     $html .= '</div>';
-    }
+    $html .= '</div>';
+    $html .= '</div>';
+    $html .= '</div>';
     $html .= '</div>';
 
 
@@ -244,48 +230,49 @@ if(!is_page(41256)) {
   foreach ($post_types as $pt) {
     $cont = false;
 
-//        if ($pt == "post"){
-//            $cont = true;
-//        } else if ($pt != "post"){
-//            $cont = true;
-//        }
+    //        if ($pt == "post"){
+    //            $cont = true;
+    //        } else if ($pt != "post"){
+    //            $cont = true;
+    //        }
 
-//        if ($cont) {
-//            $post_typesV = explode('/', $pt);
-//
-//            $args = array(
-//                'numberposts' => 4, // Number of recent posts thumbnails to display
-//                'order' => 'desc',
-//                'post_status' => 'publish', // Show only the published posts
-//                'post_type' => $post_typesV,
-//                'exclude' => get_excluded_b2b_posts(),
-//            );
-//            if (isset($orderby)) {
-//                $args['orderby'] = $orderby;
-//            }
-//            $recent_posts = wp_get_recent_posts($args);
-//
-//            $return = "<h2>Trending This Week</h2>";
-//            $return .= '<div class="menu-posts-outer">';
-//
-//            foreach ($recent_posts as $post) {
-//                $return .= renderRecentPost($post);
-//            }
-//            wp_reset_query();
-//
-//            $return .= '</div>';
-//            $recent_posts_data = array(
-//                'id' => $categoryid,
-//                'html' => $return,
-//                "post_type" => $pt,
-//            );
-//            array_push($cat_html, $recent_posts_data);
-//        }
+    //        if ($cont) {
+    //            $post_typesV = explode('/', $pt);
+    //
+    //            $args = array(
+    //                'numberposts' => 4, // Number of recent posts thumbnails to display
+    //                'order' => 'desc',
+    //                'post_status' => 'publish', // Show only the published posts
+    //                'post_type' => $post_typesV,
+    //                'exclude' => get_excluded_b2b_posts(),
+    //            );
+    //            if (isset($orderby)) {
+    //                $args['orderby'] = $orderby;
+    //            }
+    //            $recent_posts = wp_get_recent_posts($args);
+    //
+    //            $return = "<h2>Trending This Week</h2>";
+    //            $return .= '<div class="menu-posts-outer">';
+    //
+    //            foreach ($recent_posts as $post) {
+    //                $return .= renderRecentPost($post);
+    //            }
+    //            wp_reset_query();
+    //
+    //            $return .= '</div>';
+    //            $recent_posts_data = array(
+    //                'id' => $categoryid,
+    //                'html' => $return,
+    //                "post_type" => $pt,
+    //            );
+    //            array_push($cat_html, $recent_posts_data);
+    //        }
   }
   return json_encode($cat_html);
 }
 
-function renderRecentPost($post) {
+function renderRecentPost($post)
+{
   $return = '';
   //d($post_type);
   //d($post["ID"]);
@@ -311,9 +298,7 @@ function renderRecentPost($post) {
     $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", $img_url);
     $style .= $iUrl;
     $style .= ') background-size:cover; background-position:center;"';;
-
-  }
-  else {
+  } else {
     if (!has_post_thumbnail($post['ID'])) {
       $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
     } else {
@@ -372,9 +357,9 @@ function renderRecentPost($post) {
   $post_image = get_the_post_thumbnail_url($post['ID'], 'thumbnail');
 
   $return .=
-    '<a class="post format-nav-recent post-type-' . $cur_post_type. '"
+    '<a class="post format-nav-recent post-type-' . $cur_post_type . '"
             href="' . get_permalink($post['ID']) . '" title="Read more about ' . $post['post_title'] . '...">'
-    . '<img src="'.$post_image.'" ' . $style . ' class="blog-post-img" style="background-size:cover; background-position:center;">'
+    . '<img src="' . $post_image . '" ' . $style . ' class="blog-post-img" style="background-size:cover; background-position:center;">'
     . '<h4>' . $currentcatname . '</h4>'
     . '<h3>' . $post['post_title'] . "</h3>"
     . '</a>';

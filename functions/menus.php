@@ -1,40 +1,66 @@
 <?php
 
 
-function register_my_menu() {
-    register_nav_menu('header-menu',__( 'Header Menu' ));
+function register_my_menu()
+{
+    register_nav_menu('header-menu', __('Header Menu'));
 }
-add_action( 'init', 'register_my_menu' );
+add_action('init', 'register_my_menu');
 
-function register_my_menus() {
+function register_my_menus()
+{
     register_nav_menus(
         array(
-            'header-menu' => __( 'Header Menu' ),
-            'community-menu' => __( 'Community Menu' ),
-            'extra-menu' => __( 'Extra Menu' )
+            'header-menu' => __('Header Menu'),
+            'community-menu' => __('Community Menu'),
+            'extra-menu' => __('Extra Menu')
         )
     );
 }
-add_action( 'init', 'register_my_menus' );
+add_action('init', 'register_my_menus');
 
 
-add_action( 'after_setup_theme', 'trb_register_nav_menus' );
-function trb_register_nav_menus() {
-    register_nav_menus( array(
-        'primary' => __( 'Primary Menu', 'your-text-domain' ),
-        'footer' => __( 'Footer Menu', 'your-text-domain' )
+add_action('after_setup_theme', 'trb_register_nav_menus');
+function trb_register_nav_menus()
+{
+    register_nav_menus(array(
+        'primary' => __('Primary Menu', 'your-text-domain'),
+        'footer' => __('Footer Menu', 'your-text-domain')
     ));
 }
 
+function trb_add_first_level_menu_class($classes, $item, $args, $depth)
+{
+    $classes[] = 'level-' . $depth; // Add your custom class here
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'trb_add_first_level_menu_class', 10, 4);
 
-add_filter( 'nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 3 );
+
+add_filter('nav_menu_link_attributes', 'trb_av_menu_link_attributes', 10, 4);
 /*
  * Filters the HTML attributes applied to a menu item's anchor element.
  */
-function trb_av_menu_link_attributes( $atts, $item, $args ) {
+function trb_av_menu_link_attributes($atts, $item, $args, $depth)
+{
+
+
+
     $id = $item->object_id;
     $title = $item->title;
-    //set_trb_message("$id: '$title'");
+
+    if (0 === $depth) {
+        $atts['level'] = 'first';
+        $object_id = $item->object_id;
+        $atts['pageId'] = $object_id;
+    } else {
+        $atts['level'] = 'not-first';
+        $parent_menu_item_id = $item->menu_item_parent;
+        $object_id = get_post_meta($parent_menu_item_id, '_menu_item_object_id', true);
+        $atts['pageId'] = $object_id;
+    }
+
+
 
     $cat_args = array(
         'orderby' => 'name',
@@ -42,97 +68,55 @@ function trb_av_menu_link_attributes( $atts, $item, $args ) {
         'meta_query' => array(
             array(
                 'key'     => 'page_category',
-                'value'   =>  $item->object_id,
+                'value'   =>  $object_id,
                 'compare' => 'LIKE'
             )
         ),
         'post_status' => 'publish',
     );
 
-    $categories=get_categories($cat_args);
+    $categories = get_categories($cat_args);
 
-    $atts['pageId'] = $item->object_id;
-    $atts['pageIdx'] = $item->object_id;
-    //$atts['categoryId'] = $categories[0]->term_id;
 
-//    if (! isset($categories[0])) {
-//        return;
-//    }
-//    if (isset($categories[0])) {
-//        $category_id = $categories[0]->term_id;
-//    }
-//    if (empty($category_id)){
-//        //$category_id = "0";
-//    }
+    $category_id = $categories[0]->term_id;
+    $atts['categoryId'] = $category_id;
 
-//    if ($id == 23831) {
-//        d($item);
-//    }
-    
-    if (     $id == "24548"){$atts['categoryId'] = "1159";}
-    else if ($id == "24549"){$atts['categoryId'] = "1164";}
-    else if ($id == "24550"){$atts['categoryId'] = "1165";}
-    else if ($id == "24551"){$atts['categoryId'] = "1163";}
-    else if ($categories)   {$atts['categoryId'] = $categories[0]->term_id;}
-
-    if ($title == 'Watch & Listen' || $id == "22822" || $title === ''){
+    if ($title == 'Watch & Listen' || $id == "22822" || $title === '') {
         $atts['post_type'] = "videos/podcasts";
         $atts['cus_post'] = "1";
     } // Watch & Listen OR
 
     else if (
-           $title == 'Videos'
+        $title == 'Videos'
         || $title == 'Wellbeing Videos'
         || $title == 'Fertility Videos'
         || $title == 'Pregnancy Videos'
         || $title == 'Parenting Videos'
 
-    ){
-        $atts['post_type'] = "videos";
+    ) {
+        $atts['post_type'] = "videos/podcasts";
         $atts['cus_post'] = "1";
-    }
-
-    else if (
-           $title == 'The Ribbon Box Podcast'
+    } else if (
+        $title == 'The Ribbon Box Podcast'
         || ($title == 'Wellbeing' && $id == '23883')
         || ($title == 'Fertility' && $id == '23885')
         || ($title == 'Pregnancy' && $id == '23887')
         || ($title == 'Parenting' && $id == '23889')
-    ){
-        $atts['post_type'] = "podcasts";
+    ) {
+        $atts['post_type'] = "videos/podcasts";
         $atts['cus_post'] = "1";
-    }
-
-    else if (
-           $title == 'All Experts'
+    } else if (
+        $title == 'All Experts'
         || $title == 'Experts'
         || ($title == 'Wellbeing' && $id == '22812')
         || ($title == 'Fertility' && $id == '22814')
         || ($title == 'Pregnancy' && $id == '22816')
         || ($title == 'Parenting' && $id == '22818')
-        || ($title == 'Match With an Expert')
-    ){
+        || ($title == 'Match With An Expert')
+    ) {
         $atts['post_type'] = "expert_profiles";
         $atts['cus_post'] = "1";
-    }
-
-    else if ($title == 'Win') {
-        $atts['post_type'] = "offer-items/giveaway-items/events";
-        $atts['cus_post'] = "1";
-    }
-    else if ($title == 'Giveaways') {
-        $atts['post_type'] = "giveaway-items";
-        $atts['cus_post'] = "1";
-    }
-    else if ($title == 'Discounts') {
-        $atts['post_type'] = "offer-items";
-        $atts['cus_post'] = "1";
-    }
-    else if ($title == 'Events') {
-        $atts['post_type'] = "events";
-        $atts['cus_post'] = "1";
-    }
-    else {
+    } else {
         $atts['post_type'] = "post";
     }
 

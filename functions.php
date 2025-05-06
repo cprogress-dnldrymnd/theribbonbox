@@ -522,3 +522,46 @@ function bulk_alt_text_extended_menu()
     );
 }
 add_action('admin_menu', 'bulk_alt_text_extended_menu');
+
+class Walker_Nav_Pointers extends Walker_Nav_Menu
+{
+    function start_lvl(&$output, $depth = 0, $args = array())
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul class=\"sub-menu\">\n";
+        $output .= "\n$indent<li class=\"submenu-wrapper\">\n";
+        $output .= "\n$indent<ul class=\"menu-items-holder\">\n";
+    }
+    function end_lvl(&$output, $depth = 0, $args = array())
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent</ul>\n";
+        $output .= "$indent</li>\n";
+        $output .= "$indent</ul>\n";
+    }
+}
+
+function add_image_to_menu_item($item_output, $item, $depth, $args)
+{
+    // Check if it's the menu you want to modify (optional, for specific menus)
+    // if ( $args->theme_location == 'primary' ) { // Change 'primary' to your menu's location
+    // Add this check if you only want to apply this to a specific menu.
+    // Get the image URL from a custom field.  You'll need to add a custom field
+    // to your menu items in the WordPress admin.  I'm using 'menu_image' here,
+    // but you can use any name you like.
+    $image_url = get_field('icon', $item->object_id);
+    if ($image_url) {
+        //  Important: Adjust the image size and styling as needed.  This example
+        //  uses a small inline style.  For more complex styling, use CSS in your
+        //  theme's stylesheet.  Consider adding a class to the image.
+        $image = '<img src="' . esc_url($image_url['url']) . '" alt="' . esc_attr($item->title) . '" style="width:20px; height:20px; vertical-align:middle; margin-right:5px;" />';
+        $item_output = str_replace(
+            $args->link_before . $item->title . $args->link_after,
+            $args->link_before . $image . $item->title . $args->link_after,
+            $item_output
+        );
+    }
+    // } // End check for specific menu.  Remove this if you want it on all menus.
+    return $item_output;
+}
+add_filter('walker_nav_menu_start_el', 'add_image_to_menu_item', 10, 4);

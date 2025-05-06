@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     const loginField = document.querySelector('#user_login')
     if (loginField) loginField.setAttribute("placeholder", "Username");
     const passwordField = document.querySelector('#user_pass')
@@ -7,7 +7,7 @@ $(document).ready(function(){
     var triggeredTop = false;
     var triggeredBtm = false;
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(".header-ad").length > 0) {
             var scrollTop = $(window).scrollTop();
             //console.log(scrollTop);
@@ -33,19 +33,37 @@ $(document).ready(function(){
 
 
 
-$(".show-search").click(function(e){
+$(".show-search").click(function (e) {
     e.preventDefault();
     $(".header-search:not(.header-search-mobile)").slideToggle();
 });
 
-$("#h-search-close1").click(function(e){
+$("#h-search-close1").click(function (e) {
     $(".header-search:not(.header-search-mobile)").slideToggle();
 });
 
 var loadingMenu = false;
 
+$('.level-0').each(function (index, element) {
+    pageid = jQuery(this).find('a[level="first"]').attr('pageid');
+    categoryid = jQuery(this).find('a[level="first"]').attr('categoryid');
 
-$("nav div ul li a").mouseover(function(e){
+    if (pageid) {
+        jQuery(this).find('a[level="not-first"]').attr('pageid', pageid);
+    }
+    if (categoryid) {
+        jQuery(this).find('a[level="not-first"]').attr('categoryid', categoryid);
+    }
+
+    $(this).mouseover(function (e) {
+        $parent_width = jQuery(this).find('.menu-item-has-children.level-1').parent().outerWidth();
+        console.log('xxxx');
+        jQuery(this).find('.menu-item-has-children.level-1').parent().css('--parent-width', $parent_width + 'px');
+    });
+
+});
+
+$("nav div ul li a").mouseover(function (e) {
     e.preventDefault();
     const currentElement = this;
 
@@ -54,15 +72,24 @@ $("nav div ul li a").mouseover(function(e){
     //console.log('categoryId:', categoryId);
     const postTypes = $(this).attr("post_type");
     // console.log('postTypes', postTypes);
-    const menuItemId = $(this).parent().attr("id");
+
+
+    if ($(this).attr("level") == 'not-first') {
+        var menuItemId = $(this).parent().parents('.level-0').attr("id");
+    } else {
+        var menuItemId = $(this).parent().attr("id");
+    }
     // console.log('menuItemId:' + menuItemId);
+    console.log(menuItemId);
 
     const submenu = $(currentElement).parents().children(".sub-menu");
     const hasCusPosts = $(this).attr("cus_post");
 
+
+
     // If the menu item has one of these attributes: categoryId, cus_post
     // In other words, if it's a category
-    if (($(this).attr("categoryId") || hasCusPosts)){
+    if (($(this).attr("categoryId") || hasCusPosts)) {
         // var data = {
         //     'action': 'load_cate_posts',
         //     'categoryId': $(this).attr("categoryId"),
@@ -76,7 +103,7 @@ $("nav div ul li a").mouseover(function(e){
         var hasJoinedPostTypes = false; // joint post type??
 
         // If this isn't a category link, but it does have post types
-        if (categoryId == undefined && postTypes != ""){
+        if (categoryId == undefined && postTypes != "") {
             hasJoinedPostTypes = true;
         }
 
@@ -107,19 +134,18 @@ $("nav div ul li a").mouseover(function(e){
         //     }
         //     //console.log('entry:', entry);
         // });
-
         const entry = recentPostsJson.find((post) => {
             return (post.id === parseInt(categoryId) && !hasCusPosts)
                 || ('menu-item-' + post.menuItemId === menuItemId)
         })
-        console.log('entry.id:', entry.id)
-        console.log('entry.html:', entry.html.substring(0,100))
+        //console.log('entry.id:', entry.id)
+        //console.log('entry.html:', entry.html.substring(0, 100))
 
         const hasRecentPostsWrapper = (submenu.children('.menu-posts').length > 0);
-        if (hasRecentPostsWrapper){
+        if (hasRecentPostsWrapper) {
             submenu.children('.menu-posts').html(entry.html);
-        } else{
-            submenu.prepend('<li class="menu-posts">'+entry.html+'</li>');
+        } else {
+            submenu.prepend('<li class="menu-posts">' + entry.html + '</li>');
         }
 
         // submenu.children().remove();
@@ -130,10 +156,10 @@ $("nav div ul li a").mouseover(function(e){
     else {
         // Show no posts
         const hasRecentPostsWrapper = (submenu.children('.menu-posts').length > 0);
-        if (hasRecentPostsWrapper){
+        if (hasRecentPostsWrapper) {
             submenu.children('.menu-posts').html("");
-        } else{
-            submenu.prepend('<li class="menu-posts">'+''+'</li>');
+        } else {
+            submenu.prepend('<li class="menu-posts">' + '' + '</li>');
         }
     }
 });
@@ -144,7 +170,7 @@ var data = {
     //'all': 1
 };
 
-jQuery.post(ajaxurl, data, function(response) {
+jQuery.post(ajaxurl, data, function (response) {
     //console.log(response);
-    $("#menu-mainmenu").append('<li id="menu-posts-main-mob" class="menu-posts">'+response+'</li>');
+    $("#menu-mainmenu").append('<li id="menu-posts-main-mob" class="menu-posts">' + response + '</li>');
 });
