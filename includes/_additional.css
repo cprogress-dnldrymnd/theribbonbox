@@ -2678,7 +2678,7 @@ button.accordion-button.accordion-button:after {
 	overflow: hidden;
 }
 .featured-box-style .featured-box-style-inner .image-box {
-	padding: 90%;
+	padding: 80% 0;
 	position: relative;
 }
 .featured-box-style .featured-box-style-inner .image-box img {
@@ -2698,8 +2698,15 @@ button.accordion-button.accordion-button:after {
 	border-radius: 5px;
 }
 .featured-box-style .featured-box-style-inner .heading-box {
-	position: relative;
-	z-index: 1;
+	position: absolute;
+    z-index: 1;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+}
+.featured-box-style.featured-box-style.featured-box-style .featured-box-style-inner .heading-box h2 {
+    color: var(--white-color);
+	font-family: 'Playfair Display' !important;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
