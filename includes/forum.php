@@ -480,7 +480,7 @@ function action_bp_before_member_header_meta()
         'user_id'   => bp_displayed_user_id()
     ));
 ?>
-    ?>
+
 
     <div class="before-member-header-meta">
         <?php if ($bio) { ?>
@@ -492,6 +492,9 @@ function action_bp_before_member_header_meta()
             <div class="interested-in">
                 <h4>Interested In</h4>
                 <?= var_dump($interested) ?>
+                <?php foreach ($interested as $interest) { ?>
+                    <span class="badge"><?= $interest ?></span>
+                <?php } ?>
             </div>
         <?php } ?>
         <div class="social-icons">
