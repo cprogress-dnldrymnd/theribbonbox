@@ -56,11 +56,7 @@ function forum_slider()
         </div>
         <div class="swiper-pagination"></div>
     </div>
-    <div class="mt-4 text-center button-box button-box-v2 button-accent">
-        <a href="/forums">
-            Visit Forums
-        </a>
-    </div>
+  
 <?php
     return ob_get_clean();
 }
