@@ -200,7 +200,7 @@ function blog_post_style_2($post_args)
                                 </div>
                             <?php } else { ?>
                                 <?= $post_args['select_competition_date'] ?>
-                                <?php if (is_past_date_field($post_args['select_competition_date'], $post_args['post_id']) == false) { ?>
+                                <?php if (is_past_date($post_args['select_competition_date']) != false) { ?>
                                     <div class="blog-btns">
                                         <a class="button-expert"
                                             href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
@@ -229,21 +229,26 @@ function blog_post_style_2($post_args)
 
 add_shortcode('blog_post_style_2', 'blog_post_style_2');
 
-function is_past_date_field($date_value, $post_id = null, $date_format = 'Y-m-d')
+/**
+ * Checks if a given date string represents a date in the past.
+ *
+ * @param string $date_string The date string to check (e.g., '2023-10-26', 'December 15, 2024').
+ * WordPress's strtotime() function will be used to parse this string.
+ * @return bool True if the date is in the past, false otherwise.
+ */
+function is_past_date($date_string)
 {
-    $post_id = (null === $post_id) ? get_the_ID() : intval($post_id);
+    $timestamp = strtotime($date_string);
 
-    if (empty($date_value)) {
-        return false; // Field is empty, consider it not in the past
-    }
-
-    $timestamp = strtotime($date_value);
-
+    // Check if strtotime() successfully parsed the date string.
     if (false === $timestamp) {
-        return false; // Invalid date format
+        // Invalid date string, consider it not in the past.
+        return false;
     }
 
+    // Get the current timestamp.
     $current_timestamp = current_time('timestamp');
 
+    // Compare the provided timestamp with the current timestamp.
     return $timestamp < $current_timestamp;
 }
