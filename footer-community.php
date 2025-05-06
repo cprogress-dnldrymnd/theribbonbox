@@ -18,7 +18,7 @@
                         </svg> </a>
                 </td>
                 <td>
-                    <div class="row g-3">
+                    <div class="row g-3 justify-content-end align-items-center">
                         <div class="col-auto footer-community-links">
                             <?= do_shortcode('[community_nav]') ?>
                         </div>
