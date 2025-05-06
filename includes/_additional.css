@@ -1096,20 +1096,31 @@ input#aw-whats-new-reset {
 	gap: 20px;
 	justify-content: center;
 }
-.before-member-header-meta .bio{
+.before-member-header-meta .bio {
 	text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
 }
 .before-member-header-meta .interested-in {
 	text-align: center;
-    margin-bottom: 2rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+	margin-bottom: 2rem;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.interested-in-wrap {
+	display: inline-flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+.interested-in-wrap span {
+	padding: 5px 12px;
+	border: 1px solid;
+	border-radius: 20px;
+	line-height: 1;
 }
 .before-member-header-meta ul,
 .before-member-header-meta ul li {
