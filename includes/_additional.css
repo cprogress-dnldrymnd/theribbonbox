@@ -664,6 +664,10 @@ section.forum-welcome .inner {
 	align-items: center;
 	gap: 10px;
 }
+.button-box.button-box.button-with-icon a svg {
+	width: 16px;
+	height: 16px;
+}
 .bg-image {
 	position: absolute;
 	left: 0;
