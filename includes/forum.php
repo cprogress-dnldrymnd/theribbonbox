@@ -264,23 +264,25 @@ function e_guides_community()
                 </div>
             </div>
         </div>
-        <div class="featured-box-holder featured-box-holder-v2 d-flex flex-wrap">
+        <div class="row featured-box-holder-v3 g-3">
             <?php foreach ($posts as $post) { ?>
-                <div class="featured-box-item row post-box" post-id="<?= $post->ID ?>">
-                    <div class="col-5 col-sm-3">
-                        <div class="image-box">
-                            <img src="<?= wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), 'medium') ?>" alt="<?= $post->post_title ?>">
-                        </div>
-                    </div>
-                    <div class="col-7 col-sm-9">
-                        <div class="content-box">
-                            <a href="<?= get_the_permalink($post->ID) ?>">
-                                <h3 class="mb-3 mt-0"><?= $post->post_title ?></h3>
-                            </a>
-                            <div class="post-excerpt mb-3">
-                                <?= $post->post_excerpt ?>
+                <div class="col-lg-4">
+                    <div class="featured-box-item post-box" post-id="<?= $post->ID ?>">
+                        <div class="col-5 col-sm-3">
+                            <div class="image-box">
+                                <img src="<?= wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), 'medium') ?>" alt="<?= $post->post_title ?>">
                             </div>
-                            <?= do_shortcode('[post_action show_comment="0" id=' . $post->ID . ']') ?>
+                        </div>
+                        <div class="col-7 col-sm-9">
+                            <div class="content-box">
+                                <a href="<?= get_the_permalink($post->ID) ?>">
+                                    <h3 class="mb-3 mt-0"><?= $post->post_title ?></h3>
+                                </a>
+                                <div class="post-excerpt mb-3">
+                                    <?= $post->post_excerpt ?>
+                                </div>
+                                <?= do_shortcode('[post_action show_comment="0" id=' . $post->ID . ']') ?>
+                            </div>
                         </div>
                     </div>
                 </div>

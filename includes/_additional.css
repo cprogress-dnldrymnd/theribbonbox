@@ -2626,6 +2626,9 @@ button.accordion-button.accordion-button:after {
 	align-items: center;
 	font-size: 16px;
 }
+.featured-box-v2.featured-box-v2 {
+	box-shadow: none;
+}
 .featured-box-v2.featured-box-v2 .featured-box-heading{
 	border-radius: 10px;
 	margin-bottom: 15px;
