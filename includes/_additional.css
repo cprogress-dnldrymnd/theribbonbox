@@ -2455,8 +2455,12 @@ button#bbp_reply_submit:before {
 section.forum-guidelines {
 	padding-top: 100px;
 }
-.guidelines-wrapper {
-	
+.guidelines-wrapper #guidelines-readmore {
+	font-size: 15px;
+	text-decoration: none;
+	padding: 10px 15px;
+	border: 1px solid;
+	border-radius: 5px;
 }
 section.forum-guidelines .inner {
 	box-shadow: 9px 11px 29px rgba(125, 138, 152, 0.15);
