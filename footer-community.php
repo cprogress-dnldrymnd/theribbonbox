@@ -74,7 +74,7 @@
 </pre>
 
 <?php if (is_forum()) { ?>
-sdsds
+
 
 <?php } ?>
 
