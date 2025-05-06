@@ -46,6 +46,11 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
     <div class="container">
         <h2 class="text-heading mb-4">Latest Topics & Discussions</h2>
         <?= do_shortcode('[latest_topics]') ?>
+        <div class="mt-4 text-center button-box button-box-v2 button-accent">
+            <a href="/forums">
+                Visit Forums
+            </a>
+        </div>
     </div>
 </section>
 <section class="forum-slider bg-purple lg-padding">
