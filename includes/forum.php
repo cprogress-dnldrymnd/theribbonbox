@@ -1140,7 +1140,7 @@ function forum_guidelines($atts)
         shortcode_atts(
             array(
                 'id' => 'forum_guidelines',
-                'autop' => true,
+                'autop' => 1,
             ),
             $atts
         )
