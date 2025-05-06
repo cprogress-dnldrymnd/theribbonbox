@@ -657,9 +657,13 @@ section.forum-welcome .inner {
 	background-color: var(--white-color);
 	border-radius: 20px;
 	padding: 40px;
-	box-shadow: 0px 3px 31px #0000000F;
+	box-shadow: 0px 3px 31px #0000000f;
 }
-
+section.forum-welcome .button-box.button-box a {
+	display: inline-flex !important;
+	align-items: center;
+	gap: 10px;
+}
 .bg-image {
 	position: absolute;
 	left: 0;
