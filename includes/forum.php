@@ -1137,16 +1137,18 @@ function forum_sidebar()
             </div>
         <?php } ?>
         <?php if ($featured_giveaway) { ?>
-            <div class="featured-giveaways">
-                <div class="badge">FEATURED GIVEAWAY</div>
-                <div class="image-box">
-                    <?= wp_get_attachment_image(get_post_thumbnail_id($featured_giveaway), 'large') ?>
-                </div>
-                <div class="heading-box">
-                    <h2>
-                        <?= get_the_title($featured_giveaway) ?>
-                    </h2>
-                </div>
+            <div class="featured-giveaways featured-box-style">
+                <a class="featured-box-style-inner" href="<?= get_the_permalink($featured_giveaway) ?>">
+                    <div class="badge">FEATURED GIVEAWAY</div>
+                    <div class="image-box">
+                        <?= wp_get_attachment_image(get_post_thumbnail_id($featured_giveaway), 'large') ?>
+                    </div>
+                    <div class="heading-box">
+                        <h2>
+                            <?= get_the_title($featured_giveaway) ?>
+                        </h2>
+                    </div>
+                </a>
             </div>
         <?php } ?>
     </div>
