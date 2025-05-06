@@ -44,7 +44,7 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 </section>
 <section class="forum-latest lg-padding">
     <div class="container">
-        <div class="mb-4">
+        <div class="mb-5">
             <div class="row g-4 align-items-center justify-content-between ">
                 <div class="col-auto">
                     <h2 class="text-heading">Latest Topics & Discussions</h2>
@@ -74,7 +74,7 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 </section>
 <section class="forum-slider bg-purple lg-padding">
     <div class="container">
-        <div class="mb-4">
+        <div class="mb-5">
             <div class="row g-4 align-items-center justify-content-between">
                 <div class="col-auto">
                     <h2 class="text-heading">FORUMS TOPICS & DISCUSSIONS</h2>
