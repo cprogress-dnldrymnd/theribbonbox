@@ -377,8 +377,10 @@ function blog_box($atts)
         $name_val = $name;
     } else {
         $user_data = get_userdata($author_id);
-        if ($user_data) {
+        if ($user_data->display_name) {
             $name_val = $user_data->display_name;;
+        } else {
+            $name_val = $user_data->user_login;
         }
     }
 
