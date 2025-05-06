@@ -63,6 +63,11 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 <section class="featured-topics-section lg-padding">
     <div class="container">
         <?= do_shortcode('[featured_topics]') ?>
+        <div class="mt-5 text-center button-box button-box-v2 button-accent">
+            <a href="/forums">
+                Visit Forums
+            </a>
+        </div>
     </div>
 </section>
 
