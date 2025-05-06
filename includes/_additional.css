@@ -2455,6 +2455,9 @@ button#bbp_reply_submit:before {
 section.forum-guidelines {
 	padding-top: 100px;
 }
+.guidelines-wrapper .guidelines-text {
+	
+}
 .guidelines-wrapper #guidelines-readmore {
 	font-size: 15px;
 	text-decoration: none;

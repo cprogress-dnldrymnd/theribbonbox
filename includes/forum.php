@@ -1152,11 +1152,7 @@ function forum_guidelines($atts)
         <div class="container">
             <div class="inner">
                 <?php
-                if (!$autop) {
-                    echo $forum_guidelines;
-                } else {
-                    echo wpautop($forum_guidelines);
-                }
+                echo $forum_guidelines;
                 ?>
             </div>
         </div>
