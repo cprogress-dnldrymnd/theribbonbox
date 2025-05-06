@@ -73,9 +73,14 @@
 
 </pre>
 
-<?php if (is_bbpress() && wp_get_post_parent_id(get_the_ID())) { ?>
+<?php if (get_post_type() == 'forum' && wp_get_post_parent_id(get_the_ID())) { ?>
+    <script>
+        jQuery(document).ready(function() {
+            $buttons = jQuery('<div class="row g-3 topic-custom-buttons"> <div class="col-auto"><a href="<?= get_the_permalink(wp_get_post_parent_id(get_the_ID())) ?>"> Back to <?= get_the_title(wp_get_post_parent_id(get_the_ID())) ?> </a></div> <div class="col-auto"><a href="#new-post"> Create a Post </a></div> </div>');
 
-    dsds
+            $buttons.appendTo('.bbp-template-notice + .bbp-pagination-count');
+        });
+    </script>
 <?php } ?>
 
 <script>
