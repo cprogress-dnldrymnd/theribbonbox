@@ -491,7 +491,7 @@ function action_bp_before_member_header_meta()
         <?php if ($interested) { ?>
             <div class="interested-in">
                 <strong>Interested In: </strong>
-                <?php implode(',', $interested); ?>
+                <?= implode(',', $interested); ?>
             </div>
         <?php } ?>
         <div class="social-icons">
