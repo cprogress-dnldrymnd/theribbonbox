@@ -2470,7 +2470,7 @@ section.forum-guidelines {
 	background-position: center;
 }
 .guidelines-wrapper .guidelines-text + p,
-.guidelines-wrapper .row + p,
+.guidelines-wrapper .row > p:last-child,
 .guidelines-wrapper .guidelines-holder + p {
 	display: none !important;
 }
