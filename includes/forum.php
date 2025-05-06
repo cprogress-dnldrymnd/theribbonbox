@@ -477,10 +477,11 @@ function action_bp_before_member_header_meta()
     ));
 ?>
     <div class="before-member-header-meta">
-        <?php if($bio) { ?>
+        <?php if ($bio) { ?>
             <div class="bio">
-               <?=wpautop( $bio) ?>
+                <?= wpautop($bio) ?>
             </div>
+        <?php } ?>
         <div class="social-icons">
             <ul class="f-xl">
                 <?php if ($facebook_url) { ?>
