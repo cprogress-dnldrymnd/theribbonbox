@@ -96,7 +96,6 @@ function _giveaway_list_function($attr)
             'style' => $style,
             'addBorder' => $addBorder,
             'currentcatname' => $currentcatname,
-            'select_competition_date' => $select_competition_date,
         );
         /*
         if ($count > 1) {
@@ -201,10 +200,12 @@ function blog_post_style_2($post_args)
                                 </div>
                             <?php } else { ?>
                                 <?= $post_args['select_competition_date'] ?>
-                                <div class="blog-btns">
-                                    <a class="button-expert"
-                                        href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
-                                </div>
+                                <?php if (is_past_date_field($post_args['select_competition_date'], $post_args['post_id']) == false) { ?>
+                                    <div class="blog-btns">
+                                        <a class="button-expert"
+                                            href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
+                                    </div>
+                                <?php } ?>
                             <?php } ?>
                         </div>
                     </div>
@@ -227,3 +228,23 @@ function blog_post_style_2($post_args)
 }
 
 add_shortcode('blog_post_style_2', 'blog_post_style_2');
+
+function is_past_date_field($field_name, $post_id = null, $date_format = 'Y-m-d')
+{
+    $post_id = (null === $post_id) ? get_the_ID() : intval($post_id);
+    $date_value = get_post_meta($post_id, $field_name, true);
+
+    if (empty($date_value)) {
+        return false; // Field is empty, consider it not in the past
+    }
+
+    $timestamp = strtotime($date_value);
+
+    if (false === $timestamp) {
+        return false; // Invalid date format
+    }
+
+    $current_timestamp = current_time('timestamp');
+
+    return $timestamp < $current_timestamp;
+}
