@@ -2652,6 +2652,12 @@ button.accordion-button.accordion-button:after {
 	background-color: var(--white-color);
 	padding: 30px;
 }
+.featured-box-holder-v3 .featured-box-item  h3{
+	font-size: 25px;
+}
+.featured-box-holder-v3 .featured-box-item .icon-lists {
+	justify-content: space-between;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
