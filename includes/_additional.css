@@ -1911,13 +1911,13 @@ body.single-item.groups #buddypress div#item-header #item-header-cover-image #it
 	height: 22px;
 }
 
-.footer-community-links .menu.menu{
-	text-align: left;
+.footer-community-links .menu.menu {
+	text-align: left !important;
+	display: flex !important;
+	flex-direction: column;
+	gap: 10px;
 }
-.footer-community-links .menu.menu li a{
-	text-align: left;
-	min-height: 22px;
-}
+
 .mobile-header-width .community-nav ul li a svg {
 	width: 11px;
 	height: 11px;
