@@ -73,7 +73,7 @@
 
 </pre>
 
-<?php if (bbp_is_forum() || bbp_is_forum_archive() || bbp_is_forums_page()) { ?>
+<?php if (is_bbpress() && wp_get_post_parent_id(get_the_ID())) { ?>
 
     dsds
 <?php } ?>
