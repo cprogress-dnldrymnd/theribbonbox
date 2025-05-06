@@ -2658,6 +2658,10 @@ button.accordion-button.accordion-button:after {
 .featured-box-holder-v3 .featured-box-item .icon-lists {
 	justify-content: space-between;
 }
+.featured-box-holder-v3 .featured-box-item .icon-lists svg, .featured-box-holder-v3 .featured-box-item .post-share-btn svg {
+	width: 25px;
+    height: 25px;
+}
 .featured-box-holder-v3 .featured-box-item .content-box {
 	padding: 30px;
 	flex-grow: 1;
