@@ -259,7 +259,7 @@ function e_guides_community()
                 <div class="col-auto">
                     <h2 class="text-heading mb-0">E-Guides</h2>
                 </div>
-                <div class="col-auto button-box button-accent button-small button-box-v2 me-4 mb-4">
+                <div class="col-auto button-box button-accent button-small button-box-v2">
                     <a href="/e-guides">View All E-Guides</a>
                 </div>
             </div>
