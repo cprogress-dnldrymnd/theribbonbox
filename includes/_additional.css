@@ -1096,7 +1096,7 @@ input#aw-whats-new-reset {
 	gap: 20px;
 	justify-content: center;
 }
-.before-member-header-meta .bio {
+.before-member-header-meta .bio, .before-member-header-meta .interested-in {
 	text-align: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
