@@ -77,7 +77,7 @@
     xsxss
     <script>
         jQuery(document).ready(function() {
-            $buttons = jQuery('<div class="row g-3 topic-custom-buttons"> <div class="col-auto"><a class="col-auto button-box button-green button-bordered" href="<?= get_the_permalink(wp_get_post_parent_id(get_the_ID())) ?>"> Back to <?= get_the_title(wp_get_post_parent_id(get_the_ID())) ?> </a></div> <div class="col-auto button-box button-green"><a href="#new-post"> Create a Post </a></div> </div>');
+            $buttons = jQuery('<div class="row g-3 topic-custom-buttons"> <div class="col-auto button-box button-green button-bordered"><a  href="<?= get_the_permalink(wp_get_post_parent_id(get_the_ID())) ?>"> Back to <?= get_the_title(wp_get_post_parent_id(get_the_ID())) ?> </a></div> <div class="col-auto button-box button-green"><a href="#new-post"> Create a Post </a></div> </div>');
 
             $buttons.appendTo('.bbp-template-notice + .bbp-pagination .bbp-pagination-count');
         });
