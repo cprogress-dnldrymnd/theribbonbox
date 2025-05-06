@@ -72,8 +72,7 @@
 <pre>
 <?php
 echo wp_get_post_parent_id(39880);
-
-var_dump(get_post_meta(get_the_ID()));
+get_post_meta(get_the_ID())
 ?>
 </pre>
 <script>
