@@ -229,10 +229,9 @@ function blog_post_style_2($post_args)
 
 add_shortcode('blog_post_style_2', 'blog_post_style_2');
 
-function is_past_date_field($field_name, $post_id = null, $date_format = 'Y-m-d')
+function is_past_date_field($date_value, $post_id = null, $date_format = 'Y-m-d')
 {
     $post_id = (null === $post_id) ? get_the_ID() : intval($post_id);
-    $date_value = get_post_meta($post_id, $field_name, true);
 
     if (empty($date_value)) {
         return false; // Field is empty, consider it not in the past
