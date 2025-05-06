@@ -205,6 +205,11 @@ function blog_post_style_2($post_args)
                                         <a class="button-expert"
                                             href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
                                     </div>
+                                <?php } else { ?>
+                                    <div class="blog-btns">
+                                        <a class="button-expert"
+                                            href="<?= $post_args['post_permalink'] ?>">Giveaway Closed</a>
+                                    </div>
                                 <?php } ?>
                             <?php } ?>
                         </div>
