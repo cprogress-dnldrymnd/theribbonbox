@@ -571,7 +571,7 @@ function action_bp_before_member_header_meta()
 
             </ul>
             <ul class="icons">
-                <?php if (user_is_logged_in()) { ?>
+                <?php if (is_user_logged_in()) { ?>
                     <li>
                         <a href="<?php bp_member_permalink(); ?>notifications">
                             <?= $notif ?>
