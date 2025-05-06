@@ -2650,6 +2650,7 @@ button.accordion-button.accordion-button:after {
 	overflow: hidden;
 	border-radius: 10px;
 	background-color: var(--white-color);
+	padding: 30px;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
