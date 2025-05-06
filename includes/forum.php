@@ -485,6 +485,7 @@ function action_bp_before_member_header_meta()
     <div class="before-member-header-meta">
         <?php if ($bio) { ?>
             <div class="bio">
+                <strong>Bio: </strong>
                 <?= wpautop($bio) ?>
             </div>
         <?php } ?>
