@@ -657,6 +657,7 @@ section.forum-welcome .inner {
 	background-color: var(--white-color);
 	border-radius: 20px;
 	padding: 40px;
+	box-shadow: 0px 3px 31px #0000000F;
 }
 
 .bg-image {
