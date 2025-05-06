@@ -490,7 +490,7 @@ function action_bp_before_member_header_meta()
         <?php } ?>
         <?php if ($interested) { ?>
             <div class="interested-in">
-                <h4>Interested In</h4>
+                <h4>Interested In: </h4>
                 <?php foreach ($interested as $interest) { ?>
                     <span><?= $interest ?></span>
                 <?php } ?>
