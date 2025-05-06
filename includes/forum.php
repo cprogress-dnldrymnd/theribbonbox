@@ -475,11 +475,23 @@ function action_bp_before_member_header_meta()
         'field'     => 'bio',
         'user_id'   => bp_displayed_user_id()
     ));
+    $interested = bp_get_profile_field_data(array(
+        'field'     => 'Interested In',
+        'user_id'   => bp_displayed_user_id()
+    ));
 ?>
+    ?>
+
     <div class="before-member-header-meta">
         <?php if ($bio) { ?>
             <div class="bio">
                 <?= wpautop($bio) ?>
+            </div>
+        <?php } ?>
+        <?php if ($interested) { ?>
+            <div class="interested-in">
+                <h4>Interested In</h4>
+                <?= wpautop($interested) ?>
             </div>
         <?php } ?>
         <div class="social-icons">
