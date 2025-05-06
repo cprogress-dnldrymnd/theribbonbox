@@ -2551,9 +2551,10 @@ button.accordion-button.accordion-button:after {
 	align-items: center;
 	gap: 20px;
 }
-.checkbox-options label{
+.checkbox-options.checkbox-options.checkbox-options label{
     display: flex;
     align-items: center;
+	font-size: 16px;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
