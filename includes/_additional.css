@@ -2502,6 +2502,9 @@ section.forum-guidelines .inner h2 {
 	font-size: 30px;
 	margin-top: 0;
 }
+.bb-press-section section.forum-guidelines .container {
+	padding: 0;
+}
 section.forum-guidelines .inner h3 {
 	color: var(--accent-color);
 	font-family: "Work Sans", sans-serif;
