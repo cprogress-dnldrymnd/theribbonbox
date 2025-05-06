@@ -93,16 +93,17 @@ function get_category_posts_nav_new_function()
       $html .= renderRecentPost($post);
     }
 
+    $category_slug = $category->slug;
+    $button_text = 'JOIN TODAY';
 
 
-    
     $html .= '</div>';
     $html .= '<div class="menu-cta">';
     $html .= '<div class="menu-cta-inner">';
     $html .= '<div class="bg-image"> ' . wp_get_attachment_image(41297, 'large') . ' </div>';
     $html .= '<div class="menu-cta-content">';
     $html .= '<h3>Become part of the Community</h3>';
-    $html .= $category->cat_name;
+    $html .= $category_slug;
     $html .= '<div class="button-box button-accent button-small text-end button-box-v2 ">
             <a href="/community">JOIN TODAY</a>
         </div>';
