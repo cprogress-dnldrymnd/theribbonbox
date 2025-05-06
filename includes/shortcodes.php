@@ -13,7 +13,7 @@ function author_bio()
     } else {
         $image_id = $placeholder_id;
     }
-    if (current_user_can('administrator') && $article_author) {
+    if ($article_author) {
 ?>
         <div class="author-bio">
             <div class="author-bio-inner">

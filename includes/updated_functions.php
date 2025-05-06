@@ -195,7 +195,7 @@ function blog_post_style_2($post_args)
                             </a>
                             <h3 class="date-giveaways"><?= $post_args['date'] ?></h3>
                             <p class="text"></p>
-                            <?php if ($display_form_on_homepage && current_user_can('administrator')) { ?>
+                            <?php if ($display_form_on_homepage) { ?>
                                 <div class="giveaway-form-email">
                                     <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
                                 </div>
