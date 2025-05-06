@@ -96,6 +96,7 @@ function _giveaway_list_function($attr)
             'style' => $style,
             'addBorder' => $addBorder,
             'currentcatname' => $currentcatname,
+            'select_competition_date' => $select_competition_date,
         );
         /*
         if ($count > 1) {
@@ -119,7 +120,7 @@ function _giveaway_list_function($attr)
 
 
     $rtn .= '</div>';
-    $rtn.="<script type='text/javascript'>
+    $rtn .= "<script type='text/javascript'>
     $(document).ready(function () {
         if ($('.blogs-loop-carousel').length > 0) {
             $('.blogs-loop-carousel').slick({
@@ -158,6 +159,7 @@ function blog_post_style_1($post_args)
                     <h2><?= $post_args['post_title'] ?></h2>
                 </a>
                 <h3 class="date-giveaways">Event Date: <?= $post_args['date'] ?></h3>
+
                 <div class="blog-btns">
                     <a style="color:#000;" href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
                 </div>
@@ -176,9 +178,9 @@ add_shortcode('blog_post_style_1', 'blog_post_style_1');
 function blog_post_style_2($post_args)
 {
     ob_start();
-	$display_form_on_homepage = get_field('display_form_on_homepage', $post_args['post_id']);
+    $display_form_on_homepage = get_field('display_form_on_homepage', $post_args['post_id']);
 ?>
-    <div class="white-event-section  event-giveaway-outer event-giveaway-outer-light-bg" >
+    <div class="white-event-section  event-giveaway-outer event-giveaway-outer-light-bg">
         <div class="event-giveaway-inner">
             <div class="blog-top-ban blog-top-ban-podcast">
                 <div class="blog-top-ban-podcast-inner">
@@ -193,16 +195,17 @@ function blog_post_style_2($post_args)
                             </a>
                             <h3 class="date-giveaways"><?= $post_args['date'] ?></h3>
                             <p class="text"></p>
-							<?php if($display_form_on_homepage && current_user_can('administrator')) { ?>
-								<div class="giveaway-form-email">
-									<?= do_shortcode('[wpforms id="40566" title="false"]') ?>
-								</div>
-							<?php } else { ?>
-								<div class="blog-btns">
-									<a class="button-expert"
-										href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
-								</div>
-							<?php } ?>
+                            <?php if ($display_form_on_homepage && current_user_can('administrator')) { ?>
+                                <div class="giveaway-form-email">
+                                    <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
+                                </div>
+                            <?php } else { ?>
+                                <?= $post_args['select_competition_date'] ?>
+                                <div class="blog-btns">
+                                    <a class="button-expert"
+                                        href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="blog-l-img" <?= $post_args['style'] ?>>
