@@ -92,12 +92,17 @@ function get_category_posts_nav_new_function()
     foreach ($recent_posts as $post) {
       $html .= renderRecentPost($post);
     }
+
+
+
+    
     $html .= '</div>';
     $html .= '<div class="menu-cta">';
     $html .= '<div class="menu-cta-inner">';
     $html .= '<div class="bg-image"> ' . wp_get_attachment_image(41297, 'large') . ' </div>';
     $html .= '<div class="menu-cta-content">';
     $html .= '<h3>Become part of the Community</h3>';
+    $html .= $category->cat_name;
     $html .= '<div class="button-box button-accent button-small text-end button-box-v2 ">
             <a href="/community">JOIN TODAY</a>
         </div>';
@@ -193,7 +198,7 @@ function get_category_posts_nav_new_function()
     $html .= '<div class="menu-cta-inner">';
     $html .= '<div class="bg-image"> ' . wp_get_attachment_image(41297, 'large') . ' </div>';
     $html .= '<div class="menu-cta-content">';
-    $html .= '<h3>Become part of the Community x</h3>';
+    $html .= '<h3>Become part of the Community </h3>';
     $html .= '<div class="button-box button-accent button-small text-end button-box-v2 ">
             <a href="/community">JOIN TODAY</a>
         </div>';
