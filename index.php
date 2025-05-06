@@ -338,9 +338,6 @@ if (!is_bbpress() && !is_buddypress()) {
 } else {
     get_header('community');
     if (have_posts()) :
-        if (bbp_is_forum_archive()) {
-            echo do_shortcode('[forum_guidelines autop=0]');
-        }
         if (bp_is_user_profile()) {
             $section_class = 'bb-press-profile';
             $class = 'col-lg-12';
@@ -348,13 +345,16 @@ if (!is_bbpress() && !is_buddypress()) {
             $section_class = '';
             $class = 'col-lg-9';
         }
-        echo '<section class="bb-press-section large-container'.$section_class.'">';
+        echo '<section class="bb-press-section large-container' . $section_class . '">';
         echo '<div class="container">';
         while (have_posts()) :
             the_post();
             echo '<h1>';
             the_title();
             echo '</h1>';
+            if (bbp_is_forum_archive()) {
+                echo do_shortcode('[forum_guidelines autop=0]');
+            }
             echo '<div class="row">';
             echo '<div class="' . $class . '">';
             the_content();
