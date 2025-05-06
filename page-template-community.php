@@ -112,7 +112,7 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 <section class="featured-topics-section lg-padding">
     <div class="container">
         <?= do_shortcode('[featured_topics]') ?>
-        <div class="mt-5 text-center button-box button-box-v2 button-with-icon button-accent">
+        <div class="mt-5 text-center d-block d-lg-none button-box button-box-v2 button-with-icon button-accent">
             <a href="/forums">
                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
                     <path d="M10.2012 6.41961C10.2012 4.65038 8.76686 3.21606 6.99771 3.21606C5.22839 3.21606 3.79407 4.65038 3.79407 6.41961C3.79407 8.18885 5.22837 9.62315 6.99771 9.62315C7.33963 9.62315 7.66896 9.56904 7.97794 9.46988L9.82427 10L9.44942 8.4809C9.91831 7.92386 10.2012 7.20486 10.2012 6.41961Z" fill="currentColor"></path>
