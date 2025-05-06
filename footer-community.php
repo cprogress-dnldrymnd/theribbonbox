@@ -71,7 +71,25 @@
 <script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
 <pre>
 <?php
-var_dump(get_post_meta(39880));
+/**
+ * Retrieves the ID of the parent forum for a given forum.
+ *
+ * @param int $forum_id Optional. The ID of the forum to check.
+ * Defaults to the current forum being displayed.
+ * @return int The ID of the parent forum, or 0 if the forum has no parent
+ * or if an invalid forum ID is provided.
+ */
+function bbp_get_forum_parent_id( $forum_id = 0 ) {
+	$forum_id = bbp_get_forum_id( $forum_id );
+
+	if ( empty( $forum_id ) ) {
+		return 0;
+	}
+
+	return (int) get_post_field( 'post_parent', $forum_id );
+}
+
+var_dump(bbp_get_forum_parent_id(39880));
 ?>
 </pre>
 <script>
