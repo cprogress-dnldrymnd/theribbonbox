@@ -1094,6 +1094,9 @@ function forum_sidebar()
         $topics = get_related_topics();
     }
 
+
+    global $theme_option_page;
+    $featured_giveaway = get_field('featured_giveaway', $theme_option_page);
 ?>
     <div id="forum-sidebar" class="<?= $class ?>">
         <div class="community-posts ">
@@ -1131,6 +1134,11 @@ function forum_sidebar()
                         Visit Forums
                     </a>
                 </div>
+            </div>
+        <?php } ?>
+        <?php if ($featured_giveaway) { ?>
+            <div class="featured-giveaways">
+                <?= var_dump($featured_giveaway) ?>
             </div>
         <?php } ?>
     </div>
