@@ -47,7 +47,10 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
         <div class="mb-5">
             <div class="row g-4 align-items-center justify-content-between ">
                 <div class="col-auto">
-                    <h2 class="text-heading">Latest Topics & Discussions</h2>
+                    <h2 class="text-heading"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
+                    <path d="M10.2012 6.41961C10.2012 4.65038 8.76686 3.21606 6.99771 3.21606C5.22839 3.21606 3.79407 4.65038 3.79407 6.41961C3.79407 8.18885 5.22837 9.62315 6.99771 9.62315C7.33963 9.62315 7.66896 9.56904 7.97794 9.46988L9.82427 10L9.44942 8.4809C9.91831 7.92386 10.2012 7.20486 10.2012 6.41961Z" fill="currentColor"></path>
+                    <path d="M6.84682 2.48104C7.34755 2.48104 7.82493 2.57988 8.2643 2.75416C7.65231 1.14428 6.0958 0 4.27136 0C1.91242 0 0 1.91242 0 4.27144C0 5.31837 0.377264 6.27696 1.00248 7.0197L0.502587 9.04527L2.96432 8.33844C3.18219 8.40835 3.40811 8.46025 3.63961 8.49484C3.22572 7.87966 2.98362 7.13968 2.98362 6.34411C2.98362 4.21402 4.71661 2.48104 6.84682 2.48104Z" fill="currentColor"></path>
+                </svg> Latest Topics & Discussions</h2>
                 </div>
                 <div class="d-none d-lg-block col-auto text-center button-box button-box-v2 button-accent button-with-icon">
                     <a href="/forums">
@@ -77,7 +80,10 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
         <div class="mb-5">
             <div class="row g-4 align-items-center justify-content-between">
                 <div class="col-auto">
-                    <h2 class="text-heading">FORUMS TOPICS & DISCUSSIONS</h2>
+                    <h2 class="text-heading"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
+                    <path d="M10.2012 6.41961C10.2012 4.65038 8.76686 3.21606 6.99771 3.21606C5.22839 3.21606 3.79407 4.65038 3.79407 6.41961C3.79407 8.18885 5.22837 9.62315 6.99771 9.62315C7.33963 9.62315 7.66896 9.56904 7.97794 9.46988L9.82427 10L9.44942 8.4809C9.91831 7.92386 10.2012 7.20486 10.2012 6.41961Z" fill="currentColor"></path>
+                    <path d="M6.84682 2.48104C7.34755 2.48104 7.82493 2.57988 8.2643 2.75416C7.65231 1.14428 6.0958 0 4.27136 0C1.91242 0 0 1.91242 0 4.27144C0 5.31837 0.377264 6.27696 1.00248 7.0197L0.502587 9.04527L2.96432 8.33844C3.18219 8.40835 3.40811 8.46025 3.63961 8.49484C3.22572 7.87966 2.98362 7.13968 2.98362 6.34411C2.98362 4.21402 4.71661 2.48104 6.84682 2.48104Z" fill="currentColor"></path>
+                </svg> FORUMS TOPICS & DISCUSSIONS</h2>
                 </div>
                 <div class="d-none d-lg-block col-auto text-center button-box button-box-v2 button-accent button-with-icon">
                     <a href="/forums">
