@@ -2489,7 +2489,7 @@ section.forum-guidelines {
 section.forum-guidelines .inner {
 	box-shadow: 9px 11px 29px rgba(125, 138, 152, 0.15);
 	border-radius: 5px;
-	padding: 30px;
+	padding: 10px 30px;
 	background: #fff;
 	border-radius: 10px;
 }
