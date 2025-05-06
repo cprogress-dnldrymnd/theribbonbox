@@ -748,6 +748,15 @@ section.forum-welcome .inner {
 	text-transform: uppercase;
 	margin: 0;
 }
+.text-heading-with-icon.text-heading-with-icon {
+	display: flex;
+	gap: 10px;
+}
+.text-heading-with-icon.text-heading-with-icon svg {
+	width: 16px;
+	height: 16px;
+	flex: 0 0 16px;
+}
 .bbpress-wrapper {
 	max-width: 1200px;
 	margin-left: auto;
