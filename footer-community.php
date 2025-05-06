@@ -23,7 +23,7 @@
                             <?= do_shortcode('[community_nav]') ?>
                         </div>
                         <div class="col-auto footer-community-links">
-                            <?= do_shortcode('[community_nav]') ?>
+                            <?php wp_nav_menu(array('theme_location' => 'community-menu')); ?>
                         </div>
                         <div class="col-auto footer-mobile">
                             FOLLOW US

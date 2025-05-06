@@ -13,8 +13,10 @@ function register_my_menus()
         array(
             'header-menu' => __('Header Menu'),
             'community-menu' => __('Community Menu'),
+            'community-footer-menu' => __('Community Footer Menu'),
             'extra-menu' => __('Extra Menu')
-        )
+        ),
+        
     );
 }
 add_action('init', 'register_my_menus');
