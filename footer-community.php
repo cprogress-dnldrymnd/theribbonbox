@@ -69,6 +69,11 @@
 -->
 
 <script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
+<pre>
+<?php
+var_dump(get_post_meta(39880));
+?>
+</pre>
 <script>
     jQuery(document).ready(function($) {
 
