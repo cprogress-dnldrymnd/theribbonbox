@@ -2757,7 +2757,10 @@ button.accordion-button.accordion-button:after {
 	.blog-filter .row > div span {
 		width: 100%;
 	}
-	section.forum-welcome.forum-welcome,
+	section.forum-welcome.forum-welcome {
+		padding-top: 70px !important;
+		padding-bottom: 70px !important;
+	}
 	section.title-section.title-section {
 		padding-top: 15px !important;
 		padding-bottom: 15px !important;
