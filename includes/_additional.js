@@ -9,8 +9,14 @@ jQuery(document).ready(function ($) {
 
 function guidelines() {
     jQuery('#guidelines-readmore').click(function (e) {
-        jQuery('.guidelines-holder').addClass('active');
-        jQuery(this).hide();
+
+        if (jQuery('.guidelines-holder').hasClass('active')) {
+            jQuery('.guidelines-holder').removeClass('active');
+            jQuery(this).text('Read Guidelines +');
+        } else {
+            jQuery('.guidelines-holder').addClass('active');
+            jQuery(this).text('Collapse Guidelines -');
+        }
         e.preventDefault();
     });
 }
