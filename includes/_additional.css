@@ -2657,6 +2657,7 @@ button.accordion-button.accordion-button:after {
 }
 .featured-box-holder-v3 .featured-box-item .icon-lists {
 	justify-content: space-between;
+	margin-top: 10px;
 }
 .featured-box-holder-v3 .featured-box-item .icon-lists svg, .featured-box-holder-v3 .featured-box-item .post-share-btn svg {
 	width: 25px;
