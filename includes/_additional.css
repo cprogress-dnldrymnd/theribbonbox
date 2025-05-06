@@ -2706,15 +2706,15 @@ button.accordion-button.accordion-button:after {
 }
 .featured-box-style .featured-box-style-inner .badge {
 	position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: var(--accent-color);
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1;
-    font-weight: 400;
-    font-size: 15px;
-    color: var(--black-color);
+	top: 10px;
+	left: 10px;
+	background-color: var(--accent-color);
+	padding: 10px;
+	border-radius: 5px;
+	z-index: 1;
+	font-weight: 400;
+	font-size: 15px;
+	color: var(--black-color);
 }
 .featured-box-style .featured-box-style-inner .heading-box {
 	position: absolute;
@@ -2726,6 +2726,15 @@ button.accordion-button.accordion-button:after {
 .featured-box-style.featured-box-style.featured-box-style .featured-box-style-inner .heading-box h2 {
 	color: var(--white-color);
 	font-family: "Playfair Display" !important;
+}
+.bbp-template-notice + .bbp-pagination .bbp-pagination-count {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	flex-wrap: wrap;
+}
+.topic-custom-buttons {
+	
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
