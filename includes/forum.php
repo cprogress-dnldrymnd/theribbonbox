@@ -571,14 +571,16 @@ function action_bp_before_member_header_meta()
 
             </ul>
             <ul class="icons">
-                <li>
-                    <a href="<?php bp_member_permalink(); ?>notifications">
-                        <?= $notif ?>
-                        <span class="count">
-                            <?= bp_notifications_get_unread_notification_count() ?>
-                        </span>
-                    </a>
-                </li>
+                <?php if (user_is_logged_in()) { ?>
+                    <li>
+                        <a href="<?php bp_member_permalink(); ?>notifications">
+                            <?= $notif ?>
+                            <span class="count">
+                                <?= bp_notifications_get_unread_notification_count() ?>
+                            </span>
+                        </a>
+                    </li>
+                <?php } ?>
                 <!---
                 <li>
                     <a href="<?php bp_member_permalink(); ?>messages">
