@@ -490,8 +490,10 @@ function action_bp_before_member_header_meta()
         <?php } ?>
         <?php if ($interested) { ?>
             <div class="interested-in">
-                <h4>Interested In</h4>
-                <?= var_dump($interested) ?>
+                <h4>Interested In: </h4>
+                <?php foreach ($interested as $interest) { ?>
+                    <span class="badge badge-primary"><?= $interest ?></span>
+                <?php } ?>
             </div>
         <?php } ?>
         <div class="social-icons">
