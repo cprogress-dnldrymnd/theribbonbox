@@ -2649,6 +2649,7 @@ button.accordion-button.accordion-button:after {
 	position: relative;
 	overflow: hidden;
 	border-radius: 10px;
+	background-color: var(--white-color);
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
