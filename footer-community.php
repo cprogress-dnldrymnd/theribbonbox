@@ -18,12 +18,17 @@
                         </svg> </a>
                 </td>
                 <td>
-                    <div class="footer-community-links">
-                        <?= do_shortcode('[community_nav]') ?>
-                    </div>
-                    <div class="footer-mobile">
-                        FOLLOW US
-                        <?php echo do_shortcode("[get_socials]"); ?>
+                    <div class="row g-3">
+                        <div class="col-auto footer-community-links">
+                            <?= do_shortcode('[community_nav]') ?>
+                        </div>
+                        <div class="col-auto footer-community-links">
+                            <?= do_shortcode('[community_nav]') ?>
+                        </div>
+                        <div class="col-auto footer-mobile">
+                            FOLLOW US
+                            <?php echo do_shortcode("[get_socials]"); ?>
+                        </div>
                     </div>
                 </td>
             </tr>
