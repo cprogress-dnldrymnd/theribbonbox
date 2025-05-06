@@ -11,7 +11,7 @@ $hero_image = get_field('hero_image');
 $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 ?>
 
-<section class="forum-welcome py-5 mt-3 mt-lg-5" style="background-image: url(<?= $hero_image ?>);">
+<section class="forum-welcome  mt-3 mt-lg-5" style="background-image: url(<?= $hero_image ?>);">
     <div class="container text-center">
         <div class="inner">
             <h1 class="mb-4"><?php the_title() ?></h1>
