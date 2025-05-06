@@ -253,9 +253,16 @@ function e_guides_community()
         'numberposts' => 3
     ));
 ?>
-    <div class="featured-box">
+    <div class="featured-box featured-box-v2">
         <div class="featured-box-heading">
-            <h2 class="text-heading mb-0">E-Guides</h2>
+            <div class="row g-3 align-items-center justify-content-between">
+                <div class="col-auto">
+                    <h2 class="text-heading mb-0">E-Guides</h2>
+                </div>
+                <div class="col-auto button-box button-accent button-small text-end button-box-v2 me-4 mb-4">
+                    <a href="/e-guides">View All E-Guides</a>
+                </div>
+            </div>
         </div>
         <div class="featured-box-holder featured-box-holder-v2 d-flex flex-wrap">
             <?php foreach ($posts as $post) { ?>
@@ -279,9 +286,7 @@ function e_guides_community()
                 </div>
             <?php } ?>
         </div>
-        <div class="button-box button-accent button-small text-end button-box-v2 me-4 mb-4">
-            <a href="/e-guides">View All E-Guides</a>
-        </div>
+
     </div>
 <?php
     return ob_get_clean();
@@ -418,6 +423,8 @@ function blog_box($atts)
     return ob_get_clean();
 }
 add_shortcode('blog_box', 'blog_box');
+
+
 
 function get_topic_forum($topic_id)
 {
