@@ -2303,7 +2303,8 @@ form#profile-edit-form.standard-form input {
 	align-items: center;
 	row-gap: 5px;
 }
-.buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset > legend {
+.buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset > legend,
+.buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset > label {
 	width: 150px;
 }
 .buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset legend,
@@ -2315,7 +2316,8 @@ form#profile-edit-form.standard-form input {
 .buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset > .description {
 	display: none;
 }
-.buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset > input,.buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset > textarea {
+.buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset > input,
+.buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset > textarea {
 	width: calc(100% - 20px - 150px) !important;
 }
 .buddypress-wrap.buddypress-wrap.buddypress-wrap .profile.edit .editfield > fieldset > .field-visibility-settings {
