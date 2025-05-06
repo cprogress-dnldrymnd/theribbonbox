@@ -2460,7 +2460,7 @@ section.forum-guidelines {
 	align-items: center;
 	gap: 20px;
 }
-.guidelines-wrapper .guidelines-text:before {
+.guidelines-wrapper .forum-guideline-text:before {
 	content: "";
 	width: 20px;
 	height: 20px;
