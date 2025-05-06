@@ -73,9 +73,9 @@
 
 </pre>
 
-<?php if (is_forum()) { ?>
+<?php if (bbp_is_forum() || bbp_is_forum_archive() || bbp_is_forums_page()) { ?>
 
-
+dsds
 <?php } ?>
 
 <script>
