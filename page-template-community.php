@@ -6,8 +6,12 @@
 ?>
 <?php get_header('community') ?>
 
+<?php
+$hero_image = get_field('hero_image');
+$hero_image = wp_get_attachment_image_url($hero_image, 'full');
+?>
 
-<section class="forum-welcome py-5 mt-3 mt-lg-5">
+<section class="forum-welcome py-5 mt-3 mt-lg-5" style="background-image: url(<?= $hero_image ?>);">
     <div class="container text-center">
         <h1 class="mb-4"><?php the_title() ?></h1>
         <?php if (get_the_content()) { ?>
@@ -34,7 +38,7 @@
 <section class="forum-latest lg-padding">
     <div class="container">
         <h2 class="text-heading mb-4">Latest Topics & Discussions</h2>
-        <?= do_shortcode('[latest_topics]')?>
+        <?= do_shortcode('[latest_topics]') ?>
     </div>
 </section>
 <section class="forum-slider bg-purple lg-padding">
