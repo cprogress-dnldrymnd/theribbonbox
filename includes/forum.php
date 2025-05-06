@@ -373,6 +373,15 @@ function blog_box($atts)
         'user_id'   => $author
     ));
 
+    if ($name) {
+        $name_val = $name;
+    } else {
+        $user_data = get_userdata($author_id);
+        if ($user_data) {
+            $name_val = $user_data->display_name;;
+        }
+    }
+
 ?>
     <div class="blogs-box d-flex post-box" post-id="<?= $id ?>">
         <?php if (get_the_post_thumbnail_url($id, 'large')) { ?>
@@ -423,7 +432,7 @@ function blog_box($atts)
                             <?= bp_core_fetch_avatar(array('item_id' => $author, 'type' => 'thumb'));  ?>
                         </div>
                         <div class="name">
-                            <?= $name ?>
+                            <?= $name_val ?>
                         </div>
                     </a>
                 </div>
