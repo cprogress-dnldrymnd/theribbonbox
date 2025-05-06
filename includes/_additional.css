@@ -1096,6 +1096,14 @@ input#aw-whats-new-reset {
 	gap: 20px;
 	justify-content: center;
 }
+.before-member-header-meta .bio {
+	text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .before-member-header-meta ul,
 .before-member-header-meta ul li {
 	float: none !important;
