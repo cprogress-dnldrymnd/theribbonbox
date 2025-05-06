@@ -2741,6 +2741,10 @@ button.accordion-button.accordion-button:after {
 	font-weight: 400;
 	line-height: 1;
 }
+.topic-custom-buttons .button-box.button-green a{
+	background-color: var(--green-color) !important;
+	border-color: var(--green-color) !important;
+}
 .topic-custom-buttons .button-box.button-bordered a{
 	border: 1px solid var(--green-color) !important;
 	background-color: transparent !important;
