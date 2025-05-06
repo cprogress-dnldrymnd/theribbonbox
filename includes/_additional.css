@@ -2733,8 +2733,18 @@ button.accordion-button.accordion-button:after {
 	width: 100%;
 	flex-wrap: wrap;
 }
-.topic-custom-buttons {
-	
+.topic-custom-buttons.topic-custom-buttons.topic-custom-buttons a {
+	padding: 10px 20px;
+	border-radius: 5px;
+	color: var(--white-color) !important;
+	font-size: 13px !important;
+	font-weight: 400;
+	line-height: 1;
+}
+.topic-custom-buttons .button-box.button-bordered a{
+	border: 1px solid var(--green-color) !important;
+	background-color: transparent !important;
+	color: var(--green-color) !important;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
