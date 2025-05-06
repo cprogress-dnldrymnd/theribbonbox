@@ -2546,6 +2546,15 @@ button.accordion-button.accordion-button:after {
 	font-weight: bold;
 	text-transform: uppercase;
 }
+.checkbox-options {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.checkbox-options {
+    display: flex;
+    align-items: center;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
