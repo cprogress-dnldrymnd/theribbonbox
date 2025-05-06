@@ -44,8 +44,8 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 </section>
 <section class="forum-latest lg-padding">
     <div class="container">
-        <div class="mb-5">
-            <div class="row g-4 align-items-center justify-content-between ">
+        <div class="mb-4">
+            <div class="row g-4 align-items-end justify-content-between ">
                 <div class="col-auto">
                     <h2 class="text-heading text-heading-with-icon"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
                     <path d="M10.2012 6.41961C10.2012 4.65038 8.76686 3.21606 6.99771 3.21606C5.22839 3.21606 3.79407 4.65038 3.79407 6.41961C3.79407 8.18885 5.22837 9.62315 6.99771 9.62315C7.33963 9.62315 7.66896 9.56904 7.97794 9.46988L9.82427 10L9.44942 8.4809C9.91831 7.92386 10.2012 7.20486 10.2012 6.41961Z" fill="currentColor"></path>
@@ -77,8 +77,8 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 </section>
 <section class="forum-slider bg-purple lg-padding">
     <div class="container">
-        <div class="mb-5">
-            <div class="row g-4 align-items-center justify-content-between">
+        <div class="mb-4">
+            <div class="row g-4 align-items-end justify-content-between">
                 <div class="col-auto">
                     <h2 class="text-heading text-heading-with-icon"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
                     <path d="M10.2012 6.41961C10.2012 4.65038 8.76686 3.21606 6.99771 3.21606C5.22839 3.21606 3.79407 4.65038 3.79407 6.41961C3.79407 8.18885 5.22837 9.62315 6.99771 9.62315C7.33963 9.62315 7.66896 9.56904 7.97794 9.46988L9.82427 10L9.44942 8.4809C9.91831 7.92386 10.2012 7.20486 10.2012 6.41961Z" fill="currentColor"></path>
