@@ -2471,7 +2471,6 @@ section.forum-guidelines {
 	background-position: center;
 	display: inline-flex;
 	background-repeat: no-repeat;
-
 }
 .guidelines-wrapper .guidelines-text + p,
 .guidelines-wrapper .row > p:last-child,
@@ -2479,8 +2478,12 @@ section.forum-guidelines {
 	display: none !important;
 }
 
+.guidelines-wrapper {
+	* {
+		font-size: 15px;
+	}
+}
 .guidelines-wrapper #guidelines-readmore {
-	font-size: 15px;
 	text-decoration: none;
 	padding: 10px 15px;
 	border: 1px solid;
