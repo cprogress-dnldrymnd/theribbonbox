@@ -373,7 +373,7 @@ function blog_box($atts)
         'user_id'   => $author
     ));
 
-    if ($name) {
+    if ($name && $name != '') {
         $name_val = $name;
     } else {
         $user_data = get_userdata($author_id);
