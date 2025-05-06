@@ -94,7 +94,10 @@ function get_category_posts_nav_new_function()
     }
 
     $category_slug = $category->slug;
-    $button_text = 'JOIN TODAY';
+    global $theme_option_page;
+    $heading = get_field($category_slug . '_heading', $theme_option_page);
+    $button_text = get_field($category_slug . '_button_text', $theme_option_page);
+    $button_link = get_field($category_slug . '_button_link', $theme_option_page);
 
 
     $html .= '</div>';
@@ -102,10 +105,10 @@ function get_category_posts_nav_new_function()
     $html .= '<div class="menu-cta-inner">';
     $html .= '<div class="bg-image"> ' . wp_get_attachment_image(41297, 'large') . ' </div>';
     $html .= '<div class="menu-cta-content">';
-    $html .= '<h3>Become part of the Community</h3>';
+    $html .= '<h3>' . $heading . '</h3>';
     $html .= $category_slug;
     $html .= '<div class="button-box button-accent button-small text-end button-box-v2 ">
-            <a href="/community">JOIN TODAY</a>
+            <a href="' . $button_link . '">' . $button_text . '</a>
         </div>';
     $html .= '</div>';
     $html .= '</div>';
