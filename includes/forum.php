@@ -434,7 +434,7 @@ function blog_box($atts)
                             <?= bp_core_fetch_avatar(array('item_id' => $author, 'type' => 'thumb'));  ?>
                         </div>
                         <div class="name">
-                            <?= $name_val ?>x
+                            <?= $name_val ?>
                         </div>
                     </a>
                 </div>
