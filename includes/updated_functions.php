@@ -24,14 +24,14 @@ function _giveaway_list_function($attr)
         'order' => 'desc',
         'post_status' => 'publish', // Show only the published posts,
         'has_password' => false,
-        'meta_query' => array(
+        /*'meta_query' => array(
             array(
                 'key' => 'select_competition_date', // Replace with your custom field key.
                 'value' => date('Y-m-d'), // Today's date.
                 'compare' => '>=', // Greater than or equal to today.
                 'type' => 'DATE' // Important: Specify the meta_value type as DATE.
             )
-        )
+        )*/
     ));
 
 
