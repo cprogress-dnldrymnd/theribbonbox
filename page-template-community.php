@@ -44,7 +44,7 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 </section>
 <section class="forum-latest lg-padding">
     <div class="container">
-        <div class="row g-4 align-items-center justify-content-center mb-4">
+        <div class="row g-4 align-items-center justify-content-between mb-4">
             <div class="col-auto">
                 <h2 class="text-heading">Latest Topics & Discussions</h2>
             </div>
