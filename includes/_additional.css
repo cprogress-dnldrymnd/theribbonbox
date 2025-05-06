@@ -2648,6 +2648,9 @@ button.accordion-button.accordion-button:after {
 	overflow: hidden;
 	border-radius: 10px;
 	background-color: var(--white-color);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 .featured-box-holder-v3 .featured-box-item h3 {
 	font-size: 25px;
@@ -2657,7 +2660,12 @@ button.accordion-button.accordion-button:after {
 }
 .featured-box-holder-v3 .featured-box-item .content-box {
 	padding: 30px;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
+
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';

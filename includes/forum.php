@@ -272,11 +272,13 @@ function e_guides_community()
                             <img src="<?= wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), 'medium') ?>" alt="<?= $post->post_title ?>">
                         </div>
                         <div class="content-box">
-                            <a href="<?= get_the_permalink($post->ID) ?>">
-                                <h3 class="mb-3 mt-0"><?= $post->post_title ?></h3>
-                            </a>
-                            <div class="post-excerpt mb-3">
-                                <?= $post->post_excerpt ?>
+                            <div class="title-excerpt">
+                                <a href="<?= get_the_permalink($post->ID) ?>">
+                                    <h3 class="mb-3 mt-0"><?= $post->post_title ?></h3>
+                                </a>
+                                <div class="post-excerpt mb-3">
+                                    <?= $post->post_excerpt ?>
+                                </div>
                             </div>
                             <?= do_shortcode('[post_action show_comment="0" id=' . $post->ID . ']') ?>
                         </div>
