@@ -3017,7 +3017,6 @@ button.accordion-button.accordion-button:after {
 @media (max-width: 900px) {
 	.footer-community-links .community-nav ul {
 		padding-left: 0;
-		margin-bottom: 1rem !important;
 	}
 	.footer-community-links .community-nav ul a {
 		padding-left: 0 !important;
