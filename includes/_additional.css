@@ -597,6 +597,9 @@ section.e-guides-archive .content-box .post-share-items.post-share-items {
 	.guidelines-wrapper.guidelines-wrapper > .row {
 		justify-content: center !important;
 	}
+	#forum-sidebar.forum-archive, #forum-sidebar.forum-single-type--category {
+		margin-top: 0 !important;
+	}
 }
 
 @media (max-width: 767px) {
