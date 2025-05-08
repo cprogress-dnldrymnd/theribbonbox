@@ -594,6 +594,9 @@ section.e-guides-archive .content-box .post-share-items.post-share-items {
 	.swiper-post-slider.swiper-post-slider.swiper-post-slider {
 		padding-right: 40px;
 	}
+	.guidelines-wrapper.guidelines-wrapper > .row {
+		justify-content: center !important;
+	}
 }
 
 @media (max-width: 767px) {
