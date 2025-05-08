@@ -2738,6 +2738,7 @@ button.accordion-button.accordion-button:after {
 	justify-content: space-between;
 	width: 100%;
 	flex-wrap: wrap;
+	gap: 10px;	
 }
 .topic-custom-buttons.topic-custom-buttons.topic-custom-buttons a {
 	padding: 10px 20px;
@@ -3100,6 +3101,11 @@ button.accordion-button.accordion-button:after {
 	.activity-list.activity-list .activity-item .activity-content .activity-inner,
 	.activity-list.activity-list .activity-item .activity-content blockquote {
 		font-size: 12px;
+	}
+	
+	.topic-custom-buttons.topic-custom-buttons.topic-custom-buttons {
+    width: calc(100% + var(--bs-gutter-y));
+    justify-content: flex-end;
 	}
 }
 @media (max-width: 575px) {
