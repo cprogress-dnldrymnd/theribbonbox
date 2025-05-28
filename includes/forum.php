@@ -1162,7 +1162,6 @@ function forum_sidebar()
         $cta_text = $forum_cta_text;
         $cta_image = wp_get_attachment_image($forum_cta_image, 'large');
         $cta_link = $forum_cta__link;
-        $cta_text = get_the_title($featured_giveaway);
         $cta_badge = $forum_cta_badge;
     }
 ?>
