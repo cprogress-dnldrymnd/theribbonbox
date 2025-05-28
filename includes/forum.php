@@ -1145,10 +1145,7 @@ function forum_sidebar()
     global $theme_option_page;
     $cta_type = get_field('cta_type', $theme_option_page);
     $featured_giveaway = get_field('featured_giveaway', $theme_option_page);
-    $forum_cta_text = get_field('forum_cta_text', $theme_option_page);
-    $forum_cta_image = get_field('forum_cta_image', $theme_option_page);
-    $forum_cta__link = get_field('forum_cta__link', $theme_option_page);
-    $forum_cta_badge = get_field('forum_cta_badge', $theme_option_page);
+
 
     if ($cta_type == 'Featured_Giveaway') {
         $cta_text = get_the_title($featured_giveaway);
@@ -1157,6 +1154,11 @@ function forum_sidebar()
         $cta_text = get_the_title($featured_giveaway);
         $cta_badge = 'FEATURED GIVEAWAY';
     } else {
+        $forum_cta_text = get_field('forum_cta_text', $theme_option_page);
+        $forum_cta_image = get_field('forum_cta_image', $theme_option_page);
+        $forum_cta__link = get_field('forum_cta__link', $theme_option_page);
+        $forum_cta_badge = get_field('forum_cta_badge', $theme_option_page);
+
         $cta_text = $forum_cta_text;
         $cta_image = wp_get_attachment_image($forum_cta_image, 'large');
         $cta_link = $forum_cta__link;
