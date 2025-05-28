@@ -1110,10 +1110,15 @@ add_filter('wp_mail_content_type', 'wpse27856_set_content_type');
 function forum_sidebar()
 {
     // Check if the current page is a forum archive or a single forum page
+    $share_url = get_the_permalink();
+    $share_title = get_the_title();
+
     if (bbp_is_forum_archive() || bbp_is_search_results()) {
         $title = 'Popular Topics';
         $topics = get_popular_topics();
         $class = 'forum-archive';
+        $share_url = 'https://theribbonbox.com/forums/';
+        $share_title = 'Forums';
     } else if (bbp_is_single_forum()) {
         $forum_id = get_the_ID();
         $title = get_the_title() . ' Popular Topics';
@@ -1165,11 +1170,10 @@ function forum_sidebar()
         $cta_badge = $forum_cta_badge;
     }
 
-    $share_url = get_the_permalink();
 ?>
     <div id="forum-sidebar" class="<?= $class ?>">
         <div class="share-this-forum">
-            <?= create_item_socials_v3($share_url, 'Test') ?>
+            <?= create_item_socials_v3($share_url, $share_title) ?>
         </div>
         <div class="community-posts ">
             <div class="featured-box">
