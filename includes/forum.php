@@ -1166,6 +1166,9 @@ function forum_sidebar()
     }
 ?>
     <div id="forum-sidebar" class="<?= $class ?>">
+        <div class="share-this-forum">
+            
+        </div>
         <div class="community-posts ">
             <div class="featured-box">
                 <div class="featured-box-heading">
