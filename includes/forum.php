@@ -1173,6 +1173,12 @@ function forum_sidebar()
 ?>
     <div id="forum-sidebar" class="<?= $class ?>">
         <div class="share-this-forum">
+
+        </div>
+        <div class="featured-box share-this-forum">
+            <div class="featured-box-heading">
+                <h2 class="text-heading mb-0">Share This Forum</h2>
+            </div>
             <?= create_item_socials_v3($share_url, $share_title) ?>
         </div>
         <div class="community-posts ">
