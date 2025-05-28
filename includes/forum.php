@@ -21,8 +21,7 @@ function bbpress_ajax_login_handler()
             'class'   => 'alert-danger',
             'message' => 'Login failed please try again',
         ));
-    }
-    else {
+    } else {
         // Login successful
         echo json_encode(array(
             'status'  => 'success',
@@ -45,7 +44,7 @@ function forum_slider()
         'meta_key'    => '_bbp_forum_type', // bbPress forum type meta key
         'meta_value'  => 'category', // Get only forums with 'category' type
     ));
-    ?>
+?>
     <div class="swiper swiper-post-slider swiper-post-slider-nav-style-2">
         <div class="row g-4 swiper-wrapper">
             <?php foreach ($forums as $forum) { ?>
@@ -57,7 +56,7 @@ function forum_slider()
         <div class="swiper-pagination"></div>
     </div>
 
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('forum_slider', 'forum_slider');
@@ -75,7 +74,7 @@ function forum_box($atts)
     );
     $image = get_field('featured_image', $id);
     $category_colour = get_field('category_colour', $id);
-    ?>
+?>
     <div
         class="forum-box box-style-1 position-relative d-flex align-items-center justify-content-center rounded overflow-hidden">
         <a href="<?= get_the_permalink($id) ?>">
@@ -89,7 +88,7 @@ function forum_box($atts)
             </div>
         </a>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('forum_box', 'forum_box');
@@ -121,8 +120,7 @@ function post_action($atts)
             $user_favorites = get_user_meta($user_id, 'user_favorites', true);
             $count = get_posts_number_of_favorites($id);
             $comment_count = get_comments_number($id);
-        }
-        else {
+        } else {
             $user_favorites = bbp_get_user_favorites_topic_ids(get_current_user_id());
             $count = bbpress_get_topic_favorite_count($id);
             $comment_count = bbp_get_topic_reply_count($id, true);
@@ -132,7 +130,7 @@ function post_action($atts)
             $class = 'is-user-favorite';
         }
     }
-    ?>
+?>
     <div class="icon-lists post-action d-flex align-items-center">
         <?php if ($show_comment == 'true') { ?>
             <div class="icon-list d-flex align-items-center">
@@ -141,8 +139,7 @@ function post_action($atts)
                     <?php
                     if ($comment_count == 0) {
                         echo $comment;
-                    }
-                    else {
+                    } else {
                         echo $comment_active;
                     }
                     ?>
@@ -164,7 +161,7 @@ function post_action($atts)
             <?= create_item_socials_v2(get_the_permalink($id), get_the_title($id), $share, '') ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 
@@ -174,7 +171,7 @@ function featured_topics()
 {
     ob_start();
     $featured_topics = get_field('featured_community_topic');
-    ?>
+?>
     <div class="featured-box">
         <div class="featured-box-heading">
             <div class="row g-3 align-items-center justify-content-between">
@@ -217,7 +214,7 @@ function featured_topics()
         </div>
 
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('featured_topics', 'featured_topics');
@@ -229,7 +226,7 @@ function upcoming_events()
         'post_type'   => 'events',
         'numberposts' => 1
     ));
-    ?>
+?>
     <h2>Upcoming Event</h2>
     <div class="blogs-loop-inner">
         <?php foreach ($posts as $post) { ?>
@@ -263,7 +260,7 @@ function upcoming_events()
             </div>
         <?php } ?>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('upcoming_events', 'upcoming_events');
@@ -276,7 +273,7 @@ function e_guides_community()
         'post_type'   => 'product',
         'numberposts' => 3
     ));
-    ?>
+?>
     <div class="featured-box featured-box-v2">
         <div class="featured-box-heading">
             <div class="row g-3 align-items-center justify-content-between">
@@ -313,7 +310,7 @@ function e_guides_community()
         </div>
 
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('e_guides_community', 'e_guides_community');
@@ -327,7 +324,7 @@ function blogs()
         'post_status' => array('private', 'publish')
     ));
 
-    ?>
+?>
     <div class="blogs-holder">
         <div class="row g-4 ">
             <?php foreach ($posts as $post) { ?>
@@ -337,7 +334,7 @@ function blogs()
             <?php } ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('blogs', 'blogs');
@@ -351,7 +348,7 @@ function latest_topics()
         'post_status' => array('publish')
     ));
 
-    ?>
+?>
     <div class="blogs-holder">
         <div class="row g-4 ">
             <?php foreach ($posts as $post) { ?>
@@ -361,7 +358,7 @@ function latest_topics()
             <?php } ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('latest_topics', 'latest_topics');
@@ -389,19 +386,16 @@ function blog_box($atts)
 
     if ($name && $name != '') {
         $name_val = $name;
-    }
-    else {
+    } else {
         $user_data = get_userdata($author);
         if ($user_data->display_name) {
-            $name_val = $user_data->display_name;
-            ;
-        }
-        else {
+            $name_val = $user_data->display_name;;
+        } else {
             $name_val = $user_data->user_login;
         }
     }
 
-    ?>
+?>
     <div class="blogs-box d-flex post-box" post-id="<?= $id ?>">
         <?php if (get_the_post_thumbnail_url($id, 'large')) { ?>
             <div class="image-box">
@@ -411,7 +405,7 @@ function blog_box($atts)
                             <?php
                             if (in_array($term->term_id, $include_terms)) {
                                 $category_colour = get_field('blog_cat_community_bg_color', $term);
-                                ?>
+                            ?>
                                 <div class="col-auto <?= $term->slug ?>" style="--color: <?= $category_colour ?>">
                                     <span><?= $term->name ?></span>
                                 </div>
@@ -462,7 +456,7 @@ function blog_box($atts)
             </div>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('blog_box', 'blog_box');
@@ -529,7 +523,7 @@ function action_bp_before_member_header_meta()
         'field'   => 'Interested In',
         'user_id' => bp_displayed_user_id()
     ));
-    ?>
+?>
 
 
     <div class="before-member-header-meta">
@@ -608,13 +602,13 @@ function action_bp_before_member_header_meta()
                         <?= $message ?>
                         <span class="count">
                             <?php //messages_get_unread_count() 
-                                ?>
+                            ?>
                         </span>
                     </a>
                 </li>--->
-        </ul>
+            </ul>
+        </div>
     </div>
-</div>
 <?php
 }
 add_filter('bp_before_member_header_meta', 'action_bp_before_member_header_meta');
@@ -622,32 +616,32 @@ add_filter('bp_before_member_header_meta', 'action_bp_before_member_header_meta'
 
 function friends()
 {
-    ?>
-<?php
-        if (bp_has_members('user_id=' . bp_loggedin_user_id() . '&type=alphabetical')): ?>
-<ul id="friends-list" class="item-list">
-    <?php while (bp_members()):
+?>
+    <?php
+    if (bp_has_members('user_id=' . bp_loggedin_user_id() . '&type=alphabetical')): ?>
+        <ul id="friends-list" class="item-list">
+            <?php while (bp_members()):
                 bp_the_member(); ?>
-    <li>
-        <a class="d-flex align-items-center" href="<?php bp_member_permalink(); ?>">
-            <div class="avatar">
-                <?php bp_member_avatar(); ?>
-            </div>
-            <div class="friend-details">
-                <h4><?php bp_member_name(); ?></h4>
-                <div class="last-active">
-                    <?php bp_member_last_active() ?>
-                </div>
-            </div>
-        </a>
-    </li>
-    <?php endwhile; ?>
-</ul>
-<?php else: ?>
-<div id="message" class="info">
-    <p><?php _e('No friends found.', 'text_domain'); ?></p>
-</div>
-<?php endif; ?>
+                <li>
+                    <a class="d-flex align-items-center" href="<?php bp_member_permalink(); ?>">
+                        <div class="avatar">
+                            <?php bp_member_avatar(); ?>
+                        </div>
+                        <div class="friend-details">
+                            <h4><?php bp_member_name(); ?></h4>
+                            <div class="last-active">
+                                <?php bp_member_last_active() ?>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            <?php endwhile; ?>
+        </ul>
+    <?php else: ?>
+        <div id="message" class="info">
+            <p><?php _e('No friends found.', 'text_domain'); ?></p>
+        </div>
+    <?php endif; ?>
 <?php
 }
 
@@ -688,34 +682,34 @@ function community_nav()
     $groups = '<svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none"> <path d="M10.2012 6.41961C10.2012 4.65038 8.76686 3.21606 6.99771 3.21606C5.22839 3.21606 3.79407 4.65038 3.79407 6.41961C3.79407 8.18885 5.22837 9.62315 6.99771 9.62315C7.33963 9.62315 7.66896 9.56904 7.97794 9.46988L9.82427 10L9.44942 8.4809C9.91831 7.92386 10.2012 7.20486 10.2012 6.41961Z" fill="black"/> <path d="M6.84682 2.48104C7.34755 2.48104 7.82493 2.57988 8.2643 2.75416C7.65231 1.14428 6.0958 0 4.27136 0C1.91242 0 0 1.91242 0 4.27144C0 5.31837 0.377264 6.27696 1.00248 7.0197L0.502587 9.04527L2.96432 8.33844C3.18219 8.40835 3.40811 8.46025 3.63961 8.49484C3.22572 7.87966 2.98362 7.13968 2.98362 6.34411C2.98362 4.21402 4.71661 2.48104 6.84682 2.48104Z" fill="black"/> </svg>';
     $profile = '<svg xmlns="http://www.w3.org/2000/svg" width="9" height="11" viewBox="0 0 9 11" fill="none"> <path d="M9 8.39735C9 7.13249 7.99267 6.10718 6.75 6.10718H2.25C1.00736 6.10718 0 7.13249 0 8.39735V10.6875H9V8.39735Z" fill="black"/> <path d="M4.5 4.58035C5.74264 4.58035 6.75 3.555 6.75 2.29017C6.75 1.02535 5.74264 0 4.5 0C3.25736 0 2.25 1.02535 2.25 2.29017C2.25 3.555 3.25736 4.58035 4.5 4.58035Z" fill="black"/> </svg>';
     ob_start();
-    ?>
-<div class="community-nav">
-    <ul class="list-inline d-flex flex-wrap align-items-center">
-        <li>
-            <a class="d-flex align-items-center" href="<?= get_the_permalink(39318) ?>">
-                <span class="icon"><?= $community ?></span>
-                <span>COMMUNITY</span>
-            </a>
-        </li>
-        <li>
-            <a class="d-flex align-items-center" href="/forums">
-                <span class="icon"><?= $groups ?></span>
-                <span>FORUMS</span>
-            </a>
-        </li>
-        <?php if (is_user_logged_in()) { ?>
-        <li>
-            <a class="d-flex align-items-center"
-                href="/members/<?= bp_core_get_username(get_current_user_id()) ?>/friends">
-                <span class="icon"><?= $friends ?></span>
-                <span>FRIENDS</span>
-            </a>
-        </li>
-        <?php } ?>
-    </ul>
-</div>
+?>
+    <div class="community-nav">
+        <ul class="list-inline d-flex flex-wrap align-items-center">
+            <li>
+                <a class="d-flex align-items-center" href="<?= get_the_permalink(39318) ?>">
+                    <span class="icon"><?= $community ?></span>
+                    <span>COMMUNITY</span>
+                </a>
+            </li>
+            <li>
+                <a class="d-flex align-items-center" href="/forums">
+                    <span class="icon"><?= $groups ?></span>
+                    <span>FORUMS</span>
+                </a>
+            </li>
+            <?php if (is_user_logged_in()) { ?>
+                <li>
+                    <a class="d-flex align-items-center"
+                        href="/members/<?= bp_core_get_username(get_current_user_id()) ?>/friends">
+                        <span class="icon"><?= $friends ?></span>
+                        <span>FRIENDS</span>
+                    </a>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
 <?php
-        return ob_get_clean();
+    return ob_get_clean();
 }
 
 add_shortcode('community_nav', 'community_nav');
@@ -729,10 +723,10 @@ function community_nav_right()
 </svg>';
     $home = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16"> <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/> </svg>';
     ob_start();
-    ?>
-<div class="community-nav">
-    <ul class="list-inline d-flex flex-wrap justify-content-end align-items-center">
-        <!---
+?>
+    <div class="community-nav">
+        <ul class="list-inline d-flex flex-wrap justify-content-end align-items-center">
+            <!---
             <li>
                 <a class="d-flex align-items-center" href="/members/<?= bp_core_get_username(get_current_user_id()) ?>/messages">
                     <span class="icon"><?= $messages ?></span>
@@ -753,7 +747,7 @@ function community_nav_right()
             </li>
         </ul>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 
@@ -785,21 +779,18 @@ function add_to_favorites_ajax()
             if ($key !== false) {
                 unset($favorites[$key]);
             }
-        }
-        else {
+        } else {
             $status = 'added';
             $favorites[] = $post_id;
         }
         update_user_meta($user_id, 'user_favorites', $favorites);
         $count = get_posts_number_of_favorites($post_id);
-    }
-    else {
+    } else {
         $favorites = bbp_get_user_favorites_topic_ids(get_current_user_id());
         if (in_array($post_id, $favorites)) {
             $status = 'removed';
             bbp_remove_user_favorite($user_id, $post_id);
-        }
-        else {
+        } else {
             bbp_add_user_favorite($user_id, $post_id);
             $status = 'added';
         }
@@ -862,8 +853,7 @@ function bbpress_get_topic_favorite_count($topic_id)
 
     if (is_array($favorited_by)) {
         return count($favorited_by);
-    }
-    else {
+    } else {
         return 0; // Return 0 if there are no favorites or an error occurred.
     }
 }
@@ -908,8 +898,7 @@ function community_posts()
             echo do_shortcode('[e_guides_post id=' . get_the_ID() . ']');
             echo '</div>';
         }
-    }
-    else {
+    } else {
         echo '<div class="col-lg-6">';
         echo "<h2>No results found for $s</h2>";
         echo '</div>';
@@ -935,7 +924,7 @@ function community_posts()
 function community_login()
 {
     ob_start();
-    ?>
+?>
     <div id="bbp_login_form">
         <?= do_shortcode('[bbp-login]') ?>
     </div>
@@ -945,7 +934,7 @@ function community_login()
                     href="https://theribbonbox.com/community-homepage/register/">here</a>.</p>
         </div>
     <?php } ?>
-    <?php
+<?php
     return ob_get_clean();
 }
 
@@ -956,13 +945,13 @@ add_shortcode('community_login', 'community_login');
 function community_register()
 {
     ob_start();
-    ?>
+?>
     <p style="text-align: center;"><?= do_shortcode('[wpforms id="40016" title="false"]') ?></p>
     <?php if (!is_user_logged_in()) { ?>
         <p style="text-align: center;">Already have an account? Login <a
                 href="https://theribbonbox.com/community-homepage/login">here</a>.</p>
     <?php } ?>
-    <?php
+<?php
     return ob_get_clean();
 }
 
@@ -972,7 +961,7 @@ add_shortcode('community_register', 'community_register');
 function forum_bottom_sections()
 {
     ob_start();
-    ?>
+?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
         integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -1021,7 +1010,7 @@ function forum_bottom_sections()
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
         integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <?php
+<?php
     return ob_get_clean();
 }
 
@@ -1058,8 +1047,7 @@ function registration__email()
             echo '<li>' . $user->user_pass . '</li>';
         }
         echo '</ul>';
-    }
-    else {
+    } else {
         echo 'No users found.';
     }
     return ob_get_clean();
@@ -1126,8 +1114,7 @@ function forum_sidebar()
         $title = 'Popular Topics';
         $topics = get_popular_topics();
         $class = 'forum-archive';
-    }
-    else if (bbp_is_single_forum()) {
+    } else if (bbp_is_single_forum()) {
         $forum_id = get_the_ID();
         $title = get_the_title() . ' Popular Topics';
         $_bbp_forum_type = get_post_meta($forum_id, '_bbp_forum_type', true);
@@ -1135,8 +1122,7 @@ function forum_sidebar()
         if ($_bbp_forum_type == 'forum') {
             $topics = get_popular_topics($forum_id);
             $class = 'forum-single-type--forum';
-        }
-        else {
+        } else {
             $forum_id = get_forums_under_category($forum_id);
             $topics = get_popular_topics($forum_id);
             $class = 'forum-single-type--category';
@@ -1145,13 +1131,11 @@ function forum_sidebar()
             $title = 'Popular Topics';
             $topics = get_popular_topics();
         }
-    }
-    else if (bp_is_user()) {
+    } else if (bp_is_user()) {
         $class = 'forum-single-topic';
         $title = 'Posted Topics';
         $topics = get_user_topics(bp_displayed_user_id());
-    }
-    else {
+    } else {
         $class = 'forum-single-topic';
         $title = 'Related Topics';
         $topics = get_related_topics();
@@ -1179,7 +1163,7 @@ function forum_sidebar()
         $cta_text = get_the_title($featured_giveaway);
         $cta_badge = $forum_cta_badge;
     }
-    ?>
+?>
     <div id="forum-sidebar" class="<?= $class ?>">
         <div class="community-posts ">
             <div class="featured-box">
@@ -1233,9 +1217,14 @@ function forum_sidebar()
                 </a>
             </div>
         <?php } ?>
+
+        <div class="follow-us-sidebar">
+            <h4>FOLLOW OUR SOCIALS</h4>
+            <?php echo do_shortcode("[get_socials]"); ?>
+        </div>
     </div>
 
-    <?php
+<?php
 }
 
 add_shortcode('forum_sidebar', 'forum_sidebar');
@@ -1254,7 +1243,7 @@ function forum_guidelines($atts)
     );
     global $theme_option_page;
     $forum_guidelines = get_field($id, $theme_option_page);
-    ?>
+?>
     <section class="forum-guidelines large-container">
         <div class="container">
             <div class="inner">
@@ -1264,7 +1253,7 @@ function forum_guidelines($atts)
             </div>
         </div>
     </section>
-    <?php
+<?php
     return ob_get_clean();
 }
 add_shortcode('forum_guidelines', 'forum_guidelines');
@@ -1291,8 +1280,7 @@ function get_popular_topics($forum_id = false, $limit = 5)
                 'value'   => $forum_id,
                 'compare' => 'IN'
             );
-        }
-        else {
+        } else {
             $meta_query[] = array(
                 'key'     => '_bbp_forum_id',
                 'value'   => $forum_id,
