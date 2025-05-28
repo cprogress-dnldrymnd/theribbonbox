@@ -2778,6 +2778,23 @@ button.accordion-button.accordion-button:after {
 	width: 100% !important;
 	max-width: 100%;
 }
+.socials-v2 {
+	background-color: var(--green-color);
+	margin-top: 30px;
+	border-radius: 10px;
+}
+.socials-v2 svg {
+	width: 25px;
+	height: 25px;
+	color: var(--white-color);
+}
+.follow-us-sidebar h4 {
+	border: 1px solid var(--white-color);
+	padding: 11px 18px;
+	display: inline-block;
+	font-size: 17px;
+	border-radius: 5px;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
