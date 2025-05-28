@@ -44,7 +44,7 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 </section>
 <section class="forum-latest lg-padding">
     <div class="container">
-        <div class="bbp-search-custom">
+        <div class="bbp-search-custom mb-4">
             <?= do_shortcode('[bbp-search-form]') ?>
         </div>
         <div class="mb-4">
