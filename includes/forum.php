@@ -1181,7 +1181,7 @@ function forum_sidebar()
             </div>
             <?= create_item_socials_v3($share_url, $share_title) ?>
         </div>
-        <div class="community-posts ">
+        <div class="community-posts featured-box-style">
             <div class="featured-box">
                 <div class="featured-box-heading">
                     <h2 class="text-heading mb-0"><?= $title ?></h2>
