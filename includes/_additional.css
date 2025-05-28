@@ -2815,8 +2815,8 @@ button.accordion-button.accordion-button:after {
 .social-icons-v3 {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
-	gap: 10px;
+	justify-content: space-between;
+	gap: 20px;
 	padding: 20px;
 }
 .social-icons-v3 svg {
