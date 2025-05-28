@@ -1179,7 +1179,9 @@ function forum_sidebar()
             <div class="featured-box-heading">
                 <h2 class="text-heading mb-0">Share This Forum</h2>
             </div>
-            <?= create_item_socials_v3($share_url, $share_title) ?>
+            <div class="featured-box-item">
+                <?= create_item_socials_v3($share_url, $share_title) ?>
+            </div>
         </div>
         <div class="community-posts featured-box-style">
             <div class="featured-box">

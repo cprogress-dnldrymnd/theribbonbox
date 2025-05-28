@@ -2812,6 +2812,16 @@ button.accordion-button.accordion-button:after {
 	display: flex;
 	gap: 3px;
 }
+.social-icons-v3 {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+.social-icons-v3 svg {
+	width: 25px;
+	height: 25px;
+	color: var(--green-color);
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
