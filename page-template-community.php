@@ -44,7 +44,6 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 </section>
 <section class="forum-latest lg-padding">
     <div class="container">
-        <?= bbp_search() ?>
         <div class="mb-4">
             <div class="row g-4 align-items-end justify-content-between ">
                 <div class="col-auto">
