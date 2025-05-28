@@ -334,7 +334,7 @@ function create_item_socials_v2($url, $title, $icon = '<img class="me-2" src="ht
 					' . $icon . '
 					' . $text . '
 				</div></a><div class="post-share-items" style="display:none;"><div class="social-icons"> 
-                        <a target="_blank" class="whatsapp" href="whatsapp://send?text=This is WhatsApp sharing example using link" data-action="share/whatsapp/share" rel="nofollow"></a>
+                        <a target="_blank" class="whatsapp" href="whatsapp://send?text=' . $url . '" data-action="share/whatsapp/share" rel="nofollow"></a>
                         <a href="mailto:?subject=' . $title . '+&body=' . $url . '" target="_blank" class="emailshare" rel="nofollow"></a>
                         <a href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '"  target="_blank" class="facebook" rel="nofollow"></a>
                         <a href="' . $url . '" target="_blank" class="pinterest" rel="nofollow"></a> 
