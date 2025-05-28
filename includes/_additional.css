@@ -2782,6 +2782,7 @@ button.accordion-button.accordion-button:after {
 	background-color: var(--green-color);
 	margin-top: 30px;
 	border-radius: 10px;
+	padding: 20px;
 }
 .socials-v2 svg {
 	width: 25px;
@@ -2794,6 +2795,8 @@ button.accordion-button.accordion-button:after {
 	display: inline-block;
 	font-size: 17px;
 	border-radius: 5px;
+	color: var(--white-color);
+	margin: 0;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {

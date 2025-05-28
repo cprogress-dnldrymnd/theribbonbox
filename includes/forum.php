@@ -1218,7 +1218,7 @@ function forum_sidebar()
             </div>
         <?php } ?>
 
-        <div class="follow-us-sidebar">
+        <div class="follow-us-sidebar text-center">
             <h4>FOLLOW OUR SOCIALS</h4>
             <?php echo do_shortcode("[get_socials_v2]"); ?>
         </div>
