@@ -597,7 +597,8 @@ section.e-guides-archive .content-box .post-share-items.post-share-items {
 	.guidelines-wrapper.guidelines-wrapper > .row {
 		justify-content: center !important;
 	}
-	#forum-sidebar.forum-archive, #forum-sidebar.forum-single-type--category {
+	#forum-sidebar.forum-archive,
+	#forum-sidebar.forum-single-type--category {
 		margin-top: 0 !important;
 	}
 }
@@ -2738,7 +2739,7 @@ button.accordion-button.accordion-button:after {
 	justify-content: space-between;
 	width: 100%;
 	flex-wrap: wrap;
-	gap: 10px;	
+	gap: 10px;
 }
 .topic-custom-buttons.topic-custom-buttons.topic-custom-buttons a {
 	padding: 10px 20px;
@@ -2748,14 +2749,34 @@ button.accordion-button.accordion-button:after {
 	font-weight: 400;
 	line-height: 1;
 }
-.topic-custom-buttons .button-box.button-green a{
+.topic-custom-buttons .button-box.button-green a {
 	background-color: var(--green-color) !important;
 	border-color: var(--green-color) !important;
 }
-.topic-custom-buttons .button-box.button-bordered a{
+.topic-custom-buttons .button-box.button-bordered a {
 	border: 1px solid var(--green-color) !important;
 	background-color: transparent !important;
 	color: var(--green-color) !important;
+}
+.bbp-search-custom .bbp-search-form {
+	box-shadow: 9px 11px 29px rgba(125, 138, 152, 0.15);
+	border-radius: 5px;
+	padding: 30px 40px;
+	background: #fff;
+	position: relative;
+	width: 100%;
+}
+.bbp-search-custom .bbp-search-form > div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0;
+	gap: 10px;
+}
+.bbp-search-custom .bbp-search-form input[type="text"] {
+	    display: block;
+    width: 100% !important;
+    max-width: 100%;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
@@ -3027,13 +3048,12 @@ button.accordion-button.accordion-button:after {
 		padding-right: 0 !important;
 	}
 	.footer-row-items .footer-community-links {
-			width: 25%;
+		width: 25%;
 	}
 
 	.footer-row-items .footer-mobile {
-			width: 50%;
+		width: 50%;
 	}
-
 }
 @media (max-width: 767px) {
 	#header-community .logo-holder svg {
@@ -3102,10 +3122,10 @@ button.accordion-button.accordion-button:after {
 	.activity-list.activity-list .activity-item .activity-content blockquote {
 		font-size: 12px;
 	}
-	
+
 	.topic-custom-buttons.topic-custom-buttons.topic-custom-buttons {
-    width: calc(100% + var(--bs-gutter-y));
-    justify-content: flex-end;
+		width: calc(100% + var(--bs-gutter-y));
+		justify-content: flex-end;
 	}
 }
 @media (max-width: 575px) {
@@ -3207,12 +3227,12 @@ button.accordion-button.accordion-button:after {
 		width: 100%;
 		justify-content: center;
 	}
-		.footer-row-items .footer-community-links {
-			width: 100%;
+	.footer-row-items .footer-community-links {
+		width: 100%;
 	}
 
 	.footer-row-items .footer-mobile {
-			width: 100%;
+		width: 100%;
 	}
 }
 @media (max-width: 480px) {
