@@ -2796,7 +2796,7 @@ button.accordion-button.accordion-button:after {
 	font-size: 17px;
 	border-radius: 5px;
 	color: var(--white-color);
-	margin: 0;
+	margin: 0 0 25px;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {

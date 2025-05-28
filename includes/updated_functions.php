@@ -270,7 +270,7 @@ function get_socials_v2()
     $youtube_social = get_field('youtube_social', $theme_option_page);
 
 ?>
-    <div class="socials-v2 row g-3 justify-content-center text-center">
+    <div class="socials-v2 row g-3 g-lg-4 justify-content-center text-center">
         <?php if ($facebook_social) { ?>
             <div class="col-auto">
                 <a target="_blank" href="<?= $facebook_social ?>">
