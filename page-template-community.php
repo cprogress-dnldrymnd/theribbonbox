@@ -45,9 +45,16 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
 <section class="forum-latest lg-padding">
     <div class="container">
         <div class="bbp-search-custom mb-4">
+            <h2 class="text-heading text-heading-with-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+                Search Community Forums
+            </h2>
             <?= do_shortcode('[bbp-search-form]') ?>
         </div>
         <div class="mb-4">
+            Search Community Forums
             <div class="row g-4 align-items-end justify-content-between ">
                 <div class="col-auto">
                     <h2 class="text-heading text-heading-with-icon"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
