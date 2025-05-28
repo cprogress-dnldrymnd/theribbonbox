@@ -1164,10 +1164,12 @@ function forum_sidebar()
         $cta_link = $forum_cta__link;
         $cta_badge = $forum_cta_badge;
     }
+
+    $share_url = get_the_permalink();
 ?>
     <div id="forum-sidebar" class="<?= $class ?>">
         <div class="share-this-forum">
-            
+            <?= create_item_socials_v3($share_url, 'Test') ?>
         </div>
         <div class="community-posts ">
             <div class="featured-box">
