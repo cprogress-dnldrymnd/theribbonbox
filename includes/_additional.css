@@ -2766,7 +2766,7 @@ button.accordion-button.accordion-button:after {
 	position: relative;
 	width: 100%;
 }
-.bbp-search-custom .bbp-search-form > div {
+.bbp-search-custom .bbp-search-form > form > div {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -2774,9 +2774,9 @@ button.accordion-button.accordion-button:after {
 	gap: 10px;
 }
 .bbp-search-custom .bbp-search-form input[type="text"] {
-	    display: block;
-    width: 100% !important;
-    max-width: 100%;
+	display: block;
+	width: 100% !important;
+	max-width: 100%;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
