@@ -1220,7 +1220,7 @@ function forum_sidebar()
 
         <div class="follow-us-sidebar">
             <h4>FOLLOW OUR SOCIALS</h4>
-            <?php echo do_shortcode("[get_socials]"); ?>
+            <?php echo do_shortcode("[get_socials_v2]"); ?>
         </div>
     </div>
 

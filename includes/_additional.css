@@ -2778,12 +2778,6 @@ button.accordion-button.accordion-button:after {
 	width: 100% !important;
 	max-width: 100%;
 }
-.follow-us-sidebar .social-icons-txt {
-	display: none !important;
-}
-.follow-us-sidebar .social-icons:not(.social-icons-txt) {
-	display: flex !important;
-}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
