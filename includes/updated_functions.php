@@ -337,9 +337,9 @@ function create_item_socials_v2($url, $title, $icon = '<img class="me-2" src="ht
                         <a target="_blank" class="whatsapp" href="whatsapp://send?text=' . $title . ' ' . $url . '" data-action="share/whatsapp/share" rel="nofollow"></a>
                         <a href="mailto:?subject=' . $title . '+&body=' . $url . '" target="_blank" class="emailshare" rel="nofollow"></a>
                         <a href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '"  target="_blank" class="facebook" rel="nofollow"></a>
-                        <a href="' . $url . '" target="_blank" class="pinterest" rel="nofollow"></a> 
-                        <a href="' . $url . '" target="_blank" class="linkedin" rel="nofollow"></a>
-                        <a href="https://twitter.com/intent/tweet?url=' . $url . '&text=' . $title . '" target="_blank" class="twitter" rel="nofollow"></a> 
+                        <a https://pinterest.com/pin/create/button/?url=&media=' . $url . '" target="_blank" class="pinterest" rel="nofollow"></a> 
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url=' . $url . '" target="_blank" class="linkedin" rel="nofollow"></a>
+                        <a href="https://x.com/intent/tweet?url=' . $url . '&text=' . $title . '" target="_blank" class="twitter" rel="nofollow"></a> 
             </div></div></div>';
     return $rtn;
 }
