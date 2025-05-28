@@ -2789,6 +2789,9 @@ button.accordion-button.accordion-button:after {
 	height: 25px;
 	color: var(--white-color);
 }
+.post-box {
+	position: relative;
+}
 .follow-us-sidebar h4 {
 	border: 1px solid var(--white-color);
 	padding: 11px 18px;
@@ -2797,6 +2800,17 @@ button.accordion-button.accordion-button:after {
 	border-radius: 5px;
 	color: var(--white-color);
 	margin: 0 0 25px;
+}
+.post-share-v2 .post-share-items {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    background-color: var(--white-color);
+    padding: 2px;
+}
+.post-share-v2 .social-icons {
+	display: flex;
+	gap: 3px;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
