@@ -2825,7 +2825,7 @@ button.accordion-button.accordion-button:after {
 	color: var(--green-color);
 }
 .bb-press-section h1 {
-	text-align: left;
+	text-align: left !important;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
