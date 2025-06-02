@@ -2824,7 +2824,9 @@ button.accordion-button.accordion-button:after {
 	height: 25px;
 	color: var(--green-color);
 }
-
+.bb-press-section h1 {
+	text-align: left;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
