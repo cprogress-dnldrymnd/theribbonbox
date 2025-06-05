@@ -100,9 +100,10 @@ function get_category_posts_nav_new_function()
     $button_link = get_field($category_slug . '_button_link', $theme_option_page);
     $image = get_field($category_slug . '_image', $theme_option_page);
 
+    
 
     $html .= '</div>';
-    $html .= '<div class="menu-cta">';
+    $html .= '<div class="menu-cta" '.$category_slug.'>';
     $html .= '<div class="menu-cta-inner">';
     $html .= '<div class="bg-image"> ' . wp_get_attachment_image($image, 'large') . ' </div>';
     $html .= '<div class="menu-cta-content">';
