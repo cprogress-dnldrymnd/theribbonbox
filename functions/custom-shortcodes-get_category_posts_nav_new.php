@@ -94,6 +94,9 @@ function get_category_posts_nav_new_function()
     }
 
     $category_slug = $category->slug;
+    if($category_slug == 'menopause') {
+      $category_slug = 'wellbeing'; // Adjust slug for the specific case
+    }
     global $theme_option_page;
     $heading = get_field($category_slug . '_heading', $theme_option_page);
     $button_text = get_field($category_slug . '_button_text', $theme_option_page);
@@ -103,7 +106,7 @@ function get_category_posts_nav_new_function()
     
 
     $html .= '</div>';
-    $html .= '<div class="menu-cta" '.$category_slug.'>';
+    $html .= '<div class="menu-cta">';
     $html .= '<div class="menu-cta-inner">';
     $html .= '<div class="bg-image"> ' . wp_get_attachment_image($image, 'large') . ' </div>';
     $html .= '<div class="menu-cta-content">';
