@@ -2802,11 +2802,11 @@ button.accordion-button.accordion-button:after {
 	margin: 0 0 25px;
 }
 .post-share-v2 .post-share-items {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    background-color: var(--white-color);
-    padding: 2px;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	background-color: var(--white-color);
+	padding: 2px;
 }
 .post-share-v2 .social-icons {
 	display: flex;
@@ -2917,6 +2917,9 @@ button.accordion-button.accordion-button:after {
 
 	header#header-community .menu-item-has-children .sub-menu li {
 		background-color: transparent !important;
+		flex: unset;
+		max-width: 30%;
+		width: 30%;
 	}
 	header#header-community .menu-item-has-children .sub-menu li a {
 		text-decoration: none !important;
