@@ -2827,6 +2827,14 @@ button.accordion-button.accordion-button:after {
 .bb-press-section h1 {
 	text-align: left !important;
 }
+.form-text-below-heading {
+	    max-width: 900px;
+    font-size: 18px;
+    margin-top: 40px;
+}
+.form-text-below-heading + .forum-guidelines.forum-guidelines{
+    padding-top: 30px;
+}
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';
