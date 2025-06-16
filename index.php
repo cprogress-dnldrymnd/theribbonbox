@@ -353,8 +353,8 @@ if (!is_bbpress() && !is_buddypress()) {
             the_title();
             echo '</h1>';
             if (bbp_is_forum_archive()) {
-                echo do_shortcode('[forum_guidelines autop=0]');
                 echo "<p>To post a question or start a discussion, click on the category below that best fits your topic — fertility, pregnancy, parenting or wellbeing. Once you're in, you'll find the option to create your post. Ask a question, share your story, or offer advice.</p>";
+                echo do_shortcode('[forum_guidelines autop=0]');
             }
             echo '<div class="row">';
             echo '<div class="' . $class . '">';
