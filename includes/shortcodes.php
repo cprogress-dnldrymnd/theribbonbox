@@ -81,7 +81,7 @@ function article_partnership()
                     <div class="author-details">
                         <?php if ($partnership_name) { ?>
                             <div class="article-author partnership-name">
-                                In partnership with experts from <span class="text-highlight"><?= $partnership_name ?></span>
+                                <span>In partnership with experts from <span class="text-highlight"><?= $partnership_name ?></span></span>
                             </div>
                             <?php if ($partnership_website) { ?>
                                 <a href="<?= $partnership_website ?>" target="_blank" class="partner-website">
@@ -128,7 +128,7 @@ function article_medically_reviewed_by()
                     <div class="author-details">
 
                         <div class="article-author">
-                            Medically reviewed by <span class="text-highlight"><?= $reviewed_by ?></span>
+                            <span>Medically reviewed by <span class="text-highlight"><?= $reviewed_by ?></span></span>
                             <?php if ($reviewed_by_url && $link_type == 'linkedin') { ?>
                                 <div class="article-author-socials">
                                     <a href="<?= $reviewed_by_url ?>" target="_blank">
