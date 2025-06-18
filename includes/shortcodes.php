@@ -81,15 +81,13 @@ function article_partnership()
                     <div class="author-details">
                         <?php if ($partnership_name) { ?>
                             <div class="article-author">
-                                <div>
-                                    <div>In partnership with experts from <?= $partnership_name ?></div>
-                                    <?php if ($partnership_website) { ?>
-                                        <a href="<?= $partnership_website ?>" target="_blank">
-                                            Visit Website
-                                        </a>
-                                    <?php } ?>
-                                </div>
+                                In partnership with experts from <?= $partnership_name ?>
                             </div>
+                            <?php if ($partnership_website) { ?>
+                                <a href="<?= $partnership_website ?>" target="_blank">
+                                    Visit Website
+                                </a>
+                            <?php } ?>
                         <?php } ?>
                     </div>
                 </div>
