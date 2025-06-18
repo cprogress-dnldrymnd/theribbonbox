@@ -65,7 +65,7 @@ function article_partnership()
         $partnership_name = get_field("partnership_name", get_the_ID());
         $partnership_website = get_field("partnership_website", get_the_ID());
         $partnership_logo = get_field("partnership_logo", get_the_ID());
-        $placeholder_id = 39014;
+        $placeholder_id = 42993;
         if ($partnership_logo) {
             $image_id = $partnership_logo;
         } else {
