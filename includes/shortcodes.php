@@ -54,6 +54,8 @@ function author_bio()
     }
     return ob_get_clean();
 }
+add_shortcode('author_bio', 'author_bio');
+
 
 function article_partnership()
 {
