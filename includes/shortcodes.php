@@ -114,13 +114,13 @@ function article_medically_reviewed_by()
 
         $placeholder_id = 39014;
         if ($reviewed_by_photo) {
-            $image_id = $article_author_image;
+            $image_id = $reviewed_by_photo;
         } else {
             $image_id = $placeholder_id;
         }
         if ($reviewed_by) {
         ?>
-            <div class="author-bio">
+            <div class="author-bio medically-reviewd-by">
                 <div class="author-bio-inner">
                     <div class="author-image">
                         <?= wp_get_attachment_image($image_id, 'large') ?>
