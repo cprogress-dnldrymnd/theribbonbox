@@ -73,18 +73,18 @@ function article_partnership()
         }
         if ($partnership_name) {
         ?>
-            <div class="author-bio">
+            <div class="author-bio article-partnership">
                 <div class="author-bio-inner">
                     <div class="author-image">
                         <?= wp_get_attachment_image($image_id, 'large') ?>
                     </div>
                     <div class="author-details">
                         <?php if ($partnership_name) { ?>
-                            <div class="article-author">
+                            <div class="article-author partnership-name">
                                 In partnership with experts from <?= $partnership_name ?>
                             </div>
                             <?php if ($partnership_website) { ?>
-                                <a href="<?= $partnership_website ?>" target="_blank">
+                                <a href="<?= $partnership_website ?>" target="_blank" class="partner-website">
                                     Visit Website
                                 </a>
                             <?php } ?>
