@@ -665,7 +665,7 @@ function blog_load_next_function($attr)
     wp_reset_query();
 
     if (count($recent_posts)) {
-        $rtn .= do_shortcode("[display_followus]");
+        $rtn .= do_shortcode("[display_followus] ...");
 
         $rtn .= '<div class="loadingnextOuter"><a id="loadNext" class="loadmore" data-posttype="' . $posttype . '" data-categoryid="' . $categoryid . '" data-exclude="' . $ex_list . '"></a></div>';
 
