@@ -138,8 +138,8 @@ echo '
         echo do_shortcode("[display_followus]");
 
         //WPBMap::addAllMappedShortcodes();
-
-        echo '<div class="loadingnextOuter sdsds"><a id="loadNext" onclick="return false;" data-posttype="'.$post_type.'" data-exclude="'.$post->ID.'" data-categoryid="'.$categories[0]->term_id.'" class="loadmore"></a></div>';
+            // Load more post on scroll - dd
+       // echo '<div class="loadingnextOuter sdsds"><a id="loadNext" onclick="return false;" data-posttype="'.$post_type.'" data-exclude="'.$post->ID.'" data-categoryid="'.$categories[0]->term_id.'" class="loadmore"></a></div>';
 
 
         //echo '<script type="text/javascript">
