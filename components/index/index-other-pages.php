@@ -139,7 +139,7 @@ echo '
 
         //WPBMap::addAllMappedShortcodes();
 
-        echo '<div class="loadingnextOuter"><a id="loadNext" onclick="return false;" data-posttype="'.$post_type.'" data-exclude="'.$post->ID.'" data-categoryid="'.$categories[0]->term_id.'" class="loadmore"></a></div>';
+        echo '<div class="loadingnextOuter sdsds"><a id="loadNext" onclick="return false;" data-posttype="'.$post_type.'" data-exclude="'.$post->ID.'" data-categoryid="'.$categories[0]->term_id.'" class="loadmore"></a></div>';
 
 
         //echo '<script type="text/javascript">
