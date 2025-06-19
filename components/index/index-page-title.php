@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-page-title.php -->";
+//html comments remove by dd
+//echo "<!-- index-page-title.php -->";
 
 // If not "Thank you for subscribing." page
 // or "Thank you for entering our giveaway." page

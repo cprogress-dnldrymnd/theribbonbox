@@ -2,7 +2,8 @@
 /**
  * Used for "post" type detail pages (and possibly other types)
  */
-echo "<!-- index-other-pages.php -->";
+//html comments remove by dd
+//echo "<!-- index-other-pages.php -->";
 
 //var_dump(get_the_ID());
 //var_dump($post->ID);

@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-experts.php -->";
+//html comments remove by dd
+//echo "<!-- index-experts.php -->";
 
 echo do_shortcode('[ivory-search id="23677" title="Experts Search"]');
 echo '<div class="experts-page-cara">';

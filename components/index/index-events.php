@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-events.php -->";
+//html comments remove by dd
+//echo "<!-- index-events.php -->";
 
 $ext = "";
 

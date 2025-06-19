@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-offers-giveaways.php -->";
+//html comments remove by dd
+//echo "<!-- index-offers-giveaways.php -->";
 
 //$atts['post_type'] = "podcasts";
 $loadMoreEv = true;

@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-contact.php -->";
+//html comments remove by dd
+//echo "<!-- index-contact.php -->";
 
 $nav = array(
     'post_type' => 'page',

@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-alt-post-types.php -->";
+//html comments remove by dd
+//echo "<!-- index-alt-post-types.php -->";
 $pagep = "";
 
 if (get_post_type( get_the_ID() ) == 'page'){

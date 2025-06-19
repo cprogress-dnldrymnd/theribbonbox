@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-page-with-billion-children.php -->";
+//html comments remove by dd
+//echo "<!-- index-page-with-billion-children.php -->";
 
 $args = array(
     'post_parent' => $post->ID,

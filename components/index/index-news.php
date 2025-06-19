@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-news.php -->";
+//html comments remove by dd
+//echo "<!-- index-news.php -->";
 
 if ( empty( get_the_content() ) ){
     echo '<div class="blog-lst-outer mind-bread">';

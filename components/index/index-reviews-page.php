@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-reviews-page.php -->";
+//html comments remove by dd
+//echo "<!-- index-reviews-page.php -->";
 
 $recent_posts = wp_get_recent_posts(array(
     'post_type'=> 'reviews',

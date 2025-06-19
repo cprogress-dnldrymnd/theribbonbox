@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-giveaway-items.php -->";
+//html comments remove by dd
+//echo "<!-- index-giveaway-items.php -->";
 
 $ext = "";
 

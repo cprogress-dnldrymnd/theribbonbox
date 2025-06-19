@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-testimonials.php -->";
+//html comments remove by dd
+//echo "<!-- index-testimonials.php -->";
 
 $args = array( 'post_type' => 'testimonial', 'post_status' => 'publish', 'posts_per_page' => 1000000, 'orderby' => 'post_date',
     'order' => 'DESC',);

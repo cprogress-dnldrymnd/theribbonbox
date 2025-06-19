@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-videos-podcasts-page.php -->";
+//html comments remove by dd
+//echo "<!-- index-videos-podcasts-page.php -->";
 
 //$atts['post_type'] = "videos/podcasts";
 echo '

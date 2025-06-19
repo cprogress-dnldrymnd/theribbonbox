@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-offers-discounts.php -->";
+//html comments remove by dd
+//echo "<!-- index-offers-discounts.php -->";
 
 //$atts['post_type'] = "podcasts";
 echo '<div class="search-filter-outer">';

@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-videos-subpage.php -->";
+//html comments remove by dd
+//echo "<!-- index-videos-subpage.php -->";
 
 $design = " design='full-vid-list' ";
 echo

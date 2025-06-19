@@ -153,7 +153,8 @@ if (!is_bbpress() && !is_buddypress()) {
                 // include 'components/b2b/landing-page-header.php';
                 // include 'b2b-homepage.php';
             } else {
-                echo '<!-- index.php: All other page types -->';
+                //html comments remove by dd
+                //echo '<!-- index.php: All other page types -->';
                 if (count($categories) > 0) {
                     $loadMoreEv = true;
                     //$categories[0]->term_id;

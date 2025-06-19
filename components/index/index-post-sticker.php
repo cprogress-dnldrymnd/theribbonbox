@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-post-sticker.php -->";
+//html comments remove by dd
+//echo "<!-- index-post-sticker.php -->";
 
 if ($post_sticker =="Trending Wellbeing"){
     $currentcat = 1159;

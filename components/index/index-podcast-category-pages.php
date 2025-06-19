@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-podcast-category-pages.php -->";
+//html comments remove by dd
+//echo "<!-- index-podcast-category-pages.php -->";
 
 $design = "";
 if (get_the_ID() == "23883" || get_the_ID() == "23885" || get_the_ID() == "23887" || get_the_ID() == "23889") {

@@ -46,7 +46,8 @@ function blog_filter_function($attr) {
     }
 
     $attributes_str = json_encode($attr);
-    echo "<!-- [blog-filter] attributes: $attributes_str -->";
+    //html comments remove by dd
+    //echo "<!-- [blog-filter] attributes: $attributes_str -->";
 
     if (!empty($attr["categoryid"])){ $categoryid = $attr["categoryid"]; }
     if (!empty($attr["limit"])){ $limit = $attr["limit"]; }
@@ -94,7 +95,8 @@ function blog_filter_function($attr) {
     if (!empty($id_list) > 0){
 
         $post_types = explode('/', $post_type);
-        echo "<!-- \$post_types: " . json_encode($post_types) . " -->";
+        //html comments remove by dd
+        //echo "<!-- \$post_types: " . json_encode($post_types) . " -->";
 
         $recent_posts = wp_get_recent_posts(array(
             'numberposts' => $limit, // Number of recent posts thumbnails to display
@@ -462,8 +464,8 @@ function blog_filter_function($attr) {
 //          //var_dump("Cannot show post '" . $post["ID"] . "' on non-B2B page");
 //          continue;
 //        }
-
-        echo '<!-- post id: ' . $post['ID'] . ' -->';
+        //html comments remove by dd
+       // echo '<!-- post id: ' . $post['ID'] . ' -->';
         $cnt++;
 
         //$port_logo = get_field("portfolio_logo", $post['ID']);
@@ -1113,14 +1115,17 @@ function blog_filter_function($attr) {
 
 
         if ($format == "home-banner"){
-            echo '<!-- if ($format == "home-banner") -->';
+            //html comments remove by dd
+            //echo '<!-- if ($format == "home-banner") -->';
 
-            echo "<!-- Count: $cnt -->";
+            //html comments remove by dd
+         //echo "<!-- Count: $cnt -->";
             if ($cnt <= 0){
                 echo 'No posts found for ' . $format;
             }
             if ($cnt == 1){
-                echo '<!-- if ($cnt == 1) -->';
+                //html comments remove by dd
+                //echo '<!-- if ($cnt == 1) -->';
 
                 if (!has_post_thumbnail($post['ID']) ) {
                     $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
@@ -1145,7 +1150,8 @@ function blog_filter_function($attr) {
                 //include get_template_directory() . '/components/post-items/home-banner.php';
                 include get_template_directory() . '/components/posts/home-top-banner.php';
             } else if ($cnt == 2){
-                echo '<!-- else if ($cnt == 2) -->';
+                //html comments remove by dd
+                //echo '<!-- else if ($cnt == 2) -->';
                 //$style = str_replace('style="', 'style="'.$addBorder, $style);
                 // $rtn .= '<div class="blog-top-1">
                 //<div class="blog-l-text-out">
@@ -1184,7 +1190,8 @@ function blog_filter_function($attr) {
             }
         }
         if ($format == "post-page" && !empty($id_list)) {
-            echo '<!-- if ($format == "post-page" && !empty($id_list)) -->';
+            //html comments remove by dd
+            //echo '<!-- if ($format == "post-page" && !empty($id_list)) -->';
             /////EREEE
 
             if (!$post_open_div) {
@@ -1195,10 +1202,12 @@ function blog_filter_function($attr) {
 
             // If "in count?" is even
             if ($in_count % 2 == 0) {
-                echo '<!-- if ($in_count % 2 == 0) -->';
+                //html comments remove by dd
+                //echo '<!-- if ($in_count % 2 == 0) -->';
 
                 $curposttypeval = get_post_type($post['ID']);
-                echo "<!-- \$curposttypeval: $curposttypeval -->";
+                //html comments remove by dd
+                //echo "<!-- \$curposttypeval: $curposttypeval -->";
                 if ($curposttypeval == "offer-items" || $curposttypeval == "giveaway-items" || $curposttypeval == "events") {
                     if (!isset($adClas)) {
                         $adClas = '';
@@ -1339,7 +1348,8 @@ function blog_filter_function($attr) {
 
             } // if ($in_count % 2 != 0)
             else {
-                echo '<!-- NOT if ($in_count % 2 == 0) -->';
+                //html comments remove by dd
+                //echo '<!-- NOT if ($in_count % 2 == 0) -->';
 
                 $curposttypeval = get_post_type($post['ID']);
                 if (!isset($adClas)) {
@@ -1481,10 +1491,12 @@ function blog_filter_function($attr) {
             }
         }
         else if ($format == "post-page" && empty($id_list)){
-            echo '<!-- else if ($format == "post-page" && empty($id_list)) -->';
+            //html comments remove by dd
+            //echo '<!-- else if ($format == "post-page" && empty($id_list)) -->';
 
             if (!empty($attr["post_type"]) && false){
-                echo '<!-- if (!empty($attr["post_type"]) && false) -->';
+                //html comments remove by dd
+               //echo '<!-- if (!empty($attr["post_type"]) && false) -->';
 
                 // If the count is a multiple of 8
                 if (($cnt % 8) == 0) {
@@ -1506,10 +1518,12 @@ function blog_filter_function($attr) {
 
 
             if ((! isset($attr["post_type"]) || $attr["post_type"] != "videos/podcasts")  && ($design == "full-vid-list" || $design == "full-pod-list")){
-                echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "videos/podcasts"  && ($design == "full-vid-list" || $design == "full-pod-list")) -->';
+                //html comments remove by dd
+                //echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "videos/podcasts"  && ($design == "full-vid-list" || $design == "full-pod-list")) -->';
 
                 if ($cnt == 1 && $curtotal == 0 && false){
-                    echo '<!-- if ($cnt == 1 && $curtotal == 0 && false) -->';
+                    //html comments remove by dd
+                    //echo '<!-- if ($cnt == 1 && $curtotal == 0 && false) -->';
 
                     if (!has_post_thumbnail($post['ID']) ) {
                         $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
@@ -1553,11 +1567,13 @@ function blog_filter_function($attr) {
                 } else {
 
                     if ($cnt == 1 && $attr["post_type"] != "podcasts"){
-                        echo '<!-- if ($cnt == 1 && $attr["post_type"] != "podcasts") -->';
+                        //html comments remove by dd
+                        //echo '<!-- if ($cnt == 1 && $attr["post_type"] != "podcasts") -->';
 
                       include get_template_directory() . '/components/posts/tpl-17.php';
                     } else if (!empty($pod_layout) && $cnt == 1){
-                        echo '<!-- else if (!empty($pod_layout) && $cnt == 1) -->';
+                        //html comments remove by dd
+                        //echo '<!-- else if (!empty($pod_layout) && $cnt == 1) -->';
 
                         if (!empty(get_field("partner_inner_banner", $post['ID']))){
                             $image = get_field("partner_inner_banner", $post['ID']);
@@ -1593,7 +1609,8 @@ function blog_filter_function($attr) {
                         }
                     }
                     else {
-                        echo '<!-- else -->';
+                        ////html comments remove by dd
+                       //echo '<!-- else -->';
 
                         if ($cnt == 2 && !empty($attr["categoryid"]) && $attr["post_type"] != "podcasts"){
                             $rtn .= "<h2 class='cate-h2-ph'>All ".$globalCategoryName." Videos</h2>";
@@ -1620,10 +1637,11 @@ function blog_filter_function($attr) {
                 || $cur_post_type == "offer-items"
                 || $cur_post_type == "offer-items/giveaway-items/events"
                 || $cur_post_type == "events"){
-                echo '<!-- else if ($cur_post_type == "giveaway-items"
+                    //html comments remove by dd
+                /*echo '<!-- else if ($cur_post_type == "giveaway-items"
                 || $cur_post_type == "offer-items"
                 || $cur_post_type == "offer-items/giveaway-items/events"
-                || $cur_post_type == "events") -->';
+                || $cur_post_type == "events") -->';*/
 
                 //$rtn .= do_shortcode("[get_giveaway_event post_type='".$cur_post_type."' style_format='".$style_format."']");
                 if ($cnt == 4 || $cnt == 9){
@@ -1795,17 +1813,19 @@ function blog_filter_function($attr) {
 
             }
             else {
-                echo '<!-- here 7623 -->';
-                echo "<!-- \$cnt: $cnt -->";
-                echo "<!-- \$attr[post_type]: " . ($attr["post_type"] ?? 'not defined') . " -->";
-                echo "<!-- \$curtotal: $curtotal -->";
+                //html comments remove by dd
+                //echo '<!-- here 7623 -->';
+                //echo "<!-- \$cnt: $cnt -->";
+                //echo "<!-- \$attr[post_type]: " . ($attr["post_type"] ?? 'not defined') . " -->";
+               // echo "<!-- \$curtotal: $curtotal -->";
 
                 /*if ($cnt == 1 && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts" && $curtotal == 0){*/
                 if ($cnt == 1
                     && (! isset($attr["post_type"])
                         || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts"))
                     && $curtotal == 0){
-                    echo '<!-- if ($cnt == 1 && isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts" && $curtotal == 0){ -->';
+                        //html comments remove by dd
+                   // echo '<!-- if ($cnt == 1 && isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts" && $curtotal == 0){ -->';
 
                     if (!has_post_thumbnail($post['ID']) ) {
                         $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
@@ -1851,7 +1871,8 @@ function blog_filter_function($attr) {
                     include get_template_directory() . '/components/posts/tpl-24.php';
                 }
                 else if (!empty($pod_layout) && $cnt == 1 && $curtotal == 0){
-                    echo '<!-- else if (!empty($pod_layout) && $cnt == 1 && $curtotal == 0) -->';
+                    //html comments remove by dd
+                    //echo '<!-- else if (!empty($pod_layout) && $cnt == 1 && $curtotal == 0) -->';
 
                     if (!has_post_thumbnail($post['ID']) ) {
                         $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
@@ -1966,7 +1987,8 @@ function blog_filter_function($attr) {
                     //$rtn .= "<h2>here...</h2>";
 
                     if ($in_count % 2 == 0){
-                        echo '<!-- if ($in_count % 2 == 0) ----- if even -->';
+                        //html comments remove by dd
+                        //echo '<!-- if ($in_count % 2 == 0) ----- if even -->';
 
                         //even
                         $style = str_replace('style="', 'style="'.$addBorder, $style);
@@ -2015,7 +2037,8 @@ function blog_filter_function($attr) {
                         }
                     }
                     else {
-                        echo '<!-- NOT if ($in_count % 2 == 0) ----- if odd -->';
+                        //html comments remove by dd
+                       // echo '<!-- NOT if ($in_count % 2 == 0) ----- if odd -->';
 
                         $style = str_replace('style="', 'style="'.$addBorder, $style);
                         if ($st_1){
@@ -2073,7 +2096,8 @@ function blog_filter_function($attr) {
                     }
 
                     if (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")){
-                        echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
+                        //html comments remove by dd
+                        //echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
 
                         if ($in_count == 6){
                             $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
@@ -2134,7 +2158,8 @@ function blog_filter_function($attr) {
                         }
                     }
                     else {
-                        echo '<!-- NOT if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
+                        //html comments remove by dd
+                       // echo '<!-- NOT if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
 
                         if ($in_count == 23){
                             if ($post_open_div){
@@ -2178,7 +2203,8 @@ function blog_filter_function($attr) {
                     }
 
                     if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")){
-                        echo '<!-- if ($vid_count == 1 && $curtotal == 0 && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
+                        //html comments remove by dd
+                        //echo '<!-- if ($vid_count == 1 && $curtotal == 0 && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
 
                         $vid_count++;
 
@@ -2223,7 +2249,8 @@ function blog_filter_function($attr) {
                     }
 
                     if ($curtotal == 0 && $cat_count == 1){
-                        echo '<!-- if ($curtotal == 0 && $cat_count == 1) -->';
+                        //html comments remove by dd
+                        //echo '<!-- if ($curtotal == 0 && $cat_count == 1) -->';
 
                         $cat_count++;
                         if ($attr["post_type"] == "expert_profiles"){
@@ -2256,7 +2283,8 @@ function blog_filter_function($attr) {
                     }
 
                     if ($curtotal == 0 && $giveaway_count == 1 && ($cur_post_type == "giveaway-items" || $cur_post_type == "offer-items" || $cur_post_type == "offer-items/giveaway-items/events" || $cur_post_type == "events")){
-                        echo '<!-- if ($curtotal == 0 && $giveaway_count == 1 && ($cur_post_type == "giveaway-items" || $cur_post_type == "offer-items" || $cur_post_type == "offer-items/giveaway-items/events" || $cur_post_type == "events")) -->';
+                        //html comments remove by dd
+                        //echo '<!-- if ($curtotal == 0 && $giveaway_count == 1 && ($cur_post_type == "giveaway-items" || $cur_post_type == "offer-items" || $cur_post_type == "offer-items/giveaway-items/events" || $cur_post_type == "events")) -->';
 
                         $giveaway_count++;
                         //if ($cnt == 4 || $cnt == 10){
@@ -2281,7 +2309,8 @@ function blog_filter_function($attr) {
         }
 
         if ($format == "video-half"){
-            echo '<!-- if ($format == "video-half") -->';
+            //html comments remove by dd
+            //echo '<!-- if ($format == "video-half") -->';
 
             if ($home){
                 $cur_id = $post['ID'];
@@ -2303,7 +2332,8 @@ function blog_filter_function($attr) {
         }
 
         if ($format == "normal"){
-            echo '<!-- if ($format == "normal") -->';
+            //html comments remove by dd
+           // echo '<!-- if ($format == "normal") -->';
 
             if ($home){
                 $cur_id = $post['ID'];
@@ -2329,7 +2359,8 @@ function blog_filter_function($attr) {
         }
 
         if ($format == "normal-2"){
-            echo '<!-- if ($format == "normal-2") -->';
+            //html comments remove by dd
+            //echo '<!-- if ($format == "normal-2") -->';
 
             if ($home){
                 $cur_id = $post['ID'];
@@ -2391,7 +2422,8 @@ function blog_filter_function($attr) {
         }
 
         if ($format == "normal-3"){
-            echo '<!-- if ($format == "normal-3") -->';
+            //html comments remove by dd
+            //echo '<!-- if ($format == "normal-3") -->';
 
             if ($home){
                 $cur_id = $post['ID'];
@@ -2427,7 +2459,8 @@ function blog_filter_function($attr) {
         }
 
         if ($format == "normal-4"){
-            echo '<!-- if ($format == "normal-4") -->';
+            //html comments remove by dd
+            //echo '<!-- if ($format == "normal-4") -->';
 
             if ($home){
                 $cur_id = $post['ID'];
@@ -2458,7 +2491,8 @@ function blog_filter_function($attr) {
         }
 
         if ($format == "video"){
-            echo '<!-- if ($format == "video") -->';
+            //html comments remove by dd
+            //echo '<!-- if ($format == "video") -->';
             if ($cnt == 1){
                 //$style = str_replace('style="', 'style="'.$addBorder, $style);
                 $style = 'style="';
@@ -2473,8 +2507,8 @@ function blog_filter_function($attr) {
             }
         }
     }
-
-    echo '<!-- bottom of blog-filter.php -->';
+//html comments remove by dd
+   // echo '<!-- bottom of blog-filter.php -->';
 
     wp_reset_query();
 

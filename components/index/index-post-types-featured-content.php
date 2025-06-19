@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-post-types-featured-content.php -->";
+//html comments remove by dd
+//echo "<!-- index-post-types-featured-content.php -->";
 
 include 'index-standard-post-types-style.php';
 

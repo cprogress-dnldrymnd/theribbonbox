@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-thanks-quiz.php -->";
+//html comments remove by dd
+//echo "<!-- index-thanks-quiz.php -->";
 
 echo '<div id="quiz-outer-out" class="quiz-outer-out">
         <div class="quiz-bg"></div>

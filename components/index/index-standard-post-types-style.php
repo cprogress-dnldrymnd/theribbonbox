@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-standard-post-types-style.php -->";
+//html comments remove by dd
+//echo "<!-- index-standard-post-types-style.php -->";
 
 $post_type_simp = "";
 

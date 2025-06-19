@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-expert-profiles.php -->";
+//html comments remove by dd
+//echo "<!-- index-expert-profiles.php -->";
 
 $ext = "";
 

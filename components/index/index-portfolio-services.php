@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-portfolio-services.php -->";
+//html comments remove by dd
+//echo "<!-- index-portfolio-services.php -->";
 
 $parent = "";
 $p_ttl = get_the_title('','',false);

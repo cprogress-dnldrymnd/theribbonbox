@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-the-ribbon-box-podcast.php -->";
+//html comments remove by dd
+//echo "<!-- index-the-ribbon-box-podcast.php -->";
 
 $design = " design='full-pod-list' ";
 echo do_shortcode('[ivory-search id="23692" title="Podcast Search"]');

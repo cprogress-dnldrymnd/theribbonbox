@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-experts-subpages.php -->";
+//html comments remove by dd
+//echo "<!-- index-experts-subpages.php -->";
 //$atts['post_type'] = "podcasts";
 
 $eCat = "All";

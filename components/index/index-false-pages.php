@@ -1,6 +1,7 @@
 <!-- This template isn't being used because the 'if' statement calling it ends in '&& false' -->
 <?php
-echo "<!-- index-false-pages.php -->";
+//html comments remove by dd
+//echo "<!-- index-false-pages.php -->";
 
 if (!has_post_thumbnail($post->ID) ) {
     $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';

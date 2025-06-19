@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-community.php -->";
+//html comments remove by dd
+//echo "<!-- index-community.php -->";
 echo '
 <div class="quiz-outer-out community-outer-out" id="community-outer-out">
     <div class="quiz-outer">

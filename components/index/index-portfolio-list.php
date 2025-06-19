@@ -1,5 +1,6 @@
 <?php
-echo "<!-- index-portfolio-list.php -->";
+//html comments remove by dd
+//echo "<!-- index-portfolio-list.php -->";
 
 $portfolio_logo = get_field("portfolio_logo", get_the_ID());
 
