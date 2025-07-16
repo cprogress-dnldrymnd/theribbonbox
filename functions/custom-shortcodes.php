@@ -329,6 +329,28 @@ add_shortcode('display_matchexpert', 'display_matchexpert_function');
 
 function display_insider_function()
 {
+    $rtn = '
+        <div class="post-follow-us insider-outer">
+            <div class="post-follow-us-inner">
+                <h2>Become an Insider</h2><hr>
+                <div class="cat-links">
+                    <a href="/wellbeing">Wellbeing</a> |
+                    <a href="/fertility">Fertility</a> |
+                    <a href="/pregnancy">Pregnancy</a> |
+                    <a href="/parenting">Parenting</a>
+                </div>
+                <p>OUR WEEKLY NEWSLETTER OF TAILORED EXPERT ADVICE, TIPS AND GIVEAWAYS - STRAIGHT TO YOUR INBOX</p>
+                <a class="button-expert sub-pop-btn" href="/" >SUBSCRIBE</a>
+                <p class="no-spam"><br>NO SPAM, JUST RELATABLE CONTENT</p>
+            </div>
+        </div>';
+
+    return $rtn;
+}
+add_shortcode('display_insider', 'display_insider_function');
+
+function display_home_section()
+{
     ob_start();
     global $theme_option_page;
     $home_section_image = get_field('home_section_image', $theme_option_page);
@@ -354,27 +376,12 @@ function display_insider_function()
     </div>
 
 <?php
-    /*
-    $rtn = '
-        <div class="post-follow-us insider-outer">
-            <div class="post-follow-us-inner">
-                <h2>Become an Insider</h2><hr>
-                <div class="cat-links">
-                    <a href="/wellbeing">Wellbeing</a> |
-                    <a href="/fertility">Fertility</a> |
-                    <a href="/pregnancy">Pregnancy</a> |
-                    <a href="/parenting">Parenting</a>
-                </div>
-                <p>OUR WEEKLY NEWSLETTER OF TAILORED EXPERT ADVICE, TIPS AND GIVEAWAYS - STRAIGHT TO YOUR INBOX</p>
-                <a class="button-expert sub-pop-btn" href="/" >SUBSCRIBE</a>
-                <p class="no-spam"><br>NO SPAM, JUST RELATABLE CONTENT</p>
-            </div>
-        </div>';*/
-
     return ob_get_clean();
 }
 
-add_shortcode('display_insider', 'display_insider_function');
+add_shortcode('display_home_section', 'display_home_section');
+
+
 
 function display_expertboxes_function()
 {
