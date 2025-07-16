@@ -337,7 +337,7 @@ function display_insider_function()
 
 ?>
 
-    <div class="home-section">
+    <div class="home-section bg-black">
         <div class="container">
             <div class="row">
                 <div class="col">
