@@ -106,7 +106,7 @@ echo '
 
             echo '
                 </div>
-                '.do_shortcode('[author_bio][article_partnership][article_medically_reviewed_by]').'
+                <div class="post--footer-info">' . do_shortcode('[author_bio][article_partnership][article_medically_reviewed_by]') . '</div>
                 <div class="post-sub">
                    <h3>Want to receive more great articles like this every day? Subscribe to our mailing list</h3>
                    <a href="/subscribe" class="sub-pop-btn">SUBSCRIBE</a>
