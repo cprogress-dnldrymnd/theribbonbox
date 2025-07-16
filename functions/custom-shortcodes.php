@@ -329,8 +329,34 @@ add_shortcode('display_matchexpert', 'display_matchexpert_function');
 
 function display_insider_function()
 {
+    ob_start();
+    global $theme_option_page;
+    $home_section_image = get_field('home_section_image', $theme_option_page);
+    $home_section_heading = get_field('home_section_heading', $theme_option_page);
+    $home_section_description = get_field('home_section_description', $theme_option_page);
+
+?>
+
+    <div class="home-section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <?= wp_get_attachment_image($home_section_image) ?>
+                </div>
+                <div class="col">
+                    <h3><?= $home_section_heading ?></h3>
+                    <div class="desc">
+                        <?= wpautop($home_section_description) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php
+    /*
     $rtn = '
-        <div class="post-follow-us insider-outer xx">
+        <div class="post-follow-us insider-outer">
             <div class="post-follow-us-inner">
                 <h2>Become an Insider</h2><hr>
                 <div class="cat-links">
@@ -343,9 +369,9 @@ function display_insider_function()
                 <a class="button-expert sub-pop-btn" href="/" >SUBSCRIBE</a>
                 <p class="no-spam"><br>NO SPAM, JUST RELATABLE CONTENT</p>
             </div>
-        </div>';
+        </div>';*/
 
-    return $rtn;
+    return ob_get_clean();
 }
 
 add_shortcode('display_insider', 'display_insider_function');
