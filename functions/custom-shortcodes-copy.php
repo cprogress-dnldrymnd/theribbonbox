@@ -740,7 +740,7 @@ add_shortcode('display_matchexpert', 'display_matchexpert_function');
 
 function display_insider_function() {
     $rtn = '
-        <div class="post-follow-us insider-outer">
+        <div class="post-follow-us insider-outer xxx">
             <div class="post-follow-us-inner">
                 <h2>Become an Insider</h2><hr>
                 <div class="cat-links">
