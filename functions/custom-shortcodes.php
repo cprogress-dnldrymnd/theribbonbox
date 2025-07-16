@@ -341,7 +341,7 @@ function display_insider_function()
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <?= wp_get_attachment_image($home_section_image) ?>
+                    <?= wp_get_attachment_image($home_section_image, 'large') ?>
                 </div>
                 <div class="col">
                     <h3><?= $home_section_heading ?></h3>
