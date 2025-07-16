@@ -18,7 +18,7 @@ function home_page_load_function() {
     echo do_shortcode('[blog_filter format="video" limit="4"]');
     echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
     echo do_shortcode('[expert_list categoryid="1165,1163" title="Pregnancy &amp; Parenting Experts"]');
-    echo do_shortcode('[display_insider]');
+    echo do_shortcode('[display_home_section]');
     echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
     echo do_shortcode('[blog_filter format="normal-1" limit="2" categoryid="1163" home="1"]');
     echo do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="1159" home="1"]');
