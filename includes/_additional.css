@@ -2828,11 +2828,11 @@ button.accordion-button.accordion-button:after {
 	text-align: left !important;
 }
 .form-text-below-heading {
-    font-size: 18px;
-    margin-top: 40px;
+	font-size: 18px;
+	margin-top: 40px;
 }
-.form-text-below-heading + .forum-guidelines.forum-guidelines{
-    padding-top: 30px;
+.form-text-below-heading + .forum-guidelines.forum-guidelines {
+	padding-top: 30px;
 }
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
@@ -3325,8 +3325,6 @@ button.accordion-button.accordion-button:after {
 	}
 }
 
-
-
 /*home-section*/
 .home-section {
 	padding-top: 50px;
@@ -3334,7 +3332,7 @@ button.accordion-button.accordion-button:after {
 	color: #fff;
 	text-align: left;
 }
-.home-section h3{
+.home-section h3 {
 	color: #fff;
 	font-size: 25px;
 	margin-bottom: 2rem;
@@ -3364,12 +3362,13 @@ button.accordion-button.accordion-button:after {
 	width: 50%;
 	flex: 0 0 auo;
 }
-@media(max-width: 767px) {
+@media (max-width: 767px) {
 	.home-section .container .row {
 		flex-direction: column;
 	}
-	.home-section h3{
+	.home-section h3 {
 		font-size: 20px;
 	}
 }
+
 /*end of home-section*/
