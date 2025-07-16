@@ -3324,3 +3324,52 @@ button.accordion-button.accordion-button:after {
 		flex: 0 0 50%;
 	}
 }
+
+
+
+/*home-section*/
+.home-section {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	color: #fff;
+	text-align: left;
+}
+.home-section h3{
+	color: #fff;
+	font-size: 25px;
+	margin-bottom: 2rem;
+	margin-top: 0;
+}
+.home-section p {
+	text-align: left !important;
+	font-size: 13px;
+	font-family: Georgia, sans-serif;
+}
+.home-section .container {
+	padding-left: 20px;
+	padding-right: 20px;
+	max-width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.home-section img {
+	border-bottom: 5px solid var(--colour-salmon) !important;
+}
+.home-section .container .row {
+	display: flex;
+	gap: 3vw;
+	align-items: center;
+}
+.home-section .container .row > div {
+	width: 50%;
+	flex: 0 0 auo;
+}
+@media(max-width: 767px) {
+	.home-section .container .row {
+		flex-direction: column;
+	}
+	.home-section h3{
+		font-size: 20px;
+	}
+}
+/*end of home-section*/
