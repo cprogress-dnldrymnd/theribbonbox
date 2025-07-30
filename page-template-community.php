@@ -177,7 +177,10 @@ $banners = get_posts(array(
     jQuery(document).ready(function() {
         var swiper_community = new Swiper(".swiper-community-banner", {
             slidesPerView: 1,
-            autoplay: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: true
+            },
             spaceBetween: 0,
             pagination: {
                 el: ".swiper-pagination",
