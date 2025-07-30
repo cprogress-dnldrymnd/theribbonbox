@@ -6,12 +6,12 @@
 ?>
 <?php get_header('community') ?>
 <style>
-    .swiper-community-banner {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
     @media(min-width: 576px) {
+        .swiper-community-banner {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
         section.forum-welcome.has--banner {
             padding-top: 30px;
         }
@@ -22,7 +22,6 @@
             margin-right: auto;
         }
     }
-
 </style>
 <?php
 $hero_image = get_field('hero_image');
