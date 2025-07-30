@@ -9,6 +9,12 @@
 <?php
 $hero_image = get_field('hero_image');
 $hero_image = wp_get_attachment_image_url($hero_image, 'full');
+$banner = get_posts(array(
+    'post_type' => 'community-banner',
+    'numberposts' => -1,
+));
+
+echo count($banner);
 ?>
 
 <section class="forum-welcome  mt-3 mt-lg-5" style="background-image: url(<?= $hero_image ?>);">
@@ -54,7 +60,7 @@ $hero_image = wp_get_attachment_image_url($hero_image, 'full');
             <?= do_shortcode('[bbp-search-form]') ?>
         </div>
         <div class="mb-4">
-         
+
             <div class="row g-4 align-items-end justify-content-between ">
                 <div class="col-auto">
                     <h2 class="text-heading text-heading-with-icon"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
