@@ -41,7 +41,7 @@ $banners = get_posts(array(
                     <div class="swiper swiper-community-banner">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <a <?= $open_in_new_tab ? 'target="_blank"' : '' ?> href="<?= $banner_url ?>">
+                                <a href="<?= $banner_url ?>">
                                     <img src="<?= wp_get_attachment_image_url($banner_image, 'full') ?>">
                                 </a>
                             </div>
