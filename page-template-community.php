@@ -22,6 +22,11 @@
             margin-right: auto;
         }
     }
+    @media(max-width: 575px) {
+        section.forum-welcome.forum-welcome {
+            margin-top: 0;
+        }
+    }
 </style>
 <?php
 $hero_image = get_field('hero_image');
