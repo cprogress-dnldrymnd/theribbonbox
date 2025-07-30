@@ -17,7 +17,7 @@ $banners = get_posts(array(
 
 <section class="forum-welcome  mt-3 mt-lg-5 <?= $banner ? 'has--banner' : '' ?>" style="background-image: url(<?= $hero_image ?>);">
     <div class="container text-center">
-        <?php if ($banner) { ?>
+        <?php if ($banners) { ?>
             <div class="community-banner">
                 <?php foreach ($banners as $banner) { ?>
                     <?php
