@@ -17,8 +17,10 @@
         margin-bottom: 30px;
     }
 
-    section.forum-welcome.has--banner {
-        padding-top: 30px;
+    @media(min-width: 768px) {
+        section.forum-welcome.has--banner {
+            padding-top: 30px;
+        }
     }
 </style>
 <?php
