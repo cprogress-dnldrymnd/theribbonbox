@@ -17,7 +17,7 @@
         margin-bottom: 30px;
     }
 
-    @media(min-width: 768px) {
+    @media(min-width: 481px) {
         section.forum-welcome.has--banner {
             padding-top: 30px;
         }
@@ -177,7 +177,7 @@ $banners = get_posts(array(
 <?php get_footer('community') ?>
 <script>
     jQuery(document).ready(function() {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 481) {
             jQuery('.community-banner').insertBefore('.forum-welcome');
         }
         var swiper_community = new Swiper(".swiper-community-banner", {
