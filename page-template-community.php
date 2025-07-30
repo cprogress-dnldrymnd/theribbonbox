@@ -8,6 +8,8 @@
 <style>
     .swiper-community-banner img {
         max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .swiper-community-banner {
