@@ -32,22 +32,22 @@ $banners = get_posts(array(
     <div class="container text-center">
         <?php if ($banners) { ?>
             <div class="community-banner">
-                <?php foreach ($banners as $banner) { ?>
-                    <?php
-                    $banner_image = get_field('banner_image', $banner->ID);
-                    $banner_url = get_field('banner_url', $banner->ID);
-                    $open_in_new_tab = get_field('open_in_new_tab', $banner->ID);
-                    ?>
-                    <div class="swiper swiper-community-banner">
-                        <div class="swiper-wrapper">
+                <div class="swiper swiper-community-banner">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($banners as $banner) { ?>
+                            <?php
+                            $banner_image = get_field('banner_image', $banner->ID);
+                            $banner_url = get_field('banner_url', $banner->ID);
+                            $open_in_new_tab = get_field('open_in_new_tab', $banner->ID);
+                            ?>
                             <div class="swiper-slide">
-                                <a href="<?= $banner_url ?>">
+                                <a <?= $open_in_new_tab ? 'target="_blank"' : '' ?> href="<?= $banner_url ?>">
                                     <img src="<?= wp_get_attachment_image_url($banner_image, 'full') ?>">
                                 </a>
                             </div>
-                        </div>
+                        <?php } ?>
                     </div>
-                <?php } ?>
+                </div>
             </div>
         <?php } ?>
         <div class="inner">
