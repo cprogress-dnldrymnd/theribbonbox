@@ -175,6 +175,9 @@ $banners = get_posts(array(
 <?php get_footer('community') ?>
 <script>
     jQuery(document).ready(function() {
+        if (window.innerWidth < 768) {
+            jQuery('.community-banner').insertBefore('.forum-welcome');
+        }
         var swiper_community = new Swiper(".swiper-community-banner", {
             slidesPerView: 1,
             autoplay: {
