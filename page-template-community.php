@@ -6,22 +6,23 @@
 ?>
 <?php get_header('community') ?>
 <style>
-    .swiper-community-banner img {
-        max-width: 480px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
     .swiper-community-banner {
         text-align: center;
         margin-bottom: 30px;
     }
 
-    @media(min-width: 481px) {
+    @media(min-width: 576px) {
         section.forum-welcome.has--banner {
             padding-top: 30px;
         }
+
+        .swiper-community-banner img {
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
+
 </style>
 <?php
 $hero_image = get_field('hero_image');
@@ -177,7 +178,7 @@ $banners = get_posts(array(
 <?php get_footer('community') ?>
 <script>
     jQuery(document).ready(function() {
-        if (window.innerWidth < 481) {
+        if (window.innerWidth < 576) {
             jQuery('.community-banner').insertBefore('.forum-welcome');
         }
         var swiper_community = new Swiper(".swiper-community-banner", {
