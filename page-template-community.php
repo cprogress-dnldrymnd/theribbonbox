@@ -5,7 +5,20 @@
 /*-----------------------------------------------------------------------------------*/
 ?>
 <?php get_header('community') ?>
+<style>
+    .swiper-community-banner img {
+        max-width: 480px;
+    }
 
+    .swiper-community-banner {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    section.forum-welcome.has--banner {
+        padding-top: 30px;
+    }
+</style>
 <?php
 $hero_image = get_field('hero_image');
 $hero_image = wp_get_attachment_image_url($hero_image, 'full');
@@ -158,3 +171,17 @@ $banners = get_posts(array(
 </section>
 
 <?php get_footer('community') ?>
+<script>
+    jQuery(document).ready(function() {
+        var swiper_community = new Swiper(".swiper-community-banner", {
+            slidesPerView: 1,
+            autoplay: true,
+            spaceBetween: 0,
+            pagination: {
+                el: ".swiper-pagination",
+                dynamicBullets: true,
+                clickable: true,
+            },
+        });
+    });
+</script>

@@ -2834,16 +2834,7 @@ button.accordion-button.accordion-button:after {
 .form-text-below-heading + .forum-guidelines.forum-guidelines {
 	padding-top: 30px;
 }
-.swiper-community-banner img {
-	max-width: 480px;
-}
-.swiper-community-banner {
-	text-align: center;
-	margin-bottom: 30px;
-}
-section.forum-welcome.has--banner {
-	padding-top: 30px;
-}
+
 /*responsive*/
 /*.single-community-post #breadcrumbs li {
 	    font-family: 'Playfair Display';

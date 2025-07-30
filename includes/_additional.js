@@ -177,15 +177,5 @@ function swiper_sliders() {
         jQuery('.swiper-post-slider .swiper-wrapper').removeClass('swiper-wrapper');
         jQuery('.swiper-post-slider .swiper-slide').removeClass('swiper-slide');
     }
-    var swiper_community = new Swiper(".swiper-community-banner", {
-        slidesPerView: 1,
-        autoplay: true,
-        spaceBetween: 0,
-        pagination: {
-            el: ".swiper-pagination",
-            dynamicBullets: true,
-            clickable: true,
-        },
-    });
 
 }
