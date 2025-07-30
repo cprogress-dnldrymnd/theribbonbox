@@ -22,9 +22,10 @@
             margin-right: auto;
         }
     }
+
     @media(max-width: 575px) {
         section.forum-welcome.forum-welcome {
-            margin-top: 0;
+            margin-top: 0 !important;
         }
     }
 </style>
