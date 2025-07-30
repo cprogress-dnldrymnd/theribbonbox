@@ -9,16 +9,34 @@
 <?php
 $hero_image = get_field('hero_image');
 $hero_image = wp_get_attachment_image_url($hero_image, 'full');
-$banner = get_posts(array(
+$banners = get_posts(array(
     'post_type' => 'community-banner',
     'numberposts' => -1,
 ));
-
-echo count($banner);
 ?>
 
 <section class="forum-welcome  mt-3 mt-lg-5" style="background-image: url(<?= $hero_image ?>);">
     <div class="container text-center">
+        <?php if ($banner) { ?>
+            <div class="community-banner">
+                <?php foreach ($banners as $banner) { ?>
+                    <?php
+                    $banner_image = get_field('banner_image', $banner->ID);
+                    $banner_url = get_field('banner_url', $banner->ID);
+                    $open_in_new_tab = get_field('open_in_new_tab', $banner->ID);
+                    ?>
+                    <div class="swiper swiper-community-banner">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a <?= $open_in_new_tab ? 'target="_blank"' : '' ?> href="<?= $banner_url ?>">
+                                    <img src="<?= wp_get_attachment_image_url($banner_image) ?>">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        <?php } ?>
         <div class="inner">
             <h1 class="mb-4 mt-0"><?php the_title() ?></h1>
             <?php if (get_the_content()) { ?>
