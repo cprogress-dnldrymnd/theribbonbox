@@ -373,6 +373,9 @@ function action_admin_head()
         </style>
     <?php
     }
+    if (isset($_GET['post_type']) && $_GET['post_type'] == 'product') {
+        echo '<style>.column-rank_math_seo_details, #rank_math_seo_details {display: none !important} </style>';
+    }
 }
 
 add_action('admin_head', 'action_admin_head');
