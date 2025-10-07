@@ -14,7 +14,7 @@ global $theme_logo;
                             <a href="#">SIGN ME UP</a>
                         </div>
                         <div class="footer-logo-text">
-                            <div class="row">
+                            <div class="row g-5 align-items-center">
                                 <div class="col-auto">
                                     <a href="#">
                                         <?= $theme_logo ?>
