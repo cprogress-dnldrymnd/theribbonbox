@@ -169,6 +169,10 @@
             color: var(--trb-accent-2);
         }
 
+        .left-footer {
+            max-width: 620px;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
