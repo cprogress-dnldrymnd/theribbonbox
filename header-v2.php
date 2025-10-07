@@ -14,10 +14,12 @@
     <style>
         :root {
             --trb-lightyellow: #FAF2E4;
+            --trb-black: #000000;
+            --trb-white: #ffffff;
         }
 
         body {
-            background-color: #fff;
+            background-color: var(--trb-white);
         }
 
         header.header-v2 {
@@ -32,6 +34,10 @@
             font-size: 15px;
             letter-spacing: 0.75px;
             font-weight: 500;
+        }
+
+        #offCanvasMenu .menu li a{
+            color: var(--trb-black);
         }
 
         @media(min-width: 992px) {
