@@ -186,6 +186,9 @@
             text-align: left !important
         }
 
+        .right-footer.right-footer.right-footer .menu a:hover{
+            color: var(--trb-accent-1);
+        }
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
