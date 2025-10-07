@@ -202,6 +202,11 @@
             text-align: left;
             background-color: transparent !important;
             box-shadow: none;
+            font-size: 14px;
+        }
+        .woocommerce-breadcrumb.woocommerce-breadcrumb a {
+            color: var(--trb-black);
+            text-decoration: underline;
         }
 
         .hero-v2 {
