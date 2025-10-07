@@ -140,6 +140,10 @@
         .footer-v2 {
             padding-top: 70px;
         }
+        .footer-v2 .left-footer h2 {
+            font-size: 70px;
+            font-weight: bold;
+        }
 
         @media(min-width: 992px) {
             #offCanvasMenu {
