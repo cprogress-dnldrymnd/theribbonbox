@@ -96,7 +96,7 @@
             border: none !important;
             padding: 0 !important;
             position: absolute;
-            right: 0;
+            right: 25px;
             top: 50%;
             transform: translateY(-50%);
         }
