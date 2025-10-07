@@ -131,7 +131,7 @@
         }
 
         .ad-strip img {
-            max-height: 70px;
+            height: 74px;
             width: auto;
             object-fit: cover;
         }
