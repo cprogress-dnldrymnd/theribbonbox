@@ -419,6 +419,7 @@
                 font-size: 60px;
             }
 
+
         }
 
         @media(max-width: 991px) {
@@ -431,7 +432,14 @@
                 font-size: 50px;
             }
 
-            .hero-v2 h1 {}
+            .offCanvasMenu {
+                padding: 40px;
+            }
+
+            .offCanvasMenu .menu {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
 
         @media(max-width: 767px) {
