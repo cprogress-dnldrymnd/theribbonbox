@@ -103,6 +103,8 @@
             border: 1px solid !important;
         }
 
+
+
         .is-search-input.is-search-input.is-search-input {
             font-family: Work Sans, sans-serif;
             font-size: 14px !important;
@@ -286,6 +288,12 @@
                 width: auto;
                 background-color: transparent;
                 border: none;
+            }
+        }
+
+        @media(max-width: 1920px) {
+            .is-search-form.is-search-form {
+                min-width: 18vw;
             }
         }
 
