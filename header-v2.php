@@ -311,6 +311,22 @@
             }
         }
 
+        
+        @media(max-width: 1300px) {
+            header.header-v2 a {
+                font-size: 14px;
+                letter-spacing: 0;
+            }
+            .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .button-community.button-community a {
+                padding-left: 10px;
+                padding-right: 33px;
+            }
+        }
+
 
         @media(max-width: 1199px) {
             .footer-v2 .left-footer h2 {
