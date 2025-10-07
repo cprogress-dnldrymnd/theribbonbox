@@ -27,7 +27,7 @@
     <div id="fouc">
         <div class="site-wrap">
             <main>
-                <header class="header-v2 pt-3">
+                <header class="header-v2 py-3">
                     <div class="container">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-auto">
