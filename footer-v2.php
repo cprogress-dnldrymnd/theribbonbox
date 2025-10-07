@@ -39,7 +39,7 @@ global $theme_logo;
                                 <?php wp_nav_menu(array('menu' => 'Footer Menu V2 Left')); ?>
                             </div>
                             <div class="col-lg-6">
-                                <?php wp_nav_menu(array('menu' => 'Footer Menu V2 Right')); ?>
+                                <?php wp_nav_menu(array('menu' => 'FooterMenu')); ?>
                             </div>
                         </div>
                     </div>
