@@ -279,7 +279,19 @@
         }
 
         @media(min-width: 992px) {
-            .desktop--not-offcanvas.desktop--not-offcanvas.desktop--not-offcanvas {
+            #offCanvasMenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                width: auto;
+                background-color: transparent;
+                border: none;
+            }
+        }
+
+        @media(min-width: 1200px) {
+            #offCanvasSearch {
                 position: static;
                 opacity: 1;
                 visibility: visible;
@@ -399,7 +411,7 @@
                         <div class="col-auto col-right">
                             <div class="row g-5 align-items-center">
                                 <div class="col-auto">
-                                    <div class="offcanvas offcanvas-start desktop--not-offcanvas" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
+                                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                         <div class="offcanvas-body p-0">
                                             <?php wp_nav_menu(
                                                 array(
@@ -410,7 +422,7 @@
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="offcanvas offcanvas-start desktop--not-offcanvas" tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
+                                    <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
                                         <div class="offcanvas-body p-0">
                                             <div class="search search-v2">
                                                 <?php echo do_shortcode('[ivory-search id="24768" title="Search All Content"]'); ?>
