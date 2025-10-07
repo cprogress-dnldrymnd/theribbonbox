@@ -286,37 +286,33 @@
                     </div>
                 </div>
             </header>
-            <?php if ($mode == 'ad') { ?>
-                <div class="ad-strip">
-                    <a href="#">
-                        <div class="container text-center">
-                            <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap">
-                                <span class="d-inline-block py-4">
-                                    <strong><i>WIN</i></strong> 1 of 5 Zita <strong><i>West Fertility Collagen Pro supplements</i></strong> for preconception, pregnancy & postnatal
-                                </span>
-                                <?= wp_get_attachment_image(44844, 'thumbnail') ?>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            <?php } ?>
-            <?php if ($mode == 'hero') { ?>
-                <div class="hero-v2 trb-border-top">
-                    <div class="top  pt-4 trb-bg-lightyellow trb-px">
-                        <div class="container-fluid">
-                            <div class="breadcrumbs-v2">
-                                <?= woocommerce_breadcrumb(); ?>
-                            </div>
+            <div class="ad-strip">
+                <a href="#">
+                    <div class="container text-center">
+                        <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap">
+                            <span class="d-inline-block py-4">
+                                <strong><i>WIN</i></strong> 1 of 5 Zita <strong><i>West Fertility Collagen Pro supplements</i></strong> for preconception, pregnancy & postnatal
+                            </span>
+                            <?= wp_get_attachment_image(44844, 'thumbnail') ?>
                         </div>
                     </div>
-                    <div class="bottom trb-px">
-                        <div class="container-fluid">
-                            <h1>Surrogacy</h1>
+                </a>
+            </div>
+            <div class="hero-v2 trb-border-top">
+                <div class="top  pt-4 trb-bg-lightyellow trb-px">
+                    <div class="container-fluid">
+                        <div class="breadcrumbs-v2">
+                            <?= woocommerce_breadcrumb(); ?>
                         </div>
+                    </div>
+                </div>
+                <div class="bottom trb-px">
+                    <div class="container-fluid">
+                        <h1>Surrogacy</h1>
+                    </div>
 
-                    </div>
                 </div>
-            <?php } ?>
+            </div>
             <main class="main-v2">
 
                 <div class="d-none">
