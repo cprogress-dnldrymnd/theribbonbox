@@ -60,6 +60,16 @@ global $theme_logo;
 <?php wp_footer(); ?>
 
 </div><!-- Close: #fouc -->
+<script>
+    var offCanvasMenu = document.getElementById('offCanvasMenu')
+    offCanvasMenu.addEventListener('show.bs.offcanvas', function() {
+        jQuery('body').addClass('mobile-menu-active');
+    });
+
+    offCanvasMenu.addEventListener('hide.bs.offcanvas', function() {
+        jQuery('body').removeClass('mobile-menu-active');
+    });
+</script>
 
 <script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
 
