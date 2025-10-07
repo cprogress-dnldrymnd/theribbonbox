@@ -1,0 +1,245 @@
+/* Contact page
+------------------------------------------ */
+.contact {
+  overflow: hidden;
+}
+
+.contact > article {
+  float: left;
+  width: 64%;
+}
+
+.contact > aside {
+  float: right;
+  width: 33%;
+  max-width: 300px;
+  color: var(--colour-medium-grey);
+}
+
+.contact > aside p {
+  font-size: 0.923em;
+}
+
+.contact input {
+  width: 94%;
+  max-width: 94%;
+  margin: 5px 0;
+}
+
+.contact textarea {
+  width: 94%;
+  max-width: 94%;
+  min-width: 94%;
+  margin: 5px 0;
+}
+
+.contact select {
+  width: 100%;
+  max-width: 100%;
+  margin: 5px 0;
+}
+
+.contact .select {
+  width: 100%;
+  max-width: 100%;
+  margin: 5px 0;
+}
+
+.contact .select select {
+  margin: 0;
+}
+
+.contact textarea {
+  min-height: 200px;
+}
+
+.contact article h2 {
+  font-weight: 300;
+}
+
+.contact article p.half {
+  float: left;
+  width: 48%;
+  padding-right: 4%
+}
+
+.contact article p.half + p.half {
+  clear: none;
+  padding-right: 0;
+}
+
+.contact aside .social li {
+  margin-right: 5px;
+}
+
+.contact aside .social li:before {
+  display: none;
+}
+
+.contact .gmap {
+  height: 300px;
+}
+
+@media (max-width: 800px) {
+  .contact > article {
+    float: none;
+    width: 98%;
+    padding: 0 1%;
+  }
+  .contact > aside {
+    float: none;
+    width: 98%;
+    padding: 0 1%;
+  }
+}
+
+.offices-section {
+  width: 100% !important;
+
+  margin: 0 auto;
+  float: none;
+
+}
+
+.home-contact-form {
+  margin-bottom: 2em;
+}
+
+.hp-contact {
+  background: #c6b29b;
+  padding: 3em;
+
+  justify-content: center !important;
+  padding-top: 6em;
+}
+
+.hp-contact .panel-grid-cell:first-of-type {
+  background: #121314;
+  padding: 3em;
+  border-radius: 5px;
+  padding-right: 115px;
+  padding-bottom: 100px;
+  max-width: 600px;
+}
+
+.hp-contact .panel-grid-cell:last-of-type {
+  background: #20272d;
+  padding: 3em;
+  border-radius: 5px;
+  margin-top: 3.5em;
+  margin-left: -3.5em;
+  max-width: 600px;
+}
+
+.hp-contact .panel-grid-cell:first-of-type h3 {
+  color: #c6b29b;
+  font-size: 11pt !important;
+  text-transform: uppercase;
+  font-weight: 500 !important;
+}
+
+.hp-contact .panel-grid-cell:first-of-type h2 {
+  color: white;
+  font-weight: 500;
+}
+
+.hp-contact .panel-grid-cell:first-of-type p {
+  color: white;
+  font-size: 14pt;
+}
+
+.ex-contact a {
+  display: block;
+  padding-left: 25px;
+  color: black;
+  font-family: var(--font-sans);
+  font-family: var(--font-cursive);
+  font-size: 11pt;
+}
+
+.ex-contact a.pho {
+  background: url(/wp-content/themes/lighttheme/images/icons/phoneshare.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.ex-contact a.ema {
+  background: url(/wp-content/themes/lighttheme/images/icons/emailshare.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.about-con-centre h2, .about-con-centre h3, .about-con-centre h4, .about-con-centre p {
+  text-align: center !important;
+}
+
+#meet-our-team {
+  font-style: italic;
+  text-align: left;
+}
+
+.about-con-centre h3 {
+  font-family: var(--font-sans);
+  font-family: var(--font-cursive);
+  font-weight: 100;
+  text-align: center !important;
+  font-style: italic;
+  color: black;
+  /* font-weight: bold !important; */
+  font-size: 21pt !important;
+  margin-bottom: 1em !important;
+
+}
+
+.contact-header-outer h2 {
+  font-size: 26pt !important;
+  font-style: italic;
+}
+
+.contact-image-outer .vc_single_image-wrapper:before {
+  content: "";
+  background: url(/wp-content/themes/lighttheme/images/bg-pattern.png);
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 3em;
+  width: calc(100% - 30px);
+  position: absolute;
+  height: 100%;
+  display: block;
+  z-index: 1;
+  margin-left: -1.5em;
+  margin-top: -1.5em;
+  height: calc(100% - 70px);
+}
+
+.contact-image-outer .vc_single_image-wrapper {
+  position: relative;
+}
+
+.contact-image-outer .wpb_single_image {
+  margin-bottom: 0 !important;
+}
+
+.contact-image-main img {
+
+  z-index: 2;
+  position: relative;
+
+}
+
+.about-main-content h3 {
+  color: var(--colour-salmon) !important;
+  font-size: 18pt;
+  line-height: 22pt;
+  text-transform: none !important;
+  font-family: var(--font-sans);
+  font-family: var(--font-cursive);
+  font-style: italic;
+  margin-bottom: 1.5em !important;
+}
+
+#about-hr .vc_column-inner {
+  border-bottom: 2px solid #e1e1e1;
+}

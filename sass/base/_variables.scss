@@ -1,0 +1,30 @@
+:root {
+  //--font-arimo:     'Arimo', sans-serif;
+  //--font-sans:      'din-2014', sans-serif;
+  //--font-dancing:   'Dancing Script', cursive;
+  --font-playfair:  'Playfair Display', serif;
+  --font-georgia:   'Georgia', 'Tinos', serif; // Georgia if the computer has it, otherwise Tinos from Google Fonts
+  --font-work-sans: 'Work sans', sans-serif;
+
+  --font-sans:      var(--font-work-sans); // var(--font-sans);
+  --font-serif:     var(--font-georgia);
+  --font-cursive:   var(--font-playfair);
+
+  --colour-salmon:  #F77D66;
+  --colour-orange:  #ff8400;
+  --colour-medium-grey: #3f3f3f;
+  //--colour-teal:    rgb(3, 65, 70);
+  //--colour-purple:  rgb(152 76 159);
+
+  --colour-primary: var(--colour-salmon);
+  --colour-secondary: var(--colour-orange);
+  //--percentage: attr(percentage);
+}
+
+@mixin b2b-buttons {
+  font-size: 1em !important;
+  text-transform: uppercase !important;
+  height: 50px !important;
+  border-radius: 0 !important;
+  font-weight: normal;
+}
