@@ -24,9 +24,10 @@
             background-color: var(--trb-white);
         }
 
-        header.header-v2 {
+        .trb-bg-lightyellow {
             background-color: var(--trb-lightyellow);
         }
+
 
         header.header-v2 a {
             font-size: 15px;
@@ -51,7 +52,7 @@
             color: var(--trb-black);
         }
 
-        .button-community a {
+        .button-accent-2 a {
             background-color: var(--trb-accent-2);
             color: var(--trb-white);
             padding: 16px 38px 16px 30px;
@@ -136,6 +137,10 @@
             object-fit: cover;
         }
 
+        .footer-v2 {
+            padding-top: 70px;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
@@ -150,59 +155,60 @@
     </style>
     <div id="fouc">
         <div class="site-wrap">
-            <main>
-                <header class="header-v2 py-4 trb-px">
-                    <div class="container-fluid">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto">
-                                <a href="#">
-                                    <?= $theme_logo ?>
-                                </a>
-                            </div>
-                            <div class="col-auto">
-                                <div class="row g-5 align-items-center">
-                                    <div class="col-auto">
-                                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
-                                            <div class="offcanvas-body p-0">
-                                                <?php wp_nav_menu(
-                                                    array(
-                                                        'menu' => 'Header V2',
-                                                    )
-                                                ); ?>
-                                            </div>
+            <header class="header-v2 py-4 trb-px trb-bg-lightyellow">
+                <div class="container-fluid">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-auto">
+                            <a href="#">
+                                <?= $theme_logo ?>
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <div class="row g-5 align-items-center">
+                                <div class="col-auto">
+                                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
+                                        <div class="offcanvas-body p-0">
+                                            <?php wp_nav_menu(
+                                                array(
+                                                    'menu' => 'Header V2',
+                                                )
+                                            ); ?>
+                                        </div>
 
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="search">
-                                            <?php echo do_shortcode('[ivory-search id="24768" title="Search All Content"]'); ?>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="button-community">
-                                            <a href="#">COMMUNITY</a>
-                                        </div>
                                     </div>
                                 </div>
-
+                                <div class="col-auto">
+                                    <div class="search">
+                                        <?php echo do_shortcode('[ivory-search id="24768" title="Search All Content"]'); ?>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="button-accent-2 button-community">
+                                        <a href="#">COMMUNITY</a>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
-                </header>
-
-                <div class="ad-strip">
-                    <a href="#">
-                        <div class="container text-center">
-                            <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap">
-                                <span class="d-inline-block py-4">
-                                    <strong><i>WIN</i></strong> 1 of 5 Zita <strong><i>West Fertility Collagen Pro supplements</i></strong> for preconception, pregnancy & postnatal
-                                </span>
-                                <?= wp_get_attachment_image(44844, 'thumbnail') ?>
-                            </div>
-                        </div>
-                    </a>
-
                 </div>
+            </header>
+
+            <div class="ad-strip">
+                <a href="#">
+                    <div class="container text-center">
+                        <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap">
+                            <span class="d-inline-block py-4">
+                                <strong><i>WIN</i></strong> 1 of 5 Zita <strong><i>West Fertility Collagen Pro supplements</i></strong> for preconception, pregnancy & postnatal
+                            </span>
+                            <?= wp_get_attachment_image(44844, 'thumbnail') ?>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            <main>
+
 
                 <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offCanvasMenu" role="button" aria-controls="offCanvasMenu">
                     Link with href
