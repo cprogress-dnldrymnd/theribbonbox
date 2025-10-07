@@ -458,6 +458,9 @@
         }
 
         @media(max-width: 991px) {
+            #wpadminbar {
+                display: none !important;
+            }
             .header-footer-v2.header-footer-v2 {
                 margin-top: 0 !important;
             }
