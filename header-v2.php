@@ -54,7 +54,7 @@
 
         .button-accent-2.button-accent-2 a {
             background-color: var(--trb-accent-2);
-            color: var(--trb-white) !important
+            color: var(--trb-white) !important;
             padding: 16px 38px 16px 30px;
             border-radius: 5px;
             position: relative;
