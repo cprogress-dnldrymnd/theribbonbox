@@ -374,6 +374,13 @@
                                         <a href="#">COMMUNITY</a>
                                     </div>
                                 </div>
+                                <div class="col-auto d-block d-lg-none">
+                                    <button class="menu-burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
+                                        <div class="icon">
+                                            <div class="menu"></div>
+                                        </div>
+                                    </button>
+                                </div>
                             </div>
 
                         </div>
@@ -408,13 +415,3 @@
                 </div>
             </div>
             <main class="main-v2">
-
-                <div class="d-none">
-
-                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offCanvasMenu" role="button" aria-controls="offCanvasMenu">
-                        Link with href
-                    </a>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
-                        Button with data-bs-target
-                    </button>
-                </div>
