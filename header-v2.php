@@ -204,9 +204,19 @@
             box-shadow: none;
             font-size: 14px;
         }
+
         .woocommerce-breadcrumb.woocommerce-breadcrumb a {
             color: var(--trb-black);
             text-decoration: underline;
+        }
+
+        .woocommerce-breadcrumb.woocommerce-breadcrumb a svg {
+            color: var(--trb-accent-1);
+            color: var(--trb-accent-1);x
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 10px;
+
         }
 
         .hero-v2 {
