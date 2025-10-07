@@ -512,6 +512,9 @@
             .ad-strip a {
                 font-size: 14px;
             }
+            .instagram.instagram, .ticktok.ticktok {
+                gap: 10px;
+            }
         }
 
         @media(max-width: 575px) {
