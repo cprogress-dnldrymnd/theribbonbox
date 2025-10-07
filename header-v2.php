@@ -16,7 +16,8 @@
             --trb-lightyellow: #FAF2E4;
             --trb-black: #000000;
             --trb-white: #ffffff;
-            --trb-accent-1: #3B1527
+            --trb-accent-1: #F77D66;
+            --trb-accent-2: #3B1527
         }
 
         body {
@@ -51,7 +52,7 @@
         }
 
         .button-community a {
-            background-color: var(--trb-accent-1);
+            background-color: var(--trb-accent-2);
             color: var(--trb-white);
             padding: 16px 38px 16px 30px;
             border-radius: 5px 0 0 5px;
@@ -115,6 +116,20 @@
             border-radius: 0;
         }
 
+        .ad-strip a {
+            display: block;
+            background-color: var(--trb-accent-2);
+            font-family: "Playfair Display", serif;
+            font-size: 17px;
+            letter-spacing: 0.85px;
+            color: var(--trb-black);
+            font-weight: 500;
+        }
+
+        .ad-strip strong {
+            font-weight: 800;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
@@ -168,6 +183,20 @@
                         </div>
                     </div>
                 </header>
+
+                <div class="ad-strip">
+                    <a href="#" class="py-4">
+                        <div class="container text-center">
+                            <div class="ad-strip-holder d-flex gap-3 align-items-center">
+                                <span class="d-inline-block py-4">
+                                    <strong><i>WIN</i></strong> 1 of 5 Zita <strong><i>West Fertility Collagen Pro supplements</i></strong> for preconception, pregnancy & postnatal
+                                </span>
+                                <img src="https://theribbonbox.com/wp-content/uploads/2025/09/IVF-books-it-starts-with-the-egg.jpg" alt="">
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
 
                 <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offCanvasMenu" role="button" aria-controls="offCanvasMenu">
                     Link with href
