@@ -296,6 +296,8 @@
             }
         }
 
+        @media(max-width: 1503px) {}
+
         @media(max-width: 1199px) {
             .footer-v2 .left-footer h2 {
                 font-size: 60px;
@@ -352,12 +354,12 @@
             <header class="header-v2 py-4 trb-px trb-bg-lightyellow">
                 <div class="container-fluid">
                     <div class="row justify-content-between align-items-center">
-                        <div class="col-auto">
+                        <div class="col-auto col-left">
                             <a href="#">
                                 <?= $theme_logo ?>
                             </a>
                         </div>
-                        <div class="col-auto">
+                        <div class="col-auto col-right">
                             <div class="row g-5 align-items-center">
                                 <div class="col-auto">
                                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
