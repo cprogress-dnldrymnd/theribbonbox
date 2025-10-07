@@ -514,11 +514,7 @@
                                 <div class="col-auto">
                                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                         <div class="offcanvas-body p-0">
-                                            <?php wp_nav_menu(
-                                                array(
-                                                    'menu' => 'Header V2',
-                                                )
-                                            ); ?>
+                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -526,6 +522,7 @@
                                     <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
                                         <div class="offcanvas-body p-0">
                                             <div class="search search-v2">
+                                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                                 <h4 class="d-block d-lg-none">Search</h4>
                                                 <?php echo do_shortcode('[ivory-search id="24768" title="Search for a topic"]'); ?>
                                             </div>
