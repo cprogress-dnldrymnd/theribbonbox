@@ -54,11 +54,16 @@
 
         .button-accent-2.button-accent-2 a {
             background-color: var(--trb-accent-2);
-            color: var(--trb-white);
+            color: var(--trb-white) !important
             padding: 16px 38px 16px 30px;
             border-radius: 5px;
             position: relative;
             display: inline-block;
+        }
+
+        .button-accent-2.button-accent-2 a:hover {
+            background-color: var(--trb-accent-1);
+
         }
 
         .button-community.button-community a {
@@ -186,9 +191,10 @@
             text-align: left !important
         }
 
-        .footer-v2.footer-v2.footer-v2.footer-v2 a:hover{
+        .footer-v2.footer-v2.footer-v2.footer-v2 a:hover {
             color: var(--trb-accent-1);
         }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
