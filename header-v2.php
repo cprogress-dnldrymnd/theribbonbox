@@ -377,7 +377,7 @@
             padding-right: 0 !important;
         }
 
-        #offCanvasMenu .menu li a {
+        #offCanvasMenu .menu li a:hover {
             color: var(--trb-accent-1);
         }
 
