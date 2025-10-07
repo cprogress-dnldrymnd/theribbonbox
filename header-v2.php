@@ -88,6 +88,7 @@
         }
 
         .is-search-input.is-search-input.is-search-input::placeholder {
+            font-family: Work Sans, sans-serif;
             font-size: 14px !important;
             text-transform: initial !important;
         }
