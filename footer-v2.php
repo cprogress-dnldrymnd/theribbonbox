@@ -6,7 +6,7 @@
                 <div class="left-footer">
                     <h2>Become an Insider</h2>
                     <p>Our weekly newsletter of tailored expert advice, tips and giveaways - straight to your inbox.</p>
-                    <div class="button-accent-2 mt-5">
+                    <div class="button-accent-2 mt-4">
                         <a href="#">SIGN ME UP</a>
                     </div>
                 </div>
