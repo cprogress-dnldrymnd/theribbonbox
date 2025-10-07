@@ -240,7 +240,7 @@
             line-height: 1;
         }
 
-        .social-icons .social-icons-txt {
+        .social-icons.social-icons-txt {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
