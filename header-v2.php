@@ -345,6 +345,9 @@
                 transform ease 0.3s 0.3s;
         }
 
+        body.mobile-menu-active header .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu {
+            background-color: transparent;
+        }
 
         @media(min-width: 992px) {
             #offCanvasMenu {
