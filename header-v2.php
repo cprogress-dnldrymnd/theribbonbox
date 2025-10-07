@@ -231,7 +231,7 @@
         }
 
         .hero-v2 .top {
-            padding-bottom: 140px;
+            padding-bottom: 8%;
         }
 
         .hero-v2 h1 {
@@ -304,6 +304,8 @@
             .footer-v2 .left-footer h2 {
                 font-size: 50px;
             }
+
+            .hero-v2 h1 {}
         }
 
         @media(max-width: 767px) {
