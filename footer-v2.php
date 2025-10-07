@@ -14,13 +14,13 @@ global $theme_logo;
                             <a href="#">SIGN ME UP</a>
                         </div>
                         <div class="footer-logo-text">
-                            <div class="row g-5 align-items-center">
-                                <div class="col-auto">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-lg-4">
                                     <a href="#">
                                         <?= $theme_logo ?>
                                     </a>
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-lg-8">
                                     <p>
                                         By your side through the highs and lows of preconception, pregnancy and parenthood.
                                     </p>
