@@ -286,10 +286,20 @@
             }
         }
 
+        @media(max-width: 1199px) {
+            .footer-v2 .left-footer h2 {
+                font-size: 60px;
+            }
+        }
+
         @media(max-width: 991px) {
             .trb-px {
                 padding-left: 50px;
                 padding-right: 50px;
+            }
+
+            .footer-v2 .left-footer h2 {
+                font-size: 50px;
             }
         }
 
@@ -298,12 +308,20 @@
                 padding-left: 40px;
                 padding-right: 40px;
             }
+
+            .footer-v2 .left-footer h2 {
+                font-size: 40px;
+            }
         }
 
         @media(max-width: 575px) {
             .trb-px {
                 padding-left: 20px;
                 padding-right: 20px;
+            }
+
+            .footer-v2 .left-footer h2 {
+                font-size: 25px;
             }
         }
 
