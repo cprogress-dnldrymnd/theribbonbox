@@ -480,6 +480,9 @@
             .ad-strip a {
                 font-size: 15px;
             }
+                   .footer-v2 {
+                padding-top: 50px;
+            }
         }
 
         @media(max-width: 767px) {
