@@ -84,9 +84,10 @@
             height: auto !important;
             padding: 19px 45px 19px 30px !important;
             border-radius: 50px;
+            min-width: 346px;
         }
 
-        .is-search-input.is-search-input.is-search-input:: {
+        .is-search-input.is-search-input.is-search-input::placeholder {
             font-size: 14px !important;
             text-transform: initial !important;
         }
