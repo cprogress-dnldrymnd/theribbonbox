@@ -36,7 +36,7 @@
             font-weight: 500;
         }
 
-        header.header-v2 a:hover {
+        header.header-v2 .menu a:hover {
             color: var(--trb-accent-1);
         }
 
