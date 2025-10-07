@@ -191,7 +191,7 @@
                                 <span class="d-inline-block py-4">
                                     <strong><i>WIN</i></strong> 1 of 5 Zita <strong><i>West Fertility Collagen Pro supplements</i></strong> for preconception, pregnancy & postnatal
                                 </span>
-                                <img src="https://theribbonbox.com/wp-content/uploads/2025/09/IVF-books-it-starts-with-the-egg.jpg" alt="">
+                                <?= wp_get_attachment_image(44844, 'thumbnail') ?>
                             </div>
                         </div>
                     </a>
