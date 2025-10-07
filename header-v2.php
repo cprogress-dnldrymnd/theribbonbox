@@ -58,6 +58,7 @@
         }
 
         .button-community a:after {
+            content: '';
             width: 0;
             height: 0;
             border-top: 50px solid transparent;
