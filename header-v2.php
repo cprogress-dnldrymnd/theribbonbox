@@ -73,7 +73,7 @@
                                 </a>
                             </div>
                             <div class="col-auto">
-                                <div class="row">
+                                <div class="row align-items-center">
                                     <div class="col-auto">
                                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                             <div class="offcanvas-body p-0">
