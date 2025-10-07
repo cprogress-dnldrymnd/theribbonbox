@@ -33,7 +33,7 @@
         header.header-v2 a {
             font-size: 15px;
             letter-spacing: 0.75px;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .trb-px {
@@ -196,7 +196,7 @@
 
 
         .footer-v2.footer-v2.footer-v2.footer-v2 a{
-            font-weight: 600;
+            font-weight: 500;
         }
         
 
