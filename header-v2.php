@@ -535,6 +535,9 @@
             .footer-v2 {
                 padding-top: 30px;
             }
+            header.header-v2 a {
+                font-size: 15px;
+            }
         }
 
         @media(max-width: 575px) {
