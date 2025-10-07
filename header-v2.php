@@ -242,6 +242,7 @@
             color: var(--trb-accent-2);
             margin-top: -8%;
             line-height: 1;
+            margin-bottom: 0;
         }
 
         .social-icons.social-icons-txt {
