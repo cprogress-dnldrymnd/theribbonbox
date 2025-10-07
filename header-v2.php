@@ -537,6 +537,9 @@
             .social-icons.social-icons-txt a {
                 font-size: 12px;
             }
+            .footer-logo-text p {
+                font-size: 20px;
+            }
         }
 
         @media(max-width: 375px) {
