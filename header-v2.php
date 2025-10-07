@@ -475,7 +475,7 @@
 
             #offCanvasMenu,
             #offCanvasSearch {
-                padding: 60px 40px 40px;
+                padding: 40px;
             }
 
             #offCanvasMenu .menu {
@@ -521,7 +521,7 @@
 
             #offCanvasMenu,
             #offCanvasSearch {
-                padding: 50px 20px 20px;
+                padding: 20px;
             }
 
             .ad-strip a {
