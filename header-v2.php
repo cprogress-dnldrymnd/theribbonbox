@@ -157,7 +157,7 @@
             border-top: 1px solid #EADCC3;
         }
 
-        #main-v2 {
+        .main-v2 {
             min-height: 300px;
         }
 
