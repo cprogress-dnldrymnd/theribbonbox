@@ -6,7 +6,7 @@ global $theme_logo;
     <div class="footer-top trb-px">
         <div class="container-fluid">
             <div class="row g-3">
-                <div class="col-lg-6">
+                <div class="col-md-6">
                     <div class="left-footer">
                         <h2>Become an Insider</h2>
                         <p>Our weekly newsletter of tailored expert advice, tips and giveaways - straight to your inbox.</p>
@@ -32,7 +32,7 @@ global $theme_logo;
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-md-6">
                     <div class="right-footer">
                         <div class="row">
                             <div class="col-lg-6">
