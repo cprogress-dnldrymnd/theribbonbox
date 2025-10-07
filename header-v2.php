@@ -45,7 +45,7 @@
             padding: 0;
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: clamp(5px, 3vw, 25px);
 
         }
 
