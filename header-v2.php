@@ -210,7 +210,7 @@
             text-decoration: underline;
         }
 
-        .woocommerce-breadcrumb.woocommerce-breadcrumb  svg {
+        .woocommerce-breadcrumb.woocommerce-breadcrumb svg {
             color: var(--trb-accent-1);
             margin-left: 5px;
             margin-right: 5px;
@@ -319,10 +319,12 @@
             <?php } ?>
             <main class="main-v2">
 
+                <div class="d-none">
 
-                <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offCanvasMenu" role="button" aria-controls="offCanvasMenu">
-                    Link with href
-                </a>
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
-                    Button with data-bs-target
-                </button>
+                    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offCanvasMenu" role="button" aria-controls="offCanvasMenu">
+                        Link with href
+                    </a>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
+                        Button with data-bs-target
+                    </button>
+                </div>
