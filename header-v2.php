@@ -283,6 +283,52 @@
             padding: 0;
         }
 
+        .menu-burger {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+            position: relative;
+            color: var(--bs-white);
+            outline: none;
+        }
+
+        .menu-burger .icon .menu,
+        .menu-burger .icon .menu::before,
+        .menu-burger .icon .menu::after {
+            background-color: currentColor;
+            content: "";
+            display: block;
+            height: 3px;
+            position: absolute;
+            transition:
+                background ease 0.3s,
+                top ease 0.3s 0.3s,
+                transform ease 0.3s;
+            width: 25px;
+        }
+
+        .menu-burger .icon {
+            cursor: pointer;
+            display: block;
+            height: 19px;
+            width: 25px;
+            position: relative;
+        }
+
+        .menu-burger .icon .menu {
+            left: 0;
+            top: 8px;
+        }
+
+        .menu-burger .icon .menu:before {
+            top: -8px;
+        }
+
+        .menu-burger .icon .menu:after {
+            top: 8px;
+        }
+
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
