@@ -191,7 +191,7 @@
                 </header>
 
                 <div class="ad-strip">
-                    <a href="#" class="py-4">
+                    <a href="#">
                         <div class="container text-center">
                             <div class="ad-strip-holder d-flex gap-3 align-items-center">
                                 <span class="d-inline-block py-4">
