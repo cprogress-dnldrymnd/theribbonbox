@@ -56,7 +56,7 @@
         .button-accent-2.button-accent-2 a {
             background-color: var(--trb-accent-2);
             color: var(--trb-white) !important;
-            padding: 16px 38px 16px 30px;
+            padding: 16px 30px 16px 30px;
             border-radius: 5px;
             position: relative;
             display: inline-block;
@@ -70,6 +70,7 @@
 
         .button-community.button-community a {
             border-radius: 5px 0 0 5px;
+            padding-right: 38px;
         }
 
         .button-community a:after {
@@ -195,10 +196,10 @@
         }
 
 
-        .footer-v2.footer-v2.footer-v2.footer-v2 a{
+        .footer-v2.footer-v2.footer-v2.footer-v2 a {
             font-weight: 500;
         }
-        
+
 
         .footer-v2.footer-v2.footer-v2.footer-v2 a:hover {
             color: var(--trb-accent-1);
