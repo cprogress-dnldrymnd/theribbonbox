@@ -240,11 +240,17 @@
             line-height: 1;
         }
 
+        .social-icons .social-icons-txt {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         .instagram.instagram,
         .ticktok.ticktok {
-            padding-left: 0;
+            padding-left: 0 !important;
             background-image: none;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 20px
         }
