@@ -118,7 +118,7 @@
 
         .ad-strip a {
             display: block;
-            background-color: var(--trb-accent-2);
+            background-color: var(--trb-accent-1);
             font-family: "Playfair Display", serif;
             font-size: 17px;
             letter-spacing: 0.85px;
