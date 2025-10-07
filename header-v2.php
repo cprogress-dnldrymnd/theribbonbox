@@ -107,6 +107,7 @@
             transform: translateY(-50%);
             width: 15px !important;
             height: 15px !important;
+            border-radius: 0;
         }
 
         @media(min-width: 992px) {
