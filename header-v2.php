@@ -178,7 +178,7 @@
         }
 
         .left-footer {
-            max-width: 620px;
+            max-width: 750px;
         }
 
         .right-footer {
