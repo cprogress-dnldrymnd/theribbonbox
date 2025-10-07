@@ -82,7 +82,7 @@
         .is-search-input.is-search-input.is-search-input {
             background-color: transparent;
             height: auto !important;
-            padding: 19px 30px;
+            padding: 19px 45px 19px 30px !important;
             border-radius: 50px;
         }
 
