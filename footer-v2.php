@@ -33,7 +33,7 @@ global $theme_logo;
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-4">
-                    <div class="right-footer ms-0 ms-md-auto">
+                    <div class="right-footer ms-0 ms-md-auto mt-4 mt-md-0">
                         <div class="row">
                             <div class="col-lg-6">
                                 <?php wp_nav_menu(array('menu' => 'Footer Menu V2 Left')); ?>
