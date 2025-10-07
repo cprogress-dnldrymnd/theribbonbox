@@ -318,8 +318,8 @@
                 letter-spacing: 0;
             }
             .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input {
-                padding-left: 15px;
-                padding-right: 15px;
+                padding-left: 15px !important;
+                padding-right: 15px !important;
             }
             .button-community.button-community a {
                 padding-left: 15px;
