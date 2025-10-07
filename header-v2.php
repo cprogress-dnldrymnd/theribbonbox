@@ -58,6 +58,7 @@
             padding: 16px 38px 16px 30px;
             border-radius: 5px 0 0 5px;
             position: relative;
+            display: inline-block;
         }
 
         .button-community a:after {
