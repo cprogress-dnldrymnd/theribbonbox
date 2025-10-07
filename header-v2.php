@@ -152,6 +152,9 @@
             margin-top: 0;
             color: var(--trb-accent-2);
         }
+        .footer-bottom  {
+            border-top: 1px solid #EADCC3;
+        }
 
         @media(min-width: 992px) {
             #offCanvasMenu {
