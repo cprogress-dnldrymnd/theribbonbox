@@ -15,12 +15,12 @@ global $theme_logo;
                         </div>
                         <div class="footer-logo-text my-5">
                             <div class="row g-3 align-items-center">
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     <a href="#">
                                         <?= $theme_logo ?>
                                     </a>
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-9">
                                     <p>
                                         By your side through the highs and lows of preconception, pregnancy and parenthood.
                                     </p>
