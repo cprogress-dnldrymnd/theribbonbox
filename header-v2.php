@@ -436,13 +436,16 @@
                 font-size: 50px;
             }
 
-            #offCanvasMenu {
+            #offCanvasMenu,#offCanvasSearch {
                 padding: 60px 40px 40px;
             }
 
             #offCanvasMenu .menu {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+            #offCanvasSearch {
+           
             }
         }
 
