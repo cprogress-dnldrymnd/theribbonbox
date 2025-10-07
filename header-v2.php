@@ -460,6 +460,9 @@
             .hero-v2 .top {
                 padding-top: 1.5rem!important;
             }
+            .bottom{
+                background-color: var(--trb-lightyellow);
+            }
         }
 
         @media(max-width: 575px) {
