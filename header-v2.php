@@ -86,6 +86,7 @@
             border-radius: 50px;
             min-width: 346px;
             border: 1px solid !important;
+            text-transform: initial !important;
         }
 
         .is-search-input.is-search-input.is-search-input::placeholder {
