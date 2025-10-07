@@ -60,7 +60,7 @@
         <div class="site-wrap">
             <main>
                 <header class="header-v2 py-4">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-auto">
                                 <a href="#">
