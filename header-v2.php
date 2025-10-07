@@ -213,14 +213,14 @@
         .woocommerce-breadcrumb.woocommerce-breadcrumb a svg {
             color: var(--trb-accent-1);
             color: var(--trb-accent-1);
-            x margin-left: 5px;
+            margin-left: 5px;
             margin-right: 5px;
             width: 10px;
 
         }
 
-        .hero-v2 {
-            padding-bottom: 140px;
+        .hero-v2 h1{
+
         }
 
         @media(min-width: 992px) {
