@@ -59,6 +59,7 @@
             border-radius: 5px;
             position: relative;
             display: inline-block;
+            transition: 400ms;
         }
 
         .button-accent-2.button-accent-2 a:hover {
