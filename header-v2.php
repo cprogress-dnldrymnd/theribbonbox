@@ -132,6 +132,8 @@
 
         .ad-strip img {
             max-height: 70px;
+            width: auto;
+            object-fit: cover;
         }
 
         @media(min-width: 992px) {
