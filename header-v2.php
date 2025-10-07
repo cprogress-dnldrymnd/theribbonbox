@@ -454,14 +454,21 @@
             .footer-v2 .left-footer h2 {
                 font-size: 40px;
             }
+
             .hero-v2 h1 {
                 margin-top: 0;
             }
+
             .hero-v2 .top {
-                padding-top: 1.5rem!important;
+                padding-top: 1.5rem !important;
             }
-            .bottom{
+             .hero-v2 .bottom {
+                padding-top: 0 !important;
+            }
+
+            .bottom {
                 background-color: var(--trb-lightyellow);
+                padding-bottom: 1.5rem !important;
             }
         }
 
