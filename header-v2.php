@@ -130,6 +130,10 @@
             font-weight: 800;
         }
 
+        .ad-strip img {
+            max-height: 70px;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
