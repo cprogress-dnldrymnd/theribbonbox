@@ -77,7 +77,8 @@
                     </div>
                     <?php wp_nav_menu(
                         array(
-                            'menu' => 'Header V2',
+                            'theme_location' => 'header-menu',
+                            'walker' => new Walker_Nav_Pointers()
                         )
                     ); ?>
                     <div class="navigation-footer-sec">
