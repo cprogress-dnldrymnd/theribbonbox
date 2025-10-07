@@ -278,6 +278,11 @@
             background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15.638" height="18" viewBox="0 0 15.638 18"><path id="Icon_simple-tiktok" data-name="Icon simple-tiktok" d="M10.582.015C11.564,0,12.539.007,13.514,0a4.671,4.671,0,0,0,1.312,3.127,5.289,5.289,0,0,0,3.18,1.342V7.492a8.028,8.028,0,0,1-3.15-.727,9.266,9.266,0,0,1-1.215-.7c-.007,2.19.007,4.38-.015,6.562a5.728,5.728,0,0,1-1.012,2.955,5.588,5.588,0,0,1-4.432,2.407,5.469,5.469,0,0,1-3.06-.772,5.656,5.656,0,0,1-2.737-4.282c-.015-.375-.022-.75-.007-1.117A5.646,5.646,0,0,1,8.924,6.81c.015,1.11-.03,2.22-.03,3.33a2.573,2.573,0,0,0-3.285,1.59,2.975,2.975,0,0,0-.1,1.207A2.553,2.553,0,0,0,8.129,15.09a2.52,2.52,0,0,0,2.077-1.207,1.73,1.73,0,0,0,.307-.795c.075-1.342.045-2.677.052-4.02.007-3.022-.007-6.037.015-9.052Z" transform="translate(-2.369)"/></svg>');
         }
 
+        .offCanvasSearch-btn {
+            background-color: transparent;
+            padding: 0;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
@@ -429,7 +434,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasSearch" aria-controls="offCanvasSearch" class="d-block d-xl-none">
+                                    <button type="button" class="offCanvasSearch-btn" data-bs-toggle="offcanvas" data-bs-target="#offCanvasSearch" aria-controls="offCanvasSearch" class="d-block d-xl-none">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="17.179" height="17.179" viewBox="0 0 17.179 17.179">
                                             <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.75 0.75)">
                                                 <path id="Path_1" data-name="Path 1" d="M18.161,11.33A6.83,6.83,0,1,1,11.33,4.5,6.83,6.83,0,0,1,18.161,11.33Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
