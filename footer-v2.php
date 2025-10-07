@@ -1,4 +1,7 @@
 </main>
+<?php
+global $theme_logo;
+?>
 <footer class="footer-v2 trb-bg-lightyellow">
     <div class="footer-top trb-px">
         <div class="container-fluid">
@@ -10,7 +13,20 @@
                         <div class="button-accent-2 mt-4">
                             <a href="#">SIGN ME UP</a>
                         </div>
-
+                        <div class="footer-logo-text">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <a href="#">
+                                        <?= $theme_logo ?>
+                                    </a>
+                                </div>
+                                <div class="col-auto">
+                                    <p>
+                                        By your side through the highs and lows of preconception, pregnancy and parenthood.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="social-holder mt-4">
                             <?php echo do_shortcode("[get_socials]"); ?>
                         </div>

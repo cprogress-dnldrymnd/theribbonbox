@@ -161,6 +161,13 @@
             min-height: 300px;
         }
 
+        .footer-logo-text p {
+            font-size: 24px;
+            font-family: "Playfair Display", serif;
+            font-style: italic;
+            font-weight: 600;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
