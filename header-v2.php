@@ -197,6 +197,15 @@
             color: var(--trb-accent-1);
         }
 
+        .woocommerce-breadcrumb.woocommerce-breadcrumb {
+            float: none;
+            text-align: left;
+            background-color: transparent !important;
+        }
+        .hero-v2 {
+            padding-bottom: 140px;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
