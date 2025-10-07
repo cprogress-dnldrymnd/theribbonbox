@@ -283,7 +283,7 @@
             padding: 0;
         }
 
-        .menu-burger {
+        .menu-burger.menu-burger.menu-burger.menu-burger {
             border: none;
             background-color: transparent;
             padding: 0;
