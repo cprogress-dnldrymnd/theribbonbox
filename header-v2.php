@@ -436,7 +436,8 @@
                 font-size: 50px;
             }
 
-            #offCanvasMenu,#offCanvasSearch {
+            #offCanvasMenu,
+            #offCanvasSearch {
                 padding: 60px 40px 40px;
             }
 
@@ -444,9 +445,8 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            #offCanvasSearch {
-           
-            }
+
+            #offCanvasSearch {}
         }
 
         @media(max-width: 767px) {
@@ -526,7 +526,8 @@
                                     <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
                                         <div class="offcanvas-body p-0">
                                             <div class="search search-v2">
-                                                <?php echo do_shortcode('[ivory-search id="24768" title="Search All Content"]'); ?>
+                                                <h4 class="d-block d-lg-none">Search</h4>
+                                                <?php echo do_shortcode('[ivory-search id="24768" title="Search for a topic"]'); ?>
                                             </div>
                                         </div>
                                     </div>
