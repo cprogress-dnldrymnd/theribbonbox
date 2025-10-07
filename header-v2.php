@@ -472,7 +472,9 @@
                 align-items: flex-start;
             }
 
-
+            .ad-strip a {
+                font-size: 15px;
+            }
         }
 
         @media(max-width: 767px) {
@@ -507,12 +509,20 @@
             #offCanvasSearch {
                 padding: 50px 20px 20px;
             }
+
+            .ad-strip a {
+                font-size: 14px;
+            }
         }
 
         @media(max-width: 575px) {
 
             .footer-v2 .left-footer h2 {
                 font-size: 25px;
+            }
+
+            .ad-strip a {
+                font-size: 12px;
             }
         }
 
