@@ -186,7 +186,7 @@
             text-align: left !important
         }
 
-        .right-footer.right-footer.right-footer .menu a:hover{
+        .footer-v2.footer-v2.footer-v2.footer-v2 a:hover{
             color: var(--trb-accent-1);
         }
         @media(min-width: 992px) {
