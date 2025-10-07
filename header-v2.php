@@ -56,9 +56,13 @@
             background-color: var(--trb-accent-2);
             color: var(--trb-white);
             padding: 16px 38px 16px 30px;
-            border-radius: 5px 0 0 5px;
+            border-radius: 5px;
             position: relative;
             display: inline-block;
+        }
+
+        .button-community.button-community a {
+            border-radius: 5px 0 0 5px;
         }
 
         .button-community a:after {
@@ -141,6 +145,7 @@
         .footer-v2 {
             padding-top: 70px;
         }
+
         .footer-v2 .left-footer h2 {
             font-size: 70px;
             font-weight: bold;
