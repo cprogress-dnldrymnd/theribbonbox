@@ -432,11 +432,11 @@
                 font-size: 50px;
             }
 
-            .offCanvasMenu {
+            #offCanvasMenu {
                 padding: 40px;
             }
 
-            .offCanvasMenu .menu {
+            #offCanvasMenu .menu {
                 flex-direction: column;
                 align-items: flex-start;
             }
