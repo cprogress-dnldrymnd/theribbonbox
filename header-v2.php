@@ -219,8 +219,16 @@
 
         }
 
-        .hero-v2 h1{
+        .hero-v2 {
+            padding-bottom: 140px;
+        }
 
+        .hero-v2 h1 {
+            font-size: 237px;
+            font-weight: bold;
+            font-family: Playfair Display, sans-serif;
+            color: var(--trb-accent-2);
+            margin-top: 140px;
         }
 
         @media(min-width: 992px) {
@@ -293,13 +301,19 @@
                 </div>
             <?php } ?>
             <?php if ($mode == 'hero') { ?>
-                <div class="hero-v2 trb-border-top trb-px pt-4 trb-bg-lightyellow">
-                    <div class="container-fluid">
-                        <div class="breadcrumbs-v2">
-                            <?= woocommerce_breadcrumb(); ?>
-                            <h1>Surrogacy</h1>
+                <div class="hero-v2 trb-border-top trb-px">
+                    <div class="top  pt-4 trb-bg-lightyellow">
+                        <div class="container-fluid">
+                            <div class="breadcrumbs-v2">
+                                <?= woocommerce_breadcrumb(); ?>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="container-fluid">
+                        <h1>Surrogacy</h1>
+                    </div>
+
                 </div>
             <?php } ?>
             <main class="main-v2">
