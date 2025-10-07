@@ -210,8 +210,7 @@
             text-decoration: underline;
         }
 
-        .woocommerce-breadcrumb.woocommerce-breadcrumb a svg {
-            color: var(--trb-accent-1);
+        .woocommerce-breadcrumb.woocommerce-breadcrumb  svg {
             color: var(--trb-accent-1);
             margin-left: 5px;
             margin-right: 5px;
