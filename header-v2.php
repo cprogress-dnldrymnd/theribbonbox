@@ -350,6 +350,17 @@
             background-color: transparent;
         }
 
+        .close--btn.close--btn button {
+            color: #fff !important;
+            background-color: var(--trb-accent-1) !important;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: transparent;
+            height: auto;
+        }
+      
+
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
