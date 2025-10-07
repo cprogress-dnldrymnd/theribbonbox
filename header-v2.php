@@ -212,6 +212,9 @@
             background-color: transparent !important;
             box-shadow: none;
             font-size: 14px;
+            display: block !important;
+            position: static;
+            border: none !important;
         }
 
         .woocommerce-breadcrumb.woocommerce-breadcrumb a {
@@ -236,7 +239,7 @@
             font-weight: bold;
             font-family: Playfair Display, sans-serif;
             color: var(--trb-accent-2);
-            margin-top: -140px;
+            margin-top: -8%;
             line-height: 1;
         }
 
