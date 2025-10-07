@@ -55,15 +55,19 @@
             color: var(--trb-white);
             padding: 16px 30px;
             border-radius: 5px 0 0 5px;
+            position: relative;
         }
 
         .button-community a:after {
             content: '';
             width: 0;
             height: 0;
-            border-top: 50px solid transparent;
-            border-right: 100px solid var(--trb-lightyellow);
-            border-bottom: 50px solid transparent;
+            border-top: 25px solid transparent;
+            border-right: 8px solid var(--trb-lightyellow);
+            border-bottom: 25px solid transparent;
+            position: absolute;
+            right: 0;
+            top: 0;
         }
 
         .search form {
