@@ -13,7 +13,7 @@ global $theme_logo;
                         <div class="button-accent-2 mt-4">
                             <a href="#">SIGN ME UP</a>
                         </div>
-                        <div class="footer-logo-text">
+                        <div class="footer-logo-text my-5">
                             <div class="row g-3 align-items-center">
                                 <div class="col-lg-4">
                                     <a href="#">
