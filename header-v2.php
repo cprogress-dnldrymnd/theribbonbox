@@ -270,7 +270,7 @@
                 <div class="hero-v2 trb-border-top trb-px pt-4 trb-bg-lightyellow">
                     <div class="container-fluid">
                         <div class="breadcrumbs-v2">
-                            <?php woocommerce_breadcrumb(); ?>
+                            <?= woocommerce_breadcrumb(); ?>
                         </div>
                     </div>
                 </div>
