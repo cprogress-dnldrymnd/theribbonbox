@@ -219,7 +219,7 @@
 
         }
 
-        .hero-v2 {
+        .hero-v2 .top {
             padding-bottom: 140px;
         }
 
@@ -301,7 +301,7 @@
                 </div>
             <?php } ?>
             <?php if ($mode == 'hero') { ?>
-                <div class="hero-v2 trb-border-top ">
+                <div class="hero-v2 trb-border-top">
                     <div class="top  pt-4 trb-bg-lightyellow trb-px">
                         <div class="container-fluid">
                             <div class="breadcrumbs-v2">
