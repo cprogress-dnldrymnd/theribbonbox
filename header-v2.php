@@ -212,8 +212,8 @@
 
         .woocommerce-breadcrumb.woocommerce-breadcrumb a svg {
             color: var(--trb-accent-1);
-            color: var(--trb-accent-1);x
-            margin-left: 5px;
+            color: var(--trb-accent-1);
+            x margin-left: 5px;
             margin-right: 5px;
             width: 10px;
 
@@ -297,6 +297,7 @@
                     <div class="container-fluid">
                         <div class="breadcrumbs-v2">
                             <?= woocommerce_breadcrumb(); ?>
+                            <h1>Surrogacy</h1>
                         </div>
                     </div>
                 </div>
