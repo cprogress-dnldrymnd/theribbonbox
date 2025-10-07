@@ -152,8 +152,13 @@
             margin-top: 0;
             color: var(--trb-accent-2);
         }
-        .footer-bottom  {
+
+        .footer-bottom {
             border-top: 1px solid #EADCC3;
+        }
+
+        #main-v2 {
+            min-height: 300px;
         }
 
         @media(min-width: 992px) {
@@ -222,7 +227,7 @@
                 </a>
 
             </div>
-            <main>
+            <main class="main-v2">
 
 
                 <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offCanvasMenu" role="button" aria-controls="offCanvasMenu">
