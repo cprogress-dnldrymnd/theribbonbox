@@ -175,6 +175,7 @@
             font-style: italic;
             font-weight: 600;
             color: var(--trb-accent-2);
+            line-height: 1.2;
         }
 
         .left-footer {
