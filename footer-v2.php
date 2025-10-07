@@ -10,6 +10,8 @@
                         <div class="button-accent-2 mt-4">
                             <a href="#">SIGN ME UP</a>
                         </div>
+
+                        <?php echo do_shortcode("[get_socials]"); ?>
                     </div>
                 </div>
             </div>
