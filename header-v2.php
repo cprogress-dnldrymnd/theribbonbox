@@ -26,17 +26,21 @@
             background-color: var(--trb-lightyellow);
         }
 
-        #offCanvasMenu .menu {
-            padding: 0;
-            display: flex;
-            align-items: center;
-            gap: 25px;
+        header.header-v2 a {
             font-size: 15px;
             letter-spacing: 0.75px;
             font-weight: 500;
         }
 
-        #offCanvasMenu .menu li a{
+        #offCanvasMenu .menu {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+
+        }
+
+        #offCanvasMenu .menu li a {
             color: var(--trb-black);
         }
 
