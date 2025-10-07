@@ -53,7 +53,7 @@
         .button-community a {
             background-color: var(--trb-accent-1);
             color: var(--trb-white);
-            padding: 16px 30px;
+            padding: 16px 38px 16px 30px;
             border-radius: 5px 0 0 5px;
             position: relative;
         }
