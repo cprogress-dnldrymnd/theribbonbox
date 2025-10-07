@@ -538,6 +538,9 @@
             header.header-v2 a {
                 font-size: 15px;
             }
+            #offCanvasMenu .menu {
+                gap: 10px;
+            }
         }
 
         @media(max-width: 575px) {
