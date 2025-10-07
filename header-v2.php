@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="header-footer-v2">
 <?php require 'head.php'; ?>
 <?php global $wp; ?>
 
@@ -458,6 +458,9 @@
         }
 
         @media(max-width: 991px) {
+            .header-footer-v2.header-footer-v2 {
+                margin-top: 0 !important;
+            }
             .trb-px {
                 padding-left: 30px;
                 padding-right: 30px;
