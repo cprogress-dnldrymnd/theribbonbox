@@ -534,6 +534,9 @@
             .ad-strip a {
                 font-size: 12px;
             }
+            .social-icons.social-icons-txt a {
+                font-size: 12px;
+            }
         }
 
         @media(max-width: 375px) {
