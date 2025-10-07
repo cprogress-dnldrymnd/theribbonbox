@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="margin-top: 0 !important;">
+<html lang="en">
 <?php require 'head.php'; ?>
 <?php global $wp; ?>
 
