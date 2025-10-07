@@ -187,7 +187,7 @@
             max-width: 500px;
             font-size: 16px;
         }
-       
+
         .right-footer .menu {
             display: flex !important;
             flex-direction: column;
@@ -370,6 +370,12 @@
 
         }
 
+        footer,
+        .breadcrumb {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
@@ -512,7 +518,9 @@
             .ad-strip a {
                 font-size: 14px;
             }
-            .instagram.instagram, .ticktok.ticktok {
+
+            .instagram.instagram,
+            .ticktok.ticktok {
                 gap: 10px;
             }
         }
