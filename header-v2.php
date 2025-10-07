@@ -173,6 +173,17 @@
             max-width: 620px;
         }
 
+        .right-footer {
+            font-size: 16px;
+        }
+
+        .right-footer .menu {
+            display: flex !important;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
