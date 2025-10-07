@@ -33,7 +33,7 @@
         header.header-v2 a {
             font-size: 15px;
             letter-spacing: 0.75px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .trb-px {
@@ -190,8 +190,15 @@
             display: flex !important;
             flex-direction: column;
             gap: 15px;
-            text-align: left !important
+            text-align: left !important;
+            margin: 0 !important;
         }
+
+
+        .footer-v2.footer-v2.footer-v2.footer-v2 a{
+            font-weight: 600;
+        }
+        
 
         .footer-v2.footer-v2.footer-v2.footer-v2 a:hover {
             color: var(--trb-accent-1);
