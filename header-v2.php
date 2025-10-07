@@ -187,11 +187,11 @@
             max-width: 500px;
             font-size: 16px;
         }
-
+       
         .right-footer .menu {
             display: flex !important;
             flex-direction: column;
-            gap: 15px;
+            gap: var(--bs-gutter-y);
             text-align: left !important;
             margin: 0 !important;
         }
