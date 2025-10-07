@@ -24,6 +24,16 @@
             background-color: var(--trb-lightyellow);
         }
 
+        #offCanvasMenu .menu {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 15px;
+            letter-spacing: 0.75px;
+            font-weight: 500;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
@@ -51,7 +61,7 @@
                                 <div class="row">
                                     <div class="col-auto">
                                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
-                                            <div class="offcanvas-body">
+                                            <div class="offcanvas-body p-0">
                                                 <?php wp_nav_menu(
                                                     array(
                                                         'menu' => 'Header V2',
