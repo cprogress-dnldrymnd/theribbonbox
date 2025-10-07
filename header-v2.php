@@ -433,7 +433,7 @@
             }
 
             #offCanvasMenu {
-                padding: 40px;
+                padding: 60px 40px 40px;
             }
 
             #offCanvasMenu .menu {
