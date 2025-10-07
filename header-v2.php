@@ -523,6 +523,9 @@
             .ticktok.ticktok {
                 gap: 10px;
             }
+            .footer-v2 {
+                padding-top: 30px;
+            }
         }
 
         @media(max-width: 575px) {
