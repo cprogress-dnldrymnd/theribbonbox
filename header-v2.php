@@ -228,7 +228,8 @@
             font-weight: bold;
             font-family: Playfair Display, sans-serif;
             color: var(--trb-accent-2);
-            margin-top: 140px;
+            margin-top: -140px;
+            line-height: 1;
         }
 
         @media(min-width: 992px) {
