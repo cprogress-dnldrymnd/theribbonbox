@@ -328,6 +328,22 @@
             top: 8px;
         }
 
+        body.mobile-menu-active header .menu-burger .icon .menu:before {
+            transform: rotate(45deg);
+        }
+
+        body.mobile-menu-active header .menu-burger .icon .menu:after {
+            transform: rotate(-45deg);
+        }
+
+        body.mobile-menu-active header .menu-burger .icon .menu:before,
+        body.mobile-menu-active header .menu-burger .icon .menu:after {
+            top: 0;
+            transition:
+                top ease 0.3s,
+                transform ease 0.3s 0.3s;
+        }
+
 
         @media(min-width: 992px) {
             #offCanvasMenu {
