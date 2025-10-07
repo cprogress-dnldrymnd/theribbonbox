@@ -279,19 +279,17 @@
         }
 
         .offCanvasSearch-btn {
-            background-color: transparent;
-            padding: 0;
+            background-color: transparent !important;
+            padding: 0 !important;
         }
 
         .menu-burger.menu-burger.menu-burger.menu-burger {
             border: none;
-            background-color: transparent;
-            padding: 0;
-            position: relative;
-            color: var(--trb-black);
-            outline: none;
-            padding: 0;
             background-color: transparent !important;
+            padding: 0 !important;
+            position: relative;
+            color: var(--trb-black) !important;
+            outline: none;
             height: auto !important;
         }
 
