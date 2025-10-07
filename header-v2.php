@@ -279,7 +279,7 @@
         }
 
         @media(min-width: 992px) {
-            #offCanvasMenu {
+            .desktop--not-offcanvas.desktop--not-offcanvas.desktop--not-offcanvas {
                 position: static;
                 opacity: 1;
                 visibility: visible;
@@ -311,19 +311,22 @@
             }
         }
 
-        
+
         @media(max-width: 1300px) {
             header.header-v2 a {
                 font-size: 13px;
             }
+
             .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input {
                 padding-left: 15px !important;
                 padding-right: 15px !important;
             }
+
             .button-community.button-community a {
                 padding-left: 15px;
                 padding-right: 23px;
             }
+
             .site-logo-v2 svg {
                 max-width: 100px;
                 height: auto;
@@ -335,6 +338,7 @@
             .footer-v2 .left-footer h2 {
                 font-size: 60px;
             }
+
         }
 
         @media(max-width: 991px) {
@@ -395,7 +399,7 @@
                         <div class="col-auto col-right">
                             <div class="row g-5 align-items-center">
                                 <div class="col-auto">
-                                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
+                                    <div class="offcanvas offcanvas-start desktop--not-offcanvas" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                         <div class="offcanvas-body p-0">
                                             <?php wp_nav_menu(
                                                 array(
@@ -403,13 +407,17 @@
                                                 )
                                             ); ?>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="search">
-                                        <?php echo do_shortcode('[ivory-search id="24768" title="Search All Content"]'); ?>
+                                    <div class="offcanvas offcanvas-start desktop--not-offcanvas" tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
+                                        <div class="offcanvas-body p-0">
+                                            <div class="search search-v2">
+                                                <?php echo do_shortcode('[ivory-search id="24768" title="Search All Content"]'); ?>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="col-auto d-none d-lg-block">
                                     <div class="button-accent-2 button-community">
