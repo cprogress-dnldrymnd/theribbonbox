@@ -56,7 +56,7 @@
         .button-accent-2.button-accent-2 a {
             background-color: var(--trb-accent-2);
             color: var(--trb-white) !important;
-            padding: 16px 30px 16px 30px;
+            padding: 15px 30px 16px 30px;
             border-radius: 5px;
             position: relative;
             display: inline-block;
@@ -77,9 +77,9 @@
             content: '';
             width: 0;
             height: 0;
-            border-top: 25px solid transparent;
+            border-top: 26px solid transparent;
             border-right: 8px solid var(--trb-lightyellow);
-            border-bottom: 25px solid transparent;
+            border-bottom: 26px solid transparent;
             position: absolute;
             right: 0;
             top: 0;
