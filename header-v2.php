@@ -105,8 +105,8 @@
             right: 25px;
             top: 50%;
             transform: translateY(-50%);
-            width: 15px !important;
-            height: 15px !important;
+            width: 16px !important;
+            height: 16px !important;
             border-radius: 0;
         }
 
