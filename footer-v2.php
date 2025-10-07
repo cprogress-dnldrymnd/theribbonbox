@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-bottom trb-px py-4">
+    <div class="footer-bottom trb-px mt-4 py-4">
         <div class="container-fluid">
             <p>
                 © 2025 Edington Media Ltd
