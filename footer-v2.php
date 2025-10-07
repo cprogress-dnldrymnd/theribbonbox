@@ -11,7 +11,9 @@
                             <a href="#">SIGN ME UP</a>
                         </div>
 
-                        <?php echo do_shortcode("[get_socials]"); ?>
+                        <div class="social-holder mt-4">
+                            <?php echo do_shortcode("[get_socials]"); ?>
+                        </div>
                     </div>
                 </div>
             </div>
