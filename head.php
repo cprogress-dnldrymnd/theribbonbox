@@ -49,7 +49,7 @@
     <!-- Font: Playfair Display -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <!-- Font: Work Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- Font: Tinos (equivalent to Georgia) -->
     <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
@@ -58,7 +58,7 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="copyright" content="">
     <meta name="google-site-verification" content="DMhoe3uKxPI_ZseNUmb43TFD3cPqyNnCCGxJUIx1rAw" />
-	<meta name="p:domain_verify" content="4294c3468543c90004a9d2b53ed59ae2"/>
+    <meta name="p:domain_verify" content="4294c3468543c90004a9d2b53ed59ae2" />
 
     <link rel="stylesheet" href="<?php echo (get_template_directory_uri()) ?>/css/trb.css">
     <script>
