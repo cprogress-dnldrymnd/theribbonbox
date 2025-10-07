@@ -17,7 +17,8 @@
             --trb-black: #000000;
             --trb-white: #ffffff;
             --trb-accent-1: #F77D66;
-            --trb-accent-2: #3B1527
+            --trb-accent-2: #3B1527;
+            --trb-border-color: #EADCC3;
         }
 
         body {
@@ -159,8 +160,8 @@
             color: var(--trb-accent-2);
         }
 
-        .footer-bottom {
-            border-top: 1px solid #EADCC3;
+        .trb-border-top {
+            border-top: 1px solid var(--trb-border-color);
         }
 
         .main-v2 {
@@ -266,17 +267,12 @@
                 </div>
             <?php } ?>
             <?php if ($mode == 'hero') { ?>
-                <div class="ad-strip">
-                    <a href="#">
-                        <div class="container text-center">
-                            <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap">
-                                <span class="d-inline-block py-4">
-                                    <strong><i>WIN</i></strong> 1 of 5 Zita <strong><i>West Fertility Collagen Pro supplements</i></strong> for preconception, pregnancy & postnatal
-                                </span>
-                                <?= wp_get_attachment_image(44844, 'thumbnail') ?>
-                            </div>
+                <div class="hero-v2 trb-border-top trb-px pt-4 trb-bg-lightyellow">
+                    <div class="container-fluid">
+                        <div class="breadcrumbs-v2">
+                            <?php woocommerce_breadcrumb(); ?>
                         </div>
-                    </a>
+                    </div>
                 </div>
             <?php } ?>
             <main class="main-v2">
