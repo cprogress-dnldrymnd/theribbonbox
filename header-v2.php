@@ -296,7 +296,12 @@
             }
         }
 
-        @media(max-width: 1503px) {}
+        @media(max-width: 1503px) {
+            .col-right >.row {
+                  --bs-gutter-y: 1.5rem;
+                  --bs-gutter-x: 1.5rem;
+            }
+        }
 
         @media(max-width: 1199px) {
             .footer-v2 .left-footer h2 {
