@@ -166,6 +166,7 @@
             font-family: "Playfair Display", serif;
             font-style: italic;
             font-weight: 600;
+            color: var(--trb-accent-2);
         }
 
         @media(min-width: 992px) {
