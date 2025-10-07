@@ -515,6 +515,11 @@
                                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                         <div class="offcanvas-body p-0">
                                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                            <?php wp_nav_menu(
+                                                array(
+                                                    'menu' => 'Header V2',
+                                                )
+                                            ); ?>
                                         </div>
                                     </div>
                                 </div>
