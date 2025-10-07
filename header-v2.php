@@ -350,6 +350,10 @@
             background-color: transparent;
         }
 
+        .close--btn.close--btn {
+            margin-bottom: 30px;
+        }
+
         .close--btn.close--btn button {
             color: #fff !important;
             background-color: var(--trb-accent-1) !important;
@@ -357,9 +361,15 @@
             border-radius: 5px;
             background-color: transparent;
             height: auto;
+            line-height: 1;
         }
-      
 
+
+        .close--btn.close--btn button svg {
+            width: 20px;
+            height: 20px;
+
+        }
 
         @media(min-width: 992px) {
             #offCanvasMenu {
@@ -430,6 +440,11 @@
 
 
         @media(max-width: 1199px) {
+            .trb-px {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+
             .footer-v2 .left-footer h2 {
                 font-size: 60px;
             }
@@ -439,8 +454,8 @@
 
         @media(max-width: 991px) {
             .trb-px {
-                padding-left: 50px;
-                padding-right: 50px;
+                padding-left: 30px;
+                padding-right: 30px;
             }
 
             .footer-v2 .left-footer h2 {
@@ -457,13 +472,13 @@
                 align-items: flex-start;
             }
 
-            #offCanvasSearch {}
+
         }
 
         @media(max-width: 767px) {
             .trb-px {
-                padding-left: 40px;
-                padding-right: 40px;
+                padding-left: 10px;
+                padding-right: 10px;
             }
 
             .footer-v2 .left-footer h2 {
@@ -487,13 +502,14 @@
                 background-color: var(--trb-lightyellow);
                 padding-bottom: 1.5rem !important;
             }
+
+            #offCanvasMenu,
+            #offCanvasSearch {
+                padding: 50px 20px 20px;
+            }
         }
 
         @media(max-width: 575px) {
-            .trb-px {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
 
             .footer-v2 .left-footer h2 {
                 font-size: 25px;
