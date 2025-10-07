@@ -144,6 +144,8 @@
         .footer-v2 .left-footer h2 {
             font-size: 70px;
             font-weight: bold;
+            margin-top: 0;
+            color: var(--trb-accent-2);
         }
 
         @media(min-width: 992px) {
