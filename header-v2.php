@@ -90,8 +90,9 @@
 
         .is-search-input.is-search-input.is-search-input::placeholder {
             font-family: Work Sans, sans-serif;
-            font-size: 14px !important;
+            font-size: 140px !important;
             text-transform: initial !important;
+            letter-spacing: 0 !important;
         }
 
         .is-search-form.is-search-form.is-search-form>label {
