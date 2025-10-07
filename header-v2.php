@@ -49,12 +49,25 @@
         #offCanvasMenu .menu li a {
             color: var(--trb-black);
         }
+
         .button-community a {
             background-color: var(--trb-accent-1);
             color: var(--trb-white);
             padding: 16px 30px;
             border-radius: 5px 0 0 5px;
         }
+
+        .search form {
+            margin: 0;
+
+        }
+        .is-search-input.is-search-input.is-search-input {
+            background-color: transparent;
+            height: auto !important;
+            padding: 19px 30px;
+            border-radius: 50px;
+        }
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
@@ -79,7 +92,7 @@
                                 </a>
                             </div>
                             <div class="col-auto">
-                                <div class="row align-items-center">
+                                <div class="row g-5 align-items-center">
                                     <div class="col-auto">
                                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                             <div class="offcanvas-body p-0">
