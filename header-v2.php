@@ -201,7 +201,9 @@
             float: none;
             text-align: left;
             background-color: transparent !important;
+            box-shadow: none;
         }
+
         .hero-v2 {
             padding-bottom: 140px;
         }
