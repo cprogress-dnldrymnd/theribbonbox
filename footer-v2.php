@@ -5,7 +5,7 @@ global $theme_logo;
 <footer class="footer-v2 trb-bg-lightyellow">
     <div class="footer-top trb-px">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row g-3">
                 <div class="col-lg-6">
                     <div class="left-footer">
                         <h2>Become an Insider</h2>
