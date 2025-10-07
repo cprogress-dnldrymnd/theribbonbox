@@ -32,6 +32,11 @@
             font-weight: 500;
         }
 
+        .trb-px {
+            padding-left: 65px;
+            padding-right: 65px;
+        }
+
         #offCanvasMenu .menu {
             padding: 0;
             display: flex;
@@ -59,7 +64,7 @@
     <div id="fouc">
         <div class="site-wrap">
             <main>
-                <header class="header-v2 py-4">
+                <header class="header-v2 py-4 trb-px">
                     <div class="container-fluid">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-auto">
