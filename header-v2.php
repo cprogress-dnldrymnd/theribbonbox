@@ -36,9 +36,6 @@
             font-weight: 500;
         }
 
-        header.header-v2 .menu a:hover {
-            color: var(--trb-accent-1);
-        }
 
         .trb-px {
             padding-left: 65px;
@@ -378,6 +375,10 @@
         .breadcrumb {
             padding-left: 0 !important;
             padding-right: 0 !important;
+        }
+
+        #offCanvasMenu .menu li a {
+            color: var(--trb-accent-1);
         }
 
         @media(min-width: 992px) {
