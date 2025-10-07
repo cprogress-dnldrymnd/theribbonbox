@@ -35,10 +35,10 @@ global $theme_logo;
                 <div class="col-lg-6 col-md-4">
                     <div class="right-footer ms-0 ms-md-auto mt-4 mt-md-0">
                         <div class="row g-3">
-                            <div class="col-lg-6">
+                            <div class="col-6">
                                 <?php wp_nav_menu(array('menu' => 'Footer Menu V2 Left')); ?>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-6">
                                 <?php wp_nav_menu(array('menu' => 'FooterMenu')); ?>
                             </div>
                         </div>

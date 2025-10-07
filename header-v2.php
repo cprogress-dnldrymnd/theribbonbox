@@ -546,6 +546,9 @@
             .footer-logo-text p {
                 font-size: 20px;
             }
+            .right-footer {
+                font-size: 14px;;
+            }
         }
 
         @media(max-width: 375px) {
