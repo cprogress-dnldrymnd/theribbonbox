@@ -314,8 +314,7 @@
         
         @media(max-width: 1300px) {
             header.header-v2 a {
-                font-size: 14px;
-                letter-spacing: 0;
+                font-size: 13px;
             }
             .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input {
                 padding-left: 15px !important;
@@ -324,6 +323,10 @@
             .button-community.button-community a {
                 padding-left: 15px;
                 padding-right: 23px;
+            }
+            .site-logo-v2 svg {
+                max-width: 100px;
+                height: auto;
             }
         }
 
@@ -385,7 +388,7 @@
                 <div class="container-fluid">
                     <div class="row justify-content-between align-items-center">
                         <div class="col-auto col-left">
-                            <a href="#">
+                            <a href="#" class="site-logo-v2">
                                 <?= $theme_logo ?>
                             </a>
                         </div>
