@@ -86,7 +86,6 @@
             border-radius: 50px;
             min-width: 346px;
             border: 1px solid !important;
-            text-transform: initial !important;
         }
 
         .is-search-input.is-search-input.is-search-input::placeholder {
@@ -94,6 +93,7 @@
             font-size: 14px !important;
             text-transform: initial !important;
             letter-spacing: 0 !important;
+            text-transform: initial !important;
         }
 
         .is-search-form.is-search-form.is-search-form>label {
