@@ -16,7 +16,7 @@ global $theme_logo;
                         <div class="footer-logo-text my-5">
                             <div class="row g-3 align-items-center">
                                 <div class="col-lg-3">
-                                    <a href="#">
+                                    <a href="<?= get_site_url() ?>">
                                         <?= $theme_logo ?>
                                     </a>
                                 </div>

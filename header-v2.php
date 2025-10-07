@@ -598,7 +598,7 @@
                 <div class="container-fluid">
                     <div class="row justify-content-between align-items-center">
                         <div class="col-auto col-left">
-                            <a href="#" class="site-logo-v2">
+                            <a href="<?= get_site_url() ?>" class="site-logo-v2">
                                 <?= $theme_logo ?>
                             </a>
                         </div>
