@@ -185,7 +185,6 @@
 
         .right-footer {
             max-width: 500px;
-            margin-left: auto;
             font-size: 16px;
         }
 
