@@ -23,6 +23,18 @@
         header.header-v2 {
             background-color: var(--trb-lightyellow);
         }
+
+        @media(min-width: 992px) {
+            #offCanvasMenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                width: auto;
+                background-color: transparent;
+                border: none;
+            }
+        }
     </style>
     <div id="fouc">
         <div class="site-wrap">
