@@ -174,6 +174,8 @@
         }
 
         .right-footer {
+            max-width: 500px;
+            margin-left: auto;
             font-size: 16px;
         }
 
@@ -181,7 +183,7 @@
             display: flex !important;
             flex-direction: column;
             gap: 15px;
-            text-align: left;
+            text-align: left !important
         }
 
         @media(min-width: 992px) {
