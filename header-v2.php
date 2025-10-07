@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="header-footer-v2">
+<html lang="en" id="header-footer-v2">
 <?php require 'head.php'; ?>
 <?php global $wp; ?>
 
