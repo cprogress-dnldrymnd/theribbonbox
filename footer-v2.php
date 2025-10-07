@@ -32,6 +32,18 @@ global $theme_logo;
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="right-footer">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <?php wp_nav_menu(array('menu' => 'Footer Menu V2 Left')); ?>
+                            </div>
+                            <div class="col-lg-6">
+                                <?php wp_nav_menu(array('menu' => 'Footer Menu V2 Right')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
