@@ -603,7 +603,7 @@
             <div class="ad-strip">
                 <a href="#">
                     <div class="container text-center">
-                        <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap">
+                        <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap justify-content-center">
                             <span class="d-inline-block py-4">
                                 <strong><i>WIN</i></strong> 1 of 5 Zita <strong><i>West Fertility Collagen Pro supplements</i></strong> for preconception, pregnancy & postnatal
                             </span>
