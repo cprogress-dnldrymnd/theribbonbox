@@ -295,9 +295,9 @@
             height: auto !important;
         }
 
-        .menu-burger .icon .menu,
-        .menu-burger .icon .menu::before,
-        .menu-burger .icon .menu::after {
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu,
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu::before,
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu::after {
             background-color: currentColor;
             content: "";
             display: block;
@@ -310,7 +310,7 @@
             width: 25px;
         }
 
-        .menu-burger .icon {
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon {
             cursor: pointer;
             display: block;
             height: 19px;
@@ -318,29 +318,29 @@
             position: relative;
         }
 
-        .menu-burger .icon .menu {
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu {
             left: 0;
             top: 8px;
         }
 
-        .menu-burger .icon .menu:before {
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu:before {
             top: -8px;
         }
 
-        .menu-burger .icon .menu:after {
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu:after {
             top: 8px;
         }
 
-        body.mobile-menu-active header .menu-burger .icon .menu:before {
+        body.mobile-menu-active header .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu:before {
             transform: rotate(45deg);
         }
 
-        body.mobile-menu-active header .menu-burger .icon .menu:after {
+        body.mobile-menu-active header .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu:after {
             transform: rotate(-45deg);
         }
 
-        body.mobile-menu-active header .menu-burger .icon .menu:before,
-        body.mobile-menu-active header .menu-burger .icon .menu:after {
+        body.mobile-menu-active header .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu:before,
+        body.mobile-menu-active header .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu:after {
             top: 0;
             transition:
                 top ease 0.3s,
