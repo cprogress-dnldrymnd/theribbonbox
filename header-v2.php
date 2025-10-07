@@ -288,8 +288,11 @@
             background-color: transparent;
             padding: 0;
             position: relative;
-            color: var(--bs-white);
+            color: var(--trb-black);
             outline: none;
+            padding: 0;
+            background-color: transparent !important;
+            height: auto !important;
         }
 
         .menu-burger .icon .menu,
