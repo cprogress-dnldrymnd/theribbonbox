@@ -99,7 +99,6 @@
             height: auto !important;
             padding: 17px 45px 17px 30px !important;
             border-radius: 50px;
-            min-width: 346px;
             border: 1px solid !important;
         }
 
@@ -115,7 +114,7 @@
 
         .is-search-form.is-search-form.is-search-form>label {
             height: auto;
-            width: auto !important;
+            width: 100% !important;
         }
 
         .is-search-form.is-search-form button.is-search-submit {
