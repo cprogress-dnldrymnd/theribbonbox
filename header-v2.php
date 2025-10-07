@@ -461,8 +461,10 @@
 
             .hero-v2 .top {
                 padding-top: 1.5rem !important;
+                padding-bottom: 0;
             }
-             .hero-v2 .bottom {
+
+            .hero-v2 .bottom {
                 padding-top: 0 !important;
             }
 
