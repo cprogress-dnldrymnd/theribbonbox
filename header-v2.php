@@ -318,12 +318,12 @@
                 letter-spacing: 0;
             }
             .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input {
-                padding-left: 10px;
-                padding-right: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
             }
             .button-community.button-community a {
-                padding-left: 10px;
-                padding-right: 33px;
+                padding-left: 15px;
+                padding-right: 23px;
             }
         }
 
