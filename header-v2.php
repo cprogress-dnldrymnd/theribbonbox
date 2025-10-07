@@ -16,6 +16,7 @@
             --trb-lightyellow: #FAF2E4;
             --trb-black: #000000;
             --trb-white: #ffffff;
+            --trb-accent-1: #3B1527
         }
 
         body {
@@ -48,7 +49,12 @@
         #offCanvasMenu .menu li a {
             color: var(--trb-black);
         }
-
+        .button-community a {
+            background-color: var(--trb-accent-1);
+            color: var(--trb-white);
+            padding: 16px 30px;
+            border-radius: 5px 0 0 5px;
+        }
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
