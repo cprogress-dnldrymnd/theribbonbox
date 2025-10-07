@@ -250,6 +250,34 @@
                 border: none;
             }
         }
+
+        @media(max-width: 991px) {
+            .trb-px {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+        }
+
+        @media(max-width: 767px) {
+            .trb-px {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        }
+
+        @media(max-width: 575px) {
+            .trb-px {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        @media(max-width: 375px) {
+            .trb-px {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
     </style>
     <?php
     $mode = isset($_GET['mode']) ? $_GET['mode'] : false;
