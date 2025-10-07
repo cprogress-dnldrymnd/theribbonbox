@@ -11,10 +11,23 @@
     <?php
     global $theme_logo;
     ?>
+    <style>
+        :root {
+            --trb-lightyellow: #FAF2E4;
+        }
+
+        body {
+            background-color: #fff;
+        }
+
+        header.header-v2 {
+            background-color: var(--trb-lightyellow);
+        }
+    </style>
     <div id="fouc">
         <div class="site-wrap">
             <main>
-                <header>
+                <header class="header-v2 pt-3">
                     <div class="container">
                         <div class="row justify-content-between align-items-center">
                             <div class="col-auto">
