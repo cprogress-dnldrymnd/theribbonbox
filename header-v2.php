@@ -36,6 +36,10 @@
             font-weight: 500;
         }
 
+        header.header-v2 a:hover {
+            color: var(--trb-accent-1);
+        }
+
         .trb-px {
             padding-left: 65px;
             padding-right: 65px;
@@ -461,9 +465,11 @@
             #wpadminbar {
                 display: none !important;
             }
+
             #header-footer-v2 {
                 margin-top: 0 !important;
             }
+
             .trb-px {
                 padding-left: 30px;
                 padding-right: 30px;
@@ -486,7 +492,8 @@
             .ad-strip a {
                 font-size: 15px;
             }
-                   .footer-v2 {
+
+            .footer-v2 {
                 padding-top: 50px;
             }
         }
@@ -532,16 +539,19 @@
             .ticktok.ticktok {
                 gap: 10px;
             }
+
             .footer-v2 {
                 padding-top: 30px;
             }
+
             header.header-v2 a {
                 font-size: 15px;
             }
+
             #offCanvasMenu .menu {
                 gap: 10px;
             }
-            
+
             .site-logo-v2 svg {
                 max-width: 85px;
             }
@@ -556,14 +566,18 @@
             .ad-strip a {
                 font-size: 12px;
             }
+
             .social-icons.social-icons-txt a {
                 font-size: 12px;
             }
+
             .footer-logo-text p {
                 font-size: 20px;
             }
+
             .right-footer {
-                font-size: 14px;;
+                font-size: 14px;
+                ;
             }
         }
 
