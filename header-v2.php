@@ -454,6 +454,12 @@
             .footer-v2 .left-footer h2 {
                 font-size: 40px;
             }
+            .hero-v2 h1 {
+                margin-top: 0;
+            }
+            .hero-v2 .top {
+                padding-top: 1.5rem!important;
+            }
         }
 
         @media(max-width: 575px) {
