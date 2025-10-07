@@ -57,10 +57,19 @@
             border-radius: 5px 0 0 5px;
         }
 
+        .button-community a:after {
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-right: 100px solid var(--trb-lightyellow);
+            border-bottom: 50px solid transparent;
+        }
+
         .search form {
             margin: 0;
 
         }
+
         .is-search-input.is-search-input.is-search-input {
             background-color: transparent;
             height: auto !important;
