@@ -369,7 +369,7 @@
                                         <?php echo do_shortcode('[ivory-search id="24768" title="Search All Content"]'); ?>
                                     </div>
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-auto d-none d-lg-block">
                                     <div class="button-accent-2 button-community">
                                         <a href="#">COMMUNITY</a>
                                     </div>
