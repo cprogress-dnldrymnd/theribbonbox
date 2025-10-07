@@ -52,20 +52,27 @@
                                     <div class="col-auto">
                                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                             <div class="offcanvas-body">
+                                                <?php wp_nav_menu(
+                                                    array(
+                                                        'menu' => 'Header V2',
+                                                    )
+                                                ); ?>
                                             </div>
-                                            <?php wp_nav_menu(
-                                                array(
-                                                    'menu' => 'Header V2',
-                                                )
-                                            ); ?>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="search">
+                                            <?php echo do_shortcode('[ivory-search id="24768" title="Search All Content"]'); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="button-community">
+                                            <a href="#">COMMUNITY</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-auto">
-                                    <div class="search">
-                                        <?php echo do_shortcode('[ivory-search id="24768" title="Search All Content"]'); ?>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
