@@ -596,6 +596,9 @@
             body {
                 --menu-top: 91px;
             }
+            .header-v2 a.social-icons.social-icons-txt a{
+                font-size: 13px;
+            }
 
         }
 
