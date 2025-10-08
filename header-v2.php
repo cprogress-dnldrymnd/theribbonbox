@@ -598,7 +598,7 @@
             }
 
             .header-v2 .social-icons.social-icons-txt a {
-                font-size: 13p;
+                font-size: 13px;
             }
 
         }
