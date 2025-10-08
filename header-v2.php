@@ -499,11 +499,12 @@
             }
 
             #offCanvasMenu {
-                top: 98px;
+                --top: 98px;
+                top: var(--top);
             }
 
             #offCanvasMenu+.offcanvas-backdrop {
-                top: 98px;
+                top: var(--top);
             }
         }
 
@@ -535,10 +536,6 @@
                 padding-bottom: 1.5rem !important;
             }
 
-            #offCanvasMenu {
-                top: 91px;
-            }
-
             #offCanvasMenu,
             #offCanvasSearch {
                 padding: 20px;
@@ -568,6 +565,12 @@
             .site-logo-v2 svg {
                 max-width: 85px;
             }
+
+
+            #offCanvasMenu {
+                --top: 91px;
+            }
+
         }
 
         @media(max-width: 575px) {
@@ -619,7 +622,7 @@
                                 <div class="col-auto">
                                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                         <div class="offcanvas-body p-0">
-                                           
+
                                             <div class="nav-menu">
                                                 <?php
                                                 wp_nav_menu(array('menu' => 'Header V2',));
