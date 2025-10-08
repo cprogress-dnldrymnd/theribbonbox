@@ -646,6 +646,9 @@
                                                     wp_nav_menu(array('menu' => 'Header V2',));
                                                     ?>
                                                 </div>
+                                                <div class="social-holder">
+                                                    <?php echo do_shortcode("[get_socials]"); ?>
+                                                </div>
                                                 <div class="nav-menu d-block d-lg-none text-uppercase">
                                                     <?php
                                                     wp_nav_menu(array('menu' => 'FooterMenu'));
