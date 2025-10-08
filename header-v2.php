@@ -501,6 +501,10 @@
             #offCanvasMenu {
                 top: 98px;
             }
+
+            #offCanvasMenu+.offcanvas-backdrop {
+                top: 98px;
+            }
         }
 
         @media(max-width: 767px) {
