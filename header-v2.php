@@ -662,11 +662,11 @@
                                                     wp_nav_menu(array('menu' => 'Header V2',));
                                                     ?>
                                                 </div>
-                                                <hr>
-                                                <div class="social-holder d-flex flex-column gap-2">
+                                                <hr class="d-lg-none">
+                                                <div class="social-holder d-flex d-lg-none flex-column gap-2">
                                                     <?php echo do_shortcode("[get_socials]"); ?>
                                                 </div>
-                                                <hr>
+                                                <hr class="d-lg-none">
                                                 <div class="nav-menu d-block d-lg-none text-uppercase">
                                                     <?php
                                                     wp_nav_menu(array('menu' => 'FooterMenu'));
