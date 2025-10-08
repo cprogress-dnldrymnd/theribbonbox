@@ -631,7 +631,7 @@
                             <div class="row g-5 align-items-center">
                                 <div class="col-auto">
                                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
-                                        <div class="offcanvas-body p-0">
+                                        <div class="offcanvas-body p-0 d-flex flex-column">
                                             <div class="newsletter-menu d-block d-lg-none">
                                                 <a href="" class="d-flex align-items-center gap-3 p-4 text-white text-uppercase">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
