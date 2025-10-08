@@ -641,12 +641,12 @@
                                                 </a>
                                             </div>
                                             <div class="offcanvas-body--inner">
-                                                <div class="nav-menu">
+                                                <div class="nav-menu text-uppercase">
                                                     <?php
                                                     wp_nav_menu(array('menu' => 'Header V2',));
                                                     ?>
                                                 </div>
-                                                <div class="nav-menu d-block d-lg-none">
+                                                <div class="nav-menu d-block d-lg-none text-uppercase">
                                                     <?php
                                                     wp_nav_menu(array('menu' => 'FooterMenu'));
                                                     ?>
