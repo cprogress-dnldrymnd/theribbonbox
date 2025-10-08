@@ -402,6 +402,10 @@
             text-transform: lowercase;
         }
 
+        .header-v2 .social-icons.social-icons-txt {
+            gap: 5px;
+        }
+
         /*responsive*/
 
         @media(min-width: 992px) {
@@ -570,6 +574,7 @@
             .offcanvas.offcanvas {
                 --bs-offcanvas-border-width: 0;
             }
+
             .ad-strip a {
                 font-size: 14px;
             }
