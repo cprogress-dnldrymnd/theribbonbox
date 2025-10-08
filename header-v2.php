@@ -569,8 +569,7 @@
                 max-width: 85px;
             }
 
-
-            #offCanvasMenu {
+            body {
                 --menu-top: 91px;
             }
 
