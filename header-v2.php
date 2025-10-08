@@ -502,7 +502,7 @@
                 --menu-top: 98px;
             }
 
-            #eoffCanvasMnu {
+            #offCanvasMenu {
                 top: var(--menu-top);
             }
 
