@@ -487,8 +487,8 @@
                 font-size: 50px;
             }
 
-            #offCanvasMenu,
-            #offCanvasSearch {
+            #offCanvasMenu .offcanvas-body--inner,
+            #offCanvasSearch .offcanvas-body--inner {
                 padding: 40px;
             }
 
@@ -639,15 +639,17 @@
                                                     <span>Sign up for our weekly newsletter</span>
                                                 </a>
                                             </div>
-                                            <div class="nav-menu">
-                                                <?php
-                                                wp_nav_menu(array('menu' => 'Header V2',));
-                                                ?>
-                                            </div>
-                                            <div class="nav-menu d-block d-lg-none">
-                                                <?php
-                                                wp_nav_menu(array('menu' => 'FooterMenu'));
-                                                ?>
+                                            <div class="offcanvas-body--inner">
+                                                <div class="nav-menu">
+                                                    <?php
+                                                    wp_nav_menu(array('menu' => 'Header V2',));
+                                                    ?>
+                                                </div>
+                                                <div class="nav-menu d-block d-lg-none">
+                                                    <?php
+                                                    wp_nav_menu(array('menu' => 'FooterMenu'));
+                                                    ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -655,16 +657,18 @@
                                 <div class="col-auto">
                                     <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
                                         <div class="offcanvas-body p-0">
-                                            <div class="search search-v2">
-                                                <div class="close--btn d-block d-lg-none text-end">
-                                                    <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                                                        </svg>
-                                                    </button>
+                                            <div class="offcanvas-body--inner">
+                                                <div class="search search-v2">
+                                                    <div class="close--btn d-block d-lg-none text-end">
+                                                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                    <h4 class="d-block d-lg-none">Search</h4>
+                                                    <?php echo do_shortcode('[ivory-search id="45284" title="Search for a topic"]'); ?>
                                                 </div>
-                                                <h4 class="d-block d-lg-none">Search</h4>
-                                                <?php echo do_shortcode('[ivory-search id="45284" title="Search for a topic"]'); ?>
                                             </div>
                                         </div>
                                     </div>
