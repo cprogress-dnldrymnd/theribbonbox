@@ -18,6 +18,7 @@
             --trb-white: #ffffff;
             --trb-accent-1: #F77D66;
             --trb-accent-2: #3B1527;
+            --trb-accent-3: #044146;
             --trb-border-color: #EADCC3;
         }
 
@@ -381,6 +382,12 @@
             color: var(--trb-accent-1);
         }
 
+        .newsletter-menu a {
+            background-color: var(--trb-accent-3);
+        }
+
+        /*responsive*/
+
         @media(min-width: 992px) {
             #offCanvasMenu {
                 position: static;
@@ -624,7 +631,11 @@
                                 <div class="col-auto">
                                     <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                         <div class="offcanvas-body p-0">
-
+                                            <div class="newsletter-menu d-block d-lg-none">
+                                                <a href="" class="d-flex align-items-center gap-3">
+                                                    Sign up for our weekly newsletter
+                                                </a>
+                                            </div>
                                             <div class="nav-menu">
                                                 <?php
                                                 wp_nav_menu(array('menu' => 'Header V2',));
