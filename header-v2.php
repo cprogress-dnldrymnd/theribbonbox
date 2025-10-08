@@ -599,6 +599,7 @@
 
             .header-v2 .social-icons.social-icons-txt a {
                 font-size: 13px;
+                color: var(--trb-black);
             }
 
         }
