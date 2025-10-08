@@ -386,6 +386,22 @@
             background-color: var(--trb-accent-3);
         }
 
+        .social-holder .social-icons:not(.social-icons-txt) {
+            display: flex;
+            align-items: center;
+        }
+
+        .social-holder .social-icons:not(.social-icons-txt) a {
+            width: 17px;
+            height: 17px;
+            display: inline-block;
+            padding: 0 0.4em;
+            margin: 0;
+            text-align: center;
+            margin-right: 0.1em;
+            text-transform: lowercase;
+        }
+
         /*responsive*/
 
         @media(min-width: 992px) {
