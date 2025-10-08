@@ -497,6 +497,10 @@
             .footer-v2 {
                 padding-top: 50px;
             }
+
+            #offCanvasMenu {
+                top: 98px;
+            }
         }
 
         @media(max-width: 767px) {
@@ -525,6 +529,10 @@
             .bottom {
                 background-color: var(--trb-lightyellow);
                 padding-bottom: 1.5rem !important;
+            }
+
+            #offCanvasMenu {
+                top: 91px;
             }
 
             #offCanvasMenu,
