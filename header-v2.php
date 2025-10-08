@@ -656,7 +656,7 @@
                                                     <span>Sign up for our weekly newsletter</span>
                                                 </a>
                                             </div>
-                                            <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between">
+                                            <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
                                                 <div class="nav-menu text-uppercase">
                                                     <?php
                                                     wp_nav_menu(array('menu' => 'Header V2',));
