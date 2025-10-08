@@ -567,7 +567,9 @@
                 padding: 20px;
             }
 
-
+            .offcanvas.offcanvas {
+                --bs-offcanvas-border-width: 0;
+            }
             .ad-strip a {
                 font-size: 14px;
             }
