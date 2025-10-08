@@ -498,13 +498,16 @@
                 padding-top: 50px;
             }
 
-            #offCanvasMenu {
-                --top: 98px;
-                top: var(--top);
+            body {
+                --menu-top: 98px;
+            }
+
+            #eoffCanvasMnu {
+                top: var(--menu-top);
             }
 
             #offCanvasMenu+.offcanvas-backdrop {
-                top: var(--top);
+                top: var(--menu-top);
             }
         }
 
@@ -568,7 +571,7 @@
 
 
             #offCanvasMenu {
-                --top: 91px;
+                --menu-top: 91px;
             }
 
         }
