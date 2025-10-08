@@ -662,7 +662,7 @@
                                                     wp_nav_menu(array('menu' => 'Header V2',));
                                                     ?>
                                                 </div>
-                                                <div class="social-holder">
+                                                <div class="social-holder d-flex flex-column gap-3">
                                                     <?php echo do_shortcode("[get_socials]"); ?>
                                                 </div>
                                                 <div class="nav-menu d-block d-lg-none text-uppercase">
