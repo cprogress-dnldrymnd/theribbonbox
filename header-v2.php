@@ -546,10 +546,11 @@
                 padding-bottom: 1.5rem !important;
             }
 
-            #offCanvasMenu,
-            #offCanvasSearch {
+            #offCanvasMenu .offcanvas-body--inner,
+            #offCanvasSearch .offcanvas-body--inner {
                 padding: 20px;
             }
+
 
             .ad-strip a {
                 font-size: 14px;
