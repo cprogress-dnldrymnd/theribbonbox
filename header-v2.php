@@ -165,7 +165,7 @@
         }
 
         .main-content-v2 {
-            padding-top: 150px;
+            padding-top: 100px;
             padding-bottom: 70px;
         }
 
