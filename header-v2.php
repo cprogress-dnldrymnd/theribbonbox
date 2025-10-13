@@ -695,7 +695,7 @@
             <div class="ads ads--v2">
                 <div class="container">
                     <a href="#">
-                        <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads2.jpg" alt="">
+                        <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads3.jpg" alt="">
                     </a>
                 </div>
             </div>
