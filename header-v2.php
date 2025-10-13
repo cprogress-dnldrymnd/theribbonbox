@@ -647,6 +647,13 @@
     ?>
     <div id="fouc">
         <div class="site-wrap">
+            <div class="ads">
+                <div class="container">
+                    <a href="#">
+                        <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads2.jpg" alt="">
+                    </a>
+                </div>
+            </div>
             <header class="header-v2 py-4 trb-px trb-bg-lightyellow">
                 <div class="container-fluid">
                     <div class="row justify-content-between align-items-center">
