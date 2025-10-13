@@ -30,7 +30,11 @@
             background-color: var(--trb-lightyellow);
         }
 
-
+        header.header-v2 {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
         header.header-v2 a {
             font-size: 15px;
             letter-spacing: 0.75px;
@@ -408,6 +412,12 @@
         .ads--v2 {
             position: sticky;
             top: 0;
+        }
+        body {
+            overflow: unset;
+        }
+        #fouc {
+            overflow: unset;
         }
         /*responsive*/
 
