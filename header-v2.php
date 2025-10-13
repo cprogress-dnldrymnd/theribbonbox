@@ -432,10 +432,13 @@
             top: 0;
             text-align: center;
             z-index: 9999;
+            transition: 400ms;
         }
 
         .ads--v2.hide--ad {
-            z-index: 1;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
         }
 
         .ads--v2 img {
