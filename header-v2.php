@@ -163,7 +163,10 @@
             width: auto;
             object-fit: cover;
         }
-
+        .main-content-v2 {
+            padding-top: 150px;
+            padding-bottom: 70px;
+        }
         .footer-v2 {
             padding-top: 70px;
             position: relative;
@@ -799,7 +802,7 @@
 
                     </div>
                 </div>
-                <div class="main-content">
+                <div class="main-content-v2">
                     <div class="container">
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
