@@ -431,6 +431,11 @@
             position: sticky;
             top: 0;
             text-align: center;
+            z-index: 9999;
+        }
+
+        .ads--v2.hide--ad {
+            z-index: 1;
         }
 
         .ads--v2 img {
@@ -847,3 +852,14 @@
                         </p>
                     </div>
                 </div>
+
+                <script>
+                    jQuery(window).scroll(function(event) {
+                        var scroll = jQuery(window).scrollTop();
+
+                        if (scroll > 100) {
+                            jQuery('.ads--v2').addClass('hide--ad');
+                        }
+                        // Do something
+                    });
+                </script>
