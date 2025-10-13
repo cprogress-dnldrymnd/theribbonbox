@@ -434,6 +434,8 @@
         }
         .ads--v2 img {
             width: auto;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         body {
