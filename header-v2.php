@@ -430,6 +430,10 @@
         .ads--v2 {
             position: sticky;
             top: 0;
+            text-align: center;
+        }
+        .ads--v2 img {
+            width: auto;
         }
 
         body {
