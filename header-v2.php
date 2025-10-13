@@ -440,9 +440,23 @@
             overflow: unset;
         }
 
+        .admin-bar header.header-v2 {
+            top: 32px;
+        }
+
+
         /*responsive*/
 
         @media(min-width: 992px) {
+            .admin-bar header.header-v2 {
+                top: 32px;
+            }
+
+            .admin-bar .ads--v2 {
+                position: sticky;
+                top: 32px;
+            }
+
             #offCanvasMenu {
                 position: static;
                 opacity: 1;
