@@ -35,6 +35,7 @@
             top: 0;
             z-index: 999;
         }
+
         header.header-v2 a {
             font-size: 15px;
             letter-spacing: 0.75px;
@@ -137,6 +138,11 @@
             border-radius: 0;
         }
 
+        .ad-strip {
+            position: relative;
+            z-index: 1;
+        }
+
         .ad-strip a {
             display: block;
             background-color: var(--trb-accent-1);
@@ -145,6 +151,7 @@
             letter-spacing: 0.85px;
             color: var(--trb-black);
             font-weight: 500;
+
         }
 
         .ad-strip strong {
@@ -174,6 +181,8 @@
 
         .main-v2 {
             min-height: 300px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-logo-text p {
@@ -409,16 +418,20 @@
         .header-v2 .social-icons.social-icons-txt {
             gap: 5px;
         }
+
         .ads--v2 {
             position: sticky;
             top: 0;
         }
+
         body {
             overflow: unset;
         }
+
         #fouc {
             overflow: unset;
         }
+
         /*responsive*/
 
         @media(min-width: 992px) {
@@ -766,19 +779,20 @@
                     </div>
                 </a>
             </div>
-            <div class="hero-v2 trb-border-top">
-                <div class="top  pt-4 trb-bg-lightyellow trb-px">
-                    <div class="container-fluid">
-                        <div class="breadcrumbs-v2">
-                            <?= woocommerce_breadcrumb(); ?>
+
+            <main class="main-v2">
+                <div class="hero-v2 trb-border-top">
+                    <div class="top  pt-4 trb-bg-lightyellow trb-px">
+                        <div class="container-fluid">
+                            <div class="breadcrumbs-v2">
+                                <?= woocommerce_breadcrumb(); ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="bottom trb-px">
-                    <div class="container-fluid">
-                        <h1>Surrogacy</h1>
-                    </div>
+                    <div class="bottom trb-px">
+                        <div class="container-fluid">
+                            <h1>Surrogacy</h1>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-            <main class="main-v2">
