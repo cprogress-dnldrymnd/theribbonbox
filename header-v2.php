@@ -440,9 +440,6 @@
             overflow: unset;
         }
 
-        .admin-bar header.header-v2 {
-            top: 32px;
-        }
 
 
         /*responsive*/
