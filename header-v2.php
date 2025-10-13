@@ -432,6 +432,7 @@
             top: 0;
             text-align: center;
         }
+
         .ads--v2 img {
             width: auto;
             margin-left: auto;
@@ -701,7 +702,13 @@
             <div class="ads ads--v2 py-4">
                 <div class="container">
                     <a href="#">
-                        <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads3.jpg" alt="">
+                        <div class="d-none d-sm-block">
+                            <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads3.jpg" alt="">
+                        </div>
+                        <div class="d-block d-sm-none">
+                            <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads3-mobile.jpg" alt="">
+
+                        </div>
                     </a>
                 </div>
             </div>
