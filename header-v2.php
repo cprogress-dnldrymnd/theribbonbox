@@ -405,7 +405,10 @@
         .header-v2 .social-icons.social-icons-txt {
             gap: 5px;
         }
-
+        .ads--v2 {
+            position: sticky;
+            top: 0;
+        }
         /*responsive*/
 
         @media(min-width: 992px) {
@@ -647,7 +650,7 @@
     ?>
     <div id="fouc">
         <div class="site-wrap">
-            <div class="ads">
+            <div class="ads ads--v2">
                 <div class="container">
                     <a href="#">
                         <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads2.jpg" alt="">
