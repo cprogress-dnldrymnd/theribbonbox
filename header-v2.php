@@ -166,6 +166,8 @@
 
         .footer-v2 {
             padding-top: 70px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-v2 .left-footer h2 {
@@ -183,6 +185,7 @@
             min-height: 300px;
             position: relative;
             z-index: 1;
+            background-color: var(--trb-white);
         }
 
         .footer-logo-text p {
