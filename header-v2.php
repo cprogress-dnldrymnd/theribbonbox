@@ -696,7 +696,7 @@
     ?>
     <div id="fouc">
         <div class="site-wrap">
-            <div class="ads ads--v2">
+            <div class="ads ads--v2 py-4">
                 <div class="container">
                     <a href="#">
                         <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads3.jpg" alt="">
