@@ -372,6 +372,11 @@
             background-color: transparent;
         }
 
+        body.mobile-menu-active .ads--v2 {
+            opacity: 0;
+            visibility: hidden;
+        }
+
         .close--btn.close--btn {
             margin-bottom: 30px;
         }
@@ -812,7 +817,7 @@
                     </div>
                 </div>
             </header>
-        
+
             <?php if ($ad_strip) { ?>
                 <div class="ad--strip">
                     <a href="<?= get_field('ad_url', $ad_strip) ?>" target="_blank">
