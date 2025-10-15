@@ -703,9 +703,11 @@
         }
     </style>
     <?php
+    global $theme_option_page;
+    
     $mode = isset($_GET['mode']) ? $_GET['mode'] : false;
-    $top_banner_ad = get_field('top_banner_ad', 'option');
-    $ad_strip = get_field('ad_strip', 'option');
+    $top_banner_ad = get_field('top_banner_ad', $theme_option_page);
+    $ad_strip = get_field('ad_strip', $theme_option_page);
     ?>
     <div id="fouc">
         <div class="site-wrap">
