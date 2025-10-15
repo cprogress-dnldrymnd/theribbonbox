@@ -828,18 +828,13 @@
             <?php } ?>
             <?php if ($ad_strip) { ?>
                 <div class="ad-strip">
-                    <a href="<?= get_field('ad_url', $top_banner_ad) ?>" target="_blank">
+                    <a href="<?= get_field('ad_url', $ad_strip) ?>" target="_blank">
                         <div class="container text-center">
                             <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap justify-content-center">
                                 <span class="d-inline-block pt-4 pb-2 pb-lg-4">
                                     <?= get_field('ad_text', $ad_strip) ?>
                                 </span>
-                                <div class="d-none d-sm-block">
-                                    <?= wp_get_attachment_image(get_field('ad_image', $top_banner_ad), 'thumb') ?>
-                                </div>
-                                <div class="d-block d-sm-none">
-                                    <?= wp_get_attachment_image(get_field('ad_image_mobile', $top_banner_ad), 'thumb') ?>
-                                </div>
+                                <?= wp_get_attachment_image(get_field('ad_image', $ad_strip), 'thumb') ?>
                             </div>
                         </div>
                     </a>
