@@ -435,7 +435,7 @@ add_shortcode('homeblog_filter', 'homeblog_filter_function');
 function homeblog_filter_function($attr)
 {
     //see home.php for other shortcodes
-
+    
     $fertility_category_id = 1164;
     $wellbeing_category_id = 1159;
     $content =
@@ -996,11 +996,13 @@ function ad_list_function($attr)
 
     $rtn = '';
 
-    $ad_img = get_field("ad_image", 45166);
-    $ad_url = get_field("ad_url", 45166);
-    $rtn .= '<a class="ad-item" href="' . $ad_url . '" target="_blank">';
-    $rtn .= wp_get_attachment_image($ad_img, 'large');
-    $rtn .= '</a>';
+    foreach ($recent_posts as $post) :
+        $ad_img = get_field("ad_image", $post['ID']);
+        $ad_url = get_field("ad_url", $post['ID']);
+        $rtn .= '<a class="ad-item" href="' . $ad_url . '" target="_blank">';
+        $rtn .= wp_get_attachment_image($ad_img, 'large');
+        $rtn .= '</a>';
+    endforeach;
     wp_reset_query();
 
     return $rtn;
