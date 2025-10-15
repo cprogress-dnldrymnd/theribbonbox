@@ -555,6 +555,10 @@
         }
 
         @media(max-width: 991px) {
+            .ads--v2 {
+                z-index: 1;
+            }
+
             #wpadminbar {
                 display: none !important;
             }
