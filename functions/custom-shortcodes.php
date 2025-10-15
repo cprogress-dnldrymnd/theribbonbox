@@ -996,8 +996,8 @@ function ad_list_function($attr)
 
     $rtn = '';
 
-    $ad_img = get_field("ad_image", 24562);
-    $ad_url = get_field("ad_url", 24562);
+    $ad_img = get_field("ad_image", 45166);
+    $ad_url = get_field("ad_url", 45166);
     $rtn .= '<a class="ad-item" href="' . $ad_url . '" target="_blank">';
     $rtn .= wp_get_attachment_image($ad_img, 'large');
     $rtn .= '</a>';
