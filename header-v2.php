@@ -33,7 +33,7 @@
         header.header-v2 {
             position: sticky;
             top: 0;
-            z-index: 9999;
+            z-index: 999;
         }
 
         header.header-v2 a {
@@ -370,6 +370,11 @@
 
         body.mobile-menu-active header .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu {
             background-color: transparent;
+        }
+
+        body.mobile-menu-active .ads--v2 {
+            opacity: 0;
+            visibility: hidden;
         }
 
         .close--btn.close--btn {
