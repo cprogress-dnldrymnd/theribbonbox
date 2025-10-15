@@ -708,6 +708,7 @@
     $mode = isset($_GET['mode']) ? $_GET['mode'] : false;
     $top_banner_ad = get_field('top_banner_ad', $theme_option_page);
     $ad_strip = get_field('ad_strip', $theme_option_page);
+    echo $top_banner_ad;
     ?>
     <div id="fouc">
         <div class="site-wrap">
