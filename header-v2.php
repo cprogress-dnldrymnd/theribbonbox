@@ -138,12 +138,12 @@
             border-radius: 0;
         }
 
-        .ad-strip {
+        .ad--strip {
             position: relative;
             z-index: 1;
         }
 
-        .ad-strip a {
+        .ad--strip a {
             display: block;
             background-color: var(--trb-accent-1);
             font-family: "Playfair Display", serif;
@@ -154,11 +154,11 @@
 
         }
 
-        .ad-strip strong {
+        .ad--strip strong {
             font-weight: 800;
         }
 
-        .ad-strip img {
+        .ad--strip img {
             height: 74px;
             width: auto;
             object-fit: cover;
@@ -577,7 +577,7 @@
                 align-items: flex-start;
             }
 
-            .ad-strip a {
+            .ad--strip a {
                 font-size: 15px;
             }
 
@@ -635,7 +635,7 @@
                 --bs-offcanvas-border-width: 0;
             }
 
-            .ad-strip a {
+            .ad--strip a {
                 font-size: 14px;
             }
 
@@ -677,7 +677,7 @@
                 font-size: 25px;
             }
 
-            .ad-strip a {
+            .ad--strip a {
                 font-size: 12px;
             }
 
@@ -814,10 +814,10 @@
             </header>
         
             <?php if ($ad_strip) { ?>
-                <div class="ad-strip">
+                <div class="ad--strip">
                     <a href="<?= get_field('ad_url', $ad_strip) ?>" target="_blank">
                         <div class="container text-center">
-                            <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap justify-content-center">
+                            <div class="ad--strip-holder d-inline-flex gap-3 align-items-center flex-wrap justify-content-center">
                                 <span class="d-inline-block pt-4 pb-2 pb-lg-4">
                                     <?= get_field('ad_text', $ad_strip) ?>
                                 </span>
