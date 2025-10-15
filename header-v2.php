@@ -704,22 +704,25 @@
     </style>
     <?php
     $mode = isset($_GET['mode']) ? $_GET['mode'] : false;
+    $top_banner_ad = get_field('top_banner_ad', 'option');
+    $ad_strip = get_field('ad_strip', 'option');
     ?>
     <div id="fouc">
         <div class="site-wrap">
-            <div class="ads ads--v2 py-4">
-                <div class="container">
-                    <a href="#">
-                        <div class="d-none d-sm-block">
-                            <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads3.jpg" alt="">
-                        </div>
-                        <div class="d-block d-sm-none">
-                            <img src="https://theribbonbox.com/wp-content/uploads/2025/10/ads3-mobile.jpg" alt="">
-
-                        </div>
-                    </a>
+            <?php if ($top_banner_ad) { ?>
+                <div class="ads ads--v2 py-4">
+                    <div class="container">
+                        <a href="#">
+                            <div class="d-none d-sm-block">
+                                <?= wp_get_attachment_image('top_banner_ad', get_field('ad_image', $top_banner_ad), 'full') ?>
+                            </div>
+                            <div class="d-block d-sm-none">
+                                <?= wp_get_attachment_image('top_banner_ad', get_field('ad_image_mobile', $top_banner_ad), 'full') ?>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            <?php } ?>
             <header class="header-v2 py-4 trb-px trb-bg-lightyellow">
                 <div class="container-fluid">
                     <div class="row justify-content-between align-items-center">
