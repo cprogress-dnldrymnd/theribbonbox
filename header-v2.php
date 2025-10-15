@@ -704,7 +704,7 @@
     </style>
     <?php
     global $theme_option_page;
-    
+
     $mode = isset($_GET['mode']) ? $_GET['mode'] : false;
     $top_banner_ad = get_field('top_banner_ad', $theme_option_page);
     $ad_strip = get_field('ad_strip', $theme_option_page);
@@ -714,7 +714,7 @@
             <?php if ($top_banner_ad) { ?>
                 <div class="ads ads--v2 py-4">
                     <div class="container">
-                        <a href="#">
+                        <a href="<?= get_field('ad_url', $top_banner_ad) ?>" target="_blank">
                             <div class="d-none d-sm-block">
                                 <?= wp_get_attachment_image(get_field('ad_image', $top_banner_ad), 'full') ?>
                             </div>
@@ -812,18 +812,39 @@
                     </div>
                 </div>
             </header>
-            <div class="ad-strip">
-                <a href="#">
-                    <div class="container text-center">
-                        <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap justify-content-center">
-                            <span class="d-inline-block pt-4 pb-2 pb-lg-4">
-                                <strong><i>WIN</i></strong> 1 of 5 Zita <strong><i>West Fertility Collagen Pro supplements</i></strong> for preconception, pregnancy & postnatal
-                            </span>
-                            <?= wp_get_attachment_image(44844, 'thumbnail') ?>
-                        </div>
+            <?php if ($ad_strip) { ?>
+                <div class="ads ads--v2 py-4">
+                    <div class="container">
+                        <a href="<?= get_field('ad_url', $top_banner_ad) ?>">
+                            <div class="d-none d-sm-block">
+                                <?= wp_get_attachment_image(get_field('ad_image', $top_banner_ad), 'full') ?>
+                            </div>
+                            <div class="d-block d-sm-none">
+                                <?= wp_get_attachment_image(get_field('ad_image_mobile', $top_banner_ad), 'full') ?>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
+                </div>
+            <?php } ?>
+            <?php if ($ad_strip) { ?>
+                <div class="ad-strip">
+                    <a href="<?= get_field('ad_url', $top_banner_ad) ?>" target="_blank">
+                        <div class="container text-center">
+                            <div class="ad-strip-holder d-inline-flex gap-3 align-items-center flex-wrap justify-content-center">
+                                <span class="d-inline-block pt-4 pb-2 pb-lg-4">
+                                    <?= get_field('ad_text', $ad_strip) ?>
+                                </span>
+                                <div class="d-none d-sm-block">
+                                    <?= wp_get_attachment_image(get_field('ad_image', $top_banner_ad), 'thumb') ?>
+                                </div>
+                                <div class="d-block d-sm-none">
+                                    <?= wp_get_attachment_image(get_field('ad_image_mobile', $top_banner_ad), 'thumb') ?>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php } ?>
 
             <main class="main-v2">
                 <div class="hero-v2 trb-border-top">
