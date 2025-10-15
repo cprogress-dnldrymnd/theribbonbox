@@ -812,20 +812,7 @@
                     </div>
                 </div>
             </header>
-            <?php if ($ad_strip) { ?>
-                <div class="ads ads--v2 py-4">
-                    <div class="container">
-                        <a href="<?= get_field('ad_url', $top_banner_ad) ?>">
-                            <div class="d-none d-sm-block">
-                                <?= wp_get_attachment_image(get_field('ad_image', $top_banner_ad), 'full') ?>
-                            </div>
-                            <div class="d-block d-sm-none">
-                                <?= wp_get_attachment_image(get_field('ad_image_mobile', $top_banner_ad), 'full') ?>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            <?php } ?>
+        
             <?php if ($ad_strip) { ?>
                 <div class="ad-strip">
                     <a href="<?= get_field('ad_url', $ad_strip) ?>" target="_blank">
