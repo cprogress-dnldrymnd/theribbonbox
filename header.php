@@ -961,6 +961,7 @@
         'post_status' => 'publish',
         'fields' => 'ids',
     ));
+    echo $ads;
     ?>
     <div id="fouc">
         <div class="site-wrap">
