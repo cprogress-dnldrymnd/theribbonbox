@@ -44,6 +44,7 @@
         header.header-v2 nav .sub-menu,
         header.header-v2 nav .submenu-wrapper {
             background-color: var(--trb-lightyellow) !important;
+            border-top: none !important;
         }
 
         header.header-v2 nav li,
