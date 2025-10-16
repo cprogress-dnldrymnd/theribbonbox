@@ -895,7 +895,7 @@
                                 </div>
                                 <div class="col-auto d-none d-lg-block">
                                     <div class="button-accent-2 button-community">
-                                        <a href="#">COMMUNITY</a>
+                                        <a href="https://theribbonbox.com/community/">COMMUNITY</a>
                                     </div>
                                 </div>
                                 <div class="col-auto d-block d-lg-none">
