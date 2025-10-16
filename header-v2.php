@@ -45,6 +45,7 @@
         header.header-v2 nav .submenu-wrapper {
             background-color: var(--trb-lightyellow) !important;
             border-top: none !important;
+            border-bottom: none !important;
         }
 
       
