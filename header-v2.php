@@ -709,6 +709,9 @@ c
         }
 
         @media(max-width: 991px) {
+            body {
+                --menu-top: 88.5px
+            }
             #offCanvasMenu .menu li.menu-item>a+ul>li>a {
                 gap: 20px;
             }
