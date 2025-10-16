@@ -48,7 +48,7 @@
             border-bottom: none !important;
         }
 
-      
+
         header.header-v2 nav li,
         header.header-v2 nav li.menu-item>a {
             background-color: transparent !important;
@@ -96,7 +96,9 @@
             background-image: none;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 1px;
+            font-size: 14px !important;
+            letter-spacing: 0.5px !important;
         }
 
         #offCanvasMenu .toggle-submenu.toggle-submenu {
