@@ -41,8 +41,14 @@
             box-shadow: none !important;
         }
 
-        header.header-v2 nav .sub-menu , header.header-v2 nav .submenu-wrapper{
+        header.header-v2 nav .sub-menu,
+        header.header-v2 nav .submenu-wrapper {
             background-color: var(--trb-lightyellow) !important;
+        }
+
+        header.header-v2 nav li,
+        header.header-v2 nav li a {
+            background-color: transparent !important;
         }
 
         header.header-v2 a {
