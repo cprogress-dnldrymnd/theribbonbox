@@ -467,9 +467,9 @@
             overflow: unset;
         }
 
-        .menu-mainmenu-container {
-            padding-left: 10px;
-            padding-right: 10px;
+        .menu-mainmenu-container.menu-mainmenu-container {
+            padding-left: 0;
+            padding-right: 0;
         }
 
 
