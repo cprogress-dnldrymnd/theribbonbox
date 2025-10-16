@@ -525,6 +525,9 @@
         /*responsive*/
 
         @media(min-width: 992px) {
+            .menu-item-40444 {
+                display: none !important;
+            }
             .admin-bar header.header-v2 {
                 top: 32px;
             }
