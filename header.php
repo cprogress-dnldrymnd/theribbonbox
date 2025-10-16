@@ -226,6 +226,10 @@
             border-top: 1px solid var(--trb-border-color);
         }
 
+        .main-content-outer {
+            margin-top: 0 !important;
+        }
+
         .main-v2 {
             position: relative;
             z-index: 1;
@@ -1088,4 +1092,3 @@
                     }
                     ?>
                 </div>
-           
