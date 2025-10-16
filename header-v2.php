@@ -605,6 +605,9 @@
 
 
         }
+        .m-menu {
+            display: none Im !important;
+        }
 
         @media (max-width: 1000px) {
             nav {
