@@ -97,7 +97,7 @@
             display: flex;
             align-items: center;
             gap: 1px;
-            font-size: 14px !important;
+            font-size: 15px !important;
             letter-spacing: 0.5px !important;
         }
 
