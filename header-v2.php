@@ -778,7 +778,7 @@
                 height: 15px;
             }
 
-            #offCanvasMenu .menu>li.menu-item>a {
+            #offCanvasMenu .menu li.menu-item-has-children>a {
                 justify-content: space-between;
 
             }
