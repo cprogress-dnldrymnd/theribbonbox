@@ -516,6 +516,9 @@
         }
 
 
+        #header-main-site {
+            height: var(--header-height);
+        }
 
 
         /*responsive*/
@@ -712,10 +715,6 @@
                 --menu-top: 88.5px
             }
 
-            body.mobile-menu-active #header-main-site {
-                height: var(--header-height);
-            }
-
             body.mobile-menu-active #header-main-site .header--inner {
                 position: fixed;
                 top: 0;
@@ -880,7 +879,7 @@
                 font-size: 15px;
             }
 
-            
+
 
             .site-logo-v2 svg {
                 max-width: 85px;
