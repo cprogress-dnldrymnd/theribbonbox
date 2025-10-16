@@ -941,6 +941,7 @@
                 padding-right: 10px;
             }
         }
+
         .page-header-outer.page-header-outer {
             padding-top: 50px;
             background-color: transparent;
@@ -952,18 +953,26 @@
     $mode = isset($_GET['mode']) ? $_GET['mode'] : false;
     $top_banner_ad = get_field('top_banner_ad', $theme_option_page);
     $ad_strip = get_field('ad_strip', $theme_option_page);
+
+    $ads = get_posts(array(
+        'post_type' => 'ads',
+        'numberposts' => 1, // Number of recent posts thumbnails to display
+        'orderby' => 'rand',
+        'post_status' => 'publish',
+        'fields' => 'ids',
+    ));
     ?>
     <div id="fouc">
         <div class="site-wrap">
             <?php if ($top_banner_ad) { ?>
                 <div class="ads ads--v2 py-4">
                     <div class="container">
-                        <a href="<?= get_field('ad_url', $top_banner_ad) ?>" target="_blank">
+                        <a href="<?= get_field('ad_url', $ads[0]) ?>" target="_blank">
                             <div class="d-none d-sm-block">
-                                <?= wp_get_attachment_image(get_field('ad_image', $top_banner_ad), 'full') ?>
+                                <?= wp_get_attachment_image(get_field('ad_image', $ads[0]), 'full') ?>
                             </div>
                             <div class="d-block d-sm-none">
-                                <?= wp_get_attachment_image(get_field('ad_image_mobile', $top_banner_ad), 'full') ?>
+                                <?= wp_get_attachment_image(get_field('ad_image_mobile', $ads[0]), 'full') ?>
                             </div>
                         </a>
                     </div>
