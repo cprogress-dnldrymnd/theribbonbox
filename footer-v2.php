@@ -57,6 +57,50 @@ global $theme_logo;
 </footer>
 </div><!-- Close: .site-wrap -->
 
+
+<?php
+global $theme_option_page;
+$subscribe_popup_heading = get_field('subscribe_popup_heading', $theme_option_page);
+$subscribe_popup_description = get_field('subscribe_popup_description', $theme_option_page);
+$subscribe_popup_links = get_field('subscribe_popup_links', $theme_option_page);
+$subscribe_popup_image = get_field('subscribe_popup_image', $theme_option_page);
+$subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
+
+$subscribe_popup__heading_colour = get_field('subscribe_popup__heading_colour', $theme_option_page);
+$subscribe_popup_description_colour = get_field('subscribe_popup_description_colour', $theme_option_page);
+$subscribe_popup_links_colour = get_field('subscribe_popup_links_colour', $theme_option_page);
+$subscribe_popup_form_colour = get_field('subscribe_popup_form_colour', $theme_option_page);
+$subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_option_page);
+
+?>
+<div id="subscribe-outer" class="post-follow-us insider-outer subscibe-outer" style="background-color: <?= $subscribe_popup_bg_colour ?>">
+    <div class="subscribe-outer-close"><img src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu-close.png" alt="Close"></div>
+    <div class="post-follow-us-inner">
+        <div class="subscribe-outer-img"><img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>" alt="Subscribe"></div>
+        <div class="subscribe-outer-txt">
+            <h2 style="color: <?= $subscribe_popup__heading_colour ?> !important"><?= $subscribe_popup_heading ?> </h2>
+            <div class="cat-links">
+                <?php foreach ($subscribe_popup_links as $link) { ?>
+                    <?php
+                    $page_id = url_to_postid($link);
+                    $url = get_permalink($page_id);
+                    $title = get_the_title($page_id);
+                    ?>
+                    <a href="<?= $url ?>" style="color: <?= $subscribe_popup_links_colour ?> !important"><?= $title ?></a> |
+                <?php } ?>
+
+            </div>
+            <hr>
+            <div id="subscribe-outer-desc" style="color: <?= $subscribe_popup_description_colour ?> !important">
+                <?= wpautop($subscribe_popup_description) ?>
+            </div>
+            <div class="sub---form" style="--color: <?= $subscribe_popup_form_colour ?> !important">
+                <?= do_shortcode($subscribe_popup_form); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php wp_footer(); ?>
 
 </div><!-- Close: #fouc -->
