@@ -528,6 +528,7 @@
             .menu-item-40444 {
                 display: none !important;
             }
+
             .admin-bar header.header-v2 {
                 top: 32px;
             }
@@ -570,12 +571,20 @@
             }
         }
 
-        @media(max-width: 1503px) {
+        @media(max-width: 1700px) {
+            #offCanvasMenu .menu li.menu-item>a {
+                font-size: 14px !important;
+                letter-spacing: 0 !important;
+            }
+
             .col-right>.row {
                 --bs-gutter-y: 1.5rem;
                 --bs-gutter-x: 1.5rem;
             }
         }
+
+
+        @media(max-width: 1503px) {}
 
 
         @media(max-width: 1440px) {
