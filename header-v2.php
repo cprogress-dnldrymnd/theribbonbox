@@ -523,8 +523,10 @@
         #header-main-site {
             height: var(--header-height);
         }
-#subscribe-outer {
-    z-index: 999999;}
+
+        #subscribe-outer {
+            z-index: 999999;
+        }
 
         /*responsive*/
 
@@ -988,16 +990,7 @@
                                                             ); ?>
                                                         </div>
                                                     </nav>
-                                                    <?php
-                                                    echo '<script type="text/javascript">
-                    var ajaxurl = "' . admin_url('admin-ajax.php') . '";
-                    </script>';
-                                                    ?>
-                                                    <script id="recent-posts-json" type="text/javascript" defer>
-                                                        const recentPostsJson = <?php echo do_shortcode("[get_category_posts_nav_new]"); ?>;
-                                                        console.log('recentPostsJson:', recentPostsJson);
-                                                    </script>
-                                                    <script src='<?php echo (get_template_directory_uri()) ?>/js/header.js'></script>
+
                                                     <hr class="d-lg-none">
                                                     <div class="social-holder d-flex d-lg-none flex-column gap-3">
                                                         <?php echo do_shortcode("[get_socials]"); ?>
@@ -1074,8 +1067,28 @@
                     </a>
                 </div>
             <?php } ?>
-
-            <main class="main-v2">
+            <?php
+            echo '<script type="text/javascript">
+                    var ajaxurl = "' . admin_url('admin-ajax.php') . '";
+                    </script>';
+            ?>
+            <script id="recent-posts-json" type="text/javascript" defer>
+                const recentPostsJson = <?php echo do_shortcode("[get_category_posts_nav_new]"); ?>;
+                console.log('recentPostsJson:', recentPostsJson);
+            </script>
+            <script src='<?php echo (get_template_directory_uri()) ?>/js/header.js'></script>
+            <main class="main-v2 main-content-outer">
+                <div class="messages">
+                    <?php
+                    $messages = get_transient('messages');
+                    if (is_array($messages)) {
+                        foreach ($messages as $message) : ?>
+                            <p class="msg <?= $message->type ?>"><?= $message->text ?></p>
+                    <?php endforeach;
+                        delete_transient('messages');
+                    }
+                    ?>
+                </div>
                 <div class="hero-v2 trb-border-top">
                     <div class="top  pt-4 trb-bg-lightyellow trb-px">
                         <div class="container-fluid">
