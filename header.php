@@ -528,9 +528,7 @@
         }
 
 
-        #header-main-site {
-            height: var(--header-height) !important;
-        }
+
 
         #subscribe-outer {
             z-index: 999999;
@@ -539,6 +537,9 @@
         /*responsive*/
 
         @media(min-width: 992px) {
+            #header-main-site {
+                height: var(--header-height) !important;
+            }
 
             #offCanvasMenu .toggle-submenu.toggle-submenu {
                 display: none !important;
@@ -941,6 +942,7 @@
                 padding-right: 10px;
             }
         }
+
         .page-header-outer.page-header-outer {
             padding-top: 50px;
             background-color: transparent;
