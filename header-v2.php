@@ -782,15 +782,24 @@
             #offCanvasMenu .menu li.menu-item>a {
                 font-size: 14px !important;
                 letter-spacing: 0 !important;
-                padding-top: 5px;
-                padding-bottom: 5px;
+                padding-top: 10px;
+                padding-bottom: 10px;
                 padding-right: 0 !important;
                 width: 100%;
                 justify-content: space-between;
+                font-weight: 500 !important;
+            }
+
+            #offCanvasMenu .menu>li.menu-item {
+                border-bottom: 1px solid var(var(--trb-lightyellow));
             }
 
             header.header-v2 a {
                 font-size: 14px;
+            }
+
+            #offCanvasMenu .menu {
+                gap: 0;
             }
         }
 
