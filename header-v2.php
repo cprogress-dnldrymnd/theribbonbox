@@ -584,7 +584,15 @@
         }
 
 
-        @media(max-width: 1503px) {}
+        @media(max-width: 1550px) {
+            #offCanvasMenu .menu li.menu-item>a {
+                font-size: 13px !important;
+            }
+
+            .is-search-form.is-search-form {
+                min-width: 15vw;
+            }
+        }
 
 
         @media(max-width: 1440px) {
