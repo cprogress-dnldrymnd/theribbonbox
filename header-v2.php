@@ -48,7 +48,7 @@
         }
 
         header.header-v2 nav li,
-        header.header-v2 nav li a {
+        header.header-v2 nav li.menu-item>a {
             background-color: transparent !important;
         }
 
