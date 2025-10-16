@@ -117,6 +117,12 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
     jQuery(document).ready(function() {
         $height = jQuery('#header-main-site').outerHeight();
         jQuery('body').css('--header-height', $height + 'px');
+
+        jQuery('.newsletter-menu a').click(function(e) {
+            jQuery('#subscribe-outer').show();
+            e.preventDefault();
+
+        });
     });
 </script>
 
