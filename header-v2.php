@@ -734,7 +734,7 @@
                     </div>
                 </div>
             <?php } ?>
-            <header class="header-v2 py-4 trb-px trb-bg-lightyellow" >
+            <header class="header-v2 py-4 trb-px trb-bg-lightyellow" id="header-main-site">
                 <div class="container-fluid">
                     <div class="row justify-content-between align-items-center">
                         <div class="col-auto col-left">
@@ -756,14 +756,26 @@
                                                 </a>
                                             </div>
                                             <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
-                                                <div class="nav-menu text-uppercase">
-                                                    <?php wp_nav_menu(
-                                                        array(
-                                                            'theme_location' => 'header-menu',
-                                                            'walker' => new Walker_Nav_Pointers()
-                                                        )
-                                                    ); ?>
-                                                </div>
+                                                <nav>
+                                                    <div class="nav-menu text-uppercase">
+                                                        <?php wp_nav_menu(
+                                                            array(
+                                                                'theme_location' => 'header-menu',
+                                                                'walker' => new Walker_Nav_Pointers()
+                                                            )
+                                                        ); ?>
+                                                    </div>
+                                                </nav>
+                                                <?php
+                                                echo '<script type="text/javascript">
+                    var ajaxurl = "' . admin_url('admin-ajax.php') . '";
+                    </script>';
+                                                ?>
+                                                <script id="recent-posts-json" type="text/javascript" defer>
+                                                    const recentPostsJson = <?php echo do_shortcode("[get_category_posts_nav_new]"); ?>;
+                                                    console.log('recentPostsJson:', recentPostsJson);
+                                                </script>
+                                                <script src='<?php echo (get_template_directory_uri()) ?>/js/header.js'></script>
                                                 <hr class="d-lg-none">
                                                 <div class="social-holder d-flex d-lg-none flex-column gap-3">
                                                     <?php echo do_shortcode("[get_socials]"); ?>
