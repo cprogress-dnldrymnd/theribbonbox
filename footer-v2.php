@@ -112,7 +112,6 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
 
     offCanvasMenu.addEventListener('hide.bs.offcanvas', function() {
         jQuery('body').removeClass('mobile-menu-active');
-        jQuery('#subscribe-outer').hide();
 
     });
 
