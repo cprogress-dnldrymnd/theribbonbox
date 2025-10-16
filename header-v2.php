@@ -483,6 +483,9 @@
             padding-right: 0;
         }
 
+        .menu-mainmenu-container>ul>li>a {
+            min-height: 52px;
+        }
 
         /*responsive*/
 
