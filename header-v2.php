@@ -60,16 +60,7 @@
             font-weight: 500;
         }
 
-        #offCanvasMenu #menu-mainmenu li.menu-item.menu-item.menu-item:not(.simple-menu) .sub-menu.sub-menu.sub-menu:before {
-            content: '' !important;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            background-color: var(--trb-lightyellow) !important;
-            ;
-            left: -100vw;
-            right: -100vw;
-        }
+
 
         .menu-post-left.menu-post-left h2 {
             text-transform: initial;
@@ -534,6 +525,17 @@
         /*responsive*/
 
         @media(min-width: 992px) {
+            #offCanvasMenu #menu-mainmenu li.menu-item.menu-item.menu-item:not(.simple-menu) .sub-menu.sub-menu.sub-menu:before {
+                content: '' !important;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                background-color: var(--trb-lightyellow) !important;
+                ;
+                left: -100vw;
+                right: -100vw;
+            }
+
             .menu-mainmenu-container>ul>li>a {
                 min-height: 52px;
             }
@@ -703,6 +705,7 @@
             .menu-posts-outer {
                 overflow: hidden;
             }
+
             .ads--v2 {
                 z-index: 1;
             }
