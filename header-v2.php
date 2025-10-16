@@ -41,6 +41,10 @@
             box-shadow: none !important;
         }
 
+        header.header-v2 nav .sub-menu {
+            background-color: var(--trb-lightyellow) !important;
+        }
+
         header.header-v2 a {
             font-size: 15px;
             letter-spacing: 0.75px;
