@@ -127,6 +127,12 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
             e.preventDefault();
 
         });
+
+        jQuery('.subscribe-outer-close').click(function(e) {
+            jQuery('#subscribe-outer').hide();
+            e.preventDefault();
+
+        });
     });
 </script>
 
