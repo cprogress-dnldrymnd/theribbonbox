@@ -36,6 +36,10 @@
             z-index: 999;
         }
 
+        header.header-v2 nav {
+            background: transparent !important;
+        }
+
         header.header-v2 a {
             font-size: 15px;
             letter-spacing: 0.75px;
