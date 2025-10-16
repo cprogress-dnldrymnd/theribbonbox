@@ -505,6 +505,11 @@
             min-height: 52px;
         }
 
+        .col-logo {
+            position: relative;
+            z-index: 2;
+        }
+
         /*responsive*/
 
         @media(min-width: 992px) {
@@ -784,7 +789,7 @@
             <header class="header-v2 py-4 trb-px trb-bg-lightyellow" id="header-main-site">
                 <div class="container-fluid">
                     <div class="row justify-content-between align-items-center">
-                        <div class="col-auto col-left">
+                        <div class="col-auto col-left col-logo">
                             <a href="<?= get_site_url() ?>" class="site-logo-v2">
                                 <?= $theme_logo ?>
                             </a>
