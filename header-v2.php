@@ -47,10 +47,7 @@
             border-top: none !important;
         }
 
-        header.header-v2 nav .sub-menu {
-            padding-top: 28px;
-        }
-
+      
         header.header-v2 nav li,
         header.header-v2 nav li.menu-item>a {
             background-color: transparent !important;
