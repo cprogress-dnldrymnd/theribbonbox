@@ -579,10 +579,12 @@
 
         @media(max-width: 1700px) {
 
-            #offCanvasMenu .menu li.menu-item>a,
-            header.header-v2 a {
+            #offCanvasMenu .menu li.menu-item>a {
                 font-size: 14px !important;
                 letter-spacing: 0 !important;
+            }
+            header.header-v2 a {
+                font-size: 14px;
             }
 
             .col-right>.row {
@@ -620,13 +622,17 @@
             }
 
 
-            
+
         }
 
 
         @media(max-width: 1300px) {
+            #offCanvasMenu .menu li.menu-item>a {
+                font-size: 12.5px !important;
+            }
+
             header.header-v2 a {
-                font-size: 13px;
+                font-size: 12.5px;
             }
 
             .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input {
