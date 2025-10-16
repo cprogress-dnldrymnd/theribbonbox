@@ -106,6 +106,8 @@
             position: static;
             transform: none;
             width: 15px;
+            background-size: contain !important;
+            background-repeat: no-repeat !important;
         }
 
         .button-accent-2.button-accent-2 a {
@@ -612,14 +614,13 @@
                 padding-right: 40px;
             }
 
-            #offCanvasMenu .menu li.menu-item>a {
-                font-size: 12.5px !important;
+            #offCanvasMenu .toggle-submenu.toggle-submenu {
+                width: 10px;
+                height: 10px;
             }
 
-            header.header-v2 a {
-                font-size: 12.5px;
-                letter-spacing: 0;
-            }
+
+            
         }
 
 
