@@ -707,6 +707,9 @@
         }
 
         @media(max-width: 991px) {
+            #offCanvasMenu .menu li.menu-item>a+ul>li>a {
+                gap: 20px;
+            }
 
             nav div>ul>li>ul>li,
             nav div>ul>li>ul>li.parent {
