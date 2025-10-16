@@ -880,9 +880,7 @@
                 font-size: 15px;
             }
 
-            #offCanvasMenu .menu {
-                gap: 10px;
-            }
+            
 
             .site-logo-v2 svg {
                 max-width: 85px;
