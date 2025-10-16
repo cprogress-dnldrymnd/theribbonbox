@@ -1123,16 +1123,3 @@
                         </p>
                     </div>
                 </div>
-
-                <script>
-                    jQuery(window).scroll(function(event) {
-                        var scroll = jQuery(window).scrollTop();
-
-                        if (scroll > 100) {
-                            jQuery('.ads--v2').addClass('hide--ad');
-                        } else {
-                            jQuery('.ads--v2').removeClass('hide--ad');
-                        }
-                        // Do something
-                    });
-                </script>
