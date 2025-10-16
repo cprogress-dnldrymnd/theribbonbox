@@ -122,6 +122,8 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
 
         jQuery('.newsletter-menu a').click(function(e) {
             jQuery('#subscribe-outer').show();
+            jQuery('body').removeClass('mobile-menu-active');
+
             e.preventDefault();
 
         });
