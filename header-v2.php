@@ -527,9 +527,13 @@
         .m-menu {
             display: none !important;
         }
+
         #fouc {
             overflow: hidden;
         }
+
+        body[style="overflow: hidden; padding-right: 0px;"] .ads--v2 {}
+
         /*responsive*/
 
         @media(min-width: 992px) {
@@ -676,6 +680,9 @@
                 font-size: 60px;
             }
 
+            #offCanvasSearch .offcanvas-body--inner {
+                padding: 40px;
+            }
 
         }
 
@@ -708,8 +715,7 @@
                 font-size: 50px;
             }
 
-            #offCanvasMenu .offcanvas-body--inner,
-            #offCanvasSearch .offcanvas-body--inner {
+            #offCanvasMenu .offcanvas-body--inner {
                 padding: 40px;
             }
 
@@ -927,14 +933,14 @@
                                         <div class="offcanvas-body p-0">
                                             <div class="offcanvas-body--inner">
                                                 <div class="search search-v2">
-                                                    <div class="close--btn d-block d-lg-none text-end">
+                                                    <div class="close--btn d-block d-xl-none text-end">
                                                         <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                                                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    <h4 class="d-block d-lg-none">Search</h4>
+                                                    <h4 class="d-block d-xl-none">Search</h4>
                                                     <?php echo do_shortcode('[ivory-search id="45284" title="Search for a topic"]'); ?>
                                                 </div>
                                             </div>
