@@ -695,10 +695,14 @@
 
             .menu-mainmenu-container {
                 background-color: transparent;
+                width: 100%;
             }
         }
 
         @media(max-width: 991px) {
+            .menu-posts-outer {
+                overflow: hidden;
+            }
             .ads--v2 {
                 z-index: 1;
             }
@@ -751,6 +755,11 @@
 
             #offCanvasMenu .menu li.menu-item {
                 width: 100%;
+            }
+
+            #offCanvasMenu .toggle-submenu.toggle-submenu {
+                width: 15px;
+                height: 15px;
             }
 
             #offCanvasMenu .menu li.menu-item>a {
