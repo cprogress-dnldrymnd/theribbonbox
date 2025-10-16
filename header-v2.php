@@ -778,6 +778,11 @@
                 height: 15px;
             }
 
+            #offCanvasMenu .menu>li.menu-item>a {
+                justify-content: space-between;
+
+            }
+
             #offCanvasMenu .menu li.menu-item>a {
                 font-size: 14px !important;
                 letter-spacing: 0 !important;
@@ -785,7 +790,6 @@
                 padding-bottom: 10px;
                 padding-right: 0 !important;
                 width: 100%;
-                justify-content: space-between;
                 font-weight: 500 !important;
             }
 
