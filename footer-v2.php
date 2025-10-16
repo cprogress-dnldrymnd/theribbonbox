@@ -69,6 +69,11 @@ global $theme_logo;
     offCanvasMenu.addEventListener('hide.bs.offcanvas', function() {
         jQuery('body').removeClass('mobile-menu-active');
     });
+
+    jQuery(document).ready(function() {
+        $height = jQuery('#header-main-site').outerHeight();
+        jQuery('body').css('--header-height', $height + 'px');
+    });
 </script>
 
 <script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
