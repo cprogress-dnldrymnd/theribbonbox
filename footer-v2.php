@@ -1,199 +1,80 @@
-<?php /* <div id="subscribe-outer" class="post-follow-us insider-outer subscibe-outer">
-                        <div class="subscribe-outer-close"><img src="<?php echo(get_template_directory_uri())?>/images/icons/menu-close.png"></div>
-                        <div class="post-follow-us-inner">
-                            <div class="subscribe-outer-img"><img src="<?php echo(get_template_directory_uri())?>/images/subscribe-image-ph-1.jpg"></div>
-                            <div class="subscribe-outer-txt">
-                                <h2>Become an Insider</h2>
-                                <div class="cat-links">
-                                    <a href="/wellbeing">Wellbeing</a> |
-                                    <a href="/fertility">Fertility</a> |
-                                    <a href="/pregnancy">Pregnancy</a> |
-                                    <a href="/parenting">Parenting</a>
-                                </div>
-                                <hr>
-                                <p>Subscribe To Our Weekly Newsletter Of Tailored Expert Advice, Tips And Giveaways - Straight To Your Inbox</p>
-                                <?php if( function_exists("wd_form_maker") ) { wd_form_maker(7, "embedded"); } ?>
-                            </div>
-                                </div>
-                    </div>
-                    */ ?>
-<?php
-global $theme_option_page;
-$subscribe_popup_heading = get_field('subscribe_popup_heading', $theme_option_page);
-$subscribe_popup_description = get_field('subscribe_popup_description', $theme_option_page);
-$subscribe_popup_links = get_field('subscribe_popup_links', $theme_option_page);
-$subscribe_popup_image = get_field('subscribe_popup_image', $theme_option_page);
-$subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
-
-$subscribe_popup__heading_colour = get_field('subscribe_popup__heading_colour', $theme_option_page);
-$subscribe_popup_description_colour = get_field('subscribe_popup_description_colour', $theme_option_page);
-$subscribe_popup_links_colour = get_field('subscribe_popup_links_colour', $theme_option_page);
-$subscribe_popup_form_colour = get_field('subscribe_popup_form_colour', $theme_option_page);
-$subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_option_page);
-
-?>
-<div id="subscribe-outer" class="post-follow-us insider-outer subscibe-outer" style="background-color: <?= $subscribe_popup_bg_colour ?>">
-  <div class="subscribe-outer-close"><img src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu-close.png" alt="Close"></div>
-  <div class="post-follow-us-inner">
-    <div class="subscribe-outer-img"><img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>" alt="Subscribe"></div>
-    <div class="subscribe-outer-txt">
-      <h2 style="color: <?= $subscribe_popup__heading_colour ?> !important" ><?= $subscribe_popup_heading ?> </h2>
-      <div class="cat-links">
-        <?php foreach ($subscribe_popup_links as $link) { ?>
-          <?php
-          $page_id = url_to_postid($link);
-          $url = get_permalink($page_id);
-          $title = get_the_title($page_id);
-          ?>
-          <a href="<?= $url ?>" style="color: <?= $subscribe_popup_links_colour ?> !important"><?= $title ?></a> |
-        <?php } ?>
-
-      </div>
-      <hr>
-      <div id="subscribe-outer-desc" style="color: <?= $subscribe_popup_description_colour ?> !important">
-        <?= wpautop($subscribe_popup_description) ?>
-      </div>
-      <div class="sub---form" style="--color: <?= $subscribe_popup_form_colour ?> !important">
-        <?= do_shortcode($subscribe_popup_form); ?>
-      </div>
-    </div>
-  </div>
-</div>
-
-<?php
-$today = date('Ymd');
-$args = [
-  'numberposts' => 1, // Number of recent posts thumbnails to display
-  'post_status' => 'publish', // Show only the published posts
-  'orderby' => 'rand',
-  'post_type' => 'giveaway-items',
-  'meta_query' => [
-    [
-      'key'     => 'featured',
-      'value'   => '1',
-      'compare' => '='
-    ],
-    [
-      'key' => 'select_competition_date',
-      'value' => $today,
-      'compare' => '>=',
-      'type' => 'DATE'
-    ],
-  ],
-];
-$recent_posts = wp_get_recent_posts($args);
-//d(count($recent_posts));
-//d($recent_posts);
-?>
-
-<?php if (count($recent_posts)): ?>
-  <div id="giveaway-pop-outer">
-    <div class="giveaway-outer-close" style="z-index: 1;"><img src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu-close.png" alt="Close"></div>
-    <!--<div class="dont-show-again"><input type="checkbox" id="dsa" name="dsa" /> <label for="dsa">Don't show again</label></div>-->
-    <div class="giveaway-pop-inner-top"><img src="<?php echo (get_template_directory_uri()) ?>/images/arch.png" alt="arch">
-      <h2>WIN</h2>
-    </div>
-    <div class="giveaway-pop-inner">
-      <?php
-      ob_start();
-      foreach ($recent_posts as $post) : ?>
-        <?php $img_url = get_the_post_thumbnail_url($post['ID'], 'thumbnail') ?>
-
-        <h3><?= $post['post_title'] ?></h3>
-        <div style="background:url(<?= $img_url ?>); background-size:cover; background-position:center;">
-          <div class="give-border">
-            <img src="<?php echo (get_template_directory_uri()) ?>/images/vid_req.png" alt="vid req">
-          </div>
-        </div><br>
-        <a class="button-expert" href="<?= get_permalink($post['ID']) ?>" title="Read more about '<?= $post['post_title'] ?>">ENTER NOW</a>
-      <?php endforeach;
-      print ob_get_clean();
-      wp_reset_query();
-      ?>
-    </div>
-  </div>
-<?php endif; ?>
-
-<script src="<?= get_template_directory_uri() ?>/js/footer.js"></script>
-
-<div class="floating-footer">
-  <div class="footer-links">
-    <?php wp_nav_menu(array('menu' => 'FooterMenu')); ?>
-  </div>
-  <span style="padding: 6px 0 0 6px; font-size: 8pt"> © <?php echo date("Y"); ?> EDINGTON MEDIA LIMITED</span>
-</div>
-
-<?php
-if (get_the_ID() != "22808" && get_the_ID() != "22810" && get_the_ID() != "22812" && get_the_ID() != "22814" && get_the_ID() != "22816" && get_the_ID() != "22818" && get_the_ID() != "22826" && get_page_template_slug() != 'page-template-e-guides.php') {
-  echo '<div class="footer-insider">';
-  echo do_shortcode("[display_insider]");
-  echo '</div>';
-}
-?>
-
-<div class="footer-outer" id="footer">
-  <footer>
-    <table>
-      <tr>
-        <td>
-          <h3 class="footer-ttl" style="margin-top: 0 !important;">By your side through the highs and lows of preconception, pregnancy and parenthood.</h3>
-          <a href="/"><img class="footerlogo" src="<?php echo (get_template_directory_uri()) ?>/images/logo-hdr-7.png" alt="The Ribbon Box"> </a>
-        </td>
-        <td>
-          <div class="footer-links footer-desk">
-            <?php wp_nav_menu(array('menu' => 'FooterMenu')); ?>
-          </div>
-          <div class="footer-mobile">
-            FOLLOW US
-            <?php echo do_shortcode("[get_socials]"); ?>
-          </div>
-        </td>
-      </tr>
-      <tr class="footer-desk">
-        <td>
-          FOLLOW US
-          <?php echo do_shortcode("[get_socials]"); ?>
-        </td>
-        <td>
-          <span>© <?php echo date("Y"); ?> EDINGTON MEDIA LIMITED</span>
-        </td>
-      </tr>
-      <tr class="footer-mobile">
-        <td>
-          <div class="footer-links">
-            <?php wp_nav_menu(array('menu' => 'FooterMenu')); ?>
-          </div>
-          <span style="font-size:8pt;padding-left:6px">© <?php echo date("Y"); ?> EDINGTON MEDIA LIMITED</span>
-        </td>
-      </tr>
-    </table>
-  </footer>
-</div><!-- Close: .footer-outer -->
-
-<div class="back-to-top button">
-  <!--<img src="<?php /*echo(get_template_directory_uri())*/ ?>/images/back-to-top-n.png">-->
-  <img src="<?php echo (get_template_directory_uri()); ?>/images/up-arrow.svg" alt="up arrow">
-</div>
-
-</div>
 </main>
-
+<?php
+global $theme_logo;
+?>
+<footer class="footer-v2 trb-bg-lightyellow">
+    <div class="footer-top trb-px">
+        <div class="container-fluid">
+            <div class="row g-3">
+                <div class="col-lg-6 col-md-8">
+                    <div class="left-footer">
+                        <h2>Become an Insider</h2>
+                        <p>Our weekly newsletter of tailored expert advice, tips and giveaways - straight to your inbox.</p>
+                        <div class="button-accent-2 mt-4">
+                            <a href="#">SIGN ME UP</a>
+                        </div>
+                        <div class="footer-logo-text my-5">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-lg-3">
+                                    <a href="<?= get_site_url() ?>">
+                                        <?= $theme_logo ?>
+                                    </a>
+                                </div>
+                                <div class="col-lg-9">
+                                    <p>
+                                        By your side through the highs and lows of preconception, pregnancy and parenthood.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-holder mt-4">
+                            <?php echo do_shortcode("[get_socials]"); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-4">
+                    <div class="right-footer ms-0 ms-md-auto mt-4 mt-md-0">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <?php wp_nav_menu(array('menu' => 'Footer Menu V2 Left')); ?>
+                            </div>
+                            <div class="col-6">
+                                <?php wp_nav_menu(array('menu' => 'FooterMenu')); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom trb-border-top trb-px mt-4 py-4">
+        <div class="container-fluid">
+            <p>
+                © 2025 Edington Media Ltd
+            </p>
+        </div>
+    </div>
+</footer>
 </div><!-- Close: .site-wrap -->
 
 <?php wp_footer(); ?>
 
 </div><!-- Close: #fouc -->
+<script>
+    var offCanvasMenu = document.getElementById('offCanvasMenu')
+    offCanvasMenu.addEventListener('show.bs.offcanvas', function() {
+        jQuery('body').addClass('mobile-menu-active');
+    });
 
-<!--
-    <script type="text/javascript" src="<?php echo (get_template_directory_uri()) ?>/js/jquery.fancybox.pack.js"></script>
-    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
-    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
-    -->
+    offCanvasMenu.addEventListener('hide.bs.offcanvas', function() {
+        jQuery('body').removeClass('mobile-menu-active');
+    });
+</script>
 
 <script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
 
 <?php if (is_front_page()) {
-  $_SESSION['homepage_array'] = "";
+    $_SESSION['homepage_array'] = "";
 } ?>
 
 </body>
