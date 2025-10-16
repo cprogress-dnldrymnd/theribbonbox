@@ -603,6 +603,11 @@
 
 
         @media(max-width: 1440px) {
+            .trb-px {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
             #offCanvasMenu .menu li.menu-item>a {
                 font-size: 12.5px !important;
             }
@@ -639,8 +644,8 @@
 
         @media(max-width: 1199px) {
             .trb-px {
-                padding-left: 50px;
-                padding-right: 50px;
+                padding-left: 30px;
+                padding-right: 30px;
             }
 
             .footer-v2 .left-footer h2 {
