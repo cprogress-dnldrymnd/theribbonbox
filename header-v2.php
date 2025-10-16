@@ -67,7 +67,9 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            background-color: red;
+            background-color: var(--trb-lightyellow) !important;;
+            left: -100vw;
+            right: -100vw;
         }
 
         .trb-px {
