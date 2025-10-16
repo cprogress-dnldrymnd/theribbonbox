@@ -38,6 +38,7 @@
 
         header.header-v2 nav {
             background: transparent !important;
+            box-shadow: none !important;
         }
 
         header.header-v2 a {
@@ -61,7 +62,9 @@
         }
 
         #offCanvasMenu .menu li a {
-            color: var(--trb-black);
+            color: var(--trb-black) !important;
+            padding-left: 0;
+            margin-right: 0;
         }
 
         .button-accent-2.button-accent-2 a {
@@ -464,6 +467,10 @@
             overflow: unset;
         }
 
+        .menu-mainmenu-container {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
 
 
         /*responsive*/
@@ -486,6 +493,10 @@
                 width: auto;
                 background-color: transparent;
                 border: none;
+            }
+
+            .offcanvas-body.offcanvas-body {
+                overflow: visible;
             }
         }
 
