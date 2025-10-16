@@ -515,7 +515,7 @@
             display: none !important;
         }
 
-       
+
 
         body[style="overflow: hidden; padding-right: 0px;"] .ads--v2 {}
 
@@ -534,9 +534,9 @@
                 top: 0;
                 bottom: 0;
                 background-color: var(--trb-lightyellow) !important;
-                ;
-                left: -100vw;
-                right: -100vw;
+                width: 100vw;
+                left: 50%;
+                transform: translateX(-50%);
             }
 
             .menu-mainmenu-container>ul>li>a {
