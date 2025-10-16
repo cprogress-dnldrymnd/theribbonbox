@@ -515,9 +515,7 @@
             display: none !important;
         }
 
-        #fouc {
-            overflow: hidden;
-        }
+       
 
         body[style="overflow: hidden; padding-right: 0px;"] .ads--v2 {}
 
