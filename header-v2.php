@@ -749,9 +749,17 @@
                 top: var(--menu-top);
             }
 
+            #offCanvasMenu .menu li.menu-item {
+                width: 100%;
+            }
+
             #offCanvasMenu .menu li.menu-item>a {
                 font-size: 14px !important;
                 letter-spacing: 0 !important;
+                padding-top: 0;
+                padding-bottom: 0;
+                width: 100%;
+                justify-content: space-between;
             }
 
             header.header-v2 a {
