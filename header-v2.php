@@ -67,9 +67,14 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            background-color: var(--trb-lightyellow) !important;;
+            background-color: var(--trb-lightyellow) !important;
+            ;
             left: -100vw;
             right: -100vw;
+        }
+
+        .menu-post-left.menu-post-left h2 {
+            text-transform: initial;
         }
 
         .trb-px {
