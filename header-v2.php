@@ -583,6 +583,7 @@
                 font-size: 14px !important;
                 letter-spacing: 0 !important;
             }
+
             header.header-v2 a {
                 font-size: 14px;
             }
@@ -621,10 +622,14 @@
                 height: 10px;
             }
 
-
-
         }
 
+        @media(max-width: 1370px) {
+            .col-logo svg {
+                width: 100px;
+                height: auto;
+            }
+        }
 
         @media(max-width: 1300px) {
             #offCanvasMenu .menu li.menu-item>a {
