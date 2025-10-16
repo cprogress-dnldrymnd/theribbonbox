@@ -960,8 +960,15 @@
         'orderby' => 'rand',
         'post_status' => 'publish',
         'fields' => 'ids',
+        'meta_query'  => array(
+            array(
+                'key'     => 'ad_type',   // The custom field key
+                'value'   => 'ad_strip',  // The value to exclude
+                'compare' => '!='         // The comparison operator (NOT EQUAL TO)
+            )
+        )
     ));
-   
+
     ?>
     <div id="fouc">
         <div class="site-wrap">
