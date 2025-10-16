@@ -757,9 +757,12 @@
                                             </div>
                                             <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
                                                 <div class="nav-menu text-uppercase">
-                                                    <?php
-                                                    wp_nav_menu(array('menu' => 'Header V2',));
-                                                    ?>
+                                                    <?php wp_nav_menu(
+                                                        array(
+                                                            'theme_location' => 'header-menu',
+                                                            'walker' => new Walker_Nav_Pointers()
+                                                        )
+                                                    ); ?>
                                                 </div>
                                                 <hr class="d-lg-none">
                                                 <div class="social-holder d-flex d-lg-none flex-column gap-3">
