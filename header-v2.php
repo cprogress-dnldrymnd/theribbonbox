@@ -524,6 +524,9 @@
             height: var(--header-height);
         }
 
+        #subscribe-outer {
+            z-index: 999999;
+        }
 
         /*responsive*/
 
