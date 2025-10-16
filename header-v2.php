@@ -791,7 +791,8 @@
             }
 
             #offCanvasMenu .menu>li.menu-item>a {
-                border-bottom: 1px solid var(--trb-lightyellow)
+                border-bottom: 1px solid var(--trb-lightyellow);
+                border-top: 1px solid var(--trb-lightyellow);
             }
 
             header.header-v2 a {
