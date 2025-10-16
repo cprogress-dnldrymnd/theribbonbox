@@ -522,6 +522,10 @@
             z-index: 2;
         }
 
+        .m-menu {
+            display: none !important;
+        }
+
         /*responsive*/
 
         @media(min-width: 992px) {
@@ -655,9 +659,6 @@
 
         }
 
-        .m-menu {
-            display: none Im !important;
-        }
 
         @media (max-width: 1000px) {
             nav {
