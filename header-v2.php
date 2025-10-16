@@ -765,8 +765,8 @@
             #offCanvasMenu .menu li.menu-item>a {
                 font-size: 14px !important;
                 letter-spacing: 0 !important;
-                padding-top: 0;
-                padding-bottom: 0;
+                padding-top: 5px;
+                padding-bottom: 5px;
                 width: 100%;
                 justify-content: space-between;
             }
