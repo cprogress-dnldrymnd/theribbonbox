@@ -767,6 +767,7 @@
                 letter-spacing: 0 !important;
                 padding-top: 5px;
                 padding-bottom: 5px;
+                padding-right: 0 !important;
                 width: 100%;
                 justify-content: space-between;
             }
