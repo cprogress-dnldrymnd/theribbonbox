@@ -48,7 +48,7 @@
         }
 
         header.header-v2 nav .sub-menu {
-            padding-top: 24px;
+            padding-top: 28px;
         }
 
         header.header-v2 nav li,
