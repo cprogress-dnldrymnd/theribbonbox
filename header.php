@@ -528,11 +528,6 @@
             z-index: 999999;
         }
 
-        .page-header-outer {
-            background-color: transparent;
-            padding-top: 50px;
-        }
-
         /*responsive*/
 
         @media(min-width: 992px) {
@@ -1083,3 +1078,50 @@
             <?php } ?>
 
             <main class="main-v2">
+                <div class="hero-v2 trb-border-top">
+                    <div class="top  pt-4 trb-bg-lightyellow trb-px">
+                        <div class="container-fluid">
+                            <div class="breadcrumbs-v2">
+                                <?= woocommerce_breadcrumb(); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom trb-px">
+                        <div class="container-fluid">
+                            <h1>Surrogacy</h1>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="main-content-v2">
+                    <div class="container">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
+                        </p>
+                    </div>
+                </div>
+
+                <script>
+                    jQuery(window).scroll(function(event) {
+                        var scroll = jQuery(window).scrollTop();
+
+                        if (scroll > 100) {
+                            jQuery('.ads--v2').addClass('hide--ad');
+                        } else {
+                            jQuery('.ads--v2').removeClass('hide--ad');
+                        }
+                        // Do something
+                    });
+                </script>
