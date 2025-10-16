@@ -791,6 +791,7 @@
                 padding-right: 0 !important;
                 width: 100%;
                 font-weight: 500 !important;
+                letter-spacing: 0.75px !important;
             }
 
             #offCanvasMenu .menu>li.menu-item>a {
