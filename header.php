@@ -529,7 +529,7 @@
 
 
         #header-main-site {
-            height: var(--header-height);
+            height: var(--header-height) !important;
         }
 
         #subscribe-outer {
