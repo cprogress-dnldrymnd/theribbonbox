@@ -11,7 +11,7 @@ global $theme_logo;
             <h2>Become an Insider</h2>
             <p>Our weekly newsletter of tailored expert advice, tips and giveaways - straight to your inbox.</p>
             <div class="button-accent-2 mt-4">
-              <a href="#">SIGN ME UP</a>
+              <a href="#" class="newsletter-trigger">SIGN ME UP</a>
             </div>
             <div class="footer-logo-text my-5">
               <div class="row g-3 align-items-center">
@@ -129,7 +129,7 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
     $height = jQuery('#header-main-site').outerHeight();
     jQuery('body').css('--header-height', $height + 'px');
 
-    jQuery('.newsletter-menu a').click(function(e) {
+    jQuery('.newsletter-trigger').click(function(e) {
       jQuery('#subscribe-outer').show();
       jQuery('button[data-bs-target="#offCanvasMenu"]').click();
       e.preventDefault();
