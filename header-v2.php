@@ -734,7 +734,7 @@
                     </div>
                 </div>
             <?php } ?>
-            <header class="header-v2 py-4 trb-px trb-bg-lightyellow">
+            <header class="header-v2 py-4 trb-px trb-bg-lightyellow" id="header-main-site">
                 <div class="container-fluid">
                     <div class="row justify-content-between align-items-center">
                         <div class="col-auto col-left">
