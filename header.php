@@ -961,7 +961,9 @@
         'post_status' => 'publish',
         'fields' => 'ids',
     ));
-    echo $ads;
+    if (current_user_can('administrator')) {
+        var_dump($ads);
+    }
     ?>
     <div id="fouc">
         <div class="site-wrap">
