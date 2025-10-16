@@ -585,6 +585,11 @@
 
 
         @media(max-width: 1550px) {
+            .trb-px {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+
             #offCanvasMenu .menu li.menu-item>a {
                 font-size: 13px !important;
             }
