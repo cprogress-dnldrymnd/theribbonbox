@@ -528,6 +528,11 @@
             z-index: 999999;
         }
 
+        .page-header-outer {
+            background-color: transparent;
+            padding-top: 50px;
+        }
+
         /*responsive*/
 
         @media(min-width: 992px) {
