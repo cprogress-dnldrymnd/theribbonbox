@@ -62,7 +62,7 @@
             font-weight: 500;
         }
 
-        #offCanvasMenu #menu-mainmenu li.menu-item .sub-menu {
+        #offCanvasMenu #menu-mainmenu li.menu-item .sub-menu:before {
             content: '' !important;
         }
 
