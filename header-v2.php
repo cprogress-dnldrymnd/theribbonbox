@@ -942,104 +942,106 @@
                     </div>
                 </div>
             <?php } ?>
-            <header class="header-v2 py-4 trb-px trb-bg-lightyellow" id="header-main-site">
-                <div class="container-fluid">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-auto col-left col-logo">
-                            <a href="<?= get_site_url() ?>" class="site-logo-v2">
-                                <?= $theme_logo ?>
-                            </a>
-                        </div>
-                        <div class="col-auto col-right">
-                            <div class="row g-5 align-items-center">
-                                <div class="col-auto">
-                                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
-                                        <div class="offcanvas-body p-0 d-flex flex-column">
-                                            <div class="newsletter-menu d-block d-lg-none">
-                                                <a href="" class="d-flex align-items-center gap-3 p-4 text-white text-uppercase">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
-                                                    </svg>
-                                                    <span>Sign up for our weekly newsletter</span>
-                                                </a>
-                                            </div>
-                                            <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
-                                                <nav>
-                                                    <div class="nav-menu text-uppercase">
-                                                        <?php wp_nav_menu(
-                                                            array(
-                                                                'theme_location' => 'header-menu',
-                                                                'walker' => new Walker_Nav_Pointers()
-                                                            )
-                                                        ); ?>
-                                                    </div>
-                                                </nav>
-                                                <?php
-                                                echo '<script type="text/javascript">
+            <header class="header-v2" id="header-main-site">
+                <div class="header--inner py-4 trb-px trb-bg-lightyellow">
+                    <div class="container-fluid">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-auto col-left col-logo">
+                                <a href="<?= get_site_url() ?>" class="site-logo-v2">
+                                    <?= $theme_logo ?>
+                                </a>
+                            </div>
+                            <div class="col-auto col-right">
+                                <div class="row g-5 align-items-center">
+                                    <div class="col-auto">
+                                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
+                                            <div class="offcanvas-body p-0 d-flex flex-column">
+                                                <div class="newsletter-menu d-block d-lg-none">
+                                                    <a href="" class="d-flex align-items-center gap-3 p-4 text-white text-uppercase">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
+                                                        </svg>
+                                                        <span>Sign up for our weekly newsletter</span>
+                                                    </a>
+                                                </div>
+                                                <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
+                                                    <nav>
+                                                        <div class="nav-menu text-uppercase">
+                                                            <?php wp_nav_menu(
+                                                                array(
+                                                                    'theme_location' => 'header-menu',
+                                                                    'walker' => new Walker_Nav_Pointers()
+                                                                )
+                                                            ); ?>
+                                                        </div>
+                                                    </nav>
+                                                    <?php
+                                                    echo '<script type="text/javascript">
                     var ajaxurl = "' . admin_url('admin-ajax.php') . '";
                     </script>';
-                                                ?>
-                                                <script id="recent-posts-json" type="text/javascript" defer>
-                                                    const recentPostsJson = <?php echo do_shortcode("[get_category_posts_nav_new]"); ?>;
-                                                    console.log('recentPostsJson:', recentPostsJson);
-                                                </script>
-                                                <script src='<?php echo (get_template_directory_uri()) ?>/js/header.js'></script>
-                                                <hr class="d-lg-none">
-                                                <div class="social-holder d-flex d-lg-none flex-column gap-3">
-                                                    <?php echo do_shortcode("[get_socials]"); ?>
-                                                </div>
-                                                <hr class="d-lg-none">
-                                                <div class="nav-menu d-block d-lg-none text-uppercase">
-                                                    <?php
-                                                    wp_nav_menu(array('menu' => 'FooterMenu'));
                                                     ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
-                                        <div class="offcanvas-body p-0">
-                                            <div class="offcanvas-body--inner">
-                                                <div class="search search-v2">
-                                                    <div class="close--btn d-block d-xl-none text-end">
-                                                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                                                            </svg>
-                                                        </button>
+                                                    <script id="recent-posts-json" type="text/javascript" defer>
+                                                        const recentPostsJson = <?php echo do_shortcode("[get_category_posts_nav_new]"); ?>;
+                                                        console.log('recentPostsJson:', recentPostsJson);
+                                                    </script>
+                                                    <script src='<?php echo (get_template_directory_uri()) ?>/js/header.js'></script>
+                                                    <hr class="d-lg-none">
+                                                    <div class="social-holder d-flex d-lg-none flex-column gap-3">
+                                                        <?php echo do_shortcode("[get_socials]"); ?>
                                                     </div>
-                                                    <h4 class="d-block d-xl-none">Search</h4>
-                                                    <?php echo do_shortcode('[ivory-search id="45284" title="Search for a topic"]'); ?>
+                                                    <hr class="d-lg-none">
+                                                    <div class="nav-menu d-block d-lg-none text-uppercase">
+                                                        <?php
+                                                        wp_nav_menu(array('menu' => 'FooterMenu'));
+                                                        ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" class="offCanvasSearch-btn d-block d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#offCanvasSearch" aria-controls="offCanvasSearch" class="d-block d-xl-none">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17.179" height="17.179" viewBox="0 0 17.179 17.179">
-                                            <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.75 0.75)">
-                                                <path id="Path_1" data-name="Path 1" d="M18.161,11.33A6.83,6.83,0,1,1,11.33,4.5,6.83,6.83,0,0,1,18.161,11.33Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                <path id="Path_2" data-name="Path 2" d="M28.689,28.689l-3.714-3.714" transform="translate(-13.321 -13.321)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                            </g>
-                                        </svg>
-                                    </button>
+                                    <div class="col-auto">
+                                        <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
+                                            <div class="offcanvas-body p-0">
+                                                <div class="offcanvas-body--inner">
+                                                    <div class="search search-v2">
+                                                        <div class="close--btn d-block d-xl-none text-end">
+                                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <h4 class="d-block d-xl-none">Search</h4>
+                                                        <?php echo do_shortcode('[ivory-search id="45284" title="Search for a topic"]'); ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="offCanvasSearch-btn d-block d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#offCanvasSearch" aria-controls="offCanvasSearch" class="d-block d-xl-none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17.179" height="17.179" viewBox="0 0 17.179 17.179">
+                                                <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.75 0.75)">
+                                                    <path id="Path_1" data-name="Path 1" d="M18.161,11.33A6.83,6.83,0,1,1,11.33,4.5,6.83,6.83,0,0,1,18.161,11.33Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+                                                    <path id="Path_2" data-name="Path 2" d="M28.689,28.689l-3.714-3.714" transform="translate(-13.321 -13.321)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+                                                </g>
+                                            </svg>
+                                        </button>
 
-                                </div>
-                                <div class="col-auto d-none d-lg-block">
-                                    <div class="button-accent-2 button-community">
-                                        <a href="https://theribbonbox.com/community/">COMMUNITY</a>
+                                    </div>
+                                    <div class="col-auto d-none d-lg-block">
+                                        <div class="button-accent-2 button-community">
+                                            <a href="https://theribbonbox.com/community/">COMMUNITY</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto d-block d-lg-none">
+                                        <button class="menu-burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
+                                            <div class="icon">
+                                                <div class="menu"></div>
+                                            </div>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="col-auto d-block d-lg-none">
-                                    <button class="menu-burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
-                                        <div class="icon">
-                                            <div class="menu"></div>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
