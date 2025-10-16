@@ -702,7 +702,7 @@
         }
 
         @media(max-width: 991px) {
-            nav div > ul > li > ul > li, nav div>ul>li>ul>li.parent {
+            nav div > ul > li > ul > li, nav div>ul>li>ul>li.parent, header.header-v2 nav .sub-menu, header.header-v2 nav .submenu-wrapper {
                 background-color: transparent;
             }
             .menu-posts-outer {
