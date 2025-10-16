@@ -62,6 +62,9 @@
             font-weight: 500;
         }
 
+        #offCanvasMenu #menu-mainmenu li.menu-item .sub-menu {
+            content: '' !important;
+        }
 
         .trb-px {
             padding-left: 65px;
