@@ -101,6 +101,13 @@
             gap: 5px;
         }
 
+        #offCanvasMenu .toggle-submenu.toggle-submenu {
+            display: block !important;
+            position: static;
+            transform: none;
+            width: 15px;
+        }
+
         .button-accent-2.button-accent-2 a {
             background-color: var(--trb-accent-2);
             color: var(--trb-white) !important;
@@ -597,12 +604,7 @@
             }
         }
 
-        .toggle-submenu.toggle-submenu {
-            display: block !important;
-            position: static;
-            transform: none;
-            width: 15px;
-        }
+
 
         @media(max-width: 1199px) {
             .trb-px {
