@@ -606,6 +606,12 @@
 
         }
 
+        @media (max-width: 1000px) {
+            nav {
+                position: static !important;
+            }
+        }
+
         @media(max-width: 991px) {
             .ads--v2 {
                 z-index: 1;
