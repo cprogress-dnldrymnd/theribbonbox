@@ -227,7 +227,6 @@
         }
 
         .main-v2 {
-            min-height: 800px;
             position: relative;
             z-index: 1;
             background-color: var(--trb-white);
