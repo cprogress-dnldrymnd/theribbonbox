@@ -634,6 +634,11 @@
                 width: 100px;
                 height: auto;
             }
+
+            .button-community.button-community a {
+                padding-left: 15px;
+                padding-right: 23px;
+            }
         }
 
         @media(max-width: 1300px) {
@@ -650,10 +655,7 @@
                 padding-right: 15px !important;
             }
 
-            .button-community.button-community a {
-                padding-left: 15px;
-                padding-right: 23px;
-            }
+
 
             .site-logo-v2 svg {
                 max-width: 100px;
