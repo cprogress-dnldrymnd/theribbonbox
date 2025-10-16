@@ -712,6 +712,17 @@
                 --menu-top: 88.5px
             }
 
+            body.mobile-menu-active #header-main-site {
+                height: var(--header-height);
+            }
+
+            body.mobile-menu-active #header-main-site .header--inner {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+            }
+
             #offCanvasMenu .menu li.menu-item>a+ul>li>a {
                 gap: 20px;
             }
