@@ -702,6 +702,9 @@
         }
 
         @media(max-width: 991px) {
+            nav div > ul > li > ul > li, nav div>ul>li>ul>li.parent {
+                background-color: transparent;
+            }
             .menu-posts-outer {
                 overflow: hidden;
             }
