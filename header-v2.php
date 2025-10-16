@@ -674,7 +674,12 @@
             }
         }
 
+        @media(max-width: 1199px) and (min-width: 992px) {
 
+            #offCanvasSearch {
+                height: 100vh !important;
+            }
+        }
 
         @media(max-width: 1199px) {
             .trb-px {
