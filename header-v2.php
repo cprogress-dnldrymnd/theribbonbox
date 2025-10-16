@@ -452,6 +452,10 @@
             background-color: var(--trb-accent-3);
         }
 
+        .newsletter-menu a span {
+            color: var(--trb-white) !important;
+        }
+
         .social-holder .social-icons:not(.social-icons-txt) {
             display: flex;
             align-items: center;
