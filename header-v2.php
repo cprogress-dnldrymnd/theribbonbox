@@ -572,7 +572,9 @@
         }
 
         @media(max-width: 1700px) {
-            #offCanvasMenu .menu li.menu-item>a {
+
+            #offCanvasMenu .menu li.menu-item>a,
+            header.header-v2 a {
                 font-size: 14px !important;
                 letter-spacing: 0 !important;
             }
@@ -601,8 +603,12 @@
 
 
         @media(max-width: 1440px) {
+            #offCanvasMenu .menu li.menu-item>a {
+                font-size: 12.5px !important;
+            }
+
             header.header-v2 a {
-                font-size: 14px;
+                font-size: 12.5px;
                 letter-spacing: 0;
             }
         }
