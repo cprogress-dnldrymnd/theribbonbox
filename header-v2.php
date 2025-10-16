@@ -790,8 +790,8 @@
                 font-weight: 500 !important;
             }
 
-            #offCanvasMenu .menu>li.menu-item {
-                border-bottom: 1px solid var(var(--trb-lightyellow));
+            #offCanvasMenu .menu>li.menu-item>a {
+                border-bottom: 1px solid var(--trb-lightyellow)
             }
 
             header.header-v2 a {
