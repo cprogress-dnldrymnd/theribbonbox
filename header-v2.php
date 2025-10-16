@@ -625,6 +625,11 @@
         }
 
         @media(max-width: 1370px) {
+            .trb-px {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
             .site-logo-v2 svg {
                 width: 100px;
                 height: auto;
