@@ -515,9 +515,6 @@
             padding-right: 0;
         }
 
-        .menu-mainmenu-container>ul>li>a {
-            min-height: 52px;
-        }
 
         .col-logo {
             position: relative;
@@ -537,6 +534,10 @@
         /*responsive*/
 
         @media(min-width: 992px) {
+            .menu-mainmenu-container>ul>li>a {
+                min-height: 52px;
+            }
+
             .menu-item-40444 {
                 display: none !important;
             }
@@ -690,6 +691,10 @@
         @media (max-width: 1000px) {
             nav {
                 position: static !important;
+            }
+
+            .menu-mainmenu-container {
+                background-color: transparent;
             }
         }
 
