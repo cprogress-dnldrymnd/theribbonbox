@@ -517,7 +517,6 @@
 
 
 
-        body[style="overflow: hidden; padding-right: 0px;"] .ads--v2 {}
 
         /*responsive*/
 
@@ -525,7 +524,8 @@
 
             #offCanvasMenu .toggle-submenu.toggle-submenu {
                 display: none !important;
-            } 
+            }
+
             header.header-v2 nav .sub-menu,
             header.header-v2 nav .submenu-wrapper {
                 background-color: var(--trb-lightyellow) !important;
@@ -631,7 +631,6 @@
                 padding-left: 40px;
                 padding-right: 40px;
             }
-c
 
         }
 
@@ -712,6 +711,7 @@ c
             body {
                 --menu-top: 88.5px
             }
+
             #offCanvasMenu .menu li.menu-item>a+ul>li>a {
                 gap: 20px;
             }
