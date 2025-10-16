@@ -43,7 +43,6 @@
 
         header.header-v2 nav .sub-menu,
         header.header-v2 nav .submenu-wrapper {
-            background-color: var(--trb-lightyellow) !important;
             border-top: none !important;
             border-bottom: none !important;
         }
@@ -525,6 +524,12 @@
         /*responsive*/
 
         @media(min-width: 992px) {
+
+            header.header-v2 nav .sub-menu,
+            header.header-v2 nav .submenu-wrapper {
+                background-color: var(--trb-lightyellow) !important;
+            }
+
             #offCanvasMenu #menu-mainmenu li.menu-item.menu-item.menu-item:not(.simple-menu) .sub-menu.sub-menu.sub-menu:before {
                 content: '' !important;
                 position: absolute;
@@ -702,9 +707,12 @@
         }
 
         @media(max-width: 991px) {
-            nav div > ul > li > ul > li, nav div>ul>li>ul>li.parent, header.header-v2 nav .sub-menu, header.header-v2 nav .submenu-wrapper {
+
+            nav div>ul>li>ul>li,
+            nav div>ul>li>ul>li.parent {
                 background-color: transparent;
             }
+
             .menu-posts-outer {
                 overflow: hidden;
             }
