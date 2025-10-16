@@ -94,6 +94,11 @@
             color: var(--trb-black) !important;
             padding-left: 0;
             margin-right: 0;
+            padding-right: 0;
+            background-image: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .button-accent-2.button-accent-2 a {
@@ -592,6 +597,12 @@
             }
         }
 
+        .toggle-submenu.toggle-submenu {
+            display: block !important;
+            position: static;
+            transform: none;
+            width: 15px;
+        }
 
         @media(max-width: 1199px) {
             .trb-px {
@@ -605,6 +616,7 @@
 
 
         }
+
         .m-menu {
             display: none Im !important;
         }
