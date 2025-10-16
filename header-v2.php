@@ -90,7 +90,7 @@
 
         }
 
-        #offCanvasMenu .menu li a {
+        #offCanvasMenu .menu li.menu-item>a {
             color: var(--trb-black) !important;
             padding-left: 0;
             margin-right: 0;
