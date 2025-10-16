@@ -234,6 +234,7 @@
             position: relative;
             z-index: 1;
             background-color: var(--trb-white);
+            overflow: hidden;
         }
 
         .footer-logo-text p {
