@@ -941,6 +941,10 @@
                 padding-right: 10px;
             }
         }
+        .page-header-outer.page-header-outer {
+            padding-top: 50px;
+            background-color: transparent;
+        }
     </style>
     <?php
     global $theme_option_page;
