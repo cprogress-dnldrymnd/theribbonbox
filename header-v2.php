@@ -631,7 +631,7 @@
             }
 
             .site-logo-v2 svg {
-                width: 100px;
+                max-width: 100px;
                 height: auto;
             }
 
@@ -658,8 +658,7 @@
 
 
             .site-logo-v2 svg {
-                max-width: 100px;
-                height: auto;
+                max-width: 80px;
             }
         }
 
