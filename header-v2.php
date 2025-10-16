@@ -625,7 +625,7 @@
         }
 
         @media(max-width: 1370px) {
-            .col-logo svg {
+            .site-logo-v2 svg {
                 width: 100px;
                 height: auto;
             }
