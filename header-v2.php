@@ -523,6 +523,9 @@
 
         @media(min-width: 992px) {
 
+            #offCanvasMenu .toggle-submenu.toggle-submenu {
+                display: none !important;
+            } 
             header.header-v2 nav .sub-menu,
             header.header-v2 nav .submenu-wrapper {
                 background-color: var(--trb-lightyellow) !important;
@@ -628,11 +631,7 @@
                 padding-left: 40px;
                 padding-right: 40px;
             }
-
-            #offCanvasMenu .toggle-submenu.toggle-submenu {
-                width: 10px;
-                height: 10px;
-            }
+c
 
         }
 
