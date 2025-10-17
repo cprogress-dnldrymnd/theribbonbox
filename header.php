@@ -553,6 +553,10 @@
             height: 20px;
         }
 
+        .social--icons a:not(:hover) {
+            color: var(--trb-black);
+        }
+
         .social--icons-text span {
             text-transform: lowercase;
             font-size: 14px;
