@@ -562,6 +562,11 @@
             font-size: 14px;
         }
 
+        .page-template-default .main-v2 {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
         /*responsive*/
 
         @media(min-width: 992px) {
