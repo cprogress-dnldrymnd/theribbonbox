@@ -472,6 +472,7 @@
         .social-holder .social-icons:not(.social-icons-txt) {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
         .social-holder .social-icons:not(.social-icons-txt) a {
@@ -487,6 +488,7 @@
 
         .header-v2 .social-icons.social-icons-txt {
             gap: 5px;
+            margin-top: 20px;
         }
 
         .ads--v2 {
