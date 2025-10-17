@@ -548,6 +548,15 @@
             flex: 0 0 20px;
         }
 
+        .social--icons svg {
+            width: 25px;
+            height: 25px;
+        }
+
+        .social--icons-text span {
+            text-transform: lowercase;
+        }
+
         /*responsive*/
 
         @media(min-width: 992px) {
