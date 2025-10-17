@@ -544,6 +544,9 @@
         }
 
 
+        .menu-items-holder li a img {
+            flex: 0 0 20px;
+        }
 
         /*responsive*/
 
