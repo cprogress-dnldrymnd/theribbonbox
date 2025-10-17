@@ -528,6 +528,11 @@
             z-index: 999999;
         }
 
+        .social--icons svg {
+            width: 25px;
+            height: 25px;
+        }
+
         /*responsive*/
 
         @media(min-width: 992px) {
