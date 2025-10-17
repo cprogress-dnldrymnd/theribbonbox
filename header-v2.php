@@ -532,6 +532,7 @@
             width: 25px;
             height: 25px;
         }
+
         .social--icons-text span {
             text-transform: lowercase;
         }
@@ -916,7 +917,8 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .social-icons .social-icons-txt .sep{
+
+            .social-icons .social-icons-txt .sep {
                 display: none;
             }
 
