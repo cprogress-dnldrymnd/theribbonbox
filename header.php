@@ -453,7 +453,7 @@
         }
 
         #offCanvasMenu .menu li a:hover {
-            color: var(--trb-accent-1);
+            color: var(--trb-accent-1) !important;
         }
 
         .newsletter-menu a {
@@ -535,6 +535,8 @@
         #subscribe-outer {
             z-index: 999999;
         }
+
+
 
         /*responsive*/
 
