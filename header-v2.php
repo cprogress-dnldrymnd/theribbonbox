@@ -904,6 +904,13 @@
         }
 
         @media(max-width: 575px) {
+            .social-icons .social-icons-txt {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .social-icons .social-icons-txt .sep{
+                display: none;
+            }
 
             .footer-v2 .left-footer h2 {
                 font-size: 25px;
