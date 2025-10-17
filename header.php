@@ -555,6 +555,7 @@
 
         .social--icons-text span {
             text-transform: lowercase;
+            font-size: 14px;
         }
 
         /*responsive*/
