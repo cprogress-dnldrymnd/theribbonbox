@@ -1044,7 +1044,7 @@
                                                     </nav>
 
                                                     <hr class="d-lg-none">
-                                                    <div class="social-holder d-flex d-lg-none flex-column gap-3">
+                                                    <div class="social-holder d-flex d-lg-none flex-column ">
                                                         <?php echo do_shortcode("[get_socials]"); ?>
                                                     </div>
                                                     <hr class="d-lg-none">
