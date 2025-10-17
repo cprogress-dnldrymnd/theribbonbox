@@ -95,11 +95,13 @@ function get_socials_function()
             </div>
 			<div class="social-icons social-icons-txt"> 
                  <a href="https://www.instagram.com/parenting.theribbonbox/" target="_blank" class="instagram">
-                 @parenting.theribbonbox</a> | 
+                 @parenting.theribbonbox</a> 
+                 <span class="sep">|</span> 
 				 <a href="https://www.instagram.com/fertility.theribbonbox/" target="_blank" class="instagram1">@fertility.theribbonbox</a>
             </div>
 			<div class="social-icons social-icons-txt">  
-				<a href="https://www.tiktok.com/@fertility.theribbonbox" target="_blank" class="ticktok">@fertility.theribbonbox</a> |
+				<a href="https://www.tiktok.com/@fertility.theribbonbox" target="_blank" class="ticktok">@fertility.theribbonbox</a>
+                <span class="sep">|</span> 
 				<a href="https://www.tiktok.com/@theribbonbox" target="_blank" class="ticktok1">@theribbonbox</a>
             </div>';
 
