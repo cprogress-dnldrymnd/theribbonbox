@@ -532,6 +532,9 @@
             width: 25px;
             height: 25px;
         }
+        .social--icons-text span {
+            text-transform: lowercase;
+        }
 
         /*responsive*/
 
