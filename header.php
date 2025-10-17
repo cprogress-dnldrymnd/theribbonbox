@@ -464,14 +464,19 @@
             color: var(--trb-white) !important;
         }
 
+        .social-icons:before,
+        .social-icons:after {
+            display: none !important;
+        }
+
         .social-holder .social-icons:not(.social-icons-txt) {
             display: flex;
             align-items: center;
         }
 
         .social-holder .social-icons:not(.social-icons-txt) a {
-            width: 17px;
-            height: 17px;
+            width: 25px;
+            height: 25px;
             display: inline-block;
             padding: 0 0.4em;
             margin: 0;
