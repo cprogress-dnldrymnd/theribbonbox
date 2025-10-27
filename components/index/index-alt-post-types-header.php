@@ -1,13 +1,15 @@
-<!-- index-alt-post-types-header.php -->
-<?php $raw_page_title = apply_filters( 'the_title', get_the_title( wp_get_post_parent_id( get_the_ID() ) ) ); ?>
+ <div class="hero-v2 trb-border-top">
+     <div class="top  pt-4 trb-bg-lightyellow trb-px">
+         <div class="container-fluid">
+             <div class="breadcrumbs-v2">
+                 <?= woocommerce_breadcrumb(); ?>
+             </div>
+         </div>
+     </div>
+     <div class="bottom trb-px">
+         <div class="container-fluid">
+             <h1><?php the_title() ?></h1>
+         </div>
 
-<div class="<?php the_title(); ?>-header <?php echo $raw_page_title; ?>-header page-header-outer" style=""ssss>
-    <div class="header-text">
-        <div class="page-title-outer">
-            <?php include 'index-page-title.php'; ?>
-        </div>
-    </div>
-</div>
-<?php /*<div class="top-breadcrumb">
-                <div class="breadcrumb-inner">breadcrumb</div>
-            </div> */?>
+     </div>
+ </div>
