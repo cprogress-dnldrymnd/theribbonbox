@@ -313,7 +313,7 @@
         }
 
         .hero-v2 h1 {
-            font-size: clamp(46px, -11.4px + 12.9375vw, 150px);
+            font-size: clamp(46px, -11.4px + 12.9375vw, 237px);
             font-weight: bold;
             font-family: Playfair Display, sans-serif;
             color: var(--trb-accent-2);
