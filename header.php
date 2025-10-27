@@ -302,8 +302,6 @@
         }
 
         .hero-v2 {
-            margin-left: -20px;
-            margin-right: -20px;
             margin-bottom: 50px;
         }
 
@@ -573,10 +571,7 @@
             font-size: 14px;
         }
 
-        .page-template-default .main-v2 {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
+  
 
         /*responsive*/
 
