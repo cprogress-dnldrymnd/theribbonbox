@@ -300,6 +300,7 @@
             width: 10px;
 
         }
+
         .hero-v2 {
             margin-left: -20px;
             margin-right: -20px;
@@ -308,6 +309,11 @@
 
         .hero-v2 .top {
             padding-bottom: 8%;
+        }
+
+        .hero-v2 .top  .container-fluid{
+            position: relative;
+            z-index: 1;
         }
 
         .hero-v2 h1 {
