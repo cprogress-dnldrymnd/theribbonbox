@@ -289,7 +289,7 @@
         }
 
         .woocommerce-breadcrumb.woocommerce-breadcrumb a {
-          2  color: var(--trb-black);
+            color: var(--trb-black);
             text-decoration: underline;
         }
 
@@ -301,13 +301,13 @@
 
         }
 
-   
+
 
         .hero-v2 .top {
             padding-bottom: 8%;
         }
 
-        .hero-v2 .top  .container-fluid{
+        .hero-v2 .top .container-fluid {
             position: relative;
             z-index: 1;
         }
