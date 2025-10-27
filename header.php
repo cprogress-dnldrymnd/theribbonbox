@@ -300,6 +300,11 @@
             width: 10px;
 
         }
+        .hero-v2 {
+            margin-left: -20px;
+            margin-right: -20px;
+            margin-bottom: 50px;
+        }
 
         .hero-v2 .top {
             padding-bottom: 8%;
