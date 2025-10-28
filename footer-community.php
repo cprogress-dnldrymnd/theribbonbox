@@ -91,8 +91,8 @@
         if (jQuery('.bbp-login-form').length > 0) {
             $message = jQuery('<div class="bbp-message alert alert-primary" style="display: none"></div> ');
 
-            $resetpassword = "<div class='reset-password-div'><p>Lost password? <a href='https://theribbonbox.com/community-homepage/reset-password/'> Reset here</a>.</p></div>";
-            $register = "<div class='register-div'> <p>Don't have an account? <a href='https://theribbonbox.com/community-homepage/register/'>Register here</a>.</p> </div>";
+            $resetpassword = "<div class='reset-password-div'><p>Lost password? <a href='https://theribbonbox.com/community/reset-password/'> Reset here</a>.</p></div>";
+            $register = "<div class='register-div'> <p>Don't have an account? <a href='https://theribbonbox.com/community/register/'>Register here</a>.</p> </div>";
             $footer = jQuery("<div class='bbp-login-footer'> " + $resetpassword + $register + " </div>");
 
             $message.insertBefore('.bbp-form');

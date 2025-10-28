@@ -37,7 +37,7 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
                                 <img class="m-menu" src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu.png">
                             </div>
                             <div class="col-lg-4 col-6">
-                                <a class="logo-holder" href="/community-homepage">
+                                <a class="logo-holder" href="/community">
                                     <?= $logo ?>
                                 </a>
                             </div>
