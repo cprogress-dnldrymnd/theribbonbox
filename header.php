@@ -300,8 +300,12 @@
             width: 10px;
 
         }
-
-
+ .hero-v2+.page-content-blg {
+    
+ }
+        .hero-v2+.page-content-blg .blog-top-ban {
+            margin-top: -5%;
+        }
 
         .hero-v2 .top {
             padding-bottom: 8%;
