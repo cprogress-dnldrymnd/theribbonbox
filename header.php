@@ -1018,20 +1018,7 @@
     ?>
     <div id="fouc">
         <div class="site-wrap">
-            <?php if ($top_banner_ad) { ?>
-                <div class="ads ads--v2 py-4">
-                    <div class="container">
-                        <a href="<?= get_field('ad_url', $ads[0]) ?>" target="_blank">
-                            <div class="d-none d-sm-block">
-                                <?= wp_get_attachment_image(get_field('ad_image', $ads[0]), 'full') ?>
-                            </div>
-                            <div class="d-block d-sm-none">
-                                <?= wp_get_attachment_image(get_field('ad_image_mobile', $ads[0]), 'full') ?>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            <?php } ?>
+            <?= do_shortcode('[ad_list]') ?>
             <header class="header-v2" id="header-main-site">
                 <div class="header--inner py-4 trb-px trb-bg-lightyellow">
                     <div class="container-fluid">

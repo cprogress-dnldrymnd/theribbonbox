@@ -1025,25 +1025,40 @@ add_shortcode('category_list', 'category_list_function');
 
 function ad_list_function($attr)
 {
-    $recent_posts = wp_get_recent_posts(array(
+    ob_start();
+    global $theme_option_page;
+    $top_banner_ad = get_field('top_banner_ad', $theme_option_page);
+    $ads = get_posts(array(
         'post_type' => 'ads',
         'numberposts' => 1, // Number of recent posts thumbnails to display
         'orderby' => 'rand',
-        'post_status' => 'publish' // Show only the published posts
+        'post_status' => 'publish',
+        'fields' => 'ids',
+        'meta_query'  => array(
+            array(
+                'key'     => 'ad_type',   // The custom field key
+                'value'   => 'ad_strip',  // The value to exclude
+                'compare' => '!='         // The comparison operator (NOT EQUAL TO)
+            )
+        )
     ));
-
-    $rtn = '';
-
-    foreach ($recent_posts as $post) :
-        $ad_img = get_field("ad_image", $post['ID']);
-        $ad_url = get_field("ad_url", $post['ID']);
-        $rtn .= '<a class="ad-item" href="' . $ad_url . '" target="_blank">';
-        $rtn .= wp_get_attachment_image($ad_img, 'large');
-        $rtn .= '</a>';
-    endforeach;
-    wp_reset_query();
-
-    return $rtn;
+?>
+    <?php if ($top_banner_ad) { ?>
+        <div class="ads ads--v2 py-4">
+            <div class="container">
+                <a href="<?= get_field('ad_url', $ads[0]) ?>" target="_blank">
+                    <div class="d-none d-sm-block">
+                        <?= wp_get_attachment_image(get_field('ad_image', $ads[0]), 'full') ?>
+                    </div>
+                    <div class="d-block d-sm-none">
+                        <?= wp_get_attachment_image(get_field('ad_image_mobile', $ads[0]), 'full') ?>
+                    </div>
+                </a>
+            </div>
+        </div>
+    <?php } ?>
+<?php
+    return ob_get_clean();
 }
 add_shortcode('ad_list', 'ad_list_function');
 
