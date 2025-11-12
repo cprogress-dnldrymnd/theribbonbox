@@ -300,9 +300,13 @@
             width: 10px;
 
         }
- .hero-v2+.page-content-blg {
-    
- }
+        .hero-v2  {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-v2+.page-content-blg {}
+
         .hero-v2+.page-content-blg .blog-top-ban {
             margin-top: -5%;
         }
