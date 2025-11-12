@@ -1037,7 +1037,7 @@ function ad_list_function($attr)
     foreach ($recent_posts as $post) :
         $ad_img = get_field("ad_image", $post['ID']);
         $ad_url = get_field("ad_url", $post['ID']);
-        $rtn .= '<a class="ad-item" href="' . $ad_url . '" target="_blank">';
+        $rtn .= '<a class="ad-item x" href="' . $ad_url . '" target="_blank">';
         $rtn .= wp_get_attachment_image($ad_img, 'large');
         $rtn .= '</a>';
     endforeach;
