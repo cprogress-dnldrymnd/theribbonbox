@@ -584,6 +584,11 @@
             font-size: 14px;
         }
 
+        main .ads--v2 {
+            transform: none;
+            opacity: 1;
+            visibility: visible;
+        }
 
         /*responsive*/
 
