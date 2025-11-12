@@ -293,6 +293,12 @@
             text-decoration: underline;
         }
 
+        .ad-item img {
+            width: auto !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .woocommerce-breadcrumb.woocommerce-breadcrumb svg {
             color: var(--trb-accent-1);
             margin-left: 5px;
@@ -300,7 +306,8 @@
             width: 10px;
 
         }
-        .hero-v2  {
+
+        .hero-v2 {
             position: relative;
             z-index: 2;
         }
