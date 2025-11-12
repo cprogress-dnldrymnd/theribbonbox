@@ -2136,7 +2136,7 @@ function blog_filter_function($attr) {
                                 if ($post_open_div){
                                     $rtn .= '</div>';
                                 }
-                                $rtn .= do_shortcode("[ad_list]");
+                                //$rtn .= do_shortcode("[ad_list]");
                                 if ($post_open_div){
                                     $rtn .= '<div class="blogs-loop-inner">';
                                 }
@@ -2192,7 +2192,7 @@ function blog_filter_function($attr) {
                                 if ($post_open_div){
                                     $rtn .= '</div>';
                                 }
-                                $rtn .= do_shortcode("[ad_list]");
+                                //$rtn .= do_shortcode("[ad_list]");
                                 if ($post_open_div){
                                     $rtn .= '<div class="blogs-loop-inner">';
                                 }
