@@ -585,9 +585,9 @@
         }
 
         main .ads--v2 {
-            transform: none;
-            opacity: 1;
-            visibility: visible;
+            transform: none !important;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
 
         /*responsive*/
