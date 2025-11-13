@@ -183,11 +183,9 @@ function swiper_sliders() {
     jQuery('.product-widget--holder').each(function (index, element) {
         $id = jQuery(this).find('.product-widget--outer').attr('id');
         $count = jQuery(this).find('.product-widget--box').length;
-        if ($count > 4 || window.innerWidth > 991) {
-            jQuery(this).find('.product-widget--outer').addClass('swiper swiper--product-widget');
-            jQuery(this).find('.product-widget--inner').addClass('swiper-wrapper');
-            jQuery(this).find('.product-widget--box').addClass('swiper-slide');
-        }
+        jQuery(this).find('.product-widget--outer').addClass('swiper swiper--product-widget');
+        jQuery(this).find('.product-widget--inner').addClass('swiper-wrapper');
+        jQuery(this).find('.product-widget--box').addClass('swiper-slide');
         var swiper_product_widget = new Swiper('#' + $id, {
             loop: true,
             spaceBetween: 20,
