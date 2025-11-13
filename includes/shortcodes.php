@@ -210,20 +210,20 @@ function product_widget($atts)
             if ($product_obj->is_type('external')) {
                 // This is an external product, so we can get the link
                 $url = $product_obj->get_product_url();
-				$button_text = $product_obj->get_button_text();
+                $button_text = $product_obj->get_button_text();
             } else {
                 $url = get_the_permalink($product);
-				$button_text = 'Visit Product';
+                $button_text = 'Visit Product';
             }
-			
-			$_external_product_currency = get_post_meta($product, '_external_product_currency', true);
-			
-			if($_external_product_currency) {
-				$price = '<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">'.$_external_product_currency.'</span>'.$product_obj->get_regular_price().' </bdi></span>';
-			} else {
-				$price = $product_obj->get_price_html();
-			}
-			
+
+            $_external_product_currency = get_post_meta($product, '_external_product_currency', true);
+
+            if ($_external_product_currency) {
+                $price = '<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">' . $_external_product_currency . '</span>' . $product_obj->get_regular_price() . ' </bdi></span>';
+            } else {
+                $price = $product_obj->get_price_html();
+            }
+
             echo '<div class="product-widget--box">'; //product-widget--box
 
             echo '<div class="product-widget--image"><a href="' . $url . '"> ' . $product_obj->get_image() . '</a></div>';
@@ -231,7 +231,7 @@ function product_widget($atts)
             echo '<div class="product-widget--content">';
             echo '<div class="product-price">' . $price . '</div>';
             echo '<h3>' . $product_obj->get_name() . '</h3>';
-            echo '<div><a href="' . $url . '"> '.$button_text.' </a></div>';
+            echo '<div><a href="' . $url . '"> ' . $button_text . ' </a></div>';
             echo '</div>';
 
             echo '</div>'; //product-widget--box
@@ -242,6 +242,42 @@ function product_widget($atts)
         echo '</div>';
     }
 ?>
+
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('.product-widget--holder').each(function(index, element) {
+                $id = jQuery(this).find('.product-widget--outer').attr('id');
+                $count = jQuery(this).find('.product-widget--box').length;
+                jQuery(this).find('.product-widget--outer').addClass('swiper swiper--product-widget');
+                jQuery(this).find('.product-widget--inner').addClass('swiper-wrapper');
+                jQuery(this).find('.product-widget--box').addClass('swiper-slide');
+                var swiper_product_widget = new Swiper('#' + $id, {
+                    loop: true,
+                    spaceBetween: 20,
+                    autoplay: false,
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 2,
+                        },
+
+                        768: {
+                            slidesPerView: 3,
+                        },
+
+
+                        992: {
+                            slidesPerView: 4,
+                        },
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                });
+
+            });
+        });
+    </script>
 <?php
     return ob_get_clean();
 }
@@ -252,19 +288,20 @@ add_shortcode('product_widget', 'product_widget');
  * Add a new custom field to the General product data tab for External products.
  * This function hooks into `woocommerce_product_options_general_product_data`.
  */
-function add_custom_external_product_field() {
+function add_custom_external_product_field()
+{
 
     // Define the custom field using the `woocommerce_wp_text_input()` function.
     // The field has been renamed to "Currency".
-    woocommerce_wp_text_input( array(
+    woocommerce_wp_text_input(array(
         'id'          => '_external_product_currency',
         'label'       => 'Currency (Default is $)',
         'placeholder' => 'Enter currency (e.g., $, £)',
         'desc_tip'    => 'true',
         'description' => 'The currency for the external product.',
-    ) );
+    ));
 }
-add_action( 'woocommerce_product_options_general_product_data', 'add_custom_external_product_field' );
+add_action('woocommerce_product_options_general_product_data', 'add_custom_external_product_field');
 
 
 /**
@@ -274,15 +311,16 @@ add_action( 'woocommerce_product_options_general_product_data', 'add_custom_exte
  *
  * @param int $post_id The ID of the post (product) being saved.
  */
-function save_custom_external_product_field( $post_id ) {
+function save_custom_external_product_field($post_id)
+{
     // Check if the custom field is present in the form submission.
-    $custom_field_value = isset( $_POST['_external_product_currency'] ) ? $_POST['_external_product_currency'] : '';
+    $custom_field_value = isset($_POST['_external_product_currency']) ? $_POST['_external_product_currency'] : '';
 
     // Sanitize the value before saving to prevent security issues.
-    $sanitized_value = sanitize_text_field( $custom_field_value );
+    $sanitized_value = sanitize_text_field($custom_field_value);
 
     // Save the value using `update_post_meta()`.
     // The meta key has been updated to match the new field ID.
-    update_post_meta( $post_id, '_external_product_currency', $sanitized_value );
+    update_post_meta($post_id, '_external_product_currency', $sanitized_value);
 }
-add_action( 'woocommerce_process_product_meta_external', 'save_custom_external_product_field' );
+add_action('woocommerce_process_product_meta_external', 'save_custom_external_product_field');
