@@ -182,6 +182,7 @@ function swiper_sliders() {
 
     jQuery('.product-widget--holder').each(function (index, element) {
         $id = jQuery(this).find('.product-widget--outer').attr('id');
+        console.log($id);
         $count = jQuery(this).find('.product-widget--box').length;
         if ($count > 4 || window.innerWidth > 991) {
             jQuery(this).find('.product-widget--outer').addClass('swiper swiper--product-widget');
