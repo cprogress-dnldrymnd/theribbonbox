@@ -52,12 +52,12 @@ function load_scripts()
     wp_enqueue_script('splide_init', get_stylesheet_directory_uri() . '/js/splide.js');
 
 
-   // if (is_community_page()) {
-        wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-        wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js');
-        wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css');
-        wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js');
-  //  }
+    // if (is_community_page()) {
+    wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+    wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js');
+    wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css');
+    wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js');
+    //  }
     wp_enqueue_script('additional', get_stylesheet_directory_uri() . '/includes/_additional.js');
     wp_enqueue_style('additional', get_stylesheet_directory_uri() . '/includes/_additional.css');
 }
@@ -374,7 +374,7 @@ function action_admin_head()
         </style>
     <?php
     }
-	    if (isset($_GET['post_type']) && $_GET['post_type'] == 'product') {
+    if (isset($_GET['post_type']) && $_GET['post_type'] == 'product') {
         echo '<style>.column-rank_math_seo_details, #rank_math_seo_details {display: none !important} </style>';
     }
 }
@@ -578,8 +578,8 @@ function add_image_to_menu_item($item_output, $item, $depth, $args)
 add_filter('walker_nav_menu_start_el', 'add_image_to_menu_item', 10, 4);
 
 // if page is password protected, bypass cache
-if ( post_password_required() ) {
-    header( 'Cache-Control: no-cache, must-revalidate, max-age=0' );
+if (post_password_required()) {
+    header('Cache-Control: no-cache, must-revalidate, max-age=0');
 }
 
 /**
@@ -589,7 +589,7 @@ if ( post_password_required() ) {
  */
 
 // Hook into the 'add_meta_boxes' action to register our new meta box.
-add_action( 'add_meta_boxes', 'wpdocs_add_product_widget_metabox' );
+add_action('add_meta_boxes', 'wpdocs_add_product_widget_metabox');
 
 /**
  * Register the custom meta box.
@@ -597,7 +597,8 @@ add_action( 'add_meta_boxes', 'wpdocs_add_product_widget_metabox' );
  * This function defines the meta box's properties, including its ID, title, and the callback
  * function that will render its content.
  */
-function wpdocs_add_product_widget_metabox() {
+function wpdocs_add_product_widget_metabox()
+{
     // We are adding the meta box to the 'product_widget' post type.
     // To add it to a different post type, replace 'product_widget' with the
     // post type slug.
@@ -619,18 +620,19 @@ function wpdocs_add_product_widget_metabox() {
  *
  * @param WP_Post $post The post object.
  */
-function wpdocs_render_product_widget_metabox_content( $post ) {
+function wpdocs_render_product_widget_metabox_content($post)
+{
     // Get the current post ID.
     $post_id = $post->ID;
 
     // Construct the shortcode string, including the dynamic post ID.
-    $shortcode = '[product_widget id="' . esc_attr( $post_id ) . '"]';
+    $shortcode = '[product_widget id="' . esc_attr($post_id) . '"]';
 
     // Display a description and the shortcode itself.
     echo '<p>Use the following shortcode to display the product widget for this post:</p>';
 
     // We'll use an input field so the user can easily copy the shortcode.
-    echo '<input type="text" value="' . esc_attr( $shortcode ) . '" class="widefat" readonly />';
+    echo '<input type="text" value="' . esc_attr($shortcode) . '" class="widefat" readonly />';
 }
 
 
@@ -641,14 +643,15 @@ function wpdocs_render_product_widget_metabox_content( $post ) {
  * @param array $columns The existing columns.
  * @return array The modified columns array.
  */
-add_filter( 'manage_product_widget_posts_columns', 'wpdocs_add_product_widget_shortcode_column' );
+add_filter('manage_product_widget_posts_columns', 'wpdocs_add_product_widget_shortcode_column');
 
-function wpdocs_add_product_widget_shortcode_column( $columns ) {
+function wpdocs_add_product_widget_shortcode_column($columns)
+{
     // Add our new column after the 'title' column.
     $new_columns = array();
-    foreach ( $columns as $key => $value ) {
-        $new_columns[ $key ] = $value;
-        if ( 'title' === $key ) {
+    foreach ($columns as $key => $value) {
+        $new_columns[$key] = $value;
+        if ('title' === $key) {
             $new_columns['product_widget_shortcode'] = 'Shortcode';
         }
     }
@@ -661,20 +664,22 @@ function wpdocs_add_product_widget_shortcode_column( $columns ) {
  * @param string $column  The name of the column to display.
  * @param int    $post_id The ID of the current post.
  */
-add_action( 'manage_product_widget_posts_custom_column', 'wpdocs_show_product_widget_shortcode_column', 10, 2 );
+add_action('manage_product_widget_posts_custom_column', 'wpdocs_show_product_widget_shortcode_column', 10, 2);
 
-function wpdocs_show_product_widget_shortcode_column( $column, $post_id ) {
-    if ( 'product_widget_shortcode' === $column ) {
-        $shortcode = '[product_widget id="' . esc_attr( $post_id ) . '"]';
-        echo '<code>' . esc_html( $shortcode ) . '</code>';
+function wpdocs_show_product_widget_shortcode_column($column, $post_id)
+{
+    if ('product_widget_shortcode' === $column) {
+        $shortcode = '[product_widget id="' . esc_attr($post_id) . '"]';
+        echo '<code>' . esc_html($shortcode) . '</code>';
     }
 }
 /**
  * Change the breadcrumb separator
  */
-add_filter( 'woocommerce_breadcrumb_defaults', 'wcc_change_breadcrumb_delimiter' );
-function wcc_change_breadcrumb_delimiter( $defaults ) {
-	// Change the breadcrumb delimeter from '/' to '>'
-	$defaults['delimiter'] = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/> </svg>';
-	return $defaults;
+add_filter('woocommerce_breadcrumb_defaults', 'wcc_change_breadcrumb_delimiter');
+function wcc_change_breadcrumb_delimiter($defaults)
+{
+    // Change the breadcrumb delimeter from '/' to '>'
+    $defaults['delimiter'] = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/> </svg>';
+    return $defaults;
 }
