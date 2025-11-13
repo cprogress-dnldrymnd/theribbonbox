@@ -242,44 +242,6 @@ function product_widget($atts)
         echo '</div>';
     }
 ?>
-
-    <script>
-        jQuery(document).ready(function() {
-            jQuery('.product-widget--holder').each(function(index, element) {
-                $id = jQuery(this).find('.product-widget--outer').attr('id');
-                $count = jQuery(this).find('.product-widget--box').length;
-                if ($count > 4 || window.innerWidth > 991) {
-                    jQuery(this).find('.product-widget--outer').addClass('swiper swiper--product-widget');
-                    jQuery(this).find('.product-widget--inner').addClass('swiper-wrapper');
-                    jQuery(this).find('.product-widget--box').addClass('swiper-slide');
-                }
-                var swiper_product_widget = new Swiper('#' + $id, {
-                    loop: true,
-                    spaceBetween: 20,
-                    autoplay: false,
-                    breakpoints: {
-                        0: {
-                            slidesPerView: 2,
-                        },
-
-                        768: {
-                            slidesPerView: 3,
-                        },
-
-
-                        992: {
-                            slidesPerView: 4,
-                        },
-                    },
-                    pagination: {
-                        el: ".swiper-pagination",
-                        clickable: true,
-                    },
-                });
-
-            });
-        });
-    </script>
 <?php
     return ob_get_clean();
 }
