@@ -104,7 +104,7 @@ Note: This new hero is visible only for admin
     .author-bio-v2 {
         margin-top: 30px;
     }
-    .author-bio-v2 .author-bio-inner {
+    .author-date {
         gap: 16px;
     }
 </style>
