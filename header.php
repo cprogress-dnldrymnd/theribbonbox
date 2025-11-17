@@ -601,6 +601,13 @@
             padding-top: 50px;
         }
 
+        .post-follow-us.post-follow-us {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        .post-follow-us .social--icons {
+            justify-content: center;
+        }
         /*responsive*/
 
         @media(min-width: 992px) {
