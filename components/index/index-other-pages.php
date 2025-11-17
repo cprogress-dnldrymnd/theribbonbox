@@ -69,10 +69,8 @@ Note: This new hero is visible only for admin
 $cat = get_top_level_term_by_post_id(get_the_ID(), 'category');
 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
 $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1' ;
-
 ?>
 <div class="post-hero" style="--bg-color: <?=  $category_colour ?>; --text-color: <?=  $category_text_color?>">
-
     <div class="container-fluid g-0 p-0">
         <div class="row g-0 flex-column-reverse flex-lg-row">
             <div class="col-lg-6 d-flex align-items-center">
