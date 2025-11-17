@@ -683,3 +683,55 @@ function wcc_change_breadcrumb_delimiter($defaults)
     $defaults['delimiter'] = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/> </svg>';
     return $defaults;
 }
+
+
+/**
+ * get_post_categories_as_links
+ *
+ * Retrieves the categories for a given post (or the current post) and
+ * formats them as a comma-separated string of HTML anchor links.
+ *
+ * @param int|null $post_id Optional. The ID of the post. Defaults to the current post ID.
+ * @param string $separator Optional. The string to use between category links. Defaults to ', '.
+ * @param string $css_class Optional. A CSS class to apply to the anchor tags. Defaults to 'post-category-link'.
+ * @return string The formatted HTML string of category links, or an empty string if none are found.
+ */
+function get_post_categories_as_links($post_id = null, $separator = ', ', $css_class = 'post-category-link') {
+
+    // Ensure we are in a WordPress environment and categories can be retrieved
+    if (!function_exists('get_the_category') || !function_exists('get_category_link')) {
+        // Fallback for non-WordPress environments or error state
+        error_log("WordPress functions not found. Cannot retrieve categories.");
+        return '';
+    }
+
+    // Use get_the_category to fetch the categories for the specified post ID
+    $categories = get_the_category($post_id);
+
+    // Check if any categories were found
+    if (empty($categories)) {
+        return '';
+    }
+
+    $links = [];
+
+    // Loop through each category object
+    foreach ($categories as $category) {
+        // Get the URL for the category archive
+        $category_link = get_category_link($category->term_id);
+
+        // Build the anchor tag
+        $link_html = sprintf(
+            '<a href="%s" title="%s" class="%s">%s</a>',
+            esc_url($category_link),
+            esc_attr(sprintf(__('View all posts in %s', 'textdomain'), $category->name)),
+            esc_attr($css_class),
+            esc_html($category->name)
+        );
+
+        $links[] = $link_html;
+    }
+
+    // Join the array of links with the specified separator and return the result
+    return implode($separator, $links);
+}

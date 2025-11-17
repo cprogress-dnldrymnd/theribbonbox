@@ -132,7 +132,8 @@ Note: This new hero is visible only for admin
                         </div>
                     </div>
                     <div class="post-categories">
-                        <?=  wp_get_post_categories(get_the_ID()) ?>
+                        <?=  get_post_categories_as_links(get_the_ID()) ?>
+                        
                     </div>
                 </div>
             </div>
