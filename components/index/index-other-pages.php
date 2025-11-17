@@ -131,6 +131,9 @@ Note: This new hero is visible only for admin
                             <?php the_date() ?>
                         </div>
                     </div>
+                    <div class="post-categories">
+                        <?=  wp_get_post_categories(get_the_ID()) ?>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
