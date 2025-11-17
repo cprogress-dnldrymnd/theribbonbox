@@ -107,7 +107,12 @@ Note: This new hero is visible only for admin
                     <div class="post-excerpt">
                         <?php the_excerpt() ?>
                     </div>
-                    <?= do_shortcode('[author_bio_v2]') ?>
+                    <div class="author-date">
+                        <?= do_shortcode('[author_bio_v2]') ?>
+                        <div class="date">
+                            <?php the_date() ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
