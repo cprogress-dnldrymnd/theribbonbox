@@ -101,10 +101,10 @@ Note: This new hero is visible only for admin
         width: 5px;
         height: 5px;
     }
-    .author-bio-v2 {
+    .author-date {
         margin-top: 30px;
     }
-    .author-date {
+    .author-bio-v2 .author-bio-inner {
         gap: 16px;
     }
 </style>
