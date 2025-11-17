@@ -94,6 +94,12 @@ Note: This new hero is visible only for admin
     .author-bio-v2 .author-bio-inner .author-details{
         display: flex;
     }
+    .author-date .dot {
+        border-radius: 50%;
+        background-color: #F77D67;
+        width: 5px;
+        height: 5px;
+    }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="container-fluid g-0 p-0">
@@ -111,7 +117,7 @@ Note: This new hero is visible only for admin
                     <div class="post-excerpt">
                         <?php the_excerpt() ?>
                     </div>
-                    <div class="author-date">
+                    <div class="author-date d-flex gap-3 align-items-center">
                         <?= do_shortcode('[author_bio_v2]') ?>
                         <div class="dot"></div>
                         <div class="date">
