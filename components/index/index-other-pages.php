@@ -132,6 +132,10 @@ Note: This new hero is visible only for admin
         width: 17px;
         height: 17px;
     }
+    .share-post .social-icons-v3 {
+        padding: 0;
+        gap: 13px
+    }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="container-fluid g-0 p-0">
