@@ -71,6 +71,7 @@ $category_colour = get_field('category_colour', $cat) ? get_field('category_colo
 $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1' ;
 ?>
 <div class="post-hero" style="--bg-color: <?=  $category_colour ?>; --text-color: <?=  $category_text_color?>">
+
     <div class="container-fluid g-0 p-0">
         <div class="row g-0 flex-column-reverse flex-lg-row">
             <div class="col-lg-6 d-flex align-items-center">
