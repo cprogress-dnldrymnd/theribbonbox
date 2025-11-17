@@ -689,14 +689,14 @@ function wcc_change_breadcrumb_delimiter($defaults)
  * get_post_categories_as_links
  *
  * Retrieves the categories for a given post (or the current post) and
- * formats them as a comma-separated string of HTML anchor links.
+ * formats them as a string of HTML anchor links.
  *
  * @param int|null $post_id Optional. The ID of the post. Defaults to the current post ID.
- * @param string $separator Optional. The string to use between category links. Defaults to ', '.
+ * @param string $separator Optional. The string to use between category links. Defaults to ''. (No separator)
  * @param string $css_class Optional. A CSS class to apply to the anchor tags. Defaults to 'post-category-link'.
  * @return string The formatted HTML string of category links, or an empty string if none are found.
  */
-function get_post_categories_as_links($post_id = null, $separator = ', ', $css_class = 'post-category-link') {
+function get_post_categories_as_links($post_id = null, $separator = '', $css_class = 'post-category-link') {
 
     // Ensure we are in a WordPress environment and categories can be retrieved
     if (!function_exists('get_the_category') || !function_exists('get_category_link')) {
