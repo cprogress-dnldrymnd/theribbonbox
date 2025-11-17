@@ -178,7 +178,11 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
         padding: 0;
         gap: 13px
     }
-
+@media(max-width: 767px) {
+    .post-hero-content {
+        padding: 20px;
+    }
+}
 </style>
 
 <div class="post-hero" style="--bg-color: <?=  $category_colour ?>; --text-color: <?=  $category_text_color?>">
