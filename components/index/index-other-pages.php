@@ -157,6 +157,13 @@ Note: This new hero is visible only for admin
     }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
+    <div class="d-none">
+       <pre>
+         <?php
+        var_dump(get_post_first_level_term(get_the_ID(), 'category'));
+        ?>
+       </pre>
+    </div>
     <div class="container-fluid g-0 p-0">
         <div class="row g-0">
             <div class="col-lg-6 d-flex  align-items-center">

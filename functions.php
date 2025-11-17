@@ -736,3 +736,36 @@ function get_post_categories_as_links($post_id = null, $separator = '', $css_cla
     // Join the array of links with the specified separator and return the result
     return implode($separator, $links);
 }
+
+/**
+ * Retrieves the top-most ancestor term object associated with a specific post ID.
+ * This function finds all terms for the given post/taxonomy, and then returns 
+ * the top-level ancestor for the *first* term found.
+ *
+ * @param int $post_id The ID of the post.
+ * @param string $taxonomy The name of the taxonomy (e.g., 'category', 'product_cat').
+ * @return \WP_Term|null The top-level ancestor term object, or null if no term is found.
+ */
+function get_post_first_level_term($post_id, $taxonomy)
+{
+    if (! is_numeric($post_id) || (int) $post_id <= 0) {
+        return null;
+    }
+
+    // 1. Get all terms assigned to the post for the specified taxonomy.
+    // We only need one term to determine the primary lineage.
+    $terms = get_the_terms($post_id, $taxonomy);
+
+    if (is_wp_error($terms) || empty($terms)) {
+        return null;
+    }
+
+    // 2. We use the first term in the array to determine the first-level ancestor.
+    // In many cases, only one primary category/term is desired.
+    $first_term = reset($terms);
+
+    // 3. Use the internal helper function to find its top-level ancestor.
+    $first_level_term = _get_top_ancestor_term($first_term, $taxonomy);
+
+    return $first_level_term;
+}
