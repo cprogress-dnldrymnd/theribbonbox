@@ -65,7 +65,7 @@ $tags_links = get_the_tag_list('', $separate_meta);
 
 if(current_user_can('administrator')) { ?>
 Note: This new hero is visible only for admin
-<div class="post-hero">
+<div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="container-fluid g-0 p-0">
         <div class="row g-0">
             <div class="col-lg-6">
