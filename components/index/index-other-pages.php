@@ -101,6 +101,7 @@ Note: This new hero is visible only for admin
                     <div class="post-excerpt">
                         <?php the_excerpt() ?>
                     </div>
+                    <?= do_shortcode('[author_bio_v2]') ?>
                 </div>
             </div>
             <div class="col-lg-6">
