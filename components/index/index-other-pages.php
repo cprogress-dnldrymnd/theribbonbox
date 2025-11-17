@@ -150,8 +150,8 @@ Note: This new hero is visible only for admin
                     </div>
                     <div class="post-categories d-flex flex-wrap">
                         <?=  get_post_categories_as_links(get_the_ID()) ?>
-                        
                     </div>
+                    <?= do_shortcode('[share_post]') ?>
                 </div>
             </div>
             <div class="col-lg-6">

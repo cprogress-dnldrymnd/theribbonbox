@@ -736,19 +736,3 @@ function get_post_categories_as_links($post_id = null, $separator = '', $css_cla
     // Join the array of links with the specified separator and return the result
     return implode($separator, $links);
 }
-
-function share_post()
-{
-    ob_start();
-?>
-    <div class="share-post">
-        <div>SHARE</div>
-        <div class="giveaway-outer-form giveaway-outer giveaway-thanks" style="margin:0;">
-            <div class="giveaway-inner-form giveaway-inner" style="padding:0;">
-                <?= create_item_socials(get_permalink(get_the_ID()), get_the_title()) ?>
-            </div>
-        </div>
-    </div>
-<?php
-    return ob_get_clean();
-}
