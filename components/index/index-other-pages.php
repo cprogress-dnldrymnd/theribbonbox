@@ -119,6 +119,7 @@ Note: This new hero is visible only for admin
         border-radius: 50px;
         color: #3B1527;
         background-color: #F77D67;
+        line-height: 1;
     }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
