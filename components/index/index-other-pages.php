@@ -104,6 +104,9 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
     }
     .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb {
         font-size: 0;
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
     }
     .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
         font-size: 14px;
