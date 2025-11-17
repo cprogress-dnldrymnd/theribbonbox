@@ -598,6 +598,7 @@
         .blog-top-ban .blog-l-text-out {
             margin-top: 0;
             border-top: none !important;
+            padding-top: 50px;
         }
 
         /*responsive*/
