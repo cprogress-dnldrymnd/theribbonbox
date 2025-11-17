@@ -72,6 +72,10 @@ Note: This new hero is visible only for admin
     .post-hero-content h1 ,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
         color: inherit;
     }
+    .post-hero-content h1 {
+        text-align: left;
+        font-size: 69px;
+    }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="container-fluid g-0 p-0">
