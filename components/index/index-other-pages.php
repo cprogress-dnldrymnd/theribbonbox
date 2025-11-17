@@ -66,6 +66,9 @@ $tags_links = get_the_tag_list('', $separate_meta);
 if(current_user_can('administrator')) { ?>
 Note: This new hero is visible only for admin
 <style>
+    .post-hero-content {
+        padding: 40px;
+    }
     .post-hero-content h1 ,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
         color: inherit;
     }
