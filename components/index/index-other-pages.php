@@ -84,6 +84,9 @@ Note: This new hero is visible only for admin
         height: 100%;
         object-fit: cover;
     }
+    .author-bio-v2 .author-bio-inner .author-image {
+        width: 63px;
+    }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="container-fluid g-0 p-0">
