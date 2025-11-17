@@ -75,6 +75,8 @@ Note: This new hero is visible only for admin
     .post-hero-content h1 {
         text-align: left;
         font-size: 69px;
+        margin-top: 0;
+        font-weight: bold;
     }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
