@@ -78,11 +78,15 @@ Note: This new hero is visible only for admin
         margin-top: 0;
         font-weight: bold;
     }
+    .post-image img {
+        height: 100%;
+        object-fit: cover;
+    }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="container-fluid g-0 p-0">
-        <div class="row g-0 align-items-center">
-            <div class="col-lg-6">
+        <div class="row g-0">
+            <div class="col-lg-6 d-flex  align-items-center">
                 <div class="post-hero-content">
                     <div class="breadcrumbs-v2">
                         <?= woocommerce_breadcrumb(); ?>
@@ -95,7 +99,7 @@ Note: This new hero is visible only for admin
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="post-image image-box">
+                <div class="post-image image-box h-100">
                     <?= get_the_post_thumbnail(get_the_ID(), 'large') ?>
                 </div>
             </div>
