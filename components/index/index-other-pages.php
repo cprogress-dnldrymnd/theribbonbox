@@ -96,7 +96,7 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
     .post-title {
         margin-top: 20px;
     }
-    .post-hero-content h1 ,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
+    .post-hero-content h1 ,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb span {
         color: var(--text-color);
     }
     .post-hero-content h1 {
@@ -147,7 +147,7 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
         font-weight: bold;
         padding: 7px 18px;
         border-radius: 50px;
-        color: var(--bg-color);
+        color: #3B1527;
         background-color: #F77D67;
         line-height: 1;
     }
