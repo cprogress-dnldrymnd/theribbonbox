@@ -124,6 +124,9 @@ Note: This new hero is visible only for admin
         background-color: #F77D67;
         line-height: 1;
     }
+    .share-post {
+        margin-top: 30px;
+    }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="container-fluid g-0 p-0">
