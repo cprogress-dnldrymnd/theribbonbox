@@ -172,7 +172,7 @@ Note: This new hero is visible only for admin
                     <div class="post-excerpt">
                         <?php the_excerpt() ?>
                     </div>
-                    <div class="author-date d-flex gap-3 align-items-center">
+                    <div class="author-date d-flex gap-3 align-items-center flex-wrap">
                         <?= do_shortcode('[author_bio_v2]') ?>
                         <div class="dot"></div>
                         <div class="date">
