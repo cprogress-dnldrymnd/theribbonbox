@@ -93,12 +93,16 @@ Note: This new hero is visible only for admin
     }
     .author-bio-v2 .author-bio-inner .author-details{
         display: flex;
+        padding: 0;
     }
     .author-date .dot {
         border-radius: 50%;
         background-color: #F77D67;
         width: 5px;
         height: 5px;
+    }
+    .author-bio-v2 .author-bio-inner {
+        gap: 16px;
     }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
