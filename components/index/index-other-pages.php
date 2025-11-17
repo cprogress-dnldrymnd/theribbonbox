@@ -96,6 +96,9 @@ Note: This new hero is visible only for admin
                             <?php the_title() ?>
                         </h1>
                     </div>
+                    <div class="post-excerpt">
+                        <?php the_excerpt() ?>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
