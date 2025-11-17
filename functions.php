@@ -696,7 +696,8 @@ function wcc_change_breadcrumb_delimiter($defaults)
  * @param string $css_class Optional. A CSS class to apply to the anchor tags. Defaults to 'post-category-link'.
  * @return string The formatted HTML string of category links, or an empty string if none are found.
  */
-function get_post_categories_as_links($post_id = null, $separator = '', $css_class = 'post-category-link') {
+function get_post_categories_as_links($post_id = null, $separator = '', $css_class = 'post-category-link')
+{
 
     // Ensure we are in a WordPress environment and categories can be retrieved
     if (!function_exists('get_the_category') || !function_exists('get_category_link')) {
@@ -734,4 +735,20 @@ function get_post_categories_as_links($post_id = null, $separator = '', $css_cla
 
     // Join the array of links with the specified separator and return the result
     return implode($separator, $links);
+}
+
+function share_post()
+{
+    ob_start();
+?>
+    <div class="share-post">
+        <div>SHARE</div>
+        <div class="giveaway-outer-form giveaway-outer giveaway-thanks" style="margin:0;">
+            <div class="giveaway-inner-form giveaway-inner" style="padding:0;">
+                <?= create_item_socials(get_permalink(get_the_ID()), get_the_title()) ?>
+            </div>
+        </div>
+    </div>
+<?php
+    return ob_get_clean();
 }
