@@ -160,6 +160,7 @@ Note: This new hero is visible only for admin
     <div class="d-none">
        <pre>
          <?php
+        var_dump(get_top_level_term_by_post_id(get_the_ID(), 'category'));
         ?>
        </pre>
     </div>

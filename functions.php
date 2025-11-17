@@ -738,34 +738,66 @@ function get_post_categories_as_links($post_id = null, $separator = '', $css_cla
 }
 
 /**
- * Retrieves the top-most ancestor term object associated with a specific post ID.
- * This function finds all terms for the given post/taxonomy, and then returns 
- * the top-level ancestor for the *first* term found.
+ * Function to get the highest level (root) term for a given post in a specific taxonomy.
+ *
+ * This is useful for hierarchical taxonomies (like categories or custom hierarchical ones)
+ * where you need the main parent category of a post.
  *
  * @param int $post_id The ID of the post.
- * @param string $taxonomy The name of the taxonomy (e.g., 'category', 'product_cat').
- * @return \WP_Term|null The top-level ancestor term object, or null if no term is found.
+ * @param string $taxonomy The slug of the taxonomy (e.g., 'category', 'product_cat').
+ * @return WP_Term|false The top-level WP_Term object, or false if no terms are found or an error occurs.
  */
-function get_post_first_level_term($post_id, $taxonomy)
-{
-    if (! is_numeric($post_id) || (int) $post_id <= 0) {
-        return null;
+function get_top_level_term_by_post_id( $post_id, $taxonomy ) {
+    // Ensure both parameters are provided and the post exists.
+    if ( ! $post_id || ! $taxonomy || ! get_post( $post_id ) ) {
+        return false;
     }
 
-    // 1. Get all terms assigned to the post for the specified taxonomy.
-    // We only need one term to determine the primary lineage.
-    $terms = get_the_terms($post_id, $taxonomy);
+    // 1. Get all terms associated with the post in the specified taxonomy.
+    $terms = wp_get_post_terms( $post_id, $taxonomy, array( 'fields' => 'all' ) );
 
-    if (is_wp_error($terms) || empty($terms)) {
-        return null;
+    // Check if any terms were found.
+    if ( is_wp_error( $terms ) || empty( $terms ) ) {
+        return false;
     }
 
-    // 2. We use the first term in the array to determine the first-level ancestor.
-    // In many cases, only one primary category/term is desired.
-    $first_term = reset($terms);
+    $top_level_term = false;
+    $top_level_id   = 0;
 
-    // 3. Use the internal helper function to find its top-level ancestor.
-    $first_level_term = _get_top_ancestor_term($first_term, $taxonomy);
+    // 2. Iterate through the terms to find the highest ancestor.
+    foreach ( $terms as $term ) {
+        // If the term has a parent, find its ancestors.
+        if ( $term->parent ) {
+            // Get all ancestor IDs for the current term (sorted from closest parent to root).
+            $ancestors = get_ancestors( $term->term_id, $taxonomy );
 
-    return $first_level_term;
+            // The last ID in the array is the root (top-level) term ID.
+            if ( ! empty( $ancestors ) ) {
+                $root_id = end( $ancestors );
+
+                // If this root is lower (or the same) as the currently found top_level_id,
+                // we update our current best root.
+                if ( $root_id !== $top_level_id ) {
+                    $top_level_id = $root_id;
+                    $top_level_term = get_term( $top_level_id, $taxonomy );
+                    // Break the loop if we've found the root. If a post has multiple top-level
+                    // terms, this will return the first one found among the terms.
+                    break;
+                }
+            } else {
+                // This scenario should only happen if get_ancestors() fails, but we handle it.
+                continue;
+            }
+        } else {
+            // This term IS a top-level term (parent is 0).
+            $top_level_term = $term;
+            $top_level_id = $term->term_id;
+            // If the term itself is top-level, we can return it immediately.
+            break;
+        }
+    }
+
+    // Fallback: If no top-level term was explicitly identified (e.g., post only in one child term),
+    // we return the top_level_term found in the loop.
+    return $top_level_term;
 }
