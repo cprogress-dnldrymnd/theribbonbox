@@ -128,6 +128,7 @@ Note: This new hero is visible only for admin
     }
     .author-bio-v2 .author-bio-inner {
         gap: 16px;
+        flex-wrap: nowrap;
     }
     .post-categories {
         gap: 13px;
