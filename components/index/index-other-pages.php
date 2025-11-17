@@ -107,6 +107,18 @@ Note: This new hero is visible only for admin
     .author-bio-v2 .author-bio-inner {
         gap: 16px;
     }
+    .post-categories {
+        gap: 13px;
+    }
+    .post-categories a {
+        font-family: 'Playfair Display';
+        font-size: 17px;
+        font-weight: bold;
+        padding: 7 18px;
+        border-radius: 50px;
+        color: #3B1527;
+        background-color: #F77D67;
+    }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="container-fluid g-0 p-0">
@@ -131,7 +143,7 @@ Note: This new hero is visible only for admin
                             <?php the_date() ?>
                         </div>
                     </div>
-                    <div class="post-categories">
+                    <div class="post-categories d-flex flex-wrap">
                         <?=  get_post_categories_as_links(get_the_ID()) ?>
                         
                     </div>
