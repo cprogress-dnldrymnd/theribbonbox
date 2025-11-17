@@ -98,7 +98,7 @@ Note: This new hero is visible only for admin
     .date {
         text-transform: uppercase;
     }
-    .author-date .dot {
+    .dot.dot {
         border-radius: 50%;
         background-color: #F77D67;
         width: 5px;
@@ -159,6 +159,7 @@ Note: This new hero is visible only for admin
                     </div>
                     <div class="share-post d-flex align-items-center gap-3">
                         <div>SHARE</div>
+                        <div class="dot"></div>
                         <?= create_item_socials_v3(get_the_permalink(), get_the_title()) ?>
                     </div>
                 </div>
