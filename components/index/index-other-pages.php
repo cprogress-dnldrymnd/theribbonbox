@@ -155,7 +155,7 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
         margin-top: 30px;
     }
     .share-post svg{
-        color: #FFDBD1;
+        color: var(--text-color);
         width: 17px;
         height: 17px;
     }
