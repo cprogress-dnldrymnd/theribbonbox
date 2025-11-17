@@ -24,7 +24,6 @@ function author_bio()
                     <?php if ($article_author) { ?>
                         <div class="article-author">
                             <?= $article_author ?>
-
                         </div>
                     <?php } ?>
                     <?php if ($article_author_role) { ?>
@@ -57,6 +56,43 @@ function author_bio()
     return ob_get_clean();
 }
 add_shortcode('author_bio', 'author_bio');
+
+function author_bio_v2()
+{
+    ob_start();
+    $article_author = get_field("article_author", get_the_ID());
+    $article_author_role = get_field("article_author_role", get_the_ID());
+    $article_bio_author_bio = get_field("article_bio_author_bio", get_the_ID());
+    $article_author_linkedin_url = get_field("article_author_linkedin_url", get_the_ID());
+    $article_author_image = get_field("article_author_image", get_the_ID());
+    $placeholder_id = 39014;
+    if ($article_author_image) {
+        $image_id = $article_author_image;
+    } else {
+        $image_id = $placeholder_id;
+    }
+    if ($article_author) {
+?>
+        <div class="author-bio author-bio-v2">
+            <div class="author-bio-inner">
+                <div class="author-image">
+                    <?= wp_get_attachment_image($image_id, 'large') ?>
+                </div>
+                <div class="author-details">
+                    <?php if ($article_author) { ?>
+                        <div class="article-author">
+                            <?= $article_author ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+
+        </div>
+    <?php
+    }
+    return ob_get_clean();
+}
+add_shortcode('author_bio_v2', 'author_bio_v2');
 
 
 function article_partnership()
