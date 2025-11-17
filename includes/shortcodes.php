@@ -76,7 +76,7 @@ function author_bio_v2()
         <div class="author-bio author-bio-v2">
             <div class="author-bio-inner">
                 <div class="author-image">
-                    <?= wp_get_attachment_image($image_id, 'large') ?>
+                    <?= wp_get_attachment_image($image_id, 'thumbnail') ?>
                 </div>
                 <div class="author-details">
                     <?php if ($article_author) { ?>
