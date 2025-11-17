@@ -366,7 +366,7 @@ function share_post()
 {
     ob_start();
 ?>
-    <div class="share-post">
+    <div class="share-post d-flex align-items-center">
         <div>SHARE</div>
         <div class="giveaway-outer-form giveaway-outer giveaway-thanks" style="margin:0;">
             <div class="giveaway-inner-form giveaway-inner" style="padding:0;">
