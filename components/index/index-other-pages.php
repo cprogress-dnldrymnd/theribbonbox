@@ -69,7 +69,16 @@ Note: This new hero is visible only for admin
     <div class="container-fluid g-0 p-0">
         <div class="row g-0">
             <div class="col-lg-6">
-
+                <div class="post-hero-content">
+                    <div class="breadcrumbs-v2">
+                        <?= woocommerce_breadcrumb(); ?>
+                    </div>
+                    <div class="post-title">
+                        <h1>
+                            <?php the_title() ?>
+                        </h1>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-6">
                 <div class="post-image image-box">
