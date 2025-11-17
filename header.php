@@ -589,7 +589,10 @@
             opacity: 1 !important;
             visibility: visible !important;
         }
-
+        .page-content-blg .is-search-form.is-search-form{
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
         /*responsive*/
 
         @media(min-width: 992px) {
