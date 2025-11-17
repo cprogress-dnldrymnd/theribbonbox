@@ -87,7 +87,9 @@ $category_text_color = get_field('category_text_color', $cat) ? : '#FFDBD1' ;
             font-size: 69px;
         }
     }
-   
+    .post-hero {
+        background-color: var(--bg-color);
+    }
     .post-hero-content {
         padding: 40px;
     }
@@ -164,11 +166,7 @@ $category_text_color = get_field('category_text_color', $cat) ? : '#FFDBD1' ;
 </style>
 
 <div class="post-hero" style="--bg-color: <?=  $category_colour ?>; --text-color: <?=  $category_text_color?> ?>">
-    <div class="d-none">
-       <pre>
-       
-       </pre>
-    </div>
+
     <div class="container-fluid g-0 p-0">
         <div class="row g-0">
             <div class="col-lg-6 d-flex  align-items-center">
