@@ -62,8 +62,26 @@ $tags_links = get_the_tag_list('', $separate_meta);
 //<h3>'.$currentcatname.'</h3>
 //<h1>'.get_the_title().'</h1>
 //<p>'.$text.'</p><h4>'.$author.get_the_date('j M Y', $post->ID).'</h4><div class="detail-page-socials">'. create_item_socials(get_permalink($post->ID), get_the_title()).'</div><hr class="hr-post">';
+
+if(current_user_can('administrator')) { ?>
+<div class="post-hero">
+    <div class="container-fluid g-0 p-0">
+        <div class="row g-0">
+            <div class="col-lg-6">
+
+            </div>
+            <div class="col-lg-6">
+                <div class="post-image image-box">
+                    <?= get_the_post_thumbnail(get_the_ID(), 'large') ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+}
 echo '
-    <div data-template="index-other-pages.php xxx" class="blog-top-ban blog-top-ban-main-content format-full">
+    <div data-template="index-other-pages.php" class="blog-top-ban blog-top-ban-main-content format-full">
         <!--<img class="blog-l-img" src="/wp-content/themes/lighttheme/images/logo-bl.png">-->
         <div class="blog-l-img">
             <img src="' . $iUrl . '">
