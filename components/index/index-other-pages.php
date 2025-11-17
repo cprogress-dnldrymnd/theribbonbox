@@ -67,7 +67,8 @@ if(current_user_can('administrator')) { ?>
 Note: This new hero is visible only for admin
 <?php
 $cat = get_top_level_term_by_post_id(get_the_ID(), 'category');
-echo $cat;
+$category_colour = get_field('category_colour', $cat);
+echo $category_colour;
 ?>
 <style>
     @media(min-width: 767px) {
