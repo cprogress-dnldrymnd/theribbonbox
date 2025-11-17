@@ -66,6 +66,22 @@ $tags_links = get_the_tag_list('', $separate_meta);
 if(current_user_can('administrator')) { ?>
 Note: This new hero is visible only for admin
 <style>
+    @media(min-width: 767px) {
+        .post-hero-content h1 {
+            font-size: 49px;
+        }
+    }
+    @media(min-width: 992px) {
+        .post-hero-content h1 {
+            font-size: 59px;
+        }
+    }
+    @media(min-width: 1200px) {
+        .post-hero-content h1 {
+            font-size: 69px;
+        }
+    }
+   
     .post-hero-content {
         padding: 40px;
     }
@@ -74,7 +90,6 @@ Note: This new hero is visible only for admin
     }
     .post-hero-content h1 {
         text-align: left;
-        font-size: 69px;
         margin-top: 0;
         font-weight: bold;
         line-height: 1.1;
