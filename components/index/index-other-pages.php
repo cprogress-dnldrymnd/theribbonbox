@@ -104,9 +104,12 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
     }
     .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb {
         font-size: 0;
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
+        display: flex !important;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb svg:last-child {
+        display: none;
     }
     .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
         font-size: 14px;
@@ -175,6 +178,7 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
         padding: 0;
         gap: 13px
     }
+
 </style>
 
 <div class="post-hero" style="--bg-color: <?=  $category_colour ?>; --text-color: <?=  $category_text_color?>">
