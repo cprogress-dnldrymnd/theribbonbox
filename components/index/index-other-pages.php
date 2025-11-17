@@ -154,7 +154,10 @@ Note: This new hero is visible only for admin
                     <div class="post-categories d-flex flex-wrap">
                         <?=  get_post_categories_as_links(get_the_ID()) ?>
                     </div>
-                    <?= create_item_socials_v3(get_the_permalink(), get_the_title()) ?>
+                    <div class="share-post d-flex align-items-center gap-3">
+                        <div>SHARE</div>
+                        <?= create_item_socials_v3(get_the_permalink(), get_the_title()) ?>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
