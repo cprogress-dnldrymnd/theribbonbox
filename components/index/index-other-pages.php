@@ -87,6 +87,10 @@ Note: This new hero is visible only for admin
     .author-bio-v2 .author-bio-inner .author-image {
         width: 63px;
     }
+    .author-bio-v2 .author-bio-inner .author-image img {
+        width: 63px !important;
+        height: 63px;
+    }
     .author-bio-v2 .author-bio-inner .author-details{
         display: flex;
     }
