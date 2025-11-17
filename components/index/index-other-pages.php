@@ -85,6 +85,9 @@ Note: This new hero is visible only for admin
     .post-hero-content {
         padding: 40px;
     }
+    .post-title {
+        margin-top: 20px;
+    }
     .post-hero-content h1 ,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
         color: inherit;
     }
