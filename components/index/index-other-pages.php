@@ -65,6 +65,11 @@ $tags_links = get_the_tag_list('', $separate_meta);
 
 if(current_user_can('administrator')) { ?>
 Note: This new hero is visible only for admin
+<?php
+$cat = get_top_level_term_by_post_id(get_the_ID(), 'category');
+$category_colour = get_field('category_colour', $cat);
+echo $cat;
+?>
 <style>
     @media(min-width: 767px) {
         .post-hero-content h1 {
@@ -156,12 +161,11 @@ Note: This new hero is visible only for admin
         gap: 13px
     }
 </style>
+
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="d-none">
        <pre>
-         <?php
-        var_dump(get_top_level_term_by_post_id(get_the_ID(), 'category'));
-        ?>
+       
        </pre>
     </div>
     <div class="container-fluid g-0 p-0">
