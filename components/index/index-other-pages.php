@@ -102,6 +102,12 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
     .post-hero-content h1 ,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb  {
         color: var(--text-color);
     }
+    .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb {
+        font-size: 0;
+    }
+    .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
+        font-size: 14px;
+    }
     .post-hero-content h1 {
         text-align: left;
         margin-top: 0;
