@@ -165,7 +165,7 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
     }
 </style>
 
-<div class="post-hero" style="--bg-color: <?=  $category_colour ?>; --text-color: <?=  $category_text_color?> ?>">
+<div class="post-hero" style="--bg-color: <?=  $category_colour ?>; --text-color: <?=  $category_text_color?>">
 
     <div class="container-fluid g-0 p-0">
         <div class="row g-0">
