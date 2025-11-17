@@ -115,28 +115,7 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
 <?php
 }
 echo '
-    <div data-template="index-other-pages.php" class="blog-top-ban blog-top-ban-main-content format-full">
-        <!--<img class="blog-l-img" src="/wp-content/themes/lighttheme/images/logo-bl.png">-->
-        <div class="blog-l-img">
-            <img src="' . $iUrl . '">
-        </div>
-        <div class="blog-l-text-out" '.$border.'>
-            '.$featured_cur.'
-            <header class="blog-l-text blog-p-text" >
-                <h3>'.$currentcatname.'</h3>
-                <h1>'.get_the_title($post->ID).'</h1>
-                <p>'. (isset($text) ? $text : '') .'</p>
-                <h4>
-                    <span itemscope itemtype="https://schema.org/Person">
-                        <span itemprop="name" title="' . $author_bio . '">'. $author .'</span>
-                        <span description="'. $author_bio .'"></span>
-                    </span>
-                    '.get_the_date('j M Y', $post->ID).'
-                </h4>
-                <div class="detail-page-socials">'. create_item_socials(get_permalink($post->ID), get_the_title()).'</div>
-            </header>
-            <hr class="hr-post">';
-
+    <div data-template="index-other-pages.php" class="blog-top-ban blog-top-ban-main-content format-full">';
             if ($post_type == 'podcasts'){
                 $podcast_iframe_code = get_field("podcast_iframe_code", $post->ID);
                 if ( !empty($podcast_iframe_code) && false){
