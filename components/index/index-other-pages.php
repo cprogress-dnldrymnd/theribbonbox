@@ -81,9 +81,11 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
                             <?php the_title() ?>
                         </h1>
                     </div>
+                    <?php if(get_the_excerpt()) { ?>
                     <div class="post-excerpt">
-                        <?php the_excerpt() ?>
+                        <?=  get_the_excerpt() ?> ?>
                     </div>
+                    <?php } ?>
                     <div class="author-date d-flex gap-3 align-items-center flex-wrap">
                         <?= do_shortcode('[author_bio_v2]') ?>
                         <div class="dot"></div>
