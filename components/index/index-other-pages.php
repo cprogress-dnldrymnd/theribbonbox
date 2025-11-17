@@ -63,7 +63,7 @@ $tags_links = get_the_tag_list('', $separate_meta);
 //<h1>'.get_the_title().'</h1>
 //<p>'.$text.'</p><h4>'.$author.get_the_date('j M Y', $post->ID).'</h4><div class="detail-page-socials">'. create_item_socials(get_permalink($post->ID), get_the_title()).'</div><hr class="hr-post">';
 echo '
-    <div data-template="index-other-pages.php" class="blog-top-ban blog-top-ban-main-content format-full">
+    <div data-template="index-other-pages.php xxx" class="blog-top-ban blog-top-ban-main-content format-full">
         <!--<img class="blog-l-img" src="/wp-content/themes/lighttheme/images/logo-bl.png">-->
         <div class="blog-l-img">
             <img src="' . $iUrl . '">
