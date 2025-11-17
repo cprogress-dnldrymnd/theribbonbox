@@ -77,6 +77,8 @@ Note: This new hero is visible only for admin
         font-size: 69px;
         margin-top: 0;
         font-weight: bold;
+        line-height: 1.1;
+        margin-bottom: 30px;
     }
     .post-image img {
         height: 100%;
