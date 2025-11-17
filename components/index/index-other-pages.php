@@ -89,7 +89,10 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
     }
     .post-hero {
         background-color: var(--bg-color);
+        color: var(--text-color);
+
     }
+
     .post-hero-content {
         padding: 40px;
     }
