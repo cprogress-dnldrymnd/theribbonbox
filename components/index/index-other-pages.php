@@ -61,10 +61,8 @@ $tags_links = get_the_tag_list('', $separate_meta);
 //<div class="blog-l-text blog-p-text" >
 //<h3>'.$currentcatname.'</h3>
 //<h1>'.get_the_title().'</h1>
-//<p>'.$text.'</p><h4>'.$author.get_the_date('j M Y', $post->ID).'</h4><div class="detail-page-socials">'. create_item_socials(get_permalink($post->ID), get_the_title()).'</div><hr class="hr-post">';
+//<p>'.$text.'</p><h4>'.$author.get_the_date('j M Y', $post->ID).'</h4><div class="detail-page-socials">'. create_item_socials(get_permalink($post->ID), get_the_title()).'</div><hr class="hr-post">';?>
 
-if(current_user_can('administrator')) { ?>
-Note: This new hero is visible only for admin
 <?php
 $cat = get_top_level_term_by_post_id(get_the_ID(), 'category');
 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
@@ -113,7 +111,6 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
     </div>
 </div>
 <?php
-}
 echo '
     <div data-template="index-other-pages.php" class="blog-top-ban blog-top-ban-main-content format-full">';
             if ($post_type == 'podcasts'){
