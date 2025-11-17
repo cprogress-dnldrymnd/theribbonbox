@@ -103,6 +103,7 @@ Note: This new hero is visible only for admin
     }
     .author-date {
         margin-top: 30px;
+        margin-bottom: 30px;
     }
     .author-bio-v2 .author-bio-inner {
         gap: 16px;
