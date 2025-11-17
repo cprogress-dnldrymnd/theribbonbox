@@ -96,7 +96,7 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
     .post-title {
         margin-top: 20px;
     }
-    .post-hero-content h1 ,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb span {
+    .post-hero-content h1 ,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb  {
         color: var(--text-color);
     }
     .post-hero-content h1 {
