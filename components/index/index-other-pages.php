@@ -67,8 +67,9 @@ if(current_user_can('administrator')) { ?>
 Note: This new hero is visible only for admin
 <?php
 $cat = get_top_level_term_by_post_id(get_the_ID(), 'category');
-$category_colour = get_field('category_colour', $cat);
-echo $category_colour;
+$category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
+$category_text_color = get_field('category_text_color', $cat) ? : '#FFDBD1' ;
+
 ?>
 <style>
     @media(min-width: 767px) {
@@ -94,7 +95,7 @@ echo $category_colour;
         margin-top: 20px;
     }
     .post-hero-content h1 ,.post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
-        color: inherit;
+        color: var(--text-color);
     }
     .post-hero-content h1 {
         text-align: left;
@@ -144,7 +145,7 @@ echo $category_colour;
         font-weight: bold;
         padding: 7px 18px;
         border-radius: 50px;
-        color: #3B1527;
+        color: var(--bg-color);
         background-color: #F77D67;
         line-height: 1;
     }
@@ -162,7 +163,7 @@ echo $category_colour;
     }
 </style>
 
-<div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
+<div class="post-hero" style="--bg-color: <?=  $category_colour ?>; --text-color: <?=  $category_text_color?> ?>">
     <div class="d-none">
        <pre>
        
