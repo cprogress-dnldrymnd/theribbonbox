@@ -114,7 +114,7 @@ Note: This new hero is visible only for admin
         font-family: 'Playfair Display';
         font-size: 17px;
         font-weight: bold;
-        padding: 7 18px;
+        padding: 7px 18px;
         border-radius: 50px;
         color: #3B1527;
         background-color: #F77D67;
