@@ -129,6 +129,8 @@ Note: This new hero is visible only for admin
     }
     .share-post svg{
         color: #FFDBD1;
+        width: 17px;
+        height: 17px;
     }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
