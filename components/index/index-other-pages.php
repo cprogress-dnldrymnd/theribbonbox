@@ -95,6 +95,9 @@ Note: This new hero is visible only for admin
         display: flex;
         padding: 0;
     }
+    .date {
+        text-transform: uppercase;
+    }
     .author-date .dot {
         border-radius: 50%;
         background-color: #F77D67;
