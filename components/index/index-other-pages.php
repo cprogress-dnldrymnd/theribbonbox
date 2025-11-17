@@ -87,6 +87,9 @@ Note: This new hero is visible only for admin
     .author-bio-v2 .author-bio-inner .author-image {
         width: 63px;
     }
+    .author-bio-v2 .author-bio-inner .author-details{
+        display: flex;
+    }
 </style>
 <div class="post-hero" style="background-color: #3B1527; color: #FFDBD1">
     <div class="container-fluid g-0 p-0">
