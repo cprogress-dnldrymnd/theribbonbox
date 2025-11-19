@@ -200,7 +200,7 @@ function blog_post_style_2($post_args)
                                 </div>
                             <?php } else { ?>
                                 <?= $post_args['select_competition_date'] ?>
-                                <?php if (is_past_date($post_args['select_competition_date']) != false) { ?>
+                                <?php if (isDatePast($post_args['select_competition_date']) != false) { ?>
                                     <div class="blog-btns">
                                         <a class="button-expert"
                                             href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
@@ -233,7 +233,34 @@ function blog_post_style_2($post_args)
 }
 
 add_shortcode('blog_post_style_2', 'blog_post_style_2');
+/**
+ * Method 1: Using the DateTime class (Recommended/OOP Style)
+ * This is the most robust method as it handles timezones and leap years correctly.
+ */
+function isDatePast($dateString)
+{
+    // Get current date, reset time to midnight for accurate day comparison
+    $today = new DateTime();
+    $today->setTime(0, 0, 0);
 
+    // Create DateTime object from input
+    $inputDate = DateTime::createFromFormat('Y-m-d', $dateString);
+
+    // Check if input format was valid
+    if (!$inputDate) {
+        return "Invalid date format";
+    }
+
+    // Reset time to midnight for the input date as well
+    $inputDate->setTime(0, 0, 0);
+
+    // Compare
+    if ($inputDate < $today) {
+        return true;
+    } else {
+        return false;
+    }
+}
 /**
  * Checks if a given date string represents a date in the past.
  *
@@ -341,7 +368,7 @@ function create_item_socials_v3($url, $title)
 
 ?>
     <div class="social-icons-v3">
-        <a target="_blank"  href="whatsapp://send?text=<?= $title . ' ' . $url ?>" data-action="share/whatsapp/share" rel="nofollow">
+        <a target="_blank" href="whatsapp://send?text=<?= $title . ' ' . $url ?>" data-action="share/whatsapp/share" rel="nofollow">
             <?= $theme_icons['whatsapp'] ?>
         </a>
         <a href="mailto:?subject<?= $title ?>+&body=<?= $url  ?>" target="_blank" rel="nofollow">
