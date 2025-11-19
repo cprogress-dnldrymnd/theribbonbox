@@ -207,7 +207,7 @@ function blog_post_style_2($post_args)
                                     </div>
                                 <?php } else { ?>
                                     <div class="blog-btns">
-                                        <a class="button-expert"
+                                        <a class="button-expert xxx2"
                                             href="<?= $post_args['post_permalink'] ?>">Giveaway Closed</a>
                                     </div>
                                 <?php } ?>
