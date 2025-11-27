@@ -28,7 +28,7 @@ if (current_user_can('administrator')) {
                             </div>
                         <?php } ?>
                         <div class="author-date d-flex gap-3 align-items-center flex-wrap">
-                            <?= do_shortcode("[author_bio_v2 id=$post_id]") ?>
+                            <?= do_shortcode("[author_bio_v2 avatar=0 id=$post_id]") ?>
                             <div class="dot"></div>
                             <div class="date">
                                 <?= get_the_date('', $post_id) ?>
