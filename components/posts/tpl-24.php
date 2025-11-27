@@ -36,7 +36,7 @@ if (current_user_can('administrator')) {
                 min-height: calc(100vh - 116px);
             }
         }
-        .post-title a:hover {
+        .post-title:hover {
             text-decoration: underline;
         }
     </style>
