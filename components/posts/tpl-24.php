@@ -1,4 +1,3 @@
-
 <?php
 
 if (current_user_can('administrator')) {
@@ -7,22 +6,29 @@ if (current_user_can('administrator')) {
     $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
     $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
 ?>
-<style>
-    .post-hero {
-        margin-top: 54px;
-    }
+    <style>
+        .post-hero {
+            margin-top: 54px;
+        }
 
-    .post-hero-content {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+        .post-hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    .blog-tpl-24 {
-        display: none !important;
-    }
-</style>
+        .blog-tpl-24 {
+            display: none !important;
+        }
+
+        @media(min-width: 992px) {
+            .post-hero-content {
+
+                min-height: 100vh;
+
+            }
+        }
+    </style>
     <div class="post-hero" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
         <div class="container-fluid g-0 p-0">
             <div class="row g-0 flex-column-reverse flex-lg-row">
