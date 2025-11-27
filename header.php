@@ -343,8 +343,8 @@
             flex-wrap: wrap;
         }
 
-        .instagram.instagram,
-        .ticktok.ticktok {
+        .instagram.instagram:not(.icon-bg),
+        .ticktok.ticktok:not(.icon-bg) {
             padding-left: 0 !important;
             background-image: none;
             display: inline-flex;
