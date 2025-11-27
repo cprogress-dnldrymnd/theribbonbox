@@ -113,25 +113,25 @@ echo '</div></td>';
 echo '<td><h3>Follow</h3>';
 echo '<div class="social-links-ex">';
 if ( !empty($facebook_link) ):
-    echo '<a href="'.$facebook_link.'" target="_blank" class="facebook"></a>';
+    echo '<a href="'.$facebook_link.'" target="_blank" class="facebook icon-bg"></a>';
 endif;
 if ( !empty($twitter_link) ):
-    echo '<a href="'.$twitter_link.'" target="_blank" class="twitter"></a>';
+    echo '<a href="'.$twitter_link.'" target="_blank" class="twitter icon-bg"></a>';
 endif;
 if ( !empty($instagram_link) ):
-    echo '<a href="'.$instagram_link.'" target="_blank" class="instagram"></a>';
+    echo '<a href="'.$instagram_link.'" target="_blank" class="instagram icon-bg"></a>';
 endif;
 if ( !empty($pinterest_link) ):
-    echo '<a href="'.$pinterest_link.'" target="_blank" class="pinterest"></a>';
+    echo '<a href="'.$pinterest_link.'" target="_blank" class="pinterest icon-bg"></a>';
 endif;
 if ( !empty($linkedin_link) ):
-    echo '<a href="'.$linkedin_link.'" target="_blank" class="linkedin"></a>';
+    echo '<a href="'.$linkedin_link.'" target="_blank" class="linkedin icon-bg"></a>';
 endif;
 if ( !empty($youtube_link) ):
-    echo '<a href="'.$youtube_link.'" target="_blank" class="youtube"></a>';
+    echo '<a href="'.$youtube_link.'" target="_blank" class="youtube icon-bg"></a>';
 endif;
 if ( !empty($tiktok_link) ):
-    echo '<a href="'.$tiktok_link.'" target="_blank" class="ticktok"></a>';
+    echo '<a href="'.$tiktok_link.'" target="_blank" class="ticktok icon-bg"></a>';
 endif;
 echo '</div>';
 echo '</td>';

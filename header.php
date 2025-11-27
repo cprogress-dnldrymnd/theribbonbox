@@ -1016,6 +1016,10 @@
             background-color: transparent;
         }
 
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu {
+            background-color: transparent;
+        }
+
         @media (min-width: 992px) {
             .d-lg-none {
                 display: initial !important;
