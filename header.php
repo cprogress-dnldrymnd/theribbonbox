@@ -795,9 +795,7 @@
                 background-color: transparent;
                 width: 100%;
             }
-        }
-
-        @media(max-width: 991px) {
+    
             body {
                 --menu-top: 88.5px
             }

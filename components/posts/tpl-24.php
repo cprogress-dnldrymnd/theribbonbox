@@ -23,7 +23,12 @@ if (current_user_can('administrator')) {
         .post-hero {
             margin-bottom: 50px;
         }
-        @media(min-width: 992px) {
+         @media(min-width: 992px) {
+            .post-hero-content {
+                min-height: calc(100vh - 97.75);
+            }
+        }
+        @media(min-width: 1200px) {
             .post-hero-content {
                 min-height: calc(100vh - 116px);
             }
