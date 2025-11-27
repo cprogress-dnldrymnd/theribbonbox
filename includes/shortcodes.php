@@ -69,11 +69,11 @@ function author_bio_v2($atts)
         )
     );
 
-    $article_author = get_field("article_author", get_the_ID());
-    $article_author_role = get_field("article_author_role", get_the_ID());
-    $article_bio_author_bio = get_field("article_bio_author_bio", get_the_ID());
-    $article_author_linkedin_url = get_field("article_author_linkedin_url", get_the_ID());
-    $article_author_image = get_field("article_author_image", get_the_ID());
+    $article_author = get_field("article_author", $id);
+    $article_author_role = get_field("article_author_role", $id);
+    $article_bio_author_bio = get_field("article_bio_author_bio", $id);
+    $article_author_linkedin_url = get_field("article_author_linkedin_url", $id);
+    $article_author_image = get_field("article_author_image", $id);
     $placeholder_id = 39014;
     if ($article_author_image) {
         $image_id = $article_author_image;
