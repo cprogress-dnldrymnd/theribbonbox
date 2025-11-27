@@ -610,7 +610,7 @@
         }
         /*responsive*/
 
-        @media(min-width: 992px) {
+        @media(min-width: 1001px) {
 
             #offCanvasMenu .toggle-submenu.toggle-submenu {
                 display: none !important;
@@ -762,7 +762,7 @@
             }
         }
 
-        @media(max-width: 1199px) and (min-width: 992px) {
+        @media(max-width: 1199px) and (min-width: 1001px) {
 
             #offCanvasSearch {
                 height: 100vh !important;
@@ -1021,7 +1021,7 @@
             }
         }
 
-        @media(min-width: 992px) {
+        @media(min-width: 1001px) {
             .post-hero-content h1 {
                 font-size: 59px;
             }
