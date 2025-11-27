@@ -20,7 +20,9 @@ if (current_user_can('administrator')) {
         .blog-tpl-24 {
             display: none !important;
         }
-
+        .post-hero {
+            margin-bottom: 50px;
+        }
         @media(min-width: 992px) {
             .post-hero-content {
                 min-height: 100vh;
