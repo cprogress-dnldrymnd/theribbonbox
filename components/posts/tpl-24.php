@@ -27,39 +27,42 @@ if (current_user_can('administrator')) {
             }
         }
     </style>
-    <div class="post-hero" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
-        <div class="container-fluid g-0 p-0">
-            <div class="row g-0 flex-column-reverse flex-lg-row">
-                <div class="col-lg-6 d-flex align-items-center">
-                    <div class="post-hero-content">
-                        <div class="post-title">
-                            <h1>
-                                <?= get_the_title($post_id) ?>
-                            </h1>
-                        </div>
-                        <?php if (get_the_excerpt($post_id)) { ?>
-                            <div class="post-excerpt">
-                                <?= get_the_excerpt($post_id) ?>
+    <div class="trb-px">
+        <div class="post-hero" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
+            <div class="container-fluid g-0 p-0">
+                <div class="row g-0 flex-column-reverse flex-lg-row">
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <div class="post-hero-content">
+                            <div class="post-title">
+                                <h1>
+                                    <?= get_the_title($post_id) ?>
+                                </h1>
                             </div>
-                        <?php } ?>
-                        <div class="author-date d-flex gap-3 align-items-center flex-wrap">
-                            <?= do_shortcode("[author_bio_v2 avatar=0 id=$post_id]") ?>
-                            <div class="dot"></div>
-                            <div class="date">
-                                <?= get_the_date('', $post_id) ?>
+                            <?php if (get_the_excerpt($post_id)) { ?>
+                                <div class="post-excerpt">
+                                    <?= get_the_excerpt($post_id) ?>
+                                </div>
+                            <?php } ?>
+                            <div class="author-date d-flex gap-3 align-items-center flex-wrap">
+                                <?= do_shortcode("[author_bio_v2 avatar=0 id=$post_id]") ?>
+                                <div class="dot"></div>
+                                <div class="date">
+                                    <?= get_the_date('', $post_id) ?>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="post-image image-box h-100">
-                        <?= get_the_post_thumbnail($post_id, 'large') ?>
+                    <div class="col-lg-6">
+                        <div class="post-image image-box h-100">
+                            <?= get_the_post_thumbnail($post_id, 'large') ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 <?php
 }
 
