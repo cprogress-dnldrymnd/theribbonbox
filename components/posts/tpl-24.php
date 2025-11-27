@@ -1,4 +1,10 @@
 <style>
+    .post-hero-content {
+        min-height: 100vh;
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
     .blog-tpl-24 {
         display: none !important;
     }
