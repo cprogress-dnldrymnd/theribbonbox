@@ -605,9 +605,11 @@
             margin-bottom: 0;
             margin-top: 0;
         }
+
         .post-follow-us .social--icons {
             justify-content: center;
         }
+
         /*responsive*/
 
         @media(min-width: 1001px) {
@@ -795,7 +797,7 @@
                 background-color: transparent;
                 width: 100%;
             }
-    
+
             body {
                 --menu-top: 88.5px
             }
@@ -1024,6 +1026,14 @@
         @media(min-width: 1001px) {
             .post-hero-content h1 {
                 font-size: 59px;
+            }
+
+            .d-lg-block {
+                display: block !important;
+            }
+
+            .d-lg-none {
+                display: none !important;
             }
         }
 
