@@ -29,14 +29,7 @@ if (current_user_can('administrator')) {
                                 <?= get_the_date('', $post_id) ?>
                             </div>
                         </div>
-                        <div class="post-categories d-flex flex-wrap">
-                            <?= get_post_categories_as_links($post_id) ?>
-                        </div>
-                        <div class="share-post d-flex align-items-center gap-3">
-                            <div>SHARE</div>
-                            <div class="dot"></div>
-                            <?= create_item_socials_v3(get_the_permalink($post_id), get_the_title($post_id)) ?>
-                        </div>
+              
                     </div>
                 </div>
                 <div class="col-lg-6">
