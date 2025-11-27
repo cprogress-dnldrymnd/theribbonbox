@@ -20,14 +20,17 @@ if (current_user_can('administrator')) {
         .blog-tpl-24 {
             display: none !important;
         }
+
         .post-hero {
             margin-bottom: 50px;
         }
-         @media(min-width: 992px) {
+
+        @media(min-width: 992px) {
             .post-hero-content {
                 min-height: calc(100vh - 97.75);
             }
         }
+
         @media(min-width: 1200px) {
             .post-hero-content {
                 min-height: calc(100vh - 116px);
@@ -41,9 +44,11 @@ if (current_user_can('administrator')) {
                     <div class="col-lg-6 d-flex align-items-center">
                         <div class="post-hero-content">
                             <div class="post-title">
-                                <h1>
-                                    <?= get_the_title($post_id) ?>
-                                </h1>
+                                <a href="<?= get_the_permalink($post_id) ?>">
+                                    <h1>
+                                        <?= get_the_title($post_id) ?>
+                                    </h1>
+                                </a>
                             </div>
                             <?php if (get_the_excerpt($post_id)) { ?>
                                 <div class="post-excerpt">
@@ -61,9 +66,12 @@ if (current_user_can('administrator')) {
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="post-image image-box h-100">
-                            <?= get_the_post_thumbnail($post_id, 'large') ?>
-                        </div>
+                        <a href="<?= get_the_permalink($post_id) ?>">
+
+                            <div class="post-image image-box h-100">
+                                <?= get_the_post_thumbnail($post_id, 'large') ?>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
