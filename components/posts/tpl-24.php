@@ -1,10 +1,15 @@
 <style>
+    .post-hero {
+        margin-top: 54px;
+    }
+
     .post-hero-content {
         min-height: 100vh;
         display: flex;
-    flex-direction: column;
-    justify-content: center;
+        flex-direction: column;
+        justify-content: center;
     }
+
     .blog-tpl-24 {
         display: none !important;
     }
@@ -12,7 +17,6 @@
 <?php
 
 if (current_user_can('administrator')) {
-    echo 'Only visible to admin';
     $post_id = $post['ID'];
     $cat = get_top_level_term_by_post_id($post_id, 'category');
     $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
