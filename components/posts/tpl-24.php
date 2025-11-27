@@ -36,6 +36,9 @@ if (current_user_can('administrator')) {
                 min-height: calc(100vh - 116px);
             }
         }
+        .post-title a:hover {
+            text-decoration: underline;
+        }
     </style>
     <div class="trb-px">
         <div class="post-hero" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
