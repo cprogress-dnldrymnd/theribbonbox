@@ -1,130 +1,100 @@
 <?php
 
-if (current_user_can('administrator')) {
-    $post_id = $post['ID'];
-    $cat = get_top_level_term_by_post_id($post_id, 'category');
-    $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
-    $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
+$post_id = $post['ID'];
+$cat = get_top_level_term_by_post_id($post_id, 'category');
+$category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
+$category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
 ?>
-    <style>
-        .post-hero {
-            margin-top: 54px;
-        }
+<style>
+    .post-hero {
+        margin-top: 54px;
+    }
 
+    .post-hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .blog-tpl-24 {
+        display: none !important;
+    }
+
+    .post-hero {
+        margin-bottom: 50px;
+    }
+
+    .post-image {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .post-image img {
+        transition: 500ms;
+    }
+
+    .post-image img:hover {
+        transform: scale(1.1);
+    }
+
+    @media(min-width: 992px) {
         .post-hero-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            min-height: calc(100vh - 97.75);
         }
+    }
 
-        .blog-tpl-24 {
-            display: none !important;
+    @media(min-width: 1200px) {
+        .post-hero-content {
+            min-height: calc(100vh - 116px);
         }
+    }
 
-        .post-hero {
-            margin-bottom: 50px;
-        }
-
-        .post-image {
-            position: relative;
-            overflow: hidden;
-        }
-        .post-image img {
-            transition: 500ms;
-        }
-        .post-image img:hover {
-            transform: scale(1.1);
-        }
-        @media(min-width: 992px) {
-            .post-hero-content {
-                min-height: calc(100vh - 97.75);
-            }
-        }
-
-        @media(min-width: 1200px) {
-            .post-hero-content {
-                min-height: calc(100vh - 116px);
-            }
-        }
-        .post-title:hover {
-            text-decoration: underline;
-        }
-    </style>
-    <div class="trb-px">
-        <div class="post-hero" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
-            <div class="container-fluid g-0 p-0">
-                <div class="row g-0 flex-column-reverse flex-lg-row">
-                    <div class="col-lg-6 d-flex align-items-center">
-                        <div class="post-hero-content">
-                            <div class="post-title">
-                                <a href="<?= get_the_permalink($post_id) ?>">
-                                    <h1>
-                                        <?= get_the_title($post_id) ?>
-                                    </h1>
-                                </a>
-                            </div>
-                            <?php if (get_the_excerpt($post_id)) { ?>
-                                <div class="post-excerpt">
-                                    <?= get_the_excerpt($post_id) ?>
-                                </div>
-                            <?php } ?>
-                            <div class="author-date d-flex gap-3 align-items-center flex-wrap">
-                                <?= do_shortcode("[author_bio_v2 avatar=0 id=$post_id]") ?>
-                                <div class="dot"></div>
-                                <div class="date">
-                                    <?= get_the_date('', $post_id) ?>
-                                </div>
-                            </div>
-
+    .post-title:hover {
+        text-decoration: underline;
+    }
+</style>
+<div class="trb-px">
+    <div class="post-hero" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
+        <div class="container-fluid g-0 p-0">
+            <div class="row g-0 flex-column-reverse flex-lg-row">
+                <div class="col-lg-6 d-flex align-items-center">
+                    <div class="post-hero-content">
+                        <div class="post-title">
+                            <a href="<?= get_the_permalink($post_id) ?>">
+                                <h1>
+                                    <?= get_the_title($post_id) ?>
+                                </h1>
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <a href="<?= get_the_permalink($post_id) ?>">
-
-                            <div class="post-image image-box h-100">
-                                <?= get_the_post_thumbnail($post_id, 'large') ?>
+                        <?php if (get_the_excerpt($post_id)) { ?>
+                            <div class="post-excerpt">
+                                <?= get_the_excerpt($post_id) ?>
                             </div>
-                        </a>
+                        <?php } ?>
+                        <div class="author-date d-flex gap-3 align-items-center flex-wrap">
+                            <?= do_shortcode("[author_bio_v2 avatar=0 id=$post_id]") ?>
+                            <div class="dot"></div>
+                            <div class="date">
+                                <?= get_the_date('', $post_id) ?>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
+                <div class="col-lg-6">
+                    <a href="<?= get_the_permalink($post_id) ?>">
+
+                        <div class="post-image image-box h-100">
+                            <?= get_the_post_thumbnail($post_id, 'large') ?>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 <?php
-}
-
-
-$rtn .= '
-<!-- Hero section (banner) for pages like Exercise -->
-<div class="blog-tpl-24 blog-top-ban format-' . $format . ' incount-' . $in_count . ' post-type-' . $this_post_type . '">
-    <div class="blog-l-img">
-        <a href="' . get_permalink($post['ID']) . '">
-            <img src="' . $iUrl . '" style="background-size:cover; background-position:center;">
-        </a>
-        <a href="' . get_permalink($post['ID']) . '">
-          ' . $ext . '
-          <!--<img src="/wp-content/themes/lighttheme/images/menu-trans-req.png">-->
-        </a>
-    </div>
-    <div class="blog-l-text-out" ' . $border . '>
-        <div class="blog-l-text" >
-            ' . $featured_cur . '
-            <h3>' . $currentcatname . '</h3>
-            <a href="' . get_permalink($post['ID']) . '">
-                <h2>' . $post['post_title'] . '</h2>
-            </a>
-            ' . $ex_txt . '
-            <p>' . $text . '</p>
-            <h4>' . get_the_date('j M Y', $post["ID"]) . '</h4>
-            <div class="blog-btns">
-                <a href="' . get_permalink($post['ID']) . '">' . $more_t_text . '</a>
-                |  <div style="display:inline-block;">' . create_item_socials(get_permalink($post['ID']), $post['post_title']) . '</div>
-            </div>
-        </div>
-    </div>
-</div>';
-
 $page_id = (int) get_the_ID();
 
 $widget_paths = [
