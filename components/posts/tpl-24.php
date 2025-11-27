@@ -2,8 +2,8 @@
 
 if (current_user_can('administrator')) {
     echo 'Only visible to admin';
-    echo $post['ID'];
-    $cat = get_top_level_term_by_post_id($post['ID'], 'category');
+    $post_id = $post['ID'];
+    $cat = get_top_level_term_by_post_id($post_id, 'category');
     $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
     $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
 ?>
@@ -12,39 +12,37 @@ if (current_user_can('administrator')) {
             <div class="row g-0 flex-column-reverse flex-lg-row">
                 <div class="col-lg-6 d-flex align-items-center">
                     <div class="post-hero-content">
-                        <div class="breadcrumbs-v2">
-                            <?= woocommerce_breadcrumb(); ?>
-                        </div>
+                     
                         <div class="post-title">
                             <h1>
-                                <?php the_title() ?>
+                                <?= get_the_title($post_id) ?>
                             </h1>
                         </div>
-                        <?php if (get_the_excerpt()) { ?>
+                        <?php if (get_the_excerpt($post_id)) { ?>
                             <div class="post-excerpt">
-                                <?= get_the_excerpt() ?>
+                                <?= get_the_excerpt($post_id) ?>
                             </div>
                         <?php } ?>
                         <div class="author-date d-flex gap-3 align-items-center flex-wrap">
                             <?= do_shortcode('[author_bio_v2]') ?>
                             <div class="dot"></div>
                             <div class="date">
-                                <?php the_date() ?>
+                                <?= get_the_date('', $post_id) ?>
                             </div>
                         </div>
                         <div class="post-categories d-flex flex-wrap">
-                            <?= get_post_categories_as_links(get_the_ID()) ?>
+                            <?= get_post_categories_as_links($post_id) ?>
                         </div>
                         <div class="share-post d-flex align-items-center gap-3">
                             <div>SHARE</div>
                             <div class="dot"></div>
-                            <?= create_item_socials_v3(get_the_permalink(), get_the_title()) ?>
+                            <?= create_item_socials_v3(get_the_permalink($post_id), get_the_title($post_id)) ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="post-image image-box h-100">
-                        <?= get_the_post_thumbnail(get_the_ID(), 'large') ?>
+                        <?= get_the_post_thumbnail($post_id, 'large') ?>
                     </div>
                 </div>
             </div>
