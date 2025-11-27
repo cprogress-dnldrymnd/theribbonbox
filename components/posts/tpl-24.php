@@ -1,3 +1,8 @@
+<style>
+    .blog-tpl-24 {
+        display: none !important;
+    }
+</style>
 <?php
 
 if (current_user_can('administrator')) {
@@ -29,7 +34,7 @@ if (current_user_can('administrator')) {
                                 <?= get_the_date('', $post_id) ?>
                             </div>
                         </div>
-              
+
                     </div>
                 </div>
                 <div class="col-lg-6">
