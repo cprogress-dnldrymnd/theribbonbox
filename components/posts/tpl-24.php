@@ -12,7 +12,6 @@ if (current_user_can('administrator')) {
             <div class="row g-0 flex-column-reverse flex-lg-row">
                 <div class="col-lg-6 d-flex align-items-center">
                     <div class="post-hero-content">
-                     
                         <div class="post-title">
                             <h1>
                                 <?= get_the_title($post_id) ?>
@@ -24,7 +23,7 @@ if (current_user_can('administrator')) {
                             </div>
                         <?php } ?>
                         <div class="author-date d-flex gap-3 align-items-center flex-wrap">
-                            <?= do_shortcode('[author_bio_v2]') ?>
+                            <?= do_shortcode("[author_bio_v2 id=$post_id]") ?>
                             <div class="dot"></div>
                             <div class="date">
                                 <?= get_the_date('', $post_id) ?>
@@ -50,7 +49,6 @@ if (current_user_can('administrator')) {
     </div>
 <?php
 }
-
 
 
 $rtn .= '

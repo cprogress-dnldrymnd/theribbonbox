@@ -57,9 +57,18 @@ function author_bio()
 }
 add_shortcode('author_bio', 'author_bio');
 
-function author_bio_v2()
+function author_bio_v2($atts)
 {
     ob_start();
+    extract(
+        shortcode_atts(
+            array(
+                'id' => get_the_ID(),
+            ),
+            $atts
+        )
+    );
+
     $article_author = get_field("article_author", get_the_ID());
     $article_author_role = get_field("article_author_role", get_the_ID());
     $article_bio_author_bio = get_field("article_bio_author_bio", get_the_ID());
@@ -72,7 +81,7 @@ function author_bio_v2()
         $image_id = $placeholder_id;
     }
     if ($article_author) {
-?>
+    ?>
         <div class="author-bio author-bio-v2">
             <div class="author-bio-inner">
                 <div class="author-image">
