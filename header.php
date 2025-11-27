@@ -1016,6 +1016,16 @@
             background-color: transparent;
         }
 
+        @media (min-width: 992px) {
+            .d-lg-none {
+                display: initial !important;
+            }
+
+            .d-lg-block {
+                display: initial !important;
+            }
+        }
+
         /**single hero */
         @media(min-width: 767px) {
             .post-hero-content h1 {
