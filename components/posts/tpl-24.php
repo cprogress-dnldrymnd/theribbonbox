@@ -25,7 +25,7 @@ if (current_user_can('administrator')) {
         }
         @media(min-width: 992px) {
             .post-hero-content {
-                min-height: 100vh;
+                min-height: calc(100vh - 116px);
             }
         }
     </style>
