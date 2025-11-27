@@ -25,6 +25,16 @@ if (current_user_can('administrator')) {
             margin-bottom: 50px;
         }
 
+        .post-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .post-image img {
+            transition: 500ms;
+        }
+        .post-image img:hover {
+            transform: scale(1.1);
+        }
         @media(min-width: 992px) {
             .post-hero-content {
                 min-height: calc(100vh - 97.75);
