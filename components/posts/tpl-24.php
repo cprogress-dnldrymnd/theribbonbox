@@ -1,4 +1,14 @@
 <?php
+
+if(current_user_can('administrator')) {
+    echo 'Only visible to admin';
+    ?>
+
+    <?php
+}
+
+
+
 $rtn .= '
 <!-- Hero section (banner) for pages like Exercise -->
 <div class="blog-tpl-24 blog-top-ban format-' . $format . ' incount-' . $in_count . ' post-type-' . $this_post_type . '">
