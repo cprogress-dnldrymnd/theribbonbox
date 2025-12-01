@@ -1,0 +1,28 @@
+<script>
+    jQuery(document).ready(function () {
+        setTimeout(function () {
+            // 1. Variable to store the highest height
+            var $max_post_box_height  = 0;
+
+            // 2. Loop through all .post-box elements first to find the tallest one
+            jQuery('.expertise-box').each(function () {
+                var current_height = jQuery(this).outerHeight();
+                if (current_height > $max_post_box_height ) {
+                    $max_post_box_height  = current_height;
+                }
+            });
+
+            jQuery('.expertise-box').each(function (index, element) {
+                $post_box_height = jQuery(this).outerHeight();
+                $post_title_height = jQuery(this).find('.post-title').outerHeight();
+                $post_content_height = jQuery(this).find('.post-content').outerHeight();
+
+                jQuery(this).css('--post-title-height', $post_title_height + 'px');
+                jQuery(this).css('--post-content-height', $post_content_height + 'px');
+                jQuery(this).css('--post-box-height', $max_post_box_height  + 'px');
+                
+                jQuery(this).addClass('post-box-hover-effect');
+            });
+        }, 500);
+    });
+</script>
