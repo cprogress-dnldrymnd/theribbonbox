@@ -2235,8 +2235,8 @@ function blog_filter_function($attr) {
                             $rtn .= '</div>';
                         }
                         
-                        $post_id = get_the_ID();
-                        $cat = get_top_level_term_by_post_id($post_id, 'category');
+                       // $cat = get_top_level_term_by_post_id($post_id, 'category');
+                        $cat = $categoryid;
                         $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
                         $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
                         $exp_count++;
