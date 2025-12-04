@@ -118,7 +118,11 @@ function expert_list_function($attr)
 
 
     if (!empty($attr["title"])) {
-        $rtn .= '<div class="expert-outer"><h2>' . $title . '</h2><div class="expert-entry">';
+        $rtn .= '<div class="expert-outer">';
+        $rtn .= '<div class="experts-navigation">';
+        $rtn .= '<h2>' . $title . '</h2><div class="expert-entry">';
+        $rtn .= '<div class="swiper-navigation"> <div class="swiper-button-prev-experts"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="#ffdbd1" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"/> <circle cx="26.5" cy="26.5" r="26" fill="none"/> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="#ffdbd1"/> </g> </svg></div><div class="swiper-button-next-experts"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="#ffdbd1" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"/> <circle cx="26.5" cy="26.5" r="26" fill="none"/> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="#ffdbd1"/> </g> </svg></div></div>';
+        $rtn .= '</div>';
     } else {
         if ($isPage) {
             $rtn .= '<div class="expert-outer"><div class="expert-entry">';
@@ -857,14 +861,16 @@ function expert_list_function($attr)
         $rtn .= '<a class="button-expert" href="' . get_permalink($post['ID']) . '" title="Read more about ' . $post['post_title'] .  '...">VIEW EXPERT PROFILE</a></div>';
         $rtn .= '</div></div>';
 
-        $rtn.= '</div>'; 
+        $rtn .= '</div>';
 
     endforeach;
     wp_reset_query();
 
 
     $rtn .= '</div></div>';
-    $rtn .= '</div></div>';
+    $rtn .= '</div>';
+    $rtn .= '<div class="swiper-pagination experts-swiper-pagination"</div>';
+    $rtn .= '</div>';
 
     $slick_responsive_settings = "[
         {
@@ -890,14 +896,18 @@ function expert_list_function($attr)
     if ($isPage) {
         $rtn .= '
 <script type="text/javascript">
-    var swiper = new Swiper(".swiper-post-slider", {
-                slidesPerView: 1,
-                spaceBetween: 6,
+    var swiper = new Swiper(".swiper-experts", {
+                slidesPerView: 3,
+                spaceBetween: 40,
                 pagination: {
-                    el: ".swiper-pagination",
+                    el: ".experts-swiper-pagination",
                     dynamicBullets: true,
                     clickable: true,
                 },
+                 navigation: {
+        nextEl: ".swiper-button-next-experts",
+        prevEl: ".swiper-button-prev-experts",
+      },
             });
 </script>
         ';
