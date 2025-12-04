@@ -127,6 +127,9 @@ function expert_list_function($attr)
         }
     }
 
+    $rtn .= '<div class="swiper swiper-experts">';
+    $rtn .= '<div class="swiper-wrapper">';
+
 
 
 
@@ -861,6 +864,7 @@ function expert_list_function($attr)
 
 
     $rtn .= '</div></div>';
+    $rtn .= '</div></div>';
 
     $slick_responsive_settings = "[
         {
@@ -884,40 +888,19 @@ function expert_list_function($attr)
     ]";
 
     if ($isPage) {
-        $recent_posts_count = count($recent_posts);
-        if ($recent_posts_count < 4) {
-            $rtn .= "<script  type='text/javascript'>
-    $(document).ready(function () {
-        $('.expert-entry > div').each(function (index, element) {
-            jQuery(this).clone().appendTo('.expert-entry');
-        });
-    });
-</script>";
-        }
-        $rtn .= "
-<script type='text/javascript'>
-    $(document).ready(function(){
-        console.log('Experts slick');
-        if (! ($('.main-content-outer').length > 0)){
-            console.error('no content');
-            return;
-        }
-        const experts_container = $('.expert-entry');
-        if (! (experts_container.length > 0)){
-            console.error('no experts container');
-            return;
-        }
-        experts_container.slick({
-            centerMode: true,
-            centerPadding: '0',
-            slidesToShow: 3,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            responsive: " . $slick_responsive_settings . "
-        });
-    });
+        $rtn .= '
+<script type="text/javascript">
+    var swiper = new Swiper(".swiper-post-slider", {
+                slidesPerView: 1,
+                spaceBetween: 6,
+                pagination: {
+                    el: ".swiper-pagination",
+                    dynamicBullets: true,
+                    clickable: true,
+                },
+            });
 </script>
-        ";
+        ';
     } else {
 
         $rtn .= "
