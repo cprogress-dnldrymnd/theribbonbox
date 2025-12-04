@@ -854,6 +854,8 @@ function expert_list_function($attr)
         $rtn .= '<a class="button-expert" href="' . get_permalink($post['ID']) . '" title="Read more about ' . $post['post_title'] .  '...">VIEW EXPERT PROFILE</a></div>';
         $rtn .= '</div></div>';
 
+        $rtn.= '</div>'; 
+
     endforeach;
     wp_reset_query();
 
