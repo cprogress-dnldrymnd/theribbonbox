@@ -14,7 +14,7 @@ if (!empty($parent)) {
     $eCat = $parent;
 }
 echo do_shortcode('[ivory-search id="23677" title="Experts Search"]');
-echo '<div class="experts-page-cara xx" '.$categories[0]->term_id.'>';
+echo '<div class="experts-page-cara " '.$categories[0]->term_id.'>';
 echo do_shortcode("[expert_list page='1'  title='".$eCat . " Experts" ."' spotlight='1' categoryid='".$categories[0]->term_id."']");
 echo '</div>';
 echo '<link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
