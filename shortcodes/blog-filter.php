@@ -2241,7 +2241,7 @@ function blog_filter_function($attr) {
                         $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
                         $exp_count++;
                         $rtn .=   '
-                            <div class="experts-page-cara tpl-2649" style="--bg-color: '.$category_colour.'; --text-color: '.$category_text_color.'">
+                            <div '.$categoryid.' class="experts-page-cara tpl-2649" style="--bg-color: '.$category_colour.'; --text-color: '.$category_text_color.'">
                                 <!--<h2>'.$exp_count.'</h2>-->
                                 ' . do_shortcode("[expert_list page='1' title='".$globalCategoryName. " Experts" ."' categoryid='".$categoryid."']") . '
                             </div>
