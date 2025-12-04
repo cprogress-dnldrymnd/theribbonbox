@@ -255,7 +255,7 @@ function expert_list_function($attr)
         }
 
         if (!empty($featured_expert)) {
-            $featured_cur = '<div class="featured-sign spotlight-sign" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Spotlight</span><br>Experts</p></div>';
+            $featured_cur = '<div class="featured-sign spotlight-sign" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Spotlight</span>Experts</p></div>';
         }
 
         $post_sticker = get_field("post_sticker", $post["ID"]);
@@ -287,7 +287,7 @@ function expert_list_function($attr)
                     $addd = "";
                 }
 
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Trending</span><br>Wellbeing</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Trending</span>Wellbeing</p></div>';
             }
             if ($post_sticker == "Trending Fertility") {
                 $currentcat = 1164;
@@ -314,7 +314,7 @@ function expert_list_function($attr)
                     $addd = "";
                 }
 
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Trending</span><br>Fertility</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Trending</span>Fertility</p></div>';
             }
             if ($post_sticker == "Trending Pregnancy") {
                 $currentcat = 1165;
@@ -341,7 +341,7 @@ function expert_list_function($attr)
                     $addd = "";
                 }
 
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Trending</span><br>Pregnancy</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Trending</span>Pregnancy</p></div>';
             }
             if ($post_sticker == "Trending Parenting") {
                 $currentcat = 1163;
@@ -367,7 +367,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Trending</span><br>Parenting</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Trending</span>Parenting</p></div>';
             }
             if ($post_sticker == "Latest Wellbeing") {
                 $currentcat = 1159;
@@ -393,7 +393,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Latest</span><br>Wellbeing</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Latest</span>Wellbeing</p></div>';
             }
             if ($post_sticker == "Latest Fertility") {
                 $currentcat = 1164;
@@ -419,7 +419,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Latest</span><br>Fertility</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Latest</span>Fertility</p></div>';
             }
             if ($post_sticker == "Latest Pregnancy") {
                 $currentcat = 1165;
@@ -445,7 +445,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Latest</span><br>Pregnancy</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Latest</span>Pregnancy</p></div>';
             }
             if ($post_sticker == "Latest Parenting") {
                 $currentcat = 1163;
@@ -471,7 +471,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Latest</span><br>Parenting</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Latest</span>Parenting</p></div>';
             }
             if ($post_sticker == "Handpicked Wellbeing") {
                 $currentcat = 1159;
@@ -497,7 +497,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Handpicked</span><br>Wellbeing</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Handpicked</span>Wellbeing</p></div>';
             }
             if ($post_sticker == "Handpicked Fertility") {
                 $currentcat = 1164;
@@ -523,7 +523,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Handpicked</span><br>Fertility</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Handpicked</span>Fertility</p></div>';
             }
             if ($post_sticker == "Handpicked Pregnancy") {
                 $currentcat = 1165;
@@ -549,7 +549,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Handpicked</span><br>Pregnancy</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Handpicked</span>Pregnancy</p></div>';
             }
             if ($post_sticker == "Handpicked Parenting") {
                 $currentcat = 1163;
@@ -575,7 +575,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Handpicked</span><br>Parenting</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Handpicked</span>Parenting</p></div>';
             }
             if ($post_sticker == "Editor’s Choice Wellbeing") {
                 $currentcat = 1159;
@@ -601,7 +601,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Editor’s Choice</span><br>Wellbeing</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Editor’s Choice</span>Wellbeing</p></div>';
             }
             if ($post_sticker == "Editor’s Choice Fertility") {
                 $currentcat = 1164;
@@ -627,7 +627,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Editor’s Choice</span><br>Fertility</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Editor’s Choice</span>Fertility</p></div>';
             }
             if ($post_sticker == "Editor’s Choice Pregnancy") {
                 $currentcat = 1165;
@@ -653,7 +653,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Editor’s Choice</span><br>Pregnancy</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Editor’s Choice</span>Pregnancy</p></div>';
             }
             if ($post_sticker == "Editor’s Choice Parenting") {
                 $currentcat = 1163;
@@ -679,7 +679,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Editor’s Choice</span><br>Parenting</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Editor’s Choice</span>Parenting</p></div>';
             }
             if ($post_sticker == "Spotlight Experts") {
                 //NO
@@ -690,7 +690,7 @@ function expert_list_function($attr)
                     $ad = 'class="light-text"';
                     $addd = "light-text";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Spotlight</span><br>Experts</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Spotlight</span>Experts</p></div>';
             }
             if ($post_sticker == "Wellbeing Expert") {
                 $currentcat = 1159;
@@ -716,7 +716,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Wellbeing</span><br>Expert</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Wellbeing</span>Expert</p></div>';
             }
             if ($post_sticker == "Fertility Expert") {
                 $currentcat = 1164;
@@ -742,7 +742,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Fertility</span><br>Expert</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Fertility</span>Expert</p></div>';
             }
             if ($post_sticker == "Pregnancy Expert") {
                 $currentcat = 1165;
@@ -768,7 +768,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Pregnancy</span><br>Expert</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Pregnancy</span>Expert</p></div>';
             }
             if ($post_sticker == "Parenting Expert") {
                 $currentcat = 1163;
@@ -794,7 +794,7 @@ function expert_list_function($attr)
                     $ad = "";
                     $addd = "";
                 }
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Parenting</span><br>Expert</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Parenting</span>Expert</p></div>';
             }
             if ($bcolour == "#034146") {
                 $ad = 'class="light-text"';
@@ -805,19 +805,19 @@ function expert_list_function($attr)
             }
             if ($post_sticker == "Featured Expert") {
                 //NO
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span><br>Expert</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span>Expert</p></div>';
             }
             if ($post_sticker == "Featured Video") {
                 //NO
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span><br>Video</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span>Video</p></div>';
             }
             if ($post_sticker == "Featured Giveaway") {
                 //NO
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span><br>Giveaway</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span>Giveaway</p></div>';
             }
             if ($post_sticker == "Featured Podcast") {
                 //NO
-                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span><br>Podcast</p></div>';
+                $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span>Podcast</p></div>';
             }
         }
 
