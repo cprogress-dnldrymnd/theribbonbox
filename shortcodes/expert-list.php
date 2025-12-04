@@ -116,7 +116,6 @@ function expert_list_function($attr)
 
 
 
-
     if (!empty($attr["title"])) {
         $rtn .= '<div class="expert-outer">';
         $rtn .= '<div class="experts-naviagtion">';
@@ -904,6 +903,10 @@ function expert_list_function($attr)
                     dynamicBullets: true,
                     clickable: true,
                 },
+                 navigation: {
+        nextEl: ".swiper-button-next-experts",
+        prevEl: ".swiper-button-prev-experts",
+      },
             });
 </script>
         ';
