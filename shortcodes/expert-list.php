@@ -858,7 +858,7 @@ function expert_list_function($attr)
         if (!$isPage) {
             $rtn .= '<h3>' . $currentcatname . '</h3>';
         }
-        $rtn .= '<a class="button-expert" href="' . get_permalink($post['ID']) . '" title="Read more about ' . $post['post_title'] .  '...">VIEW EXPERT PROFILE</a></div>';
+        $rtn .= '<a class="button-expert" href="' . get_permalink($post['ID']) . '" title="Read more about ' . $post['post_title'] .  '...">MEET YOUR EXPERTS</a></div>';
         $rtn .= '</div></div>';
 
         $rtn .= '</div>';
