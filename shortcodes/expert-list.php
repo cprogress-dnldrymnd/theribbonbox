@@ -917,7 +917,7 @@ function expert_list_function($attr)
                 spaceBetween: 20,
             },
             1024: {
-                slidesPerView: 5,
+                slidesPerView: 3,
                 spaceBetween: 40,
             },
         }
