@@ -908,7 +908,7 @@ function expert_list_function($attr)
         prevEl: ".swiper-button-prev-experts",
       },
       breakpoints: {
-            640: {
+            0: {
                 slidesPerView: 1,
                 spaceBetween: 20,
             },
