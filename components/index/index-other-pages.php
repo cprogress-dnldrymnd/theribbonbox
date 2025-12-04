@@ -63,6 +63,7 @@ $tags_links = get_the_tag_list('', $separate_meta);
 //<h1>'.get_the_title().'</h1>
 //<p>'.$text.'</p><h4>'.$author.get_the_date('j M Y', $post->ID).'</h4><div class="detail-page-socials">'. create_item_socials(get_permalink($post->ID), get_the_title()).'</div><hr class="hr-post">';
 
+
 $cat = get_top_level_term_by_post_id(get_the_ID(), 'category');
 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
 $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1' ;
