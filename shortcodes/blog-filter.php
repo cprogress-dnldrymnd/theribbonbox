@@ -2236,7 +2236,7 @@ function blog_filter_function($attr) {
                         }
                         $exp_count++;
                         $rtn .=   '
-                            <div class="experts-page-cara xx2 tpl-2649">
+                            <div class="experts-page-cara tpl-2649">
                                 <!--<h2>'.$exp_count.'</h2>-->
                                 ' . do_shortcode("[expert_list page='1' title='".$globalCategoryName. " Experts" ."' categoryid='".$categoryid."']") . '
                             </div>
