@@ -609,7 +609,9 @@
         .post-follow-us .social--icons {
             justify-content: center;
         }
-
+.experts-page-cara.experts-page-cara {
+            background-color: var(--bg-color);
+        }
         /*responsive*/
 
         @media(min-width: 1001px) {

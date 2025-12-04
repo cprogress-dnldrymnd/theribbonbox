@@ -536,9 +536,11 @@
         .social--icons-text span {
             text-transform: lowercase;
         }
+
         .experts-page-cara.experts-page-cara {
             background-color: var(--bg-color);
         }
+
         /*responsive*/
 
         @media(min-width: 992px) {
