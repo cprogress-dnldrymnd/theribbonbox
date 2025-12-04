@@ -890,7 +890,6 @@ function expert_list_function($attr)
     $(document).ready(function () {
         $('.expert-entry > div').each(function (index, element) {
             jQuery(this).clone().appendTo('.expert-entry');
-
         });
     });
 </script>";
