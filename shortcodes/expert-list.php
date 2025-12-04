@@ -907,19 +907,20 @@ function expert_list_function($attr)
         nextEl: ".swiper-button-next-experts",
         prevEl: ".swiper-button-prev-experts",
       },
-       breakpoints: {
-        640: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        1024: {
-          slidesPerView: 5,
-          spaceBetween: 40,
-        },
+      breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 40,
+            },
+        }
             });
 </script>
         ';
