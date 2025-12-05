@@ -114,10 +114,10 @@ function expert_list_function($attr)
 
 
 
+    $rtn .= '<div class="experts-page-cara">';
 
 
     if (!empty($attr["title"])) {
-        $rtn .= '<div class="experts-page-cara">';
         $rtn .= '<div class="expert-outer">';
         $rtn .= '<div class="experts-naviagtion">';
         $rtn .= '<h2>' . $title . '</h2>';
