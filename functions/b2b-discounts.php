@@ -23,9 +23,9 @@ function b2b_discounts() {
     $rtn = "";
 
     if ($cPage == ""){
-        $rtn .= '<div class="expert-outer"><div class="expert-entry">';
+        $rtn .= '<div class="expert-outer"><div class="expert-entry expert-entry-v2">';
     } else{
-        $rtn .= '<div class="expert-outer"><div class="expert-entry">';
+        $rtn .= '<div class="expert-outer"><div class="expert-entry expert-entry-v2">';
     }
 
     foreach($recent_posts as $post) {
@@ -160,7 +160,7 @@ function b2b_discounts() {
     $rtn .= "<script type='text/javascript'>
       $(document).ready(function(){
         if ($('.main-content-outer').length > 0){
-          $('.expert-entry').slick({
+          $('.expert-entry-v2').slick({
             centerMode: true,
             centerPadding: '60px',
             slidesToShow: 3,
