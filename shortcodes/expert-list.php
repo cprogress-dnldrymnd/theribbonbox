@@ -887,7 +887,6 @@ function expert_list_function($attr)
                 loop: true,
                 pagination: {
                     el: ".experts-swiper-pagination",
-                    dynamicBullets: true,
                     clickable: true,
                 },
                  navigation: {
