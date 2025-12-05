@@ -886,7 +886,8 @@ function expert_list_function($attr)
                 spaceBetween: 40,
                 loop: true,
                 pagination: {
-                    el: ".experts-swiper-pagination",
+                    el: ".swiper-pagination",
+                    dynamicBullets: true,
                     clickable: true,
                 },
                  navigation: {
