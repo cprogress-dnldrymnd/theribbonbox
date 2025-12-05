@@ -1485,7 +1485,7 @@ function vid_pod_list_function($attr)
 
 
 
-      $('.expert-entry').slick({
+      $('.giveaway-entry').slick({
        centerMode: true,
       centerPadding: '0',
       slidesToShow: 3,
