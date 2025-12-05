@@ -893,8 +893,7 @@ function expert_list_function($attr)
         }
     ]";
 
-    if ($isPage) {
-        $rtn .= '
+          $rtn .= '
 <script type="text/javascript">
     var swiper = new Swiper(".swiper-experts", {
                 slidesPerView: 3,
@@ -924,25 +923,6 @@ function expert_list_function($attr)
             });
 </script>
         ';
-    } else {
-
-        $rtn .= "
-<script type='text/javascript'>
-    $(document).ready(function(){
-        if ($('.main-content-outer').length > 0){
-            $('.expert-entry').slick({
-                centerMode: true,
-                centerPadding: '60px',
-                slidesToShow: 3,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                responsive: " . $slick_responsive_settings . "
-            });
-        }
-    });
-</script>
-";
-    }
 
     return $rtn;
 }
