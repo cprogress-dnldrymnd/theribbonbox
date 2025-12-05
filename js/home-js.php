@@ -52,7 +52,7 @@ function LoadHomeFun(){
 
         loadingHome = false;
 
-        loadSlick();
+        //loadSlick();
 
         <?php WPBMap::addAllMappedShortcodes(); ?>
         //$(".complete-pop-outer").css("display", "block");
