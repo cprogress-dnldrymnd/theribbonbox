@@ -117,9 +117,7 @@ function expert_list_function($attr)
 
 
     if (!empty($attr["title"])) {
-        if (is_front_page()) {
-            $rtn .= '<div class="experts-page-cara">';
-        }
+        $rtn .= '<div class="experts-page-cara">';
         $rtn .= '<div class="expert-outer">';
         $rtn .= '<div class="experts-naviagtion">';
         $rtn .= '<h2>' . $title . '</h2>';
@@ -875,9 +873,8 @@ function expert_list_function($attr)
     $rtn .= '<div class="swiper-pagination experts-swiper-pagination"></div>';
     $rtn .= '</div>';
 
-    if (is_front_page()) {
-        $rtn .= '</div>';
-    }
+    $rtn .= '</div>';
+
 
 
     $rtn .= '
