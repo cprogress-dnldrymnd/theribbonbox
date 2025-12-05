@@ -1085,7 +1085,7 @@ function giveaway_list_function($attr)
     if ($cPage == "") {
         $rtn .= '<div class="expert-outer"><h2>Giveaways</h2><div class="expert-entry">';
     } else {
-        $rtn .= '<div class="expert-outer"><div class="expert-entry">';
+        $rtn .= '<div class="expert-outer"><div class="expert-entry giveaway-entry">';
     }
 
 
@@ -1236,7 +1236,7 @@ if ($('.main-content-outer').length > 0){
 
 
 
-  $('.expert-entry').slick({
+  $('.giveaway-entry').slick({
    centerMode: true,
   centerPadding: '60px',
   slidesToShow: 3,
