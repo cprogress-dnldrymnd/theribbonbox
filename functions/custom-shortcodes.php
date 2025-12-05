@@ -1324,9 +1324,9 @@ function vid_pod_list_function($attr)
     }
 
     if ($isPage) {
-        $rtn .= '<div class="expert-outer"><div class="expert-entry">';
+        $rtn .= '<div class="expert-outer"><div class="expert-entry giveaway-entry">';
     } else {
-        $rtn .= '<div class="expert-outer"><h2>Wellbeing & Fertility Experts</h2><div class="expert-entry">';
+        $rtn .= '<div class="expert-outer"><h2>Wellbeing & Fertility Experts</h2><div class="expert-entry giveaway-entry">';
     }
 
 
@@ -1522,7 +1522,7 @@ function vid_pod_list_function($attr)
 
 
 
-      $('.expert-entry').slick({
+      $('.giveaway-entry').slick({
        centerMode: true,
       centerPadding: '60px',
       slidesToShow: 3,
