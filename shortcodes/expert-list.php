@@ -877,9 +877,10 @@ function expert_list_function($attr)
 
     $rtn .= '</div>';
 
+    if ($isPage) {
 
 
-    $rtn .= '
+        $rtn .= '
 <script type="text/javascript">
     var swiper = new Swiper(".swiper-experts", {
                 slidesPerView: 3,
@@ -911,6 +912,7 @@ function expert_list_function($attr)
             });
 </script>
         ';
+    }
 
     return $rtn;
 }
