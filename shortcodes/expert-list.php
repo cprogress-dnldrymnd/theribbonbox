@@ -868,8 +868,9 @@ function expert_list_function($attr)
     wp_reset_query();
 
 
-    $rtn .= '</div></div>';
+    $rtn .= '</div>';
     $rtn .= '<div class="swiper-pagination experts-swiper-pagination"></div>';
+    $rtn .= '</div>';
 
     $rtn .= '</div>';
     $rtn .= '</div>';
