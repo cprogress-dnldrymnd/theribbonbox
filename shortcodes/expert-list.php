@@ -882,6 +882,7 @@ function expert_list_function($attr)
     var swiper = new Swiper(".swiper-experts", {
                 slidesPerView: 3,
                 spaceBetween: 40,
+                loop: true,
                 pagination: {
                     el: ".experts-swiper-pagination",
                     clickable: true,
