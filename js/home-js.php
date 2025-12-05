@@ -52,7 +52,7 @@ function LoadHomeFun(){
 
         loadingHome = false;
 
-        //loadSlick();
+        loadSlick();
 
         <?php WPBMap::addAllMappedShortcodes(); ?>
         //$(".complete-pop-outer").css("display", "block");
@@ -63,7 +63,8 @@ function LoadHomeFun(){
 
 function loadSlick(){
     //$('.loadingnextOuter .expert-entry').slick("unslick");
-    const entry = $('.loadingnextOuter .expert-entry');
+    //const entry = $('.loadingnextOuter .expert-entry');
+    /*
     if (! entry.length) {
         console.warn('No slides for Slick');
         return;
@@ -92,6 +93,35 @@ function loadSlick(){
                 }
             }
         ]
-    });
+    });*/
+
+     var swiper = new Swiper(".swiper-experts", {
+                slidesPerView: 3,
+                spaceBetween: 40,
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    dynamicBullets: true,
+                    clickable: true,
+                },
+                 navigation: {
+        nextEl: ".swiper-button-next-experts",
+        prevEl: ".swiper-button-prev-experts",
+      },
+      breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+            },
+        }
+            });
 }
 </script>
