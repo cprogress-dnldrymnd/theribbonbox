@@ -857,6 +857,7 @@ function register_wpforms_import_page() {
     );
 }
 /*
+<?php
 /*
  * WPForms Import & Cleanup Tool
  * Adds a dashboard page to Import Users OR Delete Users based on Spam entries.
