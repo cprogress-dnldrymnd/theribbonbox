@@ -63,8 +63,6 @@ function blog_filter_function($attr) {
     if (!empty($attr["func"])){ $func = $attr["func"]; }
 
 
-    $rtn .= $attr["limit"];
-
     //echo "<!-- \$id_list: " . json_encode($id_list) . " -->";
 
     if (!empty($attr["home"])){
@@ -1990,7 +1988,7 @@ function blog_filter_function($attr) {
 
                     //$rtn .= "<h2>here...</h2>";
 
-                    if ($in_count % 2 == 0){
+                    if ($in_count % 3 == 0){
                         //html comments remove by dd
                         //echo '<!-- if ($in_count % 2 == 0) ----- if even -->';
 
