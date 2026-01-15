@@ -823,6 +823,9 @@ function admin_only()
                 gap: 40px;
             }
 
+            .mw-1400.mw-1400.mw-1400 {
+                max-width: 1400px;
+            }
         </style>
 <?php
 
