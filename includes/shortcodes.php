@@ -390,6 +390,12 @@ function post_box($atts)
         <div class="post-image image-box">
             <?= get_the_post_thumbnail($id, 'large') ?>
         </div>
+        <div class="post-details">
+            <h3 class="post-title"><?= get_the_title($id) ?></h3>
+            <div class="post-date">
+                <?= get_the_date('j M Y', $post["ID"]) ?>
+            </div>
+        </div>
     </div>
 <?php
     return ob_get_clean();

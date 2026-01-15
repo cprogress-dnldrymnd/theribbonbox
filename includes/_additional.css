@@ -8,6 +8,7 @@
 	--green-color: #034146;
 	--purple-color: #3b1527;
 	--bs-border-radius: 5px !important;
+	
 }
 .bg-white {
 	background-color: var(--white-color) !important;
@@ -3373,3 +3374,7 @@ button.accordion-button.accordion-button:after {
 }
 
 /*end of home-section*/
+
+
+/*revamp sections*/
+

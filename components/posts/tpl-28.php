@@ -1,5 +1,5 @@
 <?php
-
+//revamp section
 if (current_user_can('administrator')) {
     $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
 } else {
