@@ -1,7 +1,8 @@
 <?php
+//revamp section deprecated
 
 $rtn .= '
-<div class="blog-tpl-31 x2 blog-even-nor blog-nor format-' . $format . ' incount-' . $in_count . ' post-type-' . $this_post_type . ' blog-nor-with-bg-green blog-nor-with-bg-green-exp">
+<div class="blog-tpl-31 blog-even-nor blog-nor format-' . $format . ' incount-' . $in_count . ' post-type-' . $this_post_type . ' blog-nor-with-bg-green blog-nor-with-bg-green-exp">
   <img class="blg-bg-col" src="/wp-content/themes/lighttheme/images/menu-trans-req.png">
     
   <div class="blog-l-img" style="'. $addBorder .'">

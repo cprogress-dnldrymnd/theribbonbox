@@ -2205,7 +2205,12 @@ function blog_filter_function($attr)
                         }
                         if ($st_4) {
                             if (! isset($attr["post_type"]) || $attr["post_type"] == "expert_profiles") {
-                                include get_template_directory() . '/components/posts/tpl-31.php';
+                                //revamp section
+                                if (current_user_can('administrator')) {
+                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
+                                } else {
+                                    include get_template_directory() . '/components/posts/tpl-31.php';
+                                }
                             } else {
                                 include get_template_directory() . '/components/posts/tpl-32.php';
                             }
