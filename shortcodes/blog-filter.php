@@ -2308,6 +2308,10 @@ function blog_filter_function($attr)
                             $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="2" categoryid="' . $categoryid . '"]');
                             $rtn .= '</div>';
                             $vid_count++;
+
+                            if ($post_open_div) {
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-fixer-after">';
+                            }
                         } else if ($in_count == 9) {
                             $rtn .= '<br>';
                             if (empty($post_type)) {
