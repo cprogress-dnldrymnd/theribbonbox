@@ -1049,7 +1049,7 @@ function blog_filter_function($attr)
             if ($format == "post-page" && !empty($id_list)) {
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-1">';
+                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-1">';
                     $post_open_div = true;
                 }
                 $style = str_replace('style="', 'style="' . $addBorder, $style);
@@ -1454,7 +1454,7 @@ function blog_filter_function($attr)
                             $rtn .= do_shortcode("[get_giveaway_event post_type='giveaway-items' style_format='" . $style_format . "']");
                         }
                         if ($post_open_div) {
-                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-2">';
+                            $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-2">';
                         }
                     }
 
@@ -1468,7 +1468,7 @@ function blog_filter_function($attr)
                     }
 
                     if (!$post_open_div) {
-                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-3">';
+                        $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-3">';
                         $post_open_div = true;
                     }
 
@@ -1675,7 +1675,7 @@ function blog_filter_function($attr)
 
                         if (!$post_open_div) {
                             //xsss
-                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner md-padding padding-x mw-1400 trb-px-4 md-padding padding-x mw-1400 trb-px">';
+                            $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px ">';
                             $post_open_div = true;
                         }
 
@@ -1921,7 +1921,7 @@ function blog_filter_function($attr)
                                 $vid_count++;
 
                                 if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2">';
+                                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-v2">';
                                 }
                             } else if ($in_count == 9) {
                                 $rtn .= '<br>';
@@ -1932,7 +1932,7 @@ function blog_filter_function($attr)
                                     $rtn .= do_shortcode("[display_followus]");
                                     $exp_count++;
                                     if ($post_open_div) {
-                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-5">';
+                                        $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-5">';
                                     }
                                 }
                                 $cat_count++;
@@ -1945,7 +1945,7 @@ function blog_filter_function($attr)
                                     }
                                     $rtn .= do_shortcode("[ad_list]");
                                     if ($post_open_div) {
-                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-6 ">';
+                                        $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-6 ">';
                                     }
                                 } else {
                                     $add_ad = "Yes";
@@ -1957,7 +1957,7 @@ function blog_filter_function($attr)
                                         $rtn .= do_shortcode("[display_followus]");
                                         $exp_count++;
                                         if ($post_open_div) {
-                                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-7">';
+                                            $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-7">';
                                         }
                                     }
                                 }
@@ -1970,7 +1970,7 @@ function blog_filter_function($attr)
                                 }
                                 $rtn .= do_shortcode("[display_followus]");
                                 if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-8">';
+                                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-8">';
                                 }
                             } else if ($in_count == 29) {
                                 if ($post_open_div) {
@@ -1978,7 +1978,7 @@ function blog_filter_function($attr)
                                 }
                                 $rtn .= do_shortcode("[display_insider]");
                                 if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-9">';
+                                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-9">';
                                 }
                             } else if ($in_count == 35) {
                                 if ($post_open_div) {
@@ -1986,7 +1986,7 @@ function blog_filter_function($attr)
                                 }
                                 $rtn .= do_shortcode("[get_giveaway_event post_type='giveaway-items']");
                                 if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-10">';
+                                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-10">';
                                 }
                             } else if ($in_count == 41) {
                                 if ($add_ad == "Yes") {
@@ -1997,7 +1997,7 @@ function blog_filter_function($attr)
                                     }
                                     $rtn .= do_shortcode("[ad_list]");
                                     if ($post_open_div) {
-                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-11">';
+                                        $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-11">';
                                     }
                                 } else {
                                     $add_ad = "Yes";
@@ -2015,7 +2015,7 @@ function blog_filter_function($attr)
                             $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
                             if ($post_open_div) {
-                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-12">';
+                                $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-12">';
                             }
                         }
 
@@ -2051,7 +2051,7 @@ function blog_filter_function($attr)
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
                             <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
                             if ($post_open_div) {
-                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-13">';
+                                $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-13">';
                             }
                         }
 
@@ -2063,7 +2063,7 @@ function blog_filter_function($attr)
                                 }
                                 $rtn .= do_shortcode("[category_list page='experts']");
                                 if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-14 ">';
+                                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-14 ">';
                                 }
                             } else if ($attr["post_type"] == "videos") {
                                 if ($post_open_div) {
@@ -2071,7 +2071,7 @@ function blog_filter_function($attr)
                                 }
                                 $rtn .= do_shortcode("[category_list page='videos']");
                                 if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-15">';
+                                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-15">';
                                 }
                             } else if ($attr["post_type"] == "podcasts") {
                                 if ($post_open_div) {
@@ -2079,7 +2079,7 @@ function blog_filter_function($attr)
                                 }
                                 $rtn .= do_shortcode("[category_list page='podcasts']");
                                 if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-16">';
+                                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-16">';
                                 }
                             }
                         }
@@ -2099,7 +2099,7 @@ function blog_filter_function($attr)
                             $rtn .= do_shortcode("[giveaway_list page='1']");
                             $rtn .= do_shortcode("[get_giveaway_event post_type='" . $pos_format . "' style_format='" . $style_format . "']");
                             if ($post_open_div) {
-                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-17">';
+                                $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-17">';
                             }
                         }
 
@@ -2117,7 +2117,7 @@ function blog_filter_function($attr)
                 }
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-18">';
+                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-18">';
                     $post_open_div = true;
                 }
 
@@ -2138,7 +2138,7 @@ function blog_filter_function($attr)
                 }
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-19">';
+                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-19">';
                     $post_open_div = true;
                 }
 
@@ -2161,7 +2161,7 @@ function blog_filter_function($attr)
                 }
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-20">';
+                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-20">';
                     $post_open_div = true;
                 }
 
@@ -2188,7 +2188,7 @@ function blog_filter_function($attr)
                 }
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-23">';
+                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-23">';
                     $post_open_div = true;
                 }
 
@@ -2220,7 +2220,7 @@ function blog_filter_function($attr)
                 }
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-24">';
+                    $rtn .= '<div class="blogs-loop-inner md-padding mw-1500 trb-px blogs-loop-inner md-padding mw-1500 trb-px-24">';
                     $post_open_div = true;
                 }
 
