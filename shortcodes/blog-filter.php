@@ -64,7 +64,6 @@ function blog_filter_function($attr) {
 
 
     $rtn .= $attr["limit"];
-    $rtn .= 'xxx2';
 
     //echo "<!-- \$id_list: " . json_encode($id_list) . " -->";
 
