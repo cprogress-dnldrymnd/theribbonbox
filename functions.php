@@ -823,6 +823,7 @@ function admin_only()
                 display: flex;
                 gap: var(--gap);
                 flex-wrap: wrap;
+                justify-content: center;
             }
 
             .blogs-loop-inner.blogs-loop-inner.blogs-loop-inner>.post-box {
