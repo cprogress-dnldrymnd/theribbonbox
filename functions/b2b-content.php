@@ -55,7 +55,7 @@ function get_b2b_posts($attributes) {
     'tpl-47.php',
   ];
 
-  $rtn = '<div class="blogs-loop"><div class="blogs-loop-inner blogs-loop-innerxxxxx">';
+  $rtn = '<div class="blogs-loop"><div class="blogs-loop-inner">';
   for ($i = 0; $i < count($posts); $i++) {
     /** @var WP_Post $post */
     $post = [
