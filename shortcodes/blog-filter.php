@@ -2223,7 +2223,14 @@ function blog_filter_function($attr)
                                 $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $large_image));
                                 $style .= $iUrl;
                                 $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-                                include get_template_directory() . '/components/posts/tpl-33.php';
+
+                                if (current_user_can('administrator')) {
+                                    //revamp section
+                                    $rtn .= '<!--- tpl-33 --->';
+                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
+                                } else {
+                                    include get_template_directory() . '/components/posts/tpl-33.php';
+                                }
                             }
                         } else {
                             //html comments remove by dd
