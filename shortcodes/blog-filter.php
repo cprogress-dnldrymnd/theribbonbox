@@ -1991,7 +1991,9 @@ function blog_filter_function($attr)
 
 
                     if (current_user_can('administrator')) {
-                        echo 'visible only to administrator';
+                        echo 'visible only to administrator ';
+                        echo $in_count;
+                        echo '<br>';
                     } else {
                         /** Templates 26 - 41 */
 
