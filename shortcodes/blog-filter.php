@@ -2197,7 +2197,7 @@ function blog_filter_function($attr)
                         if ($st_3) {
 
                             if (current_user_can('administrator')) {
-                                  $rtn .= '<!--- tpl-30 --->';
+                                $rtn .= '<!--- tpl-30 --->';
                                 $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
                             } else {
                                 include get_template_directory() . '/components/posts/tpl-30.php';
@@ -2248,6 +2248,7 @@ function blog_filter_function($attr)
                             if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts") {
                                 //revamp section
                                 if (current_user_can('administrator')) {
+                                    $rtn .= '<!--- tpl-36 --->';
                                     $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
                                 } else {
                                     include get_template_directory() . '/components/posts/tpl-36.php';
