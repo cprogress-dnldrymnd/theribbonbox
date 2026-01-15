@@ -1,6 +1,6 @@
 <?php
 $rtn .= '
-<div class="blog-tpl-29 blog-odd-nor blog-nor format-' . $format . ' incount-' . $in_count . ' style-' . $styles_str . ' post-type-' . $this_post_type . ' blog-nor-half blog-nor-half-list-2">
+<div class="blog-tpl-29 xxx-3 blog-odd-nor blog-nor format-' . $format . ' incount-' . $in_count . ' style-' . $styles_str . ' post-type-' . $this_post_type . ' blog-nor-half blog-nor-half-list-2">
 <div class="blog-l-text-out">
 <div class="blog-l-text">
 <h3>'.$currentcatname.'</h3>
