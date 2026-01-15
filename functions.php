@@ -820,8 +820,9 @@ function admin_only()
             .blogs-loop-inner.blogs-loop-inner.blogs-loop-inner {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
             }
-            
+
         </style>
 <?php
 
