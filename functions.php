@@ -818,9 +818,16 @@ function admin_only()
     ?>
         <style>
             .blogs-loop-inner.blogs-loop-inner.blogs-loop-inner {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 40px;
+                --column: 3;
+                --gap: 40px;
+                display: flex;
+                gap: var(--gap);
+                flex-wrap: wrap;
+            }
+
+            .blogs-loop-inner.blogs-loop-inner.blogs-loop-inner>.post-box {
+                /* Formula: (100% - (total_gap_space)) / number_of_columns */
+                width: calc((100% - (var(--gap) * (var(--column) - 1))) / var(--column));
             }
 
             .mw-1400.mw-1400.mw-1400 {
