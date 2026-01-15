@@ -2266,6 +2266,7 @@ function blog_filter_function($attr)
                             $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
                             //revamp section
                             if (current_user_can('administrator')) {
+                                $rtn .= '<!--- tpl-38 --->';
                                 $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
                             } else {
                                 include get_template_directory() . '/components/posts/tpl-38.php';
