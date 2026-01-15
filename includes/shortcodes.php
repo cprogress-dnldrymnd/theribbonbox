@@ -388,10 +388,14 @@ function post_box($atts)
 ?>
     <div class="post-box">
         <div class="post-image image-box">
-            <?= get_the_post_thumbnail($id, 'large') ?>
+            <a href="<?= get_the_permalink($id) ?>">
+                <?= get_the_post_thumbnail($id, 'large') ?>
+            </a>
         </div>
         <div class="post-details">
-            <h3 class="post-box-title"><?= get_the_title($id) ?></h3>
+            <a href="<?= get_the_permalink($id) ?>">
+                <h3 class="post-box-title"><?= get_the_title($id) ?></h3>
+            </a>
             <div class="post-box-date">
                 <?= get_the_date('j M Y', $post["ID"]) ?>
             </div>
