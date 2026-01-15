@@ -1993,8 +1993,8 @@ function blog_filter_function($attr)
                     if (current_user_can('administrator')) {
                         echo 'visible only to administrator ';
                         echo $in_count;
+                        echo get_the_title($post['ID']);
                         echo '<br>';
-
                         $in_count++;
                     }
 
