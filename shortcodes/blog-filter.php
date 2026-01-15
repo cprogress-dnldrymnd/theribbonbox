@@ -1994,6 +1994,9 @@ function blog_filter_function($attr)
                         echo 'visible only to administrator ';
                         echo $in_count;
                         echo '<br>';
+
+                        $in_count++;
+
                     } else {
                         /** Templates 26 - 41 */
 
