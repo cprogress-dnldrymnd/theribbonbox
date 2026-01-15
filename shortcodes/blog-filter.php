@@ -1988,8 +1988,7 @@ function blog_filter_function($attr) {
 
                     //$rtn .= "<h2>here...</h2>";
 
-                    $rtn .= $in_count;
-                    if ($in_count % 2 == 0){
+                    if ($in_count % 2 == 1){
                         //html comments remove by dd
                         //echo '<!-- if ($in_count % 2 == 0) ----- if even -->';
 
