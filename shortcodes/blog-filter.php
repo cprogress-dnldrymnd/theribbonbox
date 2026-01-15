@@ -2013,7 +2013,6 @@ function blog_filter_function($attr) {
                             }
                         }
                         if ($st_3){
-
                             $style = 'style="background:url(';
                             $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
                             $style .= $iUrl;
