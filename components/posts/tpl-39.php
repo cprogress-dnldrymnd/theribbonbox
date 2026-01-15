@@ -1,4 +1,6 @@
 <?php
+//revamp section deprecated
+
 $rtn .= '
 <div class="blog-tpl-39 blog-odd-nor blog-nor format-' . $format . ' incount-' . $in_count . ' style-' . $styles_str . ' post-type-' . $this_post_type . ' blog-nor-with-bg-grey blog-nor-with-bg-grey-exp">
   '.$featured_cur.'
