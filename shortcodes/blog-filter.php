@@ -1942,7 +1942,7 @@ function blog_filter_function($attr)
 
 
                     // // Disabled because it was showing incorrectly on the /offers/giveaways/ page
-                    #include get_template_directory() . '/components/posts/tpl-24.php';
+                    include get_template_directory() . '/components/posts/tpl-24.php';
                 } else if (!empty($pod_layout) && $cnt == 1 && $curtotal == 0) {
                     //html comments remove by dd
                     //echo '<!-- else if (!empty($pod_layout) && $cnt == 1 && $curtotal == 0) -->';
