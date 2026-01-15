@@ -836,28 +836,6 @@ function admin_only()
 }
 add_action('wp_head', 'admin_only');
 
-
-/**
- * WPForms Entry to User Importer
- * Adds a dashboard page to map fields and import users from Form #40016
- */
-
-// 1. Register the Admin Menu
-add_action('admin_menu', 'register_wpforms_import_page');
-
-function register_wpforms_import_page() {
-    add_menu_page(
-        'WPForms User Import',     // Page Title
-        'WPForms User Import',     // Menu Title
-        'manage_options',          // Capability (Admins only)
-        'wpforms-user-import',     // Menu Slug
-        'render_wpforms_import_page', // Callback function
-        'dashicons-groups',        // Icon
-        80                         // Position
-    );
-}
-/*
-<?php
 /*
  * WPForms Import & Cleanup Tool
  * Adds a dashboard page to Import Users OR Delete Users based on Spam entries.
