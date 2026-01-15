@@ -1920,7 +1920,7 @@ function blog_filter_function($attr)
                                 $vid_count++;
 
                                 if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-fixer-after">';
+                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2">';
                                 }
                             } else if ($in_count == 9) {
                                 $rtn .= '<br>';
