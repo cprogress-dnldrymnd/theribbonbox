@@ -1674,7 +1674,7 @@ function blog_filter_function($attr)
                     } else {
 
                         if (!$post_open_div) {
-                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-4 md-padding padding-x mw-1400 trb-px">';
+                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-4 md-padding padding-x mw-1500 trb-px">';
                             $post_open_div = true;
                         }
 
