@@ -1990,7 +1990,6 @@ function blog_filter_function($attr)
                     //blogs-loop-inner-4
 
 
-
                     //end of revamp-section
 
                     /** Templates 26 - 41 */
