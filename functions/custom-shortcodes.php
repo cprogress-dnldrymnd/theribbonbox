@@ -476,19 +476,20 @@ function display_followus_function()
     //revamp section
     if (current_user_can('administrator')) { ?>
         <div class="post-follow-us-revamp">
-            <div class="post-follow-us-inner">
-                <h2>Follow our <i>Socials</i></h2>
+            <div class="post-follow-us-revamp-outer">
+                <div class="post-follow-us-inner">
+                    <h2>Follow our <i>Socials</i></h2>
+                </div>
+                <div class="post-follow-us-inner">
+                    <?= do_shortcode("[get_socials social='instagram']") ?>
+                </div>
+                <div class="post-follow-us-inner">
+                    <?= do_shortcode("[get_socials social='tiktok']") ?>
+                </div>
+                <div class="post-follow-us-inner">
+                    <?= do_shortcode("[get_socials social='icons-only']") ?>
+                </div>
             </div>
-            <div class="post-follow-us-inner">
-                <?= do_shortcode("[get_socials social='instagram']") ?>
-            </div>
-            <div class="post-follow-us-inner">
-                <?= do_shortcode("[get_socials social='tiktok']") ?>
-            </div>
-            <div class="post-follow-us-inner">
-                <?= do_shortcode("[get_socials social='icons-only']") ?>
-            </div>
-
         </div>
     <?php } else { ?>
 
