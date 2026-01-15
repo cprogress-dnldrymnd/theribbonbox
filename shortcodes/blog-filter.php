@@ -2201,7 +2201,6 @@ function blog_filter_function($attr)
                             } else {
                                 include get_template_directory() . '/components/posts/tpl-30.php';
                             }
-                            include get_template_directory() . '/components/posts/tpl-30.php';
                         }
                         if ($st_4) {
                             if (! isset($attr["post_type"]) || $attr["post_type"] == "expert_profiles") {
@@ -2276,7 +2275,11 @@ function blog_filter_function($attr)
                                 if (($in_count % 3) == 0) {
                                     $blkBg = " style='background:#000; display:none;'";
                                 }
-                                include get_template_directory() . '/components/posts/tpl-39.php';
+                                if (current_user_can('administrator')) {
+                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
+                                } else {
+                                    include get_template_directory() . '/components/posts/tpl-39.php';
+                                }
                             } else {
                                 include get_template_directory() . '/components/posts/tpl-40.php';
                             }
