@@ -1986,7 +1986,6 @@ function blog_filter_function($attr)
 
                     include get_template_directory() . '/components/posts/tpl-25.php';
                 } else {
-                    //revamp-section
                     //blogs-loop-inner-4
 
 
@@ -2005,6 +2004,7 @@ function blog_filter_function($attr)
                     //// HERE  $in_count $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = false;
 
                     //$in_count++;
+                    //revamp section
 
                     if (!$post_open_div) {
                         $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-4 md-padding padding-x mw-1400 trb-px">';
