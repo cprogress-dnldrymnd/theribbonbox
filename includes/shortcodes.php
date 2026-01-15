@@ -374,8 +374,25 @@ function save_custom_external_product_field($post_id)
 add_action('woocommerce_process_product_meta_external', 'save_custom_external_product_field');
 
 
-function post_box() {
-    
+function post_box($atts)
+{
+    ob_start();
+    extract(
+        shortcode_atts(
+            array(
+                'id' => '',
+            ),
+            $atts
+        )
+    );
+?>
+    <div class="post-box">
+        <div class="post-image image-box">
+            <?= get_the_post_thumbnail($id, 'large') ?>
+        </div>
+    </div>
+<?php
+    return ob_get_clean();
 }
 
 add_shortcode('post_box', 'post_box');
