@@ -817,7 +817,7 @@ function admin_only()
     if (current_user_can('administrator')) {
     ?>
         <style>
-            .blogs-loop-inner {
+            .blogs-loop-inner.blogs-loop-inner.blogs-loop-inner {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
             }
