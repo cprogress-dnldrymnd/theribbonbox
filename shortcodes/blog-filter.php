@@ -16,6 +16,7 @@ function blog_filter_function($attr)
     $homepage_array = '';
 
     $rtn = "";
+    $rtn .= $post['ID'];
 
     $term_id = 0;
 
