@@ -856,7 +856,7 @@ function register_wpforms_import_page() {
         80                         // Position
     );
 }
-
+/*
 // 2. Render the Page and Handle Logic
 function render_wpforms_import_page() {
     global $wpdb;
@@ -888,12 +888,20 @@ function render_wpforms_import_page() {
             return;
         }
 
+        // --- UPDATED QUERY: Exclude 'spam' and 'trash' ---
         $entries = $wpdb->get_results( 
-            $wpdb->prepare("SELECT fields, entry_id, date FROM $table_name WHERE form_id = %d", $target_form_id) 
+            $wpdb->prepare(
+                "SELECT fields, entry_id, date 
+                 FROM $table_name 
+                 WHERE form_id = %d 
+                 AND status != 'spam' 
+                 AND status != 'trash'", 
+                $target_form_id
+            ) 
         );
 
         if ( empty($entries) ) {
-            $results_log[] = ['type' => 'error', 'msg' => "No entries found for Form ID $target_form_id"];
+            $results_log[] = ['type' => 'error', 'msg' => "No valid entries found for Form ID $target_form_id (Spam/Trash excluded)."];
         } else {
             foreach ($entries as $entry) {
                 $fields = json_decode($entry->fields, true);
@@ -914,7 +922,6 @@ function render_wpforms_import_page() {
                 
                 // Interest Meta
                 $raw_interest = isset($fields[$id_interest]['value']) ? $fields[$id_interest]['value'] : '';
-                // Convert newline separated string to array if necessary, or save as is
                 $interest_meta = (strpos($raw_interest, "\n") !== false) ? explode("\n", $raw_interest) : $raw_interest;
 
                 // --- Validation ---
@@ -933,7 +940,7 @@ function render_wpforms_import_page() {
                 $userdata = array(
                     'user_login' => $username,
                     'user_email' => $email,
-                    'user_pass'  => $password, // Saves the plain text pass submitted
+                    'user_pass'  => $password, 
                     'first_name' => $first_name,
                     'last_name'  => $last_name,
                     'role'       => 'subscriber'
@@ -1018,3 +1025,4 @@ function render_wpforms_import_page() {
     </div>
     <?php
 }
+    /*
