@@ -835,3 +835,186 @@ function admin_only()
     }
 }
 add_action('wp_head', 'admin_only');
+
+
+/**
+ * WPForms Entry to User Importer
+ * Adds a dashboard page to map fields and import users from Form #40016
+ */
+
+// 1. Register the Admin Menu
+add_action('admin_menu', 'register_wpforms_import_page');
+
+function register_wpforms_import_page() {
+    add_menu_page(
+        'WPForms User Import',     // Page Title
+        'WPForms User Import',     // Menu Title
+        'manage_options',          // Capability (Admins only)
+        'wpforms-user-import',     // Menu Slug
+        'render_wpforms_import_page', // Callback function
+        'dashicons-groups',        // Icon
+        80                         // Position
+    );
+}
+
+// 2. Render the Page and Handle Logic
+function render_wpforms_import_page() {
+    global $wpdb;
+    
+    // --- Configuration Defaults ---
+    $target_form_id = 40016;
+    
+    // --- Handle Form Submission ---
+    $results_log = [];
+    $processed = false;
+
+    if ( isset($_POST['run_import_process']) && check_admin_referer('wpforms_import_action', 'wpforms_import_nonce') ) {
+        
+        $processed = true;
+        
+        // Get mapped IDs from user input
+        $id_name     = intval($_POST['fid_name']);
+        $id_username = intval($_POST['fid_username']);
+        $id_email    = intval($_POST['fid_email']);
+        $id_pass     = intval($_POST['fid_pass']);
+        $id_interest = intval($_POST['fid_interest']);
+
+        // Fetch Entries directly from DB
+        $table_name = $wpdb->prefix . 'wpforms_entries';
+        
+        // Check if table exists first
+        if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+            echo '<div class="notice notice-error"><p>Error: Table ' . $table_name . ' not found. Is WPForms installed?</p></div>';
+            return;
+        }
+
+        $entries = $wpdb->get_results( 
+            $wpdb->prepare("SELECT fields, entry_id, date FROM $table_name WHERE form_id = %d", $target_form_id) 
+        );
+
+        if ( empty($entries) ) {
+            $results_log[] = ['type' => 'error', 'msg' => "No entries found for Form ID $target_form_id"];
+        } else {
+            foreach ($entries as $entry) {
+                $fields = json_decode($entry->fields, true);
+
+                // --- Extract Data ---
+                // Name (Handle first/last split or single field)
+                $first_name = isset($fields[$id_name]['first']) ? $fields[$id_name]['first'] : '';
+                $last_name  = isset($fields[$id_name]['last']) ? $fields[$id_name]['last'] : '';
+                if (empty($first_name) && isset($fields[$id_name]['value'])) {
+                     $parts = explode(' ', $fields[$id_name]['value'], 2);
+                     $first_name = $parts[0];
+                     $last_name = isset($parts[1]) ? $parts[1] : '';
+                }
+
+                $username = isset($fields[$id_username]['value']) ? trim($fields[$id_username]['value']) : '';
+                $email    = isset($fields[$id_email]['value']) ? trim($fields[$id_email]['value']) : '';
+                $password = isset($fields[$id_pass]['value']) ? $fields[$id_pass]['value'] : '';
+                
+                // Interest Meta
+                $raw_interest = isset($fields[$id_interest]['value']) ? $fields[$id_interest]['value'] : '';
+                // Convert newline separated string to array if necessary, or save as is
+                $interest_meta = (strpos($raw_interest, "\n") !== false) ? explode("\n", $raw_interest) : $raw_interest;
+
+                // --- Validation ---
+                if ( empty($email) || empty($username) ) {
+                    $results_log[] = ['type' => 'warning', 'msg' => "Entry #{$entry->entry_id}: Skipped (Missing Email/Username)"];
+                    continue;
+                }
+
+                // --- Check Existence ---
+                if ( email_exists($email) || username_exists($username) ) {
+                    $results_log[] = ['type' => 'info', 'msg' => "Entry #{$entry->entry_id}: Skipped (User $username / $email already exists)"];
+                    continue;
+                }
+
+                // --- Create User ---
+                $userdata = array(
+                    'user_login' => $username,
+                    'user_email' => $email,
+                    'user_pass'  => $password, // Saves the plain text pass submitted
+                    'first_name' => $first_name,
+                    'last_name'  => $last_name,
+                    'role'       => 'subscriber'
+                );
+
+                $user_id = wp_insert_user($userdata);
+
+                if ( ! is_wp_error( $user_id ) ) {
+                    // Save Meta
+                    update_user_meta($user_id, 'interest', $interest_meta);
+                    $results_log[] = ['type' => 'success', 'msg' => "Entry #{$entry->entry_id}: <strong>SUCCESS!</strong> Created user $username"];
+                } else {
+                    $results_log[] = ['type' => 'error', 'msg' => "Entry #{$entry->entry_id}: Failed - " . $user_id->get_error_message()];
+                }
+            }
+        }
+    }
+
+    // --- HTML Output ---
+    ?>
+    <div class="wrap">
+        <h1>WPForms Entry Importer (Form #40016)</h1>
+        <p>This tool scans existing form entries and converts them into WordPress Users.</p>
+        
+        <div style="background: #fff; padding: 20px; border: 1px solid #ccc; max-width: 800px;">
+            <form method="post" action="">
+                <?php wp_nonce_field('wpforms_import_action', 'wpforms_import_nonce'); ?>
+                
+                <h3>Step 1: Map your Field IDs</h3>
+                <p><em>Check your WPForms Builder for the exact "ID #" of each field. Defaults are guessed below.</em></p>
+                
+                <table class="form-table">
+                    <tr>
+                        <th scope="row"><label>Name Field ID</label></th>
+                        <td><input type="number" name="fid_name" value="<?php echo isset($_POST['fid_name']) ? esc_attr($_POST['fid_name']) : '0'; ?>" class="small-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Username Field ID</label></th>
+                        <td><input type="number" name="fid_username" value="<?php echo isset($_POST['fid_username']) ? esc_attr($_POST['fid_username']) : '1'; ?>" class="small-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Email Field ID</label></th>
+                        <td><input type="number" name="fid_email" value="<?php echo isset($_POST['fid_email']) ? esc_attr($_POST['fid_email']) : '2'; ?>" class="small-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Password Field ID</label></th>
+                        <td><input type="number" name="fid_pass" value="<?php echo isset($_POST['fid_pass']) ? esc_attr($_POST['fid_pass']) : '3'; ?>" class="small-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Interest Field ID (Meta)</label></th>
+                        <td><input type="number" name="fid_interest" value="<?php echo isset($_POST['fid_interest']) ? esc_attr($_POST['fid_interest']) : '4'; ?>" class="small-text"></td>
+                    </tr>
+                </table>
+                
+                <hr>
+                
+                <p class="submit">
+                    <input type="submit" name="run_import_process" id="submit" class="button button-primary" value="Run Import Now">
+                </p>
+            </form>
+        </div>
+
+        <?php if ($processed): ?>
+            <br>
+            <h3>Import Results</h3>
+            <div style="background: #fff; padding: 20px; border: 1px solid #ccc; max-width: 800px; max-height: 400px; overflow-y: scroll;">
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <?php foreach($results_log as $log): 
+                        $color = '#333';
+                        if($log['type'] == 'success') $color = 'green';
+                        if($log['type'] == 'error') $color = 'red';
+                        if($log['type'] == 'warning') $color = 'orange';
+                        if($log['type'] == 'info') $color = '#999';
+                    ?>
+                        <li style="border-bottom: 1px solid #eee; padding: 5px 0; color: <?php echo $color; ?>;">
+                            <?php echo $log['msg']; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+    </div>
+    <?php
+}
