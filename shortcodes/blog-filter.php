@@ -1996,30 +1996,33 @@ function blog_filter_function($attr)
                         echo '<br>';
 
                         $in_count++;
+                    }
 
-                    } else {
-                        /** Templates 26 - 41 */
 
-                        /**
-                         * Define "styles" (denoted by $st_# below)
-                         * A "style" is the "layout" of the card (e.g. image, then heading, then other text).
-                         *
-                         * $in_count is the iteration (index) of the card within the section.
-                         * E.g. card 0, card 1, card 2 (if it's a row of 3).
-                         */
+                    //end of revamp-section
 
-                        //// HERE  $in_count $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = false;
+                    /** Templates 26 - 41 */
 
-                        //$in_count++;
+                    /**
+                     * Define "styles" (denoted by $st_# below)
+                     * A "style" is the "layout" of the card (e.g. image, then heading, then other text).
+                     *
+                     * $in_count is the iteration (index) of the card within the section.
+                     * E.g. card 0, card 1, card 2 (if it's a row of 3).
+                     */
 
-                        if (!$post_open_div) {
-                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-4">';
-                            $post_open_div = true;
-                        }
+                    //// HERE  $in_count $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = false;
 
-                        $styles = [];
+                    //$in_count++;
 
-                        /*   if (0 <= $in_count && $in_count <= 2){         $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = true ; $st_5 = false;}
+                    if (!$post_open_div) {
+                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-4">';
+                        $post_open_div = true;
+                    }
+
+                    $styles = [];
+
+                    /*   if (0 <= $in_count && $in_count <= 2){         $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = true ; $st_5 = false;}
                     else if (3 <= $in_count && $in_count <= 4){         $st_2 = true ; $st_1 = false; $st_3 = false; $st_4 = false; $st_5 = false;}
                     else if (5 <= $in_count && $in_count <= 6){         $st_3 = true ; $st_1 = false; $st_2 = false; $st_4 = false; $st_5 = false;}
                     else if (7 <= $in_count && $in_count <= 9){         $st_4 = true ; $st_1 = false; $st_2 = false; $st_3 = false; $st_5 = false;}
@@ -2027,402 +2030,402 @@ function blog_filter_function($attr)
                     else {                                              $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = true ; $st_5 = false; }
                     $in_count = 0;*/
 
-                        if ($attr["post_type"] == "videos/podcasts" || $attr["post_type"] == "videos") { // ! isset($attr["post_type"]) ||
-                            if (0 <= $in_count && $in_count <= 2) {
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                            } // 3 in a row, style 4
-                            else if (3 <= $in_count && $in_count <= 4) {
-                                $st_2 = true;
-                                $st_1 = false;
-                                $st_3 = false;
-                                $st_4 = false;
-                                $st_5 = false;
-                            } // 2 in a row, style 2
-                            else if (5 <= $in_count && $in_count <= 7) {
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                            } // 3 in a row, style 4
-                            else if (8 <= $in_count && $in_count <= 9) {
-                                $st_2 = true;
-                                $st_1 = false;
-                                $st_3 = false;
-                                $st_4 = false;
-                                $st_5 = false;
-                            } // 2 in a row, style 2
-                            else if (10 <= $in_count && $in_count <= 15) {
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                            } // 6 in a row, style 4
-                            else if (16 <= $in_count && $in_count <= 17) {
-                                $st_2 = true;
-                                $st_1 = false;
-                                $st_3 = false;
-                                $st_4 = false;
-                                $st_5 = false;
-                            } else if (18 <= $in_count && $in_count <= 23) {
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                            } else if (24 <= $in_count && $in_count <= 29) {
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                            } else if (30 <= $in_count && $in_count <= 35) {
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                            } else if (36 <= $in_count && $in_count <= 41) {
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                            }
-                            /*
+                    if ($attr["post_type"] == "videos/podcasts" || $attr["post_type"] == "videos") { // ! isset($attr["post_type"]) ||
+                        if (0 <= $in_count && $in_count <= 2) {
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                        } // 3 in a row, style 4
+                        else if (3 <= $in_count && $in_count <= 4) {
+                            $st_2 = true;
+                            $st_1 = false;
+                            $st_3 = false;
+                            $st_4 = false;
+                            $st_5 = false;
+                        } // 2 in a row, style 2
+                        else if (5 <= $in_count && $in_count <= 7) {
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                        } // 3 in a row, style 4
+                        else if (8 <= $in_count && $in_count <= 9) {
+                            $st_2 = true;
+                            $st_1 = false;
+                            $st_3 = false;
+                            $st_4 = false;
+                            $st_5 = false;
+                        } // 2 in a row, style 2
+                        else if (10 <= $in_count && $in_count <= 15) {
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                        } // 6 in a row, style 4
+                        else if (16 <= $in_count && $in_count <= 17) {
+                            $st_2 = true;
+                            $st_1 = false;
+                            $st_3 = false;
+                            $st_4 = false;
+                            $st_5 = false;
+                        } else if (18 <= $in_count && $in_count <= 23) {
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                        } else if (24 <= $in_count && $in_count <= 29) {
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                        } else if (30 <= $in_count && $in_count <= 35) {
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                        } else if (36 <= $in_count && $in_count <= 41) {
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                        }
+                        /*
                         else if (2 <= $in_count && $in_count <= 4){     $st_2 = false; $st_1 = false; $st_3 = false; $st_4 = true ; $st_5 = false;}
                         else if (5 <= $in_count && $in_count <= 6){     $st_3 = true ; $st_1 = false; $st_2 = false; $st_4 = false; $st_5 = false;}
                         else if (7 <= $in_count && $in_count <= 8){     $st_4 = false; $st_1 = false; $st_2 = false; $st_3 = true ; $st_5 = false;}
                         else if (10 <= $in_count && $in_count <= 11){   $st_4 = false; $st_1 = false; $st_2 = false; $st_3 = false; $st_5 = true ;}
                         else {                                          $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = true ; $st_5 = false; }
                         $in_count = 0;*/
+                    } else {
+                        if (0 <= $in_count && $in_count <= 1) {
+                            $st_1 = false;
+                            $st_2 = true;
+                            $st_3 = false;
+                            $st_4 = false;
+                            $st_5 = false;
+                        } else if (2 <= $in_count && $in_count <= 4) {
+                            $st_2 = false;
+                            $st_1 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                        } else if (5 <= $in_count && $in_count <= 6) {
+                            $st_3 = true;
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_4 = false;
+                            $st_5 = false;
+                        } else if (7 <= $in_count && $in_count <= 8) {
+                            $st_4 = false;
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = true;
+                            $st_5 = false;
+                        } else if (9 <= $in_count && $in_count <= 11) {
+                            $st_4 = false;
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_5 = true;
                         } else {
-                            if (0 <= $in_count && $in_count <= 1) {
-                                $st_1 = false;
-                                $st_2 = true;
-                                $st_3 = false;
-                                $st_4 = false;
-                                $st_5 = false;
-                            } else if (2 <= $in_count && $in_count <= 4) {
-                                $st_2 = false;
-                                $st_1 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                            } else if (5 <= $in_count && $in_count <= 6) {
-                                $st_3 = true;
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_4 = false;
-                                $st_5 = false;
-                            } else if (7 <= $in_count && $in_count <= 8) {
-                                $st_4 = false;
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = true;
-                                $st_5 = false;
-                            } else if (9 <= $in_count && $in_count <= 11) {
-                                $st_4 = false;
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_5 = true;
-                            } else {
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                                $in_count = 0;
-                            }
-
-                            if ($attr["post_type"] == "expert_profiles") {
-                                $st_1 = false;
-                                $st_2 = false;
-                                $st_3 = false;
-                                $st_4 = true;
-                                $st_5 = false;
-                            }
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                            $in_count = 0;
                         }
-                        //$in_count = 0;
 
+                        if ($attr["post_type"] == "expert_profiles") {
+                            $st_1 = false;
+                            $st_2 = false;
+                            $st_3 = false;
+                            $st_4 = true;
+                            $st_5 = false;
+                        }
+                    }
+                    //$in_count = 0;
+
+                    if ($st_1) {
+                        $styles[] = '1';
+                    }
+                    if ($st_2) {
+                        $styles[] = '2';
+                    }
+                    if ($st_3) {
+                        $styles[] = '3';
+                    }
+                    if ($st_4) {
+                        $styles[] = '4';
+                    }
+                    if ($st_5) {
+                        $styles[] = '5';
+                    }
+                    $styles_str = implode('-', $styles);
+
+                    //$rtn .= "<h2>here...</h2>";
+
+                    if ($in_count % 2 == 0) {
+                        //html comments remove by dd
+                        //echo '<!-- if ($in_count % 2 == 0) ----- if even -->';
+
+                        //even
+                        $style = str_replace('style="', 'style="' . $addBorder, $style);
                         if ($st_1) {
-                            $styles[] = '1';
+                            if ($attr["post_type"] == "expert_profiles") {
+                                include get_template_directory() . '/components/posts/tpl-26.php';
+                            } else {
+                                include get_template_directory() . '/components/posts/tpl-27.php';
+                            }
                         }
                         if ($st_2) {
-                            $styles[] = '2';
+                            $style = 'style="background:url(';
+                            $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
+                            $style .= $iUrl;
+                            $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
+
+                            if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts") {
+                                include get_template_directory() . '/components/posts/tpl-28.php';
+                            } else {
+                                include get_template_directory() . '/components/posts/tpl-29.php';
+                            }
                         }
                         if ($st_3) {
-                            $styles[] = '3';
+
+                            $style = 'style="background:url(';
+                            $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
+                            $style .= $iUrl;
+                            $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
+
+                            include get_template_directory() . '/components/posts/tpl-30.php';
                         }
                         if ($st_4) {
-                            $styles[] = '4';
+                            if (! isset($attr["post_type"]) || $attr["post_type"] == "expert_profiles") {
+                                include get_template_directory() . '/components/posts/tpl-31.php';
+                            } else {
+                                include get_template_directory() . '/components/posts/tpl-32.php';
+                            }
                         }
                         if ($st_5) {
-                            $styles[] = '5';
+                            $style = 'style="background:url(';
+                            $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $large_image));
+                            $style .= $iUrl;
+                            $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
+                            include get_template_directory() . '/components/posts/tpl-33.php';
                         }
-                        $styles_str = implode('-', $styles);
+                    } else {
+                        //html comments remove by dd
+                        // echo '<!-- NOT if ($in_count % 2 == 0) ----- if odd -->';
 
-                        //$rtn .= "<h2>here...</h2>";
-
-                        if ($in_count % 2 == 0) {
-                            //html comments remove by dd
-                            //echo '<!-- if ($in_count % 2 == 0) ----- if even -->';
-
-                            //even
-                            $style = str_replace('style="', 'style="' . $addBorder, $style);
-                            if ($st_1) {
-                                if ($attr["post_type"] == "expert_profiles") {
-                                    include get_template_directory() . '/components/posts/tpl-26.php';
-                                } else {
-                                    include get_template_directory() . '/components/posts/tpl-27.php';
+                        $style = str_replace('style="', 'style="' . $addBorder, $style);
+                        if ($st_1) {
+                            if ($attr["post_type"] == "expert_profiles") {
+                                $blkBg = "";
+                                if (($in_count % 3) == 0) {
+                                    $blkBg = " style='background:#000;'";
                                 }
-                            }
-                            if ($st_2) {
-                                $style = 'style="background:url(';
-                                $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                                $style .= $iUrl;
-                                $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-
-                                if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts") {
-                                    include get_template_directory() . '/components/posts/tpl-28.php';
-                                } else {
-                                    include get_template_directory() . '/components/posts/tpl-29.php';
-                                }
-                            }
-                            if ($st_3) {
-
-                                $style = 'style="background:url(';
-                                $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                                $style .= $iUrl;
-                                $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-
-                                include get_template_directory() . '/components/posts/tpl-30.php';
-                            }
-                            if ($st_4) {
-                                if (! isset($attr["post_type"]) || $attr["post_type"] == "expert_profiles") {
-                                    include get_template_directory() . '/components/posts/tpl-31.php';
-                                } else {
-                                    include get_template_directory() . '/components/posts/tpl-32.php';
-                                }
-                            }
-                            if ($st_5) {
-                                $style = 'style="background:url(';
-                                $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $large_image));
-                                $style .= $iUrl;
-                                $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-                                include get_template_directory() . '/components/posts/tpl-33.php';
-                            }
-                        } else {
-                            //html comments remove by dd
-                            // echo '<!-- NOT if ($in_count % 2 == 0) ----- if odd -->';
-
-                            $style = str_replace('style="', 'style="' . $addBorder, $style);
-                            if ($st_1) {
-                                if ($attr["post_type"] == "expert_profiles") {
-                                    $blkBg = "";
-                                    if (($in_count % 3) == 0) {
-                                        $blkBg = " style='background:#000;'";
-                                    }
-                                    include get_template_directory() . '/component /posts/tpl-34.php';
-                                } else {
-                                    include get_template_directory() . '/components/posts/tpl-35.php';
-                                }
-                            }
-                            if ($st_2) {
-                                $style = 'style="background:url(';
-                                $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                                $style .= $iUrl;
-                                $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-
-                                if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts") {
-                                    include get_template_directory() . '/components/posts/tpl-36.php';
-                                } else {
-                                    include get_template_directory() . '/components/posts/tpl-37.php';
-                                }
-                            }
-                            if ($st_3) {
-                                $style = 'style="background:url(';
-                                $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                                $style .= $iUrl;
-                                $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-
-                                include get_template_directory() . '/components/posts/tpl-38.php';
-                            }
-                            if ($st_4) {
-
-
-                                if (! isset($attr["post_type"]) || $attr["post_type"] == "expert_profiles") {
-                                    $blkBg = "";
-                                    if (($in_count % 3) == 0) {
-                                        $blkBg = " style='background:#000; display:none;'";
-                                    }
-                                    include get_template_directory() . '/components/posts/tpl-39.php';
-                                } else {
-                                    include get_template_directory() . '/components/posts/tpl-40.php';
-                                }
-                            }
-                            if ($st_5) {
-                                $style = 'style="background:url(';
-                                $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                                $style .= $iUrl;
-                                $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-                                include get_template_directory() . '/components/posts/tpl-41.php';
+                                include get_template_directory() . '/component /posts/tpl-34.php';
+                            } else {
+                                include get_template_directory() . '/components/posts/tpl-35.php';
                             }
                         }
+                        if ($st_2) {
+                            $style = 'style="background:url(';
+                            $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
+                            $style .= $iUrl;
+                            $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
 
-                        if (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
-                            //html comments remove by dd
-                            //echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
+                            if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts") {
+                                include get_template_directory() . '/components/posts/tpl-36.php';
+                            } else {
+                                include get_template_directory() . '/components/posts/tpl-37.php';
+                            }
+                        }
+                        if ($st_3) {
+                            $style = 'style="background:url(';
+                            $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
+                            $style .= $iUrl;
+                            $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
 
-                            if ($in_count == 6) {
-                                $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
-                                $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="2" categoryid="' . $categoryid . '"]');
-                                $vid_count++;
-                            } else if ($in_count == 9) {
-                                if (empty($post_type) || $attr["post_type"] == "videos" || $attr["post_type"] == "podcasts") {
-                                    if ($post_open_div) {
-                                        //$rtn .= '</div>';
-                                    }
-                                    //$rtn .= do_shortcode("[display_insider]");
-                                    //$vid_count++;
-                                    if ($post_open_div) {
-                                        //$rtn .= '<div class="blogs-loop-inner">';
-                                    }
+                            include get_template_directory() . '/components/posts/tpl-38.php';
+                        }
+                        if ($st_4) {
+
+
+                            if (! isset($attr["post_type"]) || $attr["post_type"] == "expert_profiles") {
+                                $blkBg = "";
+                                if (($in_count % 3) == 0) {
+                                    $blkBg = " style='background:#000; display:none;'";
                                 }
-                            } else if ($in_count == 6) {
-                                $rtn .= '<br>';
-                                $giveaway_count++;
-                            } else if ($in_count == 9) {
-                                $rtn .= '<br>';
-                                if (empty($post_type)) {
+                                include get_template_directory() . '/components/posts/tpl-39.php';
+                            } else {
+                                include get_template_directory() . '/components/posts/tpl-40.php';
+                            }
+                        }
+                        if ($st_5) {
+                            $style = 'style="background:url(';
+                            $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
+                            $style .= $iUrl;
+                            $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
+                            include get_template_directory() . '/components/posts/tpl-41.php';
+                        }
+                    }
+
+                    if (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
+                        //html comments remove by dd
+                        //echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
+
+                        if ($in_count == 6) {
+                            $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+                            $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="2" categoryid="' . $categoryid . '"]');
+                            $vid_count++;
+                        } else if ($in_count == 9) {
+                            if (empty($post_type) || $attr["post_type"] == "videos" || $attr["post_type"] == "podcasts") {
+                                if ($post_open_div) {
+                                    //$rtn .= '</div>';
+                                }
+                                //$rtn .= do_shortcode("[display_insider]");
+                                //$vid_count++;
+                                if ($post_open_div) {
+                                    //$rtn .= '<div class="blogs-loop-inner">';
+                                }
+                            }
+                        } else if ($in_count == 6) {
+                            $rtn .= '<br>';
+                            $giveaway_count++;
+                        } else if ($in_count == 9) {
+                            $rtn .= '<br>';
+                            if (empty($post_type)) {
+                                if ($post_open_div) {
+                                    $rtn .= '</div>';
+                                }
+                                $rtn .= do_shortcode("[display_followus]");
+                                $exp_count++;
+                                if ($post_open_div) {
+                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-5">';
+                                }
+                            }
+                            $cat_count++;
+                        } else if ($in_count == 8 && !empty($add_ad)) {
+                            if ($add_ad == "Yes") {
+                                $add_ad = "No";
+                                //$rtn .= '<br>';
+                                if ($post_open_div) {
+                                    $rtn .= '</div>';
+                                }
+                                $rtn .= do_shortcode("[ad_list]");
+                                if ($post_open_div) {
+                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-6 ">';
+                                }
+                            } else {
+                                $add_ad = "Yes";
+
+                                if (get_post_type($post['ID']) == 'post') {
                                     if ($post_open_div) {
                                         $rtn .= '</div>';
                                     }
                                     $rtn .= do_shortcode("[display_followus]");
                                     $exp_count++;
                                     if ($post_open_div) {
-                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-5">';
+                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-7">';
                                     }
-                                }
-                                $cat_count++;
-                            } else if ($in_count == 8 && !empty($add_ad)) {
-                                if ($add_ad == "Yes") {
-                                    $add_ad = "No";
-                                    //$rtn .= '<br>';
-                                    if ($post_open_div) {
-                                        $rtn .= '</div>';
-                                    }
-                                    $rtn .= do_shortcode("[ad_list]");
-                                    if ($post_open_div) {
-                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-6 ">';
-                                    }
-                                } else {
-                                    $add_ad = "Yes";
-
-                                    if (get_post_type($post['ID']) == 'post') {
-                                        if ($post_open_div) {
-                                            $rtn .= '</div>';
-                                        }
-                                        $rtn .= do_shortcode("[display_followus]");
-                                        $exp_count++;
-                                        if ($post_open_div) {
-                                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-7">';
-                                        }
-                                    }
-                                }
-                            }
-                        } else {
-                            //html comments remove by dd
-                            // echo '<!-- NOT if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
-
-                            if ($in_count == 23) {
-                                if ($post_open_div) {
-                                    $rtn .= '</div>';
-                                }
-                                $rtn .= do_shortcode("[display_followus]");
-                                if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-8">';
-                                }
-                            } else if ($in_count == 29) {
-                                if ($post_open_div) {
-                                    $rtn .= '</div>';
-                                }
-                                $rtn .= do_shortcode("[display_insider]");
-                                if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-9">';
-                                }
-                            } else if ($in_count == 35) {
-                                if ($post_open_div) {
-                                    $rtn .= '</div>';
-                                }
-                                $rtn .= do_shortcode("[get_giveaway_event post_type='giveaway-items']");
-                                if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-10">';
-                                }
-                            } else if ($in_count == 41) {
-                                if ($add_ad == "Yes") {
-                                    $add_ad = "No";
-                                    //$rtn .= '<br>';
-                                    if ($post_open_div) {
-                                        $rtn .= '</div>';
-                                    }
-                                    $rtn .= do_shortcode("[ad_list]");
-                                    if ($post_open_div) {
-                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-11">';
-                                    }
-                                } else {
-                                    $add_ad = "Yes";
                                 }
                             }
                         }
+                    } else {
+                        //html comments remove by dd
+                        // echo '<!-- NOT if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
 
-                        if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
-                            //html comments remove by dd
-                            //echo '<!-- if ($vid_count == 1 && $curtotal == 0 && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
-
-                            $vid_count++;
-
+                        if ($in_count == 23) {
                             if ($post_open_div) {
                                 $rtn .= '</div>';
                             }
-
-                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
-
+                            $rtn .= do_shortcode("[display_followus]");
                             if ($post_open_div) {
-                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-12">';
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-8">';
                             }
-                        }
-
-                        if ($in_count == 1) {
-                            $exp_count++;
-                        }
-
-
-                        if (
-                            $exp_count == 1
-                            && $curtotal == 0
-                            && (! isset($attr["post_type"])
-                                || ($attr["post_type"] != "expert_profiles"
-                                    && $attr["post_type"] != "videos"
-                                    && $attr["post_type"] != "videos/podcasts"))
-                        ) {
-
+                        } else if ($in_count == 29) {
                             if ($post_open_div) {
                                 $rtn .= '</div>';
                             }
+                            $rtn .= do_shortcode("[display_insider]");
+                            if ($post_open_div) {
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-9">';
+                            }
+                        } else if ($in_count == 35) {
+                            if ($post_open_div) {
+                                $rtn .= '</div>';
+                            }
+                            $rtn .= do_shortcode("[get_giveaway_event post_type='giveaway-items']");
+                            if ($post_open_div) {
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-10">';
+                            }
+                        } else if ($in_count == 41) {
+                            if ($add_ad == "Yes") {
+                                $add_ad = "No";
+                                //$rtn .= '<br>';
+                                if ($post_open_div) {
+                                    $rtn .= '</div>';
+                                }
+                                $rtn .= do_shortcode("[ad_list]");
+                                if ($post_open_div) {
+                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-11">';
+                                }
+                            } else {
+                                $add_ad = "Yes";
+                            }
+                        }
+                    }
 
-                            // $cat = get_top_level_term_by_post_id($post_id, 'category');
-                            $cat = get_term_by('id', $categoryid, 'category');
-                            $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
-                            $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
-                            $exp_count++;
-                            $rtn .=   '
+                    if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
+                        //html comments remove by dd
+                        //echo '<!-- if ($vid_count == 1 && $curtotal == 0 && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
+
+                        $vid_count++;
+
+                        if ($post_open_div) {
+                            $rtn .= '</div>';
+                        }
+
+                        $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
+
+                        if ($post_open_div) {
+                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-12">';
+                        }
+                    }
+
+                    if ($in_count == 1) {
+                        $exp_count++;
+                    }
+
+
+                    if (
+                        $exp_count == 1
+                        && $curtotal == 0
+                        && (! isset($attr["post_type"])
+                            || ($attr["post_type"] != "expert_profiles"
+                                && $attr["post_type"] != "videos"
+                                && $attr["post_type"] != "videos/podcasts"))
+                    ) {
+
+                        if ($post_open_div) {
+                            $rtn .= '</div>';
+                        }
+
+                        // $cat = get_top_level_term_by_post_id($post_id, 'category');
+                        $cat = get_term_by('id', $categoryid, 'category');
+                        $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
+                        $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
+                        $exp_count++;
+                        $rtn .=   '
                             <div ' . $categoryid . ' class="experts-page-cara tpl-2649" style="--bg-color: ' . $category_colour . '; --text-color: ' . $category_text_color . '">
                                 <!--<h2>' . $exp_count . '</h2>-->
                                 ' . do_shortcode("[expert_list page='1' title='" . $globalCategoryName . " Experts" . "' categoryid='" . $categoryid . "']") . '
@@ -2430,70 +2433,70 @@ function blog_filter_function($attr)
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
                             <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
-                            if ($post_open_div) {
-                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-13">';
-                            }
+                        if ($post_open_div) {
+                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-13">';
                         }
+                    }
 
-                        if ($curtotal == 0 && $cat_count == 1) {
-                            //html comments remove by dd
-                            //echo '<!-- if ($curtotal == 0 && $cat_count == 1) -->';
+                    if ($curtotal == 0 && $cat_count == 1) {
+                        //html comments remove by dd
+                        //echo '<!-- if ($curtotal == 0 && $cat_count == 1) -->';
 
-                            $cat_count++;
-                            if ($attr["post_type"] == "expert_profiles") {
-                                if ($post_open_div) {
-                                    $rtn .= '</div>';
-                                }
-                                $rtn .= do_shortcode("[category_list page='experts']");
-                                if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-14 ">';
-                                }
-                            } else if ($attr["post_type"] == "videos") {
-                                if ($post_open_div) {
-                                    $rtn .= '</div>';
-                                }
-                                $rtn .= do_shortcode("[category_list page='videos']");
-                                if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-15">';
-                                }
-                            } else if ($attr["post_type"] == "podcasts") {
-                                if ($post_open_div) {
-                                    $rtn .= '</div>';
-                                }
-                                $rtn .= do_shortcode("[category_list page='podcasts']");
-                                if ($post_open_div) {
-                                    $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-16">';
-                                }
-                            }
-                        }
-
-                        if ($curtotal == 0 && $giveaway_count == 1 && ($cur_post_type == "giveaway-items" || $cur_post_type == "offer-items" || $cur_post_type == "offer-items/giveaway-items/events" || $cur_post_type == "events")) {
-                            //html comments remove by dd
-                            //echo '<!-- if ($curtotal == 0 && $giveaway_count == 1 && ($cur_post_type == "giveaway-items" || $cur_post_type == "offer-items" || $cur_post_type == "offer-items/giveaway-items/events" || $cur_post_type == "events")) -->';
-
-                            $giveaway_count++;
-                            //if ($cnt == 4 || $cnt == 10){
-                            $style_format = "";
-                            $pos_format = "giveaway-items";
-                            if ($cnt == 4) {
-                                $style_format = "event-giveaway-outer-light-bg";
-                                $pos_format = "offer-items";
-                            }
+                        $cat_count++;
+                        if ($attr["post_type"] == "expert_profiles") {
                             if ($post_open_div) {
                                 $rtn .= '</div>';
                             }
-                            $rtn .= do_shortcode("[giveaway_list page='1']");
-                            $rtn .= do_shortcode("[get_giveaway_event post_type='" . $pos_format . "' style_format='" . $style_format . "']");
+                            $rtn .= do_shortcode("[category_list page='experts']");
                             if ($post_open_div) {
-                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-17">';
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-14 ">';
                             }
-                            //}
+                        } else if ($attr["post_type"] == "videos") {
+                            if ($post_open_div) {
+                                $rtn .= '</div>';
+                            }
+                            $rtn .= do_shortcode("[category_list page='videos']");
+                            if ($post_open_div) {
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-15">';
+                            }
+                        } else if ($attr["post_type"] == "podcasts") {
+                            if ($post_open_div) {
+                                $rtn .= '</div>';
+                            }
+                            $rtn .= do_shortcode("[category_list page='podcasts']");
+                            if ($post_open_div) {
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-16">';
+                            }
                         }
-
-
-                        $in_count++;
-                        //end of blogs-loop-inner-4
                     }
+
+                    if ($curtotal == 0 && $giveaway_count == 1 && ($cur_post_type == "giveaway-items" || $cur_post_type == "offer-items" || $cur_post_type == "offer-items/giveaway-items/events" || $cur_post_type == "events")) {
+                        //html comments remove by dd
+                        //echo '<!-- if ($curtotal == 0 && $giveaway_count == 1 && ($cur_post_type == "giveaway-items" || $cur_post_type == "offer-items" || $cur_post_type == "offer-items/giveaway-items/events" || $cur_post_type == "events")) -->';
+
+                        $giveaway_count++;
+                        //if ($cnt == 4 || $cnt == 10){
+                        $style_format = "";
+                        $pos_format = "giveaway-items";
+                        if ($cnt == 4) {
+                            $style_format = "event-giveaway-outer-light-bg";
+                            $pos_format = "offer-items";
+                        }
+                        if ($post_open_div) {
+                            $rtn .= '</div>';
+                        }
+                        $rtn .= do_shortcode("[giveaway_list page='1']");
+                        $rtn .= do_shortcode("[get_giveaway_event post_type='" . $pos_format . "' style_format='" . $style_format . "']");
+                        if ($post_open_div) {
+                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-17">';
+                        }
+                        //}
+                    }
+
+
+                    $in_count++;
+                    //end of blogs-loop-inner-4
+
                 }
             }
         }
