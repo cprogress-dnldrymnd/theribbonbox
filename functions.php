@@ -825,6 +825,8 @@ function admin_only()
 
             .mw-1400.mw-1400.mw-1400 {
                 max-width: 1400px;
+                margin-left: auto;
+                margin-right: auto;
             }
          
         </style>
