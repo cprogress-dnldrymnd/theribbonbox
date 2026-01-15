@@ -2006,10 +2006,10 @@ function blog_filter_function($attr) {
                             $style .= '); background-size:cover; background-position:center;'.$addBorder.'"';
 
                             if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts"){
-                                //include get_template_directory() . '/components/posts/tpl-28.php';
+                                include get_template_directory() . '/components/posts/tpl-28.php';
                             }
                             else {
-                                //include get_template_directory() . '/components/posts/tpl-29.php';
+                                include get_template_directory() . '/components/posts/tpl-29.php';
                             }
                         }
                         if ($st_3){
