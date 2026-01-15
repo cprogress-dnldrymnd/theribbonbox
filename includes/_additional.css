@@ -8,7 +8,6 @@
 	--green-color: #034146;
 	--purple-color: #3b1527;
 	--bs-border-radius: 5px !important;
-	
 }
 .bg-white {
 	background-color: var(--white-color) !important;
@@ -738,6 +737,10 @@ section.forum-welcome .inner {
 }
 .bg-black h2 {
 	color: var(--white-color);
+}
+.md-padding {
+	padding-top: 80px !important;
+	padding-bottom: 80px !important;
 }
 .lg-padding {
 	padding-top: 100px;
@@ -3375,6 +3378,4 @@ button.accordion-button.accordion-button:after {
 
 /*end of home-section*/
 
-
 /*revamp sections*/
-

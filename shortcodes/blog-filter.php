@@ -2007,7 +2007,7 @@ function blog_filter_function($attr)
                     //$in_count++;
 
                     if (!$post_open_div) {
-                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-4">';
+                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-4 md-padding">';
                         $post_open_div = true;
                     }
 
