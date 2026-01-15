@@ -2293,6 +2293,8 @@ function blog_filter_function($attr)
                         }
                     }
 
+                    $rtn .= '<div class="blogs-loop-fixer">';
+
                     if (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
                         //html comments remove by dd
                         //echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
@@ -2398,6 +2400,7 @@ function blog_filter_function($attr)
                             }
                         }
                     }
+                    $rtn .= '</div>';
 
                     if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
                         //html comments remove by dd
