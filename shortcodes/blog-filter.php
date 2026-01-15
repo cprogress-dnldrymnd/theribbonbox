@@ -15,27 +15,19 @@ function blog_filter_function($attr)
         //new-func
 
         $homepage_array = '';
-
         $rtn = "";
-
         $term_id = 0;
-
         $categoryid = "";
-        $limit = 500; // 1000 * 1000; // (was previously 1 million)
-        $curtotal = 0; // Offset: How many posts to skip in query
+        $limit = 500;
+        $curtotal = 0;
         $format = "";
         $post_type = "";
         $design = "";
         $add_ad = "";
         $pod_layout = "";
-
         $orderby = "date";
-
         $func = "";
-
         $home = false;
-        //$excludeids;
-
         $large_image = "full";
         $medium_image = "medium";
         $small_image = "thumbnail";
@@ -54,8 +46,6 @@ function blog_filter_function($attr)
         }
 
         $attributes_str = json_encode($attr);
-        //html comments remove by dd
-        //echo "<!-- [blog-filter] attributes: $attributes_str -->";
 
         if (!empty($attr["categoryid"])) {
             $categoryid = $attr["categoryid"];
@@ -92,13 +82,8 @@ function blog_filter_function($attr)
             $func = $attr["func"];
         }
 
-
-        //echo "<!-- \$id_list: " . json_encode($id_list) . " -->";
-
         if (!empty($attr["home"])) {
             $home = true;
-            //$excludeids = $homepage_array;
-            //$ex_list = $homepage_array;
         }
         if (isset($_SESSION['homepage_array'])) {
             $homepage_array = $_SESSION['homepage_array'];
@@ -107,9 +92,7 @@ function blog_filter_function($attr)
                 $homepage_array = $attr["exclude"];
             }
         }
-
         $globalCategoryName = "";
-
         if (!empty($categoryid)) {
             $category = get_category($categoryid);
             //$currentcat = $categories[0]->cat_ID;
@@ -120,55 +103,38 @@ function blog_filter_function($attr)
 
         $recent_posts = null;
 
-
         $excluded_posts_IDs = get_excluded_b2b_posts();
-        //var_dump($excluded_posts_IDs);
-
         if (!empty($id_list) > 0) {
-
             $post_types = explode('/', $post_type);
-            //html comments remove by dd
-            //echo "<!-- \$post_types: " . json_encode($post_types) . " -->";
-
             $recent_posts = wp_get_recent_posts(array(
-                'numberposts' => $limit, // Number of recent posts thumbnails to display
-                'post_status' => 'publish', // Show only the published posts
-                //'orderby' => 'date',
-                //'orderby' => 'rand',
+                'numberposts' => $limit,
+                'post_status' => 'publish',
                 'post_type' => $post_types,
-                //'order' => 'DESC',
-                //'include' => $id_list
                 'orderby' => 'post__in',
                 'post__in' => $id_list,
                 'exclude' => $excluded_posts_IDs,
             ));
         } else {
-
             if (!empty($categoryid)) {
-
                 if ($home) {
                     if (is_string($homepage_array)) {
                         $excludeids = explode(',', $homepage_array);
-                        //echo "<h1 style='display:none;'>".$homepage_array."</h1>";
                         $recent_posts = wp_get_recent_posts(array(
-                            'numberposts' => $limit, // Number of recent posts thumbnails to display
+                            'numberposts' => $limit,
                             'orderby'     => $orderby,
                             'order'       => 'desc',
-                            'post_status' => 'publish', // Show only the published posts
+                            'post_status' => 'publish',
                             'category'    => $categoryid,
                             'offset'      => $curtotal,
                             'exclude'     => array_merge($excludeids, $excluded_posts_IDs),
                         ));
-                    } else {
-                        //show_message('Error: $homepage_array is empty');
-                        var_dump($homepage_array);
                     }
                 } else {
                     $recent_posts = wp_get_recent_posts(array(
-                        'numberposts' => $limit, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit,
                         'orderby'     => $orderby,
                         'order'       => 'desc',
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'category'    => $categoryid,
                         'offset'      => $curtotal,
                         'exclude'     => $excluded_posts_IDs,
@@ -177,27 +143,20 @@ function blog_filter_function($attr)
             } else {
                 if ($home) {
                     $excludeids = explode(',', $homepage_array);
-                    //echo "<h1 style='display:none;'>".$homepage_array."</h1>";
                     $recent_posts = wp_get_recent_posts(array(
-                        'numberposts' => $limit, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit,
                         'orderby'     => $orderby,
                         'order'       => 'desc',
-                        //'category__not_in' => get_terms('category', array(
-                        //'fields' => 'ids'
-                        //)),
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'offset'      => $curtotal,
                         'exclude'     => array_merge($excludeids, $excluded_posts_IDs),
                     ));
                 } else {
                     $recent_posts = wp_get_recent_posts(array(
-                        'numberposts' => $limit, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit,
                         'orderby'     => $orderby,
                         'order'       => 'desc',
-                        //'category__not_in' => get_terms('category', array(
-                        //'fields' => 'ids'
-                        //)),
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'offset'      => $curtotal,
                         'exclude'     => $excluded_posts_IDs,
                     ));
@@ -205,35 +164,8 @@ function blog_filter_function($attr)
             }
 
 
-
             if ($format == "video") {
                 $exClass = "vid-dark";
-                /*
-            if (!empty($categoryid)){
-                $recent_posts = wp_get_recent_posts(array(
-                    'numberposts' => $limit, // Number of recent posts thumbnails to display
-                    'post_type'=> array( 'videos', 'podcasts'),
-                    'orderby'           => 'date',
-                    'order'             => 'desc',
-                    //'category__not_in' => get_terms('category', array(
-                    //'fields' => 'ids'
-                    //)),
-                    'category'         => $categoryid,
-                    'post_status' => 'publish' // Show only the published posts
-                ));
-            } else {
-                $recent_posts = wp_get_recent_posts(array(
-                    'numberposts' => $limit, // Number of recent posts thumbnails to display
-                    'post_type'=> array( 'videos', 'podcasts'),
-                    'orderby'           => 'date',
-                    'order'             => 'desc',
-                    //'category__not_in' => get_terms('category', array(
-                    //'fields' => 'ids'
-                    //)),
-                    'post_status' => 'publish' // Show only the published posts
-                ));
-            } */
-
                 if (!empty($categoryid)) {
 
                     $child = get_category($categoryid);
@@ -250,12 +182,12 @@ function blog_filter_function($attr)
                     }
 
                     $recent_posts1 = wp_get_recent_posts(array(
-                        'numberposts' => 1, // Number of recent posts thumbnails to display
+                        'numberposts' => 1,
                         'post_type' => 'videos',
                         'orderby'           => 'rand',
                         //'order'             => 'desc',
                         'category'         => $categoryid,
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'meta_query' => array(
                             array(
                                 'key'     => 'featured_podcast_video',
@@ -267,12 +199,12 @@ function blog_filter_function($attr)
                     ));
 
                     $recent_posts2 = wp_get_recent_posts(array(
-                        'numberposts' => $limit - 1, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit - 1,
                         'post_type' => 'podcasts',
                         'orderby'           => 'rand',
                         //'order'             => 'desc',
                         'category'         => $categoryid,
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'meta_query' => array(
                             array(
                                 'key'     => 'promo_podcast',
@@ -286,11 +218,10 @@ function blog_filter_function($attr)
                     $recent_posts = array_merge($recent_posts1, $recent_posts2);
                 } else {
                     $recent_posts1 = wp_get_recent_posts(array(
-                        'numberposts' => 1, // Number of recent posts thumbnails to display
+                        'numberposts' => 1,
                         'post_type' => 'videos',
                         'orderby'           => 'rand',
-                        //'order'             => 'desc',
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'meta_query' => array(
                             array(
                                 'key'     => 'featured_podcast_video',
@@ -301,11 +232,11 @@ function blog_filter_function($attr)
                         'exclude' => $excluded_posts_IDs,
                     ));
                     $recent_posts2 = wp_get_recent_posts(array(
-                        'numberposts' => $limit - 1, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit - 1,
                         'post_type' => 'podcasts',
                         'orderby'           => 'rand',
                         //'order'             => 'desc',
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'meta_query' => array(
                             array(
                                 'key'     => 'promo_podcast',
@@ -324,14 +255,12 @@ function blog_filter_function($attr)
                 if (empty($categoryid)) {
                     $categoryid = null;
                 }
-
                 $post_types = explode('/', $post_type);
 
                 $recent_posts = wp_get_recent_posts(array(
-                    'numberposts' => $limit, // Number of recent posts thumbnails to display
-                    'post_status' => 'publish', // Show only the published posts
+                    'numberposts' => $limit,
+                    'post_status' => 'publish',
                     'orderby' => $orderby,
-                    //'orderby' => 'rand',
                     'cat' => $categoryid,
                     'post_type' => $post_types,
                     'order' => 'DESC',
@@ -343,12 +272,10 @@ function blog_filter_function($attr)
 
         if ($func == 'podcast-limit4') {
             $recent_posts1 = wp_get_recent_posts(array(
-                'numberposts' => 1, // Number of recent posts thumbnails to display
+                'numberposts' => 1,
                 'post_type' => 'podcasts',
                 'orderby'           => 'date',
-                //'order'             => 'desc',
-                //'category'         => 1159, // Wellbeing term id
-                'post_status' => 'publish', // Show only the published posts
+                'post_status' => 'publish',
                 'meta_query' => array(
                     array(
                         'key'     => 'featured_category',
@@ -360,12 +287,10 @@ function blog_filter_function($attr)
             ));
 
             $recent_posts2 = wp_get_recent_posts(array(
-                'numberposts' => 1, // Number of recent posts thumbnails to display
+                'numberposts' => 1,
                 'post_type' => 'podcasts',
                 'orderby'           => 'date',
-                //'order'             => 'desc',
-                //'category'         => 1164,
-                'post_status' => 'publish', // Show only the published posts
+                'post_status' => 'publish',
                 'meta_query' => array(
                     array(
                         'key'     => 'featured_category',
@@ -377,12 +302,10 @@ function blog_filter_function($attr)
             ));
 
             $recent_posts3 = wp_get_recent_posts(array(
-                'numberposts' => 1, // Number of recent posts thumbnails to display
+                'numberposts' => 1,
                 'post_type' => 'podcasts',
                 'orderby'           => 'date',
-                //'order'             => 'desc',
-                //'category'         => 1165,
-                'post_status' => 'publish', // Show only the published posts
+                'post_status' => 'publish',
                 'meta_query' => array(
                     array(
                         'key'     => 'featured_category',
@@ -394,12 +317,10 @@ function blog_filter_function($attr)
             ));
 
             $recent_posts4 = wp_get_recent_posts(array(
-                'numberposts' => 1, // Number of recent posts thumbnails to display
+                'numberposts' => 1,
                 'post_type' => 'podcasts',
                 'orderby'           => 'date',
-                //'order'             => 'desc',
-                //'category'         => 1163,
-                'post_status' => 'publish', // Show only the published posts
+                'post_status' => 'publish',
                 'meta_query' => array(
                     array(
                         'key'     => 'featured_category',
@@ -413,14 +334,14 @@ function blog_filter_function($attr)
             $recent_posts = array_merge($recent_posts1, $recent_posts2, $recent_posts3, $recent_posts4);
         }
 
-        $in_count = 0; // Number of items in current loop???
+        $in_count = 0;
         $st_1 = false;
         $st_2 = false;
         $st_3 = false;
         $st_4 = false;
         $st_5 = false;
 
-        $exp_count = 0; // Number of experts???
+        $exp_count = 0;
         $vid_count = 0;
         $cat_count = 0;
         $giveaway_count = 0;
@@ -428,8 +349,6 @@ function blog_filter_function($attr)
         $cnt = 0;
 
         $post_open_div = false;
-
-        //var_dump($recent_posts);
 
         $rtn .= '<div class="blogs-loop ' . $exClass . '">';
 
@@ -446,7 +365,6 @@ function blog_filter_function($attr)
                 $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
             } else {
                 $style = 'style="background:url(';
-                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                 $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url(22826, $large_image));
                 $style .= $iUrl;
                 $style .= '); background-size:cover; background-position:center;"';;
@@ -465,43 +383,13 @@ function blog_filter_function($attr)
             }
         }
 
-
-        //var_dump(count($recent_posts));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // =================================================================================================================
         // The processing of the results
         // =================================================================================================================
 
         foreach ($recent_posts as $post) {
-            //        $is_b2b_only_content = get_field('b2b_content', $post['ID']);
-            //        //var_dump($is_b2b_only_content);
-            //        //var_dump(is_b2b_page());
-            //        if ($is_b2b_only_content && ! is_b2b_page()) {
-            //          //var_dump("Cannot show post '" . $post["ID"] . "' on non-B2B page");
-            //          continue;
-            //        }
-            //html comments remove by dd
-            // echo '<!-- post id: ' . $post['ID'] . ' -->';
             $cnt++;
 
-            //$port_logo = get_field("portfolio_logo", $post['ID']);
             $term = get_the_terms($post['ID'], '');
             $names  = wp_list_pluck($term, 'name');
             $this_post_type = get_post_type($post["ID"]);
@@ -525,11 +413,8 @@ function blog_filter_function($attr)
                 } else {
                     $img_url = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $large_image));
                 }
-                //}
-                //if ($post_type == "offer-items"){ $img_url = get_field("partner_inner_banner", $post['ID']); }
 
                 $style = 'style="background:url(';
-                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                 $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", $img_url);
                 $style .= $iUrl;
                 $style .= '); background-size:cover; background-position:center;"';;
@@ -545,30 +430,13 @@ function blog_filter_function($attr)
                 }
             }
 
-            // remove once have images...
-            //$style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
 
-            //$text = strip_shortcodes( $post['post_content'] );
-            //$text = apply_filters( 'the_content', $text );
-            //$text = str_replace(']]>', ']]&gt;', $text);
-            //$excerpt_length = apply_filters( 'excerpt_length', 55 );
-            //$excerpt_more = apply_filters( 'excerpt_more', ' ' . '&hellip;' );
-            //$text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
             WPBMap::addAllMappedShortcodes();
 
             $text = wp_strip_all_tags(get_the_excerpt($post['ID']));
 
-            //$text = preg_replace( "/\\[&hellip;\\]/",'',$text);
-
-
-            //$cat = get_post_meta( $post['ID'], 'rank_math_primary_category', true );
-
 
             $categories = get_the_category($post["ID"]);
-            if ($home) {
-                //$termIdVal = 'term_' . $categoryid;
-                //$categories = get_category($termIdVal);
-            }
             $currentcat = $categories[0]->cat_ID;
             $currentcatname = $categories[0]->cat_name;
             $currentcatslug = $categories[0]->slug;
@@ -579,13 +447,8 @@ function blog_filter_function($attr)
                 $currentcat = $categoryid;
                 $currentcatname = $term1->name;
                 $currentcatslug = $term1->slug;
-                //$termIdVal = 'term_' . $categoryid;
-                //$categories = get_category($termIdVal);
                 $cat_p = get_ancestors($categoryid, 'category');
             }
-
-            //$cat_p = get_ancestors( $categories[0]->term_id, 'category' );
-
 
             $termIdVal = 'term_' . $currentcat;
 
@@ -621,12 +484,8 @@ function blog_filter_function($attr)
             if ($bcolour != "#034146") {
                 $ad = '';
                 $addd = "";
-                //$ad = "bright color";
             } else {
-                //$ad = "dark color";
-
                 $ad = 'class="light-text"';
-
                 $addd = "light-text";
             }
 
@@ -663,32 +522,18 @@ function blog_filter_function($attr)
             if ($this_post_type == 'post') {
                 $post_type_simp = "Article";
             }
-
-
             $featured_cur = "";
 
             if (!empty($featured_podcast) || !empty($featured_video) || !empty($featured_giveaway) || !empty($featured_expert)) {
-                //$featured_cur = '<div class="featured-sign" style="background:'.$bcolour.'e8;"><p class="light-text"><span>Featured<br>'.$post_type_simp.'</span></p></div>';
                 $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span><br>' . $post_type_simp . '</p></div>';
             }
 
 
             if (!empty($featured_handpicked)) {
-                //$featured_cur = '<div class="featured-sign" style="background:'.$bcolour.';"><p class="light-text"><span>Handpicked<br>'.$currentcatname.'</span></p></div>';
                 $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Handpicked</span><br>' . $currentcatname . '</p></div>';
             }
 
             $post_sticker = get_field("post_sticker", $post["ID"]);
-
-
-
-
-
-
-
-
-
-
 
             // =============================================================================================================
             // The setting of style variables
@@ -1001,7 +846,6 @@ function blog_filter_function($attr)
                     $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Editor’s Choice</span><br>Parenting</p></div>';
                 }
                 if ($post_sticker == "Spotlight Experts") {
-                    //NO
                     $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Spotlight</span><br>Experts</p></div>';
                 }
                 if ($post_sticker == "Wellbeing Expert") {
@@ -1081,19 +925,15 @@ function blog_filter_function($attr)
                     $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Parenting</span><br>Expert</p></div>';
                 }
                 if ($post_sticker == "Featured Expert") {
-                    //NO
                     $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span><br>Expert</p></div>';
                 }
                 if ($post_sticker == "Featured Video") {
-                    //NO
                     $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span><br>Video</p></div>';
                 }
                 if ($post_sticker == "Featured Giveaway") {
-                    //NO
                     $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span><br>Giveaway</p></div>';
                 }
                 if ($post_sticker == "Featured Podcast") {
-                    //NO
                     $featured_cur =  '<div class="exprets-de-circle" style="background:' . $bcolour . 'e8;"><p ' . $ad . '><span>Featured</span><br>Podcast</p></div>';
                 }
             }
@@ -1125,8 +965,6 @@ function blog_filter_function($attr)
                     $newformat = date('Y-m-d', $time);
                     $displayformat = date('d-m-Y', $time);
                     $displayformatB = date('j M Y', $time);
-
-
                     $date_txt = "Giveaway Closed: ";
 
                     $live_post = false;
@@ -1141,7 +979,6 @@ function blog_filter_function($attr)
                     endif;
 
 
-                    //$ex_txt = '<h3>'.$date_txt.$displayformat . '</h3>';
                     $ex_txt = '<h3 class="date-giveaways">CLOSING DATE ' . $displayformatB . '</h3>';
                 }
             }
@@ -1175,61 +1012,31 @@ function blog_filter_function($attr)
                         $date_txt = $offer_expired_text . " ";
                     endif;
 
-
-                    //$ex_txt = '<h3>'.$date_txt.$newukformat . ' '. $displayformatB .'</h3>';
                     $ex_txt = '<h3 class="date-giveaways">OFFER CLOSE ' . $displayformatB . '</h3>';
                 endif;
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             // =====================================================================================================
             // The output (templates)
             // =====================================================================================================
 
-
             if ($format == "home-banner") {
-                //html comments remove by dd
-                //echo '<!-- if ($format == "home-banner") -->';
 
-                //html comments remove by dd
-                //echo "<!-- Count: $cnt -->";
                 if ($cnt <= 0) {
                     echo 'No posts found for ' . $format;
                 }
                 if ($cnt == 1) {
-                    //html comments remove by dd
-                    //echo '<!-- if ($cnt == 1) -->';
-
                     if (!has_post_thumbnail($post['ID'])) {
                         $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
                     } else {
                         if (!empty(get_field("post_large_image", $post['ID']))) {
                             $style = 'style="background:url(';
-                            //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                             $iUrl = get_field("post_large_image", $post['ID']);
                             //echo($iUrl);
                             $style .= $iUrl;
                             $style .= '); background-size:cover; background-position:center;color:blue;"';
                         } else {
                             $style = 'style="background:url(';
-                            //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                             $iUrl = str_replace("https://theribbonbox.viltac.com/", "https://www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $small_image));
                             $style .= $iUrl;
                             $style .= '); background-size:cover; background-position:center;"';
@@ -1237,49 +1044,9 @@ function blog_filter_function($attr)
                     }
                     //include get_template_directory() . '/components/post-items/home-banner.php';
                     include get_template_directory() . '/components/posts/home-top-banner.php';
-                } else if ($cnt == 2) {
-                    //html comments remove by dd
-                    //echo '<!-- else if ($cnt == 2) -->';
-                    //$style = str_replace('style="', 'style="'.$addBorder, $style);
-                    // $rtn .= '<div class="blog-top-1">
-                    //<div class="blog-l-text-out">
-                    //<div class="blog-l-text">
-                    //<h3>'.$currentcatname.'</h3>
-                    //<h2>'.$post['post_title'].'</h2>
-                    //<h4>'.get_the_date('j M Y', $post["ID"]).'</h4>
-                    //<div class="blog-btns">
-                    //<a href="'.get_permalink($post['ID']).'">'.$more_t_text.'</a>
-                    //</div>
-                    //</div>
-                    //</div>
-                    //<div class="blog-l-img-out">
-                    //<div class="blog-l-img" '.$style.'><img src="/wp-content/themes/lighttheme/images/a_squ_trans.png">
-                    //</div>
-                    //</div>
-                    //</div>';
-                } else if ($cnt == 3) {
-                    // $style = str_replace('style="', 'style="'.$addBorder, $style);
-                    // $rtn .= '<div class="blog-top-2">
-                    //<div class="blog-l-img" '.$style.'><img src="/wp-content/themes/lighttheme/images/a_squ_trans.png">
-                    //</div>
-                    //<div class="blog-l-text-out">
-                    //<div class="blog-l-text">
-                    //<h3>'.$currentcatname.'</h3>
-                    //<h2>'.$post['post_title'].'</h2>
-                    //<h4>'.get_the_date('j M Y', $post["ID"]).'</h4>
-                    //<div class="blog-btns">
-                    //<a href="'.get_permalink($post['ID']).'">'.$more_t_text.'</a>
-                    //</div>
-                    //</div>
-                    //</div>
-                    //</div>';
-                } else {
                 }
             }
             if ($format == "post-page" && !empty($id_list)) {
-                //html comments remove by dd
-                //echo '<!-- if ($format == "post-page" && !empty($id_list)) -->';
-                /////EREEE
 
                 if (!$post_open_div) {
                     $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-1">';
@@ -1287,14 +1054,10 @@ function blog_filter_function($attr)
                 }
                 $style = str_replace('style="', 'style="' . $addBorder, $style);
 
-                // If "in count?" is even
                 if ($in_count % 2 == 0) {
-                    //html comments remove by dd
-                    //echo '<!-- if ($in_count % 2 == 0) -->';
 
                     $curposttypeval = get_post_type($post['ID']);
-                    //html comments remove by dd
-                    //echo "<!-- \$curposttypeval: $curposttypeval -->";
+
                     if ($curposttypeval == "offer-items" || $curposttypeval == "giveaway-items" || $curposttypeval == "events") {
                         if (!isset($adClas)) {
                             $adClas = '';
@@ -1407,9 +1170,6 @@ function blog_filter_function($attr)
                         </div>
                         </div>';
                     } else {
-                        if (!isset($attr["post_type"])) {
-                            // Show error
-                        }
                         if (! isset($attr["post_type"]) || $attr["post_type"] === "expert_profiles") {
                             $style = 'style="background:url(';
                             $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
@@ -1417,9 +1177,7 @@ function blog_filter_function($attr)
                             $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
 
                             include get_template_directory() . '/components/posts/tpl-7.php';
-                        }
-                        /*// this code was making all other post types (including posts) show twice
-                    // Because of the bad if-statement logic*/ else {
+                        } else {
                             $style = 'style="background:url(';
                             $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
                             $style .= $iUrl;
@@ -1428,16 +1186,11 @@ function blog_filter_function($attr)
                             include get_template_directory() . '/components/posts/tpl-7.5.php';
                         }
                     }
-                } // if ($in_count % 2 != 0)
-                else {
-                    //html comments remove by dd
-                    //echo '<!-- NOT if ($in_count % 2 == 0) -->';
-
+                } else {
                     $curposttypeval = get_post_type($post['ID']);
                     if (!isset($adClas)) {
                         $adClas = '';
                     }
-
                     if (
                         $curposttypeval == "offer-items"
                         || $curposttypeval == "giveaway-items"
@@ -1563,24 +1316,12 @@ function blog_filter_function($attr)
                             }
                             include get_template_directory() . '/components/posts/tpl-12.php';
                         }
-                        /*else {
-                        $style = 'style="background:url(';
-                        $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                        $style .= $iUrl;
-                        $style .= '); background-size:cover; background-position:center;'.$addBorder.'"';
-                        include get_template_directory() . '/components/posts/tpl-13.php';
-                    }*/
                     }
                 }
             } else if ($format == "post-page" && empty($id_list)) {
-                //html comments remove by dd
-                //echo '<!-- else if ($format == "post-page" && empty($id_list)) -->';
+
 
                 if (!empty($attr["post_type"]) && false) {
-                    //html comments remove by dd
-                    //echo '<!-- if (!empty($attr["post_type"]) && false) -->';
-
-                    // If the count is a multiple of 8
                     if (($cnt % 8) == 0) {
                         $rtn .= do_shortcode("[display_insider]");
                     }
@@ -1600,41 +1341,26 @@ function blog_filter_function($attr)
 
 
                 if ((! isset($attr["post_type"]) || $attr["post_type"] != "videos/podcasts")  && ($design == "full-vid-list" || $design == "full-pod-list")) {
-                    //html comments remove by dd
-                    //echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "videos/podcasts"  && ($design == "full-vid-list" || $design == "full-pod-list")) -->';
 
                     if ($cnt == 1 && $curtotal == 0 && false) {
-                        //html comments remove by dd
-                        //echo '<!-- if ($cnt == 1 && $curtotal == 0 && false) -->';
 
                         if (!has_post_thumbnail($post['ID'])) {
                             $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
                         } else {
                             if (!empty(get_field("post_large_image", $post['ID']))) {
                                 $style = 'style="background:url(';
-                                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                                 $iUrl = get_field("post_large_image", $post['ID']);
                                 $style .= $iUrl;
                                 $style .= '); background-size:cover; background-position:center;"';
                             } else {
                                 $style = 'style="background:url(';
-                                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                                 $iUrl = str_replace("https://theribbonbox.viltac.com/", "https://www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $small_image));
                                 $style .= $iUrl;
                                 $style .= '); background-size:cover; background-position:center;"';
                             }
                         }
 
-                        /*  if ($cur_post_type == "podcasts"){
-                          //include get_template_directory() . '/components/posts/tpl-14.php';
-
-                          include get_template_directory() . '/components/posts/tpl-15.php';
-
-                      } else {
-                    */
-
                         include get_template_directory() . '/components/posts/tpl-16.php';
-                        //}
 
                         if ($design == "full-vid-list" || $design == "full-pod-list") {
                             if ($design == "full-vid-list") {
@@ -1647,14 +1373,9 @@ function blog_filter_function($attr)
                     } else {
 
                         if ($cnt == 1 && $attr["post_type"] != "podcasts") {
-                            //html comments remove by dd
-                            //echo '<!-- if ($cnt == 1 && $attr["post_type"] != "podcasts") -->';
 
                             include get_template_directory() . '/components/posts/tpl-17.php';
                         } else if (!empty($pod_layout) && $cnt == 1) {
-                            //html comments remove by dd
-                            //echo '<!-- else if (!empty($pod_layout) && $cnt == 1) -->';
-
                             if (!empty(get_field("partner_inner_banner", $post['ID']))) {
                                 $image = get_field("partner_inner_banner", $post['ID']);
                                 $size = $medium_image;
@@ -1688,8 +1409,6 @@ function blog_filter_function($attr)
                                 }
                             }
                         } else {
-                            ////html comments remove by dd
-                            //echo '<!-- else -->';
 
                             if ($cnt == 2 && !empty($attr["categoryid"]) && $attr["post_type"] != "podcasts") {
                                 $rtn .= "<h2 class='cate-h2-ph'>All " . $globalCategoryName . " Videos</h2>";
@@ -1720,13 +1439,7 @@ function blog_filter_function($attr)
                     || $cur_post_type == "offer-items/giveaway-items/events"
                     || $cur_post_type == "events"
                 ) {
-                    //html comments remove by dd
-                    /*echo '<!-- else if ($cur_post_type == "giveaway-items"
-                || $cur_post_type == "offer-items"
-                || $cur_post_type == "offer-items/giveaway-items/events"
-                || $cur_post_type == "events") -->';*/
 
-                    //$rtn .= do_shortcode("[get_giveaway_event post_type='".$cur_post_type."' style_format='".$style_format."']");
                     if ($cnt == 4 || $cnt == 9) {
                         $style_format = "";
                         if ($cnt == 4) {
@@ -1740,19 +1453,15 @@ function blog_filter_function($attr)
                         } else {
                             $rtn .= do_shortcode("[get_giveaway_event post_type='giveaway-items' style_format='" . $style_format . "']");
                         }
-                        //$rtn .= do_shortcode("[get_giveaway_event post_type='".$cur_post_type."' style_format='".$style_format."']");
-
                         if ($post_open_div) {
                             $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-2">';
                         }
-                        //$rtn .= do_shortcode("[get_giveaway_event post_type='".$cur_post_type."' style_format='".$style_format."' post_id='".$post['ID']."']");
                     }
 
                     if (!has_post_thumbnail($post['ID'])) {
                         $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
                     } else {
                         $style = 'style="background:url(';
-                        //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                         $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $large_image));
                         $style .= $iUrl;
                         $style .= '); background-size:cover; background-position:center;"';;
@@ -1764,8 +1473,7 @@ function blog_filter_function($attr)
                     }
 
                     $adClas = "";
-                    //if (($cnt % 7) == 0 || ($cnt % 7) == 0)
-                    //if ($cnt == 7 || $cnt == 8)
+
                     if (($cnt % 7) == 0 || ($cnt % 8) == 0) {
                         $adClas = "blog-nor-half";
                         if ($cnt % 2 == 0) {
@@ -1779,7 +1487,6 @@ function blog_filter_function($attr)
                         $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
                         $style .= $iUrl;
                         $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-
                         include get_template_directory() . '/components/posts/tpl-20.php';
                     } else if ($cur_post_type == "offer-items") {
                         $link = get_permalink($post['ID']);
@@ -1888,21 +1595,13 @@ function blog_filter_function($attr)
                     </div>
                     </div>';
                 } else {
-                    //html comments remove by dd
-                    //echo '<!-- here 7623 -->';
-                    //echo "<!-- \$cnt: $cnt -->";
-                    //echo "<!-- \$attr[post_type]: " . ($attr["post_type"] ?? 'not defined') . " -->";
-                    // echo "<!-- \$curtotal: $curtotal -->";
 
-                    /*if ($cnt == 1 && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts" && $curtotal == 0){*/
                     if (
                         $cnt == 1
                         && (! isset($attr["post_type"])
                             || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts"))
                         && $curtotal == 0
                     ) {
-                        //html comments remove by dd
-                        // echo '<!-- if ($cnt == 1 && isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts" && $curtotal == 0){ -->';
 
                         if (!has_post_thumbnail($post['ID'])) {
                             $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
@@ -1931,36 +1630,25 @@ function blog_filter_function($attr)
                                 $size = 'large';
                                 $img_url = $image['url'];
 
-                                //$img_url = get_field("partner_inner_banner", $post['ID']);
                                 $style = 'style="background:url(';
-                                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                                 $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", $img_url);
                                 $style .= $iUrl;
                                 $style .= '); background-size:cover; background-position:center;"';;
                             }
                         }
-                        //if ($post_type == "offer-items"){ $img_url = get_field("partner_inner_banner", $post['ID']); }
-
-
-                        // // Disabled because it was showing incorrectly on the /offers/giveaways/ page
                         include get_template_directory() . '/components/posts/tpl-24.php';
                     } else if (!empty($pod_layout) && $cnt == 1 && $curtotal == 0) {
-                        //html comments remove by dd
-                        //echo '<!-- else if (!empty($pod_layout) && $cnt == 1 && $curtotal == 0) -->';
-
                         if (!has_post_thumbnail($post['ID'])) {
                             $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
                         } else {
 
                             if (!empty(get_field("post_large_image", $post['ID']))) {
                                 $style = 'style="background:url(';
-                                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                                 $iUrl = get_field("post_large_image", $post['ID']);
                                 $style .= $iUrl;
                                 $style .= '); background-size:cover; background-position:center;"';
                             } else {
                                 $style = 'style="background:url(';
-                                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                                 $iUrl = str_replace("https://theribbonbox.viltac.com/", "https://www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
                                 $style .= $iUrl;
                                 $style .= '); background-size:cover; background-position:center;"';
@@ -1975,37 +1663,15 @@ function blog_filter_function($attr)
                                 $size = 'large';
                                 $img_url = $image['url'];
 
-                                //$img_url = get_field("partner_inner_banner", $post['ID']);
                                 $style = 'style="background:url(';
-                                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
                                 $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", $img_url);
                                 $style .= $iUrl;
                                 $style .= '); background-size:cover; background-position:center;"';;
                             }
                         }
-                        //if ($post_type == "offer-items"){ $img_url = get_field("partner_inner_banner", $post['ID']); }
 
                         include get_template_directory() . '/components/posts/tpl-25.php';
                     } else {
-                    //blogs-loop-inner-4
-
-
-                    //end of revamp-section
-
-                        /** Templates 26 - 41 */
-
-                        /**
-                         * Define "styles" (denoted by $st_# below)
-                         * A "style" is the "layout" of the card (e.g. image, then heading, then other text).
-                         *
-                         * $in_count is the iteration (index) of the card within the section.
-                         * E.g. card 0, card 1, card 2 (if it's a row of 3).
-                         */
-
-                        //// HERE  $in_count $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = false;
-
-                        //$in_count++;
-                        //revamp section
 
                         if (!$post_open_div) {
                             $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-4 md-padding padding-x mw-1400 trb-px">';
@@ -2014,15 +1680,7 @@ function blog_filter_function($attr)
 
                         $styles = [];
 
-                        /*   if (0 <= $in_count && $in_count <= 2){         $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = true ; $st_5 = false;}
-                    else if (3 <= $in_count && $in_count <= 4){         $st_2 = true ; $st_1 = false; $st_3 = false; $st_4 = false; $st_5 = false;}
-                    else if (5 <= $in_count && $in_count <= 6){         $st_3 = true ; $st_1 = false; $st_2 = false; $st_4 = false; $st_5 = false;}
-                    else if (7 <= $in_count && $in_count <= 9){         $st_4 = true ; $st_1 = false; $st_2 = false; $st_3 = false; $st_5 = false;}
-                    else if (10 <= $in_count && $in_count <= 11){       $st_4 = false; $st_1 = false; $st_2 = false; $st_3 = false; $st_5 = true ;}
-                    else {                                              $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = true ; $st_5 = false; }
-                    $in_count = 0;*/
-
-                        if ($attr["post_type"] == "videos/podcasts" || $attr["post_type"] == "videos") { // ! isset($attr["post_type"]) ||
+                        if ($attr["post_type"] == "videos/podcasts" || $attr["post_type"] == "videos") {
                             if (0 <= $in_count && $in_count <= 2) {
                                 $st_1 = false;
                                 $st_2 = false;
@@ -2089,13 +1747,6 @@ function blog_filter_function($attr)
                                 $st_4 = true;
                                 $st_5 = false;
                             }
-                            /*
-                        else if (2 <= $in_count && $in_count <= 4){     $st_2 = false; $st_1 = false; $st_3 = false; $st_4 = true ; $st_5 = false;}
-                        else if (5 <= $in_count && $in_count <= 6){     $st_3 = true ; $st_1 = false; $st_2 = false; $st_4 = false; $st_5 = false;}
-                        else if (7 <= $in_count && $in_count <= 8){     $st_4 = false; $st_1 = false; $st_2 = false; $st_3 = true ; $st_5 = false;}
-                        else if (10 <= $in_count && $in_count <= 11){   $st_4 = false; $st_1 = false; $st_2 = false; $st_3 = false; $st_5 = true ;}
-                        else {                                          $st_1 = false; $st_2 = false; $st_3 = false; $st_4 = true ; $st_5 = false; }
-                        $in_count = 0;*/
                         } else {
                             if (0 <= $in_count && $in_count <= 1) {
                                 $st_1 = false;
@@ -2144,8 +1795,6 @@ function blog_filter_function($attr)
                                 $st_5 = false;
                             }
                         }
-                        //$in_count = 0;
-
                         if ($st_1) {
                             $styles[] = '1';
                         }
@@ -2163,13 +1812,8 @@ function blog_filter_function($attr)
                         }
                         $styles_str = implode('-', $styles);
 
-                        //$rtn .= "<h2>here...</h2>";
 
                         if ($in_count % 2 == 0) {
-                            //html comments remove by dd
-                            //echo '<!-- if ($in_count % 2 == 0) ----- if even -->';
-
-                            //even
                             $style = str_replace('style="', 'style="' . $addBorder, $style);
                             if ($st_1) {
                                 if ($attr["post_type"] == "expert_profiles") {
@@ -2210,8 +1854,6 @@ function blog_filter_function($attr)
                                 $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
                             }
                         } else {
-                            //html comments remove by dd
-                            // echo '<!-- NOT if ($in_count % 2 == 0) ----- if odd -->';
 
                             $style = str_replace('style="', 'style="' . $addBorder, $style);
                             if ($st_1) {
@@ -2267,9 +1909,6 @@ function blog_filter_function($attr)
 
 
                         if (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
-                            //html comments remove by dd
-                            //echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
-
                             if ($in_count == 6) {
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
@@ -2323,8 +1962,6 @@ function blog_filter_function($attr)
                                 }
                             }
                         } else {
-                            //html comments remove by dd
-                            // echo '<!-- NOT if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
 
                             if ($in_count == 23) {
                                 if ($post_open_div) {
@@ -2368,9 +2005,6 @@ function blog_filter_function($attr)
                         }
 
                         if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
-                            //html comments remove by dd
-                            //echo '<!-- if ($vid_count == 1 && $curtotal == 0 && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
-
                             $vid_count++;
 
                             if ($post_open_div) {
@@ -2421,9 +2055,6 @@ function blog_filter_function($attr)
                         }
 
                         if ($curtotal == 0 && $cat_count == 1) {
-                            //html comments remove by dd
-                            //echo '<!-- if ($curtotal == 0 && $cat_count == 1) -->';
-
                             $cat_count++;
                             if ($attr["post_type"] == "expert_profiles") {
                                 if ($post_open_div) {
@@ -2453,11 +2084,8 @@ function blog_filter_function($attr)
                         }
 
                         if ($curtotal == 0 && $giveaway_count == 1 && ($cur_post_type == "giveaway-items" || $cur_post_type == "offer-items" || $cur_post_type == "offer-items/giveaway-items/events" || $cur_post_type == "events")) {
-                            //html comments remove by dd
-                            //echo '<!-- if ($curtotal == 0 && $giveaway_count == 1 && ($cur_post_type == "giveaway-items" || $cur_post_type == "offer-items" || $cur_post_type == "offer-items/giveaway-items/events" || $cur_post_type == "events")) -->';
 
                             $giveaway_count++;
-                            //if ($cnt == 4 || $cnt == 10){
                             $style_format = "";
                             $pos_format = "giveaway-items";
                             if ($cnt == 4) {
@@ -2472,20 +2100,15 @@ function blog_filter_function($attr)
                             if ($post_open_div) {
                                 $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-17">';
                             }
-                            //}
                         }
 
 
                         $in_count++;
-                        //end of blogs-loop-inner-4
-
                     }
                 }
             }
 
             if ($format == "video-half") {
-                //html comments remove by dd
-                //echo '<!-- if ($format == "video-half") -->';
 
                 if ($home) {
                     $cur_id = $post['ID'];
@@ -2507,8 +2130,6 @@ function blog_filter_function($attr)
             }
 
             if ($format == "normal") {
-                //html comments remove by dd
-                // echo '<!-- if ($format == "normal") -->';
 
                 if ($home) {
                     $cur_id = $post['ID'];
@@ -2532,8 +2153,6 @@ function blog_filter_function($attr)
             }
 
             if ($format == "normal-2") {
-                //html comments remove by dd
-                //echo '<!-- if ($format == "normal-2") -->';
 
                 if ($home) {
                     $cur_id = $post['ID'];
@@ -2545,57 +2164,22 @@ function blog_filter_function($attr)
                     $post_open_div = true;
                 }
 
-                // If $cnt is even
                 if ($cnt % 2 == 0) {
-                    //even
                     $style = str_replace('style="', 'style="' . $addBorder, $style);
-                    //$style = 'style="background:url(';
                     $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
                     $style .= $iUrl;
-                    //$style .= '); background-size:cover; background-position:center;'.$addBorder.'"';
 
                     include get_template_directory() . '/components/posts/home-posts-even.php';
-                }
-                // If $cnt is odd
-                else {
+                } else {
                     $style = str_replace('style="', 'style="' . $addBorder, $style);
-                    //$style = 'style="background:url(';
                     $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
                     $style .= $iUrl;
-                    //$style .= '); background-size:cover; background-position:center;'.$addBorder.'"';
 
                     include get_template_directory() . '/components/posts/home-posts-odd.php';
-
-                    // $rtn .= '<div class="blog-top-1">
-                    //     <div class="blog-l-text-out">
-                    //         <div class="blog-l-text">
-                    //         <h3>'.$currentcatname.'</h3>
-                    //         <a href="'.get_permalink($post['ID']).'">
-                    //         <h2>'.$post['post_title'].'</h2>
-                    //         </a>
-                    //         <h4>'.get_the_date('j M Y', $post["ID"]).'</h4>
-                    //         <div class="blog-btns">
-                    //         <a href="'.get_permalink($post['ID']).'">'.$more_t_text.'</a>
-                    //         </div>
-                    //     </div>
-                    // </div>
-                    // <div class="blog-l-img-out">
-                    //     <a href="'.get_permalink($post['ID']).'" >
-                    //     <img class="blog-l-img" src="' . $iUrl .'" style="background-size:cover; background-position:center;">
-                    //     <span class="bl-overlay">'.$more_text.'</span>
-                    //     </img>
-                    //     </a>
-                    //     <a href="'.get_permalink($post['ID']).'">'.$ext.'
-                    //     <img src="/wp-content/themes/lighttheme/images/a_squ_trans.png">
-                    //     </a>
-                    // </div>
-                    // </div>';
                 }
             }
 
             if ($format == "normal-3") {
-                //html comments remove by dd
-                //echo '<!-- if ($format == "normal-3") -->';
 
                 if ($home) {
                     $cur_id = $post['ID'];
@@ -2629,9 +2213,6 @@ function blog_filter_function($attr)
             }
 
             if ($format == "normal-4") {
-                //html comments remove by dd
-                //echo '<!-- if ($format == "normal-4") -->';
-
                 if ($home) {
                     $cur_id = $post['ID'];
                     $homepage_array .= "," . $cur_id;
@@ -2659,8 +2240,6 @@ function blog_filter_function($attr)
             }
 
             if ($format == "video") {
-                //html comments remove by dd
-                //echo '<!-- if ($format == "video") -->';
                 if ($cnt == 1) {
                     //$style = str_replace('style="', 'style="'.$addBorder, $style);
                     $style = 'style="';
@@ -2674,16 +2253,12 @@ function blog_filter_function($attr)
                 }
             }
         }
-        //html comments remove by dd
-        // echo '<!-- bottom of blog-filter.php -->';
 
         wp_reset_query();
 
         if ($post_open_div) {
             $rtn .= '</div>';
         }
-
-        //$homepage_array = $ex_list;
 
         if ($home) {
             $_SESSION['homepage_array'] = $homepage_array;
@@ -2696,19 +2271,14 @@ function blog_filter_function($attr)
             $rtn .= '<a class="white-a" href="/watch-listen">View all Podcast Episodes and Videos</a>';
         }
 
-        // Loading more spinner
         if ($format == "post-page" && $design == "" && count($recent_posts) > 0 && !empty($limit) && empty($id_list)) {
-            //$rtn .= '<h1>'.($curtotal + $limit).'</h1>';
             $rtn .= '<div class="loadingmoreOuter">
             <a id="loadMore" onclick="return false;" data-add_ad="' . $add_ad . '" data-posttype="' . $post_type . '" data-count="' . (intval($curtotal) + intval($limit)) . '" class="loadmore"></a>
             </div>';
         }
-
-
         if ($post_type == "expert_profiles") {
             $rtn .= '</div>';
         }
-
         $rtn .= '</div>';
         return $rtn;
     } else {
@@ -2719,8 +2289,8 @@ function blog_filter_function($attr)
         $term_id = 0;
 
         $categoryid = "";
-        $limit = 500; // 1000 * 1000; // (was previously 1 million)
-        $curtotal = 0; // Offset: How many posts to skip in query
+        $limit = 500;
+        $curtotal = 0;
         $format = "";
         $post_type = "";
         $design = "";
@@ -2828,8 +2398,8 @@ function blog_filter_function($attr)
             //echo "<!-- \$post_types: " . json_encode($post_types) . " -->";
 
             $recent_posts = wp_get_recent_posts(array(
-                'numberposts' => $limit, // Number of recent posts thumbnails to display
-                'post_status' => 'publish', // Show only the published posts
+                'numberposts' => $limit,
+                'post_status' => 'publish',
                 //'orderby' => 'date',
                 //'orderby' => 'rand',
                 'post_type' => $post_types,
@@ -2848,10 +2418,10 @@ function blog_filter_function($attr)
                         $excludeids = explode(',', $homepage_array);
                         //echo "<h1 style='display:none;'>".$homepage_array."</h1>";
                         $recent_posts = wp_get_recent_posts(array(
-                            'numberposts' => $limit, // Number of recent posts thumbnails to display
+                            'numberposts' => $limit,
                             'orderby'     => $orderby,
                             'order'       => 'desc',
-                            'post_status' => 'publish', // Show only the published posts
+                            'post_status' => 'publish',
                             'category'    => $categoryid,
                             'offset'      => $curtotal,
                             'exclude'     => array_merge($excludeids, $excluded_posts_IDs),
@@ -2862,10 +2432,10 @@ function blog_filter_function($attr)
                     }
                 } else {
                     $recent_posts = wp_get_recent_posts(array(
-                        'numberposts' => $limit, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit,
                         'orderby'     => $orderby,
                         'order'       => 'desc',
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'category'    => $categoryid,
                         'offset'      => $curtotal,
                         'exclude'     => $excluded_posts_IDs,
@@ -2876,25 +2446,25 @@ function blog_filter_function($attr)
                     $excludeids = explode(',', $homepage_array);
                     //echo "<h1 style='display:none;'>".$homepage_array."</h1>";
                     $recent_posts = wp_get_recent_posts(array(
-                        'numberposts' => $limit, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit,
                         'orderby'     => $orderby,
                         'order'       => 'desc',
                         //'category__not_in' => get_terms('category', array(
                         //'fields' => 'ids'
                         //)),
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'offset'      => $curtotal,
                         'exclude'     => array_merge($excludeids, $excluded_posts_IDs),
                     ));
                 } else {
                     $recent_posts = wp_get_recent_posts(array(
-                        'numberposts' => $limit, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit,
                         'orderby'     => $orderby,
                         'order'       => 'desc',
                         //'category__not_in' => get_terms('category', array(
                         //'fields' => 'ids'
                         //)),
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'offset'      => $curtotal,
                         'exclude'     => $excluded_posts_IDs,
                     ));
@@ -2908,7 +2478,7 @@ function blog_filter_function($attr)
                 /*
             if (!empty($categoryid)){
                 $recent_posts = wp_get_recent_posts(array(
-                    'numberposts' => $limit, // Number of recent posts thumbnails to display
+                    'numberposts' => $limit,
                     'post_type'=> array( 'videos', 'podcasts'),
                     'orderby'           => 'date',
                     'order'             => 'desc',
@@ -2916,18 +2486,18 @@ function blog_filter_function($attr)
                     //'fields' => 'ids'
                     //)),
                     'category'         => $categoryid,
-                    'post_status' => 'publish' // Show only the published posts
+                    'post_status' => 'publish'
                 ));
             } else {
                 $recent_posts = wp_get_recent_posts(array(
-                    'numberposts' => $limit, // Number of recent posts thumbnails to display
+                    'numberposts' => $limit,
                     'post_type'=> array( 'videos', 'podcasts'),
                     'orderby'           => 'date',
                     'order'             => 'desc',
                     //'category__not_in' => get_terms('category', array(
                     //'fields' => 'ids'
                     //)),
-                    'post_status' => 'publish' // Show only the published posts
+                    'post_status' => 'publish'
                 ));
             } */
 
@@ -2947,12 +2517,12 @@ function blog_filter_function($attr)
                     }
 
                     $recent_posts1 = wp_get_recent_posts(array(
-                        'numberposts' => 1, // Number of recent posts thumbnails to display
+                        'numberposts' => 1,
                         'post_type' => 'videos',
                         'orderby'           => 'rand',
                         //'order'             => 'desc',
                         'category'         => $categoryid,
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'meta_query' => array(
                             array(
                                 'key'     => 'featured_podcast_video',
@@ -2964,12 +2534,12 @@ function blog_filter_function($attr)
                     ));
 
                     $recent_posts2 = wp_get_recent_posts(array(
-                        'numberposts' => $limit - 1, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit - 1,
                         'post_type' => 'podcasts',
                         'orderby'           => 'rand',
                         //'order'             => 'desc',
                         'category'         => $categoryid,
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'meta_query' => array(
                             array(
                                 'key'     => 'promo_podcast',
@@ -2983,11 +2553,11 @@ function blog_filter_function($attr)
                     $recent_posts = array_merge($recent_posts1, $recent_posts2);
                 } else {
                     $recent_posts1 = wp_get_recent_posts(array(
-                        'numberposts' => 1, // Number of recent posts thumbnails to display
+                        'numberposts' => 1,
                         'post_type' => 'videos',
                         'orderby'           => 'rand',
                         //'order'             => 'desc',
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'meta_query' => array(
                             array(
                                 'key'     => 'featured_podcast_video',
@@ -2998,11 +2568,11 @@ function blog_filter_function($attr)
                         'exclude' => $excluded_posts_IDs,
                     ));
                     $recent_posts2 = wp_get_recent_posts(array(
-                        'numberposts' => $limit - 1, // Number of recent posts thumbnails to display
+                        'numberposts' => $limit - 1,
                         'post_type' => 'podcasts',
                         'orderby'           => 'rand',
                         //'order'             => 'desc',
-                        'post_status' => 'publish', // Show only the published posts
+                        'post_status' => 'publish',
                         'meta_query' => array(
                             array(
                                 'key'     => 'promo_podcast',
@@ -3025,8 +2595,8 @@ function blog_filter_function($attr)
                 $post_types = explode('/', $post_type);
 
                 $recent_posts = wp_get_recent_posts(array(
-                    'numberposts' => $limit, // Number of recent posts thumbnails to display
-                    'post_status' => 'publish', // Show only the published posts
+                    'numberposts' => $limit,
+                    'post_status' => 'publish',
                     'orderby' => $orderby,
                     //'orderby' => 'rand',
                     'cat' => $categoryid,
@@ -3040,12 +2610,12 @@ function blog_filter_function($attr)
 
         if ($func == 'podcast-limit4') {
             $recent_posts1 = wp_get_recent_posts(array(
-                'numberposts' => 1, // Number of recent posts thumbnails to display
+                'numberposts' => 1,
                 'post_type' => 'podcasts',
                 'orderby'           => 'date',
                 //'order'             => 'desc',
                 //'category'         => 1159, // Wellbeing term id
-                'post_status' => 'publish', // Show only the published posts
+                'post_status' => 'publish',
                 'meta_query' => array(
                     array(
                         'key'     => 'featured_category',
@@ -3057,12 +2627,12 @@ function blog_filter_function($attr)
             ));
 
             $recent_posts2 = wp_get_recent_posts(array(
-                'numberposts' => 1, // Number of recent posts thumbnails to display
+                'numberposts' => 1,
                 'post_type' => 'podcasts',
                 'orderby'           => 'date',
                 //'order'             => 'desc',
                 //'category'         => 1164,
-                'post_status' => 'publish', // Show only the published posts
+                'post_status' => 'publish',
                 'meta_query' => array(
                     array(
                         'key'     => 'featured_category',
@@ -3074,12 +2644,12 @@ function blog_filter_function($attr)
             ));
 
             $recent_posts3 = wp_get_recent_posts(array(
-                'numberposts' => 1, // Number of recent posts thumbnails to display
+                'numberposts' => 1,
                 'post_type' => 'podcasts',
                 'orderby'           => 'date',
                 //'order'             => 'desc',
                 //'category'         => 1165,
-                'post_status' => 'publish', // Show only the published posts
+                'post_status' => 'publish',
                 'meta_query' => array(
                     array(
                         'key'     => 'featured_category',
@@ -3091,12 +2661,12 @@ function blog_filter_function($attr)
             ));
 
             $recent_posts4 = wp_get_recent_posts(array(
-                'numberposts' => 1, // Number of recent posts thumbnails to display
+                'numberposts' => 1,
                 'post_type' => 'podcasts',
                 'orderby'           => 'date',
                 //'order'             => 'desc',
                 //'category'         => 1163,
-                'post_status' => 'publish', // Show only the published posts
+                'post_status' => 'publish',
                 'meta_query' => array(
                     array(
                         'key'     => 'featured_category',
@@ -3110,14 +2680,14 @@ function blog_filter_function($attr)
             $recent_posts = array_merge($recent_posts1, $recent_posts2, $recent_posts3, $recent_posts4);
         }
 
-        $in_count = 0; // Number of items in current loop???
+        $in_count = 0;
         $st_1 = false;
         $st_2 = false;
         $st_3 = false;
         $st_4 = false;
         $st_5 = false;
 
-        $exp_count = 0; // Number of experts???
+        $exp_count = 0;
         $vid_count = 0;
         $cat_count = 0;
         $giveaway_count = 0;

@@ -836,6 +836,11 @@ function admin_only()
                 margin-left: auto;
                 margin-right: auto;
             }
+            .mw-1500.mw-1500.mw-1500 {
+                max-width: 1500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
         </style>
     <?php
 
