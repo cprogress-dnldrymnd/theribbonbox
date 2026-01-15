@@ -828,164 +828,200 @@ function admin_only()
                 margin-left: auto;
                 margin-right: auto;
             }
-         
         </style>
-<?php
+    <?php
 
     }
 }
 add_action('wp_head', 'admin_only');
 
-/*
- * WPForms Import & Cleanup Tool
- * Adds a dashboard page to Import Users OR Delete Users based on Spam entries.
+
+/**
+ * WPForms Entry to User Importer
+ * Adds a dashboard page to map fields and import users from Form #40016
  */
 
-add_action('admin_menu', 'register_wpforms_tool_page');
+// 1. Register the Admin Menu
+add_action('admin_menu', 'register_wpforms_import_page');
 
-function register_wpforms_tool_page() {
+function register_wpforms_import_page()
+{
     add_menu_page(
-        'WPForms Tools', 
-        'WPForms Tools', 
-        'manage_options', 
-        'wpforms-user-tools', 
-        'render_wpforms_tool_page', 
-        'dashicons-shield', 
-        80 
+        'WPForms User Import',     // Page Title
+        'WPForms User Import',     // Menu Title
+        'manage_options',          // Capability (Admins only)
+        'wpforms-user-import',     // Menu Slug
+        'render_wpforms_import_page', // Callback function
+        'dashicons-groups',        // Icon
+        80                         // Position
     );
 }
-
-function render_wpforms_tool_page() {
+// 2. Render the Page and Handle Logic
+function render_wpforms_import_page()
+{
     global $wpdb;
+
+    // --- Configuration Defaults ---
     $target_form_id = 40016;
+
+    // --- Handle Form Submission ---
     $results_log = [];
     $processed = false;
 
-    // --- LOGIC: DELETE SPAM USERS ---
-    if ( isset($_POST['run_spam_cleanup']) && check_admin_referer('wpforms_tool_action', 'wpforms_tool_nonce') ) {
+    if (isset($_POST['run_import_process']) && check_admin_referer('wpforms_import_action', 'wpforms_import_nonce')) {
+
         $processed = true;
-        $id_email = intval($_POST['fid_email']); // We only really need email to match the user
 
-        // 1. Get ALL entries that are SPAM or TRASH
-        $table_name = $wpdb->prefix . 'wpforms_entries';
-        $spam_entries = $wpdb->get_results( 
-            $wpdb->prepare(
-                "SELECT fields, entry_id FROM $table_name 
-                 WHERE form_id = %d AND (status = 'spam' OR status = 'trash')", 
-                $target_form_id
-            ) 
-        );
-
-        if ( empty($spam_entries) ) {
-            $results_log[] = ['type' => 'info', 'msg' => "No Spam/Trash entries found in WPForms database."];
-        } else {
-            foreach ($spam_entries as $entry) {
-                $fields = json_decode($entry->fields, true);
-                $email  = isset($fields[$id_email]['value']) ? trim($fields[$id_email]['value']) : '';
-
-                if ( empty($email) ) continue;
-
-                // 2. Find the user by email
-                $user = get_user_by('email', $email);
-
-                if ( $user ) {
-                    // SAFETY: Do NOT delete admins
-                    if ( in_array( 'administrator', (array) $user->roles ) ) {
-                        $results_log[] = ['type' => 'error', 'msg' => "SKIPPED: User $email is an Admin. Not deleted."];
-                        continue;
-                    }
-
-                    // 3. Delete the user
-                    require_once(ABSPATH.'wp-admin/includes/user.php');
-                    $deleted = wp_delete_user( $user->ID );
-
-                    if ( $deleted ) {
-                        $results_log[] = ['type' => 'success', 'msg' => "<strong>DELETED:</strong> User $email (Linked to Spam Entry #{$entry->entry_id})"];
-                    } else {
-                        $results_log[] = ['type' => 'error', 'msg' => "FAILED to delete user $email"];
-                    }
-                } else {
-                    $results_log[] = ['type' => 'info', 'msg' => "Entry #{$entry->entry_id}: User $email not found (Already deleted or never imported)."];
-                }
-            }
-        }
-    }
-
-    // --- LOGIC: IMPORT (The fixed version excluding spam) ---
-    if ( isset($_POST['run_import_process']) && check_admin_referer('wpforms_tool_action', 'wpforms_tool_nonce') ) {
-        $processed = true;
+        // Get mapped IDs from user input
         $id_name     = intval($_POST['fid_name']);
         $id_username = intval($_POST['fid_username']);
         $id_email    = intval($_POST['fid_email']);
         $id_pass     = intval($_POST['fid_pass']);
         $id_interest = intval($_POST['fid_interest']);
 
+        // Fetch Entries directly from DB
         $table_name = $wpdb->prefix . 'wpforms_entries';
-        
-        // QUERY: EXCLUDE SPAM THIS TIME
-        $entries = $wpdb->get_results( 
+
+        // Check if table exists first
+        if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+            echo '<div class="notice notice-error"><p>Error: Table ' . $table_name . ' not found. Is WPForms installed?</p></div>';
+            return;
+        }
+
+        // --- UPDATED QUERY: Exclude 'spam' and 'trash' ---
+        $entries = $wpdb->get_results(
             $wpdb->prepare(
-                "SELECT fields, entry_id FROM $table_name 
-                 WHERE form_id = %d AND status != 'spam' AND status != 'trash'", 
+                "SELECT fields, entry_id, date 
+                 FROM $table_name 
+                 WHERE form_id = %d 
+                 AND status != 'spam' 
+                 AND status != 'trash'",
                 $target_form_id
-            ) 
+            )
         );
 
-        foreach ($entries as $entry) {
-            $fields = json_decode($entry->fields, true);
-            // ... (Same mapping logic as before) ...
-            $email = isset($fields[$id_email]['value']) ? trim($fields[$id_email]['value']) : '';
-            // Simple check to just show we are running the Safe Import
-            if(!empty($email) && !email_exists($email)) {
-                // (Logic abbreviated for brevity since you likely already ran this)
-                // If you need to re-run the VALID imports, paste the logic from the previous answer here.
+        if (empty($entries)) {
+            $results_log[] = ['type' => 'error', 'msg' => "No valid entries found for Form ID $target_form_id (Spam/Trash excluded)."];
+        } else {
+            foreach ($entries as $entry) {
+                $fields = json_decode($entry->fields, true);
+
+                // --- Extract Data ---
+                // Name (Handle first/last split or single field)
+                $first_name = isset($fields[$id_name]['first']) ? $fields[$id_name]['first'] : '';
+                $last_name  = isset($fields[$id_name]['last']) ? $fields[$id_name]['last'] : '';
+                if (empty($first_name) && isset($fields[$id_name]['value'])) {
+                    $parts = explode(' ', $fields[$id_name]['value'], 2);
+                    $first_name = $parts[0];
+                    $last_name = isset($parts[1]) ? $parts[1] : '';
+                }
+
+                $username = isset($fields[$id_username]['value']) ? trim($fields[$id_username]['value']) : '';
+                $email    = isset($fields[$id_email]['value']) ? trim($fields[$id_email]['value']) : '';
+                $password = isset($fields[$id_pass]['value']) ? $fields[$id_pass]['value'] : '';
+
+                // Interest Meta
+                $raw_interest = isset($fields[$id_interest]['value']) ? $fields[$id_interest]['value'] : '';
+                $interest_meta = (strpos($raw_interest, "\n") !== false) ? explode("\n", $raw_interest) : $raw_interest;
+
+                // --- Validation ---
+                if (empty($email) || empty($username)) {
+                    $results_log[] = ['type' => 'warning', 'msg' => "Entry #{$entry->entry_id}: Skipped (Missing Email/Username)"];
+                    continue;
+                }
+
+                // --- Check Existence ---
+                if (email_exists($email) || username_exists($username)) {
+                    $results_log[] = ['type' => 'info', 'msg' => "Entry #{$entry->entry_id}: Skipped (User $username / $email already exists)"];
+                    continue;
+                }
+
+                // --- Create User ---
+                $userdata = array(
+                    'user_login' => $username,
+                    'user_email' => $email,
+                    'user_pass'  => $password,
+                    'first_name' => $first_name,
+                    'last_name'  => $last_name,
+                    'role'       => 'subscriber'
+                );
+
+                $user_id = wp_insert_user($userdata);
+
+                if (! is_wp_error($user_id)) {
+                    // Save Meta
+                    update_user_meta($user_id, 'interest', $interest_meta);
+                    $results_log[] = ['type' => 'success', 'msg' => "Entry #{$entry->entry_id}: <strong>SUCCESS!</strong> Created user $username"];
+                } else {
+                    $results_log[] = ['type' => 'error', 'msg' => "Entry #{$entry->entry_id}: Failed - " . $user_id->get_error_message()];
+                }
             }
         }
-        $results_log[] = ['type' => 'info', 'msg' => "Safe Import Check Complete (Check code for full re-run logic if needed)."];
     }
 
-    // --- HTML OUTPUT ---
+    // --- HTML Output ---
     ?>
     <div class="wrap">
-        <h1>WPForms User Tools (Form #40016)</h1>
-        
+        <h1>WPForms Entry Importer (Form #40016)</h1>
+        <p>This tool scans existing form entries and converts them into WordPress Users.</p>
+
+        <div style="background: #fff; padding: 20px; border: 1px solid #ccc; max-width: 800px;">
+            <form method="post" action="">
+                <?php wp_nonce_field('wpforms_import_action', 'wpforms_import_nonce'); ?>
+
+                <h3>Step 1: Map your Field IDs</h3>
+                <p><em>Check your WPForms Builder for the exact "ID #" of each field. Defaults are guessed below.</em></p>
+
+                <table class="form-table">
+                    <tr>
+                        <th scope="row"><label>Name Field ID</label></th>
+                        <td><input type="number" name="fid_name" value="<?php echo isset($_POST['fid_name']) ? esc_attr($_POST['fid_name']) : '0'; ?>" class="small-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Username Field ID</label></th>
+                        <td><input type="number" name="fid_username" value="<?php echo isset($_POST['fid_username']) ? esc_attr($_POST['fid_username']) : '1'; ?>" class="small-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Email Field ID</label></th>
+                        <td><input type="number" name="fid_email" value="<?php echo isset($_POST['fid_email']) ? esc_attr($_POST['fid_email']) : '2'; ?>" class="small-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Password Field ID</label></th>
+                        <td><input type="number" name="fid_pass" value="<?php echo isset($_POST['fid_pass']) ? esc_attr($_POST['fid_pass']) : '3'; ?>" class="small-text"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label>Interest Field ID (Meta)</label></th>
+                        <td><input type="number" name="fid_interest" value="<?php echo isset($_POST['fid_interest']) ? esc_attr($_POST['fid_interest']) : '4'; ?>" class="small-text"></td>
+                    </tr>
+                </table>
+
+                <hr>
+
+                <p class="submit">
+                    <input type="submit" name="run_import_process" id="submit" class="button button-primary" value="Run Import Now">
+                </p>
+            </form>
+        </div>
+
         <?php if ($processed): ?>
-            <div style="background: #fff; padding: 15px; border-left: 4px solid orange; margin-bottom: 20px; max-height: 300px; overflow-y: scroll;">
-                <strong>Results:</strong>
-                <ul style="margin: 0; padding-left: 20px;">
-                    <?php foreach($results_log as $log): 
-                        $color = ($log['type'] == 'success') ? 'green' : (($log['type'] == 'error') ? 'red' : '#666');
+            <br>
+            <h3>Import Results</h3>
+            <div style="background: #fff; padding: 20px; border: 1px solid #ccc; max-width: 800px; max-height: 400px; overflow-y: scroll;">
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <?php foreach ($results_log as $log):
+                        $color = '#333';
+                        if ($log['type'] == 'success') $color = 'green';
+                        if ($log['type'] == 'error') $color = 'red';
+                        if ($log['type'] == 'warning') $color = 'orange';
+                        if ($log['type'] == 'info') $color = '#999';
                     ?>
-                        <li style="color: <?php echo $color; ?>;"><?php echo $log['msg']; ?></li>
+                        <li style="border-bottom: 1px solid #eee; padding: 5px 0; color: <?php echo $color; ?>;">
+                            <?php echo $log['msg']; ?>
+                        </li>
                     <?php endforeach; ?>
                 </ul>
             </div>
         <?php endif; ?>
-
-        <div style="display: flex; gap: 20px;">
-            
-            <div style="flex: 1; background: #ffeaea; padding: 20px; border: 1px solid #cc0000;">
-                <h2 style="color: #cc0000; margin-top:0;">🛑 Emergency Cleanup (Revert Spam)</h2>
-                <p>This will search for all Form Entries marked as <strong>Spam</strong> or <strong>Trash</strong>, find the user with that email, and <strong>DELETE</strong> them.</p>
-                <form method="post" action="">
-                    <?php wp_nonce_field('wpforms_tool_action', 'wpforms_tool_nonce'); ?>
-                    <p>
-                        <label><strong>Email Field ID:</strong></label><br>
-                        <input type="number" name="fid_email" value="<?php echo isset($_POST['fid_email']) ? esc_attr($_POST['fid_email']) : '2'; ?>" required>
-                    </p>
-                    <p><input type="submit" name="run_spam_cleanup" class="button button-primary" value="Delete Spam Users" onclick="return confirm('Are you sure? This will delete users found in the Spam folder.');"></p>
-                </form>
-            </div>
-
-            <div style="flex: 1; background: #fff; padding: 20px; border: 1px solid #ccc;">
-                <h2 style="margin-top:0;">✅ Safe Import (No Spam)</h2>
-                <p>Use this to run the import again, ignoring spam/trash.</p>
-                <form method="post" action="">
-                    <?php wp_nonce_field('wpforms_tool_action', 'wpforms_tool_nonce'); ?>
-                    <p><em>(Inputs hidden for clarity - use the Cleanup tool on the left first)</em></p>
-                </form>
-            </div>
-        </div>
     </div>
-    <?php
+<?php
 }
