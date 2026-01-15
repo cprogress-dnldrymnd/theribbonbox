@@ -2306,20 +2306,6 @@ function blog_filter_function($attr)
                             $rtn .= '</div>';
                             $vid_count++;
                         } else if ($in_count == 9) {
-                            if (empty($post_type) || $attr["post_type"] == "videos" || $attr["post_type"] == "podcasts") {
-                                if ($post_open_div) {
-                                    //$rtn .= '</div>';
-                                }
-                                //$rtn .= do_shortcode("[display_insider]");
-                                //$vid_count++;
-                                if ($post_open_div) {
-                                    //$rtn .= '<div class="blogs-loop-inner">';
-                                }
-                            }
-                        } else if ($in_count == 6) {
-                            $rtn .= '<br>';
-                            $giveaway_count++;
-                        } else if ($in_count == 9) {
                             $rtn .= '<br>';
                             if (empty($post_type)) {
                                 if ($post_open_div) {
