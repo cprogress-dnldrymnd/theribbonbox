@@ -2184,7 +2184,12 @@ function blog_filter_function($attr)
                             $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
 
                             if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts") {
-                                include get_template_directory() . '/components/posts/tpl-28.php';
+                                //revamp section
+                                if (current_user_can('administrator')) {
+                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
+                                } else {
+                                    include get_template_directory() . '/components/posts/tpl-28.php';
+                                }
                             } else {
                                 include get_template_directory() . '/components/posts/tpl-29.php';
                             }
@@ -2235,8 +2240,14 @@ function blog_filter_function($attr)
                             $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
 
                             if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts") {
-                                include get_template_directory() . '/components/posts/tpl-36.php';
+                                //revamp section
+                                if (current_user_can('administrator')) {
+                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
+                                } else {
+                                    include get_template_directory() . '/components/posts/tpl-36.php';
+                                }
                             } else {
+
                                 include get_template_directory() . '/components/posts/tpl-37.php';
                             }
                         }

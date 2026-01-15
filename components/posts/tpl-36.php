@@ -1,8 +1,6 @@
 <?php
-if (current_user_can('administrator')) {
-    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
-} else {
-    $rtn .= '
+//revamp section deprecated
+$rtn .= '
 <div class="blog-tpl-37 blog-even-nor blog-nor format-' . $format . ' incount-' . $in_count . ' style-' . $styles_str . ' post-type-' . $this_post_type . ' blog-nor-half blog-nor-half-list-1">
     ' . $featured_cur . '
     <div class="blog-l-img" ' . $style . '>
@@ -24,4 +22,3 @@ if (current_user_can('administrator')) {
         </div>
     </div>
 </div>';
-}
