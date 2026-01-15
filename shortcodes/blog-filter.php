@@ -16,7 +16,6 @@ function blog_filter_function($attr)
     $homepage_array = '';
 
     $rtn = "";
-    $rtn .= $post['ID'];
 
     $term_id = 0;
 
@@ -1990,14 +1989,6 @@ function blog_filter_function($attr)
                     //revamp-section
                     //blogs-loop-inner-4
 
-
-                    if (current_user_can('administrator')) {
-                        echo 'visible only to administrator ';
-                        echo $in_count;
-                        echo get_the_title($post['ID']);
-                        echo '<br>';
-                        $in_count++;
-                    }
 
 
                     //end of revamp-section
