@@ -14,6 +14,7 @@ function blog_filter_function($attr) {
     $homepage_array = '';
 
     $rtn = "";
+
     $term_id = 0;
 
     $categoryid = "";
@@ -60,6 +61,9 @@ function blog_filter_function($attr) {
     if (!empty($attr["id_list"])){ $id_list = $attr["id_list"]; $id_list = explode(',', $id_list); }
     if (!empty($attr["pod_layout"])){ $pod_layout = $attr["pod_layout"]; }
     if (!empty($attr["func"])){ $func = $attr["func"]; }
+
+
+    $rtn .= $attr["limit"];
 
     //echo "<!-- \$id_list: " . json_encode($id_list) . " -->";
 
