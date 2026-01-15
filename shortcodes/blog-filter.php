@@ -2186,12 +2186,8 @@ function blog_filter_function($attr)
 
                                 if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts") {
                                     //revamp section
-                                    if (current_user_can('administrator')) {
-                                        $rtn .= '<!--- tpl-28 --->';
-                                        $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
-                                    } else {
-                                        include get_template_directory() . '/components/posts/tpl-28.php';
-                                    }
+                                    $rtn .= '<!--- tpl-28 --->';
+                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
                                 } else {
                                     include get_template_directory() . '/components/posts/tpl-29.php';
                                 }
@@ -2208,12 +2204,8 @@ function blog_filter_function($attr)
                             if ($st_4) {
                                 if (! isset($attr["post_type"]) || $attr["post_type"] == "expert_profiles") {
                                     //revamp section
-                                    if (current_user_can('administrator')) {
-                                        $rtn .= '<!--- tpl-31 --->';
-                                        $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
-                                    } else {
-                                        include get_template_directory() . '/components/posts/tpl-31.php';
-                                    }
+                                    $rtn .= '<!--- tpl-31 --->';
+                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
                                 } else {
                                     include get_template_directory() . '/components/posts/tpl-32.php';
                                 }
@@ -2223,14 +2215,9 @@ function blog_filter_function($attr)
                                 $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $large_image));
                                 $style .= $iUrl;
                                 $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-
-                                if (current_user_can('administrator')) {
-                                    //revamp section
-                                    $rtn .= '<!--- tpl-33 --->';
-                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
-                                } else {
-                                    include get_template_directory() . '/components/posts/tpl-33.php';
-                                }
+                                //revamp section
+                                $rtn .= '<!--- tpl-33 --->';
+                                $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
                             }
                         } else {
                             //html comments remove by dd
@@ -2256,12 +2243,8 @@ function blog_filter_function($attr)
 
                                 if (! isset($attr["post_type"]) || $attr["post_type"] == "videos/podcasts") {
                                     //revamp section
-                                    if (current_user_can('administrator')) {
-                                        $rtn .= '<!--- tpl-36 --->';
-                                        $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
-                                    } else {
-                                        include get_template_directory() . '/components/posts/tpl-36.php';
-                                    }
+                                    $rtn .= '<!--- tpl-36 --->';
+                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
                                 } else {
 
                                     include get_template_directory() . '/components/posts/tpl-37.php';
@@ -2273,12 +2256,8 @@ function blog_filter_function($attr)
                                 $style .= $iUrl;
                                 $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
                                 //revamp section
-                                if (current_user_can('administrator')) {
-                                    $rtn .= '<!--- tpl-38 --->';
-                                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
-                                } else {
-                                    include get_template_directory() . '/components/posts/tpl-38.php';
-                                }
+                                $rtn .= '<!--- tpl-38 --->';
+                                $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
                             }
                             if ($st_4) {
 
