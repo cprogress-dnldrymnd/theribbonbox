@@ -2293,15 +2293,17 @@ function blog_filter_function($attr)
                         }
                     }
 
-            
+
 
                     if (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
                         //html comments remove by dd
                         //echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
 
                         if ($in_count == 6) {
+                            $rtn .= '<div class="blogs-loop-fixer">';
                             $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
                             $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="2" categoryid="' . $categoryid . '"]');
+                            $rtn .= '</div>';
                             $vid_count++;
                         } else if ($in_count == 9) {
                             if (empty($post_type) || $attr["post_type"] == "videos" || $attr["post_type"] == "podcasts") {
@@ -2400,7 +2402,7 @@ function blog_filter_function($attr)
                             }
                         }
                     }
-           
+
                     if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
                         //html comments remove by dd
                         //echo '<!-- if ($vid_count == 1 && $curtotal == 0 && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
