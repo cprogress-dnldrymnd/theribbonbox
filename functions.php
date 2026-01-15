@@ -747,18 +747,17 @@ function get_post_categories_as_links($post_id = null, $separator = '', $css_cla
  * @param string $taxonomy The slug of the taxonomy (e.g., 'category', 'product_cat').
  * @return WP_Term|false The top-level WP_Term object, or false if no terms are found or an error occurs.
  */
-function get_top_level_term_by_post_id($post_id, $taxonomy)
-{
+function get_top_level_term_by_post_id( $post_id, $taxonomy ) {
     // Ensure both parameters are provided and the post exists.
-    if (! $post_id || ! $taxonomy || ! get_post($post_id)) {
+    if ( ! $post_id || ! $taxonomy || ! get_post( $post_id ) ) {
         return false;
     }
 
     // 1. Get all terms associated with the post in the specified taxonomy.
-    $terms = wp_get_post_terms($post_id, $taxonomy, array('fields' => 'all'));
+    $terms = wp_get_post_terms( $post_id, $taxonomy, array( 'fields' => 'all' ) );
 
     // Check if any terms were found.
-    if (is_wp_error($terms) || empty($terms)) {
+    if ( is_wp_error( $terms ) || empty( $terms ) ) {
         return false;
     }
 
@@ -766,21 +765,21 @@ function get_top_level_term_by_post_id($post_id, $taxonomy)
     $top_level_id   = 0;
 
     // 2. Iterate through the terms to find the highest ancestor.
-    foreach ($terms as $term) {
+    foreach ( $terms as $term ) {
         // If the term has a parent, find its ancestors.
-        if ($term->parent) {
+        if ( $term->parent ) {
             // Get all ancestor IDs for the current term (sorted from closest parent to root).
-            $ancestors = get_ancestors($term->term_id, $taxonomy);
+            $ancestors = get_ancestors( $term->term_id, $taxonomy );
 
             // The last ID in the array is the root (top-level) term ID.
-            if (! empty($ancestors)) {
-                $root_id = end($ancestors);
+            if ( ! empty( $ancestors ) ) {
+                $root_id = end( $ancestors );
 
                 // If this root is lower (or the same) as the currently found top_level_id,
                 // we update our current best root.
-                if ($root_id !== $top_level_id) {
+                if ( $root_id !== $top_level_id ) {
                     $top_level_id = $root_id;
-                    $top_level_term = get_term($top_level_id, $taxonomy);
+                    $top_level_term = get_term( $top_level_id, $taxonomy );
                     // Break the loop if we've found the root. If a post has multiple top-level
                     // terms, this will return the first one found among the terms.
                     break;
@@ -802,6 +801,14 @@ function get_top_level_term_by_post_id($post_id, $taxonomy)
     // we return the top_level_term found in the loop.
     return $top_level_term;
 }
+
+function custom_archive_post_count( $query ) {
+    // Only modify the main query on the frontend and on archive pages
+    if ( ! is_admin() && $query->is_main_query() && is_archive() ) {
+        $query->set( 'posts_per_page', 50 );
+    }
+}
+add_action( 'pre_get_posts', 'custom_archive_post_count' );
 
 function admin_only()
 {
