@@ -372,3 +372,10 @@ function save_custom_external_product_field($post_id)
     update_post_meta($post_id, '_external_product_currency', $sanitized_value);
 }
 add_action('woocommerce_process_product_meta_external', 'save_custom_external_product_field');
+
+
+function post_box() {
+    
+}
+
+add_shortcode('post_box', 'post_box');
