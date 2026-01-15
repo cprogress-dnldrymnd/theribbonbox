@@ -391,8 +391,8 @@ function post_box($atts)
             <?= get_the_post_thumbnail($id, 'large') ?>
         </div>
         <div class="post-details">
-            <h3 class="post-title"><?= get_the_title($id) ?></h3>
-            <div class="post-date">
+            <h3 class="post-box-title"><?= get_the_title($id) ?></h3>
+            <div class="post-box-date">
                 <?= get_the_date('j M Y', $post["ID"]) ?>
             </div>
         </div>
