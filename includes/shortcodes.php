@@ -607,7 +607,7 @@ function become_insider()
                 <div class="col-auto">
                     <div class="row g-5 justify-content-between align-items-center">
                         <div class="col-auto">
-                            <h3>Become an Insider</h3>
+                            <h3>Become an <i>Insider</i></h3>
 
                         </div>
                         <div class="col-auto">
