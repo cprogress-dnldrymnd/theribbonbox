@@ -1911,6 +1911,7 @@ function blog_filter_function($attr)
                             }
                         }
 
+                        //first set of posts to be display
                         if ($in_count == 2) {
                             $exp_count++;
                         }
@@ -4435,7 +4436,7 @@ function blog_filter_function($attr)
                             //html comments remove by dd
                             //echo '<!-- if (isset($attr["post_type"]) && $attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts") -->';
 
-                            if ($in_count == 6) {
+                            if ($in_count == 7) {
                                 $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
                                 $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="2" categoryid="' . $categoryid . '"]');
                                 $vid_count++;
