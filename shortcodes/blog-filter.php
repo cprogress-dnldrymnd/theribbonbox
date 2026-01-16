@@ -1918,7 +1918,7 @@ function blog_filter_function($attr)
                                 $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
                                 $rtn .= '</div>';
 
-                                $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
+                                $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="2" categoryid="' . $categoryid . '"]');
                                 $rtn .= '</div>';
                                 $vid_count++;
 
