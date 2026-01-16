@@ -1934,6 +1934,7 @@ function blog_filter_function($attr)
                                 $rtn .= '</div>';
                             }
 
+                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
                             if ($post_open_div) {
                                 $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-12">';
@@ -4612,10 +4613,6 @@ function blog_filter_function($attr)
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
                             <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
-
-                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
-
-
                             if ($post_open_div) {
                                 $rtn .= '<div class="blogs-loop-inner">';
                             }
