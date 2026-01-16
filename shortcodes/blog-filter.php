@@ -2139,8 +2139,9 @@ function blog_filter_function($attr)
                     $rtn .= '<!--- home-trending-video  ---> ';
                     $rtn .= do_shortcode('[post_box_trending_video count=' . $cnt . ' in_count=' . $in_count . ' _trending_video id=' . $post["ID"] . ']');
 
-                    $rtn .= '<h2>Podcast Episodes</h2>';
                     $rtn .= '<div class="blogs-loop-outer mw-1500 trb-px">';
+                    $rtn .= '<h2>Podcast Episodes</h2>';
+
                     $rtn .= '<hr>';
                     $rtn .= '<div class="blogs-loop-inner trb-row">';
                 } else {
