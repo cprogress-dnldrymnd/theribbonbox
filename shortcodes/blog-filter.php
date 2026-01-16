@@ -1762,7 +1762,7 @@ function blog_filter_function($attr)
                                 $st_2 = false;
                                 $st_3 = true;
                                 $st_5 = false;
-                            } else if (9 <= $in_count && $in_count <= 11) {
+                            } else if (9 <= $in_count && $in_count <= 13) {
                                 $st_4 = false;
                                 $st_1 = false;
                                 $st_2 = false;
@@ -1860,7 +1860,7 @@ function blog_filter_function($attr)
                                     }
                                 }
                                 $cat_count++;
-                            } else if ($in_count == 12 && !empty($add_ad)) {
+                            } else if ($in_count == 10 && !empty($add_ad)) {
                                 if ($add_ad == "Yes") {
                                     $add_ad = "No";
                                     if ($post_open_div) {
