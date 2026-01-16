@@ -1828,23 +1828,12 @@ function blog_filter_function($attr)
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
                                 }
-                                
+
                                 $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
                                 if (empty($post_type)) {
                                     $exp_count++;
                                     // $cat = get_top_level_term_by_post_id($post_id, 'category');
-                                    $cat = get_term_by('id', $categoryid, 'category');
-                                    $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
-                                    $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
-                                    $rtn .=   '
-                            <div ' . $categoryid . ' class="experts-page-cara tpl-2649" style="--bg-color: ' . $category_colour . '; --text-color: ' . $category_text_color . '">
-                                <!--<h2>' . $exp_count . '</h2>-->
-                                ' . do_shortcode("[expert_list page='1' title='" . $globalCategoryName . " Experts" . "' categoryid='" . $categoryid . "']") . '
-                            </div>
-                            <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
-                            <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
-                            <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
 
                                     $rtn .= '<div class="blogs-loop-watch-listen">';
                                     $rtn .= '<div class="mw-1500 trb-px">';
@@ -1884,6 +1873,17 @@ function blog_filter_function($attr)
                                         }
                                     }
                                 }
+                                $cat = get_term_by('id', $categoryid, 'category');
+                                $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
+                                $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
+                                $rtn .=   '
+                            <div ' . $categoryid . ' class="experts-page-cara tpl-2649" style="--bg-color: ' . $category_colour . '; --text-color: ' . $category_text_color . '">
+                                <!--<h2>' . $exp_count . '</h2>-->
+                                ' . do_shortcode("[expert_list page='1' title='" . $globalCategoryName . " Experts" . "' categoryid='" . $categoryid . "']") . '
+                            </div>
+                            <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
+                            <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
+                            <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
                             }
                         } else {
 
