@@ -597,6 +597,33 @@ function swiper_navigation($class)
     return '<div class="swiper-navigation"> <div class="swiper-button-prev-' . $class . '"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> <div class="swiper-button-next-' . $class . '"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> </div>';
 }
 
-function become_insider() {
+function become_insider()
+{
+?>
+    <div class="become-insider">
+        <div class="become-insider-inner trb-px mw-large">
+            <div class="row g-5 justify-content-between">
+                <div class="col-auto">
+                    <div class="row g-5 justify-content-between">
+                        <div class="col-auto">
+                            <h3>Become an Insider</h3>
 
+                        </div>
+                        <div class="col-auto">
+                            <p>
+                                Our weekly newsletter of tailored expert advice, tips and giveaways - straight to your inbox.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="button-box button-box-v2 button-bordered col-auto">
+                        <a href="http#">SIGN ME UP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
 }
+add_shortcode('become_insider', 'become_insider');
