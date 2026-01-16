@@ -1899,7 +1899,7 @@ function blog_filter_function($attr)
 
 
                         if (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
-                            if ($in_count == 6) {
+                            if ($in_count == 7) {
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
                                 }
