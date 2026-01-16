@@ -1802,14 +1802,20 @@ function blog_filter_function($attr)
                         }
                         $styles_str = implode('-', $styles);
 
-                        
-                        $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count. '  id=' . $post["ID"] . ']');
+
+                        $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
 
 
 
                         //second set of posts
                         if (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
                             if ($in_count == 5) {
+                                if ($post_open_div) {
+                                    $rtn .= '</div>';
+                                    $rtn .= '<div class="blogs-loop-watch-listenx2">';
+                                }
+                            }
+                            if ($in_count == 7) {
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
                                 }
@@ -2014,7 +2020,7 @@ function blog_filter_function($attr)
                     $post_open_div = true;
                 }
                 $rtn .= '<!--- home-video-even  ---> ';
-                $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count. '  id=' . $post["ID"] . ' format="video"]');
+                $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ' format="video"]');
             }
 
             if ($format == "normal") {
@@ -2130,12 +2136,12 @@ function blog_filter_function($attr)
             if ($format == "video") {
                 if ($cnt == 1) {
                     $rtn .= '<!--- home-trending-video  ---> ';
-                    $rtn .= do_shortcode('[post_box_trending_video count=' . $cnt . ' in_count=' . $in_count. ' _trending_video id=' . $post["ID"] . ']');
+                    $rtn .= do_shortcode('[post_box_trending_video count=' . $cnt . ' in_count=' . $in_count . ' _trending_video id=' . $post["ID"] . ']');
 
                     $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px">';
                 } else {
                     $rtn .= '<!--- home-small-podcasts  ---> ';
-                    $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count. '  id=' . $post["ID"] . ' format="podcast"]');
+                    $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ' format="podcast"]');
                 }
 
                 if ($cnt == $limit) {
