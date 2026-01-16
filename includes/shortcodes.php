@@ -430,7 +430,7 @@ function post_box_trending_video($atts)
     );
 ?>
     <div class="post-box-trending-video-holder mw-1500 trb-px">
-        <div class="post-box-trending-video">
+        <div class="post-box-trending-video post-box">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="post-image image-box">
