@@ -417,20 +417,33 @@ function post_box($atts)
 add_shortcode('post_box', 'post_box');
 
 
-function post_box_trending_video() {
+function post_box_trending_video($id)
+{
     ob_start();
-    ?>
+    extract(
+        shortcode_atts(
+            array(
+                'id' => '',
+            ),
+            $atts
+        )
+    );
+?>
     <div class="post-box-trending-video">
         <div class="row">
             <div class="col-lg-6">
-
+                <div class="post-image image-box">
+                    <a href="<?= get_the_permalink($id) ?>">
+                        <?= get_the_post_thumbnail($id, 'large') ?>
+                    </a>
+                </div>
             </div>
             <div class="col-lg-6">
 
             </div>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 
