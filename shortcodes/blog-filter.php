@@ -155,7 +155,7 @@ function blog_filter_function($attr)
 
 
             if ($format == "video") {
-                $exClass = "vid-dark";
+                $exClass = "vid-dark-green";
                 if (!empty($categoryid)) {
 
                     $child = get_category($categoryid);
