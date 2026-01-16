@@ -530,7 +530,7 @@ function giveaway_list_swiper($attr)
 
                 <div class="swiper-slider">
                     <div class="row g-0">
-                        <div class="col-lg-g">
+                        <div class="col-lg-6">
                             <h2><?= get_the_title($post['ID']) ?></h2>
 
                             <?php if (isDatePast($select_competition_date) != false) { ?>
