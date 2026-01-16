@@ -403,7 +403,7 @@ function post_box($atts)
 ?>
     <div class="post-box-blogs trb-column format-<?= $format ?>">
         <div class="post-image image-box">
-            <span style="position: absolute; top: 0;left: 0;z-index: 2; background: #fff; padding: 10px"><?= $count ?> | <?=  $in_count ?></span>
+            <span style="position: absolute; top: 0;left: 0;z-index: 2; background: #fff; padding: 10px"><?= $count ?> | <?= $in_count ?></span>
             <a href="<?= get_the_permalink($id) ?>">
                 <?= get_the_post_thumbnail($id, 'large') ?>
                 <?php if ($icon_id) { ?>
@@ -443,14 +443,17 @@ function post_box_trending_video($atts)
         <div class="post-box-trending-video post-box-blogs">
             <div class="trb-row align-items-center">
                 <div class="trb-column">
-                    <div class="post-image image-box">
+                    <div class="post-image-with-ribbon">
                         <div class="ribbon">
                             Trending Video
                         </div>
-                        <a href="<?= get_the_permalink($id) ?>">
-                            <?= get_the_post_thumbnail($id, 'large') ?>
-                        </a>
+                        <div class="post-image image-box">
+                            <a href="<?= get_the_permalink($id) ?>">
+                                <?= get_the_post_thumbnail($id, 'large') ?>
+                            </a>
+                        </div>
                     </div>
+
                 </div>
                 <div class="trb-column">
                     <div class="post-details">
