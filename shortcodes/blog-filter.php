@@ -2228,8 +2228,6 @@ function blog_filter_function($attr)
                 } else {
                     $rtn .= '<!--- home-small-podcasts  ---> ';
                     $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ' format="podcast"]');
-                    if ($cnt != $limit) {
-                    }
                 }
 
             }
