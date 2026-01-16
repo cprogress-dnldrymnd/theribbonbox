@@ -572,7 +572,7 @@ function giveaway_list_swiper($attr)
                     wp_reset_query();
                     ?>
                 </div>
-                <?= swiper_navigation('swiper-nav-' . $wp_unique_id) ?>
+                <?= swiper_navigation($wp_unique_id) ?>
             </div>
         </div>
     </div>
