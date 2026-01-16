@@ -1803,7 +1803,7 @@ function blog_filter_function($attr)
                         $styles_str = implode('-', $styles);
 
 
-                        if ($in_count % 2 == 0) {
+                        if ($in_count % 3 == 0) {
                             $style = str_replace('style="', 'style="' . $addBorder, $style);
                             if ($st_1) {
                                 if ($attr["post_type"] == "expert_profiles") {
@@ -1899,7 +1899,7 @@ function blog_filter_function($attr)
 
 
                         if (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
-                            if ($in_count == 7) {
+                            if ($in_count == 6) {
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
                                 }
