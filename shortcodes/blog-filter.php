@@ -1911,7 +1911,7 @@ function blog_filter_function($attr)
                             }
                         }
 
-                        if ($in_count == 1) {
+                        if ($in_count == 2) {
                             $exp_count++;
                         }
 
