@@ -1803,8 +1803,7 @@ function blog_filter_function($attr)
                         $styles_str = implode('-', $styles);
 
                         
-                        $rtn .= '<--- ' . $in_count . ' --->';
-                        $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
+                        $rtn .= do_shortcode('[post_box count=' . $in_count . '  id=' . $post["ID"] . ']');
 
 
 
@@ -2015,7 +2014,7 @@ function blog_filter_function($attr)
                     $post_open_div = true;
                 }
                 $rtn .= '<!--- home-video-even  ---> ';
-                $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ' format="video"]');
+                $rtn .= do_shortcode('[post_box count=' . $in_count . '  id=' . $post["ID"] . ' format="video"]');
             }
 
             if ($format == "normal") {
@@ -2131,12 +2130,12 @@ function blog_filter_function($attr)
             if ($format == "video") {
                 if ($cnt == 1) {
                     $rtn .= '<!--- home-trending-video  ---> ';
-                    $rtn .= do_shortcode('[post_box_trending_video id=' . $post["ID"] . ']');
+                    $rtn .= do_shortcode('[post_box count=' . $in_count . ' _trending_video id=' . $post["ID"] . ']');
 
                     $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px">';
                 } else {
                     $rtn .= '<!--- home-small-podcasts  ---> ';
-                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ' format="podcast"]');
+                    $rtn .= do_shortcode('[post_box count=' . $in_count . '  id=' . $post["ID"] . ' format="podcast"]');
                 }
 
                 if ($cnt == $limit) {

@@ -381,7 +381,8 @@ function post_box($atts)
         shortcode_atts(
             array(
                 'id' => '',
-                'format' => 'default'
+                'format' => 'default',
+                'count' => $count,
             ),
             $atts
         )
@@ -401,6 +402,7 @@ function post_box($atts)
 ?>
     <div class="post-box-blogs trb-column format-<?= $format ?>">
         <div class="post-image image-box">
+            <span style="position: absolute; top: 0;left: 0;z-index: 2"><?= $count ?></span>
             <a href="<?= get_the_permalink($id) ?>">
                 <?= get_the_post_thumbnail($id, 'large') ?>
                 <?php if ($icon_id) { ?>
