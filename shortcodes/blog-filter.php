@@ -1815,7 +1815,7 @@ function blog_filter_function($attr)
                                     $rtn .= '</div>';
                                 }
                                 // 2. Open the new div with the specific classes requested
-                                $rtn .= '<div class="blogs-loop-inner trb-row md-padding mw-1500">';
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding mw-1500">';
                             } else if ($in_count == 7) {
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
