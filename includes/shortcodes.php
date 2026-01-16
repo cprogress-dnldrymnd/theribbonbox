@@ -431,8 +431,8 @@ function post_box_trending_video($atts)
 ?>
     <div class="post-box-trending-video-holder mw-1500 trb-px md-padding">
         <div class="post-box-trending-video post-box-blogs">
-            <div class="row">
-                <div class="col-lg-6">
+            <div class="trb-row align-items-center">
+                <div class="trb-column">
                     <div class="post-image image-box">
                         <div class="ribbon">
                             Trending Video
@@ -442,22 +442,25 @@ function post_box_trending_video($atts)
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6 post-details">
-                    <h2 class="post-box-title"><?= get_the_title($id) ?></h2>
-                    <div class="post-box-excerpt">
-                        <?=  get_the_excerpt($id) ?>
-                    </div>
-                    <div class="post-box-date">
-                        <?= get_the_date('j M Y', $post["ID"]) ?>
-                    </div>
-                    <div class="button-group-box row">
-                        <div class="button-box button-box-v2 button-accent col-auto">
-                            <a href="<?= get_the_permalink($id) ?>">WATCH NOW</a>
+                <div class="trb-column">
+                    <div class="post-details">
+                        <h2 class="post-box-title"><?= get_the_title($id) ?></h2>
+                        <div class="post-box-excerpt">
+                            <?= get_the_excerpt($id) ?>
                         </div>
-                             <div class="button-box button-box-v2 button-bordered col-auto">
-                            <a href="<?= get_the_permalink(22822) ?>">MORE VIDEOS</a>
+                        <div class="post-box-date">
+                            <?= get_the_date('j M Y', $post["ID"]) ?>
+                        </div>
+                        <div class="button-group-box row">
+                            <div class="button-box button-box-v2 button-accent col-auto">
+                                <a href="<?= get_the_permalink($id) ?>">WATCH NOW</a>
+                            </div>
+                            <div class="button-box button-box-v2 button-bordered col-auto">
+                                <a href="<?= get_the_permalink(22822) ?>">MORE VIDEOS</a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
