@@ -812,41 +812,6 @@ function custom_archive_post_count($query)
 }
 add_action('pre_get_posts', 'custom_archive_post_count');
 
-function admin_only()
-{
-    if (current_user_can('administrator')) {
-    ?>
-        <style>
-            .blogs-loop-inner.blogs-loop-inner.blogs-loop-inner {
-                --column: 3;
-                --gap: 40px;
-                display: flex;
-                gap: var(--gap);
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .blogs-loop-inner.blogs-loop-inner.blogs-loop-inner>.post-box {
-                /* Formula: (100% - (total_gap_space)) / number_of_columns */
-                width: calc((100% - (var(--gap) * (var(--column) - 1))) / var(--column));
-            }
-
-            .mw-1400.mw-1400.mw-1400 {
-                max-width: 1400px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .mw-1500.mw-1500.mw-1500 {
-                max-width: 1500px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-        </style>
-    <?php
-
-    }
-}
-add_action('wp_head', 'admin_only');
 
 
 /**

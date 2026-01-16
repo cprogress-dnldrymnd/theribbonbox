@@ -415,3 +415,23 @@ function post_box($atts)
 }
 
 add_shortcode('post_box', 'post_box');
+
+
+function post_box_trending_video() {
+    ob_start();
+    ?>
+    <div class="post-box-trending-video">
+        <div class="row">
+            <div class="col-lg-6">
+
+            </div>
+            <div class="col-lg-6">
+                
+            </div>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+
+add_shortcode('post_box_trending_video', 'post_box_trending_video');
