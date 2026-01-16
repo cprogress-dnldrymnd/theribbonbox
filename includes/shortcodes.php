@@ -535,27 +535,29 @@ function giveaway_list_swiper($attr)
                             <div class="row g-0">
                                 <div class="col-lg-6">
                                     <div class="giveaway-details">
-                                        <h3><?= get_the_title($post['ID']) ?></h3>
+                                        <div class="giveaway-details-inner">
+                                            <h3><?= get_the_title($post['ID']) ?></h3>
 
-                                        <?php if (isDatePast($date) != false) { ?>
-                                            <?php if ($display_form_on_homepage) { ?>
-                                                <div class="giveaway-form-email">
-                                                    <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
-                                                </div>
+                                            <?php if (isDatePast($date) != false) { ?>
+                                                <?php if ($display_form_on_homepage) { ?>
+                                                    <div class="giveaway-form-email">
+                                                        <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="button-box button-box-v2 button-accent">
+
+                                                    </div>
+                                                    <a
+                                                        href="<?= get_the_permalink($post['ID']) ?>">Enter Now</a>
+                                                <?php } ?>
                                             <?php } else { ?>
                                                 <div class="button-box button-box-v2 button-accent">
-
+                                                    <a
+                                                        href="<?= get_the_permalink($post['ID']) ?>">Giveaway Closed</a>
                                                 </div>
-                                                <a
-                                                    href="<?= get_the_permalink($post['ID']) ?>">Enter Now</a>
-                                            <?php } ?>
-                                        <?php } else { ?>
-                                            <div class="button-box button-box-v2 button-accent">
-                                                <a
-                                                    href="<?= get_the_permalink($post['ID']) ?>">Giveaway Closed</a>
-                                            </div>
 
-                                        <?php } ?>
+                                            <?php } ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
