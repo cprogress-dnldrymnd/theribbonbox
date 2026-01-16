@@ -387,7 +387,7 @@ function post_box($atts)
         )
     );
 ?>
-    <div class="post-box format-<?= $format ?>">
+    <div class="post-box trb-column format-<?= $format ?>">
         <div class="post-image image-box">
             <a href="<?= get_the_permalink($id) ?>">
                 <?= get_the_post_thumbnail($id, 'large') ?>
@@ -426,7 +426,7 @@ function post_box_trending_video() {
 
             </div>
             <div class="col-lg-6">
-                
+
             </div>
         </div>
     </div>
