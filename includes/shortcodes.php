@@ -538,8 +538,7 @@ function giveaway_list_swiper($attr)
                                     <div class="giveaway-details">
                                         <div class="giveaway-details-inner">
                                             <h3><?= get_the_title($post['ID']) ?></h3>
-                        <?= $select_competition_date ?><br>
-                        <?= $date ?>
+
                                             <?php if (isDatePast($select_competition_date) != false) { ?>
                                                 <?php if ($display_form_on_homepage) { ?>
                                                     <div class="giveaway-form-email">
@@ -547,18 +546,13 @@ function giveaway_list_swiper($attr)
                                                     </div>
                                                 <?php } else { ?>
                                                     <div class="button-box button-box-v2 button-accent">
-
-                                                        <a
-                                                            href="<?= get_the_permalink($post['ID']) ?>">Enter Now</a>
+                                                        <a href="<?= get_the_permalink($post['ID']) ?>">Enter Now</a>
                                                     </div>
-
                                                 <?php } ?>
                                             <?php } else { ?>
                                                 <div class="button-box button-box-v2 button-accent">
-                                                    <a
-                                                        href="<?= get_the_permalink($post['ID']) ?>">Giveaway Closed</a>
+                                                    <a href="<?= get_the_permalink($post['ID']) ?>">Giveaway Closed</a>
                                                 </div>
-
                                             <?php } ?>
                                         </div>
                                     </div>
