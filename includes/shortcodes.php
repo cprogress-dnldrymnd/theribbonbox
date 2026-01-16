@@ -553,6 +553,13 @@ function _giveaway_list_function($attr)
 
                             <?php } ?>
                         </div>
+                        <div class="col-lg-6">
+                            <div class="post-image image-box">
+                                <a href="<?= get_the_permalink($id) ?>">
+                                    <?= get_the_post_thumbnail($id, 'large') ?>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <?php
