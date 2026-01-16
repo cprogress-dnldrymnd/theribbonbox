@@ -1836,14 +1836,7 @@ function blog_filter_function($attr)
                                     $exp_count++;
                                     // $cat = get_top_level_term_by_post_id($post_id, 'category');
 
-                                    $rtn .= '<div class="blogs-loop-watch-listen">';
-                                    $rtn .= '<div class="mw-1500 trb-px">';
-                                    $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
-                                    $rtn .= '</div>';
-
-                                    $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
-                                    $rtn .= '</div>';
-                                    $rtn .= '[become_insider]';
+                                
                                     $vid_count++;
                                     if ($post_open_div) {
                                         $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px blogs-loop-inner-5">';
@@ -1856,6 +1849,16 @@ function blog_filter_function($attr)
                                     if ($post_open_div) {
                                         $rtn .= '</div>';
                                     }
+
+                                        $rtn .= '<div class="blogs-loop-watch-listen">';
+                                    $rtn .= '<div class="mw-1500 trb-px">';
+                                    $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+                                    $rtn .= '</div>';
+
+                                    $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
+                                    $rtn .= '</div>';
+                                    $rtn .= '[become_insider]';
+
                                     $rtn .= do_shortcode("[ad_list]");
 
                                     $cat = get_term_by('id', $categoryid, 'category');
