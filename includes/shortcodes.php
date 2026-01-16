@@ -516,6 +516,7 @@ function giveaway_list_swiper($attr)
 
     <div class="giveaways-carousel">
         <div class="trb-px mw-1500">
+            <h2>Giveaways</h2>
             <div class="swiper swiper-post-slider-v2">
                 <div class="swiper-wrapper">
                     <?php
