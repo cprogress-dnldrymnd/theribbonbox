@@ -530,7 +530,7 @@ function giveaway_list_swiper($attr)
                         $display_form_on_homepage = get_field('display_form_on_homepage', $post['ID']);
                     ?>
 
-                        <div class="swiper-slider">
+                        <div class="swiper-slide">
                             <div class="row g-0">
                                 <div class="col-lg-6">
                                     <h2><?= get_the_title($post['ID']) ?></h2>
