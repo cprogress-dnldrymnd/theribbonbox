@@ -122,12 +122,11 @@ if (!is_bbpress() && !is_buddypress()) {
                 include 'components/index/index-podcast-category-pages.php';
             }
             // Experts, All Experts
+            // Offers
             else if (get_the_ID() == "22808" || get_the_ID() == "22810") {
                 include 'components/index/index-experts.php';
-            }
-            // Experts: Wellbeing, Fertility, Pregnancy, Parenting, Match With an Expert (but disabled)??
-            //else if (get_the_ID() == "22812" || get_the_ID() == "22814" || get_the_ID() == "22816" || get_the_ID() == "22818" || get_the_ID() == "22820123123123123"){
-            else if (in_array(get_the_ID(), ['22812', '22814', '22816', '22818'])) {
+            } else if (in_array(get_the_ID(), ['22812', '22814', '22816', '22818'])) {
+                // Experts: Wellbeing, Fertility, Pregnancy, Parenting, Match With an Expert (but disabled)??
                 include 'components/index/index-experts-subpages.php';
             }
             // Offers

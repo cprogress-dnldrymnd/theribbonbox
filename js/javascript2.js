@@ -838,10 +838,8 @@ function headScrollTrans() {
     if ($(".banner-back").length > 0){
         el = ".banner-text";
     }
-    //console.log('el:', el);
 
     if (! $(el).length) {
-        console.error(`Cannot find '${el}' in headScrollTrans()`);
         return;
     }
     //console.log('$(el):', $(el));
