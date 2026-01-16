@@ -381,15 +381,24 @@ function post_box($atts)
         shortcode_atts(
             array(
                 'id' => '',
+                'format' => 'default'
             ),
             $atts
         )
     );
 ?>
-    <div class="post-box">
+    <div class="post-box format-<?= $format ?>">
         <div class="post-image image-box">
             <a href="<?= get_the_permalink($id) ?>">
                 <?= get_the_post_thumbnail($id, 'large') ?>
+                <?php if ($format == 'video') { ?>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="72.572" height="72.572" viewBox="0 0 72.572 72.572">
+                        <g id="Group_229" data-name="Group 229" transform="translate(-402.714 -3987.375)">
+                            <path id="Icon_ionic-md-play-circle" data-name="Icon ionic-md-play-circle" d="M39.661,3.375A36.286,36.286,0,1,0,75.947,39.661,36.3,36.3,0,0,0,39.661,3.375ZM32.4,55.99V23.332L54.175,39.661Z" transform="translate(399.339 3984)" fill="#fff" opacity="0.9" />
+                            <path id="Polygon_2" data-name="Polygon 2" d="M16.5,0,33,22.635H0Z" transform="translate(454.135 4007.16) rotate(90)" fill="#f77d66" />
+                        </g>
+                    </svg>
+                <?php } ?>
             </a>
         </div>
         <div class="post-details">
