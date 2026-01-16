@@ -1802,8 +1802,8 @@ function blog_filter_function($attr)
                         }
                         $styles_str = implode('-', $styles);
 
-
-                        if ($in_count % 3 == 0) {
+                        $rtn .= '<--- '.$in_count.' --->';
+                        if ($in_count % 2 == 0) {
                             $style = str_replace('style="', 'style="' . $addBorder, $style);
                             if ($st_1) {
                                 if ($attr["post_type"] == "expert_profiles") {
