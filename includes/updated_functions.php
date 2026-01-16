@@ -194,7 +194,24 @@ function blog_post_style_2($post_args)
                             </a>
                             <h3 class="date-giveaways"><?= $post_args['date'] ?></h3>
                             <p class="text"></p>
-                           
+                            <?php if ($display_form_on_homepage) { ?>
+                                <div class="giveaway-form-email">
+                                    <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
+                                </div>
+                            <?php } else { ?>
+                                <?= $post_args['select_competition_date'] ?>
+                                <?php if (isDatePast($post_args['select_competition_date']) != false) { ?>
+                                    <div class="blog-btns">
+                                        <a class="button-expert"
+                                            href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="blog-btns">
+                                        <a class="button-expert "
+                                            href="<?= $post_args['post_permalink'] ?>">Giveaway Closed</a>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="blog-l-img" <?= $post_args['style'] ?>>
