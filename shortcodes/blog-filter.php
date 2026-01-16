@@ -2123,7 +2123,7 @@ function blog_filter_function($attr)
                     $post_open_div = true;
                 }
 
-                $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
+                $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ' format="video"]');
             }
 
             if ($format == "normal") {
