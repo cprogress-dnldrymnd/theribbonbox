@@ -529,6 +529,7 @@ function giveaway_list_swiper($attr)
                         $currentcat = $categories[0]->cat_ID;
                         $currentcatname = $categories[0]->cat_name;
                         $display_form_on_homepage = get_field('display_form_on_homepage', $post['ID']);
+
                     ?>
 
                         <div class="swiper-slide">
@@ -537,7 +538,8 @@ function giveaway_list_swiper($attr)
                                     <div class="giveaway-details">
                                         <div class="giveaway-details-inner">
                                             <h3><?= get_the_title($post['ID']) ?></h3>
-
+                        <?= $select_competition_date ?><br>
+                        <?= $date ?>
                                             <?php if (isDatePast($select_competition_date) != false) { ?>
                                                 <?php if ($display_form_on_homepage) { ?>
                                                     <div class="giveaway-form-email">
