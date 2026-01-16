@@ -429,7 +429,7 @@ function post_box_trending_video($atts)
         )
     );
 ?>
-    <div class="post-box-trending-video-holder mw-1500 trb-px">
+    <div class="post-box-trending-video-holder mw-1500 trb-px md-padding">
         <div class="post-box-trending-video post-box">
             <div class="row">
                 <div class="col-lg-6">
@@ -449,6 +449,11 @@ function post_box_trending_video($atts)
                     </div>
                     <div class="post-box-date">
                         <?= get_the_date('j M Y', $post["ID"]) ?>
+                    </div>
+                    <div class="button-group-box row">
+                        <div class="button-box col-auto">
+                            <a href=""></a>
+                        </div>
                     </div>
                 </div>
             </div>
