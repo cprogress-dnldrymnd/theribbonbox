@@ -534,7 +534,7 @@ function giveaway_list_swiper($attr)
                         <div class="swiper-slide">
                             <div class="row g-0">
                                 <div class="col-lg-6">
-                                    <h2><?= get_the_title($post['ID']) ?></h2>
+                                    <h3><?= get_the_title($post['ID']) ?></h3>
 
                                     <?php if (isDatePast($date) != false) { ?>
                                         <?php if ($display_form_on_homepage) { ?>
