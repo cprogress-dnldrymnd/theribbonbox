@@ -420,7 +420,7 @@ function post_box($atts)
             </div>
             <?php if ($format == 'podcast') { ?>
                 <div class="button-box button-box-v2 button-bordered text-center">
-                    <a href="<?=  get_the_permalink($id) ?>">MORE VIDEOS</a>
+                    <a href="<?=  get_the_permalink($id) ?>">LISTEN NOW</a>
                 </div>
             <?php } ?>
         </div>
