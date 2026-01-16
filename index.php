@@ -127,7 +127,7 @@ if (!is_bbpress() && !is_buddypress()) {
             }
             // Experts: Wellbeing, Fertility, Pregnancy, Parenting, Match With an Expert (but disabled)??
             //else if (get_the_ID() == "22812" || get_the_ID() == "22814" || get_the_ID() == "22816" || get_the_ID() == "22818" || get_the_ID() == "22820123123123123"){
-            else if (in_array(get_the_ID(), ['22812', '22814', '22816', '22818', '22820'])) {
+            else if (in_array(get_the_ID(), ['22812', '22814', '22816', '22818'])) {
                 include 'components/index/index-experts-subpages.php';
             }
             // Offers
