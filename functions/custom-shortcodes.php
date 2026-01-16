@@ -418,17 +418,18 @@ function display_home_section()
 
 ?>
 
-    <div class=" home-section-v2 bg-black">
+    <div class="home-section-v2 bg-black md-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7">
-                    <?= wp_get_attachment_image($home_section_image, 'large') ?>
-                </div>
+
                 <div class="col">
                     <h3><?= $home_section_heading ?></h3>
                     <div class="desc">
                         <?= wpautop($home_section_description) ?>
                     </div>
+                </div>
+                <div class="col-lg-7">
+                    <?= wp_get_attachment_image($home_section_image, 'large') ?>
                 </div>
             </div>
         </div>
