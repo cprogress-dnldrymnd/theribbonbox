@@ -1846,7 +1846,6 @@ function blog_filter_function($attr)
                                     if ($post_open_div) {
                                         $rtn .= '</div>';
                                     }
-                                    $rtn .= do_shortcode("[ad_list]");
 
                                     
                                     $rtn .= '<div class="blogs-loop-watch-listen">';
@@ -1858,6 +1857,9 @@ function blog_filter_function($attr)
                                     $rtn .= '</div>';
                                     $rtn .= '[become_insider]';
                                     $vid_count++;
+
+                                    $rtn .= do_shortcode("[ad_list]");
+
 
 $cat = get_term_by('id', $categoryid, 'category');
                                 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
