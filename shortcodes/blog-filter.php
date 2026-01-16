@@ -1816,6 +1816,13 @@ function blog_filter_function($attr)
                                 }
                                 // 2. Open the new div with the specific classes requested
                                 $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding mw-1500 trb-px">';
+                            } else if ($in_count == 8) {
+                                // 1. Close the current div if it is open
+                                if ($post_open_div) {
+                                    $rtn .= '</div>';
+                                }
+                                // 2. Open the new div with the specific classes requested
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding mw-1500 trb-px">';
                             } else if ($in_count == 7) {
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
