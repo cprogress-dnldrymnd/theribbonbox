@@ -1824,6 +1824,12 @@ function blog_filter_function($attr)
                                 $rtn .= '[giveaways_here]';
                                 $rtn .= '[become_insider]';
                             } else if ($in_count == 10) {
+                                if ($post_open_div) {
+                                    $rtn .= '</div>';
+                                }
+
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding mw-1500 trb-px">';
+
                                 // $cat = get_top_level_term_by_post_id($post_id, 'category');
                                 $cat = get_term_by('id', $categoryid, 'category');
                                 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
@@ -1845,6 +1851,8 @@ function blog_filter_function($attr)
                                 $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
                                 $rtn .= '</div>';
                                 $vid_count++;
+
+
                                 if (empty($post_type)) {
                                     $rtn .= do_shortcode("[display_followus]");
                                     $exp_count++;
