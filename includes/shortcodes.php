@@ -532,7 +532,7 @@ function giveaway_list_swiper($attr)
                     ?>
 
                         <div class="swiper-slide">
-                            <div class="row align-items-center g-0">
+                            <div class="row g-0">
                                 <div class="col-lg-6">
                                     <div class="giveaway-details">
                                         <h3><?= get_the_title($post['ID']) ?></h3>
