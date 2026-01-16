@@ -514,8 +514,8 @@ function giveaway_list_swiper($attr)
 
 ?>
 
-    <div class="giveaways-carousel">
-        <div class="trb-px mw-1500">
+    <div class="giveaways-carousel trb-px mw-1500">
+        <div class="giveaways-carousel-inner">
             <h2>Giveaways</h2>
             <div class="swiper swiper-post-slider-v2">
                 <div class="swiper-wrapper">
