@@ -1,4 +1,6 @@
 <?php
+//revamp section deprecated
+
 /**
  * Video teaser
  */

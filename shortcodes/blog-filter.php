@@ -2231,8 +2231,8 @@ function blog_filter_function($attr)
                     $rtn .= '<!--- home-trending-video  ---> ';
                     $rtn .= do_shortcode('[post_box_trending_video id=' . $post["ID"] . ']');
                 } else {
-                    $style = str_replace('style="', 'style="' . $addBorder, $style);
-                    include get_template_directory() . '/components/posts/home-small-podcasts.php';
+                    $rtn .= '<!--- home-small-podcasts  ---> ';
+                    $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ' format="podcast"]');
                 }
             }
         }
