@@ -1832,9 +1832,7 @@ function blog_filter_function($attr)
                                 $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
                                 if (empty($post_type)) {
-                                    $rtn .= do_shortcode("[display_followus]");
                                     $exp_count++;
-
                                     // $cat = get_top_level_term_by_post_id($post_id, 'category');
                                     $cat = get_term_by('id', $categoryid, 'category');
                                     $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
