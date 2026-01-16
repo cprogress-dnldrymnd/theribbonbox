@@ -2245,7 +2245,7 @@ function blog_filter_function($attr)
         wp_reset_query();
 
         if ($post_open_div) {
-            $rtn .= '</div>';
+            $rtn .= '</div>//xxsdsdsds';
         }
 
         if ($home) {
