@@ -1824,9 +1824,6 @@ function blog_filter_function($attr)
                                 $rtn .= '[giveaways_here]';
                                 $rtn .= '[become_insider]';
 
-                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
-
-
                                 // $cat = get_top_level_term_by_post_id($post_id, 'category');
                                 $cat = get_term_by('id', $categoryid, 'category');
                                 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
@@ -1931,6 +1928,7 @@ function blog_filter_function($attr)
                                 $rtn .= '</div>';
                             }
 
+                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
                             if ($post_open_div) {
                                 $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-12">';
