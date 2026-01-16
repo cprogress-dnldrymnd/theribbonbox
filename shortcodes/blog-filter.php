@@ -1822,6 +1822,7 @@ function blog_filter_function($attr)
                                 }
 
                                 $rtn .= '[giveaways_here]';
+                                $rtn .= '[become_insider]';
 
                                 // $cat = get_top_level_term_by_post_id($post_id, 'category');
                                 $cat = get_term_by('id', $categoryid, 'category');
