@@ -599,6 +599,7 @@ function swiper_navigation($class)
 
 function become_insider()
 {
+    ob_start();
 ?>
     <div class="become-insider">
         <div class="become-insider-inner trb-px mw-large">
@@ -625,5 +626,6 @@ function become_insider()
         </div>
     </div>
 <?php
+    return ob_get_clean();
 }
 add_shortcode('become_insider', 'become_insider');
