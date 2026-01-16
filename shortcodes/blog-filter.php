@@ -1853,8 +1853,8 @@ function blog_filter_function($attr)
 
                                     $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
                                     $rtn .= '</div>';
+                                    $rtn .= '[become_insider]';
                                     $vid_count++;
-
                                     if ($post_open_div) {
                                         $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px blogs-loop-inner-5">';
                                     }
