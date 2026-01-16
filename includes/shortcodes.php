@@ -514,62 +514,64 @@ function giveaway_list_swiper($attr)
 ?>
 
     <div class="giveaways-carousel">
-        <div class="swiper swiper-post-slider-v2">
-        <div class="swiper-wrapper">
-            <?php
-            foreach ($recent_posts as $post) {
-                $select_competition_date = get_field("select_competition_date", $post['ID']);
-                $date = $select_competition_date;
-                $time = strtotime($date);
-                $displayformatB = date('j M Y', $time);
-                $categories = get_the_category($post['ID']);
-                $currentcat = $categories[0]->cat_ID;
-                $currentcatname = $categories[0]->cat_name;
-                $display_form_on_homepage = get_field('display_form_on_homepage', $post['ID']);
+        <div class="trb-px">
+            <div class="swiper swiper-post-slider-v2">
+                <div class="swiper-wrapper">
+                    <?php
+                    foreach ($recent_posts as $post) {
+                        $select_competition_date = get_field("select_competition_date", $post['ID']);
+                        $date = $select_competition_date;
+                        $time = strtotime($date);
+                        $displayformatB = date('j M Y', $time);
+                        $categories = get_the_category($post['ID']);
+                        $currentcat = $categories[0]->cat_ID;
+                        $currentcatname = $categories[0]->cat_name;
+                        $display_form_on_homepage = get_field('display_form_on_homepage', $post['ID']);
 
-            ?>
+                    ?>
 
-                <div class="swiper-slider">
-                    <div class="row g-0">
-                        <div class="col-lg-6">
-                            <h2><?= get_the_title($post['ID']) ?></h2>
+                        <div class="swiper-slider">
+                            <div class="row g-0">
+                                <div class="col-lg-6">
+                                    <h2><?= get_the_title($post['ID']) ?></h2>
 
-                            <?php if (isDatePast($select_competition_date) != false) { ?>
-                                <?php if ($display_form_on_homepage) { ?>
-                                    <div class="giveaway-form-email">
-                                        <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
-                                    </div>
-                                <?php } else { ?>
-                                    <div class="button-box button-box-v2 button-accent">
+                                    <?php if (isDatePast($select_competition_date) != false) { ?>
+                                        <?php if ($display_form_on_homepage) { ?>
+                                            <div class="giveaway-form-email">
+                                                <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="button-box button-box-v2 button-accent">
 
-                                    </div>
-                                    <a
-                                        href="<?= get_the_permalink($post['ID']) ?>">Enter Now</a>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <div class="button-box button-box-v2 button-accent">
-                                    <a
-                                        href="<?= get_the_permalink($post['ID']) ?>">Giveaway Closed</a>
+                                            </div>
+                                            <a
+                                                href="<?= get_the_permalink($post['ID']) ?>">Enter Now</a>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <div class="button-box button-box-v2 button-accent">
+                                            <a
+                                                href="<?= get_the_permalink($post['ID']) ?>">Giveaway Closed</a>
+                                        </div>
+
+                                    <?php } ?>
                                 </div>
-
-                            <?php } ?>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="post-image image-box">
-                                <a href="<?= get_the_permalink($post['ID']) ?>">
-                                    <?= get_the_post_thumbnail($post['ID'], 'large') ?>
-                                </a>
+                                <div class="col-lg-6">
+                                    <div class="post-image image-box">
+                                        <a href="<?= get_the_permalink($post['ID']) ?>">
+                                            <?= get_the_post_thumbnail($post['ID'], 'large') ?>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php
+                    }
+                    wp_reset_query();
+                    ?>
                 </div>
-            <?php
-            }
-            wp_reset_query();
-            ?>
+                <?= swiper_navigation() ?>
+            </div>
         </div>
-        <?= swiper_navigation() ?>
-    </div>
     </div>
 
     <script>
