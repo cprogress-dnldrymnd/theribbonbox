@@ -1803,7 +1803,7 @@ function blog_filter_function($attr)
                         $styles_str = implode('-', $styles);
 
                         
-                        $rtn .= do_shortcode('[post_box count=' . $in_count . '  id=' . $post["ID"] . ']');
+                        $rtn .= do_shortcode('[post_box count=' . $cnt . '  id=' . $post["ID"] . ']');
 
 
 
@@ -2014,7 +2014,7 @@ function blog_filter_function($attr)
                     $post_open_div = true;
                 }
                 $rtn .= '<!--- home-video-even  ---> ';
-                $rtn .= do_shortcode('[post_box count=' . $in_count . '  id=' . $post["ID"] . ' format="video"]');
+                $rtn .= do_shortcode('[post_box count=' . $cnt . '  id=' . $post["ID"] . ' format="video"]');
             }
 
             if ($format == "normal") {
