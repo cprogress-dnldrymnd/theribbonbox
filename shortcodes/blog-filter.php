@@ -1824,17 +1824,6 @@ function blog_filter_function($attr)
                                 $rtn .= '[giveaways_here]';
                                 $rtn .= '[become_insider]';
 
-                                $rtn .= '<div class="blogs-loop-watch-listen">';
-                                $rtn .= '<div class="mw-1500 trb-px">';
-                                $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
-                                $rtn .= '</div>';
-
-                                $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
-                                $rtn .= '</div>';
-                                $vid_count++;
-
-
-
                                 // $cat = get_top_level_term_by_post_id($post_id, 'category');
                                 $cat = get_term_by('id', $categoryid, 'category');
                                 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
@@ -1847,6 +1836,15 @@ function blog_filter_function($attr)
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
                             <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
+
+                                $rtn .= '<div class="blogs-loop-watch-listen">';
+                                $rtn .= '<div class="mw-1500 trb-px">';
+                                $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+                                $rtn .= '</div>';
+
+                                $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
+                                $rtn .= '</div>';
+                                $vid_count++;
                             } else if ($in_count == 10) {
                                 if (empty($post_type)) {
                                     $rtn .= do_shortcode("[display_followus]");
@@ -1923,19 +1921,7 @@ function blog_filter_function($attr)
                             }
                         }
 
-                        if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
-                            $vid_count++;
-
-                            if ($post_open_div) {
-                                $rtn .= '</div>';
-                            }
-
-                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
-
-                            if ($post_open_div) {
-                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-12">';
-                            }
-                        }
+                       
 
                         //first set of posts to be display
                         if ($in_count == 2) {
