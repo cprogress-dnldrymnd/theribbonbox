@@ -1828,6 +1828,8 @@ function blog_filter_function($attr)
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
                                 }
+                                
+                                $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
                                 if (empty($post_type)) {
                                     $rtn .= do_shortcode("[display_followus]");
@@ -4598,9 +4600,8 @@ function blog_filter_function($attr)
                             if ($post_open_div) {
                                 $rtn .= '</div>';
                             }
-                            $rtn .= '<div class="testx2sas">';
-                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
-                            $rtn .= '</div>';
+
+
 
                             // $cat = get_top_level_term_by_post_id($post_id, 'category');
                             $cat = get_term_by('id', $categoryid, 'category');
