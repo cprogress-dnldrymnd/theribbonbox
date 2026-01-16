@@ -1821,7 +1821,7 @@ function blog_filter_function($attr)
                                     $rtn .= '</div>';
                                 }
 
-                                $rtn .= do_shortcode('[_giveaway_list]');
+                                $rtn .= do_shortcode('[giveaway_list_swiper]');
                                 $rtn .= '[become_insider]';
                                 $rtn .= '<div class="blogs-loop-inner trb-row md-padding mw-1500 trb-px">';
                             } else if ($in_count == 10) {

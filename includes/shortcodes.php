@@ -420,7 +420,7 @@ function post_box($atts)
             </div>
             <?php if ($format == 'podcast') { ?>
                 <div class="button-box button-box-v2 button-bordered text-center">
-                    <a href="<?=  get_the_permalink($id) ?>">LISTEN NOW</a>
+                    <a href="<?= get_the_permalink($id) ?>">LISTEN NOW</a>
                 </div>
             <?php } ?>
         </div>
@@ -488,3 +488,81 @@ function post_box_trending_video($atts)
 }
 
 add_shortcode('post_box_trending_video', 'post_box_trending_video');
+
+
+function _giveaway_list_function($attr)
+{
+
+    ob_start();
+    $recent_posts = wp_get_recent_posts(array(
+        'post_type' => 'giveaway-items',
+        'numberposts' => 3, // Number of recent posts thumbnails to display
+        'orderby' => 'date',
+        'order' => 'desc',
+        'post_status' => 'publish', // Show only the published posts,
+        'has_password' => false,
+        'meta_query' => array(
+            array(
+                'key' => 'select_competition_date', // Replace with your custom field key.
+                'value' => date('Y-m-d'), // Today's date.
+                'compare' => '>=', // Greater than or equal to today.
+                'type' => 'DATE' // Important: Specify the meta_value type as DATE.
+            )
+        )
+    ));
+
+?>
+
+    <div class="giveaways-carousel">
+        <div class="swiper swiper-post-slider-v2">
+            <?php
+            foreach ($recent_posts as $post) {
+                $select_competition_date = get_field("select_competition_date", $post['ID']);
+                $date = $select_competition_date;
+                $time = strtotime($date);
+                $displayformatB = date('j M Y', $time);
+                $categories = get_the_category($post['ID']);
+                $currentcat = $categories[0]->cat_ID;
+                $currentcatname = $categories[0]->cat_name;
+                $display_form_on_homepage = get_field('display_form_on_homepage', $post['ID']);
+
+            ?>
+
+                <div class="swiper-slider">
+                    <div class="row g-0">
+                        <div class="col-lg-g">
+                            <h2><?= get_the_title($post['ID']) ?></h2>
+
+                            <?php if (isDatePast($select_competition_date) != false) { ?>
+                                <?php if ($display_form_on_homepage) { ?>
+                                    <div class="giveaway-form-email">
+                                        <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="button-box button-box-v2 button-accent">
+
+                                    </div>
+                                    <a
+                                        href="<?= get_the_permalink($post['ID']) ?>">Enter Now</a>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <div class="button-box button-box-v2 button-accent">
+                                    <a
+                                        href="<?= get_the_permalink($post['ID']) ?>">Giveaway Closed</a>
+                                </div>
+
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }
+            wp_reset_query();
+            ?>
+        </div>
+    </div>
+
+<?php
+    return ob_get_clean();
+}
+add_shortcode('_giveaway_list', '_giveaway_list_function');
