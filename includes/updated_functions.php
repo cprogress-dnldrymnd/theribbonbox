@@ -203,7 +203,7 @@ function blog_post_style_2($post_args)
                                 <?php if (isDatePast($post_args['select_competition_date']) != false) { ?>
                                     <div class="blog-btns">
                                         <a class="button-expert"
-                                            href="<?= $post_args['post_permalink'] ?>">Enter Now x</a>
+                                            href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
                                     </div>
                                 <?php } else { ?>
                                     <div class="blog-btns">
