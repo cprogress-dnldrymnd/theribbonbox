@@ -2223,10 +2223,10 @@ function blog_filter_function($attr)
 
             if ($format == "video") {
                 if ($cnt == 1) {
-                    $rtn .= '<!--- home-trending-video  ---> ';
+                    $rtn .= '<!--- home-trending-video  ---> '.$cnt;
                     $rtn .= do_shortcode('[post_box_trending_video id=' . $post["ID"] . ']');
                 } else {
-                    $rtn .= '<!--- home-small-podcasts  ---> ';
+                    $rtn .= '<!--- home-small-podcasts  ---> '.$cnt;
                     $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ' format="podcast"]');
                 }
 
