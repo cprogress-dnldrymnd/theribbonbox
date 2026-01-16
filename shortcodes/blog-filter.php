@@ -1859,7 +1859,6 @@ function blog_filter_function($attr)
                                     $rtn .= '</div>';
                                     $rtn .= '[become_insider]';
 
-                                    $rtn .= do_shortcode("[ad_list]");
 
                                     $cat = get_term_by('id', $categoryid, 'category');
                                     $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
@@ -1876,6 +1875,10 @@ function blog_filter_function($attr)
                                     if ($post_open_div) {
                                         $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px blogs-loop-inner-6 ">';
                                     }
+
+                                    $rtn .= do_shortcode("[ad_list]");
+
+
                                 } else {
                                     $add_ad = "Yes";
 
