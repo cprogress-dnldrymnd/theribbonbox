@@ -2465,7 +2465,7 @@ function blog_filter_function($attr)
 
 
             if ($format == "video") {
-                $exClass = "vid-dark";
+                $exClass = "vid-dark-green";
                 /*
             if (!empty($categoryid)){
                 $recent_posts = wp_get_recent_posts(array(
