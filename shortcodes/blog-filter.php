@@ -1822,12 +1822,22 @@ function blog_filter_function($attr)
                                 }
 
                                 $rtn .= '[giveaways_here]';
+                                $rtn .= '[become_insider]';
+                                $rtn .= '<div class="blogs-loop-inner trb-row md-padding mw-1500 trb-px">';
+                            } else if ($in_count == 10) {
+                                if ($post_open_div) {
+                                    $rtn .= '</div>';
+                                }
 
-                                // $cat = get_top_level_term_by_post_id($post_id, 'category');
-                                $cat = get_term_by('id', $categoryid, 'category');
-                                $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
-                                $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
-                                $rtn .=   '
+                                if (empty($post_type)) {
+                                    $rtn .= do_shortcode("[display_followus]");
+                                    $exp_count++;
+
+                                    // $cat = get_top_level_term_by_post_id($post_id, 'category');
+                                    $cat = get_term_by('id', $categoryid, 'category');
+                                    $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
+                                    $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
+                                    $rtn .=   '
                             <div ' . $categoryid . ' class="experts-page-cara tpl-2649" style="--bg-color: ' . $category_colour . '; --text-color: ' . $category_text_color . '">
                                 <!--<h2>' . $exp_count . '</h2>-->
                                 ' . do_shortcode("[expert_list page='1' title='" . $globalCategoryName . " Experts" . "' categoryid='" . $categoryid . "']") . '
@@ -1836,24 +1846,21 @@ function blog_filter_function($attr)
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
                             <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
 
-                                $rtn .= '<div class="blogs-loop-watch-listen">';
-                                $rtn .= '<div class="mw-1500 trb-px">';
-                                $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
-                                $rtn .= '</div>';
+                                    $rtn .= '<div class="blogs-loop-watch-listen">';
+                                    $rtn .= '<div class="mw-1500 trb-px">';
+                                    $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+                                    $rtn .= '</div>';
 
-                                $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
-                                $rtn .= '</div>';
-                                $vid_count++;
-                            } else if ($in_count == 10) {
-                                if (empty($post_type)) {
-                                    $rtn .= do_shortcode("[display_followus]");
-                                    $exp_count++;
+                                    $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
+                                    $rtn .= '</div>';
+                                    $vid_count++;
+
                                     if ($post_open_div) {
                                         $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px blogs-loop-inner-5">';
                                     }
                                 }
                                 $cat_count++;
-                            } else if ($in_count == 9 && !empty($add_ad)) {
+                            } else if ($in_count == 10 && !empty($add_ad)) {
                                 if ($add_ad == "Yes") {
                                     $add_ad = "No";
                                     if ($post_open_div) {
@@ -1927,7 +1934,6 @@ function blog_filter_function($attr)
                                 $rtn .= '</div>';
                             }
 
-                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
                             if ($post_open_div) {
                                 $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-12">';
@@ -4592,6 +4598,9 @@ function blog_filter_function($attr)
                             if ($post_open_div) {
                                 $rtn .= '</div>';
                             }
+                            $rtn .= '<div class="test">';
+                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
+                            $rtn .= '</div>';
 
                             // $cat = get_top_level_term_by_post_id($post_id, 'category');
                             $cat = get_term_by('id', $categoryid, 'category');
@@ -4606,6 +4615,9 @@ function blog_filter_function($attr)
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
                             <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
+
+
+
                             if ($post_open_div) {
                                 $rtn .= '<div class="blogs-loop-inner">';
                             }
