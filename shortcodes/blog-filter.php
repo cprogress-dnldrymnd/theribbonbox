@@ -1860,7 +1860,7 @@ function blog_filter_function($attr)
                                     }
                                 }
                                 $cat_count++;
-                            } else if ($in_count == 9 && !empty($add_ad)) {
+                            } else if ($in_count == 10 && !empty($add_ad)) {
                                 if ($add_ad == "Yes") {
                                     $add_ad = "No";
                                     if ($post_open_div) {
