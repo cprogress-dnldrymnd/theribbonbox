@@ -121,7 +121,7 @@ function expert_list_function($attr)
         $rtn .= '<div class="expert-outer">';
         $rtn .= '<div class="experts-naviagtion">';
         $rtn .= '<h2>' . $title . '</h2>';
-        $rtn .= swiper_navigation();
+        $rtn .= swiper_navigation('experts');
         $rtn .= '</div>';
         $rtn .= '<div class="expert-entry">';
     } else {

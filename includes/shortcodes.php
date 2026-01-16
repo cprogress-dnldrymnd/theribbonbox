@@ -510,6 +510,7 @@ function giveaway_list_swiper($attr)
             )
         )
     ));
+    $wp_unique_id = wp_unique_id();
 
 ?>
 
@@ -527,7 +528,6 @@ function giveaway_list_swiper($attr)
                         $currentcat = $categories[0]->cat_ID;
                         $currentcatname = $categories[0]->cat_name;
                         $display_form_on_homepage = get_field('display_form_on_homepage', $post['ID']);
-
                     ?>
 
                         <div class="swiper-slider">
@@ -569,7 +569,7 @@ function giveaway_list_swiper($attr)
                     wp_reset_query();
                     ?>
                 </div>
-                <?= swiper_navigation() ?>
+                <?= swiper_navigation('swiper-nav-' . $wp_unique_id) ?>
             </div>
         </div>
     </div>
@@ -582,6 +582,10 @@ function giveaway_list_swiper($attr)
                 dynamicBullets: true,
                 clickable: true,
             },
+            navigation: {
+                nextEl: ".swiper-button-next-<?= $wp_unique_id ?>",
+                prevEl: ".swiper-button-prev-<?= $wp_unique_id ?>",
+            },
         });
     </script>
 
@@ -590,7 +594,7 @@ function giveaway_list_swiper($attr)
 }
 add_shortcode('giveaway_list_swiper', 'giveaway_list_swiper');
 
-function swiper_navigation()
+function swiper_navigation($class)
 {
-    return '<div class="swiper-navigation"> <div class="swiper-button-prev-experts"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> <div class="swiper-button-next-experts"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> </div>';
+    return '<div class="swiper-navigation"> <div class="swiper-button-prev-' . $class . '"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> <div class="swiper-button-next-' . $class . '"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> </div>';
 }
