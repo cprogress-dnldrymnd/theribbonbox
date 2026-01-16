@@ -1762,7 +1762,7 @@ function blog_filter_function($attr)
                                 $st_2 = false;
                                 $st_3 = true;
                                 $st_5 = false;
-                            } else if (9 <= $in_count && $in_count <= 13) {
+                            } else if (9 <= $in_count && $in_count <= 12) {
                                 $st_4 = false;
                                 $st_1 = false;
                                 $st_2 = false;
