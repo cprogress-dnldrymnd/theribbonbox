@@ -539,7 +539,7 @@ function giveaway_list_swiper($attr)
                                         <div class="giveaway-details-inner">
                                             <h3><?= get_the_title($post['ID']) ?></h3>
 
-                                            <?php if (isDatePast($select_competition_date) != false) { ?>
+                                            <?php if (isDatePast($displayformatB) != false) { ?>
                                                 <?php if ($display_form_on_homepage) { ?>
                                                     <div class="giveaway-form-email">
                                                         <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
