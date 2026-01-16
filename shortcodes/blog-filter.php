@@ -2140,6 +2140,7 @@ function blog_filter_function($attr)
                     $rtn .= do_shortcode('[post_box_trending_video count=' . $cnt . ' in_count=' . $in_count . ' _trending_video id=' . $post["ID"] . ']');
 
                     $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px">';
+                    $rtn .= '<h2>Podcast Episodes</h2>';
                 } else {
                     $rtn .= '<!--- home-small-podcasts  ---> ';
                     $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ' format="podcast"]');
@@ -2381,7 +2382,7 @@ function blog_filter_function($attr)
 
 
             if ($format == "video") {
-                $exClass = "vid-dark-green";
+                $exClass = "vid-dark-green md-padding";
                 /*
             if (!empty($categoryid)){
                 $recent_posts = wp_get_recent_posts(array(
