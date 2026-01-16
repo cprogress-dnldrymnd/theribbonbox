@@ -143,7 +143,7 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
   });
 </script>
 
-<script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
+<script src="<?php echo (get_template_directory_uri()) ?>/js/javascript3.js"></script>
 
 <?php if (is_front_page()) {
   $_SESSION['homepage_array'] = "";
