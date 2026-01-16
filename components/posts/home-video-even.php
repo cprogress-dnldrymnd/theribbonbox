@@ -1,7 +1,8 @@
 <?php
+//revamp section deprecated
 
 $rtn .= '
-<div class="blog-tpl-42 xx2 blog-even-nor blog-nor format-' . $format . ' incount-' . $in_count . ' post-type-' . $this_post_type . ' blog-nor-half blog-nor-half-vid-list">
+<div class="blog-tpl-42  blog-even-nor blog-nor format-' . $format . ' incount-' . $in_count . ' post-type-' . $this_post_type . ' blog-nor-half blog-nor-half-vid-list">
     <div class="blog-l-img" style="'. $addBorder .'">
         <a href="'.get_permalink($post['ID']).'">
             <img src="'.$iUrl.'" style="background-size:cover; background-position:center;">

@@ -1,4 +1,5 @@
 <?php
+//revamp section deprecated
 $heading_text = '';
 $podcast_heading_text = '';
 
