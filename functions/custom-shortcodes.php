@@ -418,10 +418,10 @@ function display_home_section()
 
 ?>
 
-    <div class="home-section bg-black">
+    <div class=" home-section-v2 bg-black">
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col-lg-7">
                     <?= wp_get_attachment_image($home_section_image, 'large') ?>
                 </div>
                 <div class="col">
