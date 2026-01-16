@@ -4598,7 +4598,7 @@ function blog_filter_function($attr)
                             if ($post_open_div) {
                                 $rtn .= '</div>';
                             }
-                            $rtn .= '<div class="test">';
+                            $rtn .= '<div class="testx2sas">';
                             $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
                             $rtn .= '</div>';
 
