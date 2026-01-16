@@ -419,7 +419,7 @@ function post_box($atts)
                 <?= get_the_date('j M Y', $id) ?>
             </div>
             <?php if ($format == 'podcast') { ?>
-                <div class="button-box button-box-v2 button-bordered ">
+                <div class="button-box button-box-v2 button-bordered text-center">
                     <a href="<?=  get_the_permalink($id) ?>">MORE VIDEOS</a>
                 </div>
             <?php } ?>
