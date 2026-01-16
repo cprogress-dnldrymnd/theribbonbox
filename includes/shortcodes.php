@@ -555,8 +555,8 @@ function _giveaway_list_function($attr)
                         </div>
                         <div class="col-lg-6">
                             <div class="post-image image-box">
-                                <a href="<?= get_the_permalink($id) ?>">
-                                    <?= get_the_post_thumbnail($id, 'large') ?>
+                                <a href="<?= get_the_permalink($post['ID']) ?>">
+                                    <?= get_the_post_thumbnail($post['ID'], 'large') ?>
                                 </a>
                             </div>
                         </div>
