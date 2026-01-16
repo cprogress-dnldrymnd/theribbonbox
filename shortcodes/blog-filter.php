@@ -2172,9 +2172,7 @@ function blog_filter_function($attr)
         }
 
         $rtn .= '<div class="end"></div>';
-        if ($format == "video") {
-            $rtn .= '<a class="white-a" href="/watch-listen">View all Podcast Episodes and Videos</a>';
-        }
+    
 
         if ($format == "post-page" && $design == "" && count($recent_posts) > 0 && !empty($limit) && empty($id_list)) {
             $rtn .= '<div class="loadingmoreOuter">
