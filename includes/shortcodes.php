@@ -403,7 +403,7 @@ function post_box($atts)
 ?>
     <div class="post-box-blogs trb-column format-<?= $format ?>">
         <div class="post-image image-box">
-            <span style="position: absolute; top: 0;left: 0;z-index: 2; background: #fff; padding: 10px"><?= $count ?> | <?= $in_count ?></span>
+            <span style="display: none; position: absolute; top: 0;left: 0;z-index: 2; background: #fff; padding: 10px"><?= $count ?> | <?= $in_count ?></span>
             <a href="<?= get_the_permalink($id) ?>">
                 <?= get_the_post_thumbnail($id, 'large') ?>
                 <?php if ($icon_id) { ?>

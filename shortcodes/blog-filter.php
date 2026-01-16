@@ -1877,8 +1877,6 @@ function blog_filter_function($attr)
 
                                     $rtn .= do_shortcode("[ad_list]");
 
-
-
                                     if ($post_open_div) {
                                         $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-large trb-px blogs-loop-inner-6 ">';
                                     }
