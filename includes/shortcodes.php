@@ -490,7 +490,7 @@ function post_box_trending_video($atts)
 add_shortcode('post_box_trending_video', 'post_box_trending_video');
 
 
-function _giveaway_list_function($attr)
+function giveaway_list_swiper($attr)
 {
 
     ob_start();
@@ -572,4 +572,4 @@ function _giveaway_list_function($attr)
 <?php
     return ob_get_clean();
 }
-add_shortcode('_giveaway_list', '_giveaway_list_function');
+add_shortcode('giveaway_list_swiper', 'giveaway_list_swiper');
