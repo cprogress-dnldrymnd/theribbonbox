@@ -1824,7 +1824,7 @@ function blog_filter_function($attr)
                                 $rtn .= '[giveaways_here]';
                                 $rtn .= '[become_insider]';
                                 $rtn .= '<div class="blogs-loop-inner trb-row md-padding mw-1500 trb-px">';
-                            } else if ($in_count == 12) {
+                            } else if ($in_count == 10) {
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
                                 }
