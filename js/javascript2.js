@@ -840,6 +840,7 @@ function headScrollTrans() {
     }
 
     if (! $(el).length) {
+        //console.error(`Cannot find '${el}' in headScrollTrans()`);
         return;
     }
     //console.log('$(el):', $(el));
