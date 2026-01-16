@@ -577,11 +577,7 @@ function giveaway_list_swiper($attr)
     <script>
         var swiper = new Swiper(".swiper-post-slider-v2", {
             slidesPerView: 1,
-            pagination: {
-                el: ".swiper-pagination",
-                dynamicBullets: true,
-                clickable: true,
-            },
+             
             navigation: {
                 nextEl: ".swiper-button-next-<?= $wp_unique_id ?>",
                 prevEl: ".swiper-button-prev-<?= $wp_unique_id ?>",
