@@ -17,8 +17,7 @@ function blog_filter_function($attr)
         $rtn = "";
         $term_id = 0;
         $categoryid = "";
-        //$limit = 500;
-        $limit = 50;
+        $limit = 100;
         $curtotal = 0;
         $format = "";
         $post_type = "";
@@ -1829,17 +1828,24 @@ function blog_filter_function($attr)
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
                                 }
-
+                                
                                 $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
                                 if (empty($post_type)) {
                                     $exp_count++;
                                     // $cat = get_top_level_term_by_post_id($post_id, 'category');
+                                  
+                                    $rtn .= '<div class="blogs-loop-watch-listen">';
+                                    $rtn .= '<div class="mw-1500 trb-px">';
+                                    $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+                                    $rtn .= '</div>';
 
-                                
+                                    $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
+                                    $rtn .= '</div>';
+                                    $rtn .= '[become_insider]';
                                     $vid_count++;
                                     if ($post_open_div) {
-                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-5">';
+                                        $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px blogs-loop-inner-5">';
                                     }
                                 }
                                 $cat_count++;
@@ -1849,21 +1855,12 @@ function blog_filter_function($attr)
                                     if ($post_open_div) {
                                         $rtn .= '</div>';
                                     }
+                                    $rtn .= do_shortcode("[ad_list]");
 
-                                        $rtn .= '<div class="blogs-loop-watch-listen">';
-                                    $rtn .= '<div class="mw-1500 trb-px">';
-                                    $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
-                                    $rtn .= '</div>';
-
-                                    $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
-                                    $rtn .= '</div>';
-                                    $rtn .= '[become_insider]';
-
-
-                                    $cat = get_term_by('id', $categoryid, 'category');
-                                    $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
-                                    $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
-                                    $rtn .=   '
+$cat = get_term_by('id', $categoryid, 'category');
+                                $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
+                                $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
+                                $rtn .=   '
                             <div ' . $categoryid . ' class="experts-page-cara tpl-2649" style="--bg-color: ' . $category_colour . '; --text-color: ' . $category_text_color . '">
                                 <!--<h2>' . $exp_count . '</h2>-->
                                 ' . do_shortcode("[expert_list page='1' title='" . $globalCategoryName . " Experts" . "' categoryid='" . $categoryid . "']") . '
@@ -1875,10 +1872,6 @@ function blog_filter_function($attr)
                                     if ($post_open_div) {
                                         $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px blogs-loop-inner-6 ">';
                                     }
-
-                                    $rtn .= do_shortcode("[ad_list]");
-
-
                                 } else {
                                     $add_ad = "Yes";
 
@@ -1893,10 +1886,10 @@ function blog_filter_function($attr)
                                         }
                                     }
                                 }
-                                $cat = get_term_by('id', $categoryid, 'category');
-                                $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
-                                $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
-                                $rtn .=   '
+                                  $cat = get_term_by('id', $categoryid, 'category');
+                                    $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
+                                    $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
+                                    $rtn .=   '
                             <div ' . $categoryid . ' class="experts-page-cara tpl-2649" style="--bg-color: ' . $category_colour . '; --text-color: ' . $category_text_color . '">
                                 <!--<h2>' . $exp_count . '</h2>-->
                                 ' . do_shortcode("[expert_list page='1' title='" . $globalCategoryName . " Experts" . "' categoryid='" . $categoryid . "']") . '
@@ -1904,6 +1897,7 @@ function blog_filter_function($attr)
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
                             <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
                             <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
+
                             }
                         } else {
 
