@@ -452,7 +452,7 @@ function post_box_trending_video($atts)
                     </div>
                     <div class="button-group-box row">
                         <div class="button-box col-auto">
-                            <a href=""></a>
+                            <a href="<?= get_the_permalink($id) ?>">WATCH NOW</a>
                         </div>
                     </div>
                 </div>
