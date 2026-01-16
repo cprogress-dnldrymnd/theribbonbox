@@ -2237,11 +2237,14 @@ function blog_filter_function($attr)
                     $rtn .= '<!--- home-small-podcasts  ---> ';
                     $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ' format="podcast"]');
                     if ($cnt != $limit) {
-                        $rtn .= '</div>';
                     }
                 }
+
+                $rtn .= '</div>';
             }
         }
+
+
 
         wp_reset_query();
 
