@@ -160,7 +160,7 @@ function blog_post_style_1($post_args)
                 <h3 class="date-giveaways">Event Date: <?= $post_args['date'] ?></h3>
 
                 <div class="blog-btns">
-                    <a style="color:#000;" href="<?= $post_args['post_permalink'] ?>">Enter Now</a>
+                    <a style="color:#000;" href="<?= $post_args['post_permalink'] ?>">Enter Now s</a>
                 </div>
             </div>
         </div>
