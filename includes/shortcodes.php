@@ -533,6 +533,7 @@ function giveaway_list_swiper($attr)
                     ?>
 
                         <div class="swiper-slide">
+                            <?=  isDatePast($select_competition_date)  ?>
                             <div class="row g-0">
                                 <div class="col-lg-6">
                                     <div class="giveaway-details">
