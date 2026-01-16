@@ -435,6 +435,8 @@ function display_home_section()
         </div>
     </div>
 
+    <?= do_shortcode('[become_insider]'); ?>
+
 <?php
     return ob_get_clean();
 }
