@@ -50,7 +50,7 @@ global $theme_logo;
     <div class="footer-bottom trb-border-top trb-px mt-4 py-4">
         <div class="container-fluid">
             <p>
-                © 2025 Edington Media Ltd
+                © 2026 Edington Media Ltd
             </p>
         </div>
     </div>
