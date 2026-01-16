@@ -442,7 +442,7 @@ function post_box_trending_video($atts)
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 post-box-details">
                     <h2 class="post-box-title"><?= get_the_title($id) ?></h2>
                     <div class="post-box-excerpt">
                         <?=  get_the_excerpt($id) ?>
