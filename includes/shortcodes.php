@@ -444,7 +444,7 @@ function post_box_trending_video($atts)
         )
     );
 ?>
-    <div class="post-box-trending-video-holder mw-1500 trb-px">
+    <div class="post-box-trending-video-holder mw-large trb-px">
         <div class="post-box-trending-video post-box-blogs">
             <div class="trb-row align-items-center">
                 <div class="trb-column">
