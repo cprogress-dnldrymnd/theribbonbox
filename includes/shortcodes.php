@@ -416,8 +416,13 @@ function post_box($atts)
                 <h3 class="post-box-title"><?= get_the_title($id) ?></h3>
             </a>
             <div class="post-box-date">
-                <?= get_the_date('j M Y', $post["ID"]) ?>
+                <?= get_the_date('j M Y', $id) ?>
             </div>
+            <?php if ($format == 'podcast') { ?>
+                <div class="button-box button-box-v2 button-bordered ">
+                    <a href="<?=  get_the_permalink($id) ?>">MORE VIDEOS</a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 <?php
@@ -462,7 +467,7 @@ function post_box_trending_video($atts)
                             <?= get_the_excerpt($id) ?>
                         </div>
                         <div class="post-box-date">
-                            <?= get_the_date('j M Y', $post["ID"]) ?>
+                            <?= get_the_date('j M Y', $id) ?>
                         </div>
                         <div class="button-group-box row">
                             <div class="button-box button-box-v2 button-accent col-auto">
