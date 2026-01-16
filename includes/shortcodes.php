@@ -417,7 +417,7 @@ function post_box($atts)
 add_shortcode('post_box', 'post_box');
 
 
-function post_box_trending_video($id)
+function post_box_trending_video($atts)
 {
     ob_start();
     extract(
