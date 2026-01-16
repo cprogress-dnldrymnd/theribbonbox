@@ -1921,7 +1921,19 @@ function blog_filter_function($attr)
                             }
                         }
 
-                       
+                        if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
+                            $vid_count++;
+
+                            if ($post_open_div) {
+                                $rtn .= '</div>';
+                            }
+
+                            $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
+
+                            if ($post_open_div) {
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-12">';
+                            }
+                        }
 
                         //first set of posts to be display
                         if ($in_count == 2) {
