@@ -1936,6 +1936,8 @@ function blog_filter_function($attr)
                             if ($post_open_div) {
                                 $rtn .= '</div>';
                             }
+                            $rtn .= do_shortcode("[display_followus]");
+
 
                             // $cat = get_top_level_term_by_post_id($post_id, 'category');
                             $cat = get_term_by('id', $categoryid, 'category');
@@ -2172,7 +2174,7 @@ function blog_filter_function($attr)
         }
 
         $rtn .= '<div class="end"></div>';
-    
+
 
         if ($format == "post-page" && $design == "" && count($recent_posts) > 0 && !empty($limit) && empty($id_list)) {
             $rtn .= '<div class="loadingmoreOuter">
