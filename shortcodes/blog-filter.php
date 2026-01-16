@@ -2123,13 +2123,7 @@ function blog_filter_function($attr)
                     $post_open_div = true;
                 }
 
-                $style = str_replace('style="', 'style="' . $addBorder, $style);
-                $style = 'style="background:url(';
-                $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                $style .= $iUrl;
-                $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-
-                include get_template_directory() . '/components/posts/home-video-even.php';
+                $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
             }
 
             if ($format == "normal") {
