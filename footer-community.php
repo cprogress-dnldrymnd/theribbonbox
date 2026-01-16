@@ -68,7 +68,7 @@
 <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
 -->
 
-<script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
+<script src="<?php echo (get_template_directory_uri()) ?>/js/javascript3.js"></script>
 <pre>
 
 </pre>

@@ -171,7 +171,7 @@ if (get_the_ID() != "22808" && get_the_ID() != "22810" && get_the_ID() != "22812
     <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
     -->
 
-<script src="<?php echo (get_template_directory_uri()) ?>/js/javascript2.js"></script>
+<script src="<?php echo (get_template_directory_uri()) ?>/js/javascript3.js"></script>
 
 <?php if (is_front_page()) {
   $_SESSION['homepage_array'] = "";

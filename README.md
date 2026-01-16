@@ -10,7 +10,7 @@ For large listing pages like [/fertility](https://theribbonbox.com/fertility), t
 
 ## JavaScript
 
-The theme's main JS is in `/js/javascript2.js`, which appears to be the `/js/TO-DELETE/javascript1.js` file, after being run through some sort of minification process.
+The theme's main JS is in `/js/javascript3.js`, which appears to be the `/js/TO-DELETE/javascript1.js` file, after being run through some sort of minification process.
 
 ### "Load more" / "Infinite scroll"
 
