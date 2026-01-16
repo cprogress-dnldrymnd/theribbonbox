@@ -451,7 +451,7 @@ function post_box_trending_video($atts)
                         <?= get_the_date('j M Y', $post["ID"]) ?>
                     </div>
                     <div class="button-group-box row">
-                        <div class="button-box col-auto">
+                        <div class="button-box button-accent col-auto">
                             <a href="<?= get_the_permalink($id) ?>">WATCH NOW</a>
                         </div>
                     </div>
