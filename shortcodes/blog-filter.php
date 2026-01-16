@@ -1914,7 +1914,7 @@ function blog_filter_function($attr)
                             $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
                             if ($post_open_div) {
-                                $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px blogs-loop-inner-12">';
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-12">';
                             }
                         }
 
