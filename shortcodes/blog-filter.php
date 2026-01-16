@@ -1836,7 +1836,7 @@ function blog_filter_function($attr)
                                     // $cat = get_top_level_term_by_post_id($post_id, 'category');
                                   
                                     if ($post_open_div) {
-                                        $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px blogs-loop-inner-5">';
+                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-5">';
                                     }
                                 }
                                 $cat_count++;
