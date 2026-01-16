@@ -1912,7 +1912,6 @@ function blog_filter_function($attr)
                                 $rtn .= '</div>';
                                 $vid_count++;
                             } else if ($in_count == 9) {
-                                $rtn .= '<br>';
                                 if (empty($post_type)) {
                                     $rtn .= do_shortcode("[display_followus]");
                                     $exp_count++;
@@ -1924,7 +1923,6 @@ function blog_filter_function($attr)
                             } else if ($in_count == 8 && !empty($add_ad)) {
                                 if ($add_ad == "Yes") {
                                     $add_ad = "No";
-                                    //$rtn .= '<br>';
                                     if ($post_open_div) {
                                         $rtn .= '</div>';
                                     }
@@ -1976,7 +1974,6 @@ function blog_filter_function($attr)
                             } else if ($in_count == 41) {
                                 if ($add_ad == "Yes") {
                                     $add_ad = "No";
-                                    //$rtn .= '<br>';
                                     if ($post_open_div) {
                                         $rtn .= '</div>';
                                     }
