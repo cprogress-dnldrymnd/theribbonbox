@@ -1803,6 +1803,7 @@ function blog_filter_function($attr)
                         $styles_str = implode('-', $styles);
 
                         
+                        $rtn .= '<--- ' . $in_count . ' --->';
                         $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ']');
 
 
