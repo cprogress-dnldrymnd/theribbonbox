@@ -13,7 +13,7 @@ function blog_filter_function($attr)
 {
     if (current_user_can('administrator')) {
         //new-func
-    $homepage_array = '';
+        $homepage_array = '';
         $rtn = "";
         $term_id = 0;
         $categoryid = "";
@@ -2272,8 +2272,6 @@ function blog_filter_function($attr)
         $large_image = "full";
         $medium_image = "medium";
         $small_image = "thumbnail";
-
-    
     } else {
         //old-func
         $homepage_array = '';
