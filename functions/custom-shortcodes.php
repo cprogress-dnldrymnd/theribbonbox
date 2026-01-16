@@ -422,7 +422,7 @@ function display_home_section()
         <div class="container">
             <div class="row">
 
-                <div class="col">
+                <div class="col-lg-5">
                     <h2><?= $home_section_heading ?></h2>
                     <div class="desc">
                         <?= wpautop($home_section_description) ?>
