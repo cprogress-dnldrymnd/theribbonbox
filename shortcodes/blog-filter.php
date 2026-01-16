@@ -1823,7 +1823,12 @@ function blog_filter_function($attr)
 
                                 $rtn .= '[giveaways_here]';
                                 $rtn .= '[become_insider]';
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding mw-1500 trb-px">';
                             } else if ($in_count == 11) {
+                                if ($post_open_div) {
+                                    $rtn .= '</div>';
+                                }
+
                                 if (empty($post_type)) {
                                     $rtn .= do_shortcode("[display_followus]");
                                     $exp_count++;
