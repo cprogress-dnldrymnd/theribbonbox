@@ -1839,7 +1839,7 @@ function blog_filter_function($attr)
                                 
                                     $vid_count++;
                                     if ($post_open_div) {
-                                        $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px blogs-loop-inner-5">';
+                                        $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-5">';
                                     }
                                 }
                                 $cat_count++;
