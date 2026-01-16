@@ -1911,8 +1911,6 @@ function blog_filter_function($attr)
                                 $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
                                 $rtn .= '</div>';
                                 $vid_count++;
-
-                               
                             } else if ($in_count == 9) {
                                 $rtn .= '<br>';
                                 if (empty($post_type)) {
@@ -2223,13 +2221,18 @@ function blog_filter_function($attr)
 
             if ($format == "video") {
                 if ($cnt == 1) {
-                    $rtn .= '<!--- home-trending-video  ---> '.$cnt;
+                    $rtn .= '<!--- home-trending-video  ---> ' . $cnt;
                     $rtn .= do_shortcode('[post_box_trending_video id=' . $post["ID"] . ']');
+
+                    $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-1500 trb-px">';
                 } else {
-                    $rtn .= '<!--- home-small-podcasts  ---> '.$cnt;
+                    $rtn .= '<!--- home-small-podcasts  ---> ' . $limit;
                     $rtn .= do_shortcode('[post_box id=' . $post["ID"] . ' format="podcast"]');
                 }
 
+                if ($cnt == $limit) {
+                    $rtn .= '</div>';
+                }
             }
         }
 
