@@ -433,6 +433,9 @@ function post_box_trending_video($id)
         <div class="row">
             <div class="col-lg-6">
                 <div class="post-image image-box">
+                    <div class="ribbon">
+                        Trending Video
+                    </div>
                     <a href="<?= get_the_permalink($id) ?>">
                         <?= get_the_post_thumbnail($id, 'large') ?>
                     </a>
