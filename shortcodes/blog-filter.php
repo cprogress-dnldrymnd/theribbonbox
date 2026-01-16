@@ -1816,13 +1816,6 @@ function blog_filter_function($attr)
                                 }
                                 // 2. Open the new div with the specific classes requested
                                 $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding mw-1500 trb-px">';
-                            } else if ($in_count == 8) {
-                                // 1. Close the current div if it is open
-                                if ($post_open_div) {
-                                    $rtn .= '</div>';
-                                }
-                                // 2. Open the new div with the specific classes requested
-                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding mw-1500 trb-px">';
                             } else if ($in_count == 7) {
                                 if ($post_open_div) {
                                     $rtn .= '</div>';
@@ -1830,7 +1823,7 @@ function blog_filter_function($attr)
 
                                 $rtn .= '[giveaways_here]';
                                 $rtn .= '[become_insider]';
-
+                            } else if ($in_count == 10) {
                                 // $cat = get_top_level_term_by_post_id($post_id, 'category');
                                 $cat = get_term_by('id', $categoryid, 'category');
                                 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
@@ -1852,7 +1845,6 @@ function blog_filter_function($attr)
                                 $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
                                 $rtn .= '</div>';
                                 $vid_count++;
-                            } else if ($in_count == 10) {
                                 if (empty($post_type)) {
                                     $rtn .= do_shortcode("[display_followus]");
                                     $exp_count++;
