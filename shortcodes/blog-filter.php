@@ -1821,6 +1821,8 @@ function blog_filter_function($attr)
                                     $rtn .= '</div>';
                                 }
 
+                                $rtn .= '[giveaways_here]';
+
                                 // $cat = get_top_level_term_by_post_id($post_id, 'category');
                                 $cat = get_term_by('id', $categoryid, 'category');
                                 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
