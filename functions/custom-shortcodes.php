@@ -471,7 +471,7 @@ function display_followus_function()
     //revamp section
     if (current_user_can('administrator')) { ?>
         <div class="post-follow-us-revamp trb-px">
-            <div class="post-follow-us-revamp-outer mw-1400">
+            <div class="post-follow-us-revamp-outer mw-large">
                 <div class="post-follow-us-revamp-inner">
                     <h2>Follow our <i>Socials</i></h2>
                 </div>
