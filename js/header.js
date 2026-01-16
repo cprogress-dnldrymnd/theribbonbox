@@ -57,7 +57,6 @@ $('.level-0').each(function (index, element) {
 
     $(this).mouseover(function (e) {
         $parent_width = jQuery(this).find('.menu-item-has-children.level-1').parent().outerWidth();
-        console.log('xxxx');
         jQuery(this).find('.menu-item-has-children.level-1').parent().css('--parent-width', $parent_width + 'px');
     });
 
