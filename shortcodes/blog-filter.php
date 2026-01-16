@@ -155,7 +155,7 @@ function blog_filter_function($attr)
 
 
             if ($format == "video") {
-                $exClass = "vid-dark-green";
+                $exClass = "vid-dark-green md-padding";
                 if (!empty($categoryid)) {
 
                     $child = get_category($categoryid);
