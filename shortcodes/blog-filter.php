@@ -1824,11 +1824,6 @@ function blog_filter_function($attr)
                                 $rtn .= '[giveaways_here]';
                                 $rtn .= '[become_insider]';
 
-                                if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
-                                    $vid_count++;
-                                    $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
-                                }
-
                                 // $cat = get_top_level_term_by_post_id($post_id, 'category');
                                 $cat = get_term_by('id', $categoryid, 'category');
                                 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
@@ -1926,11 +1921,17 @@ function blog_filter_function($attr)
                             }
                         }
 
+                        if ($vid_count == 1 && $curtotal == 0 && (! isset($attr["post_type"]) || $attr["post_type"] != "videos" && $attr["post_type"] != "videos/podcasts")) {
+                            $vid_count++;
+
+                            if ($post_open_div) {
+                                $rtn .= '</div>';
+                            }
 
 
-                        if ($post_open_div) {
-                            $rtn .= '</div>';
-                            $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-12">';
+                            if ($post_open_div) {
+                                $rtn .= '<div class="blogs-loop-inner blogs-loop-inner-v2 trb-row md-padding  mw-1500 trb-px blogs-loop-inner-12">';
+                            }
                         }
 
                         //first set of posts to be display
