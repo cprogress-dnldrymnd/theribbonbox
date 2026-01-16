@@ -127,31 +127,28 @@ if (!is_bbpress() && !is_buddypress()) {
             }
             // Experts: Wellbeing, Fertility, Pregnancy, Parenting, Match With an Expert (but disabled)??
             //else if (get_the_ID() == "22812" || get_the_ID() == "22814" || get_the_ID() == "22816" || get_the_ID() == "22818" || get_the_ID() == "22820123123123123"){
-            else if (in_array(get_the_ID(), ['22812', '22814', '22816', '22818', '22820123123123123'])) {
+            else if (in_array(get_the_ID(), ['22812', '22814', '22816', '22818', '22820'])) {
                 include 'components/index/index-experts-subpages.php';
             }
             // Offers
+            //code workings
             else if (get_the_ID() == "22838") {
-                //$atts['post_type'] = "podcasts";
                 echo do_shortcode("[blog_filter format='post-page' limit='8' post_type='offer-items/giveaway-items' categoryid='" . $categories[0]->term_id . "']");
-                //echo do_shortcode("[display_insider]");
             }
             // Offers: Events
+            //code workings
             else if (get_the_ID() == "22844") {
                 include 'components/index/index-offers-events.php';
             }
             // Offers: Giveaways
+            //code workings
             else if (get_the_ID() == "22840") {
                 include 'components/index/index-offers-giveaways.php';
             }
             // Offers: Discounts
+            //code workings
             else if (get_the_ID() == "22842") {
                 include 'components/index/index-offers-discounts.php';
-            } else if (get_the_ID() == "30487") {
-                include 'components/b2b/landing-page-main.php';
-            } else if (get_the_ID() == "30422") {
-                // include 'components/b2b/landing-page-header.php';
-                // include 'b2b-homepage.php';
             } else {
                 //html comments remove by dd
                 //echo '<!-- index.php: All other page types -->';
