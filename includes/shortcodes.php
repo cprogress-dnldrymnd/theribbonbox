@@ -443,7 +443,13 @@ function post_box_trending_video($atts)
                     </div>
                 </div>
                 <div class="col-lg-6">
-
+                    <h2 class="post-box-title"><?= get_the_title($id) ?></h2>
+                    <div class="post-box-excerpt">
+                        <?=  get_the_excerpt($id) ?>
+                    </div>
+                    <div class="post-box-date">
+                        <?= get_the_date('j M Y', $post["ID"]) ?>
+                    </div>
                 </div>
             </div>
         </div>
