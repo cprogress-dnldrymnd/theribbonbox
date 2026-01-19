@@ -997,68 +997,6 @@ add_action('wp_footer', 'careers_form');
 
 function teams_carousel() {
 
-    // 2. Custom CSS for the layout to match the screenshot
-    $output = '
-    <style>
-        .team-slider-container {
-            width: 100%;
-            padding: 40px 0;
-            position: relative;
-        }
-        .swiper-slide {
-            height: auto;
-        }
-        /* Card Design */
-        .team-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .team-image {
-            width: 100%;
-            aspect-ratio: 1 / 1.1; /* Slight vertical rectangle based on screenshot */
-            object-fit: cover;
-            display: block;
-        }
-        .team-info {
-            background-color: #4A2C39; /* The Maroon color from the screenshot */
-            color: #ffffff;
-            padding: 20px;
-            text-align: left;
-            flex-grow: 1;
-        }
-        .team-name {
-            font-family: "Georgia", "Times New Roman", serif; /* Serif font */
-            font-size: 20px;
-            font-weight: 500;
-            margin: 0 0 5px 0;
-            line-height: 1.2;
-        }
-        .team-position {
-            font-family: "Helvetica", "Arial", sans-serif;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            opacity: 0.8;
-            margin: 0;
-            font-weight: 400;
-        }
-        /* Pagination Dots */
-        .swiper-pagination-bullet {
-            background: #4A2C39;
-            opacity: 0.4;
-        }
-        .swiper-pagination-bullet-active {
-            opacity: 1;
-            background: #4A2C39;
-        }
-        .swiper-pagination {
-            position: relative !important;
-            margin-top: 20px;
-            bottom: 0 !important;
-        }
-    </style>';
-
     // 3. The Query
     $args = array(
         'post_type'      => 'team',
@@ -1071,7 +1009,7 @@ function teams_carousel() {
 
     if ($team_query->have_posts()) :
         
-        $output .= '<div class="team-slider-container">';
+        $output = '<div class="team-slider-container">';
         $output .= '<div class="swiper myTeamSwiper">';
         $output .= '<div class="swiper-wrapper">';
 
