@@ -2024,23 +2024,12 @@ function blog_filter_function($attr)
                 }
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-large trb-px blogs-loop-inner-20">';
+                    $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-large trb-px blogs-loop-inner-20 blogs-loop-inner-v2">';
                     $post_open_div = true;
                 }
 
-                if ($cnt % 2 == 0) {
-                    $style = str_replace('style="', 'style="' . $addBorder, $style);
-                    $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                    $style .= $iUrl;
+                $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ' format="podcast"]');
 
-                    include get_template_directory() . '/components/posts/home-posts-even.php';
-                } else {
-                    $style = str_replace('style="', 'style="' . $addBorder, $style);
-                    $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                    $style .= $iUrl;
-
-                    include get_template_directory() . '/components/posts/home-posts-odd.php';
-                }
             }
 
             if ($format == "normal-3") {
