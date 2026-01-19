@@ -8,7 +8,8 @@ function _homeblog_filter_function($attr)
     $wellbeing_category_id = 1159;
     $content =
         do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]')
-        . do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]');
+        . do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]')
+        . do_shortcode('[_giveaway_list]');
 
     return $content;
 }
