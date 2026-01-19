@@ -538,21 +538,6 @@ function homeblog_filter_function($attr)
         do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]')
         . do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]')
         . do_shortcode('[giveaway_list]');
-    /* . do_shortcode('[expert_list categoryid="1164,1159" title="Wellbeing &amp; Fertility Experts" home="1"]');
-        . do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1159" home="1"]');
-        . do_shortcode('[category_list]');
-        . '<h2 class="hp-h2">Watch &amp; Listen</h2>';
-        . do_shortcode('[blog_filter format="video-half" post_type="videos" limit="2" categoryid="1159" home="1"]');
-        . do_shortcode('[blog_filter format="video" limit="4"]');
-        . do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
-        . do_shortcode('[expert_list categoryid="1165,1163" title="Pregnancy &amp; Parenting Experts"]');
-        . do_shortcode('[display_insider]');
-        . do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
-        . do_shortcode('[blog_filter format="normal-1" limit="2" categoryid="1163" home="1"]');
-        . do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="1159" home="1"]');
-        . do_shortcode('[display_followus]');
-        . do_shortcode('[blog_filter format="normal-4" limit="6" categoryid="1159" home="1"]');
-        . do_shortcode('[blog_filter format="normal-3" limit="2" categoryid="1165" home="1"]');*/
     return $content;
 }
 
