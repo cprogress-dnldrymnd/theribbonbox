@@ -908,11 +908,9 @@ function careers()
                             <?php if ($details_2): ?><span class="meta-item"><?php echo esc_html($details_2); ?></span><?php endif; ?>
                             <?php if ($details_3): ?><span class="meta-item"><?php echo esc_html($details_3); ?></span><?php endif; ?>
                         </div>
-
                         <div class="job-body">
                             <?php the_content(); ?>
                         </div>
-                        <a href="#" class="btn btn-dark mt-4 w-100 py-3 text-uppercase" style="letter-spacing:1px;">Apply for this position</a>
                     </div>
                 </div>
 
@@ -938,7 +936,7 @@ function careers_form()
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body" id="careerOffcanvasBody">
-            <div class="d-flex justify-content-center align-items-center h-100 offcanvas-body-content">
+            <div class="d-flex justify-content-center align-items-center offcanvas-body-content">
                 <div class="spinner-border text-secondary" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
