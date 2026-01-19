@@ -995,7 +995,8 @@ function careers_form()
 }
 add_action('wp_footer', 'careers_form');
 
-function teams_carousel() {
+function teams_carousel()
+{
 
     // 3. The Query
     $args = array(
@@ -1004,24 +1005,26 @@ function teams_carousel() {
         'orderby'        => 'date',
         'order'          => 'ASC',
     );
-    
+
     $team_query = new WP_Query($args);
 
     if ($team_query->have_posts()) :
-        
+
         $output = '<div class="team-slider-container">';
         $output .= '<div class="swiper myTeamSwiper">';
         $output .= '<div class="swiper-wrapper">';
 
         while ($team_query->have_posts()) : $team_query->the_post();
-            
+
             // Get Data
-            $image = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+            $image = get_the_post_thumbnail_url(get_the_ID(), 'large');
             $name = get_the_title();
             $position = get_post_meta(get_the_ID(), 'position', true);
-            
+
             // Fallback image if none exists
-            if(!$image) { $image = 'https://via.placeholder.com/400x450'; }
+            if (!$image) {
+                $image = 'https://via.placeholder.com/400x450';
+            }
 
             // Slide HTML
             $output .= '<div class="swiper-slide">';
@@ -1038,7 +1041,11 @@ function teams_carousel() {
         wp_reset_postdata();
 
         $output .= '</div>'; // End wrapper
+        $output .= '<div class="swiper-pagination-navigation-holder">'; // swiper-pagination-navigation-holder
+        $output .= '<div class="swiper-button-prev-team"></div>'; // Dots
         $output .= '<div class="swiper-pagination"></div>'; // Dots
+        $output .= '<div class="swiper-button-next-team"></div>'; // Dots
+        $output .= '</div>'; // swiper-pagination-navigation-holder
         $output .= '</div>'; // End swiper
         $output .= '</div>'; // End container
 
@@ -1053,6 +1060,11 @@ function teams_carousel() {
                     pagination: {
                         el: ".swiper-pagination",
                         clickable: true,
+                    },
+                    
+                    navigation: {
+                        nextEl: ".swiper-button-next-team",
+                        prevEl: ".swiper-button-prev-team",
                     },
                     breakpoints: {
                         640: {
@@ -1073,7 +1085,7 @@ function teams_carousel() {
         </script>';
 
     else:
-        $output .= '<p>No team members found.</p>';
+        $output = '<p>No team members found.</p>';
     endif;
 
     return $output;
