@@ -436,8 +436,8 @@ function display_home_section()
                                     $category_text_color = get_field('category_text_color', $term->taxonomy . '_' . $term->term_id);
                                     $page_link = get_the_permalink($page_category[0]);
                                     ?>
-                             
-                                    <a href="<?= $page_link ?>">
+
+                                    <a href="<?= $page_link ?>" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
                                         <?= $term->name ?>
                                     </a>
                                 <?php } ?>
