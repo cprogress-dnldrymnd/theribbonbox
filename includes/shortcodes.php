@@ -490,6 +490,84 @@ function post_box_trending_video($atts)
 add_shortcode('post_box_trending_video', 'post_box_trending_video');
 
 
+function post_box_hero($atts)
+{
+    ob_start();
+    extract(
+        shortcode_atts(
+            array(
+                'id' => '',
+            ),
+            $atts
+        )
+    );
+    $post_id = $id;
+    $cat = get_top_level_term_by_post_id($post_id, 'category');
+    $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
+    $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
+?>
+    <div class="post-hero-outer trb-px">
+        <div class="post-hero" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
+            <div class="container-fluid g-0 p-0">
+                <div class="row g-0 flex-column-reverse flex-lg-row">
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <div class="post-hero-content">
+                            <div class="post-title">
+                                <a href="<?= get_the_permalink($post_id) ?>">
+                                    <h1>
+                                        <?= get_the_title($post_id) ?>
+                                    </h1>
+                                </a>
+                            </div>
+                            <?php if (get_the_excerpt($post_id)) { ?>
+                                <div class="post-excerpt">
+                                    <?= get_the_excerpt($post_id) ?>
+                                </div>
+                            <?php } ?>
+                            <div class="author-date d-flex gap-3 align-items-center flex-wrap">
+                                <?= do_shortcode("[author_bio_v2 avatar=0 id=$post_id]") ?>
+                                <div class="dot"></div>
+                                <div class="date">
+                                    <?= get_the_date('', $post_id) ?>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="<?= get_the_permalink($post_id) ?>">
+
+                            <div class="post-image image-box h-100">
+                                <?= get_the_post_thumbnail($post_id, 'large') ?>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+    $page_id = (int) get_the_ID();
+
+    $widget_paths = [
+        22659 => 'fertility-category-page.js',
+        22620 => 'wellbeing-category-page-gallery.js',
+        22702 => 'pregnancy-category-page-gallery.js',
+        22749 => 'parenting-category-page-gallery.js',
+    ];
+
+    if (isset($widget_paths[$page_id])) {
+        $rtn .= '<script async class="snapppt-widget" src="' .
+            esc_url('https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/' . $widget_paths[$page_id]) .
+            '"></script>';
+    }
+
+    return ob_get_clean();
+}
+add_shortcode('post_box_hero', 'post_box_hero');
+
+
 function giveaway_list_swiper($attr)
 {
 
@@ -512,7 +590,7 @@ function giveaway_list_swiper($attr)
     ));
     $wp_unique_id = wp_unique_id();
 
-?>
+    ?>
 
     <div class="giveaways-carousel trb-px ">
         <div class="giveaways-carousel-inner">

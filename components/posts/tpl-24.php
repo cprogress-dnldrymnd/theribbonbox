@@ -1,58 +1,11 @@
 <?php
+//revamp section deprecated
 
 $post_id = $post['ID'];
 $cat = get_top_level_term_by_post_id($post_id, 'category');
 $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
 $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
 ?>
-<style>
-    .post-hero {
-        margin-top: 54px;
-    }
-
-    .post-hero-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .blog-tpl-24 {
-        display: none !important;
-    }
-
-    .post-hero {
-        margin-bottom: 50px;
-    }
-
-    .post-image {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .post-image img {
-        transition: 500ms;
-    }
-
-    .post-image img:hover {
-        transform: scale(1.1);
-    }
-
-    @media(min-width: 992px) {
-        .post-hero-content {
-            min-height: calc(100vh - 97.75);
-        }
-    }
-
-    @media(min-width: 1200px) {
-        .post-hero-content {
-            min-height: calc(100vh - 116px);
-        }
-    }
-
-    .post-title:hover {
-        text-decoration: underline;
-    }
-</style>
 <div class="post-hero-outer trb-px">
     <div class="post-hero" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
         <div class="container-fluid g-0 p-0">

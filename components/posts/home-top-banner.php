@@ -1,4 +1,7 @@
 <?php
+
+//revamp section deprecated
+
 $rtn .= '
 <div class="blog-tpl-2 blog-top-ban format-' . $format . ' incount-' . $in_count . ' post-type-' . $this_post_type . ' home banner">
     <div class="blog-l-img">
