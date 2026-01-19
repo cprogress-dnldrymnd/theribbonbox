@@ -426,7 +426,8 @@ function display_home_section()
                     <h2><?= $home_section_heading ?></h2>
                     <div class="desc">
                         <?= wpautop($home_section_description) ?>
-                        <?php if ($home_section_discover_links) { ?>
+                    </div>
+                      <?php if ($home_section_discover_links) { ?>
                             <div class="discover-links-outer">
                                 <h3>Discover</h3>
                                 <div class="discovery-links">
@@ -447,7 +448,6 @@ function display_home_section()
                             </div>
 
                         <?php } ?>
-                    </div>
                 </div>
                 <div class="col-lg-7">
                     <?= wp_get_attachment_image($home_section_image, 'large') ?>
