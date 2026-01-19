@@ -432,11 +432,11 @@ function display_home_section()
 
                                     <?php
                                     $page_category = get_field('page_category', $term->taxonomy . '_' . $term->term_id);
+                                    $category_colour = get_field('category_colour', $term->taxonomy . '_' . $term->term_id);
+                                    $category_text_color = get_field('category_text_color', $term->taxonomy . '_' . $term->term_id);
                                     $page_link = get_the_permalink($page_category[0]);
                                     ?>
-                                    <pre>
-                                        <?php var_dump($page_category) ?>
-                                    </pre>
+                             
                                     <a href="<?= $page_link ?>">
                                         <?= $term->name ?>
                                     </a>
