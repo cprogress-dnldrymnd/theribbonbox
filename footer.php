@@ -8,8 +8,10 @@ global $theme_logo;
       <div class="row g-3">
         <div class="col-lg-6 col-md-8">
           <div class="left-footer">
-            <h2>Become an Insider</h2>
-            <p>Our weekly newsletter of tailored expert advice, tips and giveaways - straight to your inbox.</p>
+            <h2>Become an insider</h2>
+            <p>
+Sign up to our weekly fertility, wellbeing and pregnancy/early parenting newsletters, and get the best curated expert advice, tips and giveaways straight to your inbox.
+ </p>
             <div class="button-accent-2 mt-4">
               <a href="#" class="newsletter-trigger">SIGN ME UP</a>
             </div>
