@@ -13,7 +13,7 @@ function _homeblog_filter_function($attr)
 
     return $content;
 }
-
+//deprecated
 function _giveaway_list_function($attr)
 {
 
