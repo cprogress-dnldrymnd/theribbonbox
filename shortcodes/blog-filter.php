@@ -2028,7 +2028,7 @@ function blog_filter_function($attr)
                     $post_open_div = true;
                 }
 
-                $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ' format="podcast"]');
+                $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
 
             }
 
