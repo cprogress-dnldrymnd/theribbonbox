@@ -83,6 +83,7 @@ function loadMoreFun(){
         //alert(response);
         loadingItem = false;
         console.log(data);
+        console.log(response);
     });
 
     //});
