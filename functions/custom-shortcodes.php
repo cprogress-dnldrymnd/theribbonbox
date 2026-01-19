@@ -419,6 +419,7 @@ function display_home_section()
     if (current_user_can('administrator')) {
         var_dump($home_section_discover_links);
         echo 'test';
+        echo 'test2';
     }
 
 ?>
