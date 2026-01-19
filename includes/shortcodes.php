@@ -948,6 +948,9 @@ function careers_form()
                 </div>
             </div>
             <?= do_shortcode('[wpforms id="47389" title="false"]') ?>
+            <div class="offcanvas-body-content">
+                <p>we aim to review applications as quickly as possible.</p>
+            </div>
         </div>
     </div>
 
