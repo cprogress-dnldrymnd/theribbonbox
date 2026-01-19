@@ -818,9 +818,9 @@ function become_insider()
 ?>
     <div class="become-insider">
         <div class="become-insider-inner trb-px mw-large">
-            <div class="row g-5 justify-content-between align-items-center">
+            <div class="row g-3 g-lg-5 justify-content-between align-items-center">
                 <div class="col-auto">
-                    <div class="row g-5 justify-content-between align-items-center">
+                    <div class="row g-3 g-lg-5 justify-content-between align-items-center">
                         <div class="col-auto">
                             <h3>Become an <i>Insider</i></h3>
 
