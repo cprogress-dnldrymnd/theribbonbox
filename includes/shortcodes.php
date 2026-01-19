@@ -994,3 +994,150 @@ function careers_form()
 <?php
 }
 add_action('wp_footer', 'careers_form');
+
+function teams_carousel() {
+
+    // 2. Custom CSS for the layout to match the screenshot
+    $output .= '
+    <style>
+        .team-slider-container {
+            width: 100%;
+            padding: 40px 0;
+            position: relative;
+        }
+        .swiper-slide {
+            height: auto;
+        }
+        /* Card Design */
+        .team-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .team-image {
+            width: 100%;
+            aspect-ratio: 1 / 1.1; /* Slight vertical rectangle based on screenshot */
+            object-fit: cover;
+            display: block;
+        }
+        .team-info {
+            background-color: #4A2C39; /* The Maroon color from the screenshot */
+            color: #ffffff;
+            padding: 20px;
+            text-align: left;
+            flex-grow: 1;
+        }
+        .team-name {
+            font-family: "Georgia", "Times New Roman", serif; /* Serif font */
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0 0 5px 0;
+            line-height: 1.2;
+        }
+        .team-position {
+            font-family: "Helvetica", "Arial", sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+            margin: 0;
+            font-weight: 400;
+        }
+        /* Pagination Dots */
+        .swiper-pagination-bullet {
+            background: #4A2C39;
+            opacity: 0.4;
+        }
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #4A2C39;
+        }
+        .swiper-pagination {
+            position: relative !important;
+            margin-top: 20px;
+            bottom: 0 !important;
+        }
+    </style>';
+
+    // 3. The Query
+    $args = array(
+        'post_type'      => 'team',
+        'posts_per_page' => -1, // Get all team members
+        'orderby'        => 'date',
+        'order'          => 'ASC',
+    );
+    
+    $team_query = new WP_Query($args);
+
+    if ($team_query->have_posts()) :
+        
+        $output .= '<div class="team-slider-container">';
+        $output .= '<div class="swiper myTeamSwiper">';
+        $output .= '<div class="swiper-wrapper">';
+
+        while ($team_query->have_posts()) : $team_query->the_post();
+            
+            // Get Data
+            $image = get_the_post_thumbnail_url(get_the_ID(), 'large'); 
+            $name = get_the_title();
+            $position = get_post_meta(get_the_ID(), 'position', true);
+            
+            // Fallback image if none exists
+            if(!$image) { $image = 'https://via.placeholder.com/400x450'; }
+
+            // Slide HTML
+            $output .= '<div class="swiper-slide">';
+            $output .= '  <div class="team-card">';
+            $output .= '    <img src="' . esc_url($image) . '" alt="' . esc_attr($name) . '" class="team-image">';
+            $output .= '    <div class="team-info">';
+            $output .= '      <h3 class="team-name">' . esc_html($name) . '</h3>';
+            $output .= '      <p class="team-position">' . esc_html($position) . '</p>';
+            $output .= '    </div>';
+            $output .= '  </div>';
+            $output .= '</div>';
+
+        endwhile;
+        wp_reset_postdata();
+
+        $output .= '</div>'; // End wrapper
+        $output .= '<div class="swiper-pagination"></div>'; // Dots
+        $output .= '</div>'; // End swiper
+        $output .= '</div>'; // End container
+
+        // 4. Initialize Swiper Script
+        $output .= '
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var swiper = new Swiper(".myTeamSwiper", {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    loop: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        },
+                        1024: {
+                            slidesPerView: 4, // 4 slides on desktop as requested
+                            spaceBetween: 20,
+                        },
+                    }
+                });
+            });
+        </script>';
+
+    else:
+        $output .= '<p>No team members found.</p>';
+    endif;
+
+    return $output;
+}
+add_shortcode('teams_carousel', 'teams_carousel');
