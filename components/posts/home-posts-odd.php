@@ -1,4 +1,6 @@
 <?php
+//revamp section deprecated
+
 $rtn .= '
 <div class="blog-tpl-46 blog-top-1 format-' . $format . ' incount-' . $in_count . ' post-type-' . $this_post_type . '">
     <div class="blog-l-text-out">

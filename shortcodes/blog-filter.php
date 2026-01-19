@@ -2029,7 +2029,6 @@ function blog_filter_function($attr)
                 }
 
                 $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
-
             }
 
             if ($format == "normal-3") {
@@ -2076,20 +2075,7 @@ function blog_filter_function($attr)
                     $post_open_div = true;
                 }
 
-                if ($cnt % 2 == 0) {
-                    //even
-                    $style = str_replace('style="', 'style="' . $addBorder, $style);
-                    include get_template_directory() . '/components/posts/home-small-post-even.php';
-                } else {
-
-                    $blkBg = "";
-                    if (($in_count % 3) == 0) {
-                        $blkBg = " style='background:#000;'";
-                    }
-
-                    $style = str_replace('style="', 'style="' . $addBorder, $style);
-                    include get_template_directory() . '/components/posts/home-small-post-odd.php';
-                }
+                $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
             }
 
             if ($format == "video") {
