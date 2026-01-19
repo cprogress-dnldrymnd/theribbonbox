@@ -1012,7 +1012,12 @@ function blog_filter_function($attr)
 
             if ($format == "home-banner") {
 
-                $rtn .= do_shortcode('[post_box_hero count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
+                if ($cnt <= 0) {
+                    echo 'No posts found for ' . $format;
+                }
+                if ($cnt == 1) {
+                    $rtn .= do_shortcode('[post_box_hero count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
+                }
             }
             if ($format == "post-page" && !empty($id_list)) {
 
