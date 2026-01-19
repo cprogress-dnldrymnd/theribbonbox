@@ -964,6 +964,7 @@ function careers_form()
                     var button = event.relatedTarget;
                     // Extract info from data-id
                     var postId = button.getAttribute('data-id');
+                    var jobTitle = button.getAttribute('data-title');
                     // Find the hidden content div
                     var contentSource = document.getElementById('career-content-' + postId);
                     var modalBody = careerOffcanvas.querySelector('.offcanvas-body-content');
@@ -973,6 +974,18 @@ function careers_form()
                     } else {
                         modalBody.innerHTML = 'Content not found.';
                     }
+
+                    var hiddenField = document.getElementById('wpforms-47389-field_22');
+
+                    if (hiddenField) {
+                        hiddenField.value = jobTitle;
+                        // Trigger a change event in case WPForms relies on listeners
+                        hiddenField.dispatchEvent(new Event('change'));
+                    } else {
+                        console.warn('WPForms Hidden field not found. Check form ID.');
+                    }
+
+
                 });
             }
         });
