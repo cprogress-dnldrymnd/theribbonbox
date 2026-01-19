@@ -416,10 +416,6 @@ function display_home_section()
     $home_section_heading = get_field('home_section_heading', $theme_option_page);
     $home_section_description = get_field('home_section_description', $theme_option_page);
     $home_section_discover_links = get_field('home_section_discover_links', $theme_option_page);
-    if (current_user_can('administrator')) {
-        var_dump($home_section_discover_links);
-    }
-
 ?>
 
     <div class="home-section-v2 bg-black md-padding">
@@ -432,7 +428,18 @@ function display_home_section()
                         <?= wpautop($home_section_description) ?>
                         <?php if ($home_section_discover_links) { ?>
                             <div class="discovery-links">
+                                <?php foreach ($home_section_discover_links as $term) { ?>
 
+                                    <?php
+                                    $page_category = get_field('page_category', $term->taxonomy . '_' . $term->term_id);
+                                    ?>
+                                    <pre>
+                                        <?php var_dump($page_category) ?>
+                                    </pre>
+                                    <a href="">
+                                        <?= $term->name ?>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                     </div>
