@@ -876,7 +876,7 @@ function careers()
                 $details_3   = get_field('details_3', $post_id);
             ?>
 
-                <div class="career-row py-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3"
+                <div class="career-row flex-wrap py-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3"
                     data-bs-toggle="offcanvas"
                     data-bs-target="#careerOffcanvas"
                     data-id="<?php echo $post_id; ?>" data-title="<?php echo esc_attr($title); ?>">
