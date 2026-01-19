@@ -177,7 +177,7 @@ if (!is_bbpress() && !is_buddypress()) {
                 <?php /*include 'js/index-load-more.js'; */ ?>
             </script>
             <script src="<?= get_template_directory_uri() ?>/js/slick.js"></script>
-            <script src="<?= get_template_directory_uri() ?>/js/index-load-more.js"></script>
+            <script src="<?= get_template_directory_uri() ?>/js/index-load--more.js"></script>
 
         <?php
             $post_type = get_post_type(get_the_ID());
