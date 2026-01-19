@@ -878,7 +878,7 @@ function careers()
                 <div class="career-row py-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3"
                     data-bs-toggle="offcanvas"
                     data-bs-target="#careerOffcanvas"
-                    data-id="<?php echo $post_id; ?>">
+                    data-id="<?php echo $post_id; ?>" data-title="<?php echo esc_attr($title); ?>">
 
                     <div class="col-auto">
                         <h3 class="career-title h3 mb-0"><?php the_title(); ?></h3>
@@ -957,20 +957,33 @@ function careers_form()
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var careerOffcanvas = document.getElementById('careerOffcanvas');
+
             if (careerOffcanvas) {
                 careerOffcanvas.addEventListener('show.bs.offcanvas', function(event) {
-                    // Button that triggered the offcanvas
                     var button = event.relatedTarget;
-                    // Extract info from data-id
-                    var postId = button.getAttribute('data-id');
-                    // Find the hidden content div
-                    var contentSource = document.getElementById('career-content-' + postId);
-                    var modalBody = careerOffcanvas.querySelector('.offcanvas-body-content');
 
-                    if (contentSource) {
-                        modalBody.innerHTML = contentSource.innerHTML;
+                    // 1. Get Data
+                    var postId = button.getAttribute('data-id');
+                    var jobTitle = button.getAttribute('data-title');
+
+                    // 2. Inject Content into the top part of offcanvas
+                    var contentSource = document.getElementById('career-content-' + postId);
+                    var modalBodyContent = document.getElementById('careerOffcanvasBodyContent');
+
+                    if (contentSource && modalBodyContent) {
+                        modalBodyContent.innerHTML = contentSource.innerHTML;
+                    }
+
+                    // 3. Populate Hidden WPForms Field
+                    // Target ID: wpforms-47389-field_22
+                    var hiddenField = document.getElementById('wpforms-47389-field_22');
+
+                    if (hiddenField) {
+                        hiddenField.value = jobTitle;
+                        // Trigger a change event in case WPForms relies on listeners
+                        hiddenField.dispatchEvent(new Event('change'));
                     } else {
-                        modalBody.innerHTML = 'Content not found.';
+                        console.warn('WPForms Hidden field not found. Check form ID.');
                     }
                 });
             }
