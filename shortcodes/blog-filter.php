@@ -1769,7 +1769,6 @@ function blog_filter_function($attr)
                                 $rtn .= '<div class="trb-px">';
                                 $rtn .= do_shortcode('[become_insider]');
                                 $rtn .= '</div>';
-
                                 $rtn .= '<div class="blogs-loop-inner trb-row md-padding mw-large trb-px">';
                             } else if ($in_count == 10) {
                                 if ($post_open_div) {
