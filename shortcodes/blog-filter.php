@@ -1586,51 +1586,8 @@ function blog_filter_function($attr)
                     </div>';
                 } else {
 
-                    if (
-                        $cnt == 1
-                        && (! isset($attr["post_type"])
-                            || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts"))
-                        && $curtotal == 0
-                    ) {
-
-                        if (!has_post_thumbnail($post['ID'])) {
-                            $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
-                        } else {
-
-                            if (!empty(get_field("post_large_image", $post['ID']))) {
-                                $style = 'style="background:url(';
-                                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
-                                $iUrl = get_field("post_large_image", $post['ID']);
-                                $style .= $iUrl;
-                                $style .= '); background-size:cover; background-position:center;"';
-                            } else {
-                                $style = 'style="background:url(';
-                                //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
-                                $iUrl = str_replace("https://theribbonbox.viltac.com/", "https://www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                                $style .= $iUrl;
-                                $style .= '); background-size:cover; background-position:center;"';
-                            }
-                        }
-
-                        $img_url = "";
-                        if ($post_type == "expert_profiles" || $post_type == "videos" || $post_type == "podcasts" || $post_type == "videos/podcasts") {
-                            if (!empty(get_field("partner_inner_banner", $post['ID']))) {
-
-                                $image = get_field("partner_inner_banner", $post['ID']);
-                                $size = 'large';
-                                $img_url = $image['url'];
-
-                                $style = 'style="background:url(';
-                                $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", $img_url);
-                                $style .= $iUrl;
-                                $style .= '); background-size:cover; background-position:center;"';;
-                            }
-                        }
-                        
+                    if ($cnt == 1 && (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts")) && $curtotal == 0) {
                         $rtn .= do_shortcode('[post_box_hero count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
-
-
-                        
                     } else if (!empty($pod_layout) && $cnt == 1 && $curtotal == 0) {
                         if (!has_post_thumbnail($post['ID'])) {
                             $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
@@ -1898,7 +1855,6 @@ function blog_filter_function($attr)
                                         }
                                     }
                                 }
-                           
                             }
                         } else {
 
