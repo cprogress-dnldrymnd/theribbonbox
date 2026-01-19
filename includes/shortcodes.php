@@ -844,3 +844,150 @@ function become_insider()
     return ob_get_clean();
 }
 add_shortcode('become_insider', 'become_insider');
+
+
+function careers() {
+    ob_start();
+
+    // 1. Query the 'career' post type
+    $args = array(
+        'post_type'      => 'career',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+    );
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) : ?>
+        
+        <style>
+            .career-row {
+                transition: background-color 0.2s ease;
+                cursor: pointer;
+            }
+            .career-row:hover {
+                background-color: rgba(0,0,0,0.03); /* Subtle hover effect */
+            }
+            .career-title {
+                font-family: 'Times New Roman', serif; /* Matching the serif font in image */
+                color: #3e2b2f; /* Dark brownish text color from image */
+            }
+            .career-meta {
+                font-size: 0.75rem;
+                letter-spacing: 1px;
+                color: #3e2b2f;
+            }
+            .career-arrow {
+                transition: transform 0.2s ease;
+            }
+            .career-row:hover .career-arrow {
+                transform: translateX(5px);
+            }
+            /* Bullet separator style */
+            .meta-item:not(:last-child):after {
+                content: "•";
+                margin: 0 8px;
+                color: #fca311; /* Accent color for the dot */
+            }
+        </style>
+
+        <div class="container-fluid p-0">
+            <?php while ($query->have_posts()) : $query->the_post(); 
+                // FETCH DATA
+                // Replace these get_field() calls with your actual ACF field names or taxonomies
+                // Example: $location = get_field('location') ?: 'United Kingdom';
+                $location = 'United Kingdom'; 
+                $type     = 'Full-Time';
+                $remote   = 'Remote';
+                $post_id  = get_the_ID();
+            ?>
+
+                <div class="career-row py-4 border-bottom border-secondary d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3"
+                     data-bs-toggle="offcanvas" 
+                     data-bs-target="#careerOffcanvas"
+                     data-id="<?php echo $post_id; ?>">
+                    
+                    <div class="col-md-5">
+                        <h2 class="career-title h3 mb-0"><?php the_title(); ?></h2>
+                    </div>
+
+                    <div class="col-md-5 d-flex align-items-center">
+                        <div class="career-meta text-uppercase d-flex flex-wrap">
+                            <span class="meta-item"><?php echo esc_html($remote); ?></span>
+                            <span class="meta-item"><?php echo esc_html($type); ?></span>
+                            <span class="meta-item"><?php echo esc_html($location); ?></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 text-end d-none d-md-block">
+                        <span class="career-arrow fs-4 text-dark">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <div id="career-content-<?php echo $post_id; ?>" class="d-none">
+                    <div class="job-description-wrapper">
+                         <h3 class="mb-4"><?php the_title(); ?></h3>
+                        <div class="mb-3 text-muted">
+                            <?php echo $remote . ' | ' . $type . ' | ' . $location; ?>
+                        </div>
+                        <hr>
+                        <div class="job-body">
+                            <?php the_content(); ?>
+                        </div>
+                        <a href="<?php echo get_permalink(); ?>" class="btn btn-dark mt-4">Apply Now</a>
+                    </div>
+                </div>
+
+            <?php endwhile; wp_reset_postdata(); ?>
+        </div>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="careerOffcanvas" aria-labelledby="careerOffcanvasLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="careerOffcanvasLabel">Job Details</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body" id="careerOffcanvasBody">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="spinner-border text-secondary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var careerOffcanvas = document.getElementById('careerOffcanvas');
+                
+                careerOffcanvas.addEventListener('show.bs.offcanvas', function (event) {
+                    // Button that triggered the offcanvas
+                    var button = event.relatedTarget;
+                    
+                    // Extract info from data-* attributes
+                    var postId = button.getAttribute('data-id');
+                    
+                    // Find the hidden content div for this specific post
+                    var contentSource = document.getElementById('career-content-' + postId);
+                    
+                    // Update the offcanvas body
+                    var modalBody = careerOffcanvas.querySelector('.offcanvas-body');
+                    
+                    if(contentSource) {
+                        modalBody.innerHTML = contentSource.innerHTML;
+                    } else {
+                        modalBody.innerHTML = 'Content not found.';
+                    }
+                });
+            });
+        </script>
+
+    <?php else : ?>
+        <p>No open positions found.</p>
+    <?php endif;
+
+    return ob_get_clean();
+}
+add_shortcode('careers', 'careers');
