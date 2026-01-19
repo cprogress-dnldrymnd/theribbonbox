@@ -420,6 +420,7 @@ function display_home_section()
         var_dump($home_section_discover_links);
         echo 'test';
         echo 'test2';
+        echo 'test3';
     }
 
 ?>
