@@ -430,6 +430,11 @@ function display_home_section()
                     <h2><?= $home_section_heading ?></h2>
                     <div class="desc">
                         <?= wpautop($home_section_description) ?>
+                        <?php if ($home_section_discover_links) { ?>
+                            <div class="discovery-links">
+
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="col-lg-7">
