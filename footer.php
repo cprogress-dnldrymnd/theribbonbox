@@ -129,12 +129,12 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
     $height = jQuery('#header-main-site').outerHeight();
     jQuery('body').css('--header-height', $height + 'px');
 
-    jQuery('.newsletter-trigger').click(function(e) {
+    jQuery(document).on('click', '.newsletter-trigger', function(e) {
+      e.preventDefault(); // Good practice to put this first to prevent default jump immediately
       jQuery('#subscribe-outer').show();
       jQuery('button[data-bs-target="#offCanvasMenu"]').click();
-      e.preventDefault();
     });
-
+    
     jQuery('.subscribe-outer-close').click(function(e) {
       jQuery('#subscribe-outer').hide();
       e.preventDefault();
