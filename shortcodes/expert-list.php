@@ -118,7 +118,7 @@ function expert_list_function($attr)
 
 
     if (!empty($attr["title"])) {
-        $rtn .= '<div class="expert-outer">';
+        $rtn .= '<div class="expert-outer trb-px mw-large">';
         $rtn .= '<div class="experts-naviagtion">';
         $rtn .= '<h2>' . $title . '</h2>';
         $rtn .= swiper_navigation('experts');
