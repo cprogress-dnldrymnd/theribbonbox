@@ -900,7 +900,7 @@ function careers()
                 <hr class="career-divider">
 
                 <div id="career-content-<?php echo $post_id; ?>" class="d-none">
-                    <div class="job-description-wrapper p-3">
+                    <div class="job-description-wrapper ">
 
                         <h3 class="career-title mb-2"><?php the_title(); ?></h3>
 
@@ -942,7 +942,7 @@ function careers_form()
             </button>
         </div>
         <div class="offcanvas-body" id="careerOffcanvasBody">
-            <div class="d-flex justify-content-center align-items-center offcanvas-body-content">
+            <div class="offcanvas-body-content">
                 <div class="spinner-border text-secondary" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
