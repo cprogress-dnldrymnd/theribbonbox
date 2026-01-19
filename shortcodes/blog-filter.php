@@ -2039,7 +2039,7 @@ function blog_filter_function($attr)
                 }
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-large trb-px blogs-loop-inner-v2">';
+                    $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-large trb-px blogs-loop-inner-23 blogs-loop-inner-v2">';
                     $post_open_div = true;
                 }
 
