@@ -998,7 +998,7 @@ add_action('wp_footer', 'careers_form');
 function teams_carousel() {
 
     // 2. Custom CSS for the layout to match the screenshot
-    $output .= '
+    $output = '
     <style>
         .team-slider-container {
             width: 100%;
