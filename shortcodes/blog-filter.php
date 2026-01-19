@@ -1012,29 +1012,7 @@ function blog_filter_function($attr)
 
             if ($format == "home-banner") {
 
-                if ($cnt <= 0) {
-                    echo 'No posts found for ' . $format;
-                }
-                if ($cnt == 1) {
-                    if (!has_post_thumbnail($post['ID'])) {
-                        $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
-                    } else {
-                        if (!empty(get_field("post_large_image", $post['ID']))) {
-                            $style = 'style="background:url(';
-                            $iUrl = get_field("post_large_image", $post['ID']);
-                            //echo($iUrl);
-                            $style .= $iUrl;
-                            $style .= '); background-size:cover; background-position:center;color:blue;"';
-                        } else {
-                            $style = 'style="background:url(';
-                            $iUrl = str_replace("https://theribbonbox.viltac.com/", "https://www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $small_image));
-                            $style .= $iUrl;
-                            $style .= '); background-size:cover; background-position:center;"';
-                        }
-                    }
-                    //include get_template_directory() . '/components/post-items/home-banner.php';
-                    include get_template_directory() . '/components/posts/home-top-banner.php';
-                }
+                $rtn .= do_shortcode('[post_box_hero count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
             }
             if ($format == "post-page" && !empty($id_list)) {
 
@@ -3369,7 +3347,76 @@ function blog_filter_function($attr)
 
 
             if ($format == "home-banner") {
-                $rtn .= do_shortcode('[post_box_hero count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
+                //html comments remove by dd
+                //echo '<!-- if ($format == "home-banner") -->';
+
+                //html comments remove by dd
+                //echo "<!-- Count: $cnt -->";
+                if ($cnt <= 0) {
+                    echo 'No posts found for ' . $format;
+                }
+                if ($cnt == 1) {
+                    //html comments remove by dd
+                    //echo '<!-- if ($cnt == 1) -->';
+
+                    if (!has_post_thumbnail($post['ID'])) {
+                        $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
+                    } else {
+                        if (!empty(get_field("post_large_image", $post['ID']))) {
+                            $style = 'style="background:url(';
+                            //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
+                            $iUrl = get_field("post_large_image", $post['ID']);
+                            //echo($iUrl);
+                            $style .= $iUrl;
+                            $style .= '); background-size:cover; background-position:center;color:blue;"';
+                        } else {
+                            $style = 'style="background:url(';
+                            //$style .= get_the_post_thumbnail_url($post['ID'], 'thumbnail');
+                            $iUrl = str_replace("https://theribbonbox.viltac.com/", "https://www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], $small_image));
+                            $style .= $iUrl;
+                            $style .= '); background-size:cover; background-position:center;"';
+                        }
+                    }
+                    //include get_template_directory() . '/components/post-items/home-banner.php';
+                    include get_template_directory() . '/components/posts/home-top-banner.php';
+                } else if ($cnt == 2) {
+                    //html comments remove by dd
+                    //echo '<!-- else if ($cnt == 2) -->';
+                    //$style = str_replace('style="', 'style="'.$addBorder, $style);
+                    // $rtn .= '<div class="blog-top-1">
+                    //<div class="blog-l-text-out">
+                    //<div class="blog-l-text">
+                    //<h3>'.$currentcatname.'</h3>
+                    //<h2>'.$post['post_title'].'</h2>
+                    //<h4>'.get_the_date('j M Y', $post["ID"]).'</h4>
+                    //<div class="blog-btns">
+                    //<a href="'.get_permalink($post['ID']).'">'.$more_t_text.'</a>
+                    //</div>
+                    //</div>
+                    //</div>
+                    //<div class="blog-l-img-out">
+                    //<div class="blog-l-img" '.$style.'><img src="/wp-content/themes/lighttheme/images/a_squ_trans.png">
+                    //</div>
+                    //</div>
+                    //</div>';
+                } else if ($cnt == 3) {
+                    // $style = str_replace('style="', 'style="'.$addBorder, $style);
+                    // $rtn .= '<div class="blog-top-2">
+                    //<div class="blog-l-img" '.$style.'><img src="/wp-content/themes/lighttheme/images/a_squ_trans.png">
+                    //</div>
+                    //<div class="blog-l-text-out">
+                    //<div class="blog-l-text">
+                    //<h3>'.$currentcatname.'</h3>
+                    //<h2>'.$post['post_title'].'</h2>
+                    //<h4>'.get_the_date('j M Y', $post["ID"]).'</h4>
+                    //<div class="blog-btns">
+                    //<a href="'.get_permalink($post['ID']).'">'.$more_t_text.'</a>
+                    //</div>
+                    //</div>
+                    //</div>
+                    //</div>';
+                } else {
+                }
             }
             if ($format == "post-page" && !empty($id_list)) {
                 //html comments remove by dd
