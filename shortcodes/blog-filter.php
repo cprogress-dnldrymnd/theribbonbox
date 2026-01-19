@@ -1810,7 +1810,7 @@ function blog_filter_function($attr)
 
                                     $rtn .= '<div class="blogs-loop-watch-listen">';
                                     $rtn .= '<div class="mw-large trb-px">';
-                                    $rtn .= '<h2 class="hp-h2">Watch &amp; Listen...</h2>';
+                                    $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
                                     $rtn .= '</div>';
 
                                     $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
