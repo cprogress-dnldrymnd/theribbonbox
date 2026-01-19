@@ -987,9 +987,9 @@ function forum_bottom_sections()
     <section class="forum-giveaways lg-padding bg-white">
         <?php
         if (current_user_can('administrator')) {
-            echo do_shortcode('[_giveaway_list]');
-        } else {
             echo do_shortcode('[giveaway_list_swiper]');
+        } else {
+            echo do_shortcode('[_giveaway_list]');
         }
         ?>
 
