@@ -860,61 +860,7 @@ function careers()
 
     if ($query->have_posts()) : ?>
 
-        <style>
-            .career-row {
-                transition: background-color 0.2s ease;
-                cursor: pointer;
-                /* Matches the light gray background from your image */
-                background-color: transparent;
-            }
-
-            .career-row:hover {
-                background-color: rgba(0, 0, 0, 0.03);
-            }
-
-            .career-title {
-                font-family: 'Times New Roman', serif;
-                color: #3e2b2f;
-                /* Dark brownish text */
-            }
-
-            .career-meta {
-                font-size: 0.70rem;
-                font-weight: 600;
-                letter-spacing: 1px;
-                color: #3e2b2f;
-            }
-
-            .career-arrow {
-                transition: transform 0.2s ease;
-            }
-
-            .career-row:hover .career-arrow {
-                transform: translateX(5px);
-            }
-
-            /* The orange dot separator */
-            .meta-item:not(:last-child):after {
-                content: "•";
-                margin: 0 10px;
-                color: #fca311;
-                font-size: 1.2em;
-                vertical-align: middle;
-            }
-
-            /* Container styling to match image bg (optional) */
-            .careers-wrapper {
-                background-color: #e5e5e5;
-                /* Light gray background */
-                padding: 20px;
-            }
-
-            hr.career-divider {
-                border-color: #3e2b2f;
-                opacity: 0.2;
-                margin: 0;
-            }
-        </style>
+  
 
         <div class="careers-wrapper">
             <?php while ($query->have_posts()) : $query->the_post();
@@ -958,7 +904,7 @@ function careers()
                 <div id="career-content-<?php echo $post_id; ?>" class="d-none">
                     <div class="job-description-wrapper p-3">
                         <h2 class="career-title mb-2"><?php the_title(); ?></h2>
-                        
+
                         <div class="career-meta text-uppercase d-flex align-items-center flex-wrap justify-content-md-end">
                             <?php if ($details_1): ?><span class="meta-item"><?php echo esc_html($details_1); ?></span><?php endif; ?>
                             <?php if ($details_2): ?><span class="meta-item"><?php echo esc_html($details_2); ?></span><?php endif; ?>
