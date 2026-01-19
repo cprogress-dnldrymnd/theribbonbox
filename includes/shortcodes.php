@@ -903,7 +903,7 @@ function careers()
                     <div class="job-description-wrapper p-3">
                         <h3 class="career-title mb-2"><?php the_title(); ?></h3>
 
-                        <div class="career-meta text-uppercase d-flex align-items-center flex-wrap justify-content-md-end">
+                        <div class="career-meta text-uppercase d-flex align-items-center flex-wrap ">
                             <?php if ($details_1): ?><span class="meta-item"><?php echo esc_html($details_1); ?></span><?php endif; ?>
                             <?php if ($details_2): ?><span class="meta-item"><?php echo esc_html($details_2); ?></span><?php endif; ?>
                             <?php if ($details_3): ?><span class="meta-item"><?php echo esc_html($details_3); ?></span><?php endif; ?>
