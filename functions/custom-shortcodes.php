@@ -420,7 +420,7 @@ function display_home_section()
 
     <div class="home-section-v2 bg-black md-padding">
         <div class="container">
-            <div class="row">
+            <div class="row g-5">
 
                 <div class="col-lg-5">
                     <h2><?= $home_section_heading ?></h2>
