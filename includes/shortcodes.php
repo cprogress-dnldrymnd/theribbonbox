@@ -722,7 +722,7 @@ function _giveaway_list_function($attr)
 {
 
     if (current_user_can('administrator')) {
-        return do_shortcode('[_giveaway_list_old]');
+        return do_shortcode('[giveaway_list_swiper]');
     } else {
         return do_shortcode('[_giveaway_list_old]');
     }
