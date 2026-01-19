@@ -592,6 +592,143 @@ function giveaway_list_swiper($attr)
 }
 add_shortcode('giveaway_list_swiper', 'giveaway_list_swiper');
 
+function _giveaway_list_old_function($attr)
+{
+
+    $recent_posts = wp_get_recent_posts(array(
+        'post_type' => 'giveaway-items',
+        'numberposts' => 3, // Number of recent posts thumbnails to display
+        'orderby' => 'date',
+        'order' => 'desc',
+        'post_status' => 'publish', // Show only the published posts,
+        'has_password' => false,
+        'meta_query' => array(
+            array(
+                'key' => 'select_competition_date', // Replace with your custom field key.
+                'value' => date('Y-m-d'), // Today's date.
+                'compare' => '>=', // Greater than or equal to today.
+                'type' => 'DATE' // Important: Specify the meta_value type as DATE.
+            )
+        )
+    ));
+
+
+    $rtn = "";
+
+    $count = count($recent_posts);
+    /*
+    if ($count > 1) {
+        $class = 'bg-cream';
+    } else {
+        $class = 'bg-white';
+    }*/
+    $class = 'bg-white';
+
+    $rtn .= '<div class="expert-outer giveaways-homepage ' . $class . '"><h2>Giveaways</h2>';
+    $rtn .= '<div class="blogs-loop-carousel-holder">';
+    $rtn .= '<div class="blogs-loop-carousel-inner">';
+    $rtn .= '<div class="blogs-loop blogs-loop-v2 blogs-loop-carousel">';
+    /*
+    if ($count > 1) {
+        $rtn .= '<div class="blogs-loop-inner">';
+    }*/
+    foreach ($recent_posts as $post) :
+        $select_competition_date = get_field("select_competition_date", $post['ID']);
+        $date = $select_competition_date;
+        $time = strtotime($date);
+        $displayformatB = date('j M Y', $time);
+        $categories = get_the_category($post['ID']);
+        $currentcat = $categories[0]->cat_ID;
+        $currentcatname = $categories[0]->cat_name;
+        $cat_p = get_ancestors($categories[0]->term_id, 'category');
+        $termIdVal = 'term_' . $currentcat;
+
+        if (count($cat_p) > 0) {
+            $termIdVal = 'term_' . $cat_p[0];
+        }
+
+        $bcolour = "#F77D66";
+
+        if (!empty(get_field("category_colour", $termIdVal))) {
+            $bcolour = get_field("category_colour", $termIdVal);
+        }
+
+        $addBorder = 'border-top: 5px solid ' . $bcolour . ';';
+        if (!has_post_thumbnail($post['ID'])) {
+            $style = 'style="background:url(';
+            $iUrl = get_field("post_large_image", $post['ID']);
+            $style .= $iUrl;
+            $style .= '); background-size:cover; background-position:center;  ' . $addBorder . '"';
+        } else {
+            $style = 'style="background:url(';
+            $iUrl = str_replace("https://theribbonbox.viltac.com/", "https://www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID'], 'full'));
+            $style .= $iUrl;
+            $style .= '); background-size:cover; background-position:center;  ' . $addBorder . '"';
+        }
+
+        $post_args = array(
+            'post_id' => $post['ID'],
+            'post_title' => get_the_title($post['ID']),
+            'post_permalink' => get_the_permalink($post['ID']),
+            'date' => $displayformatB,
+            'style' => $style,
+            'addBorder' => $addBorder,
+            'currentcatname' => $currentcatname,
+        );
+        /*
+        if ($count > 1) {
+            $rtn .= blog_post_style_1($post_args);
+        } else {
+            $rtn .= blog_post_style_2($post_args);
+        }*/
+
+        $rtn .= blog_post_style_2($post_args);
+
+    endforeach;
+    /*
+    if ($count > 1) {
+        $rtn .= '</div>';
+    }*/
+    $rtn .= '</div>';
+    $rtn .= '</div>';
+    $rtn .= '</div>';
+
+    wp_reset_query();
+
+
+    $rtn .= '</div>';
+    $rtn .= "<script type='text/javascript'>
+    $(document).ready(function () {
+        if ($('.blogs-loop-carousel').length > 0) {
+            $('.blogs-loop-carousel').slick({
+                centerMode: true,
+                centerPadding: '0px',
+                slidesToShow: 1,
+                autoplay: true,
+                autoplaySpeed: 5000,
+            });
+        }
+    });
+</script>";
+
+    return $rtn;
+}
+add_shortcode('_giveaway_list_old', '_giveaway_list_old_function');
+
+
+
+
+function _giveaway_list_function($attr)
+{
+
+    if (current_user_can('administrator')) {
+        return do_shortcode('[giveaway_list_swiper]');
+    } else {
+        return do_shortcode('[_giveaway_list_old]');
+    }
+}
+add_shortcode('_giveaway_list', '_giveaway_list_function');
+
 function swiper_navigation($class)
 {
     return '<div class="swiper-navigation"> <div class="swiper-button-prev-' . $class . '"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> <div class="swiper-button-next-' . $class . '"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> </div>';

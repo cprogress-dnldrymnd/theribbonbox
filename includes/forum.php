@@ -985,15 +985,7 @@ function forum_bottom_sections()
         </div>
     </section>-->
     <section class="forum-giveaways lg-padding bg-white">
-        <?php
-        if (current_user_can('administrator')) {
-            echo do_shortcode('[giveaway_list_swiper]');
-        } else {
-            echo do_shortcode('[_giveaway_list]');
-        }
-        ?>
-
-
+        <?= do_shortcode('[_giveaway_list]') ?>
     </section>
     <section class="exclusive-articles bg-white lg-padding-bottom  text-center">
         <div class="container">
