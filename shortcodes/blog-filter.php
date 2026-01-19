@@ -1770,8 +1770,11 @@ function blog_filter_function($attr)
                                 $rtn .= do_shortcode('[become_insider]');
                                 $rtn .= '</div>';
 
+                                $rtn .= '<div class="blogs-loop-inner trb-row md-padding mw-large trb-px">';
                             } else if ($in_count == 10) {
-                             
+                                if ($post_open_div) {
+                                    $rtn .= '</div>';
+                                }
 
                                 $rtn .=   do_shortcode('[blog_filter format="video" limit="4" order="rand" categoryid="' . $categoryid . '"]');
 
