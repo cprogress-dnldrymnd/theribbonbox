@@ -840,13 +840,14 @@ function become_insider()
             </div>
         </div>
     </div>
-<?php
+    <?php
     return ob_get_clean();
 }
 add_shortcode('become_insider', 'become_insider');
 
 
-function careers() {
+function careers()
+{
     ob_start();
 
     // 1. Query the 'career' post type
@@ -858,46 +859,56 @@ function careers() {
     $query = new WP_Query($args);
 
     if ($query->have_posts()) : ?>
-        
+
         <style>
             .career-row {
                 transition: background-color 0.2s ease;
                 cursor: pointer;
                 /* Matches the light gray background from your image */
-                background-color: transparent; 
+                background-color: transparent;
             }
+
             .career-row:hover {
-                background-color: rgba(0,0,0,0.03);
+                background-color: rgba(0, 0, 0, 0.03);
             }
+
             .career-title {
                 font-family: 'Times New Roman', serif;
-                color: #3e2b2f; /* Dark brownish text */
+                color: #3e2b2f;
+                /* Dark brownish text */
             }
+
             .career-meta {
                 font-size: 0.70rem;
                 font-weight: 600;
                 letter-spacing: 1px;
                 color: #3e2b2f;
             }
+
             .career-arrow {
                 transition: transform 0.2s ease;
             }
+
             .career-row:hover .career-arrow {
                 transform: translateX(5px);
             }
+
             /* The orange dot separator */
             .meta-item:not(:last-child):after {
                 content: "•";
                 margin: 0 10px;
-                color: #fca311; 
+                color: #fca311;
                 font-size: 1.2em;
                 vertical-align: middle;
             }
+
             /* Container styling to match image bg (optional) */
             .careers-wrapper {
-                background-color: #e5e5e5; /* Light gray background */
+                background-color: #e5e5e5;
+                /* Light gray background */
                 padding: 20px;
             }
+
             hr.career-divider {
                 border-color: #3e2b2f;
                 opacity: 0.2;
@@ -906,7 +917,7 @@ function careers() {
         </style>
 
         <div class="careers-wrapper">
-            <?php while ($query->have_posts()) : $query->the_post(); 
+            <?php while ($query->have_posts()) : $query->the_post();
                 $post_id = get_the_ID();
 
                 // --- UPDATED: FETCH META KEYS ---
@@ -919,39 +930,39 @@ function careers() {
             ?>
 
                 <div class="career-row py-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3"
-                     data-bs-toggle="offcanvas" 
-                     data-bs-target="#careerOffcanvas"
-                     data-id="<?php echo $post_id; ?>">
-                    
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#careerOffcanvas"
+                    data-id="<?php echo $post_id; ?>">
+
                     <div class="col-md-5">
                         <h2 class="career-title h3 mb-0"><?php the_title(); ?></h2>
                     </div>
 
                     <div class="col-md-6 d-flex justify-content-md-end align-items-center">
                         <div class="career-meta text-uppercase d-flex align-items-center flex-wrap justify-content-md-end">
-                            <?php if($details_1): ?><span class="meta-item"><?php echo esc_html($details_1); ?></span><?php endif; ?>
-                            <?php if($details_2): ?><span class="meta-item"><?php echo esc_html($details_2); ?></span><?php endif; ?>
-                            <?php if($details_3): ?><span class="meta-item"><?php echo esc_html($details_3); ?></span><?php endif; ?>
+                            <?php if ($details_1): ?><span class="meta-item"><?php echo esc_html($details_1); ?></span><?php endif; ?>
+                            <?php if ($details_2): ?><span class="meta-item"><?php echo esc_html($details_2); ?></span><?php endif; ?>
+                            <?php if ($details_3): ?><span class="meta-item"><?php echo esc_html($details_3); ?></span><?php endif; ?>
                         </div>
 
                         <span class="career-arrow fs-4 text-dark ms-4 d-none d-md-block">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#3e2b2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#3e2b2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </span>
                     </div>
                 </div>
-                
+
                 <hr class="career-divider">
 
                 <div id="career-content-<?php echo $post_id; ?>" class="d-none">
                     <div class="job-description-wrapper p-3">
                         <h2 class="career-title mb-2"><?php the_title(); ?></h2>
                         <div class="text-muted text-uppercase small mb-4">
-                            <?php 
-                                echo esc_html($details_1) . ' • ' . 
-                                     esc_html($type) . ' • ' . 
-                                     esc_html($location); 
+                            <?php
+                            echo esc_html($details_1) . ' • ' .
+                                esc_html($details_2) . ' • ' .
+                                esc_html($details_3);
                             ?>
                         </div>
                         <div class="job-body">
@@ -961,7 +972,8 @@ function careers() {
                     </div>
                 </div>
 
-            <?php endwhile; wp_reset_postdata(); ?>
+            <?php endwhile;
+            wp_reset_postdata(); ?>
         </div>
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="careerOffcanvas" aria-labelledby="careerOffcanvasLabel">
@@ -979,10 +991,10 @@ function careers() {
         </div>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('DOMContentLoaded', function() {
                 var careerOffcanvas = document.getElementById('careerOffcanvas');
                 if (careerOffcanvas) {
-                    careerOffcanvas.addEventListener('show.bs.offcanvas', function (event) {
+                    careerOffcanvas.addEventListener('show.bs.offcanvas', function(event) {
                         // Button that triggered the offcanvas
                         var button = event.relatedTarget;
                         // Extract info from data-id
@@ -990,8 +1002,8 @@ function careers() {
                         // Find the hidden content div
                         var contentSource = document.getElementById('career-content-' + postId);
                         var modalBody = careerOffcanvas.querySelector('.offcanvas-body');
-                        
-                        if(contentSource) {
+
+                        if (contentSource) {
                             modalBody.innerHTML = contentSource.innerHTML;
                         } else {
                             modalBody.innerHTML = 'Content not found.';
@@ -1003,7 +1015,7 @@ function careers() {
 
     <?php else : ?>
         <p>No open positions found.</p>
-    <?php endif;
+<?php endif;
 
     return ob_get_clean();
 }
