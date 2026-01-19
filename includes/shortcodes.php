@@ -860,7 +860,7 @@ function careers()
 
     if ($query->have_posts()) : ?>
 
-  
+
 
         <div class="careers-wrapper">
             <?php while ($query->have_posts()) : $query->the_post();
@@ -892,7 +892,7 @@ function careers()
                         </div>
 
                         <span class="career-arrow fs-4 text-dark ms-4 d-none d-md-block">
-                          <img src="https://theribbonbox.com/wp-content/uploads/2026/01/Group-41.png">
+                            <img src="https://theribbonbox.com/wp-content/uploads/2026/01/Group-41.png">
                         </span>
                     </div>
                 </div>
@@ -920,47 +920,56 @@ function careers()
             wp_reset_postdata(); ?>
         </div>
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="careerOffcanvas" aria-labelledby="careerOffcanvasLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="careerOffcanvasLabel">Job Details</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body" id="careerOffcanvasBody">
-                <div class="d-flex justify-content-center align-items-center h-100">
-                    <div class="spinner-border text-secondary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var careerOffcanvas = document.getElementById('careerOffcanvas');
-                if (careerOffcanvas) {
-                    careerOffcanvas.addEventListener('show.bs.offcanvas', function(event) {
-                        // Button that triggered the offcanvas
-                        var button = event.relatedTarget;
-                        // Extract info from data-id
-                        var postId = button.getAttribute('data-id');
-                        // Find the hidden content div
-                        var contentSource = document.getElementById('career-content-' + postId);
-                        var modalBody = careerOffcanvas.querySelector('.offcanvas-body');
-
-                        if (contentSource) {
-                            modalBody.innerHTML = contentSource.innerHTML;
-                        } else {
-                            modalBody.innerHTML = 'Content not found.';
-                        }
-                    });
-                }
-            });
-        </script>
 
     <?php else : ?>
         <p>No open positions found.</p>
-<?php endif;
+    <?php endif;
 
     return ob_get_clean();
 }
 add_shortcode('careers', 'careers');
+
+function careers_form()
+{
+    ?>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="careerOffcanvas" aria-labelledby="careerOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="careerOffcanvasLabel">Job Details</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="careerOffcanvasBody">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="spinner-border text-secondary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var careerOffcanvas = document.getElementById('careerOffcanvas');
+            if (careerOffcanvas) {
+                careerOffcanvas.addEventListener('show.bs.offcanvas', function(event) {
+                    // Button that triggered the offcanvas
+                    var button = event.relatedTarget;
+                    // Extract info from data-id
+                    var postId = button.getAttribute('data-id');
+                    // Find the hidden content div
+                    var contentSource = document.getElementById('career-content-' + postId);
+                    var modalBody = careerOffcanvas.querySelector('.offcanvas-body');
+
+                    if (contentSource) {
+                        modalBody.innerHTML = contentSource.innerHTML;
+                    } else {
+                        modalBody.innerHTML = 'Content not found.';
+                    }
+                });
+            }
+        });
+    </script>
+
+<?php
+}
+add_action('wp_footer', 'careers_form');
