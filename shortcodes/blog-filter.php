@@ -2039,29 +2039,11 @@ function blog_filter_function($attr)
                 }
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-large trb-px blogs-loop-inner-23">';
+                    $rtn .= '<div class="blogs-loop-inner trb-row md-padding  mw-large trb-px blogs-loop-inner-v2">';
                     $post_open_div = true;
                 }
 
-                if ($cnt % 2 == 0) {
-                    //even
-                    $style = str_replace('style="', 'style="' . $addBorder, $style);
-                    $style = 'style="background:url(';
-                    $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                    $style .= $iUrl;
-                    $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-
-                    include get_template_directory() . '/components/posts/tpl-47.php';
-                } else {
-
-                    $style = str_replace('style="', 'style="' . $addBorder, $style);
-                    $style = 'style="background:url(';
-                    $iUrl = str_replace("//theribbonbox.viltac.com/", "//www.fertilityhelphub.com/", get_the_post_thumbnail_url($post['ID']));
-                    $style .= $iUrl;
-                    $style .= '); background-size:cover; background-position:center;' . $addBorder . '"';
-
-                    include get_template_directory() . '/components/posts/tpl-48.php';
-                }
+                $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
             }
 
             if ($format == "normal-4") {
