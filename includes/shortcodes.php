@@ -865,6 +865,7 @@ function careers()
         <div class="careers-wrapper">
             <?php while ($query->have_posts()) : $query->the_post();
                 $post_id = get_the_ID();
+                $title = get_the_title();
 
                 // --- UPDATED: FETCH META KEYS ---
                 // details_1 = details_1 status
@@ -949,7 +950,7 @@ function careers_form()
             </div>
             <?= do_shortcode('[wpforms id="47389" title="false"]') ?>
             <div class="offcanvas-body-footer text-center ">
-                <p>We aim to review applications as quickly as possible.</p>
+                <p>we aim to review applications as quickly as possible.</p>
             </div>
         </div>
     </div>
@@ -957,33 +958,20 @@ function careers_form()
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var careerOffcanvas = document.getElementById('careerOffcanvas');
-
             if (careerOffcanvas) {
                 careerOffcanvas.addEventListener('show.bs.offcanvas', function(event) {
+                    // Button that triggered the offcanvas
                     var button = event.relatedTarget;
-
-                    // 1. Get Data
+                    // Extract info from data-id
                     var postId = button.getAttribute('data-id');
-                    var jobTitle = button.getAttribute('data-title');
-
-                    // 2. Inject Content into the top part of offcanvas
+                    // Find the hidden content div
                     var contentSource = document.getElementById('career-content-' + postId);
-                    var modalBodyContent = document.getElementById('careerOffcanvasBodyContent');
+                    var modalBody = careerOffcanvas.querySelector('.offcanvas-body-content');
 
-                    if (contentSource && modalBodyContent) {
-                        modalBodyContent.innerHTML = contentSource.innerHTML;
-                    }
-
-                    // 3. Populate Hidden WPForms Field
-                    // Target ID: wpforms-47389-field_22
-                    var hiddenField = document.getElementById('wpforms-47389-field_22');
-
-                    if (hiddenField) {
-                        hiddenField.value = jobTitle;
-                        // Trigger a change event in case WPForms relies on listeners
-                        hiddenField.dispatchEvent(new Event('change'));
+                    if (contentSource) {
+                        modalBody.innerHTML = contentSource.innerHTML;
                     } else {
-                        console.warn('WPForms Hidden field not found. Check form ID.');
+                        modalBody.innerHTML = 'Content not found.';
                     }
                 });
             }
