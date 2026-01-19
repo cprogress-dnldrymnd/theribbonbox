@@ -881,7 +881,7 @@ function careers()
                     data-id="<?php echo $post_id; ?>">
 
                     <div class="col-auto">
-                        <h2 class="career-title h3 mb-0"><?php the_title(); ?></h2>
+                        <h3 class="career-title h3 mb-0"><?php the_title(); ?></h3>
                     </div>
 
                     <div class="col-auto d-flex justify-content-md-end align-items-center">
@@ -903,7 +903,7 @@ function careers()
 
                 <div id="career-content-<?php echo $post_id; ?>" class="d-none">
                     <div class="job-description-wrapper p-3">
-                        <h2 class="career-title mb-2"><?php the_title(); ?></h2>
+                        <h3 class="career-title mb-2"><?php the_title(); ?></h3>
 
                         <div class="career-meta text-uppercase d-flex align-items-center flex-wrap justify-content-md-end">
                             <?php if ($details_1): ?><span class="meta-item"><?php echo esc_html($details_1); ?></span><?php endif; ?>
