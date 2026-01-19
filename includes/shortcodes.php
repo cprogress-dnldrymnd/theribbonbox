@@ -1042,9 +1042,9 @@ function teams_carousel()
 
         $output .= '</div>'; // End wrapper
         $output .= '<div class="swiper-pagination-navigation-holder">'; // swiper-pagination-navigation-holder
-        $output .= '<div class="swiper-button-prev-team"></div>'; // Dots
+        $output .= '<div class="swiper-button-prev-team"><svg xmlns="http://www.w3.org/2000/svg" width="8.069" height="16.138" viewBox="0 0 8.069 16.138"> <path id="Path_28" data-name="Path 28" d="M0,0,8.069,8.069,0,16.138" fill="#3b1527"/> </svg></div>'; // Dots
         $output .= '<div class="swiper-pagination"></div>'; // Dots
-        $output .= '<div class="swiper-button-next-team"></div>'; // Dots
+        $output .= '<div class="swiper-button-next-team"><svg xmlns="http://www.w3.org/2000/svg" width="8.069" height="16.138" viewBox="0 0 8.069 16.138"> <path id="Path_28" data-name="Path 28" d="M0,0,8.069,8.069,0,16.138" fill="#3b1527"/> </svg></div>'; // Dots
         $output .= '</div>'; // swiper-pagination-navigation-holder
         $output .= '</div>'; // End swiper
         $output .= '</div>'; // End container
