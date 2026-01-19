@@ -84,6 +84,7 @@ function loadMoreFun(){
         loadingItem = false;
         console.log(data);
         console.log(response);
+        console.log('xxxx3');
     });
 
     //});
