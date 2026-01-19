@@ -938,11 +938,12 @@ function careers_form()
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body" id="careerOffcanvasBody">
-            <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="d-flex justify-content-center align-items-center h-100 offcanvas-body-content">
                 <div class="spinner-border text-secondary" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
+            <?= do_shortcode('[wpforms id="47389" title="false"]') ?>
         </div>
     </div>
 
@@ -957,7 +958,7 @@ function careers_form()
                     var postId = button.getAttribute('data-id');
                     // Find the hidden content div
                     var contentSource = document.getElementById('career-content-' + postId);
-                    var modalBody = careerOffcanvas.querySelector('.offcanvas-body');
+                    var modalBody = careerOffcanvas.querySelector('.offcanvas-body-content');
 
                     if (contentSource) {
                         modalBody.innerHTML = contentSource.innerHTML;
