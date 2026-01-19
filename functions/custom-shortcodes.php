@@ -418,6 +418,7 @@ function display_home_section()
     $home_section_discover_links = get_field('home_section_discover_links', $theme_option_page);
     if (current_user_can('administrator')) {
         var_dump($home_section_discover_links);
+        echo 'test';
     }
 
 ?>
