@@ -896,6 +896,11 @@ function careers()
                             <img src="https://theribbonbox.com/wp-content/uploads/2026/01/Group-41.png">
                         </span>
                     </div>
+                    <div class="col-auto mobile-only">
+                        <div class="button-apply">
+                            <span href="">Apply Now</span>
+                        </div>
+                    </div>
                 </div>
 
                 <hr class="career-divider">
