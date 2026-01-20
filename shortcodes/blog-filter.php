@@ -17,7 +17,7 @@ function blog_filter_function($attr)
         $rtn = "";
         $term_id = 0;
         $categoryid = "";
-        $limit = 100;
+        $limit = 500;
         $curtotal = 0;
         $format = "";
         $post_type = "";
