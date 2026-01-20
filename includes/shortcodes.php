@@ -1008,7 +1008,7 @@ function teams_carousel()
         'post_type'      => 'team',
         'posts_per_page' => -1, // Get all team members
         'orderby'        => 'date',
-        'order'          => 'ASC',
+        'order'          => 'DESC',
     );
 
     $team_query = new WP_Query($args);
