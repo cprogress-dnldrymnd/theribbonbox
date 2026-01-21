@@ -929,7 +929,7 @@ h2 span {
 }
 .blogs-holder .blogs-box .blog-user-profile a {
 	gap: 10px;
-	color: #3b1527;
+	color: var(--purple-color);
 	font-weight: 500;
 }
 .blogs-holder .blogs-box .blog-user-profile img {
