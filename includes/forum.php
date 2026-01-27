@@ -742,7 +742,7 @@ function community_nav_right()
                 </a>
             </li>-->
             <li>
-                <a class="d-flex align-items-center hide-mobile" href="/members/<?= bp_core_get_username(get_current_user_id()) ?>/">
+                <a class="d-flex align-items-center" href="/members/<?= bp_core_get_username(get_current_user_id()) ?>/">
                     <span class="icon"><?= $user ?></span>
                     <span class="hide-mobile">PROFILE</span>
                 </a>
@@ -750,7 +750,7 @@ function community_nav_right()
             <li>
                 <a class="d-flex align-items-center" href="<?= get_site_url() ?>">
 
-                    <span class="">BACK TO TRB WEBSITE</span>
+                    <span class="hide-mobile">BACK TO TRB WEBSITE</span>
                 </a>
             </li>
         </ul>

@@ -31,7 +31,7 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
                     <div class="container">
                         <div class="row g-4 align-items-center ">
                             <div class="col-lg-4 col-3">
-                                <div>
+                                <div class="hide-mobile">
                                     <?= do_shortcode('[community_nav]') ?>
                                 </div>
                                 <img class="m-menu" src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu.png">
