@@ -130,7 +130,7 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
                 <img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>" alt="Subscribe">
               </div>
             </div>
-            <div class="col-lg-6 p-3 p-lg-4 d-flex align-items-center">
+            <div class="col-lg-6 p-3 p-lg-4 d-flex align-items-center text-center">
               <div class="content-box">
                 <h2 style="color: <?= $subscribe_popup__heading_colour ?> !important"><?= $subscribe_popup_heading ?> </h2>
                 <div class="discovery-links discovery-links-v2">
