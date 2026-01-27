@@ -426,27 +426,27 @@ function display_home_section()
                     <div class="desc">
                         <?= wpautop($home_section_description) ?>
                     </div>
-                      <?php if ($home_section_discover_links) { ?>
-                            <div class="discover-links-outer">
-                                <h3>Discover</h3>
-                                <div class="discovery-links">
-                                    <?php foreach ($home_section_discover_links as $term) { ?>
+                    <?php if ($home_section_discover_links) { ?>
+                        <div class="discover-links-outer">
+                            <h3>Discover</h3>
+                            <div class="discovery-links">
+                                <?php foreach ($home_section_discover_links as $term) { ?>
 
-                                        <?php
-                                        $page_category = get_field('page_category', $term->taxonomy . '_' . $term->term_id);
-                                        $category_colour = get_field('category_colour', $term->taxonomy . '_' . $term->term_id);
-                                        $category_text_color = get_field('category_text_color', $term->taxonomy . '_' . $term->term_id);
-                                        $page_link = get_the_permalink($page_category[0]);
-                                        ?>
+                                    <?php
+                                    $page_category = get_field('page_category', $term->taxonomy . '_' . $term->term_id);
+                                    $category_colour = get_field('category_colour', $term->taxonomy . '_' . $term->term_id);
+                                    $category_text_color = get_field('category_text_color', $term->taxonomy . '_' . $term->term_id);
+                                    $page_link = get_the_permalink($page_category[0]);
+                                    ?>
 
-                                        <a href="<?= $page_link ?>" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
-                                            <?= $term->name ?>
-                                        </a>
-                                    <?php } ?>
-                                </div>
+                                    <a href="<?= $page_link ?>" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
+                                        <?= $term->name ?>
+                                    </a>
+                                <?php } ?>
                             </div>
+                        </div>
 
-                        <?php } ?>
+                    <?php } ?>
                 </div>
                 <div class="col-lg-7">
                     <?= wp_get_attachment_image($home_section_image, 'large') ?>
@@ -479,7 +479,7 @@ function display_expertboxes_function()
             <?= wpautop($experts_banner_description) ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 
@@ -487,6 +487,29 @@ add_shortcode('display_expertboxes', 'display_expertboxes_function');
 
 
 
+add_shortcode('display_followus', 'display_followus_function');
+function display_followus_function()
+{
+    ob_start();
+
+?>
+
+    <div class="post-follow-us-revamp">
+        <div class="post-follow-us-revamp-outer trb-px mw-large">
+            <div class="post-follow-us-revamp-inner">
+                <h2>Follow our <i>Socials</i></h2>
+            </div>
+            <div class="post-follow-us-revamp-inner">
+                <?= do_shortcode("[get_socials social='icons-only-all']") ?>
+            </div>
+        </div>
+    </div>
+<?php
+
+
+}
+
+/*
 add_shortcode('display_followus', 'display_followus_function');
 function display_followus_function()
 {
@@ -526,8 +549,10 @@ function display_followus_function()
     return ob_get_clean();
 }
 
-
+*/
 add_shortcode('homeblog_filter', 'homeblog_filter_function');
+
+
 function homeblog_filter_function($attr)
 {
     //see home.php for other shortcodes
@@ -1085,7 +1110,7 @@ function ad_list_function($attr)
             )
         )
     ));
-    ?>
+?>
     <?php if ($top_banner_ad) { ?>
         <div class="ads ads--v2 py-4">
             <div class="container">
