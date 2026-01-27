@@ -2021,7 +2021,7 @@ function blog_filter_function($attr)
                 }
 
                 if (!$post_open_div) {
-                    $rtn .= '<div class="blogs-loop-inner trb-row mb-padding  mw-large trb-px blogs-loop-inner-20 blogs-loop-inner-v2">';
+                    $rtn .= '<div class="blogs-loop-inner trb-row md-padding-bottom  mw-large trb-px blogs-loop-inner-20 blogs-loop-inner-v2">';
                     $post_open_div = true;
                 }
 
