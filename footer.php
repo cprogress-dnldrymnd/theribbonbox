@@ -133,7 +133,7 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
             <div class="col-lg-6 p-3 p-lg-4 d-flex align-items-center">
               <div class="content-box">
                 <h2 style="color: <?= $subscribe_popup__heading_colour ?> !important"><?= $subscribe_popup_heading ?> </h2>
-                <div class="discovery-links">
+                <div class="discovery-links discovery-links-v2">
                   <?php foreach ($home_section_discover_links as $term) { ?>
                     <?php
                     $page_category = get_field('page_category', $term->taxonomy . '_' . $term->term_id);
