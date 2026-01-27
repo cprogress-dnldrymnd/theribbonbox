@@ -119,7 +119,7 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title fs-5" id="SignUpModalLabel">Sign Up</h2>
+          <h2 class="modal-title fs-5" id="SignUpModalLabel">Become an insider</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" style="background-color: <?= $subscribe_popup_bg_colour ?>">
