@@ -101,56 +101,6 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
     </div>
 </div>
 
-<?php if (current_user_can('administrator')) { ?>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" style="background-color: <?= $subscribe_popup_bg_colour ?>">
-                    <div class="post-follow-us-inner">
-                        <div class="subscribe-outer-img"><img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>" alt="Subscribe"></div>
-                        <div class="subscribe-outer-txt">
-                            <h2 style="color: <?= $subscribe_popup__heading_colour ?> !important"><?= $subscribe_popup_heading ?> </h2>
-                            <div class="cat-links">
-                                <?php foreach ($subscribe_popup_links as $link) { ?>
-                                    <?php
-                                    $page_id = url_to_postid($link);
-                                    $url = get_permalink($page_id);
-                                    $title = get_the_title($page_id);
-                                    ?>
-                                    <a href="<?= $url ?>" style="color: <?= $subscribe_popup_links_colour ?> !important"><?= $title ?></a> |
-                                <?php } ?>
-
-                            </div>
-                            <hr>
-                            <div id="subscribe-outer-desc" style="color: <?= $subscribe_popup_description_colour ?> !important">
-                                <?= wpautop($subscribe_popup_description) ?>
-                            </div>
-                            <div class="sub---form" style="--color: <?= $subscribe_popup_form_colour ?> !important">
-                                <?= do_shortcode($subscribe_popup_form); ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php } ?>
-
 <?php wp_footer(); ?>
 
 </div><!-- Close: #fouc -->
