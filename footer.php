@@ -62,9 +62,12 @@ global $theme_logo;
 
 <?php
 global $theme_option_page;
+$home_section_discover_links = get_field('home_section_discover_links', $theme_option_page);
+
 $subscribe_popup_heading = get_field('subscribe_popup_heading', $theme_option_page);
 $subscribe_popup_description = get_field('subscribe_popup_description', $theme_option_page);
 $subscribe_popup_links = get_field('subscribe_popup_links', $theme_option_page);
+
 $subscribe_popup_image = get_field('subscribe_popup_image', $theme_option_page);
 $subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
 
@@ -127,26 +130,33 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
                 <img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>" alt="Subscribe">
               </div>
             </div>
-            <div class="col-lg-6 p-3 p-lg-5">
+            <div class="col-lg-6 p-3 p-lg-4 d-flex align-items-center">
               <div class="content-box">
                 <h2 style="color: <?= $subscribe_popup__heading_colour ?> !important"><?= $subscribe_popup_heading ?> </h2>
-                <div class="cat-links">
-                  <?php foreach ($subscribe_popup_links as $link) { ?>
+                <div class="discovery-links">
+                  <?php foreach ($home_section_discover_links as $term) { ?>
                     <?php
-                    $page_id = url_to_postid($link);
-                    $url = get_permalink($page_id);
-                    $title = get_the_title($page_id);
+                    $page_category = get_field('page_category', $term->taxonomy . '_' . $term->term_id);
+                    $category_colour = get_field('category_colour', $term->taxonomy . '_' . $term->term_id);
+                    $category_text_color = get_field('category_text_color', $term->taxonomy . '_' . $term->term_id);
+                    $page_link = get_the_permalink($page_category[0]);
                     ?>
-                    <a href="<?= $url ?>" style="color: <?= $subscribe_popup_links_colour ?> !important"><?= $title ?></a> |
-                  <?php } ?>
-                  <div id="subscribe-outer-desc" style="color: <?= $subscribe_popup_description_colour ?> !important">
-                    <?= wpautop($subscribe_popup_description) ?>
-                  </div>
 
-                  <div class="sub---form" style="--color: <?= $subscribe_popup_form_colour ?> !important">
-                    <?= do_shortcode($subscribe_popup_form); ?>
-                  </div>
+                    <a href="<?= $page_link ?>" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
+                      <?= $term->name ?>
+                    </a>
+                  <?php } ?>
                 </div>
+
+
+                <div id="subscribe-outer-desc" style="color: <?= $subscribe_popup_description_colour ?> !important">
+                  <?= wpautop($subscribe_popup_description) ?>
+                </div>
+
+                <div class="sub---form" style="--color: <?= $subscribe_popup_form_colour ?> !important">
+                  <?= do_shortcode($subscribe_popup_form); ?>
+                </div>
+
               </div>
             </div>
           </div>
