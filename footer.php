@@ -13,7 +13,7 @@ global $theme_logo;
               Sign up to our weekly fertility, wellbeing and pregnancy/early parenting newsletters, and get the best curated expert advice, tips and giveaways straight to your inbox.
             </p>
             <div class="button-accent-2 mt-4">
-              <a href="#" class="newsletter-trigger">SIGN ME UP</a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal">SIGN ME UP</a>
             </div>
             <div class="footer-logo-text my-5">
               <div class="row g-3 align-items-center">
