@@ -177,11 +177,42 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
 
 <script>
   /**
-   * Initializes and triggers the Sign Up modal on DOM completion.
+   * Helper function to set a cookie with a specific expiration in days.
+   * Includes 'path=/' to ensure cookie is available across the whole site.
+   * @param {string} name - The name of the cookie
+   * @param {string} value - The value of the cookie
+   * @param {number} days - Number of days until expiration
+   */
+  const setCookie = (name, value, days) => {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    // SameSite=Lax is recommended for general navigation; Secure is needed for HTTPS
+    document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
+  };
+
+  /**
+   * Helper function to get a cookie by name.
+   * Returns null if cookie not found.
+   */
+  const getCookie = (name) => {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  };
+
+  /**
+   * Initializes, triggers, and handles closing logic for the Sign Up modal.
    * Ensures the 'SignUpModal' element exists to avoid null pointer exceptions.
    */
   document.addEventListener('DOMContentLoaded', () => {
     const signUpModalElement = document.getElementById('SignUpModal');
+    const COOKIE_NAME = 'newsletter_popup';
 
     if (signUpModalElement) {
       // Initialize the Bootstrap modal instance
@@ -190,17 +221,20 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
         backdrop: 'static' // Optional: prevents closing when clicking outside
       });
 
-      // Invoke the show method
-      signUpModal.show();
+      // Event Listener: Fires when the modal has finished being hidden from the user
+      signUpModalElement.addEventListener('hidden.bs.modal', function(event) {
+        // Set cookie 'newsletter_popup' to true for 30 days
+        setCookie(COOKIE_NAME, 'true', 30);
+        console.log('Newsletter cookie set.');
+      });
+
+      // Logic: Only show the modal if the cookie does NOT exist
+      if (!getCookie(COOKIE_NAME)) {
+        // Invoke the show method
+        signUpModal.show();
+      }
     }
   });
-
-  function getCookie(name) {
-    let matches = document.cookie.match(new RegExp(
-      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
-  }
 </script>
 
 <?php wp_footer(); ?>
