@@ -836,7 +836,7 @@ function become_insider()
                 </div>
                 <div class="col-auto">
                     <div class="button-box button-box-v2 button-bordered col-auto">
-                        <a href="#" class="newsletter-trigger">SIGN ME UP</a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal">SIGN ME UP</a>
                     </div>
                 </div>
             </div>

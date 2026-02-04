@@ -106,15 +106,6 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
   </div>
 </div>
 
-
-
-<?php if (current_user_can('administrator')) { ?>
-
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#SignUpModal">
-    Launch demo modal
-  </button>
-
   <!-- Modal -->
   <div class="modal fade" id="SignUpModal" tabindex="-1" aria-labelledby="SignUpModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -173,7 +164,6 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
     </div>
   </div>
   </div>
-<?php } ?>
 
 <script>
   /**
