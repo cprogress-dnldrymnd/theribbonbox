@@ -175,6 +175,34 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
   </div>
 <?php } ?>
 
+<script>
+  /**
+   * Initializes and triggers the Sign Up modal on DOM completion.
+   * Ensures the 'SignUpModal' element exists to avoid null pointer exceptions.
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    const signUpModalElement = document.getElementById('SignUpModal');
+
+    if (signUpModalElement) {
+      // Initialize the Bootstrap modal instance
+      const signUpModal = new bootstrap.Modal(signUpModalElement, {
+        keyboard: true,
+        backdrop: 'static' // Optional: prevents closing when clicking outside
+      });
+
+      // Invoke the show method
+      signUpModal.show();
+    }
+  });
+
+  function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
+</script>
+
 <?php wp_footer(); ?>
 
 </div><!-- Close: #fouc -->
