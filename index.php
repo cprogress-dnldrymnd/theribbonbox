@@ -14,7 +14,7 @@ if (!is_bbpress() && !is_buddypress()) {
         include 'homepage.php';
     elseif (is_page(48087)):
         $fertility_category_id = 1164;
-    $wellbeing_category_id = 1159;
+        $wellbeing_category_id = 1159;
         echo  do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]');
         echo  do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]');
         echo   do_shortcode('[_giveaway_list]');
@@ -71,6 +71,35 @@ if (!is_bbpress() && !is_buddypress()) {
                         spaceBetween: 40,
                     },
                 }
+            });
+
+            $('.category-entry').slick({
+                dots: true,
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                infinite: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                responsive: [{
+                        breakpoint: 900,
+                        settings: {
+
+                            centerMode: true,
+                            centerPadding: '150px',
+                            slidesToShow: 1
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+
+                            centerMode: true,
+                            centerPadding: '1px',
+                            slidesToShow: 1
+                        }
+                    }
+                ]
             });
         </script>
     <?php
