@@ -42,6 +42,9 @@ if (!is_bbpress() && !is_buddypress()) {
         echo do_shortcode('[display_followus]');
         echo do_shortcode('[blog_filter format="normal-4" limit="6" categoryid="1159" home="1"]');
         echo do_shortcode('[blog_filter format="normal-3" limit="2" categoryid="1165" home="1"]');
+        echo '<link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
+                  <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
+                  <script src="/wp-content/themes/lighttheme"></script>';
 ?>
         <script>
             var swiper = new Swiper(".swiper-experts", {
