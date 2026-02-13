@@ -36,6 +36,38 @@ if (!is_bbpress() && !is_buddypress()) {
         echo do_shortcode('[display_followus]');
         echo do_shortcode('[blog_filter format="normal-4" limit="6" categoryid="1159" home="1"]');
         echo do_shortcode('[blog_filter format="normal-3" limit="2" categoryid="1165" home="1"]');
+?>
+        <script>
+            var swiper = new Swiper(".swiper-experts", {
+                slidesPerView: 3,
+                spaceBetween: 40,
+                loop: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                    dynamicBullets: true,
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next-experts",
+                    prevEl: ".swiper-button-prev-experts",
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                }
+            });
+        </script>
+    <?php
     else:
         $post_type = get_post_type(get_the_ID());
 
@@ -55,7 +87,7 @@ if (!is_bbpress() && !is_buddypress()) {
 
         //if ( !empty(  $post->post_content ) || the_title('','',false) == "Entry FAQ"){
         $cur_post_type_val = get_post_type(get_the_ID());
-?>
+    ?>
 
         <div class="not-front page-content-blg <?php echo $cur_post_type_val; ?>_pageItem">
 
