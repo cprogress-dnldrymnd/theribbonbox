@@ -12,6 +12,8 @@ if (!is_bbpress() && !is_buddypress()) {
         //<script src=get_template_directory_uri() . '/js/jquery.fancybox.pack.js'></script>
         //<script src=get_template_directory_uri() . '/js/jquery.flexslider-min.js'></script>
         include 'homepage.php';
+    elseif(is_page()):
+        include 'homepage.php';
     else:
         $post_type = get_post_type(get_the_ID());
 
