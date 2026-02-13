@@ -19,6 +19,8 @@ if (!is_bbpress() && !is_buddypress()) {
         echo  do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]');
         echo   do_shortcode('[_giveaway_list]');
 
+        echo "<script async src='https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/sauce_homepage.js' class='snapppt-widget'></script>";
+
         echo do_shortcode('[expert_list categoryid="1164,1159" title="Wellbeing &amp; Fertility Experts" home="1"]');
         echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1159" home="1"  exclude="' . $excludeids . '"]');
         echo do_shortcode('[category_list]');
