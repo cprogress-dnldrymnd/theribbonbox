@@ -12,11 +12,30 @@ if (!is_bbpress() && !is_buddypress()) {
         //<script src=get_template_directory_uri() . '/js/jquery.fancybox.pack.js'></script>
         //<script src=get_template_directory_uri() . '/js/jquery.flexslider-min.js'></script>
         include 'homepage.php';
-    elseif(is_page(48087)):
+    elseif (is_page(48087)):
         echo  do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]');
         echo  do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]');
-        echo do_shortcode('[expert_list]');
         echo   do_shortcode('[_giveaway_list]');
+
+        echo do_shortcode('[expert_list categoryid="1164,1159" title="Wellbeing &amp; Fertility Experts" home="1"]');
+        echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1159" home="1"  exclude="' . $excludeids . '"]');
+        echo do_shortcode('[category_list]');
+        echo '<div class="blogs-loop-watch-listen">';
+        echo '<div class="mw-large trb-px">';
+        echo '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+        echo do_shortcode('[blog_filter format="video-half" post_type="videos" limit="3" categoryid="1159" home="1"]');
+        echo '</div>';
+        echo '</div>';
+        echo do_shortcode('[blog_filter format="video" limit="4"]');
+        echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
+        echo do_shortcode('[expert_list categoryid="1165,1163" title="Pregnancy &amp; Parenting Experts"]');
+        echo do_shortcode('[display_home_section]');
+        echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
+        echo do_shortcode('[blog_filter format="normal-1" limit="2" categoryid="1163" home="1"]');
+        echo do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="1159" home="1"]');
+        echo do_shortcode('[display_followus]');
+        echo do_shortcode('[blog_filter format="normal-4" limit="6" categoryid="1159" home="1"]');
+        echo do_shortcode('[blog_filter format="normal-3" limit="2" categoryid="1165" home="1"]');
     else:
         $post_type = get_post_type(get_the_ID());
 
