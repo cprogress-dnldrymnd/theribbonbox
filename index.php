@@ -15,8 +15,8 @@ if (!is_bbpress() && !is_buddypress()) {
     elseif(is_page(48087)):
         echo  do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]');
         echo  do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]');
+        echo do_shortcode('[expert_list]');
         echo   do_shortcode('[_giveaway_list]');
-        include 'homepage.php';
     else:
         $post_type = get_post_type(get_the_ID());
 
