@@ -8,11 +8,7 @@ if (!is_bbpress() && !is_buddypress()) {
     $global_id = get_the_ID();
 
     if (is_front_page()):
-        //include 'banner.php';
-        //<script src=get_template_directory_uri() . '/js/jquery.fancybox.pack.js'></script>
-        //<script src=get_template_directory_uri() . '/js/jquery.flexslider-min.js'></script>
-        include 'homepage.php';
-    elseif (is_page(48087)):
+   
         $fertility_category_id = 1164;
         $wellbeing_category_id = 1159;
         echo  do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]');
