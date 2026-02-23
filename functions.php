@@ -693,7 +693,9 @@ function wcc_change_breadcrumb_delimiter($defaults)
  * get_post_categories_as_links
  *
  * Retrieves the categories for a given post (or the current post) and
- * formats them as a string of HTML anchor links.
+ * formats them as a string of HTML anchor links. The link URL is sourced
+ * from the first item of an ACF relationship field ('page_category') attached to the term.
+ * Falls back to the standard category archive link if the field is empty.
  *
  * @param int|null $post_id Optional. The ID of the post. Defaults to the current post ID.
  * @param string $separator Optional. The string to use between category links. Defaults to ''. (No separator)
@@ -722,8 +724,28 @@ function get_post_categories_as_links($post_id = null, $separator = '', $css_cla
 
     // Loop through each category object
     foreach ($categories as $category) {
-        // Get the URL for the category archive
-        $category_link = get_category_link($category->term_id);
+        $category_link = '';
+
+        // Attempt to get the URL from the ACF relationship field 'page_category' on the term
+        if (function_exists('get_field')) {
+            // ACF term meta target format: {taxonomy}_{term_id}
+            $related_pages = get_field('page_category', 'category_' . $category->term_id);
+
+            // Ensure the field returned an array and has at least one item
+            if (!empty($related_pages) && is_array($related_pages)) {
+                // Get only the first item from the relationship field
+                $first_item = $related_pages[0];
+
+                // Handle both WP_Post object or ID return formats from ACF
+                $first_item_id = is_object($first_item) ? $first_item->ID : $first_item;
+                $category_link = get_permalink($first_item_id);
+            }
+        }
+
+        // Fallback to the standard category archive URL if the ACF field is empty or ACF is missing
+        if (empty($category_link)) {
+            $category_link = get_category_link($category->term_id);
+        }
 
         // Build the anchor tag
         $link_html = sprintf(
