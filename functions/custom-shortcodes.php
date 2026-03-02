@@ -925,6 +925,240 @@ function category_list_function($attr)
         $rtn .= '<div class="category-summary">';
         //$rtn .= '<div '.$style.'>';
         $rtn .= '<div>';
+       
+        if ($cPage == "experts") {
+            $rtn .= '<a href="' . get_permalink($pageId[1]) . '" title="Read more about ' . $post['post_title'] . '...">';
+        } else if ($cPage == "videos") {
+            $rtn .= '<a href="' . get_permalink($pageId[2]) . '" title="Read more about ' . $post['post_title'] . '...">';
+        } else if ($cPage == "podcasts") {
+            $rtn .= '<a href="' . get_permalink($pageId[3]) . '" title="Read more about ' . $post['post_title'] . '...">';
+        } else {
+            $rtn .= '<a href="' . get_permalink($pageId[0]) . '" title="Read more about ' . $post['post_title'] . '...">';
+        }
+        //$rtn .= '<img src="/wp-content/themes/lighttheme/images/a_squ_trans.png">';
+
+        $rtn .= '<img src="' . $img_url . '">';
+
+        $rtn .= '</a>';
+        $rtn .= '</div>';
+
+
+        $rtn .= '<div class="category-text" ' . $background . '>';
+        if ($cPage == "experts") {
+            $rtn .= '<a href="' . get_permalink($pageId[1]) . '" title="Read more about ' . $page_title . '...">'; // $post['post_title']
+        } else if ($cPage == "videos") {
+            $rtn .= '<a href="' . get_permalink($pageId[2]) . '" title="Read more about ' . $page_title . '...">'; // $post['post_title']
+        } else if ($cPage == "podcasts") {
+            $rtn .= '<a href="' . get_permalink($pageId[3]) . '" title="Read more about ' . $page_title . '...">'; // $post['post_title']
+        } else {
+            $rtn .= '<a href="' . get_permalink($pageId[0]) . '" title="Read more about ' . $page_title . '...">'; // $post['post_title']
+        }
+        $rtn .= '<div class="category-inner">';
+        $rtn .= '<h2 ' . $ad . '>' . $page_title . '</h2>';
+
+
+        if ($cPage == "experts") {
+            $rtn .= '<h3 ' . $ad . '>Discover ' . $page_title . ' Experts</h3>';
+        } else if ($cPage == "videos") {
+            $rtn .= '<h3 ' . $ad . '>Discover ' . $page_title . ' Videos</h3>';
+        } else if ($cPage == "podcasts") {
+            $rtn .= '<h3 ' . $ad . '>Discover ' . $page_title . ' Podcasts</h3>';
+        } else {
+            $rtn .= '<h3 ' . $ad . '>View Content</h3>';
+        }
+
+        $rtn .= '</a>';
+
+        //$rtn .= category_description($category->term_id);
+
+
+
+        if (!empty($speciality)) {
+            $rtn .= '<p class="speciality">' . $speciality . '</p>';
+        }
+        if (!empty($position)) {
+            $rtn .= '<p class="position">' . $position . '</p>';
+        }
+        if (!empty($ward)) {
+            $rtn .= '<p class="ward">' . $ward . '</p>';
+        }
+        if (!empty($socials)) {
+            $rtn .= '<div class="people-socials">';
+            $rtn .= $socials;
+            $rtn .= '</div>';
+        }
+        //$rtn .= '<h3>'.'Category'.'</h3>';
+        //$rtn .= '<a class="button-expert" href="'.get_permalink($post['ID']).'" title="Read more about '.$post['post_title'].  '...">VIEW EXPERT PROFILE</a></div>';
+        $rtn .= '</div>';
+
+        $rtn .= '</div></div>';
+
+    endforeach;
+    wp_reset_query();
+
+
+    $rtn .= '</div></div>';
+    $rtn .= "<script type='text/javascript'>
+        $(document).ready(function(){
+
+$('.category-summary .category-inner1').hover(function(e){
+    if ($('.category-outer .slick-list > .ex-car-pop-inner').length > 0){
+
+        
+    } else{
+        $('.category-outer .slick-list').append($(this).find('.ex-car-pop').html());
+    }
+
+    
+});
+
+$(document).on('click','.ex-car-pop-inner-close', function(e){
+    e.preventDefault();
+    $('.category-outer .slick-list > .ex-car-pop-inner').remove();
+});
+
+
+if ($('.main-content-outer').length > 0){
+
+
+
+  $('.category-entry').slick({
+    dots: true,
+   centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 3,
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 900,
+      settings: {
+        
+        centerMode: true,
+        centerPadding: '150px',
+        slidesToShow: 1
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        
+        centerMode: true,
+        centerPadding: '1px',
+        slidesToShow: 1
+      }
+    }
+  ]
+  });
+}
+});
+    </script>";
+
+    return $rtn;
+}
+add_shortcode('category_list', 'category_list_function');
+/*backup 03-02-26
+function category_list_function($attr)
+{
+
+    $cPage = "";
+
+    if (!empty($attr["page"])) {
+        $cPage = $attr["page"];
+    }
+
+    $cat_args = array(
+        'orderby' => 'name',
+        'order' => 'ASC',
+        'hide_empty' => 0,
+        'meta_query' => array(
+            array(
+                'key'     => 'display_on_explore_by_carousel',
+                'value'   =>  true,
+                'compare' => '='
+            )
+        ),
+        'post_status' => 'publish',
+    );
+
+
+    $categories = get_categories($cat_args);
+
+    $cnt = 0;
+
+    $rtn = "";
+
+    if ($cPage == "experts") {
+        $rtn .= '<div class="category-outer"><h2>Explore Experts</h2><div class="category-entry">';
+    } else if ($cPage == "videos") {
+        $rtn .= '<div class="category-outer"><h2>Explore Videos</h2><div class="category-entry">';
+    } else if ($cPage == "podcasts") {
+        $rtn .= '<div class="category-outer"><h2>Explore Podcasts</h2><div class="category-entry">';
+    } else {
+        $rtn .= '<div class="category-outer"><h2>Explore By</h2><div class="category-entry">';
+    }
+
+
+
+    foreach ($categories as $category) :
+
+        $bcolour = "#F77D66";
+
+        $termIdVal = 'term_' . $category->term_id;
+
+        if (!empty(get_field("category_colour", $termIdVal))) {
+            $bcolour = get_field("category_colour", $termIdVal);
+        }
+
+        if (!empty(get_field("page_category", $termIdVal))) {
+            $pageId = get_field("page_category", $termIdVal);
+        }
+
+        $hexRGB = $bcolour;
+        $ad = "";
+        if ($bcolour != "#034146") {
+            $ad = '';
+            $addd = "";
+            //$ad = "bright color";
+        } else {
+            //$ad = "dark color";
+
+            $ad = 'class="light-col"';
+        }
+
+        $background = 'style="background:' . $bcolour . ';"';
+
+        $socials = '';
+
+        $pageId = get_field("page_category", $termIdVal);
+
+        $category_description_new = get_field("category_description_new", $termIdVal);
+
+        $page = get_post($pageId[0]);
+        $page_title = $page->post_title;
+        //echo $excerpt;
+
+        $style = "";
+
+        if (empty(get_field("category_image", $termIdVal))) {
+            //echo "<p class="post-image"><img src='/wp-content/themes/lighttheme/images/logo-bl.png' />";
+            //$style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:contain; background-position:center;"';
+        } else {
+
+            $image = get_field("category_image", $termIdVal);
+            $size = 'large';
+            $img_url = $image['sizes'][$size];
+
+
+            $style = 'style="';
+            $style .= $img_url;
+            $style .= ' background-size:cover; background-position:center;"';;
+        }
+
+        $rtn .= '<div class="category-summary">';
+        //$rtn .= '<div '.$style.'>';
+        $rtn .= '<div>';
         if ($cPage != "experts" && !empty($category_description_new)) {
             $rtn .= '<div class="ex-car-pop">';
             $rtn .= '<div class="ex-car-pop-inner">';
@@ -1090,6 +1324,8 @@ if ($('.main-content-outer').length > 0){
     return $rtn;
 }
 add_shortcode('category_list', 'category_list_function');
+
+*/
 
 function ad_list_function($attr)
 {
