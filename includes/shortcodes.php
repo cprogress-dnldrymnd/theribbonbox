@@ -423,7 +423,7 @@ function post_box($atts)
                     <a href="<?= get_the_permalink($id) ?>">LISTEN NOW</a>
                 </div>
             <?php } else { ?>
-                <div class="button-box button-box-v2 button-bordered text-center">
+                <div class="button-box button-box-v2 button-readnow text-center">
                     <a href="<?= get_the_permalink($id) ?>">READ NOW</a>
                 </div>
             <?php } ?>
