@@ -424,7 +424,7 @@ function post_box($atts)
                 </div>
             <?php } else { ?>
                 <div class="button-box button-box-v2 button-readnow text-center">
-                    <a href="<?= get_the_permalink($id) ?>">READ NOW</a>
+                    <a href="<?= get_the_permalink($id) ?>">READ MORE</a>
                 </div>
             <?php } ?>
         </div>
