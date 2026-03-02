@@ -925,7 +925,7 @@ function category_list_function($attr)
         $rtn .= '<div class="category-summary">';
         //$rtn .= '<div '.$style.'>';
         $rtn .= '<div>';
-       
+
         if ($cPage == "experts") {
             $rtn .= '<a href="' . get_permalink($pageId[1]) . '" title="Read more about ' . $post['post_title'] . '...">';
         } else if ($cPage == "videos") {
@@ -955,6 +955,9 @@ function category_list_function($attr)
         }
         $rtn .= '<div class="category-inner">';
         $rtn .= '<h2 ' . $ad . '>' . $page_title . '</h2>';
+        $rtn .= '<div class="category-inner-desc">';
+        $rtn .= $category_description_new;
+        $rtn .= '</div>';
 
 
         if ($cPage == "experts") {
