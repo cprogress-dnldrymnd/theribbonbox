@@ -422,6 +422,10 @@ function post_box($atts)
                 <div class="button-box button-box-v2 button-bordered text-center">
                     <a href="<?= get_the_permalink($id) ?>">LISTEN NOW</a>
                 </div>
+            <?php } else { ?>
+                <div class="button-box button-box-v2 button-bordered text-center">
+                    <a href="<?= get_the_permalink($id) ?>">READ NOW</a>
+                </div>
             <?php } ?>
         </div>
     </div>
@@ -799,8 +803,8 @@ add_shortcode('_giveaway_list_old', '_giveaway_list_old_function');
 function _giveaway_list_function($attr)
 {
 
-        return do_shortcode('[giveaway_list_swiper]');
-/*
+    return do_shortcode('[giveaway_list_swiper]');
+    /*
     if (current_user_can('administrator')) {
         return do_shortcode('[giveaway_list_swiper]');
     } else {
