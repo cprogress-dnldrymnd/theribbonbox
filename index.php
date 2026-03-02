@@ -15,7 +15,7 @@ if (!is_bbpress() && !is_buddypress()) {
         echo  do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]');
         echo   do_shortcode('[_giveaway_list]');
 
-        echo '<div class="home-slider">';
+        echo '<div class="home-slider" id="home-slider">';
         echo "<script async src='https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/sauce_homepage.js' class='snapppt-widget'></script>";
         echo '</div>';
 
