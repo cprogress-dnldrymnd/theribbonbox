@@ -955,12 +955,13 @@ function category_list_function($attr)
         }
         $rtn .= '<div class="category-inner">';
         $rtn .= '<h2 ' . $ad . '>' . $page_title . '</h2>';
-        $rtn .= '<div class="category-inner-desc">';
-        $rtn .= '<div class="category-inner-desc-wrapper">';
-        $rtn .= $category_description_new;
-        $rtn .= '</div>';
-        $rtn .= '</div>';
-
+        if ($category_description_new) {
+            $rtn .= '<div class="category-inner-desc">';
+            $rtn .= '<div class="category-inner-desc-wrapper">';
+            $rtn .= $category_description_new;
+            $rtn .= '</div>';
+            $rtn .= '</div>';
+        }
 
         if ($cPage == "experts") {
             $rtn .= '<h3 ' . $ad . '>Discover ' . $page_title . ' Experts</h3>';
