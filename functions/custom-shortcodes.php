@@ -850,9 +850,6 @@ function category_list_function($attr)
 
 
     $categories = get_categories($cat_args);
-    global $theme_option_page;
-
-    $additional_page_to_display = get_post_field('additional_page_to_display', $theme_option_page);
 
     $cnt = 0;
 
