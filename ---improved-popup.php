@@ -1,4 +1,4 @@
-
+hello world
 <?php if (current_user_can('administrator')) { ?>
 
   <!-- Button trigger modal -->
