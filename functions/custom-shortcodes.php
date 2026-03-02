@@ -837,7 +837,6 @@ function category_list_function($attr)
     $cat_args = array(
         'orderby' => 'name',
         'order' => 'ASC',
-        'parent'   => 0,
         'hide_empty' => 0,
         'meta_query' => array(
             array(
