@@ -593,7 +593,7 @@ function blog_load_next_function($attr)
 
     $categoryid = "";
     $posttype = "";
-    $excludeids;
+    $excludeids = [];
     if (!empty($attr["categoryid"])) {
         $categoryid = $attr["categoryid"];
     }
@@ -605,7 +605,7 @@ function blog_load_next_function($attr)
         $excludeids = explode(',', $excludeids);
     }
 
-    $recent_posts;
+    $recent_posts = [];
     //var_dump($excludeids);
 
     if (!empty($categoryid)) {
@@ -841,15 +841,19 @@ function category_list_function($attr)
         'hide_empty' => 0,
         'meta_query' => array(
             array(
-                'key'     => 'page_category',
-                'value'   =>  'NULL',
-                'compare' => '!='
+                'key'     => 'display_on_explore_by_carousel',
+                'value'   =>  true,
+                'compare' => '='
             )
         ),
         'post_status' => 'publish',
     );
 
+
     $categories = get_categories($cat_args);
+    global $theme_option_page;
+
+    $additional_page_to_display = get_post_field('additional_page_to_display', $theme_option_page);
 
     $cnt = 0;
 
