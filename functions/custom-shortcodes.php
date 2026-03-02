@@ -1058,6 +1058,40 @@ if ($('.main-content-outer').length > 0){
   });
 }
 });
+
+/**
+ * Calculates the total height of each '.category-inner-desc-wrapper' DOM element
+ * and maps the computed height to a localized CSS custom property (--wrapper-height).
+ * Includes debouncing logic on resize for performance optimization.
+ */
+function initializeWrapperHeights() {
+    $('.category-inner-desc-wrapper').each(function() {
+        // Retrieve the computed height, including padding and borders
+        let currentHeight = $(this).outerHeight();
+        
+        // Inject the CSS variable directly into the element's inline style map
+        $(this).css('--wrapper-height', currentHeight + 'px');
+    });
+}
+
+/**
+ * Initializes DOM measurements once the document is fully parsed 
+ * and binds recalculation logic to viewport resizing.
+ */
+$(document).ready(function() {
+    // Initial execution on DOM load
+    initializeWrapperHeights();
+    
+    // Recalculate heights on window resize to ensure fluid layouts remain accurate
+    let resizeTimer;
+    $(window).on('resize', function() {
+        clearTimeout(resizeTimer);
+        // Throttle the recalculation to optimize rendering performance
+        resizeTimer = setTimeout(function() {
+            initializeWrapperHeights();
+        }, 150); 
+    });
+});
     </script>";
 
     return $rtn;
