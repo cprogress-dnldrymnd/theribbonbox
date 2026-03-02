@@ -1070,7 +1070,7 @@ function initializeWrapperHeights() {
         let currentHeight = $(this).outerHeight();
         
         // Inject the CSS variable directly into the element's inline style map
-        $(this).css('--wrapper-height', currentHeight + 'px');
+        $(this).parent().css('--wrapper-height', currentHeight + 'px');
     });
 }
 
