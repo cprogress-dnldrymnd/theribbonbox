@@ -8,7 +8,7 @@ if (!is_bbpress() && !is_buddypress()) {
     $global_id = get_the_ID();
 
     if (is_front_page()):
-   
+ 
         $fertility_category_id = 1164;
         $wellbeing_category_id = 1159;
         echo  do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]');
