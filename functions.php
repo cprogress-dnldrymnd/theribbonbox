@@ -1048,3 +1048,47 @@ function dd_disable_new_user_notifications() {
     remove_action( 'edit_user_created_user', 'wp_send_new_user_notifications', 10, 2 );
 }
 add_action( 'init', 'dd_disable_new_user_notifications' );
+
+
+/**
+ * Short-circuit rogue registration emails before dispatch.
+ *
+ * This function hooks into 'pre_wp_mail' to inspect the email payload before 
+ * execution. By checking the subject line against known default WordPress 
+ * or third-party plugin strings, it intercepts and aborts the unwanted 
+ * notifications. Returning true short-circuits wp_mail(), simulating a 
+ * successful send without actually executing the SMTP request. The WPForms 
+ * email will bypass this and send normally.
+ *
+ * @since 1.0.0
+ * @author Digitally Disruptive - Donald Raymundo
+ * @author URI https://digitallydisruptive.co.uk/
+ *
+ * @param null|bool $return Short-circuit return value. Default null.
+ * @param array     $args   An array of the wp_mail() arguments (to, subject, message, etc.).
+ * @return null|bool Returns true to abort sending, or null to proceed normally.
+ */
+function dd_shortcircuit_rogue_registration_emails( $return, $args ) {
+    // Ensure the subject argument exists before checking
+    if ( ! isset( $args['subject'] ) ) {
+        return $return;
+    }
+
+    // Define the specific subject strings we want to kill based on your screenshot.
+    // stripos() makes this check case-insensitive.
+    $blocked_subjects = array(
+        'Your username and password info', // Targets the two unwanted emails
+        'New User Registration'            // Optional: Kills the default admin notification if needed
+    );
+
+    foreach ( $blocked_subjects as $blocked_subject ) {
+        if ( stripos( $args['subject'], $blocked_subject ) !== false ) {
+            // Returning true immediately aborts the email dispatch process
+            return true; 
+        }
+    }
+
+    // If no blocked strings are found, allow the email to proceed (e.g., WPForms)
+    return $return;
+}
+add_filter( 'pre_wp_mail', 'dd_shortcircuit_rogue_registration_emails', 10, 2 );
