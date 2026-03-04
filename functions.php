@@ -1028,3 +1028,5 @@ function render_wpforms_import_page()
     </div>
 <?php
 }
+
+
