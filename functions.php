@@ -1029,4 +1029,22 @@ function render_wpforms_import_page()
 <?php
 }
 
-
+/**
+ * Disable default WordPress new user registration email notifications.
+ *
+ * This function removes the core actions responsible for triggering the default 
+ * user registration emails. It targets both frontend registrations and manual 
+ * user creations within the wp-admin dashboard. Hooked to 'init' to ensure 
+ * core filters are loaded prior to removal.
+ *
+ * @since 1.0.0
+ * @return void
+ */
+function dd_disable_new_user_notifications() {
+    // Disable notification for standard frontend user registration
+    remove_action( 'register_new_user', 'wp_send_new_user_notifications' );
+    
+    // Disable notification for manual user creation via the admin panel
+    remove_action( 'edit_user_created_user', 'wp_send_new_user_notifications', 10, 2 );
+}
+add_action( 'init', 'dd_disable_new_user_notifications' );
