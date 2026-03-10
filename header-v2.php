@@ -1195,11 +1195,19 @@
             gap: 13px
         }
 
+        .top-bar {
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
         .top-bar a {
-            display: flex;
+            display: inline-flex;
             gap: 10px;
             align-items: center;
+            color: var(--trb-white);
         }
+
         @media(max-width: 767px) {
             .post-hero-content {
                 padding: 20px;
