@@ -1343,7 +1343,7 @@
                                     </div>
                                     <div class="col-auto d-none d-lg-block">
                                         <div class="button-accent-2 button-ribbon">
-                                            <a href="https://theribbonbox.com/community/">INFLUENCER COLLECTIVE</a>
+                                            <a href="https://influencer.theribbonbox.com/">INFLUENCER COLLECTIVE</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1375,6 +1375,9 @@
                                                 </svg>
                                                 <span>Sign up for our weekly newsletter</span>
                                             </a>
+                                        </div>
+                                        <div class="influcencer-collective-mobile d-block d-lg-none">
+                                            <a href="https://influencer.theribbonbox.com/">INFLUENCER COLLECTIVE</a>
                                         </div>
                                         <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
                                             <nav>
