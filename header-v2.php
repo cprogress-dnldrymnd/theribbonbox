@@ -1275,7 +1275,7 @@
         }
 
         header .header--inner nav {
-            height: auto;
+            height: auto !important;
         }
 
         @media(max-width: 767px) {
