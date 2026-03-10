@@ -1134,7 +1134,6 @@ function prev_next()
             flex-direction: row;
             align-items: center;
             padding: 30px;
-            gap: 30px;
         }
 
         .sharing-box .post-box-blogs .post-image {
@@ -1146,17 +1145,48 @@ function prev_next()
         .sharing-box .post-box-blogs .post-details {
             flex: 0 0 auto;
             width: 60%;
+            padding: 0;
+            padding-left: 30px;
         }
 
         .sharing-box .post-box-blogs .post-details .post-box-title {
-            font-size: 20px;
+            font-size: 20px !important;
+            margin-top: 0;
+            margin-bottom: 10px;
         }
+
         .is-prev-next {
             font-size: 22px;
             font-weight: bold;
             font-style: italic;
             margin-bottom: 7px;
             color: var(--trb-accent-1);
+            font-family: "Playfair Display", serif;
+
+        }
+
+        .sharing-box .share-post {
+            justify-content: center;
+            color: var(--trb-accent-2);
+        }
+
+        .sharing-box .share-post a svg {
+            color: var(--trb-accent-2);
+        }
+
+
+        .sharing-box .col-prev .post-box-blogs {
+            clip-path: polygon(0% 0%,
+                    /* Top-left */
+                    100% 0%,
+                    /* Top-right */
+                    95% 50%,
+                    /* The Notch (10% inwards from the right) */
+                    100% 100%,
+                    /* Bottom-right */
+                    0% 100%
+                    /* Bottom-left */
+                );
         }
     </style>
     <section class="sharing-box trb-px">
