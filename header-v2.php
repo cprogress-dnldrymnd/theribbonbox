@@ -940,10 +940,7 @@
                 gap: 0;
             }
 
-            .col-mobile-menu {
-                display: flex;
-                gap: 20px;
-            }
+         
 
             .col-logo img {
                 max-width: 200px;
@@ -1329,7 +1326,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-auto d-block d-lg-none col-mobile-menu">
+                            <div class="col-auto d-flex gap-3 d-lg-none col-mobile-menu">
                                 <button type="button" class="offCanvasSearch-btn d-block d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#offCanvasSearch" aria-controls="offCanvasSearch" class="d-block d-xl-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="17.179" height="17.179" viewBox="0 0 17.179 17.179">
                                         <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.75 0.75)">
