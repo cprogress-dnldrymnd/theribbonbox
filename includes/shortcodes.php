@@ -1196,8 +1196,7 @@ function prev_next()
         }
 
         .sharing-box .col-next .post-box-blogs {
-            padding-left: 0;
-            padding-right: 30px;
+
             flex-direction: row-reverse;
             text-align: right;
             clip-path: polygon(0% 0%,
@@ -1211,6 +1210,11 @@ function prev_next()
                     5% 50%
                     /* The Notch (5% inwards from the left) */
                 );
+        }
+
+        .sharing-box  .col-next .post-box-blogs .post-details {
+            padding-left: 0;
+            padding-right: 30px;
         }
 
         .sharing-box .col-next .post-box-blogs .post-details .post-box-title {
