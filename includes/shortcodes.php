@@ -1129,6 +1129,12 @@ function prev_next()
     $ids = (object) getPrevNextIds();
 ?>
     <style>
+        .sharing-box {
+            border-top: 1px solid var(--trb-border-color);
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
         .sharing-box .post-box-blogs {
             display: flex;
             flex-direction: row;
