@@ -383,7 +383,8 @@ function post_box($atts)
                 'id' => '',
                 'format' => 'default',
                 'count' => '',
-                'in_count' => ''
+                'in_count' => '',
+                'is_prev_next' => false
             ),
             $atts
         )
@@ -413,19 +414,22 @@ function post_box($atts)
         </div>
         <div class="post-details">
             <a href="<?= get_the_permalink($id) ?>">
+                <?= $is_prev_next != false ? '<span class="is-prev-next">' . $is_prev_next . '</span>' : '' ?>
                 <h3 class="post-box-title"><?= get_the_title($id) ?></h3>
             </a>
             <div class="post-box-date">
                 <?= get_the_date('j M Y', $id) ?>
             </div>
-            <?php if ($format == 'podcast') { ?>
-                <div class="button-box button-box-v2 button-bordered text-center">
-                    <a href="<?= get_the_permalink($id) ?>">LISTEN NOW</a>
-                </div>
-            <?php } else { ?>
-                <div class="button-box button-box-v2 button-readnow text-center">
-                    <a href="<?= get_the_permalink($id) ?>">READ MORE</a>
-                </div>
+            <?php if ($is_prev_next == false) { ?>
+                <?php if ($format == 'podcast') { ?>
+                    <div class="button-box button-box-v2 button-bordered text-center">
+                        <a href="<?= get_the_permalink($id) ?>">LISTEN NOW</a>
+                    </div>
+                <?php } else { ?>
+                    <div class="button-box button-box-v2 button-readnow text-center">
+                        <a href="<?= get_the_permalink($id) ?>">READ MORE</a>
+                    </div>
+                <?php } ?>
             <?php } ?>
         </div>
     </div>
@@ -1132,14 +1136,20 @@ function prev_next()
             padding: 30px;
             gap: 30px;
         }
+
         .sharing-box .post-box-blogs .post-image {
             flex: 0 0 auto;
             width: 40%;
             padding: 12% 0;
         }
+
         .sharing-box .post-box-blogs .post-details {
             flex: 0 0 auto;
             width: 60%;
+        }
+
+        .sharing-box .post-box-blogs .post-details .post-box-title {
+            font-size: 20px;
         }
     </style>
     <section class="sharing-box trb-px">
