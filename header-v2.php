@@ -1263,7 +1263,7 @@
         }
 
         .menu-posts-main-mob.menu-posts-main-mob h2 {
-            text-transform: capitalize;
+            text-transform: capitalize !important;
         }
 
         @media(max-width: 767px) {
