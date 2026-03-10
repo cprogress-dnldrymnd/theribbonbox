@@ -1060,7 +1060,7 @@
             }
 
             .d-lg-block {
-                display: initial !important;ccccccccc
+                display: initial !important;
             }
 
             .d-lg-none.d-flex {
