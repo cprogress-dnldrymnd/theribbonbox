@@ -785,13 +785,7 @@
             }
         }
 
-        @media(max-width: 1199px) and (min-width: 1001px) {
-
-            #offCanvasSearch {
-                height: 100vh !important;
-            }
-        }
-
+     
         @media(max-width: 1199px) {
             .trb-px {
                 padding-left: 30px;
@@ -948,6 +942,9 @@
 
             .col-logo img {
                 max-width: 200px;
+            }
+                 #offCanvasSearch {
+                height: 100vh !important;
             }
         }
 
