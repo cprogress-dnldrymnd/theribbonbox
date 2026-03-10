@@ -819,6 +819,12 @@
 
 
         @media (max-width: 1000px) {
+            .top-bar a {
+                font-size: 14px;
+                width: 100%;
+                justify-content: center;
+            }
+
             nav {
                 position: static !important;
             }
@@ -1292,11 +1298,7 @@
                 padding: 20px;
             }
 
-            .top-bar a {
-                font-size: 14px;
-                width: 100%;
-                justify-content: center;
-            }
+
         }
     </style>
     <?php
