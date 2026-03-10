@@ -1446,3 +1446,99 @@
                     }
                     ?>
                 </div>
+
+                $fertility_category_id = 1164;
+                $wellbeing_category_id = 1159;
+                echo do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]');
+                echo do_shortcode('[_giveaway_list]');
+
+                echo '<div class="home-slider" id="home-slider">';
+                    echo "<script async src='https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/sauce_homepage.js' class='snapppt-widget'></script>";
+                    echo '</div>';
+
+                echo do_shortcode('[display_followus]');
+
+                echo do_shortcode('[expert_list categoryid="1164,1159" title="Wellbeing &amp; Fertility Experts" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1159" home="1" exclude="' . $excludeids . '"]');
+                echo do_shortcode('[category_list]');
+                echo '<div class="blogs-loop-watch-listen">';
+                    echo '<div class="mw-large trb-px">';
+                        echo '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+                        echo do_shortcode('[blog_filter format="video-half" post_type="videos" limit="3" categoryid="1159" home="1"]');
+                        echo '</div>';
+                    echo '</div>';
+                echo do_shortcode('[blog_filter format="video" limit="4"]');
+                echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
+                echo do_shortcode('[expert_list categoryid="1165,1163" title="Pregnancy &amp; Parenting Experts"]');
+                echo do_shortcode('[display_home_section]');
+                echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-1" limit="2" categoryid="1163" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="1159" home="1"]');
+                echo do_shortcode('[display_followus]');
+                echo do_shortcode('[blog_filter format="normal-4" limit="6" categoryid="1159" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-3" limit="2" categoryid="1165" home="1"]');
+                echo '
+                <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
+                <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
+                <script src="/wp-content/themes/lighttheme"></script>';
+                ?>
+                <script>
+                    var swiper = new Swiper(".swiper-experts", {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                        loop: true,
+                        pagination: {
+                            el: ".swiper-pagination",
+                            dynamicBullets: true,
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: ".swiper-button-next-experts",
+                            prevEl: ".swiper-button-prev-experts",
+                        },
+                        breakpoints: {
+                            0: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 20,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                                spaceBetween: 40,
+                            },
+                        }
+                    });
+
+                    $('.category-entry').slick({
+                        dots: true,
+                        centerMode: true,
+                        centerPadding: '60px',
+                        slidesToShow: 3,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        responsive: [{
+                                breakpoint: 900,
+                                settings: {
+
+                                    centerMode: true,
+                                    centerPadding: '150px',
+                                    slidesToShow: 1
+                                }
+                            },
+                            {
+                                breakpoint: 600,
+                                settings: {
+
+                                    centerMode: true,
+                                    centerPadding: '1px',
+                                    slidesToShow: 1
+                                }
+                            }
+                        ]
+                    });
+                </script>
