@@ -1283,7 +1283,7 @@
             padding: 24px;
         }
 
-        .menu-posts-main-mob.menu-posts-main-mob h2 {
+        #menu-posts-main-mob h2 {
             text-transform: capitalize !important;
         }
 
