@@ -1060,11 +1060,14 @@
             }
 
             .d-lg-block {
-                display: initial !important;
+                display: initial !important;ccccccccc
             }
 
             .d-lg-none.d-flex {
                 display: flex !important;
+            }
+            .d-lg-block.d-none {
+                display: none !important;
             }
 
         }
