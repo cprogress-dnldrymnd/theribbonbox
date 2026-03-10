@@ -149,7 +149,7 @@ $article_medically_reviewed_by = do_shortcode('[article_medically_reviewed_by]')
                 
                 '.get_the_breadcrumb_function($_SERVER['REQUEST_URI'], get_the_title()).'
                 
-                
+                '.do_shortcode('[prev_next]').'
             </div>
         </div>
     </div>';

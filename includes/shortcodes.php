@@ -1135,3 +1135,6 @@ function prev_next()
 <?php
     return ob_get_clean();
 }
+
+
+add_shortcode('prev_next', 'prev_next');
