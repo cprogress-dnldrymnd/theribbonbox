@@ -1151,6 +1151,13 @@ function prev_next()
         .sharing-box .post-box-blogs .post-details .post-box-title {
             font-size: 20px;
         }
+        .is-prev-next {
+            font-size: 22px;
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 7px;
+            color: var(--trb-accent-1);
+        }
     </style>
     <section class="sharing-box trb-px">
 

@@ -1410,7 +1410,7 @@
                                             </g>
                                         </svg>
                                     </button>
-                                    <div class="button-link d-flex">
+                                    <div class="button-link d-flextrb-accent-">
                                         <a href="https://theribbonbox.com/community/">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="13.435" height="13.436" viewBox="0 0 13.435 13.436">
                                                 <g id="Profile" transform="translate(-1390.798 -86)">
