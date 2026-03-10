@@ -809,6 +809,9 @@
             #offCanvasSearch .offcanvas-body--inner {
                 padding: 40px;
             }
+            .col-logo img {
+                max-width: 300px;
+            }
 
         }
 
@@ -934,6 +937,15 @@
 
             #offCanvasMenu .menu {
                 gap: 0;
+            }
+            .col-search {
+                order: 3;
+            }
+            .col-mobile-menu {
+                order: 4;
+            }
+            .col-logo img {
+                max-width: 200px;
             }
         }
 
@@ -1265,7 +1277,7 @@
                     <div class="container-fluid">
                         <div class="row justify-content-between align-items-center">
 
-                            <div class="col-auto">
+                            <div class="col-auto col-search">
                                 <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
                                     <div class="offcanvas-body p-0">
                                         <div class="offcanvas-body--inner">
@@ -1325,7 +1337,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-auto d-block d-lg-none">
+                            <div class="col-auto d-block d-lg-none col-mobile-menu">
                                 <button class="menu-burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
                                     <div class="icon">
                                         <div class="menu"></div>
