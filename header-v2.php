@@ -1355,7 +1355,7 @@
                                                         </button>
                                                     </div>
                                                     <h4 class="d-block d-lg-none">Search</h4>
-                                                    <?php echo do_shortcode('[ivory-search id="45284" title="Search for a topic"]'); ?>
+                                                    <?php echo do_shortcode('[ivory-search id="45284" title="Search"]'); ?>
                                                 </div>
                                             </div>
                                         </div>
