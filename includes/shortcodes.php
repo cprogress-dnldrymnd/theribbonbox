@@ -1124,7 +1124,7 @@ function prev_next()
     ob_start();
     $ids = (object) getPrevNextIds();
 ?>
-    <section class="sharing-box">
+    <section class="sharing-box trb-px">
 
         <div class="row g-3 align-items-center">
             <div class="col-lg-4 col-prev">
