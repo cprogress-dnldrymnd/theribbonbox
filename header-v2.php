@@ -117,6 +117,13 @@
             transition: 400ms;
         }
 
+        .button-link.button-link a {
+            color: var(--trb-black);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
         .button-accent-2.button-accent-2 a:hover {
             background-color: var(--trb-accent-1);
 
@@ -1256,7 +1263,20 @@
                                 <div class="row g-3 justify-content-end align-items-center">
                                     <div class="col-auto d-none d-lg-block">
                                         <div class="button-link">
-                                            <a href="https://theribbonbox.com/community/">COMMUNITY LOGIN</a>
+                                            <a href="https://theribbonbox.com/community/">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="13.435" height="13.436" viewBox="0 0 13.435 13.436">
+                                                    <g id="Profile" transform="translate(-1390.798 -86)">
+                                                        <g id="account" transform="translate(1390.798 86)">
+                                                            <g id="Dribbble-Light-Preview" transform="translate(0 0)">
+                                                                <g id="icons">
+                                                                    <path id="profile-_1341_" data-name="profile-[#1341]" d="M130.718,2005.717a2.687,2.687,0,1,1,2.7-2.687,2.694,2.694,0,0,1-2.7,2.687m2.537.45a4.009,4.009,0,0,0,1.466-3.762,4.052,4.052,0,0,0-8.052.625,4.011,4.011,0,0,0,1.513,3.137,6.408,6.408,0,0,0-4.178,5.522.68.68,0,0,0,.674.746.663.663,0,0,0,.667-.6,5.411,5.411,0,0,1,10.747,0,.663.663,0,0,0,.667.6.68.68,0,0,0,.674-.746,6.408,6.408,0,0,0-4.178-5.522" transform="translate(-124 -1998.999)" fill-rule="evenodd" />
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                                COMMUNITY LOGIN
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="col-auto d-none d-lg-block">
