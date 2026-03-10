@@ -1376,7 +1376,7 @@
                                                 <span>Sign up for our weekly newsletter</span>
                                             </a>
                                         </div>
-                                        <div class="influcencer-collective-mobile d-block d-lg-none">
+                                        <div class="influcencer-collective-mobile d-block d-lg-none button-accent-2">
                                             <a href="https://influencer.theribbonbox.com/">INFLUENCER COLLECTIVE</a>
                                         </div>
                                         <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
