@@ -647,7 +647,6 @@
 
         @media(min-width: 1001px) {
             header.header-v2 .header-menu {
-                margin-top: 15px;
                 border-top: 1px solid var(--trb-lightyellow2);
             }
 
@@ -1269,6 +1268,11 @@
             text-transform: capitalize !important;
         }
 
+        .header--inner > .container-fluid {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
         @media(max-width: 767px) {
             .post-hero-content {
                 padding: 20px;
@@ -1320,7 +1324,7 @@
                 </div>
             </div>
             <header class="header-v2" id="header-main-site">
-                <div class="header--inner py-4 trb-px trb-bg-lightyellow">
+                <div class="header--inner trb-px trb-bg-lightyellow">
                     <div class="container-fluid">
                         <div class="row justify-content-between align-items-center">
 
