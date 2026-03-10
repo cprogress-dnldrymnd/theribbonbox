@@ -1302,8 +1302,12 @@
             .post-hero-content {
                 padding: 20px;
             }
+        }
 
-
+        @media(max-width: 575px) {
+            .col-logo img {
+                max-width: 150px;
+            }
         }
     </style>
     <?php
