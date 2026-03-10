@@ -812,7 +812,7 @@
                 width: 100%;
             }
 
-          
+
 
             body.mobile-menu-active #header-main-site .header--inner {
                 position: fixed;
@@ -1008,7 +1008,7 @@
                 max-width: 85px;
             }
 
-        
+
 
             .header-v2 .social-icons.social-icons-txt a {
                 font-size: 13px;
@@ -1062,6 +1062,11 @@
             .d-lg-block {
                 display: initial !important;
             }
+
+            .d-lg-none.d-flex {
+                display: flex !important;
+            }
+
         }
 
         /**single hero */
