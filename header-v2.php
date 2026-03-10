@@ -1071,7 +1071,7 @@
             }
         }
 
-        @media(min-width: 1001px) {
+        @media(min-width: 1000px) {
             .post-hero-content h1 {
                 font-size: 59px;
             }
