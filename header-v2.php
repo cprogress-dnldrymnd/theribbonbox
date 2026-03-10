@@ -946,6 +946,14 @@
             #offCanvasSearch {
                 height: 100vh !important;
             }
+
+            .d-lg-none.d-flex {
+                display: flex !important;
+            }
+
+            .d-lg-block.d-none {
+                display: none !important;
+            }
         }
 
         @media(max-width: 767px) {
@@ -1075,13 +1083,7 @@
 
         @media(min-width: 1000px) {
 
-            .d-lg-none.d-flex {
-                display: flex !important;
-            }
 
-            .d-lg-block.d-none {
-                display: none !important;
-            }
 
             .post-hero-content h1 {
                 font-size: 59px;
