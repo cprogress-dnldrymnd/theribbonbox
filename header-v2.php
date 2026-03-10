@@ -1219,7 +1219,7 @@
                         <div class="row justify-content-between align-items-center">
                             <div class="col-auto col-logo">
                                 <a href="<?= get_site_url() ?>" class="site-logo-v2">
-                                    <?= $theme_logo ?>
+                                    <img src="https://theribbonbox.com/wp-content/uploads/2026/03/TRB-LOGO-horizontal-BLACK-3.png" alt="">
                                 </a>
                             </div>
                             <div class="col-auto">
