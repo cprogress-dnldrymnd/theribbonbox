@@ -1209,6 +1209,7 @@
             font-size: 18px;
             font-weight: 500;
             font-family: 'Playfair Display';
+            letter-spacing: 0.9px;
         }
 
         .top-bar a strong {
