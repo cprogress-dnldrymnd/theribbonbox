@@ -1063,12 +1063,7 @@
                 display: initial !important;
             }
 
-            .d-lg-none.d-flex {
-                display: flex !important;
-            }
-            .d-lg-block.d-none {
-                display: none !important;
-            }
+          
 
         }
 
