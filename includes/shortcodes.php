@@ -1138,7 +1138,6 @@ function prev_next()
         .sharing-box .post-box-blogs {
             display: flex;
             flex-direction: row;
-            align-items: center;
             padding: 30px;
         }
 
