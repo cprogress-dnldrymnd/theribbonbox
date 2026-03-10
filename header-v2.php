@@ -693,17 +693,7 @@
             }
         }
 
-        @media(min-width: 1200px) {
-            #offCanvasSearch {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                width: auto;
-                background-color: transparent;
-                border: none;
-            }
-        }
+
 
         @media(max-width: 1920px) {
             .is-search-form.is-search-form {
@@ -789,7 +779,8 @@
             .site-logo-v2 svg {
                 max-width: 80px;
             }
-             .col-logo img {
+
+            .col-logo img {
                 max-width: 300px;
             }
         }
@@ -815,7 +806,7 @@
                 padding: 40px;
             }
 
-           
+
 
         }
 
@@ -1096,6 +1087,16 @@
 
             .d-lg-none {
                 display: none !important;
+            }
+
+            #offCanvasSearch {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                width: auto;
+                background-color: transparent;
+                border: none;
             }
         }
 
