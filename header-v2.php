@@ -1206,8 +1206,11 @@
             gap: 10px;
             align-items: center;
             color: var(--trb-black);
-            font-size: 500;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Playfair Display';
         }
+
         .top-bar a strong {
             font-weight: 800;
         }
@@ -1295,7 +1298,7 @@
                                 </a>
                             </div>
                             <div class="col-auto">
-                                <div class="row g-3 justify-content-end align-items-center">
+                                <div class="row g-4 justify-content-end align-items-center">
                                     <div class="col-auto d-none d-lg-block">
                                         <div class="button-link">
                                             <a href="https://theribbonbox.com/community/">
