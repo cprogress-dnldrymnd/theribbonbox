@@ -789,6 +789,9 @@
             .site-logo-v2 svg {
                 max-width: 80px;
             }
+             .col-logo img {
+                max-width: 300px;
+            }
         }
 
         @media(max-width: 1199px) and (min-width: 1001px) {
@@ -812,9 +815,7 @@
                 padding: 40px;
             }
 
-            .col-logo img {
-                max-width: 300px;
-            }
+           
 
         }
 
