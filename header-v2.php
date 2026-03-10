@@ -895,7 +895,7 @@
             }
 
             body {
-                --menu-top: 80px;
+                --menu-top: 72px;
             }
 
             #offCanvasMenu {
