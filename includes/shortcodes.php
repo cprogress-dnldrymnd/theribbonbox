@@ -1125,12 +1125,23 @@ function prev_next()
     $ids = (object) getPrevNextIds();
 ?>
     <section class="sharing-box">
-        <div class="prev-next">
-            <a rel="prev" href="<?= get_permalink($ids->prev) ?>">Previous</a>
-            <a rel="next" href="<?= get_permalink($ids->next) ?>">Next</a>
-        </div>
 
-        <?= do_shortcode('[social_share]') ?>
+        <div class="row g-3 align-items-center">
+            <div class="col-lg-4 col-prev">
+                <?php
+                if (current_user_can('administrator')) {
+                    echo do_shortcode('[post_box id=' . $ids->prev . ']');
+                }
+                ?>
+                <a rel="prev" href="<?= get_permalink($ids->prev) ?>">Previous</a>
+            </div>
+            <div class="col-lg-4 col-social">
+                <?= do_shortcode('[social_share]') ?>
+            </div>
+            <div class="col-lg-4 col-next">
+                <a rel="next" href="<?= get_permalink($ids->next) ?>">Next</a>
+            </div>
+        </div>
     </section>
 <?php
     return ob_get_clean();
