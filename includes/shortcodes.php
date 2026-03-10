@@ -1182,6 +1182,7 @@ function prev_next()
 
 
         .sharing-box .col-prev .post-box-blogs {
+            padding-right: 40px;
             clip-path: polygon(0% 0%,
                     /* Top-left */
                     100% 0%,
@@ -1199,6 +1200,7 @@ function prev_next()
             margin-left: auto;
             flex-direction: row-reverse;
             text-align: right;
+            padding-left: 40px;
             clip-path: polygon(0% 0%,
                     /* Top-left */
                     100% 0%,
