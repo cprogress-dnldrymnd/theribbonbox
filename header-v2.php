@@ -497,11 +497,15 @@
         }
 
         .newsletter-menu a {
-            background-color: var(--trb-accent-3);
+            background-color: var(--trb-accent-1);
         }
 
         .newsletter-menu a span {
-            color: var(--trb-white) !important;
+            color: var(--trb-black) !important;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Playfair Display';
+            letter-spacing: 0.9px;
         }
 
         .social-icons:before,
@@ -1254,6 +1258,10 @@
             padding: 24px;
         }
 
+        .menu-posts-main-mob.menu-posts-main-mob h2 {
+            text-transform: capitalize;
+        }
+
         @media(max-width: 767px) {
             .post-hero-content {
                 padding: 20px;
@@ -1375,11 +1383,15 @@
                                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                     <div class="offcanvas-body p-0 d-flex flex-column">
                                         <div class="newsletter-menu d-block d-lg-none">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal" class="d-flex align-items-center gap-3 p-4 text-white text-uppercase sub-pop-btn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" id="mail" width="16.853" height="12.64" viewBox="0 0 16.853 12.64">
+                                                    <g id="Icon-Set">
+                                                        <path id="mail-2" data-name="mail" d="M427.8,269.533a1.036,1.036,0,0,1-.05.3l-4.69-5.044,4.74-3.687v8.427Zm-13.927,1.025,4.753-5.064,1.8,1.361,1.723-1.37,4.831,5.073c-.075.017-13.032.017-13.107,0Zm-.819-1.025v-8.427l4.74,3.687-4.69,5.044a1.036,1.036,0,0,1-.05-.3Zm14.22-9.48-6.847,5.267-6.847-5.267ZM426.746,259h-12.64A2.107,2.107,0,0,0,412,261.107v8.427a2.107,2.107,0,0,0,2.107,2.107h12.64a2.107,2.107,0,0,0,2.107-2.107v-8.427A2.107,2.107,0,0,0,426.746,259Z" transform="translate(-412 -259)" fill-rule="evenodd" />
+                                                    </g>
                                                 </svg>
-                                                <span>Sign up for our weekly newsletter</span>
+                                                <span>
+                                                    <strong><i><u>Subscribe</u></i></strong> to our <strong><i>weekly newsletters</i></strong>
+                                                </span>
                                             </a>
                                         </div>
                                         <div class="influcencer-collective-mobile d-block d-lg-none button-accent-2">
