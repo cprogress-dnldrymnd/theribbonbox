@@ -1202,7 +1202,7 @@
 
     ?>
     <div id="fouc">
-        <div class="site-wrap">
+        <div class="site-wrap xx2s">
             <?= do_shortcode('[ad_list]') ?>
             <header class="header-v2" id="header-main-site">
                 <div class="header--inner py-4 trb-px trb-bg-lightyellow">
