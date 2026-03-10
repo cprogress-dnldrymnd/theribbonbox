@@ -1195,6 +1195,11 @@
             gap: 13px
         }
 
+        .top-bar a {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
         @media(max-width: 767px) {
             .post-hero-content {
                 padding: 20px;
@@ -1235,7 +1240,7 @@
                                 <path id="mail-2" data-name="mail" d="M427.8,269.533a1.036,1.036,0,0,1-.05.3l-4.69-5.044,4.74-3.687v8.427Zm-13.927,1.025,4.753-5.064,1.8,1.361,1.723-1.37,4.831,5.073c-.075.017-13.032.017-13.107,0Zm-.819-1.025v-8.427l4.74,3.687-4.69,5.044a1.036,1.036,0,0,1-.05-.3Zm14.22-9.48-6.847,5.267-6.847-5.267ZM426.746,259h-12.64A2.107,2.107,0,0,0,412,261.107v8.427a2.107,2.107,0,0,0,2.107,2.107h12.64a2.107,2.107,0,0,0,2.107-2.107v-8.427A2.107,2.107,0,0,0,426.746,259Z" transform="translate(-412 -259)" fill-rule="evenodd" />
                             </g>
                         </svg>
-                        Subscribe to our weekly newsletters
+                        <strong><i>Subscribe</i></strong> to our <strong><i>weekly newsletters</i></strong>
                     </a>
                 </div>
             </div>
