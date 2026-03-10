@@ -809,6 +809,7 @@
             #offCanvasSearch .offcanvas-body--inner {
                 padding: 40px;
             }
+
             .col-logo img {
                 max-width: 300px;
             }
@@ -938,12 +939,12 @@
             #offCanvasMenu .menu {
                 gap: 0;
             }
-            .col-search {
-                order: 3;
-            }
+
             .col-mobile-menu {
-                order: 4;
+                display: flex;
+                gap: 20px;
             }
+
             .col-logo img {
                 max-width: 200px;
             }
@@ -1295,15 +1296,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="offCanvasSearch-btn d-block d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#offCanvasSearch" aria-controls="offCanvasSearch" class="d-block d-xl-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="17.179" height="17.179" viewBox="0 0 17.179 17.179">
-                                        <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.75 0.75)">
-                                            <path id="Path_1" data-name="Path 1" d="M18.161,11.33A6.83,6.83,0,1,1,11.33,4.5,6.83,6.83,0,0,1,18.161,11.33Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                            <path id="Path_2" data-name="Path 2" d="M28.689,28.689l-3.714-3.714" transform="translate(-13.321 -13.321)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                        </g>
-                                    </svg>
-                                </button>
-
                             </div>
                             <div class="col-auto col-logo">
                                 <a href="<?= get_site_url() ?>" class="site-logo-v2">
@@ -1338,6 +1330,14 @@
                                 </div>
                             </div>
                             <div class="col-auto d-block d-lg-none col-mobile-menu">
+                                <button type="button" class="offCanvasSearch-btn d-block d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#offCanvasSearch" aria-controls="offCanvasSearch" class="d-block d-xl-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="17.179" height="17.179" viewBox="0 0 17.179 17.179">
+                                        <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.75 0.75)">
+                                            <path id="Path_1" data-name="Path 1" d="M18.161,11.33A6.83,6.83,0,1,1,11.33,4.5,6.83,6.83,0,0,1,18.161,11.33Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+                                            <path id="Path_2" data-name="Path 2" d="M28.689,28.689l-3.714-3.714" transform="translate(-13.321 -13.321)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+                                        </g>
+                                    </svg>
+                                </button>
                                 <button class="menu-burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
                                     <div class="icon">
                                         <div class="menu"></div>
