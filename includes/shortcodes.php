@@ -1135,12 +1135,7 @@ function prev_next()
             padding-bottom: 30px;
         }
 
-        .sharing-box .post-box-blogs {
-            display: flex;
-            flex-direction: row;
-            padding: 30px;
-            max-width: 620px;
-        }
+
 
         .sharing-box .post-box-blogs .post-image {
             flex: 0 0 auto;
@@ -1182,7 +1177,7 @@ function prev_next()
 
 
         .sharing-box .col-prev .post-box-blogs {
-            padding-right: 40px;
+            padding-right: 50px;
             clip-path: polygon(0% 0%,
                     /* Top-left */
                     100% 0%,
@@ -1196,23 +1191,6 @@ function prev_next()
                 );
         }
 
-        .sharing-box .col-next .post-box-blogs {
-            margin-left: auto;
-            flex-direction: row-reverse;
-            text-align: right;
-            padding-left: 40px;
-            clip-path: polygon(0% 0%,
-                    /* Top-left */
-                    100% 0%,
-                    /* Top-right */
-                    100% 100%,
-                    /* Bottom-right */
-                    0% 100%,
-                    /* Bottom-left */
-                    5% 50%
-                    /* The Notch (5% inwards from the left) */
-                );
-        }
 
         .sharing-box .col-next .post-box-blogs .post-details {
             padding-left: 0;
@@ -1222,6 +1200,35 @@ function prev_next()
         .sharing-box .col-next .post-box-blogs .post-details .post-box-title {
             text-align: right;
         }
+
+        @media(min-width: 1200px) {
+            .sharing-box .col-next .post-box-blogs {
+                margin-left: auto;
+                flex-direction: row-reverse;
+                text-align: right;
+                padding-left: 50px;
+                clip-path: polygon(0% 0%,
+                        /* Top-left */
+                        100% 0%,
+                        /* Top-right */
+                        100% 100%,
+                        /* Bottom-right */
+                        0% 100%,
+                        /* Bottom-left */
+                        5% 50%
+                        /* The Notch (5% inwards from the left) */
+                    );
+            }
+
+            .sharing-box .post-box-blogs {
+                display: flex;
+                flex-direction: row;
+                padding: 30px;
+                max-width: 620px;
+            }
+        }
+
+        @media(max-width: 1199px) {}
     </style>
     <section class="sharing-box trb-px">
 
