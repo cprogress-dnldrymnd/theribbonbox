@@ -1137,19 +1137,6 @@ function prev_next()
 
 
 
-        .sharing-box .post-box-blogs .post-image {
-            flex: 0 0 auto;
-            width: 40%;
-            padding: 12% 0;
-        }
-
-        .sharing-box .post-box-blogs .post-details {
-            flex: 0 0 auto;
-            width: 60%;
-            padding: 0;
-            padding-left: 30px;
-        }
-
         .sharing-box .post-box-blogs .post-details .post-box-title {
             font-size: 20px !important;
             margin-top: 0;
@@ -1176,32 +1163,48 @@ function prev_next()
         }
 
 
-        .sharing-box .col-prev .post-box-blogs {
-            padding-right: 50px;
-            clip-path: polygon(0% 0%,
-                    /* Top-left */
-                    100% 0%,
-                    /* Top-right */
-                    95% 50%,
-                    /* The Notch (10% inwards from the right) */
-                    100% 100%,
-                    /* Bottom-right */
-                    0% 100%
-                    /* Bottom-left */
-                );
-        }
 
 
-        .sharing-box .col-next .post-box-blogs .post-details {
-            padding-left: 0;
-            padding-right: 30px;
-        }
-
-        .sharing-box .col-next .post-box-blogs .post-details .post-box-title {
-            text-align: right;
-        }
 
         @media(min-width: 1200px) {
+
+            .sharing-box .col-prev .post-box-blogs {
+                padding-right: 50px;
+                clip-path: polygon(0% 0%,
+                        /* Top-left */
+                        100% 0%,
+                        /* Top-right */
+                        95% 50%,
+                        /* The Notch (10% inwards from the right) */
+                        100% 100%,
+                        /* Bottom-right */
+                        0% 100%
+                        /* Bottom-left */
+                    );
+            }
+
+            .sharing-box .col-next .post-box-blogs .post-details {
+                padding-left: 0;
+                padding-right: 30px;
+            }
+
+            .sharing-box .col-next .post-box-blogs .post-details .post-box-title {
+                text-align: right;
+            }
+
+            .sharing-box .post-box-blogs .post-image {
+                flex: 0 0 auto;
+                width: 40%;
+                padding: 12% 0;
+            }
+
+            .sharing-box .post-box-blogs .post-details {
+                flex: 0 0 auto;
+                width: 60%;
+                padding: 0;
+                padding-left: 30px;
+            }
+
             .sharing-box .col-next .post-box-blogs {
                 margin-left: auto;
                 flex-direction: row-reverse;
