@@ -1081,7 +1081,7 @@
             }
         }
 
-        @media(min-width: 1000px) {
+        @media(min-width: 1001px) {
 
 
 
