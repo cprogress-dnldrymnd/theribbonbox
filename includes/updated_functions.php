@@ -265,9 +265,7 @@ function create_item_socials_v3($url, $title)
         <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= $url  ?>" target="_blank" rel="nofollow">
             <?= $theme_icons['linkedin'] ?>
         </a>
-        <a href="https://x.com/intent/tweet?url=<?= $url  ?>&text=' . $title . '" target="_blank" rel="nofollow">
-            <?= $theme_icons['x'] ?>
-        </a>
+      
     </div>
 <?php
     return ob_get_clean();
