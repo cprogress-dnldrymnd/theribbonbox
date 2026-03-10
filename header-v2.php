@@ -1251,14 +1251,18 @@
                                     <img src="https://theribbonbox.com/wp-content/uploads/2026/03/TRB-LOGO-horizontal-BLACK-3.png" alt="">
                                 </a>
                             </div>
-                            <div class="col-auto d-none d-lg-block">
-                                <div class="button-link">
-                                    <a href="https://theribbonbox.com/community/">COMMUNITY LOGIN</a>
-                                </div>
-                            </div>
-                            <div class="col-auto d-none d-lg-block">
-                                <div class="button-accent-2 button-ribbon">
-                                    <a href="https://theribbonbox.com/community/">INFLUENCER COLLECTIVE</a>
+                            <div class="col-auto">
+                                <div class="row g-3 justify-content-end">
+                                    <div class="col-auto d-none d-lg-block">
+                                        <div class="button-link">
+                                            <a href="https://theribbonbox.com/community/">COMMUNITY LOGIN</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto d-none d-lg-block">
+                                        <div class="button-accent-2 button-ribbon">
+                                            <a href="https://theribbonbox.com/community/">INFLUENCER COLLECTIVE</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-auto d-block d-lg-none">
