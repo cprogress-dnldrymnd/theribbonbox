@@ -712,6 +712,7 @@
         @media(max-width: 1920px) {
             .is-search-form.is-search-form {
                 min-width: 18vw;
+                max-width: 277px;
             }
         }
 
