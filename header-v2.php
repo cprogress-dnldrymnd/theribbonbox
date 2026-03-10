@@ -149,11 +149,11 @@
         }
 
         .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input {
-            background-color: transparent;
+            background-color: var(--trb-lightyellow2);
             height: auto !important;
-            padding: 17px 45px 17px 30px !important;
+            padding: 17px 45px 17px 24px !important;
             border-radius: 50px;
-            border: 1px solid !important;
+            border: none !important;
         }
 
 
