@@ -1196,15 +1196,24 @@ function prev_next()
                 <?php
                 if (current_user_can('administrator')) {
                     echo do_shortcode('[post_box id=' . $ids->prev . ' is_prev_next="Previous"]');
+                } else {
+                    echo '<a rel="prev" href="' . get_permalink($ids->prev) . '">Previous</a>';
                 }
                 ?>
-                <a rel="prev" href="<?= get_permalink($ids->prev) ?>">Previous</a>
+
             </div>
             <div class="col-lg-4 col-social">
                 <?= do_shortcode('[social_share]') ?>
             </div>
             <div class="col-lg-4 col-next">
-                <a rel="next" href="<?= get_permalink($ids->next) ?>">Next</a>
+                <?php
+                if (current_user_can('administrator')) {
+                    echo do_shortcode('[post_box id=' . $ids->next . ' is_prev_next="Next"]');
+                } else {
+                    echo '<a rel="next" href="' . get_permalink($ids->next) . '">Next</a>';
+                }
+                ?>
+
             </div>
         </div>
     </section>
