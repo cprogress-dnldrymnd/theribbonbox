@@ -1248,6 +1248,12 @@
             font-weight: 800;
         }
 
+        .influcencer-collective-mobile.influcencer-collective-mobile.influcencer-collective-mobile a {
+            width: 100%;
+            border-radius: 0;
+            padding: 24px;
+        }
+
         @media(max-width: 767px) {
             .post-hero-content {
                 padding: 20px;
@@ -1456,8 +1462,8 @@
                 echo do_shortcode('[_giveaway_list]');
 
                 echo '<div class="home-slider" id="home-slider">';
-                    echo "<script async src='https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/sauce_homepage.js' class='snapppt-widget'></script>";
-                    echo '</div>';
+                echo "<script async src='https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/sauce_homepage.js' class='snapppt-widget'></script>";
+                echo '</div>';
 
                 echo do_shortcode('[display_followus]');
 
@@ -1465,11 +1471,11 @@
                 echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1159" home="1" exclude="' . $excludeids . '"]');
                 echo do_shortcode('[category_list]');
                 echo '<div class="blogs-loop-watch-listen">';
-                    echo '<div class="mw-large trb-px">';
-                        echo '<h2 class="hp-h2">Watch &amp; Listen</h2>';
-                        echo do_shortcode('[blog_filter format="video-half" post_type="videos" limit="3" categoryid="1159" home="1"]');
-                        echo '</div>';
-                    echo '</div>';
+                echo '<div class="mw-large trb-px">';
+                echo '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+                echo do_shortcode('[blog_filter format="video-half" post_type="videos" limit="3" categoryid="1159" home="1"]');
+                echo '</div>';
+                echo '</div>';
                 echo do_shortcode('[blog_filter format="video" limit="4"]');
                 echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
                 echo do_shortcode('[expert_list categoryid="1165,1163" title="Pregnancy &amp; Parenting Experts"]');
