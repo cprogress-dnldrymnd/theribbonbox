@@ -1158,7 +1158,7 @@ function prev_next()
             <div class="col-lg-4 col-prev">
                 <?php
                 if (current_user_can('administrator')) {
-                    echo do_shortcode('[post_box id=' . $ids->prev . ']');
+                    echo do_shortcode('[post_box id=' . $ids->prev . ' is_prev_next="Previous"]');
                 }
                 ?>
                 <a rel="prev" href="<?= get_permalink($ids->prev) ?>">Previous</a>
