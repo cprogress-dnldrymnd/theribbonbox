@@ -1098,7 +1098,9 @@
 
         @media(min-width: 1001px) {
 
-
+            .desktop-col.desktop-col {
+                width: 33.33333333333%;
+            }
 
             .post-hero-content h1 {
                 font-size: 59px;
@@ -1282,6 +1284,8 @@
             height: auto !important;
         }
 
+
+
         @media(max-width: 767px) {
             .post-hero-content {
                 padding: 20px;
@@ -1338,7 +1342,7 @@
                         <div class="header-top">
                             <div class="row justify-content-between align-items-center">
 
-                                <div class="col-auto col-search">
+                                <div class="col-auto col-search desktop-col">
                                     <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
                                         <div class="offcanvas-body p-0">
                                             <div class="offcanvas-body--inner">
@@ -1357,12 +1361,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-auto col-logo">
+                                <div class="col-auto col-logo desktop-col">
                                     <a href="<?= get_site_url() ?>" class="site-logo-v2">
                                         <img src="https://theribbonbox.com/wp-content/uploads/2026/03/TRB-LOGO-horizontal-BLACK-3.png" alt="">
                                     </a>
                                 </div>
-                                <div class="col-auto d-none d-lg-block">
+                                <div class="col-auto d-none d-lg-block desktop-col">
                                     <div class="row g-4 justify-content-end align-items-center">
                                         <div class="col-auto">
                                             <div class="button-link">
