@@ -44,7 +44,6 @@
 
         header.header-v2 .header-menu {
             border-top: 1px solid var(--trb-lightyellow2);
-            margin-top: 15px;
         }
 
         header.header-v2 nav {
@@ -638,6 +637,9 @@
         /*responsive*/
 
         @media(min-width: 1001px) {
+            header.header-v2 .header-menu {
+                margin-top: 15px;
+            }
 
             #offCanvasMenu .toggle-submenu.toggle-submenu {
                 display: none !important;
@@ -940,8 +942,13 @@
                 gap: 0;
             }
 
-         
+            .col-logo {
+                order: 1;
+            }
 
+            .col-mobile-menu {
+                order: 4;
+            }
             .col-logo img {
                 max-width: 200px;
             }
@@ -1299,9 +1306,9 @@
                                     <img src="https://theribbonbox.com/wp-content/uploads/2026/03/TRB-LOGO-horizontal-BLACK-3.png" alt="">
                                 </a>
                             </div>
-                            <div class="col-auto">
+                            <div class="col-auto d-none d-lg-block">
                                 <div class="row g-4 justify-content-end align-items-center">
-                                    <div class="col-auto d-none d-lg-block">
+                                    <div class="col-auto">
                                         <div class="button-link">
                                             <a href="https://theribbonbox.com/community/">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13.435" height="13.436" viewBox="0 0 13.435 13.436">
