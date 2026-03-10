@@ -609,9 +609,11 @@
         .post-follow-us .social--icons {
             justify-content: center;
         }
-.experts-page-cara.experts-page-cara {
+
+        .experts-page-cara.experts-page-cara {
             background-color: var(--bg-color);
         }
+
         /*responsive*/
 
         @media(min-width: 1001px) {
@@ -1215,43 +1217,7 @@
                             </div>
                             <div class="col-auto col-right">
                                 <div class="row g-5 align-items-center">
-                                    <div class="col-auto">
-                                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
-                                            <div class="offcanvas-body p-0 d-flex flex-column">
-                                                <div class="newsletter-menu d-block d-lg-none">
-                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal" class="d-flex align-items-center gap-3 p-4 text-white text-uppercase sub-pop-btn">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
-                                                        </svg>
-                                                        <span>Sign up for our weekly newsletter</span>
-                                                    </a>
-                                                </div>
-                                                <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
-                                                    <nav>
-                                                        <div class="nav-menu text-uppercase">
-                                                            <?php wp_nav_menu(
-                                                                array(
-                                                                    'theme_location' => 'header-menu',
-                                                                    'walker' => new Walker_Nav_Pointers()
-                                                                )
-                                                            ); ?>
-                                                        </div>
-                                                    </nav>
 
-                                                    <hr class="d-lg-none">
-                                                    <div class="social-holder d-flex d-lg-none flex-column ">
-                                                        <?php echo do_shortcode("[get_socials]"); ?>
-                                                    </div>
-                                                    <hr class="d-lg-none">
-                                                    <div class="nav-menu d-block d-lg-none text-uppercase">
-                                                        <?php
-                                                        wp_nav_menu(array('menu' => 'FooterMenu'));
-                                                        ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-auto">
                                         <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
                                             <div class="offcanvas-body p-0">
@@ -1294,6 +1260,45 @@
                                     </div>
                                 </div>
 
+                            </div>
+                        </div>
+                        <div class="header-menu">
+                            <div class="col-auto">
+                                <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
+                                    <div class="offcanvas-body p-0 d-flex flex-column">
+                                        <div class="newsletter-menu d-block d-lg-none">
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal" class="d-flex align-items-center gap-3 p-4 text-white text-uppercase sub-pop-btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                                    <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
+                                                </svg>
+                                                <span>Sign up for our weekly newsletter</span>
+                                            </a>
+                                        </div>
+                                        <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
+                                            <nav>
+                                                <div class="nav-menu text-uppercase">
+                                                    <?php wp_nav_menu(
+                                                        array(
+                                                            'theme_location' => 'header-menu',
+                                                            'walker' => new Walker_Nav_Pointers()
+                                                        )
+                                                    ); ?>
+                                                </div>
+                                            </nav>
+
+                                            <hr class="d-lg-none">
+                                            <div class="social-holder d-flex d-lg-none flex-column ">
+                                                <?php echo do_shortcode("[get_socials]"); ?>
+                                            </div>
+                                            <hr class="d-lg-none">
+                                            <div class="nav-menu d-block d-lg-none text-uppercase">
+                                                <?php
+                                                wp_nav_menu(array('menu' => 'FooterMenu'));
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
