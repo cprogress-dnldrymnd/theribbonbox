@@ -946,9 +946,14 @@
                 order: 1;
             }
 
-            .col-mobile-menu {
-                order: 4;
+            .col-search {
+                order: 2;
             }
+
+            .col-mobile-menu {
+                order: 3;
+            }
+
             .col-logo img {
                 max-width: 200px;
             }
