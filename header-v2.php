@@ -498,11 +498,15 @@
 
         .newsletter-menu a {
             background-color: var(--trb-accent-1);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .newsletter-menu a span {
             color: var(--trb-black) !important;
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 500;
             font-family: 'Playfair Display';
             letter-spacing: 0.9px;
@@ -1265,6 +1269,12 @@
         @media(max-width: 767px) {
             .post-hero-content {
                 padding: 20px;
+            }
+
+            .top-bar a {
+                font-size: 14px;
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
