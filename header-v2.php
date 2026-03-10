@@ -171,6 +171,10 @@
             color: #3B1527;
         }
 
+        .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input::placeholder {
+            color: #3B1527;
+
+        }
 
 
         .is-search-input.is-search-input.is-search-input {
