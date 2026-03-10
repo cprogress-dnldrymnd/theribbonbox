@@ -1447,6 +1447,8 @@
                     ?>
                 </div>
 
+                <?php
+
                 $fertility_category_id = 1164;
                 $wellbeing_category_id = 1159;
                 echo do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]');
