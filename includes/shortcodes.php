@@ -1194,6 +1194,20 @@ function prev_next()
                     /* Bottom-left */
                 );
         }
+
+        .sharing-box .col-next .post-box-blogs {
+            clip-path: polygon(0% 0%,
+                    /* Top-left */
+                    100% 0%,
+                    /* Top-right */
+                    100% 100%,
+                    /* Bottom-right */
+                    0% 100%,
+                    /* Bottom-left */
+                    5% 50%
+                    /* The Notch (5% inwards from the left) */
+                );
+        }
     </style>
     <section class="sharing-box trb-px">
 
