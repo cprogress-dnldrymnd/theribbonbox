@@ -1150,8 +1150,7 @@ function prev_next()
         .sharing-box .post-box-blogs .post-details {
             flex: 0 0 auto;
 
-            padding: 0;
-            padding-left: 30px;
+
         }
 
         .sharing-box .post-box-blogs .post-details .post-box-title {
@@ -1213,10 +1212,6 @@ function prev_next()
                 );
         }
 
-        .sharing-box .col-next .post-box-blogs .post-details {
-            padding-left: 0;
-            padding-right: 30px;
-        }
 
         .sharing-box .col-next .post-box-blogs .post-details .post-box-title {
             text-align: right;
@@ -1238,6 +1233,16 @@ function prev_next()
         }
 
         @media(min-width: 1001px) {
+            .sharing-box .post-box-blogs .post-details {
+                padding: 0;
+                padding-left: 30px;
+            }
+
+            .sharing-box .col-next .post-box-blogs .post-details {
+                padding-left: 0;
+                padding-right: 30px;
+            }
+
             .sharing-box .post-box-blogs .post-image {
                 width: 40%;
                 padding: 12% 0;
@@ -1251,6 +1256,14 @@ function prev_next()
         @media(max-width: 1000px) {
             .sharing-box .post-box-blogs {
                 flex-direction: column !important;
+            }
+            .sharing-box .post-box-blogs .post-details {
+                padding-top: 30px;
+            }
+        }
+        @media(max-width: 767px) {
+            .col-prev, .col-next {
+                width: 100% !important;
             }
         }
     </style>
