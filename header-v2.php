@@ -1253,7 +1253,7 @@
                                 </a>
                             </div>
                             <div class="col-auto">
-                                <div class="row g-3 justify-content-end">
+                                <div class="row g-3 justify-content-end align-items-center">
                                     <div class="col-auto d-none d-lg-block">
                                         <div class="button-link">
                                             <a href="https://theribbonbox.com/community/">COMMUNITY LOGIN</a>
