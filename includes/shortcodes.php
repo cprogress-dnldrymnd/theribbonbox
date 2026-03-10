@@ -1102,3 +1102,19 @@ function teams_carousel()
     return $output;
 }
 add_shortcode('teams_carousel', 'teams_carousel');
+
+
+function social_share()
+{
+    ob_start();
+?>
+    <div class="share-post d-flex align-items-center gap-3">
+        <div>SHARE</div>
+        <div class="dot"></div>
+        <?= create_item_socials_v3(get_the_permalink(), get_the_title()) ?>
+    </div>
+<?php
+    return ob_get_clean();
+}
+
+add_shortcode('social_share', 'social_share');
