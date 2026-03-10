@@ -226,11 +226,15 @@
             border-top: 1px solid var(--trb-border-color);
         }
 
+        .main-content-outer {
+            margin-top: 0 !important;
+        }
+
         .main-v2 {
-            min-height: 800px;
             position: relative;
             z-index: 1;
             background-color: var(--trb-white);
+            overflow: hidden;
         }
 
         .footer-logo-text p {
@@ -244,6 +248,10 @@
 
         .left-footer {
             max-width: 750px;
+        }
+
+        .left-footer p {
+            text-align: left;
         }
 
         .right-footer {
@@ -285,6 +293,12 @@
             text-decoration: underline;
         }
 
+        .ad-item img {
+            width: auto !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .woocommerce-breadcrumb.woocommerce-breadcrumb svg {
             color: var(--trb-accent-1);
             margin-left: 5px;
@@ -293,8 +307,24 @@
 
         }
 
+        .hero-v2 {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-v2+.page-content-blg {}
+
+        .hero-v2+.page-content-blg .blog-top-ban {
+            margin-top: -5%;
+        }
+
         .hero-v2 .top {
             padding-bottom: 8%;
+        }
+
+        .hero-v2 .top .container-fluid {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-v2 h1 {
@@ -313,8 +343,8 @@
             flex-wrap: wrap;
         }
 
-        .instagram.instagram,
-        .ticktok.ticktok {
+        .instagram.instagram:not(.icon-bg),
+        .ticktok.ticktok:not(.icon-bg) {
             padding-left: 0 !important;
             background-image: none;
             display: inline-flex;
@@ -445,7 +475,7 @@
         }
 
         #offCanvasMenu .menu li a:hover {
-            color: var(--trb-accent-1);
+            color: var(--trb-accent-1) !important;
         }
 
         .newsletter-menu a {
@@ -456,14 +486,20 @@
             color: var(--trb-white) !important;
         }
 
+        .social-icons:before,
+        .social-icons:after {
+            display: none !important;
+        }
+
         .social-holder .social-icons:not(.social-icons-txt) {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
         .social-holder .social-icons:not(.social-icons-txt) a {
-            width: 17px;
-            height: 17px;
+            width: 25px;
+            height: 25px;
             display: inline-block;
             padding: 0 0.4em;
             margin: 0;
@@ -474,6 +510,7 @@
 
         .header-v2 .social-icons.social-icons-txt {
             gap: 5px;
+            margin-top: 20px;
         }
 
         .ads--v2 {
@@ -521,29 +558,63 @@
 
 
         #header-main-site {
-            height: var(--header-height);
+            height: var(--header-height) !important;
         }
 
         #subscribe-outer {
             z-index: 999999;
         }
 
+
+        .menu-items-holder li a img {
+            flex: 0 0 20px;
+        }
+
         .social--icons svg {
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .social--icons a:not(:hover) {
+            color: var(--trb-black);
         }
 
         .social--icons-text span {
             text-transform: lowercase;
+            font-size: 14px;
         }
 
-        .experts-page-cara.experts-page-cara {
+        main .ads--v2 {
+            transform: none !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .page-content-blg .is-search-form.is-search-form {
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+
+        .blog-top-ban .blog-l-text-out {
+            margin-top: 0;
+            border-top: none !important;
+            padding-top: 50px;
+        }
+
+        .post-follow-us.post-follow-us {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        .post-follow-us .social--icons {
+            justify-content: center;
+        }
+.experts-page-cara.experts-page-cara {
             background-color: var(--bg-color);
         }
-
         /*responsive*/
 
-        @media(min-width: 992px) {
+        @media(min-width: 1001px) {
 
             #offCanvasMenu .toggle-submenu.toggle-submenu {
                 display: none !important;
@@ -695,7 +766,7 @@
             }
         }
 
-        @media(max-width: 1199px) and (min-width: 992px) {
+        @media(max-width: 1199px) and (min-width: 1001px) {
 
             #offCanvasSearch {
                 height: 100vh !important;
@@ -728,9 +799,7 @@
                 background-color: transparent;
                 width: 100%;
             }
-        }
 
-        @media(max-width: 991px) {
             body {
                 --menu-top: 88.5px
             }
@@ -917,14 +986,6 @@
         }
 
         @media(max-width: 575px) {
-            .social-icons .social-icons-txt {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .social-icons .social-icons-txt .sep {
-                display: none;
-            }
 
             .footer-v2 .left-footer h2 {
                 font-size: 25px;
@@ -934,9 +995,6 @@
                 font-size: 12px;
             }
 
-            .social-icons.social-icons-txt a {
-                font-size: 12px;
-            }
 
             .footer-logo-text p {
                 font-size: 20px;
@@ -954,6 +1012,171 @@
                 padding-right: 10px;
             }
         }
+
+        .page-header-outer.page-header-outer {
+            padding-top: 50px;
+            background-color: transparent;
+        }
+
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu {
+            background-color: transparent;
+        }
+
+        @media (min-width: 992px) {
+            .d-lg-none {
+                display: initial !important;
+            }
+
+            .d-lg-block {
+                display: initial !important;
+            }
+        }
+
+        /**single hero */
+        @media(min-width: 767px) {
+            .post-hero-content h1 {
+                font-size: 49px;
+            }
+        }
+
+        @media(min-width: 1001px) {
+            .post-hero-content h1 {
+                font-size: 59px;
+            }
+
+            .d-lg-block {
+                display: block !important;
+            }
+
+            .d-lg-none {
+                display: none !important;
+            }
+        }
+
+        @media(min-width: 1200px) {
+            .post-hero-content h1 {
+                font-size: 69px;
+            }
+        }
+
+        .post-hero {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+
+        }
+
+        .post-hero-content {
+            padding: 40px;
+        }
+
+        .post-title {
+            margin-top: 20px;
+        }
+
+        .post-hero-content h1,
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a,
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb {
+            color: var(--text-color);
+        }
+
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb {
+            font-size: 0;
+            display: flex !important;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb svg:last-child {
+            display: none;
+        }
+
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
+            font-size: 14px;
+        }
+
+        .post-hero-content h1 {
+            text-align: left;
+            margin-top: 0;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .post-image img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-bio-v2 .author-bio-inner .author-image {
+            width: 63px;
+        }
+
+        .author-bio-v2 .author-bio-inner .author-image img {
+            width: 63px !important;
+            height: 63px;
+        }
+
+        .author-bio-v2 .author-bio-inner .author-details {
+            display: flex;
+            padding: 0;
+        }
+
+        .date {
+            text-transform: uppercase;
+        }
+
+        .dot.dot {
+            border-radius: 50%;
+            background-color: #F77D67;
+            width: 5px;
+            height: 5px;
+        }
+
+        .author-date {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .author-bio-v2 .author-bio-inner {
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+
+        .post-categories {
+            gap: 13px;
+        }
+
+        .post-categories a {
+            font-family: 'Playfair Display';
+            font-size: 17px;
+            font-weight: bold;
+            padding: 7px 18px;
+            border-radius: 50px;
+            color: #3B1527;
+            background-color: #F77D67;
+            line-height: 1;
+        }
+
+        .share-post {
+            margin-top: 30px;
+        }
+
+        .share-post svg {
+            color: var(--text-color);
+            width: 17px;
+            height: 17px;
+        }
+
+        .share-post .social-icons-v3 {
+            padding: 0;
+            gap: 13px
+        }
+
+        @media(max-width: 767px) {
+            .post-hero-content {
+                padding: 20px;
+            }
+        }
     </style>
     <?php
     global $theme_option_page;
@@ -961,23 +1184,26 @@
     $mode = isset($_GET['mode']) ? $_GET['mode'] : false;
     $top_banner_ad = get_field('top_banner_ad', $theme_option_page);
     $ad_strip = get_field('ad_strip', $theme_option_page);
+
+    $ads = get_posts(array(
+        'post_type' => 'ads',
+        'numberposts' => 1, // Number of recent posts thumbnails to display
+        'orderby' => 'rand',
+        'post_status' => 'publish',
+        'fields' => 'ids',
+        'meta_query'  => array(
+            array(
+                'key'     => 'ad_type',   // The custom field key
+                'value'   => 'ad_strip',  // The value to exclude
+                'compare' => '!='         // The comparison operator (NOT EQUAL TO)
+            )
+        )
+    ));
+
     ?>
     <div id="fouc">
         <div class="site-wrap">
-            <?php if ($top_banner_ad) { ?>
-                <div class="ads ads--v2 py-4">
-                    <div class="container">
-                        <a href="<?= get_field('ad_url', $top_banner_ad) ?>" target="_blank">
-                            <div class="d-none d-sm-block">
-                                <?= wp_get_attachment_image(get_field('ad_image', $top_banner_ad), 'full') ?>
-                            </div>
-                            <div class="d-block d-sm-none">
-                                <?= wp_get_attachment_image(get_field('ad_image_mobile', $top_banner_ad), 'full') ?>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            <?php } ?>
+            <?= do_shortcode('[ad_list]') ?>
             <header class="header-v2" id="header-main-site">
                 <div class="header--inner py-4 trb-px trb-bg-lightyellow">
                     <div class="container-fluid">
@@ -993,7 +1219,7 @@
                                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
                                             <div class="offcanvas-body p-0 d-flex flex-column">
                                                 <div class="newsletter-menu d-block d-lg-none">
-                                                    <a href="#" class="d-flex align-items-center gap-3 p-4 text-white text-uppercase sub-pop-btn">
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal" class="d-flex align-items-center gap-3 p-4 text-white text-uppercase sub-pop-btn">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                                                             <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
                                                         </svg>
@@ -1013,7 +1239,7 @@
                                                     </nav>
 
                                                     <hr class="d-lg-none">
-                                                    <div class="social-holder d-flex d-lg-none flex-column gap-3">
+                                                    <div class="social-holder d-flex d-lg-none flex-column ">
                                                         <?php echo do_shortcode("[get_socials]"); ?>
                                                     </div>
                                                     <hr class="d-lg-none">
@@ -1109,38 +1335,4 @@
                         delete_transient('messages');
                     }
                     ?>
-                </div>
-                <div class="hero-v2 trb-border-top">
-                    <div class="top  pt-4 trb-bg-lightyellow trb-px">
-                        <div class="container-fluid">
-                            <div class="breadcrumbs-v2">
-                                <?= woocommerce_breadcrumb(); ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom trb-px">
-                        <div class="container-fluid">
-                            <h1>Surrogacy</h1>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="main-content-v2">
-                    <div class="container">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                    </div>
                 </div>
