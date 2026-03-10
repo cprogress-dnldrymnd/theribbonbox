@@ -1274,6 +1274,10 @@
             padding-bottom: 20px;
         }
 
+        header .header--inner nav {
+            height: auto;
+        }
+
         @media(max-width: 767px) {
             .post-hero-content {
                 padding: 20px;
