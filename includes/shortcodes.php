@@ -1144,13 +1144,13 @@ function prev_next()
 
         .sharing-box .post-box-blogs .post-image {
             flex: 0 0 auto;
-            width: 40%;
+
             padding: 12% 0;
         }
 
         .sharing-box .post-box-blogs .post-details {
             flex: 0 0 auto;
-            width: 60%;
+
             padding: 0;
             padding-left: 30px;
         }
@@ -1235,6 +1235,22 @@ function prev_next()
             .col-social {
                 order: 3;
                 width: 100%;
+            }
+        }
+
+        @media(min-width: 1001px) {
+            .sharing-box .post-box-blogs .post-image {
+                width: 40%;
+            }
+
+            .sharing-box .post-box-blogs .post-details {
+                width: 60%;
+            }
+        }
+
+        @media(max-width: 1000px) {
+            .sharing-box .post-box-blogs {
+                flex-direction: column !important;
             }
         }
     </style>
