@@ -1139,6 +1139,7 @@ function prev_next()
             display: flex;
             flex-direction: row;
             padding: 30px;
+            max-width: 620px;
         }
 
         .sharing-box .post-box-blogs .post-image {
@@ -1195,7 +1196,7 @@ function prev_next()
         }
 
         .sharing-box .col-next .post-box-blogs {
-
+            margin-left: auto;
             flex-direction: row-reverse;
             text-align: right;
             clip-path: polygon(0% 0%,
@@ -1211,7 +1212,7 @@ function prev_next()
                 );
         }
 
-        .sharing-box  .col-next .post-box-blogs .post-details {
+        .sharing-box .col-next .post-box-blogs .post-details {
             padding-left: 0;
             padding-right: 30px;
         }
@@ -1223,7 +1224,7 @@ function prev_next()
     <section class="sharing-box trb-px">
 
         <div class="row g-3 align-items-center">
-            <div class="col-lg-4 col-prev">
+            <div class="col col-prev">
                 <?php
                 if (current_user_can('administrator')) {
                     echo do_shortcode('[post_box id=' . $ids->prev . ' is_prev_next="Previous"]');
@@ -1233,10 +1234,10 @@ function prev_next()
                 ?>
 
             </div>
-            <div class="col-lg-4 col-social">
+            <div class="col-auto col-social">
                 <?= do_shortcode('[social_share]') ?>
             </div>
-            <div class="col-lg-4 col-next">
+            <div class="col col-next">
                 <?php
                 if (current_user_can('administrator')) {
                     echo do_shortcode('[post_box id=' . $ids->next . ' is_prev_next="Next"]');
