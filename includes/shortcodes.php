@@ -1130,12 +1130,14 @@ function prev_next()
             flex-direction: row;
             align-items: center;
             padding: 30px;
+            gap: 30px;
         }
-        .sharing-box .post-image {
+        .sharing-box .post-box-blogs .post-image {
             flex: 0 0 auto;
             width: 40%;
+            padding: 12% 0;
         }
-        .sharing-box .post-details {
+        .sharing-box .post-box-blogs .post-details {
             flex: 0 0 auto;
             width: 60%;
         }
