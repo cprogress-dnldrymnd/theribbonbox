@@ -3,66 +3,71 @@
 global $theme_logo;
 ?>
 <footer class="footer-v2 trb-bg-lightyellow">
-    <div class="footer-top trb-px">
-        <div class="container-fluid">
-            <div class="row g-3">
-                <div class="col-lg-6 col-md-8">
-                    <div class="left-footer">
-                        <h2>Become an Insider</h2>
-                        <p>Our weekly newsletter of tailored expert advice, tips and giveaways - straight to your inbox.</p>
-                        <div class="button-accent-2 mt-4">
-                            <a href="#">SIGN ME UP</a>
-                        </div>
-                        <div class="footer-logo-text my-5">
-                            <div class="row g-3 align-items-center">
-                                <div class="col-lg-3">
-                                    <a href="<?= get_site_url() ?>">
-                                        <?= $theme_logo ?>
-                                    </a>
-                                </div>
-                                <div class="col-lg-9">
-                                    <p>
-                                        By your side through the highs and lows of preconception, pregnancy and parenthood.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="social-holder mt-4">
-                            <?php echo do_shortcode("[get_socials]"); ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-4">
-                    <div class="right-footer ms-0 ms-md-auto mt-4 mt-md-0">
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <?php wp_nav_menu(array('menu' => 'Footer Menu V2 Left')); ?>
-                            </div>
-                            <div class="col-6">
-                                <?php wp_nav_menu(array('menu' => 'FooterMenu')); ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom trb-border-top trb-px mt-4 py-4">
-        <div class="container-fluid">
+  <div class="footer-top trb-px">
+    <div class="container-fluid">
+      <div class="row g-3">
+        <div class="col-lg-6 col-md-8">
+          <div class="left-footer">
+            <h2>Become an insider</h2>
             <p>
-                © 2026 Edington Media Ltd
+              Sign up to our weekly fertility, wellbeing and pregnancy/early parenting newsletters, and get the best curated expert advice, tips and giveaways straight to your inbox.
             </p>
+            <div class="button-accent-2 mt-4">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal">SIGN ME UP</a>
+            </div>
+            <div class="footer-logo-text my-5">
+              <div class="row g-3 align-items-center">
+                <div class="col-lg-3">
+                  <a href="<?= get_site_url() ?>">
+                    <?= $theme_logo ?>
+                  </a>
+                </div>
+                <div class="col-lg-9">
+                  <p>
+                    By your side through the highs and lows of preconception, pregnancy and parenthood.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="social-holder mt-4">
+              <?php echo do_shortcode("[get_socials]"); ?>
+            </div>
+          </div>
         </div>
+        <div class="col-lg-6 col-md-4">
+          <div class="right-footer ms-0 ms-md-auto mt-4 mt-md-0">
+            <div class="row g-3">
+              <div class="col-6">
+                <?php wp_nav_menu(array('menu' => 'Footer Menu V2 Left')); ?>
+              </div>
+              <div class="col-6">
+                <?php wp_nav_menu(array('menu' => 'FooterMenu')); ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="footer-bottom trb-border-top trb-px mt-4 py-4">
+    <div class="container-fluid">
+      <p>
+        © 2026 Edington Media Ltd
+      </p>
+    </div>
+  </div>
 </footer>
 </div><!-- Close: .site-wrap -->
 
 
 <?php
 global $theme_option_page;
+$home_section_discover_links = get_field('home_section_discover_links', $theme_option_page);
+
 $subscribe_popup_heading = get_field('subscribe_popup_heading', $theme_option_page);
 $subscribe_popup_description = get_field('subscribe_popup_description', $theme_option_page);
 $subscribe_popup_links = get_field('subscribe_popup_links', $theme_option_page);
+
 $subscribe_popup_image = get_field('subscribe_popup_image', $theme_option_page);
 $subscribe_popup_form = get_field('subscribe_popup_form', $theme_option_page);
 
@@ -74,79 +79,202 @@ $subscribe_popup_bg_colour = get_field('subscribe_popup_bg_colour', $theme_optio
 
 ?>
 <div id="subscribe-outer" class="post-follow-us insider-outer subscibe-outer" style="background-color: <?= $subscribe_popup_bg_colour ?>">
-    <div class="subscribe-outer-close"><img src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu-close.png" alt="Close"></div>
-    <div class="post-follow-us-inner">
-        <div class="subscribe-outer-img"><img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>" alt="Subscribe"></div>
-        <div class="subscribe-outer-txt">
-            <h2 style="color: <?= $subscribe_popup__heading_colour ?> !important"><?= $subscribe_popup_heading ?> </h2>
-            <div class="cat-links">
-                <?php foreach ($subscribe_popup_links as $link) { ?>
-                    <?php
-                    $page_id = url_to_postid($link);
-                    $url = get_permalink($page_id);
-                    $title = get_the_title($page_id);
-                    ?>
-                    <a href="<?= $url ?>" style="color: <?= $subscribe_popup_links_colour ?> !important"><?= $title ?></a> |
+  <div class="subscribe-outer-close"><img src="<?php echo (get_template_directory_uri()) ?>/images/icons/menu-close.png" alt="Close"></div>
+  <div class="post-follow-us-inner">
+    <div class="subscribe-outer-img"><img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>" alt="Subscribe"></div>
+    <div class="subscribe-outer-txt">
+      <h2 style="color: <?= $subscribe_popup__heading_colour ?> !important"><?= $subscribe_popup_heading ?> </h2>
+      <div class="cat-links">
+        <?php foreach ($subscribe_popup_links as $link) { ?>
+          <?php
+          $page_id = url_to_postid($link);
+          $url = get_permalink($page_id);
+          $title = get_the_title($page_id);
+          ?>
+          <a href="<?= $url ?>" style="color: <?= $subscribe_popup_links_colour ?> !important"><?= $title ?></a> |
+        <?php } ?>
+
+      </div>
+      <hr>
+      <div id="subscribe-outer-desc" style="color: <?= $subscribe_popup_description_colour ?> !important">
+        <?= wpautop($subscribe_popup_description) ?>
+      </div>
+      <div class="sub---form" style="--color: <?= $subscribe_popup_form_colour ?> !important">
+        <?= do_shortcode($subscribe_popup_form); ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="SignUpModal" tabindex="-1" aria-labelledby="SignUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="SignUpModalLabel">Become an insider</h2>
+        <button type="button" class="btn-modal-close" data-bs-dismiss="modal" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color: <?= $subscribe_popup_bg_colour ?>">
+
+        <div class="row g-0">
+          <div class="col-lg-6">
+            <div class="image-box">
+              <img src="<?= wp_get_attachment_image_url($subscribe_popup_image, 'large') ?>" alt="Subscribe">
+            </div>
+          </div>
+          <div class="col-lg-6 p-3 p-lg-4 d-flex align-items-center text-center">
+            <div class="content-box">
+              <h2 style="color: <?= $subscribe_popup__heading_colour ?> !important"><?= $subscribe_popup_heading ?> </h2>
+              <div class="discovery-links discovery-links-v2">
+                <?php foreach ($home_section_discover_links as $term) { ?>
+                  <?php
+                  $page_category = get_field('page_category', $term->taxonomy . '_' . $term->term_id);
+                  $category_colour = get_field('category_colour', $term->taxonomy . '_' . $term->term_id);
+                  $category_text_color = get_field('category_text_color', $term->taxonomy . '_' . $term->term_id);
+                  $page_link = get_the_permalink($page_category[0]);
+                  ?>
+
+                  <a href="<?= $page_link ?>" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
+                    <?= $term->name ?>
+                  </a>
                 <?php } ?>
+              </div>
+
+
+              <div id="subscribe-outer-desc" style="color: <?= $subscribe_popup_description_colour ?> !important">
+                <?= wpautop($subscribe_popup_description) ?>
+              </div>
+
+              <div class="sub---form" style="--color: <?= $subscribe_popup_form_colour ?> !important">
+                <?= do_shortcode($subscribe_popup_form); ?>
+              </div>
 
             </div>
-            <hr>
-            <div id="subscribe-outer-desc" style="color: <?= $subscribe_popup_description_colour ?> !important">
-                <?= wpautop($subscribe_popup_description) ?>
-            </div>
-            <div class="sub---form" style="--color: <?= $subscribe_popup_form_colour ?> !important">
-                <?= do_shortcode($subscribe_popup_form); ?>
-            </div>
+          </div>
         </div>
+      </div>
+
+
+
     </div>
+  </div>
 </div>
+</div>
+
+<script>
+  /**
+   * Helper function to set a cookie with a specific expiration in days.
+   * Includes 'path=/' to ensure cookie is available across the whole site.
+   * @param {string} name - The name of the cookie
+   * @param {string} value - The value of the cookie
+   * @param {number} days - Number of days until expiration
+   */
+  const setCookie = (name, value, days) => {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    // SameSite=Lax is recommended for general navigation
+    document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
+  };
+
+  /**
+   * Helper function to get a cookie by name.
+   * Returns null if cookie not found.
+   */
+  const getCookie = (name) => {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  };
+
+  /**
+   * Initializes the modal and triggers it after a specified delay.
+   * Handles cookie persistence to prevent repetitive popups.
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    const signUpModalElement = document.getElementById('SignUpModal');
+    const COOKIE_NAME = 'newsletter_popup';
+    const MODAL_DELAY = 5000; // Delay in milliseconds (5 seconds)
+
+    if (signUpModalElement) {
+      // Initialize the Bootstrap modal instance
+      const signUpModal = new bootstrap.Modal(signUpModalElement, {
+        keyboard: true,
+        backdrop: 'static' // Optional: prevents closing when clicking outside
+      });
+
+      // Event Listener: Fires when the modal has finished being hidden from the user
+      signUpModalElement.addEventListener('hidden.bs.modal', function(event) {
+        // Set cookie 'newsletter_popup' to true for 30 days
+        setCookie(COOKIE_NAME, 'true', 30);
+        console.log('Newsletter cookie set.');
+      });
+
+      // Logic: Only show the modal if the cookie does NOT exist
+      if (!getCookie(COOKIE_NAME)) {
+        // Defer the execution of the show method
+        setTimeout(() => {
+          // Good practice: Ensure the element is still in the DOM before showing
+          // (Important for Single Page Applications where the user might have navigated away)
+          if (document.body.contains(signUpModalElement)) {
+            signUpModal.show();
+          }
+        }, MODAL_DELAY);
+      }
+    }
+  });
+</script>
 
 <?php wp_footer(); ?>
 
 </div><!-- Close: #fouc -->
 <script>
-    jQuery(window).scroll(function(event) {
-        var scroll = jQuery(window).scrollTop();
+  jQuery(window).scroll(function(event) {
+    var scroll = jQuery(window).scrollTop();
 
-        if (scroll > 100) {
-            jQuery('.ads--v2').addClass('hide--ad');
-        } else {
-            jQuery('.ads--v2').removeClass('hide--ad');
-        }
-        // Do something
+    if (scroll > 100) {
+      jQuery('.ads--v2').addClass('hide--ad');
+    } else {
+      jQuery('.ads--v2').removeClass('hide--ad');
+    }
+    // Do something
+  });
+  var offCanvasMenu = document.getElementById('offCanvasMenu')
+  offCanvasMenu.addEventListener('show.bs.offcanvas', function() {
+    jQuery('body').addClass('mobile-menu-active');
+  });
+
+  offCanvasMenu.addEventListener('hide.bs.offcanvas', function() {
+    jQuery('body').removeClass('mobile-menu-active');
+
+  });
+
+  jQuery(document).ready(function() {
+    $height = jQuery('#header-main-site').outerHeight();
+    jQuery('body').css('--header-height', $height + 'px');
+
+
+    jQuery('.subscribe-outer-close').click(function(e) {
+      jQuery('#subscribe-outer').hide();
+      e.preventDefault();
+
     });
-    var offCanvasMenu = document.getElementById('offCanvasMenu')
-    offCanvasMenu.addEventListener('show.bs.offcanvas', function() {
-        jQuery('body').addClass('mobile-menu-active');
-    });
-
-    offCanvasMenu.addEventListener('hide.bs.offcanvas', function() {
-        jQuery('body').removeClass('mobile-menu-active');
-
-    });
-
-    jQuery(document).ready(function() {
-        $height = jQuery('#header-main-site').outerHeight();
-        jQuery('body').css('--header-height', $height + 'px');
-
-        jQuery('.newsletter-menu a').click(function(e) {
-            jQuery('#subscribe-outer').show();
-            jQuery('button[data-bs-target="#offCanvasMenu"]').click();
-            e.preventDefault();
-        });
-
-        jQuery('.subscribe-outer-close').click(function(e) {
-            jQuery('#subscribe-outer').hide();
-            e.preventDefault();
-
-        });
-    });
+  });
 </script>
 
 <script src="<?php echo (get_template_directory_uri()) ?>/js/javascript3.js"></script>
 
 <?php if (is_front_page()) {
-    $_SESSION['homepage_array'] = "";
+  $_SESSION['homepage_array'] = "";
 } ?>
 
 </body>
