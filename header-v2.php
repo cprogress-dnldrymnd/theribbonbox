@@ -785,7 +785,7 @@
             }
         }
 
-     
+
         @media(max-width: 1199px) {
             .trb-px {
                 padding-left: 30px;
@@ -796,9 +796,7 @@
                 font-size: 60px;
             }
 
-            #offCanvasSearch .offcanvas-body--inner {
-                padding: 40px;
-            }
+
 
 
 
@@ -943,7 +941,12 @@
             .col-logo img {
                 max-width: 200px;
             }
-                 #offCanvasSearch {
+
+            #offCanvasSearch .offcanvas-body--inner {
+                padding: 40px;
+            }
+
+            #offCanvasSearch {
                 height: 100vh !important;
             }
         }
