@@ -1124,6 +1124,22 @@ function prev_next()
     ob_start();
     $ids = (object) getPrevNextIds();
 ?>
+    <style>
+        .sharing-box .post-box-blogs {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 30px;
+        }
+        .sharing-box .post-image {
+            flex: 0 0 auto;
+            width: 40%;
+        }
+        .sharing-box .post-details {
+            flex: 0 0 auto;
+            width: 60%;
+        }
+    </style>
     <section class="sharing-box trb-px">
 
         <div class="row g-3 align-items-center">
