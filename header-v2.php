@@ -122,12 +122,12 @@
 
         }
 
-        .button-community.button-community a {
+        .button-ribbon.button-ribbon a {
             border-radius: 5px 0 0 5px;
             padding-right: 38px;
         }
 
-        .button-community a:after {
+        .button-ribbon a:after {
             content: '';
             width: 0;
             height: 0;
@@ -748,7 +748,7 @@
                 height: auto;
             }
 
-            .button-community.button-community a {
+            .button-ribbon.button-ribbon a {
                 padding-left: 15px;
                 padding-right: 23px;
             }
@@ -1217,7 +1217,7 @@
                 <div class="header--inner py-4 trb-px trb-bg-lightyellow">
                     <div class="container-fluid">
                         <div class="row justify-content-between align-items-center">
-                         
+
                             <div class="col-auto">
                                 <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
                                     <div class="offcanvas-body p-0">
@@ -1246,14 +1246,19 @@
                                 </button>
 
                             </div>
-                               <div class="col-auto col-logo">
+                            <div class="col-auto col-logo">
                                 <a href="<?= get_site_url() ?>" class="site-logo-v2">
                                     <img src="https://theribbonbox.com/wp-content/uploads/2026/03/TRB-LOGO-horizontal-BLACK-3.png" alt="">
                                 </a>
                             </div>
                             <div class="col-auto d-none d-lg-block">
-                                <div class="button-accent-2 button-community">
-                                    <a href="https://theribbonbox.com/community/">COMMUNITY</a>
+                                <div class="button-accent-2 button-ribbon">
+                                    <a href="https://theribbonbox.com/community/">COMMUNITY LOGIN</a>
+                                </div>
+                            </div>
+                            <div class="col-auto d-none d-lg-block">
+                                <div class="button-accent-2 button-ribbon">
+                                    <a href="https://theribbonbox.com/community/">INFLUENCER COLLECTIVE</a>
                                 </div>
                             </div>
                             <div class="col-auto d-block d-lg-none">
