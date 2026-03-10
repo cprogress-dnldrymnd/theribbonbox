@@ -812,9 +812,7 @@
                 width: 100%;
             }
 
-            body {
-                --menu-top: 88.5px
-            }
+          
 
             body.mobile-menu-active #header-main-site .header--inner {
                 position: fixed;
@@ -875,7 +873,7 @@
             }
 
             body {
-                --menu-top: 98px;
+                --menu-top: 80px;
             }
 
             #offCanvasMenu {
@@ -1010,9 +1008,7 @@
                 max-width: 85px;
             }
 
-            body {
-                --menu-top: 91px;
-            }
+        
 
             .header-v2 .social-icons.social-icons-txt a {
                 font-size: 13px;
