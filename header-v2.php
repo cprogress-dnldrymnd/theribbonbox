@@ -733,6 +733,33 @@
             }
         }
 
+        @media(max-width: 1600px) {
+            .button-ribbon.button-ribbon a {
+                padding-left: 15px;
+                padding-right: 20px;
+            }
+
+            header.header-v2 a {
+                letter-spacing: 0;
+                font-size: 13px !important;
+            }
+        }
+
+        #offCanvasMenu .menu li.menu-item>a {
+            font-size: 14px !important;
+            letter-spacing: 0 !important;
+        }
+
+        header.header-v2 a {
+            font-size: 14px;
+        }
+
+        .col-right>.row {
+            --bs-gutter-y: 1.5rem;
+            --bs-gutter-x: 1.5rem;
+        }
+        }
+
 
         @media(max-width: 1550px) {
             .trb-px {
