@@ -96,11 +96,7 @@ $category_text_color = get_field('category_text_color', $cat) ? get_field('categ
                     <div class="post-categories d-flex flex-wrap">
                         <?=  get_post_categories_as_links(get_the_ID()) ?>
                     </div>
-                    <div class="share-post d-flex align-items-center gap-3">
-                        <div>SHARE</div>
-                        <div class="dot"></div>
-                        <?= create_item_socials_v3(get_the_permalink(), get_the_title()) ?>
-                    </div>
+                    <?= do_shortcode('[social_share]') ?>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -153,19 +149,7 @@ $article_medically_reviewed_by = do_shortcode('[article_medically_reviewed_by]')
                 
                 '.get_the_breadcrumb_function($_SERVER['REQUEST_URI'], get_the_title()).'
                 
-                <section class="sharing-box">
-                    <div class="prev-next">
-                        <a rel="prev" href="' . get_permalink($ids->prev) . '">Previous</a>
-                        <a rel="next" href="' . get_permalink($ids->next) . '">Next</a>
-                    </div>
                 
-                    <h4>Share This Post</h4>
-                    <div class="giveaway-outer-form giveaway-outer giveaway-thanks" style="margin:0;">
-                        <div class="giveaway-inner-form giveaway-inner" style="padding:0;">
-                         '. create_item_socials(get_permalink($post->ID), get_the_title()).'
-                        </div>
-                    </div>
-                </section>
             </div>
         </div>
     </div>';

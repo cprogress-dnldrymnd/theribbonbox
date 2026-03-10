@@ -1118,3 +1118,20 @@ function social_share()
 }
 
 add_shortcode('social_share', 'social_share');
+
+function prev_next()
+{
+    ob_start();
+    $ids = (object) getPrevNextIds();
+?>
+    <section class="sharing-box">
+        <div class="prev-next">
+            <a rel="prev" href="<?= get_permalink($ids->prev) ?>">Previous</a>
+            <a rel="next" href="<?= get_permalink($ids->next) ?>">Next</a>
+        </div>
+
+        <?= do_shortcode('[social_share]') ?>
+    </section>
+<?php
+    return ob_get_clean();
+}
