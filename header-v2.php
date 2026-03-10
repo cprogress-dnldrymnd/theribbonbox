@@ -796,9 +796,9 @@
                 font-size: 60px;
             }
 
-
-
-
+            .col-logo img {
+                max-width: 250px;
+            }
 
         }
 
