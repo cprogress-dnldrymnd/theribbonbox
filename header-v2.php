@@ -1252,7 +1252,7 @@
                                 </a>
                             </div>
                             <div class="col-auto d-none d-lg-block">
-                                <div class="button-accent-2 button-ribbon">
+                                <div class="button-link">
                                     <a href="https://theribbonbox.com/community/">COMMUNITY LOGIN</a>
                                 </div>
                             </div>
