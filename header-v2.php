@@ -1205,7 +1205,11 @@
             display: inline-flex;
             gap: 10px;
             align-items: center;
-            color: var(--trb-white);
+            color: var(--trb-black);
+            font-size: 500;
+        }
+        .top-bar a strong {
+            font-weight: 800;
         }
 
         @media(max-width: 767px) {
