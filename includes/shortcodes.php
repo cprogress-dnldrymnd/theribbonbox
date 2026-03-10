@@ -1145,7 +1145,6 @@ function prev_next()
         .sharing-box .post-box-blogs .post-image {
             flex: 0 0 auto;
 
-            padding: 12% 0;
         }
 
         .sharing-box .post-box-blogs .post-details {
@@ -1241,6 +1240,7 @@ function prev_next()
         @media(min-width: 1001px) {
             .sharing-box .post-box-blogs .post-image {
                 width: 40%;
+                padding: 12% 0;
             }
 
             .sharing-box .post-box-blogs .post-details {
