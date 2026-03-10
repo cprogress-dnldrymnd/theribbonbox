@@ -42,9 +42,7 @@
             z-index: 999;
         }
 
-        header.header-v2 .header-menu {
-            border-top: 1px solid var(--trb-lightyellow2);
-        }
+
 
         header.header-v2 nav {
             background: transparent !important;
@@ -639,6 +637,7 @@
         @media(min-width: 1001px) {
             header.header-v2 .header-menu {
                 margin-top: 15px;
+                border-top: 1px solid var(--trb-lightyellow2);
             }
 
             #offCanvasMenu .toggle-submenu.toggle-submenu {
