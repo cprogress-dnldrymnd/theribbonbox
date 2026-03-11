@@ -1485,7 +1485,7 @@
                                                     </g>
                                                 </svg>
                                                 <span>
-                                                    <strong><i><u>Subscribe</u></i></strong> to our <strong><i>weekly newsletters</i></strong>
+                                                    <i><u>Subscribe</u></i>>
                                                 </span>
                                             </a>
                                         </div>
