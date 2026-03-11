@@ -1129,10 +1129,17 @@ function prev_next()
     $ids = (object) getPrevNextIds();
 ?>
     <style>
+        .blog-top-ban {
+            margin-bottom: 0;
+        }
+        .page-content-blg {
+            padding-bottom: 0;
+        }
         .sharing-box {
             border-top: 1px solid var(--trb-border-color);
             padding-top: 30px;
             padding-bottom: 30px;
+            margin-top: 0;
         }
 
         .sharing-box .post-box-blogs {
