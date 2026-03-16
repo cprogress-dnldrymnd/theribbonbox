@@ -1282,7 +1282,7 @@
             color: var(--trb-black);
             font-size: 18px;
             font-weight: 500;
-            /*font-family: 'Playfair Display';*/
+            font-family: 'Playfair Display';
             letter-spacing: 0.9px;
         }
 
