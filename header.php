@@ -1391,7 +1391,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-auto col-logo desktop-col">
+                                <div class="col-auto col-logo desktop-col text-center">
                                     <a href="<?= get_site_url() ?>" class="site-logo-v2">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 416 60" style="enable-background:new 0 0 416 60;" xml:space="preserve" width="416" height="60">
                                             <style type="text/css">
