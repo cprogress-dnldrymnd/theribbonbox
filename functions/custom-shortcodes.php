@@ -509,47 +509,8 @@ function display_followus_function()
     return ob_get_clean();
 }
 
-/*
-add_shortcode('display_followus', 'display_followus_function');
-function display_followus_function()
-{
-    ob_start();
-    //revamp section
-    if (current_user_can('administrator')) { ?>
-        <div class="post-follow-us-revamp">
-            <div class="post-follow-us-revamp-outer trb-px mw-large">
-                <div class="post-follow-us-revamp-inner">
-                    <h2>Follow our <i>Socials</i></h2>
-                </div>
-                <div class="post-follow-us-revamp-inner">
-                    <?= do_shortcode("[get_socials social='icons-only-all']") ?>
-                </div>
-            </div>
-        </div>
-    <?php } else { ?>
-
-        <div class="post-follow-us">
-            <div class="post-follow-us-inner">
-                <h2>Follow Us</h2>
-                <hr>
-                <div class="cat-links">
-                    <a href="/wellbeing">Wellbeing</a> |
-                    <a href="/fertility">Fertility</a> |
-                    <a href="/pregnancy">Pregnancy</a> |
-                    <a href="/parenting">Parenting</a>
-                </div>
-                <?= do_shortcode("[get_socials]") ?>
-            </div>
-        </div>
 
 
-    <?php
-    }
-
-    return ob_get_clean();
-}
-
-*/
 add_shortcode('homeblog_filter', 'homeblog_filter_function');
 
 
