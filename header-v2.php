@@ -1282,8 +1282,13 @@
             color: var(--trb-black);
             font-size: 18px;
             font-weight: 500;
-            //font-family: 'Playfair Display';
+            /*font-family: 'Playfair Display';*/
             letter-spacing: 0.9px;
+        }
+
+        .top-bar a svg {
+            height: 16px;
+            width: auto;
         }
 
         .top-bar a strong {
