@@ -1441,7 +1441,7 @@
                                         </div>
                                         <div class="col-auto d-none d-lg-block">
                                             <div class="button-accent-2 button-ribbon">
-                                                <a href="https://influencercollective.co/">INFLUENCER COLLECTIVE</a>
+                                                <a href="https://influencercollective.co/" target="_blank">INFLUENCER COLLECTIVE</a>
                                             </div>
                                         </div>
                                     </div>
@@ -1495,7 +1495,7 @@
                                             </a>
                                         </div>
                                         <div class="influcencer-collective-mobile d-block d-lg-none button-accent-2">
-                                            <a href="https://influencercollective.co/">INFLUENCER COLLECTIVE</a>
+                                            <a href="https://influencercollective.co/" target="_blank">INFLUENCER COLLECTIVE</a>
                                         </div>
                                         <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
                                             <nav>
