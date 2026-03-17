@@ -1298,7 +1298,6 @@ function blog_filter_function($attr)
                 }
 
                 if (($cnt % 20) == 0) {
-                    $rtn .= '<div class="xx2323232sx"></div>';
                     $rtn .= do_shortcode("[display_followus]");
                 }
 
@@ -1570,6 +1569,8 @@ function blog_filter_function($attr)
 
                 if ($cnt == 1 && (! isset($attr["post_type"]) || ($attr["post_type"] != "expert_profiles" && $attr["post_type"] != "podcasts")) && $curtotal == 0) {
                     $rtn .= do_shortcode('[post_box_hero count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
+                    $rtn .= '<div class="xx2323232sx"></div>';
+
                 } else if (!empty($pod_layout) && $cnt == 1 && $curtotal == 0) {
                     if (!has_post_thumbnail($post['ID'])) {
                         $style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:cover; background-position:center;"';
