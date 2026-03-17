@@ -1298,6 +1298,7 @@ function blog_filter_function($attr)
                 }
 
                 if (($cnt % 20) == 0) {
+                    $rtn .= '<div class="xx2323232sx"></div>';
                     $rtn .= do_shortcode("[display_followus]");
                 }
 
@@ -1828,7 +1829,6 @@ function blog_filter_function($attr)
                                     if ($post_open_div) {
                                         $rtn .= '</div>';
                                     }
-                                    $rtn .= '<div class="xx2323232sx"></div>';
                                     $rtn .= do_shortcode("[display_followus]");
                                     $exp_count++;
                                     if ($post_open_div) {
