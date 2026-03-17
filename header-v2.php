@@ -1282,7 +1282,7 @@
             color: var(--trb-black);
             font-size: 18px;
             font-weight: 500;
-            /*font-family: 'Playfair Display';*/
+            font-family: 'Playfair Display';
             letter-spacing: 0.9px;
         }
 
@@ -1391,7 +1391,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-auto col-logo desktop-col">
+                                <div class="col-auto col-logo desktop-col text-center">
                                     <a href="<?= get_site_url() ?>" class="site-logo-v2">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 416 60" style="enable-background:new 0 0 416 60;" xml:space="preserve" width="416" height="60">
                                             <style type="text/css">
@@ -1441,7 +1441,7 @@
                                         </div>
                                         <div class="col-auto d-none d-lg-block">
                                             <div class="button-accent-2 button-ribbon">
-                                                <a href="https://influencer.theribbonbox.com/">INFLUENCER COLLECTIVE</a>
+                                                <a href="https://influencercollective.co/" target="_blank">INFLUENCER COLLECTIVE</a>
                                             </div>
                                         </div>
                                     </div>
@@ -1490,12 +1490,12 @@
                                                     </g>
                                                 </svg>
                                                 <span>
-                                                    <i><u>Subscribe</u></i>>
+                                                    <i><u>Subscribe</u></i>
                                                 </span>
                                             </a>
                                         </div>
                                         <div class="influcencer-collective-mobile d-block d-lg-none button-accent-2">
-                                            <a href="https://influencer.theribbonbox.com/">INFLUENCER COLLECTIVE</a>
+                                            <a href="https://influencercollective.co/" target="_blank">INFLUENCER COLLECTIVE</a>
                                         </div>
                                         <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
                                             <nav>
