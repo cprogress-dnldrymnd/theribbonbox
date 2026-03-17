@@ -156,7 +156,7 @@ $article_medically_reviewed_by = do_shortcode('[article_medically_reviewed_by]')
 
         //echo $_SERVER['REQUEST_URI'];
 
-        echo do_shortcode('[prev_next]');
+        //echo do_shortcode('[prev_next]');
 
         echo do_shortcode("[display_followus]");
 
