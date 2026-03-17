@@ -1299,7 +1299,6 @@ function blog_filter_function($attr)
 
                     if (($cnt % 20) == 0) {
                         $rtn .= do_shortcode("[display_followus]");
-                        $rtn .= '<div class="xx2323232sx"></div>';
                     }
 
                     if (($cnt % 10) == 0 && $attr["post_type"] == "expert_profiles") {
