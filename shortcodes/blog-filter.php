@@ -1908,7 +1908,6 @@ function blog_filter_function($attr)
                         if ($post_open_div) {
                             $rtn .= '</div>';
                         }
-                        $rtn .= do_shortcode("[display_followus]");
 
                         $rtn .= '<div class="sauce-carousel">';
 
@@ -1916,6 +1915,7 @@ function blog_filter_function($attr)
                         $rtn .= "<script async src='https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/sauce_homepage.js' class='snapppt-widget'></script>";
                         $rtn .= '</div>';
                         $rtn .= '</div>';
+                        $rtn .= do_shortcode("[display_followus]");
 
                         $exp_count++;
 
