@@ -1490,7 +1490,7 @@
                                                     </g>
                                                 </svg>
                                                 <span>
-                                                    <i><u>Subscribe</u></i>>
+                                                    <i><u>Subscribe</u></i>
                                                 </span>
                                             </a>
                                         </div>
