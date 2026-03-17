@@ -1910,7 +1910,12 @@ function blog_filter_function($attr)
                         }
                         $rtn .= do_shortcode("[display_followus]");
 
-                        $rtn .= '<div class="xx2323232sx"></div>';
+                        $rtn .= '<div class="sauce-carousel">';
+
+                        $rtn .=  '<div class="home-slider" id="home-slider">';
+                        $rtn .= "<script async src='https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/sauce_homepage.js' class='snapppt-widget'></script>";
+                        $rtn .= '</div>';
+                        $rtn .= '</div>';
 
                         $exp_count++;
 
