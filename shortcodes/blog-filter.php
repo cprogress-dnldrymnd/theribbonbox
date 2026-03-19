@@ -1909,11 +1909,16 @@ function blog_filter_function($attr)
                             $rtn .= '</div>';
                         }
 
-                        
-                        $rtn .= '<div class="sauce-carousel" '.get_the_ID().'>';
+                        $categories = dd_get_categories_linked_to_page(get_the_ID());
+
+
+                        $rtn .= '<div class="sauce-carousel sauce-carousel-categories">';
 
                         $rtn .=  '<div class="home-slider" id="home-slider" style="padding-top: 0 !important">';
-                        $rtn .= "<script async src='https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/sauce_homepage.js' class='snapppt-widget'></script>";
+                        foreach ($categories as $category) {
+                            $sauce_script = get_field('sauce_script', $category->taxonomy . '_' . $category->term_id);
+                            $rtn .= $sauce_script;
+                        }
                         $rtn .= '</div>';
                         $rtn .= '</div>';
                         $rtn .= do_shortcode("[display_followus]");
