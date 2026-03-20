@@ -52,7 +52,7 @@ global $theme_logo;
   <div class="footer-bottom trb-border-top trb-px mt-4 py-4">
     <div class="container-fluid">
       <p>
-        © 2026 Edington Media Ltd
+        © The Ribbon Box Limited 2026
       </p>
     </div>
   </div>
