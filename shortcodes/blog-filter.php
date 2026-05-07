@@ -2070,7 +2070,7 @@ function blog_filter_function($attr)
 
         if ($format == "video") {
             if ($cnt == 1) {
-                $rtn .= '<!--- home-trending-video  ---> ';
+                $rtn .= '';
                 $rtn .= do_shortcode('[post_box_trending_video count=' . $cnt . ' in_count=' . $in_count . ' _trending_video id=' . $post["ID"] . ']');
 
                 $rtn .= '<div class="blogs-loop-outer mw-large trb-px">';
@@ -2080,13 +2080,17 @@ function blog_filter_function($attr)
 
                 $rtn .= '<div class="blogs-loop-inner trb-row">';
             } else {
-                $rtn .= '<!--- home-small-podcasts  ---> ';
+                $rtn .= '';
                 $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ' format="podcast"]');
             }
 
-            if ($cnt == $limit) {
-                $rtn .= '</div>';
-                $rtn .= '</div>';
+            /**
+             * FIX: Calculate loop termination based on actual array size rather than theoretical limit.
+             * This prevents orphaned open DOM nodes when wp_get_recent_posts returns fewer items than $limit.
+             */
+            if ($cnt === count($recent_posts)) {
+                $rtn .= '</div>'; // Closes .blogs-loop-inner
+                $rtn .= '</div>'; // Closes .blogs-loop-outer
             }
         }
     }
