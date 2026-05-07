@@ -2068,27 +2068,6 @@ function blog_filter_function($attr)
             $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ']');
         }
 
-        if ($format == "video") {
-            if ($cnt == 1) {
-                $rtn .= '<!--- home-trending-video  ---> ';
-                $rtn .= do_shortcode('[post_box_trending_video count=' . $cnt . ' in_count=' . $in_count . ' _trending_video id=' . $post["ID"] . ']');
-
-                $rtn .= '<div class="blogs-loop-outer mw-large trb-px">';
-                $rtn .= '<hr>';
-
-                $rtn .= '<h2>Podcast Episodes</h2>';
-
-                $rtn .= '<div class="blogs-loop-inner trb-row">';
-            } else {
-                $rtn .= '<!--- home-small-podcasts  ---> ';
-                $rtn .= do_shortcode('[post_box count=' . $cnt . ' in_count=' . $in_count . '  id=' . $post["ID"] . ' format="podcast"]');
-            }
-
-            if ($cnt == $limit) {
-                $rtn .= '</div>';
-                $rtn .= '</div>';
-            }
-        }
     }
 
 
