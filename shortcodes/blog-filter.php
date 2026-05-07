@@ -258,6 +258,15 @@ function blog_filter_function($attr)
         }
     }
 
+if ( empty( $recent_posts ) ) {
+        /**
+         * Return an empty string immediately. 
+         * By halting here, we ensure that no static HTML (like .blogs-loop wrappers or <h2> tags) 
+         * is injected into the DOM when the query yields zero results.
+         */
+        return ''; 
+    }
+
     if ($func == 'podcast-limit4') {
         $recent_posts1 = wp_get_recent_posts(array(
             'numberposts' => 1,
