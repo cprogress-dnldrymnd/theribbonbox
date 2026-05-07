@@ -1805,17 +1805,26 @@ function blog_filter_function($attr)
                             <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
 
 
-                                // 1. Run the nested query first and store the result
-                                $video_half_content = do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
+                                // 1. Perform a highly optimized database check
+                                $has_videos = get_posts(array(
+                                    'post_type'      => 'videos',
+                                    'category'       => $categoryid,
+                                    'post_status'    => 'publish',
+                                    'posts_per_page' => 1,       // OPTIMIZATION: Stop querying as soon as we find at least 1 video
+                                    'fields'         => 'ids',   // OPTIMIZATION: Only grab the ID, ignore content/meta for speed
+                                    'no_found_rows'  => true,    // OPTIMIZATION: Skip pagination calculations
+                                ));
 
-                                // 2. Check if the query actually found any videos
-                                if (trim($video_half_content) !== '') {
-                                    // 3. Only output the header and wrappers if content exists
+                                // 2. If the array is not empty, videos exist. Print the UI.
+                                if (! empty($has_videos)) {
                                     $rtn .= '<div class="blogs-loop-watch-listen">';
                                     $rtn .= '<div class="mw-large trb-px">';
                                     $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
                                     $rtn .= '</div>';
-                                    $rtn .= $video_half_content;
+
+                                    // Execute the shortcode only because we know videos exist
+                                    $rtn .= do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
+
                                     $rtn .= '</div>';
                                 }
 
