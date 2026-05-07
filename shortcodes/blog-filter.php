@@ -258,14 +258,6 @@ function blog_filter_function($attr)
         }
     }
 
-if ( empty( $recent_posts ) ) {
-        /**
-         * Return an empty string immediately. 
-         * By halting here, we ensure that no static HTML (like .blogs-loop wrappers or <h2> tags) 
-         * is injected into the DOM when the query yields zero results.
-         */
-        return ''; 
-    }
 
     if ($func == 'podcast-limit4') {
         $recent_posts1 = wp_get_recent_posts(array(
@@ -1813,13 +1805,21 @@ if ( empty( $recent_posts ) ) {
                             <script src="/wp-content/themes/lighttheme/js/slick.js"></script>';
 
 
-                                $rtn .= '<div class="blogs-loop-watch-listen">';
-                                $rtn .= '<div class="mw-large trb-px">';
-                                $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
-                                $rtn .= '</div>';
+                                // 1. Run the nested query first and store the result
+                                $video_half_content = do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
 
-                                $rtn .=  do_shortcode('[blog_filter format="video-half" post_type="videos" orderby="rand" limit="3" categoryid="' . $categoryid . '"]');
-                                $rtn .= '</div>';
+                                // 2. Check if the query actually found any videos
+                                if (trim($video_half_content) !== '') {
+                                    // 3. Only output the header and wrappers if content exists
+                                    $rtn .= '<div class="blogs-loop-watch-listen">';
+                                    $rtn .= '<div class="mw-large trb-px">';
+                                    $rtn .= '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+                                    $rtn .= '</div>';
+                                    $rtn .= $video_half_content;
+                                    $rtn .= '</div>';
+                                }
+
+
                                 $rtn .= do_shortcode('[become_insider]');
 
                                 $vid_count++;
