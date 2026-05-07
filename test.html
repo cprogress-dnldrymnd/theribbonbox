@@ -1,0 +1,258 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+<!-- Google Tag Manager -->
+<!--
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MNV22D4M');</script>-->
+<!-- End Google Tag Manager -->
+
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5FCL4TX5');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Keep this css code to improve the font quality-->
+<style>
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -o-font-smoothing: antialiased;
+        -webkit-appearance: none;
+    }
+</style>
+
+<!-- [Attributes by Finsweet] Disable scrolling -->
+<script defer src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-scrolldisable@1/scrolldisable.js"></script>
+
+<meta name="theme-color" content="#192419" />
+
+<style>
+    html {
+      height: unset !important;
+      overflow: auto !important;
+  	}
+    body .transition {
+        display: block
+    }
+
+    .w-editor .transition {
+        display: none;
+    }
+
+    .no-scroll-transition {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .hover-box.hover-box,
+    .background-overlay-style-1.background-overlay-style-1 {
+        transition: 600ms;
+    }
+
+    .hover-box-parent:hover .hover-box {
+        max-height: 25rem;
+    }
+
+    .hover-box-parent:hover .background-overlay-style-1 {
+        top: -50%
+    }
+
+    .w-lightbox-content.w-lightbox-content.w-lightbox-content {
+        max-width: 1435px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #FEF3DE;
+        max-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .w-lightbox-backdrop.w-lightbox-backdrop {
+        background-color: rgba(0, 0, 0, 0.48);
+    }
+
+    .w-lightbox-close.w-lightbox-close {
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/></svg>');
+        width: 1.875rem;
+        height:  1.875rem;
+        background-size: contain;
+        right: 1.25rem;
+        top: 1.25rem;
+    }
+  
+  .w-lightbox-view,
+  .w-lightbox-figure{
+  	height: 100% !important;
+    width: 100% !important;
+  }
+  .w-lightbox-image{
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: contain;
+  }
+  .w-lightbox-frame{
+  	position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+.es-review-avatar-container.es-review-avatar-container {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  }
+    .es-background-base {
+        display: none !important;
+    }
+
+    .es-google-review * {
+        color: #000;
+        font-family: 'Inter' !important;
+    }
+
+    .es-review-author-name.es-review-author-name {
+        font-size: 1rem;
+        font-weight: 500
+    }
+
+    .es-text-shortener.es-text-shortener {
+        font-size: 1rem !important;
+        font-weight: 500;
+        line-height: 1.4;
+    }
+
+    .es-text-shortener-control-open.es-text-shortener-control-open.es-text-shortener-control-open.es-text-shortener-control-open {
+        color: #4285F4;
+        font-size: 0.75rem;
+        font-weight: 600;
+        position: absolute;
+        bottom: 30px;
+    }
+
+    .es-review-info-date.es-review-info-date.es-review-info-date.es-review-info-date {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #848485
+    }
+
+    .es-review-background-container.es-review-background-container.es-review-background-container.es-review-background-container {
+        background-color: #fff;
+        padding: 1.875rem 1.875rem 3.75rem 1.875rem;
+    }
+
+    .es-bullets-control-item.es-bullets-control-item {
+        background-color: #000
+    }
+
+    .es-carousel-layout.es-carousel-layout.es-carousel-layout.es-carousel-layout {
+        gap: 1.25rem !important;
+    }
+
+    .es-widget-background-wrapper.es-widget-background-wrapper {
+        padding: 0 !important
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 1rem !important
+    }
+
+    .image-holder-60 .image-holder {
+        padding-top: 60%
+    }
+
+    .image-holder-100 .image-holder {
+        padding-top: 100%
+    }
+
+    .image-holder-100 .image-holder {
+        padding-top: 100%
+    }
+
+    .swiper-testimonial .swiper-slide {
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+
+    .swiper-collection .swiper-wrapper::before,
+    .swiper-collection .swiper-wrapper::after {
+        display: none !important;
+    }
+
+    body.dark-header .nav-component.nav-component {
+        background-color: #283528;
+    }
+
+    body.scroll-down .nav-component.nav-component {
+        transform: translateY(calc(var(--top-bar-height) - var(--top-bar-height) - var(--top-bar-height)));
+    }
+    body.scroll-down .nav-component.nav-component .nav-mobile_menu-layout.background-accent-3 {
+        height: calc(100vh - var(--header-height)) !important;
+    }
+    .button-bordered-black .is-bordered.is-bordered {
+        border-color: #000;
+        color: #000
+    }
+
+    .remove-last-border>div:last-child {
+        border: none !important
+    }
+
+    ;
+
+    .swiper {
+        transition: 400ms
+    }
+
+    .swiper:not(.swiper-initialized) {
+        opacity: 0;
+        visibility: hidden
+    }
+
+
+   /* 1. Target 110% Scaling (Only for widths >= 1280px) */
+@media (-webkit-min-device-pixel-ratio: 1.1) and (min-width: 1280px),
+       (min-resolution: 106dpi) and (min-width: 1280px) {
+    html {
+        font-size: 90.9%; /* 1 / 1.10 */
+    }
+}
+
+/* 2. Target 125% Scaling (Only for widths >= 1280px) */
+@media (-webkit-min-device-pixel-ratio: 1.25) and (min-width: 1280px),
+       (min-resolution: 120dpi) and (min-width: 1280px) {
+    html {
+        font-size: 80%; /* 1 / 1.25 */
+    }
+}
+
+/* 3. Target 150% Scaling (Only for widths >= 1280px) */
+@media (-webkit-min-device-pixel-ratio: 1.5) and (min-width: 1280px),
+       (min-resolution: 144dpi) and (min-width: 1280px) {
+    html {
+        font-size: 66.66%; /* 1 / 1.50 */
+    }
+}
+
+/* 4. Target 175% Scaling (Only for widths >= 1280px) */
+@media (-webkit-min-device-pixel-ratio: 1.75) and (min-width: 1280px),
+       (min-resolution: 168dpi) and (min-width: 1280px) {
+    html {
+        font-size: 57.14%; /* 1 / 1.75 */
+    }
+}
+</style>

@@ -383,7 +383,8 @@ function post_box($atts)
                 'id' => '',
                 'format' => 'default',
                 'count' => '',
-                'in_count' => ''
+                'in_count' => '',
+                'is_prev_next' => false
             ),
             $atts
         )
@@ -413,15 +414,22 @@ function post_box($atts)
         </div>
         <div class="post-details">
             <a href="<?= get_the_permalink($id) ?>">
+                <?= $is_prev_next != false ? '<span class="is-prev-next">' . $is_prev_next . '</span>' : '' ?>
                 <h3 class="post-box-title"><?= get_the_title($id) ?></h3>
             </a>
             <div class="post-box-date">
                 <?= get_the_date('j M Y', $id) ?>
             </div>
-            <?php if ($format == 'podcast') { ?>
-                <div class="button-box button-box-v2 button-bordered text-center">
-                    <a href="<?= get_the_permalink($id) ?>">LISTEN NOW</a>
-                </div>
+            <?php if ($is_prev_next == false) { ?>
+                <?php if ($format == 'podcast') { ?>
+                    <div class="button-box button-box-v2 button-bordered text-center">
+                        <a href="<?= get_the_permalink($id) ?>">LISTEN NOW</a>
+                    </div>
+                <?php } else { ?>
+                    <div class="button-box button-box-v2 button-readnow text-center">
+                        <a href="<?= get_the_permalink($id) ?>">READ MORE</a>
+                    </div>
+                <?php } ?>
             <?php } ?>
         </div>
     </div>
@@ -490,6 +498,84 @@ function post_box_trending_video($atts)
 add_shortcode('post_box_trending_video', 'post_box_trending_video');
 
 
+function post_box_hero($atts)
+{
+    ob_start();
+    extract(
+        shortcode_atts(
+            array(
+                'id' => '',
+            ),
+            $atts
+        )
+    );
+    $post_id = $id;
+    $cat = get_top_level_term_by_post_id($post_id, 'category');
+    $category_colour = get_field('category_colour', $cat) ? get_field('category_colour', $cat) : '#3B1527';
+    $category_text_color = get_field('category_text_color', $cat) ? get_field('category_text_color', $cat) : '#FFDBD1';
+?>
+    <div class="post-hero-outer trb-px">
+        <div class="post-hero" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
+            <div class="container-fluid g-0 p-0">
+                <div class="row g-0 flex-column-reverse flex-lg-row">
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <div class="post-hero-content">
+                            <div class="post-title">
+                                <a href="<?= get_the_permalink($post_id) ?>">
+                                    <h1>
+                                        <?= get_the_title($post_id) ?>
+                                    </h1>
+                                </a>
+                            </div>
+                            <?php if (get_the_excerpt($post_id)) { ?>
+                                <div class="post-excerpt">
+                                    <?= get_the_excerpt($post_id) ?>
+                                </div>
+                            <?php } ?>
+                            <div class="author-date d-flex gap-3 align-items-center flex-wrap">
+                                <?= do_shortcode("[author_bio_v2 avatar=0 id=$post_id]") ?>
+                                <div class="dot"></div>
+                                <div class="date">
+                                    <?= get_the_date('', $post_id) ?>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="<?= get_the_permalink($post_id) ?>">
+
+                            <div class="post-image image-box h-100">
+                                <?= get_the_post_thumbnail($post_id, 'large') ?>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+    $page_id = (int) get_the_ID();
+
+    $widget_paths = [
+        22659 => 'fertility-category-page.js',
+        22620 => 'wellbeing-category-page-gallery.js',
+        22702 => 'pregnancy-category-page-gallery.js',
+        22749 => 'parenting-category-page-gallery.js',
+    ];
+
+    if (isset($widget_paths[$page_id])) {
+        $rtn .= '<script async class="snapppt-widget" src="' .
+            esc_url('https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/' . $widget_paths[$page_id]) .
+            '"></script>';
+    }
+
+    return ob_get_clean();
+}
+add_shortcode('post_box_hero', 'post_box_hero');
+
+
 function giveaway_list_swiper($attr)
 {
 
@@ -512,7 +598,7 @@ function giveaway_list_swiper($attr)
     ));
     $wp_unique_id = wp_unique_id();
 
-?>
+    ?>
 
     <div class="giveaways-carousel trb-px ">
         <div class="giveaways-carousel-inner">
@@ -592,6 +678,15 @@ function giveaway_list_swiper($attr)
 }
 add_shortcode('giveaway_list_swiper', 'giveaway_list_swiper');
 
+
+
+function _giveaway_list_function($attr)
+{
+
+    return do_shortcode('[giveaway_list_swiper]');
+}
+add_shortcode('_giveaway_list', '_giveaway_list_function');
+
 function swiper_navigation($class)
 {
     return '<div class="swiper-navigation"> <div class="swiper-button-prev-' . $class . '"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> <div class="swiper-button-next-' . $class . '"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none" /> <circle cx="26.5" cy="26.5" r="26" fill="none" /> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor" /> </g> </svg> </div> </div>';
@@ -603,9 +698,9 @@ function become_insider()
 ?>
     <div class="become-insider">
         <div class="become-insider-inner trb-px mw-large">
-            <div class="row g-5 justify-content-between align-items-center">
+            <div class="row g-3 g-lg-5 justify-content-between align-items-center">
                 <div class="col-auto">
-                    <div class="row g-5 justify-content-between align-items-center">
+                    <div class="row g-3 g-lg-5 justify-content-between align-items-center">
                         <div class="col-auto">
                             <h3>Become an <i>Insider</i></h3>
 
@@ -619,13 +714,464 @@ function become_insider()
                 </div>
                 <div class="col-auto">
                     <div class="button-box button-box-v2 button-bordered col-auto">
-                        <a href="http#">SIGN ME UP</a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal">SIGN ME UP</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<?php
+    <?php
     return ob_get_clean();
 }
 add_shortcode('become_insider', 'become_insider');
+
+
+function careers()
+{
+    ob_start();
+
+    // 1. Query the 'career' post type
+    $args = array(
+        'post_type'      => 'career',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+    );
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) : ?>
+
+
+
+        <div class="careers-wrapper">
+            <?php while ($query->have_posts()) : $query->the_post();
+                $post_id = get_the_ID();
+                $title = get_the_title();
+
+                // --- UPDATED: FETCH META KEYS ---
+                // details_1 = details_1 status
+                // details_2 = Type (Full-time)
+                // details_3 = Location
+                $details_1   = get_field('details_1', $post_id);
+                $details_2   = get_field('details_2', $post_id);
+                $details_3   = get_field('details_3', $post_id);
+            ?>
+
+                <div class="career-row flex-wrap py-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#careerOffcanvas"
+                    data-id="<?php echo $post_id; ?>" data-title="<?php echo esc_attr($title); ?>">
+
+                    <div class="col-auto">
+                        <h3 class="career-title h3 mb-0"><?php the_title(); ?></h3>
+                    </div>
+
+                    <div class="col-auto d-flex justify-content-md-end align-items-center">
+                        <div class="career-meta text-uppercase d-flex align-items-center flex-wrap justify-content-md-end">
+                            <?php if ($details_1): ?><span class="meta-item"><?php echo esc_html($details_1); ?></span><?php endif; ?>
+                            <?php if ($details_2): ?><span class="meta-item"><?php echo esc_html($details_2); ?></span><?php endif; ?>
+                            <?php if ($details_3): ?><span class="meta-item"><?php echo esc_html($details_3); ?></span><?php endif; ?>
+                        </div>
+
+                        <span class="career-arrow fs-4 text-dark ms-4 d-none d-md-block">
+                            <img src="https://theribbonbox.com/wp-content/uploads/2026/01/Group-41.png">
+                        </span>
+                    </div>
+                    <div class="col-auto mobile-only">
+                        <div class="button-apply">
+                            <span href="">Apply Now</span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="career-divider">
+
+                <div id="career-content-<?php echo $post_id; ?>" class="d-none">
+                    <div class="job-description-wrapper ">
+
+                        <h3 class="career-title"><?php the_title(); ?></h3>
+
+                        <div class="career-meta text-uppercase d-flex align-items-center flex-wrap ">
+                            <?php if ($details_1): ?><span class="meta-item"><?php echo esc_html($details_1); ?></span><?php endif; ?>
+                            <?php if ($details_2): ?><span class="meta-item"><?php echo esc_html($details_2); ?></span><?php endif; ?>
+                            <?php if ($details_3): ?><span class="meta-item"><?php echo esc_html($details_3); ?></span><?php endif; ?>
+                        </div>
+                        <div class="job-body">
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endwhile;
+            wp_reset_postdata(); ?>
+        </div>
+
+
+
+    <?php else : ?>
+        <p>No open positions found.</p>
+    <?php endif;
+
+    return ob_get_clean();
+}
+add_shortcode('careers', 'careers');
+
+function careers_form()
+{
+    ?>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="careerOffcanvas" aria-labelledby="careerOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h2>Apply for this role</h2>
+            <button type="button" class="btn--close text-white" data-bs-dismiss="offcanvas" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                </svg>
+            </button>
+        </div>
+        <div class="offcanvas-body" id="careerOffcanvasBody">
+            <div class="offcanvas-body-content">
+                <div class="spinner-border text-secondary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <?= do_shortcode('[wpforms id="47389" title="false"]') ?>
+            <div class="offcanvas-body-footer text-center ">
+                <p>We aim to review applications as quickly as possible.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var careerOffcanvas = document.getElementById('careerOffcanvas');
+            if (careerOffcanvas) {
+                careerOffcanvas.addEventListener('show.bs.offcanvas', function(event) {
+                    // Button that triggered the offcanvas
+                    var button = event.relatedTarget;
+                    // Extract info from data-id
+                    var postId = button.getAttribute('data-id');
+                    var jobTitle = button.getAttribute('data-title');
+                    // Find the hidden content div
+                    var contentSource = document.getElementById('career-content-' + postId);
+                    var modalBody = careerOffcanvas.querySelector('.offcanvas-body-content');
+
+                    if (contentSource) {
+                        modalBody.innerHTML = contentSource.innerHTML;
+                    } else {
+                        modalBody.innerHTML = 'Content not found.';
+                    }
+
+                    var hiddenField = document.getElementById('wpforms-47389-field_22');
+
+                    if (hiddenField) {
+                        hiddenField.value = jobTitle;
+                        // Trigger a change event in case WPForms relies on listeners
+                        hiddenField.dispatchEvent(new Event('change'));
+                    } else {
+                        console.warn('WPForms Hidden field not found. Check form ID.');
+                    }
+
+
+                });
+            }
+        });
+    </script>
+
+<?php
+}
+add_action('wp_footer', 'careers_form');
+
+function teams_carousel()
+{
+
+    // 3. The Query
+    $args = array(
+        'post_type'      => 'team',
+        'posts_per_page' => -1, // Get all team members
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+
+    $team_query = new WP_Query($args);
+
+    if ($team_query->have_posts()) :
+
+        $output = '<div class="team-slider-container">';
+        $output .= '<div class="swiper myTeamSwiper">';
+        $output .= '<div class="swiper-wrapper">';
+
+        while ($team_query->have_posts()) : $team_query->the_post();
+
+            // Get Data
+            $image = get_the_post_thumbnail_url(get_the_ID(), 'large');
+            $name = get_the_title();
+            $position = get_post_meta(get_the_ID(), 'position', true);
+
+            // Fallback image if none exists
+            if (!$image) {
+                $image = 'https://via.placeholder.com/400x450';
+            }
+
+            // Slide HTML
+            $output .= '<div class="swiper-slide">';
+            $output .= '  <div class="team-card">';
+            $output .= '    <img src="' . esc_url($image) . '" alt="' . esc_attr($name) . '" class="team-image">';
+            $output .= '    <div class="team-info">';
+            $output .= '      <h3 class="team-name">' . esc_html($name) . '</h3>';
+            $output .= '      <p class="team-position">' . esc_html($position) . '</p>';
+            $output .= '    </div>';
+            $output .= '  </div>';
+            $output .= '</div>';
+
+        endwhile;
+        wp_reset_postdata();
+
+        $output .= '</div>'; // End wrapper
+        $output .= '<div class="swiper-pagination-navigation-holder">'; // swiper-pagination-navigation-holder
+        $output .= '<div class="swiper-button-prev-team"><svg xmlns="http://www.w3.org/2000/svg" width="8.069" height="16.138" viewBox="0 0 8.069 16.138"> <path id="Path_28" data-name="Path 28" d="M0,0,8.069,8.069,0,16.138" fill="#3b1527"/> </svg></div>'; // Dots
+        $output .= '<div class="swiper-pagination"></div>'; // Dots
+        $output .= '<div class="swiper-button-next-team"><svg xmlns="http://www.w3.org/2000/svg" width="8.069" height="16.138" viewBox="0 0 8.069 16.138"> <path id="Path_28" data-name="Path 28" d="M0,0,8.069,8.069,0,16.138" fill="#3b1527"/> </svg></div>'; // Dots
+        $output .= '</div>'; // swiper-pagination-navigation-holder
+        $output .= '</div>'; // End swiper
+        $output .= '</div>'; // End container
+
+        // 4. Initialize Swiper Script
+        $output .= '
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var swiper = new Swiper(".myTeamSwiper", {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    loop: true,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    
+                    navigation: {
+                        nextEl: ".swiper-button-next-team",
+                        prevEl: ".swiper-button-prev-team",
+                    },
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        },
+                        1024: {
+                            slidesPerView: 4, // 4 slides on desktop as requested
+                            spaceBetween: 20,
+                        },
+                    }
+                });
+            });
+        </script>';
+
+    else:
+        $output = '<p>No team members found.</p>';
+    endif;
+
+    return $output;
+}
+add_shortcode('teams_carousel', 'teams_carousel');
+
+
+function social_share()
+{
+    ob_start();
+?>
+    <div class="share-post d-flex align-items-center gap-3">
+        <div>SHARE</div>
+        <div class="dot"></div>
+        <?= create_item_socials_v3(get_the_permalink(), get_the_title()) ?>
+    </div>
+<?php
+    return ob_get_clean();
+}
+
+add_shortcode('social_share', 'social_share');
+
+function prev_next()
+{
+    ob_start();
+    $ids = (object) getPrevNextIds();
+?>
+    <style>
+        .blog-top-ban {
+            margin-bottom: 0;
+        }
+
+        .page-content-blg {
+            padding-bottom: 0;
+        }
+
+        .sharing-box {
+            border-top: 1px solid var(--trb-border-color);
+            padding-top: 30px;
+            padding-bottom: 30px;
+            margin-top: 0;
+        }
+
+        .sharing-box .post-box-blogs {
+            display: flex;
+            flex-direction: row;
+            padding: 30px;
+            max-width: 620px;
+        }
+
+        .sharing-box .post-box-blogs .post-image {
+            flex: 0 0 auto;
+
+        }
+
+        .sharing-box .post-box-blogs .post-details {
+            flex: 0 0 auto;
+
+
+        }
+
+        .sharing-box .post-box-blogs .post-details .post-box-title {
+            font-size: 20px !important;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .is-prev-next {
+            font-size: 22px;
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 7px;
+            color: var(--trb-accent-1);
+            font-family: "Playfair Display", serif;
+
+        }
+
+        .sharing-box .share-post {
+            justify-content: center;
+            color: var(--trb-accent-2);
+        }
+
+        .sharing-box .share-post a svg {
+            color: var(--trb-accent-2);
+        }
+
+
+        .sharing-box .col-prev .post-box-blogs {
+            padding-right: 50px;
+            clip-path: polygon(0% 0%,
+                    /* Top-left */
+                    100% 0%,
+                    /* Top-right */
+                    95% 50%,
+                    /* The Notch (10% inwards from the right) */
+                    100% 100%,
+                    /* Bottom-right */
+                    0% 100%
+                    /* Bottom-left */
+                );
+        }
+
+        .sharing-box .col-next .post-box-blogs {
+            margin-left: auto;
+            flex-direction: row-reverse;
+            text-align: right;
+            padding-left: 50px;
+            clip-path: polygon(0% 0%,
+                    /* Top-left */
+                    100% 0%,
+                    /* Top-right */
+                    100% 100%,
+                    /* Bottom-right */
+                    0% 100%,
+                    /* Bottom-left */
+                    5% 50%
+                    /* The Notch (5% inwards from the left) */
+                );
+        }
+
+
+        .sharing-box .col-next .post-box-blogs .post-details .post-box-title {
+            text-align: right;
+        }
+
+        @media(max-width: 1199px) {
+            .col-prev {
+                order: 1;
+            }
+
+            .col-next {
+                order: 2;
+            }
+
+            .col-social {
+                order: 3;
+                width: 100%;
+            }
+        }
+
+        @media(min-width: 1001px) {
+            .sharing-box .post-box-blogs .post-details {
+                padding: 0;
+                padding-left: 30px;
+            }
+
+            .sharing-box .col-next .post-box-blogs .post-details {
+                padding-left: 0;
+                padding-right: 30px;
+            }
+
+            .sharing-box .post-box-blogs .post-image {
+                width: 40%;
+                padding: 12% 0;
+            }
+
+            .sharing-box .post-box-blogs .post-details {
+                width: 60%;
+            }
+        }
+
+        @media(max-width: 1000px) {
+            .sharing-box .post-box-blogs {
+                flex-direction: column !important;
+            }
+
+            .sharing-box .post-box-blogs .post-details {
+                padding-top: 30px;
+            }
+        }
+
+        @media(max-width: 767px) {
+
+            .col-prev,
+            .col-next {
+                width: 100% !important;
+            }
+        }
+    </style>
+    <section class="sharing-box trb-px">
+
+        <div class="row g-3 align-items-center">
+            <div class="col col-prev">
+                <?php
+                echo do_shortcode('[post_box id=' . $ids->prev . ' is_prev_next="Previous"]');
+                ?>
+
+            </div>
+            <div class="col-auto col-social">
+                <?= do_shortcode('[social_share]') ?>
+            </div>
+            <div class="col col-next">
+                <?php
+                echo do_shortcode('[post_box id=' . $ids->next . ' is_prev_next="Next"]');
+                ?>
+            </div>
+        </div>
+    </section>
+<?php
+    return ob_get_clean();
+}
+
+
+add_shortcode('prev_next', 'prev_next');

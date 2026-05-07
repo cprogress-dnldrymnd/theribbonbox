@@ -14,6 +14,7 @@
     <style>
         :root {
             --trb-lightyellow: #FAF2E4;
+            --trb-lightyellow2: #F8E7CA;
             --trb-black: #000000;
             --trb-white: #ffffff;
             --trb-accent-1: #F77D66;
@@ -30,11 +31,18 @@
             background-color: var(--trb-lightyellow);
         }
 
+        .trb-bg-accent-1 {
+            background-color: var(--trb-accent-1);
+
+        }
+
         header.header-v2 {
             position: sticky;
             top: 0;
             z-index: 999;
         }
+
+
 
         header.header-v2 nav {
             background: transparent !important;
@@ -75,6 +83,7 @@
             display: flex;
             align-items: center;
             gap: 1vw;
+            justify-content: center;
 
         }
 
@@ -110,17 +119,29 @@
             transition: 400ms;
         }
 
+        .button-link.button-link a {
+            color: var(--trb-black);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .button-link.button-link a:hover {
+            color: var(--trb-accent-1);
+        }
+
         .button-accent-2.button-accent-2 a:hover {
             background-color: var(--trb-accent-1);
 
         }
 
-        .button-community.button-community a {
+        .button-ribbon.button-ribbon a {
             border-radius: 5px 0 0 5px;
             padding-right: 38px;
         }
 
-        .button-community a:after {
+        .button-ribbon a:after {
             content: '';
             width: 0;
             height: 0;
@@ -142,13 +163,18 @@
         }
 
         .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input {
-            background-color: transparent;
+            background-color: var(--trb-lightyellow2);
             height: auto !important;
-            padding: 17px 45px 17px 30px !important;
+            padding: 19px 45px 19px 24px !important;
             border-radius: 50px;
-            border: 1px solid !important;
+            border: none !important;
+            color: #3B1527;
         }
 
+        .is-search-input.is-search-input.is-search-input.is-search-input.is-search-input::placeholder {
+            color: #3B1527;
+
+        }
 
 
         .is-search-input.is-search-input.is-search-input {
@@ -226,11 +252,15 @@
             border-top: 1px solid var(--trb-border-color);
         }
 
+        .main-content-outer {
+            margin-top: 0 !important;
+        }
+
         .main-v2 {
-            min-height: 800px;
             position: relative;
             z-index: 1;
             background-color: var(--trb-white);
+            overflow: hidden;
         }
 
         .footer-logo-text p {
@@ -244,6 +274,10 @@
 
         .left-footer {
             max-width: 750px;
+        }
+
+        .left-footer p {
+            text-align: left;
         }
 
         .right-footer {
@@ -285,6 +319,12 @@
             text-decoration: underline;
         }
 
+        .ad-item img {
+            width: auto !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .woocommerce-breadcrumb.woocommerce-breadcrumb svg {
             color: var(--trb-accent-1);
             margin-left: 5px;
@@ -293,8 +333,24 @@
 
         }
 
+        .hero-v2 {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-v2+.page-content-blg {}
+
+        .hero-v2+.page-content-blg .blog-top-ban {
+            margin-top: -5%;
+        }
+
         .hero-v2 .top {
             padding-bottom: 8%;
+        }
+
+        .hero-v2 .top .container-fluid {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-v2 h1 {
@@ -313,8 +369,8 @@
             flex-wrap: wrap;
         }
 
-        .instagram.instagram,
-        .ticktok.ticktok {
+        .instagram.instagram:not(.icon-bg),
+        .ticktok.ticktok:not(.icon-bg) {
             padding-left: 0 !important;
             background-image: none;
             display: inline-flex;
@@ -445,25 +501,39 @@
         }
 
         #offCanvasMenu .menu li a:hover {
-            color: var(--trb-accent-1);
+            color: var(--trb-accent-1) !important;
         }
 
         .newsletter-menu a {
-            background-color: var(--trb-accent-3);
+            background-color: var(--trb-accent-1);
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .newsletter-menu a span {
-            color: var(--trb-white) !important;
+            color: var(--trb-black) !important;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: 'Playfair Display';
+            letter-spacing: 0.9px;
+        }
+
+        .social-icons:before,
+        .social-icons:after {
+            display: none !important;
         }
 
         .social-holder .social-icons:not(.social-icons-txt) {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
         .social-holder .social-icons:not(.social-icons-txt) a {
-            width: 17px;
-            height: 17px;
+            width: 25px;
+            height: 25px;
             display: inline-block;
             padding: 0 0.4em;
             margin: 0;
@@ -474,6 +544,7 @@
 
         .header-v2 .social-icons.social-icons-txt {
             gap: 5px;
+            margin-top: 20px;
         }
 
         .ads--v2 {
@@ -521,20 +592,56 @@
 
 
         #header-main-site {
-            height: var(--header-height);
+            height: var(--header-height) !important;
         }
 
         #subscribe-outer {
             z-index: 999999;
         }
 
+
+        .menu-items-holder li a img {
+            flex: 0 0 20px;
+        }
+
         .social--icons svg {
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .social--icons a:not(:hover) {
+            color: var(--trb-black);
         }
 
         .social--icons-text span {
             text-transform: lowercase;
+            font-size: 14px;
+        }
+
+        main .ads--v2 {
+            transform: none !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .page-content-blg .is-search-form.is-search-form {
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+
+        .blog-top-ban .blog-l-text-out {
+            margin-top: 0;
+            border-top: none !important;
+            padding-top: 50px;
+        }
+
+        .post-follow-us.post-follow-us {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        .post-follow-us .social--icons {
+            justify-content: center;
         }
 
         .experts-page-cara.experts-page-cara {
@@ -543,7 +650,10 @@
 
         /*responsive*/
 
-        @media(min-width: 992px) {
+        @media(min-width: 1001px) {
+            header.header-v2 .header-menu {
+                border-top: 1px solid var(--trb-lightyellow2);
+            }
 
             #offCanvasMenu .toggle-submenu.toggle-submenu {
                 display: none !important;
@@ -597,21 +707,12 @@
             }
         }
 
-        @media(min-width: 1200px) {
-            #offCanvasSearch {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                width: auto;
-                background-color: transparent;
-                border: none;
-            }
-        }
+
 
         @media(max-width: 1920px) {
             .is-search-form.is-search-form {
                 min-width: 18vw;
+                max-width: 277px;
             }
         }
 
@@ -631,6 +732,19 @@
                 --bs-gutter-x: 1.5rem;
             }
         }
+
+        @media(max-width: 1600px) {
+            .button-ribbon.button-ribbon a {
+                padding-left: 15px;
+                padding-right: 20px;
+            }
+
+            header.header-v2 a {
+                letter-spacing: 0;
+                font-size: 13px !important;
+            }
+        }
+
 
 
         @media(max-width: 1550px) {
@@ -668,7 +782,7 @@
                 height: auto;
             }
 
-            .button-community.button-community a {
+            .button-ribbon.button-ribbon a {
                 padding-left: 15px;
                 padding-right: 23px;
             }
@@ -693,14 +807,12 @@
             .site-logo-v2 svg {
                 max-width: 80px;
             }
-        }
 
-        @media(max-width: 1199px) and (min-width: 992px) {
-
-            #offCanvasSearch {
-                height: 100vh !important;
+            .col-logo svg {
+                max-width: 300px;
             }
         }
+
 
         @media(max-width: 1199px) {
             .trb-px {
@@ -712,14 +824,20 @@
                 font-size: 60px;
             }
 
-            #offCanvasSearch .offcanvas-body--inner {
-                padding: 40px;
+            .col-logo svg {
+                max-width: 250px;
             }
 
         }
 
 
         @media (max-width: 1000px) {
+            .top-bar a {
+                font-size: 14px;
+                width: 100%;
+                justify-content: center;
+            }
+
             nav {
                 position: static !important;
             }
@@ -728,12 +846,8 @@
                 background-color: transparent;
                 width: 100%;
             }
-        }
 
-        @media(max-width: 991px) {
-            body {
-                --menu-top: 88.5px
-            }
+
 
             body.mobile-menu-active #header-main-site .header--inner {
                 position: fixed;
@@ -794,7 +908,7 @@
             }
 
             body {
-                --menu-top: 98px;
+                --menu-top: 72px;
             }
 
             #offCanvasMenu {
@@ -842,6 +956,43 @@
 
             #offCanvasMenu .menu {
                 gap: 0;
+            }
+
+            .col-logo {
+                order: 1;
+            }
+
+            .col-search {
+                order: 2;
+            }
+
+            .col-mobile-menu {
+                order: 3;
+            }
+
+            .col-mobile-menu svg {
+                width: 19px;
+                height: 19px;
+            }
+
+            .col-logo svg {
+                max-width: 200px;
+            }
+
+            #offCanvasSearch .offcanvas-body--inner {
+                padding: 40px;
+            }
+
+            #offCanvasSearch {
+                height: 100vh !important;
+            }
+
+            .d-lg-none.d-flex {
+                display: flex !important;
+            }
+
+            .d-lg-block.d-none {
+                display: none !important;
             }
         }
 
@@ -905,9 +1056,7 @@
                 max-width: 85px;
             }
 
-            body {
-                --menu-top: 91px;
-            }
+
 
             .header-v2 .social-icons.social-icons-txt a {
                 font-size: 13px;
@@ -917,14 +1066,6 @@
         }
 
         @media(max-width: 575px) {
-            .social-icons .social-icons-txt {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .social-icons .social-icons-txt .sep {
-                display: none;
-            }
 
             .footer-v2 .left-footer h2 {
                 font-size: 25px;
@@ -934,9 +1075,6 @@
                 font-size: 12px;
             }
 
-            .social-icons.social-icons-txt a {
-                font-size: 12px;
-            }
 
             .footer-logo-text p {
                 font-size: 20px;
@@ -954,6 +1092,241 @@
                 padding-right: 10px;
             }
         }
+
+        .page-header-outer.page-header-outer {
+            padding-top: 50px;
+            background-color: transparent;
+        }
+
+        .menu-burger.menu-burger.menu-burger.menu-burger .icon .menu {
+            background-color: transparent;
+        }
+
+        @media (min-width: 992px) {
+            .d-lg-none {
+                display: initial !important;
+            }
+
+            .d-lg-block {
+                display: initial !important;
+            }
+
+
+        }
+
+        /**single hero */
+        @media(min-width: 767px) {
+            .post-hero-content h1 {
+                font-size: 49px;
+            }
+        }
+
+        @media(min-width: 1001px) {
+
+            .desktop-col.desktop-col {
+                width: 33.33333333333%;
+            }
+
+            .post-hero-content h1 {
+                font-size: 59px;
+            }
+
+            .d-lg-block {
+                display: block !important;
+            }
+
+            .d-lg-none {
+                display: none !important;
+            }
+
+            #offCanvasSearch {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                width: auto;
+                background-color: transparent;
+                border: none;
+            }
+        }
+
+        @media(min-width: 1200px) {
+            .post-hero-content h1 {
+                font-size: 69px;
+            }
+        }
+
+        .post-hero {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+
+        }
+
+        .post-hero-content {
+            padding: 40px;
+        }
+
+        .post-title {
+            margin-top: 20px;
+        }
+
+        .post-hero-content h1,
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a,
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb {
+            color: var(--text-color);
+        }
+
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb {
+            font-size: 0;
+            display: flex !important;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb svg:last-child {
+            display: none;
+        }
+
+        .post-hero-content .woocommerce-breadcrumb.woocommerce-breadcrumb a {
+            font-size: 14px;
+        }
+
+        .post-hero-content h1 {
+            text-align: left;
+            margin-top: 0;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .post-image img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-bio-v2 .author-bio-inner .author-image {
+            width: 63px;
+        }
+
+        .author-bio-v2 .author-bio-inner .author-image img {
+            width: 63px !important;
+            height: 63px;
+        }
+
+        .author-bio-v2 .author-bio-inner .author-details {
+            display: flex;
+            padding: 0;
+        }
+
+        .date {
+            text-transform: uppercase;
+        }
+
+        .dot.dot {
+            border-radius: 50%;
+            background-color: #F77D67;
+            width: 5px;
+            height: 5px;
+        }
+
+        .author-date {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .author-bio-v2 .author-bio-inner {
+            gap: 16px;
+            flex-wrap: nowrap;
+        }
+
+        .post-categories {
+            gap: 13px;
+        }
+
+        .post-categories a {
+            font-family: 'Playfair Display';
+            font-size: 17px;
+            font-weight: bold;
+            padding: 7px 18px;
+            border-radius: 50px;
+            color: #3B1527;
+            background-color: #F77D67;
+            line-height: 1;
+        }
+
+        .share-post {
+            margin-top: 30px;
+        }
+
+        .share-post svg {
+            color: var(--text-color);
+            width: 17px;
+            height: 17px;
+        }
+
+        .share-post .social-icons-v3 {
+            padding: 0;
+            gap: 13px
+        }
+
+        .top-bar {
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .top-bar a {
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+            color: var(--trb-black);
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Playfair Display';
+            letter-spacing: 0.9px;
+        }
+
+        .top-bar a svg {
+            height: 16px;
+            width: auto;
+        }
+
+        .top-bar a strong {
+            font-weight: 800;
+        }
+
+        .influcencer-collective-mobile.influcencer-collective-mobile.influcencer-collective-mobile a {
+            width: 100%;
+            border-radius: 0;
+            padding: 24px;
+        }
+
+        #menu-posts-main-mob h2 {
+            text-transform: capitalize !important;
+        }
+
+        .header--inner .header-top {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        header .header--inner nav {
+            height: auto !important;
+        }
+
+
+
+        @media(max-width: 767px) {
+            .post-hero-content {
+                padding: 20px;
+            }
+        }
+
+        @media(max-width: 575px) {
+            .col-logo svg {
+                max-width: 150px;
+            }
+        }
     </style>
     <?php
     global $theme_option_page;
@@ -961,113 +1334,194 @@
     $mode = isset($_GET['mode']) ? $_GET['mode'] : false;
     $top_banner_ad = get_field('top_banner_ad', $theme_option_page);
     $ad_strip = get_field('ad_strip', $theme_option_page);
+
+    $ads = get_posts(array(
+        'post_type' => 'ads',
+        'numberposts' => 1, // Number of recent posts thumbnails to display
+        'orderby' => 'rand',
+        'post_status' => 'publish',
+        'fields' => 'ids',
+        'meta_query'  => array(
+            array(
+                'key'     => 'ad_type',   // The custom field key
+                'value'   => 'ad_strip',  // The value to exclude
+                'compare' => '!='         // The comparison operator (NOT EQUAL TO)
+            )
+        )
+    ));
+
     ?>
     <div id="fouc">
         <div class="site-wrap">
-            <?php if ($top_banner_ad) { ?>
-                <div class="ads ads--v2 py-4">
-                    <div class="container">
-                        <a href="<?= get_field('ad_url', $top_banner_ad) ?>" target="_blank">
-                            <div class="d-none d-sm-block">
-                                <?= wp_get_attachment_image(get_field('ad_image', $top_banner_ad), 'full') ?>
-                            </div>
-                            <div class="d-block d-sm-none">
-                                <?= wp_get_attachment_image(get_field('ad_image_mobile', $top_banner_ad), 'full') ?>
-                            </div>
-                        </a>
-                    </div>
+            <?= do_shortcode('[ad_list]') ?>
+            <div class="top-bar trb-bg-accent-1">
+                <div class="container">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="mail" width="16.853" height="12.64" viewBox="0 0 16.853 12.64">
+                            <g id="Icon-Set">
+                                <path id="mail-2" data-name="mail" d="M427.8,269.533a1.036,1.036,0,0,1-.05.3l-4.69-5.044,4.74-3.687v8.427Zm-13.927,1.025,4.753-5.064,1.8,1.361,1.723-1.37,4.831,5.073c-.075.017-13.032.017-13.107,0Zm-.819-1.025v-8.427l4.74,3.687-4.69,5.044a1.036,1.036,0,0,1-.05-.3Zm14.22-9.48-6.847,5.267-6.847-5.267ZM426.746,259h-12.64A2.107,2.107,0,0,0,412,261.107v8.427a2.107,2.107,0,0,0,2.107,2.107h12.64a2.107,2.107,0,0,0,2.107-2.107v-8.427A2.107,2.107,0,0,0,426.746,259Z" transform="translate(-412 -259)" fill-rule="evenodd" />
+                            </g>
+                        </svg>
+                        <i><u>Subscribe</u></i>
+                    </a>
                 </div>
-            <?php } ?>
+            </div>
             <header class="header-v2" id="header-main-site">
-                <div class="header--inner py-4 trb-px trb-bg-lightyellow">
+                <div class="header--inner trb-px trb-bg-lightyellow">
                     <div class="container-fluid">
-                        <div class="row justify-content-between align-items-center">
-                            <div class="col-auto col-left col-logo">
-                                <a href="<?= get_site_url() ?>" class="site-logo-v2">
-                                    <?= $theme_logo ?>
-                                </a>
-                            </div>
-                            <div class="col-auto col-right">
-                                <div class="row g-5 align-items-center">
-                                    <div class="col-auto">
-                                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
-                                            <div class="offcanvas-body p-0 d-flex flex-column">
-                                                <div class="newsletter-menu d-block d-lg-none">
-                                                    <a href="#" class="d-flex align-items-center gap-3 p-4 text-white text-uppercase sub-pop-btn">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
-                                                        </svg>
-                                                        <span>Sign up for our weekly newsletter</span>
-                                                    </a>
-                                                </div>
-                                                <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
-                                                    <nav>
-                                                        <div class="nav-menu text-uppercase">
-                                                            <?php wp_nav_menu(
-                                                                array(
-                                                                    'theme_location' => 'header-menu',
-                                                                    'walker' => new Walker_Nav_Pointers()
-                                                                )
-                                                            ); ?>
-                                                        </div>
-                                                    </nav>
+                        <div class="header-top">
+                            <div class="row justify-content-between align-items-center">
 
-                                                    <hr class="d-lg-none">
-                                                    <div class="social-holder d-flex d-lg-none flex-column gap-3">
-                                                        <?php echo do_shortcode("[get_socials]"); ?>
+                                <div class="col-auto col-search desktop-col">
+                                    <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
+                                        <div class="offcanvas-body p-0">
+                                            <div class="offcanvas-body--inner">
+                                                <div class="search search-v2">
+                                                    <div class="close--btn d-block d-lg-none text-end">
+                                                        <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                                                            </svg>
+                                                        </button>
                                                     </div>
-                                                    <hr class="d-lg-none">
-                                                    <div class="nav-menu d-block d-lg-none text-uppercase">
-                                                        <?php
-                                                        wp_nav_menu(array('menu' => 'FooterMenu'));
-                                                        ?>
-                                                    </div>
+                                                    <h4 class="d-block d-lg-none">Search</h4>
+                                                    <?php echo do_shortcode('[ivory-search id="45284" title="Search"]'); ?>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <div class="offcanvas offcanvas-start " tabindex="-1" id="offCanvasSearch" aria-labelledby="offCanvasSearchLabel">
-                                            <div class="offcanvas-body p-0">
-                                                <div class="offcanvas-body--inner">
-                                                    <div class="search search-v2">
-                                                        <div class="close--btn d-block d-xl-none text-end">
-                                                            <button type="button" data-bs-dismiss="offcanvas" aria-label="Close">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-                                                        <h4 class="d-block d-xl-none">Search</h4>
-                                                        <?php echo do_shortcode('[ivory-search id="45284" title="Search for a topic"]'); ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" class="offCanvasSearch-btn d-block d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#offCanvasSearch" aria-controls="offCanvasSearch" class="d-block d-xl-none">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17.179" height="17.179" viewBox="0 0 17.179 17.179">
-                                                <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.75 0.75)">
-                                                    <path id="Path_1" data-name="Path 1" d="M18.161,11.33A6.83,6.83,0,1,1,11.33,4.5,6.83,6.83,0,0,1,18.161,11.33Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                    <path id="Path_2" data-name="Path 2" d="M28.689,28.689l-3.714-3.714" transform="translate(-13.321 -13.321)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-                                                </g>
-                                            </svg>
-                                        </button>
-
-                                    </div>
-                                    <div class="col-auto d-none d-lg-block">
-                                        <div class="button-accent-2 button-community">
-                                            <a href="https://theribbonbox.com/community/">COMMUNITY</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto d-block d-lg-none">
-                                        <button class="menu-burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
-                                            <div class="icon">
-                                                <div class="menu"></div>
-                                            </div>
-                                        </button>
                                     </div>
                                 </div>
+                                <div class="col-auto col-logo desktop-col text-center">
+                                    <a href="<?= get_site_url() ?>" class="site-logo-v2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 416 60" style="enable-background:new 0 0 416 60;" xml:space="preserve" width="416" height="60">
+                                            <style type="text/css">
+                                                .st0 {
+                                                    enable-background: new;
+                                                }
+                                            </style>
+                                            <g id="Group_29" transform="translate(73 -31)">
+                                                <path d="M10.2,69.8H8.5V83h-5V52H10c7,0,11.6,3.3,11.6,8.8c0,3.8-2.7,6.5-5.3,7.2c4.1,1.5,6.8,11.1,12.6,11.1l-1,4.2   C18,83.3,17.7,69.8,10.2,69.8z M10.5,55.9h-2V66h2.2c3.5,0,6-1.9,6-5.2C16.7,57.7,14.1,55.9,10.5,55.9z" />
+                                                <path d="M65.2,83h-7.4V52H64c7.2,0,12,2.2,12,7.8c0,3-1.8,5.2-4.4,5.8c4.4,0.7,7.1,3.2,7.1,8.2C78.7,80.5,73.6,83,65.2,83z    M64.5,55.9h-1.6V64h2c4.7,0,6.1-1.5,6.1-4C71,57.1,69.1,55.9,64.5,55.9z M66.6,67.9h-3.7v11h3.7c5.7,0,6.9-2.2,7.1-5.3   C73.6,70.9,72.4,67.9,66.6,67.9z" />
+                                                <path d="M98.5,83h-7.4V52h6.1c7.2,0,12,2.2,12,7.8c0,3-1.8,5.2-4.4,5.8c4.4,0.7,7.1,3.2,7.1,8.2C112,80.5,106.8,83,98.5,83z    M97.8,55.9h-1.6V64h2c4.7,0,6.1-1.5,6.1-4C104.3,57.1,102.3,55.9,97.8,55.9z M99.8,67.9h-3.7v11h3.7c5.7,0,6.9-2.2,7.1-5.3   C106.9,70.9,105.6,67.9,99.8,67.9z" />
+                                                <path d="M139,83.4c-8.9,0-16-5.8-16-16c0-10.1,7.1-15.9,16-15.9c8.9,0,16,5.8,16,16C155,77.6,147.9,83.4,139,83.4z M139,55.7   c-5.9,0-10.9,4.4-10.9,11.8c0,7.6,4.9,11.8,10.9,11.8c6,0,10.9-4.2,10.9-11.7C149.8,60,144.9,55.7,139,55.7z" />
+                                                <path d="M172.5,62.1V83h-5V51.2h0.7l21,21.7V52h5v31.7h-0.7L172.5,62.1z" />
+                                                <path d="M233.3,83h-7.4V52h6.1c7.2,0,12,2.2,12,7.8c0,3-1.8,5.2-4.4,5.8c4.4,0.7,7.1,3.2,7.1,8.2C246.7,80.5,241.6,83,233.3,83z    M232.6,55.9h-1.6V64h2c4.7,0,6-1.5,6-4C239,57.1,237.1,55.9,232.6,55.9z M234.6,67.9h-3.7v11h3.7c5.7,0,6.9-2.2,7-5.3   C241.6,70.9,240.4,67.9,234.6,67.9z" />
+                                                <path d="M273.7,83.4c-8.9,0-16-5.8-16-16c0-10.1,7.1-15.9,16-15.9s16,5.8,16,16C289.7,77.6,282.6,83.4,273.7,83.4z M273.7,55.7   c-6,0-10.9,4.4-10.9,11.8c0,7.6,4.9,11.8,10.9,11.8c6,0,10.9-4.2,10.9-11.7C284.6,60,279.7,55.7,273.7,55.7z" />
+                                                <path d="M303.2,83h-5.6L309,64.8L300.8,52h5.8l5,9.1l5.1-9.1h5.8l-8.1,12.9L325.6,83h-5.5l-8.5-14.6L303.2,83z" />
+                                                <path d="M337.3,83.3c-1.8,0-3.2-1.1-3.2-3c0-1.9,1.4-2.9,3.2-2.9c1.9,0,3.3,1,3.3,3C340.6,82.2,339.2,83.3,337.3,83.3z" />
+                                                <g class="st0">
+                                                    <path d="M-64.9,53.8l-2.9,13.5h-2.5l2.8-13.5h-4.2l0.9-1.9h10.3l-0.4,1.9H-64.9z" />
+                                                    <path d="M-47.5,67.4l1.6-7.5H-54l-1.6,7.5h-2.5l3.3-15.5h2.5l-1.3,6h8.1l1.3-6h2.5L-45,67.4H-47.5z" />
+                                                    <path d="M-32.7,53.8l-0.9,4.1h4.8l-0.4,1.9H-34l-1.1,5.5h8.4l-0.9,2h-10.4l3.3-15.5h8.8l-0.4,1.9H-32.7z" />
+                                                </g>
+                                                <polygon points="38.9,57.9 38.9,83 43.9,83 43.9,52.5  " />
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="col-auto d-none d-lg-block desktop-col">
+                                    <div class="row g-4 justify-content-end align-items-center">
+                                        <div class="col-auto">
+                                            <div class="button-link">
+                                                <a href="https://theribbonbox.com/community/">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13.435" height="13.436" viewBox="0 0 13.435 13.436">
+                                                        <g id="Profile" transform="translate(-1390.798 -86)">
+                                                            <g id="account" transform="translate(1390.798 86)">
+                                                                <g id="Dribbble-Light-Preview" transform="translate(0 0)">
+                                                                    <g id="icons">
+                                                                        <path fill="currentColor" id="profile-_1341_" data-name="profile-[#1341]" d="M130.718,2005.717a2.687,2.687,0,1,1,2.7-2.687,2.694,2.694,0,0,1-2.7,2.687m2.537.45a4.009,4.009,0,0,0,1.466-3.762,4.052,4.052,0,0,0-8.052.625,4.011,4.011,0,0,0,1.513,3.137,6.408,6.408,0,0,0-4.178,5.522.68.68,0,0,0,.674.746.663.663,0,0,0,.667-.6,5.411,5.411,0,0,1,10.747,0,.663.663,0,0,0,.667.6.68.68,0,0,0,.674-.746,6.408,6.408,0,0,0-4.178-5.522" transform="translate(-124 -1998.999)" fill-rule="evenodd" />
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                    COMMUNITY LOGIN
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto d-none d-lg-block">
+                                            <div class="button-accent-2 button-ribbon">
+                                                <a href="https://influencercollective.co/" target="_blank">INFLUENCER COLLECTIVE</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto d-flex gap-3 d-lg-none col-mobile-menu align-items-center">
+                                    <button type="button" class="offCanvasSearch-btn d-block d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#offCanvasSearch" aria-controls="offCanvasSearch" class="d-block d-xl-none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="17.179" height="17.179" viewBox="0 0 17.179 17.179">
+                                            <g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(0.75 0.75)">
+                                                <path id="Path_1" data-name="Path 1" d="M18.161,11.33A6.83,6.83,0,1,1,11.33,4.5,6.83,6.83,0,0,1,18.161,11.33Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+                                                <path id="Path_2" data-name="Path 2" d="M28.689,28.689l-3.714-3.714" transform="translate(-13.321 -13.321)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <div class="button-link d-flex">
+                                        <a href="https://theribbonbox.com/community/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="13.435" height="13.436" viewBox="0 0 13.435 13.436">
+                                                <g id="Profile" transform="translate(-1390.798 -86)">
+                                                    <g id="account" transform="translate(1390.798 86)">
+                                                        <g id="Dribbble-Light-Preview" transform="translate(0 0)">
+                                                            <g id="icons">
+                                                                <path fill="currentColor" id="profile-_1341_" data-name="profile-[#1341]" d="M130.718,2005.717a2.687,2.687,0,1,1,2.7-2.687,2.694,2.694,0,0,1-2.7,2.687m2.537.45a4.009,4.009,0,0,0,1.466-3.762,4.052,4.052,0,0,0-8.052.625,4.011,4.011,0,0,0,1.513,3.137,6.408,6.408,0,0,0-4.178,5.522.68.68,0,0,0,.674.746.663.663,0,0,0,.667-.6,5.411,5.411,0,0,1,10.747,0,.663.663,0,0,0,.667.6.68.68,0,0,0,.674-.746,6.408,6.408,0,0,0-4.178-5.522" transform="translate(-124 -1998.999)" fill-rule="evenodd" />
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <button class="menu-burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasMenu" aria-controls="offCanvasMenu">
+                                        <div class="icon">
+                                            <div class="menu"></div>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-menu">
+                            <div class="col-auto">
+                                <div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasMenu" aria-labelledby="offCanvasMenuLabel">
+                                    <div class="offcanvas-body p-0 d-flex flex-column">
+                                        <div class="newsletter-menu d-block d-lg-none">
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#SignUpModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" id="mail" width="16.853" height="12.64" viewBox="0 0 16.853 12.64">
+                                                    <g id="Icon-Set">
+                                                        <path id="mail-2" data-name="mail" d="M427.8,269.533a1.036,1.036,0,0,1-.05.3l-4.69-5.044,4.74-3.687v8.427Zm-13.927,1.025,4.753-5.064,1.8,1.361,1.723-1.37,4.831,5.073c-.075.017-13.032.017-13.107,0Zm-.819-1.025v-8.427l4.74,3.687-4.69,5.044a1.036,1.036,0,0,1-.05-.3Zm14.22-9.48-6.847,5.267-6.847-5.267ZM426.746,259h-12.64A2.107,2.107,0,0,0,412,261.107v8.427a2.107,2.107,0,0,0,2.107,2.107h12.64a2.107,2.107,0,0,0,2.107-2.107v-8.427A2.107,2.107,0,0,0,426.746,259Z" transform="translate(-412 -259)" fill-rule="evenodd" />
+                                                    </g>
+                                                </svg>
+                                                <span>
+                                                    <i><u>Subscribe</u></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="influcencer-collective-mobile d-block d-lg-none button-accent-2">
+                                            <a href="https://influencercollective.co/" target="_blank">INFLUENCER COLLECTIVE</a>
+                                        </div>
+                                        <div class="offcanvas-body--inner flex-grow-1 d-flex flex-column justify-content-between gap-3">
+                                            <nav>
+                                                <div class="nav-menu text-uppercase">
+                                                    <?php wp_nav_menu(
+                                                        array(
+                                                            'theme_location' => 'header-menu',
+                                                            'walker' => new Walker_Nav_Pointers()
+                                                        )
+                                                    ); ?>
+                                                </div>
+                                            </nav>
 
+                                            <hr class="d-lg-none">
+                                            <div class="social-holder d-flex d-lg-none flex-column ">
+                                                <?php echo do_shortcode("[get_socials]"); ?>
+                                            </div>
+                                            <hr class="d-lg-none">
+                                            <div class="nav-menu d-block d-lg-none text-uppercase">
+                                                <?php
+                                                wp_nav_menu(array('menu' => 'FooterMenu'));
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1110,37 +1564,101 @@
                     }
                     ?>
                 </div>
-                <div class="hero-v2 trb-border-top">
-                    <div class="top  pt-4 trb-bg-lightyellow trb-px">
-                        <div class="container-fluid">
-                            <div class="breadcrumbs-v2">
-                                <?= woocommerce_breadcrumb(); ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom trb-px">
-                        <div class="container-fluid">
-                            <h1>Surrogacy</h1>
-                        </div>
 
-                    </div>
-                </div>
-                <div class="main-content-v2">
-                    <div class="container">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa? Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ut eaque minus modi cumque facere, laborum nam doloribus vitae sed facilis incidunt, quaerat labore ex dolorum repudiandae vel veniam culpa?
-                        </p>
-                    </div>
-                </div>
+                <?php
+
+                $fertility_category_id = 1164;
+                $wellbeing_category_id = 1159;
+                echo do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]');
+                echo do_shortcode('[_giveaway_list]');
+
+                echo '<div class="home-slider" id="home-slider">';
+                echo "<script async src='https://app.addsauce.com/widgets/widget_loader/b5e9e572-93fb-ff48-5213-dbb8e74cc9ec/sauce_homepage.js' class='snapppt-widget'></script>";
+                echo '</div>';
+
+                echo do_shortcode('[display_followus]');
+
+                echo do_shortcode('[expert_list categoryid="1164,1159" title="Wellbeing &amp; Fertility Experts" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1159" home="1" exclude="' . $excludeids . '"]');
+                echo do_shortcode('[category_list]');
+                echo '<div class="blogs-loop-watch-listen">';
+                echo '<div class="mw-large trb-px">';
+                echo '<h2 class="hp-h2">Watch &amp; Listen</h2>';
+                echo do_shortcode('[blog_filter format="video-half" post_type="videos" limit="3" categoryid="1159" home="1"]');
+                echo '</div>';
+                echo '</div>';
+                echo do_shortcode('[blog_filter format="video" limit="4"]');
+                echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
+                echo do_shortcode('[expert_list categoryid="1165,1163" title="Pregnancy &amp; Parenting Experts"]');
+                echo do_shortcode('[display_home_section]');
+                echo do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-1" limit="2" categoryid="1163" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="1159" home="1"]');
+                echo do_shortcode('[display_followus]');
+                echo do_shortcode('[blog_filter format="normal-4" limit="6" categoryid="1159" home="1"]');
+                echo do_shortcode('[blog_filter format="normal-3" limit="2" categoryid="1165" home="1"]');
+                echo '
+                <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick.css">
+                <link rel="stylesheet" href="/wp-content/themes/lighttheme/stylesheet/slick-theme.css">
+                <script src="/wp-content/themes/lighttheme"></script>';
+                ?>
+                <script>
+                    var swiper = new Swiper(".swiper-experts", {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                        loop: true,
+                        pagination: {
+                            el: ".swiper-pagination",
+                            dynamicBullets: true,
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: ".swiper-button-next-experts",
+                            prevEl: ".swiper-button-prev-experts",
+                        },
+                        breakpoints: {
+                            0: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 20,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                                spaceBetween: 40,
+                            },
+                        }
+                    });
+
+                    $('.category-entry').slick({
+                        dots: true,
+                        centerMode: true,
+                        centerPadding: '60px',
+                        slidesToShow: 3,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                        responsive: [{
+                                breakpoint: 900,
+                                settings: {
+
+                                    centerMode: true,
+                                    centerPadding: '150px',
+                                    slidesToShow: 1
+                                }
+                            },
+                            {
+                                breakpoint: 600,
+                                settings: {
+
+                                    centerMode: true,
+                                    centerPadding: '1px',
+                                    slidesToShow: 1
+                                }
+                            }
+                        ]
+                    });
+                </script>

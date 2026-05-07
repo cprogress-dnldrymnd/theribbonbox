@@ -416,27 +416,37 @@ function display_home_section()
     $home_section_heading = get_field('home_section_heading', $theme_option_page);
     $home_section_description = get_field('home_section_description', $theme_option_page);
     $home_section_discover_links = get_field('home_section_discover_links', $theme_option_page);
-    if (current_user_can('administrator')) {
-        var_dump($home_section_discover_links);
-        echo 'test';
-        echo 'test2';
-        echo 'test3';
-        echo 'test4';
-        echo 'test5';
-        echo 'test6';
-    }
-
 ?>
 
     <div class="home-section-v2 bg-black md-padding">
-        <div class="container">
-            <div class="row">
-
+        <div class="trb-px mw-large">
+            <div class="row g-5">
                 <div class="col-lg-5">
                     <h2><?= $home_section_heading ?></h2>
                     <div class="desc">
                         <?= wpautop($home_section_description) ?>
                     </div>
+                    <?php if ($home_section_discover_links) { ?>
+                        <div class="discover-links-outer">
+                            <h3>Discover</h3>
+                            <div class="discovery-links">
+                                <?php foreach ($home_section_discover_links as $term) { ?>
+
+                                    <?php
+                                    $page_category = get_field('page_category', $term->taxonomy . '_' . $term->term_id);
+                                    $category_colour = get_field('category_colour', $term->taxonomy . '_' . $term->term_id);
+                                    $category_text_color = get_field('category_text_color', $term->taxonomy . '_' . $term->term_id);
+                                    $page_link = get_the_permalink($page_category[0]);
+                                    ?>
+
+                                    <a href="<?= $page_link ?>" style="--bg-color: <?= $category_colour ?>; --text-color: <?= $category_text_color ?>">
+                                        <?= $term->name ?>
+                                    </a>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                    <?php } ?>
                 </div>
                 <div class="col-lg-7">
                     <?= wp_get_attachment_image($home_section_image, 'large') ?>
@@ -469,7 +479,7 @@ function display_expertboxes_function()
             <?= wpautop($experts_banner_description) ?>
         </div>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }
 
@@ -481,43 +491,29 @@ add_shortcode('display_followus', 'display_followus_function');
 function display_followus_function()
 {
     ob_start();
-    //revamp section
-    if (current_user_can('administrator')) { ?>
-        <div class="post-follow-us-revamp">
-            <div class="post-follow-us-revamp-outer trb-px mw-large">
-                <div class="post-follow-us-revamp-inner">
-                    <h2>Follow our <i>Socials</i></h2>
-                </div>
-                <div class="post-follow-us-revamp-inner">
-                    <?= do_shortcode("[get_socials social='icons-only-all']") ?>
-                </div>
+
+?>
+
+    <div class="post-follow-us-revamp">
+        <div class="post-follow-us-revamp-outer trb-px mw-large">
+            <div class="post-follow-us-revamp-inner">
+                <h2>Follow our <i>Socials</i></h2>
+            </div>
+            <div class="post-follow-us-revamp-inner">
+                <?= do_shortcode("[get_socials social='icons-only-all']") ?>
             </div>
         </div>
-    <?php } else { ?>
-
-        <div class="post-follow-us">
-            <div class="post-follow-us-inner">
-                <h2>Follow Us</h2>
-                <hr>
-                <div class="cat-links">
-                    <a href="/wellbeing">Wellbeing</a> |
-                    <a href="/fertility">Fertility</a> |
-                    <a href="/pregnancy">Pregnancy</a> |
-                    <a href="/parenting">Parenting</a>
-                </div>
-                <?= do_shortcode("[get_socials]") ?>
-            </div>
-        </div>
-
-
-    <?php
-    }
+    </div>
+<?php
 
     return ob_get_clean();
 }
 
 
+
 add_shortcode('homeblog_filter', 'homeblog_filter_function');
+
+
 function homeblog_filter_function($attr)
 {
     //see home.php for other shortcodes
@@ -528,21 +524,6 @@ function homeblog_filter_function($attr)
         do_shortcode('[blog_filter format="home-banner" categoryid="' . $fertility_category_id . '" home="1"]')
         . do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="' . $wellbeing_category_id . '" home="1"]')
         . do_shortcode('[giveaway_list]');
-    /* . do_shortcode('[expert_list categoryid="1164,1159" title="Wellbeing &amp; Fertility Experts" home="1"]');
-        . do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1159" home="1"]');
-        . do_shortcode('[category_list]');
-        . '<h2 class="hp-h2">Watch &amp; Listen</h2>';
-        . do_shortcode('[blog_filter format="video-half" post_type="videos" limit="2" categoryid="1159" home="1"]');
-        . do_shortcode('[blog_filter format="video" limit="4"]');
-        . do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
-        . do_shortcode('[expert_list categoryid="1165,1163" title="Pregnancy &amp; Parenting Experts"]');
-        . do_shortcode('[display_insider]');
-        . do_shortcode('[blog_filter format="normal-4" limit="3" categoryid="1165" home="1"]');
-        . do_shortcode('[blog_filter format="normal-1" limit="2" categoryid="1163" home="1"]');
-        . do_shortcode('[blog_filter format="normal-2" limit="2" categoryid="1159" home="1"]');
-        . do_shortcode('[display_followus]');
-        . do_shortcode('[blog_filter format="normal-4" limit="6" categoryid="1159" home="1"]');
-        . do_shortcode('[blog_filter format="normal-3" limit="2" categoryid="1165" home="1"]');*/
     return $content;
 }
 
@@ -573,7 +554,7 @@ function blog_load_next_function($attr)
 
     $categoryid = "";
     $posttype = "";
-    $excludeids;
+    $excludeids = [];
     if (!empty($attr["categoryid"])) {
         $categoryid = $attr["categoryid"];
     }
@@ -585,7 +566,7 @@ function blog_load_next_function($attr)
         $excludeids = explode(',', $excludeids);
     }
 
-    $recent_posts;
+    $recent_posts = [];
     //var_dump($excludeids);
 
     if (!empty($categoryid)) {
@@ -817,17 +798,291 @@ function category_list_function($attr)
     $cat_args = array(
         'orderby' => 'name',
         'order' => 'ASC',
-        'parent'   => 0,
         'hide_empty' => 0,
         'meta_query' => array(
             array(
-                'key'     => 'page_category',
-                'value'   =>  'NULL',
-                'compare' => '!='
+                'key'     => 'display_on_explore_by_carousel',
+                'value'   =>  true,
+                'compare' => '='
             )
         ),
         'post_status' => 'publish',
     );
+
+
+    $categories = get_categories($cat_args);
+
+    $cnt = 0;
+
+    $rtn = "";
+
+    if ($cPage == "experts") {
+        $rtn .= '<div class="category-outer"><h2>Explore Experts</h2><div class="category-entry">';
+    } else if ($cPage == "videos") {
+        $rtn .= '<div class="category-outer"><h2>Explore Videos</h2><div class="category-entry">';
+    } else if ($cPage == "podcasts") {
+        $rtn .= '<div class="category-outer"><h2>Explore Podcasts</h2><div class="category-entry">';
+    } else {
+        $rtn .= '<div class="category-outer"><h2>Explore By</h2><div class="category-entry">';
+    }
+
+
+
+    foreach ($categories as $category) :
+
+        $bcolour = "#F77D66";
+
+        $termIdVal = 'term_' . $category->term_id;
+
+        if (!empty(get_field("category_colour", $termIdVal))) {
+            $bcolour = get_field("category_colour", $termIdVal);
+        }
+
+        if (!empty(get_field("page_category", $termIdVal))) {
+            $pageId = get_field("page_category", $termIdVal);
+        }
+
+        $hexRGB = $bcolour;
+        $ad = "";
+        if ($bcolour != "#034146") {
+            $ad = '';
+            $addd = "";
+            //$ad = "bright color";
+        } else {
+            //$ad = "dark color";
+
+            $ad = 'class="light-col"';
+        }
+
+        $background = 'style="background:' . $bcolour . ';"';
+
+        $socials = '';
+
+        $pageId = get_field("page_category", $termIdVal);
+
+        $category_description_new = get_field("category_description_new", $termIdVal);
+
+        $page = get_post($pageId[0]);
+        $page_title = $page->post_title;
+        //echo $excerpt;
+
+        $style = "";
+
+        if (empty(get_field("category_image", $termIdVal))) {
+            //echo "<p class="post-image"><img src='/wp-content/themes/lighttheme/images/logo-bl.png' />";
+            //$style = 'style="background:url(/wp-content/themes/lighttheme/images/logo-bl.png); background-size:contain; background-position:center;"';
+        } else {
+
+            $image = get_field("category_image", $termIdVal);
+            $size = 'large';
+            $img_url = $image['sizes'][$size];
+
+
+            $style = 'style="';
+            $style .= $img_url;
+            $style .= ' background-size:cover; background-position:center;"';;
+        }
+
+        $rtn .= '<div class="category-summary">';
+        //$rtn .= '<div '.$style.'>';
+        $rtn .= '<div>';
+
+        if ($cPage == "experts") {
+            $rtn .= '<a href="' . get_permalink($pageId[1]) . '" title="Read more about ' . $post['post_title'] . '...">';
+        } else if ($cPage == "videos") {
+            $rtn .= '<a href="' . get_permalink($pageId[2]) . '" title="Read more about ' . $post['post_title'] . '...">';
+        } else if ($cPage == "podcasts") {
+            $rtn .= '<a href="' . get_permalink($pageId[3]) . '" title="Read more about ' . $post['post_title'] . '...">';
+        } else {
+            $rtn .= '<a href="' . get_permalink($pageId[0]) . '" title="Read more about ' . $post['post_title'] . '...">';
+        }
+        //$rtn .= '<img src="/wp-content/themes/lighttheme/images/a_squ_trans.png">';
+
+        $rtn .= '<img src="' . $img_url . '">';
+
+        $rtn .= '</a>';
+        $rtn .= '</div>';
+
+
+        $rtn .= '<div class="category-text" ' . $background . '>';
+        if ($cPage == "experts") {
+            $rtn .= '<a href="' . get_permalink($pageId[1]) . '" title="Read more about ' . $page_title . '...">'; // $post['post_title']
+        } else if ($cPage == "videos") {
+            $rtn .= '<a href="' . get_permalink($pageId[2]) . '" title="Read more about ' . $page_title . '...">'; // $post['post_title']
+        } else if ($cPage == "podcasts") {
+            $rtn .= '<a href="' . get_permalink($pageId[3]) . '" title="Read more about ' . $page_title . '...">'; // $post['post_title']
+        } else {
+            $rtn .= '<a href="' . get_permalink($pageId[0]) . '" title="Read more about ' . $page_title . '...">'; // $post['post_title']
+        }
+        $rtn .= '<div class="category-inner">';
+        $rtn .= '<h2 ' . $ad . '>' . $page_title . '</h2>';
+        if ($category_description_new) {
+            $rtn .= '<div class="category-inner-desc">';
+            $rtn .= '<div class="category-inner-desc-wrapper">';
+            $rtn .= $category_description_new;
+            $rtn .= '</div>';
+            $rtn .= '</div>';
+        }
+
+        if ($cPage == "experts") {
+            $rtn .= '<h3 ' . $ad . '>Discover ' . $page_title . ' Experts</h3>';
+        } else if ($cPage == "videos") {
+            $rtn .= '<h3 ' . $ad . '>Discover ' . $page_title . ' Videos</h3>';
+        } else if ($cPage == "podcasts") {
+            $rtn .= '<h3 ' . $ad . '>Discover ' . $page_title . ' Podcasts</h3>';
+        } else {
+            $rtn .= '<h3 ' . $ad . '>View Content</h3>';
+        }
+
+        $rtn .= '</a>';
+
+        //$rtn .= category_description($category->term_id);
+
+
+
+        if (!empty($speciality)) {
+            $rtn .= '<p class="speciality">' . $speciality . '</p>';
+        }
+        if (!empty($position)) {
+            $rtn .= '<p class="position">' . $position . '</p>';
+        }
+        if (!empty($ward)) {
+            $rtn .= '<p class="ward">' . $ward . '</p>';
+        }
+        if (!empty($socials)) {
+            $rtn .= '<div class="people-socials">';
+            $rtn .= $socials;
+            $rtn .= '</div>';
+        }
+        //$rtn .= '<h3>'.'Category'.'</h3>';
+        //$rtn .= '<a class="button-expert" href="'.get_permalink($post['ID']).'" title="Read more about '.$post['post_title'].  '...">VIEW EXPERT PROFILE</a></div>';
+        $rtn .= '</div>';
+
+        $rtn .= '</div></div>';
+
+    endforeach;
+    wp_reset_query();
+
+
+    $rtn .= '</div></div>';
+    $rtn .= "<script type='text/javascript'>
+        $(document).ready(function(){
+
+$('.category-summary .category-inner1').hover(function(e){
+    if ($('.category-outer .slick-list > .ex-car-pop-inner').length > 0){
+
+        
+    } else{
+        $('.category-outer .slick-list').append($(this).find('.ex-car-pop').html());
+    }
+
+    
+});
+
+$(document).on('click','.ex-car-pop-inner-close', function(e){
+    e.preventDefault();
+    $('.category-outer .slick-list > .ex-car-pop-inner').remove();
+});
+
+
+if ($('.main-content-outer').length > 0){
+
+
+
+  $('.category-entry').slick({
+    dots: true,
+   centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 3,
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 900,
+      settings: {
+        
+        centerMode: true,
+        centerPadding: '150px',
+        slidesToShow: 1
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        
+        centerMode: true,
+        centerPadding: '1px',
+        slidesToShow: 1
+      }
+    }
+  ]
+  });
+}
+});
+
+/**
+ * Calculates the total height of each '.category-inner-desc-wrapper' DOM element
+ * and maps the computed height to a localized CSS custom property (--wrapper-height).
+ * Includes debouncing logic on resize for performance optimization.
+ */
+function initializeWrapperHeights() {
+    $('.category-inner-desc-wrapper').each(function() {
+        // Retrieve the computed height, including padding and borders
+        let currentHeight = $(this).outerHeight();
+        
+        // Inject the CSS variable directly into the element's inline style map
+        $(this).parent().css('--wrapper-height', currentHeight + 'px');
+    });
+}
+
+/**
+ * Initializes DOM measurements once the document is fully parsed 
+ * and binds recalculation logic to viewport resizing.
+ */
+$(document).ready(function() {
+    // Initial execution on DOM load
+    initializeWrapperHeights();
+    
+    // Recalculate heights on window resize to ensure fluid layouts remain accurate
+    let resizeTimer;
+    $(window).on('resize', function() {
+        clearTimeout(resizeTimer);
+        // Throttle the recalculation to optimize rendering performance
+        resizeTimer = setTimeout(function() {
+            initializeWrapperHeights();
+        }, 150); 
+    });
+});
+    </script>";
+
+    return $rtn;
+}
+add_shortcode('category_list', 'category_list_function');
+/*backup 03-02-26
+function category_list_function($attr)
+{
+
+    $cPage = "";
+
+    if (!empty($attr["page"])) {
+        $cPage = $attr["page"];
+    }
+
+    $cat_args = array(
+        'orderby' => 'name',
+        'order' => 'ASC',
+        'hide_empty' => 0,
+        'meta_query' => array(
+            array(
+                'key'     => 'display_on_explore_by_carousel',
+                'value'   =>  true,
+                'compare' => '='
+            )
+        ),
+        'post_status' => 'publish',
+    );
+
 
     $categories = get_categories($cat_args);
 
@@ -1071,6 +1326,8 @@ if ($('.main-content-outer').length > 0){
 }
 add_shortcode('category_list', 'category_list_function');
 
+*/
+
 function ad_list_function($attr)
 {
     ob_start();
@@ -1090,7 +1347,7 @@ function ad_list_function($attr)
             )
         )
     ));
-    ?>
+?>
     <?php if ($top_banner_ad) { ?>
         <div class="ads ads--v2 py-4">
             <div class="container">

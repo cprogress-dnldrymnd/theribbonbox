@@ -1,4 +1,5 @@
 <?php
+//revamp section deprecated
 
 $rtn .= '
 <div class="blog-tpl-49 blog-odd-nor blog-nor format-' . $format . ' incount-' . $in_count . ' post-type-' . $this_post_type . ' blog-nor-with-bg-grey">

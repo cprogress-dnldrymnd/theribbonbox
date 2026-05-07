@@ -1,4 +1,6 @@
 <?php
+//revamp section deprecated
+
 $rtn .= '
 <!-- Post with yellow line above picture; picture above text -->
 <!-- almost identical to tp-47 -->

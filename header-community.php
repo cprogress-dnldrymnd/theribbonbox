@@ -42,21 +42,7 @@ $logo = '  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.or
                                 </a>
                             </div>
                             <div class="col-lg-4 col-3">
-                                <?php if (!is_user_logged_in()) { ?>
-                                    <div class="button-box button-box-v2 text-end">
-                                        <a href="<?= get_the_permalink(39747) ?>">
-                                            <span class="hide-mobile">LOGIN / CREATE AN ACCOUNT</span>
-                                            <span class="mobile-only">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" viewBox="0 0 21 23" fill="none">
-                                                    <path d="M10.3719 11.5C13.2752 11.5 15.6288 9.14633 15.6288 6.24299C15.6288 3.33965 13.2752 0.986023 10.3719 0.986023C7.46855 0.986023 5.11493 3.33965 5.11493 6.24299C5.11493 9.14633 7.46855 11.5 10.3719 11.5Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                    <path d="M0.699921 22.0139C1.29961 19.946 2.53771 18.1207 4.23723 16.7989C5.93673 15.4771 8.01063 14.7264 10.1625 14.6542C14.4942 14.6542 18.1846 17.7137 19.625 22.0139" stroke="black" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                </svg>
-                                            </span>
-                                        </a>
-                                    </div>
-                                <?php } else { ?>
-                                    <?= do_shortcode('[community_nav_right]') ?>
-                                <?php } ?>
+                                <?= do_shortcode('[community_nav_right]') ?>
                             </div>
                         </div>
                     </div>
