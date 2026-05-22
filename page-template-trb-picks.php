@@ -222,6 +222,8 @@
     <div class="container">
         <hr>
     </div>
+    <?php get_template_part('sections/two-columns') ?>
+
 </main>
 
 <?php get_footer() ?>
