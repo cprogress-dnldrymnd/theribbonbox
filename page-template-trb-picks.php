@@ -206,6 +206,7 @@
         height: auto;
         text-transform: initial;
         border-bottom: 4px solid transparent !important;
+        background-color: transparent;
     }
 
     .nav-tabs.nav-tabs .nav-link:hover {
