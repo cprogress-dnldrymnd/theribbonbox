@@ -661,6 +661,10 @@
             padding-right: 70px;
         }
 
+        .product-widget--holder.style-2 .swiper-pagination {
+            margin-bottom: 0;
+        }
+
         .product-widget--holder.style-2 .swiper-pagination .swiper-pagination-bullet {
             width: 13px;
             height: 13px;
