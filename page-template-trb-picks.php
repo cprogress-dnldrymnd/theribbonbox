@@ -41,4 +41,5 @@
     }
 </style>
 <?php get_template_part('sections/navigation') ?>
+<?php get_template_part('sections/page-title') ?>
 <?php get_footer() ?>
