@@ -21,8 +21,7 @@
         color: var(--trb-coral);
     }
     .trb-picks-nav {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-block: 1rem;
     }
 
     .trb-picks-nav nav {
