@@ -368,13 +368,13 @@ function product_widget($atts)
                     autoplay: false,
                     breakpoints: {
                         0: {
-                            slidesPerView: 2
+                            slidesPerView: <?php echo $spv_mobile; ?>
                         },
                         768: {
-                            slidesPerView:3
+                            slidesPerView: <?php echo $spv_tablet; ?>
                         },
                         992: {
-                            slidesPerView: 4
+                            slidesPerView: <?php echo $spv_desktop; ?>
                         },
                     }
                 };
