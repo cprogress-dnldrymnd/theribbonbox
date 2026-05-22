@@ -182,6 +182,10 @@
         margin-bottom: 2rem;
 
     }
+
+    .nav-tabs-holder .button-box {
+        padding-bottom: 1rem;
+    }
 </style>
 <main id="trb-page">
     <?php get_template_part('sections/navigation') ?>
