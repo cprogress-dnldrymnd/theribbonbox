@@ -380,6 +380,7 @@ function product_widget($atts)
                     }
                 };
 
+
                 if (configPag) {
                     swiperOptions.pagination = {
                         el: '#' + widgetId + ' .swiper-pagination',
@@ -393,6 +394,7 @@ function product_widget($atts)
                         prevEl: '#' + widgetId + ' .swiper-button-prev',
                     };
                 }
+                console.log(swiperOptions);
 
                 new Swiper('#' + widgetId, swiperOptions);
             });
