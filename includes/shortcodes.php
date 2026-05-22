@@ -230,7 +230,7 @@ function display_subscribe()
             </div>
         </div>
     </div>
-<?php
+    <?php
     return ob_get_clean();
 }
 
@@ -253,20 +253,23 @@ function product_widget($atts)
             $atts
         )
     );
-    
+
     $products = get_field('products', $id);
     $carousel_style = get_field('carousel_style', $id);
 
     // Retrieve ACF configurations with robust boolean and numeric fallbacks
     $nav_val = get_field('navigation', $id);
-    $navigation = ($nav_val === true || $nav_val === '1') ? 'true' : 'false'; 
-    
+    $navigation = ($nav_val === true || $nav_val === '1') ? 'true' : 'false';
+
     $pag_val = get_field('pagination', $id);
-    $pagination = ($pag_val === false || $pag_val === '0') ? 'false' : 'true'; 
-    
+    $pagination = ($pag_val === false || $pag_val === '0') ? 'false' : 'true';
+
     $loop_val = get_field('loop', $id);
-    $loop = ($loop_val === false || $loop_val === '0') ? 'false' : 'true'; 
-    
+    $hide_title = get_field('hide_title', $id);
+
+
+    $loop = ($loop_val === false || $loop_val === '0') ? 'false' : 'true';
+
     $space = get_field('spacebetween', $id);
     $space = is_numeric($space) ? $space : 20;
 
@@ -279,13 +282,17 @@ function product_widget($atts)
     $spv_desktop = get_field('slidesperview_desktop', $id);
     $spv_desktop = is_numeric($spv_desktop) ? $spv_desktop : 4;
 
+
     if ($products) {
         // Generate a unique identifier for this specific shortcode instance
         $unique_id = 'product--widget-' . uniqid();
 
         echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
-        echo '<h2>' . get_the_title($id) . '</h2>';
-        
+        if (!$hide_title) {
+
+            echo '<h2>' . get_the_title($id) . '</h2>';
+        }
+
         // Hardcode Swiper classes directly into the DOM to prevent FOUC and calculation errors.
         echo '<div class="product-widget--outer swiper swiper--product-widget" id="' . esc_attr($unique_id) . '" ';
         echo 'data-nav="' . esc_attr($navigation) . '" ';
@@ -295,7 +302,7 @@ function product_widget($atts)
         echo 'data-spv-mobile="' . esc_attr($spv_mobile) . '" ';
         echo 'data-spv-tablet="' . esc_attr($spv_tablet) . '" ';
         echo 'data-spv-desktop="' . esc_attr($spv_desktop) . '">';
-        
+
         echo '<div class="product-widget--inner swiper-wrapper">';
         foreach ($products as $product) {
             $product_obj = wc_get_product($product);
@@ -343,17 +350,17 @@ function product_widget($atts)
         echo '</div>'; // End product-widget--holder
 
         // Isolate JS initialization for this specific unique ID to prevent double-bindings.
-        ?>
+    ?>
         <script>
             jQuery(document).ready(function($) {
                 var widgetId = '<?php echo $unique_id; ?>';
                 var $outer = $('#' + widgetId);
-                
+
                 // Prevent multiple initializations if script runs more than once
                 if ($outer.length === 0 || $outer[0].swiper) {
                     return;
                 }
-                
+
                 // Read data attributes explicitly
                 var configLoop = $outer.attr('data-loop') === 'true';
                 var configPag = $outer.attr('data-pag') === 'true';
@@ -399,7 +406,7 @@ function product_widget($atts)
                 new Swiper('#' + widgetId, swiperOptions);
             });
         </script>
-        <?php
+    <?php
     }
     return ob_get_clean();
 }
@@ -475,7 +482,7 @@ function post_box($atts)
     }
 
 
-?>
+    ?>
     <div class="post-box-blogs trb-column format-<?= $format ?>">
         <div class="post-image image-box">
             <span style="display: none; position: absolute; top: 0;left: 0;z-index: 2; background: #fff; padding: 10px"><?= $count ?> | <?= $in_count ?></span>
