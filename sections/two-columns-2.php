@@ -58,16 +58,16 @@
 
         <div class="tab-content" id="tabFeaturedContent">
             <div class="tab-pane fade show active" id="Discounts" role="tabpanel" aria-labelledby="Discounts-tab">
-                <?= do_shortcode('[product_widget id="49836"]') ?>
+                <?= do_shortcode('[product_widget id="49854"]') ?>
             </div>
             <div class="tab-pane fade" id="Products" role="tabpanel" aria-labelledby="Products-tab">
-                <?= do_shortcode('[product_widget id="49836"]') ?>
+                <?= do_shortcode('[product_widget id="49854"]') ?>
             </div>
             <div class="tab-pane fade" id="Giveaways" role="tabpanel" aria-labelledby="Giveaways-tab">
-                <?= do_shortcode('[product_widget id="49836"]') ?>
+                <?= do_shortcode('[product_widget id="49854"]') ?>
             </div>
             <div class="tab-pane fade" id="Guides" role="tabpanel" aria-labelledby="Guides-tab">
-                <?= do_shortcode('[product_widget id="49836"]') ?>
+                <?= do_shortcode('[product_widget id="49854"]') ?>
             </div>
         </div>
     </div>
