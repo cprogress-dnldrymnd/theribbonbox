@@ -41,6 +41,10 @@
         max-width: 700px;
         margin: 0 auto;
     }
+    .page-title .woocommerce-breadcrumb {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
 </style>
 <?php get_template_part('sections/navigation') ?>
 <?php get_template_part('sections/page-title') ?>
