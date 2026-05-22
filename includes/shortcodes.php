@@ -306,9 +306,9 @@ function product_widget($atts)
             'observer'     => true,
             'observeParents' => true,
             'breakpoints'  => array(
-                0   => array('slidesPerView' => $spv_mobile),
-                768 => array('slidesPerView' => $spv_tablet),
-                992 => array('slidesPerView' => $spv_desktop),
+                0   => array('slidesPerView' => 2),
+                768 => array('slidesPerView' => 3),
+                992 => array('slidesPerView' => 4),
             )
         );
 
