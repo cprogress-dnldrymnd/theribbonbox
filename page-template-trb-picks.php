@@ -208,9 +208,7 @@
         border-bottom: 4px solid transparent !important;
         background-color: transparent;
     }
-    .nav-tabs.nav-tabs .nav-link.trb-petal-color {
-        color: var(--trb-petal) !important;
-    }
+
 
     .nav-tabs.nav-tabs .nav-link:hover {
         background-color: transparent;
@@ -229,6 +227,19 @@
         line-height: 1;
     }
 
+    .product-tabs--light .nav-tabs.nav-tabs .nav-link {
+        color: var(--trb-petal) !important;
+    }
+
+    .product-tabs--light .nav-tabs-holder-inner {
+        border-color: var(--trb-petal);
+
+    }
+
+    .nav-tabs.nav-tabs .nav-link.active {
+        border-color: var(--trb-petal) !important;
+
+    }
 
 
     .nav-tabs-holder .button-box {

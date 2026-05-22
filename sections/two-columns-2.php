@@ -10,7 +10,7 @@
         right: 0;
     }
 </style>
-<section class="two--columns trb-bg-wine">
+<section class="two-columns trb-bg-wine">
     <div class="container">
         <div class="inner">
             <h2 class="trb-petal-color large-heading mb-5 trb-petal-color">Fertility</h2>
@@ -30,23 +30,23 @@
         </div>
     </div>
 </section>
-<div class="product-tabs product-tabs-fertility trb-mt-large trb-mb-medium position-relative">
+<div class="product-tabs product-tabs--light product-tabs-fertility trb-mt-large trb-mb-medium position-relative">
     <div class="container position-relative">
         <div class="nav-tabs-holder">
 
             <div class="nav-tabs-holder-inner d-flex align-items-center justify-content-between gap-3">
                 <ul class="nav nav-tabs gap-2 gap-lg-5" id="tabFeatured" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link trb-petal-color active" id="Discounts-tab" data-bs-toggle="tab" data-bs-target="#Discounts" type="button" role="tab" aria-controls="Discounts" aria-selected="true">Discounts</button>
+                        <button class="nav-link active" id="Discounts-tab" data-bs-toggle="tab" data-bs-target="#Discounts" type="button" role="tab" aria-controls="Discounts" aria-selected="true">Discounts</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link trb-petal-color" id="Products-tab" data-bs-toggle="tab" data-bs-target="#Products" type="button" role="tab" aria-controls="Products" aria-selected="false">Products</button>
+                        <button class="nav-link" id="Products-tab" data-bs-toggle="tab" data-bs-target="#Products" type="button" role="tab" aria-controls="Products" aria-selected="false">Products</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link trb-petal-color" id="Giveaways-tab" data-bs-toggle="tab" data-bs-target="#Giveaways" type="button" role="tab" aria-controls="Giveaways" aria-selected="false">Giveaways</button>
+                        <button class="nav-link" id="Giveaways-tab" data-bs-toggle="tab" data-bs-target="#Giveaways" type="button" role="tab" aria-controls="Giveaways" aria-selected="false">Giveaways</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link trb-petal-color" id="Guides-tab" data-bs-toggle="tab" data-bs-target="#Guides" type="button" role="tab" aria-controls="Guides" aria-selected="false">Guides</button>
+                        <button class="nav-link" id="Guides-tab" data-bs-toggle="tab" data-bs-target="#Guides" type="button" role="tab" aria-controls="Guides" aria-selected="false">Guides</button>
                     </li>
                 </ul>
                 <div class="button-box button-box-v2 button-bordered">
