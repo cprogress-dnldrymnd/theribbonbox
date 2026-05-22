@@ -20,7 +20,7 @@
             --trb-accent-1: #F77D66;
             --trb-accent-2: #3B1527;
             --trb-accent-3: #044146;
-            --trb-border-color: #EADCC3;
+            --trb-border-color: #000000;
         }
 
         body {
@@ -34,6 +34,10 @@
         .trb-bg-accent-1 {
             background-color: var(--trb-accent-1);
 
+        }
+
+        .trb-bg-accent-2 {
+            background-color: var(--trb-accent-2);
         }
 
         header.header-v2 {

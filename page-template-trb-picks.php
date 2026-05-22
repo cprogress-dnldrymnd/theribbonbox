@@ -5,7 +5,10 @@
 /*-----------------------------------------------------------------------------------*/
 ?>
 <?php get_header() ?>
-<section>
-    test
-</section>
+<style>
+    .trb-picks-nav {
+        padding-top: 1rem;
+    }
+</style>
+<?php get_template_part('sections/navigation') ?>
 <?php get_footer() ?>
