@@ -30,7 +30,7 @@
         </div>
     </div>
 </section>
-<div class="product-tabs product-tabs--light pt- product-tabs-fertility trb-mt-large trb-mb-medium position-relative">
+<div class="product-tabs product-tabs--light pt- product-tabs-fertility trb-mb-medium position-relative">
     <div class="container position-relative">
         <div class="nav-tabs-holder">
 
