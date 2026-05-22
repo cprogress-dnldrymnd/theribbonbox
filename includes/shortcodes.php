@@ -260,26 +260,26 @@ function product_widget($atts)
             $atts
         )
     );
-    
+
     $products = get_field('products', $id);
     $carousel_style = get_field('carousel_style', $id);
 
     if ($products) {
         // Retrieve ACF fields and enforce strict fallback data types. 
         // This prevents Swiper from crashing if a user "touches" a post but leaves a field blank.
-        
+
         $nav_val = get_field('navigation', $id);
         $navigation = (!empty($nav_val)) ? 'true' : 'false';
-        
+
         $pag_val = get_field('pagination', $id);
         $pagination = ($pag_val === false || $pag_val === '0' || $pag_val === 0) ? 'false' : 'true';
-        
+
         $loop_val = get_field('loop', $id);
         $loop = ($loop_val === false || $loop_val === '0' || $loop_val === 0) ? 'false' : 'true';
-        
+
         // Ensure spacing is an integer. Allow 0, but fallback to 20 if null/empty.
         $space = intval(get_field('spacebetween', $id));
-        $space = ($space >= 0 && get_field('spacebetween', $id) !== '') ? $space : 20; 
+        $space = ($space >= 0 && get_field('spacebetween', $id) !== '') ? $space : 20;
 
         // Enforce positive integers for Breakpoints to prevent flexbox calculation crashes.
         $spv_mobile = intval(get_field('slidesperview_mobile', $id));
@@ -294,17 +294,17 @@ function product_widget($atts)
         // Generate absolute unique ID for isolated JS targeting
         $unique_id = 'product--widget-' . rand(10000, 99999);
 
-      
+
         echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
         echo '<h2>' . get_the_title($id) . '</h2>';
         echo '<div class="product-widget--outer" id="' . $unique_id . '">';
         echo '<div class="product-widget--inner">';
-        
+
         foreach ($products as $product) {
             $product_obj = wc_get_product($product);
-            
+
             // Bypass processing if product object fails to load (deleted product)
-            if (!$product_obj) continue; 
+            if (!$product_obj) continue;
 
             if ($product_obj->is_type('external')) {
                 // This is an external product, so we can get the link
@@ -351,49 +351,9 @@ function product_widget($atts)
 
         // Output isolated JS configuration mapping. 
         // Bypassing .each() prevents N*N loop initializations across multiple shortcodes.
-        ?>
-        <script>
-            jQuery(document).ready(function() {
-                var targetId = '<?php echo $unique_id; ?>';
-                var $outer = jQuery('#' + targetId);
-                
-                // Inject Swiper classes natively to preserve CSS loading sequences
-                $outer.addClass('swiper swiper--product-widget');
-                $outer.find('.product-widget--inner').addClass('swiper-wrapper');
-                $outer.find('.product-widget--box').addClass('swiper-slide');
-
-                var swiperOptions = {
-                    loop: <?php echo $loop; ?>,
-                    spaceBetween: <?php echo $space; ?>,
-                    autoplay: false,
-                    breakpoints: {
-                        0: { slidesPerView: <?php echo $spv_mobile; ?> },
-                        768: { slidesPerView: <?php echo $spv_tablet; ?> },
-                        992: { slidesPerView: <?php echo $spv_desktop; ?> },
-                    }
-                };
-
-                // Apply pagination targeting exclusively to this instance
-                <?php if ($pagination === 'true') : ?>
-                swiperOptions.pagination = {
-                    el: "#" + targetId + " .swiper-pagination",
-                    clickable: true,
-                };
-                <?php endif; ?>
-
-                // Apply navigation targeting exclusively to this instance
-                <?php if ($navigation === 'true') : ?>
-                swiperOptions.navigation = {
-                    nextEl: "#" + targetId + " .swiper-button-next",
-                    prevEl: "#" + targetId + " .swiper-button-prev",
-                };
-                <?php endif; ?>
-
-                // Instantiate Swiper purely on this shortcode's footprint
-                new Swiper('#' + targetId, swiperOptions);
-            });
-        </script>
-        <?php
+    ?>
+       
+    <?php
     }
     return ob_get_clean();
 }
