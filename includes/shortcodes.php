@@ -236,6 +236,12 @@ function display_subscribe()
 
 add_shortcode('display_subscribe', 'display_subscribe');
 
+/**
+ * Product Widget Shortcode
+ * * Renders a WooCommerce product carousel integrated with Swiper.js and ACF.
+ * * @param array $atts Shortcode attributes.
+ * @return string Rendered HTML and inline script.
+ */
 function product_widget($atts)
 {
     ob_start();
@@ -247,11 +253,39 @@ function product_widget($atts)
             $atts
         )
     );
+
     $products = get_field('products', $id);
+    $carousel_style = get_field('carousel_style', $id);
+
+    // Retrieve new ACF fields with fallbacks to original default values
+    $nav_field   = get_field('navigation', $id);
+    $navigation  = ($nav_field === true) ? 'true' : 'false'; // Default false
+
+    $pag_field   = get_field('pagination', $id);
+    $pagination  = ($pag_field === false) ? 'false' : 'true'; // Default true
+
+    $loop_field  = get_field('loop', $id);
+    $loop        = ($loop_field === false) ? 'false' : 'true'; // Default true
+
+    $space       = get_field('spacebetween', $id) ?: 20; // Default 20
+    $spv_mobile  = get_field('slidesperview_mobile', $id) ?: 2; // Default 2
+    $spv_tablet  = get_field('slidesperview_tablet', $id) ?: 3; // Default 3
+    $spv_desktop = get_field('slidesperview_desktop', $id) ?: 4; // Default 4
+
     if ($products) {
-        echo '<div class="product-widget--holder">';
+        echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
         echo '<h2>' . get_the_title($id) . '</h2>';
-        echo '<div class="product-widget--outer" id="product--widget-' . rand() . '">';
+
+        // Pass ACF configurations to JS via data attributes
+        echo '<div class="product-widget--outer" id="product--widget-' . rand() . '" ';
+        echo 'data-nav="' . esc_attr($navigation) . '" ';
+        echo 'data-pag="' . esc_attr($pagination) . '" ';
+        echo 'data-loop="' . esc_attr($loop) . '" ';
+        echo 'data-space="' . esc_attr($space) . '" ';
+        echo 'data-spv-mobile="' . esc_attr($spv_mobile) . '" ';
+        echo 'data-spv-tablet="' . esc_attr($spv_tablet) . '" ';
+        echo 'data-spv-desktop="' . esc_attr($spv_desktop) . '">';
+
         echo '<div class="product-widget--inner">';
         foreach ($products as $product) {
             $product_obj = wc_get_product($product);
@@ -284,45 +318,76 @@ function product_widget($atts)
 
             echo '</div>'; //product-widget--box
         }
-        echo '</div>';
-        echo '<div class="swiper-pagination"></div> ';
-        echo '</div>';
-        echo '</div>';
+        echo '</div>'; // Close product-widget--inner
+
+        // Render pagination/navigation DOM elements conditionally
+        if ($pagination === 'true') {
+            echo '<div class="swiper-pagination"></div>';
+        }
+        if ($navigation === 'true') {
+            echo '<div class="swiper-button-next"></div>';
+            echo '<div class="swiper-button-prev"></div>';
+        }
+
+        echo '</div>'; // Close product-widget--outer
+        echo '</div>'; // Close product-widget--holder
     }
 ?>
 
     <script>
         jQuery(document).ready(function() {
             jQuery('.product-widget--holder').each(function(index, element) {
-                $id = jQuery(this).find('.product-widget--outer').attr('id');
-                $count = jQuery(this).find('.product-widget--box').length;
-                jQuery(this).find('.product-widget--outer').addClass('swiper swiper--product-widget');
+                var $outer = jQuery(this).find('.product-widget--outer');
+                var $id = $outer.attr('id');
+                var $count = jQuery(this).find('.product-widget--box').length;
+
+                $outer.addClass('swiper swiper--product-widget');
                 jQuery(this).find('.product-widget--inner').addClass('swiper-wrapper');
                 jQuery(this).find('.product-widget--box').addClass('swiper-slide');
-                var swiper_product_widget = new Swiper('#' + $id, {
-                    loop: true,
-                    spaceBetween: 20,
+
+                // Retrieve configuration from dataset injected via PHP
+                var configLoop = $outer.data('loop') === true || $outer.data('loop') === 'true';
+                var configPag = $outer.data('pag') === true || $outer.data('pag') === 'true';
+                var configNav = $outer.data('nav') === true || $outer.data('nav') === 'true';
+                var configSpace = parseInt($outer.data('space'), 10) || 20;
+                var configMobile = parseInt($outer.data('spv-mobile'), 10) || 2;
+                var configTablet = parseInt($outer.data('spv-tablet'), 10) || 3;
+                var configDesktop = parseInt($outer.data('spv-desktop'), 10) || 4;
+
+                var swiperOptions = {
+                    loop: configLoop,
+                    spaceBetween: configSpace,
                     autoplay: false,
                     breakpoints: {
                         0: {
-                            slidesPerView: 2,
+                            slidesPerView: configMobile,
                         },
-
                         768: {
-                            slidesPerView: 3,
+                            slidesPerView: configTablet,
                         },
-
-
                         992: {
-                            slidesPerView: 4,
+                            slidesPerView: configDesktop,
                         },
-                    },
-                    pagination: {
-                        el: ".swiper-pagination",
-                        clickable: true,
-                    },
-                });
+                    }
+                };
 
+                // Conditionally append pagination and specifically target this slider's ID
+                if (configPag) {
+                    swiperOptions.pagination = {
+                        el: "#" + $id + " .swiper-pagination",
+                        clickable: true,
+                    };
+                }
+
+                // Conditionally append navigation
+                if (configNav) {
+                    swiperOptions.navigation = {
+                        nextEl: "#" + $id + " .swiper-button-next",
+                        prevEl: "#" + $id + " .swiper-button-prev",
+                    };
+                }
+
+                var swiper_product_widget = new Swiper('#' + $id, swiperOptions);
             });
         });
     </script>
