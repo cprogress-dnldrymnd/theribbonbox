@@ -4,7 +4,7 @@
         content: '';
         position: absolute;
         background-color: var(--trb-wine);
-        height: 100px;
+        height: 250px;
         left: 0;
         top: 0;
         right: 0;
