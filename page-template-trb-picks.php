@@ -141,6 +141,7 @@
     <?php get_template_part('sections/navigation') ?>
     <?php get_template_part('sections/page-title') ?>
     <?php get_template_part('sections/category-navigation') ?>
+    <?php get_template_part('sections/product-tabs') ?>
 </main>
 
 <?php get_footer() ?>
