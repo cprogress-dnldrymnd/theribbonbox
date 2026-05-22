@@ -40,6 +40,7 @@
             max-width: 1820px;
         }
     }
+
     #trb-page h3:not(.product-name) {
         font-weight: bold;
         font-size: 2.625rem;
@@ -207,13 +208,15 @@
         border-color: var(--trb-wine) !important;
     }
 
-    .nav-tabs-holder {
+    .nav-tabs-holder-inner {
         border-bottom: 1px solid var(--trb-wine);
         margin-bottom: 2rem;
         max-width: calc(100% - 140px);
         margin-inline: auto;
         line-height: 1;
     }
+
+
 
     .nav-tabs-holder .button-box {
         padding-bottom: 1rem;
