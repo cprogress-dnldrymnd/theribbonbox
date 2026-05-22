@@ -1,6 +1,6 @@
 <section class="page-title">
     <div class="container">
-        <div class="inner">
+        <div class="inner text-center">
             <div class="breadcrumbs-v2">
                 <?= woocommerce_breadcrumb(); ?>
             </div>

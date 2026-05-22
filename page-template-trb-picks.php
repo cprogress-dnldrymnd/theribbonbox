@@ -26,6 +26,19 @@
     .picks-nav-title {
         color: #FFDBD1;
     }
+    .page-title {
+        padding-top: 3rem;
+        padding-bottom: 5rem;
+    }
+
+    .page-title h1 {
+        font-size: 3rem;
+    }
+    .page-title .desc {
+        font-size: 1.25rem;
+        max-width: 700px;
+        margin: 0 auto;
+    }
 </style>
 <?php get_template_part('sections/navigation') ?>
 <?php get_footer() ?>
