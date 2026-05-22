@@ -13,7 +13,7 @@
 <section class="two-columns bg-wine">
     <div class="container">
         <div class="inner">
-            <h2 class="trb-wine-color large-heading mb-5 trb-petal-color">Fertility</h2>
+            <h2 class="trb-petal-color large-heading mb-5 trb-petal-color">Fertility</h2>
             <div class="row g-3 g-lg-5">
                 <div class="col-lg-7">
                     <div class="image-box">
@@ -21,8 +21,8 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <h3 class="trb-wine-color">Take Control of Your Fertility with Expert Tools and Advice</h3>
-                    <div class="desc trb-wine-color">
+                    <h3 class="trb-petal-color">Take Control of Your Fertility with Expert Tools and Advice</h3>
+                    <div class="desc trb-petal-color">
                         <p>Explore a curated collection of fertility-enhancing supplements, tools, and resources to support your journey. From ovulation trackers to prenatal vitamins, find the products and insights that help you take the next step towards starting your family.</p>
                     </div>
                 </div>
@@ -33,7 +33,6 @@
 <div class="product-tabs product-tabs-fertility trb-mt-large trb-mb-medium position-relative">
     <div class="container position-relative">
         <div class="nav-tabs-holder">
-            <h3 class="trb-wine-color mb-4"><i>Featured</i> Picks</h3>
 
             <div class="nav-tabs-holder-inner d-flex align-items-center justify-content-between gap-3">
                 <ul class="nav nav-tabs gap-2 gap-lg-5" id="tabFeatured" role="tablist">
