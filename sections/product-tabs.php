@@ -1,5 +1,6 @@
 <div class="product-tabs trb-mt-large trb-mb-medium">
     <div class="container">
+        <h3 class="trb-wine-color mb-4"><i>Featured</i> Picks</h3>
         <div class="nav-tabs-holder d-flex align-items-center justify-content-between gap-3">
 
             <ul class="nav nav-tabs gap-2 gap-lg-5" id="tabFeatured" role="tablist">
