@@ -26,7 +26,7 @@
                 <?= do_shortcode('[product_widget id="49836"]') ?>
             </div>
             <div class="tab-pane fade" id="Products" role="tabpanel" aria-labelledby="Products-tab">
-                <?= do_shortcode('[product_widget id="49332"]') ?>
+                <?= do_shortcode('[product_widget id="49836"]') ?>
             </div>
             <div class="tab-pane fade" id="Giveaways" role="tabpanel" aria-labelledby="Giveaways-tab">
                 <?= do_shortcode('[product_widget id="49836"]') ?>
