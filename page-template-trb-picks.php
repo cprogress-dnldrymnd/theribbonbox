@@ -20,6 +20,9 @@
     .trb-coral-color {
         color: var(--trb-coral);
     }
+    .rounded {
+        border-radius: 20px;
+    }
     .trb-picks-nav {
         padding-block: 1rem;
     }
@@ -84,6 +87,7 @@
         border-top: 1px solid;
         padding-top: 1rem;
     }
+
 </style>
 <?php get_template_part('sections/navigation') ?>
 <?php get_template_part('sections/page-title') ?>
