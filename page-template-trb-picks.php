@@ -245,6 +245,7 @@
     </div>
     <?php get_template_part('sections/two-columns') ?>
     <?php get_template_part('sections/product-tabs-2') ?>
+    <?php get_template_part('sections/two-columns-2') ?>
 
 
 </main>
