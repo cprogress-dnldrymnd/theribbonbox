@@ -656,12 +656,23 @@
             position: relative;
         }
 
+        .product-widget--holder.style-2 {
+            padding-left: 70px;
+            padding-right: 70px;
+        }
+
         .product-widget--holder .swiper-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1;
             color: var(--trb-winte);
+        }
+
+        .product-widget--holder .swiper-button,
+        .product-widget--holder .swiper-button svg {
+            width: 50px;
+            height: 50px;
         }
 
         .product-widget--holder .swiper-button.swiper-button-next-trb {
