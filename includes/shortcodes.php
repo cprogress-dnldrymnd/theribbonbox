@@ -253,23 +253,20 @@ function product_widget($atts)
             $atts
         )
     );
-
+    
     $products = get_field('products', $id);
     $carousel_style = get_field('carousel_style', $id);
 
-    // Retrieve ACF configurations with robust boolean and numeric fallbacks
+    // Retrieve ACF configurations with strict evaluation
     $nav_val = get_field('navigation', $id);
-    $navigation = ($nav_val === true || $nav_val === '1') ? 'true' : 'false';
-
+    $navigation = ($nav_val === true || $nav_val === '1') ? 'true' : 'false'; 
+    
     $pag_val = get_field('pagination', $id);
-    $pagination = ($pag_val === false || $pag_val === '0') ? 'false' : 'true';
-
+    $pagination = ($pag_val === false || $pag_val === '0') ? 'false' : 'true'; 
+    
     $loop_val = get_field('loop', $id);
-    $hide_title = get_field('hide_title', $id);
-
-
-    $loop = ($loop_val === false || $loop_val === '0') ? 'false' : 'true';
-
+    $loop = ($loop_val === false || $loop_val === '0') ? 'false' : 'true'; 
+    
     $space = get_field('spacebetween', $id);
     $space = is_numeric($space) ? $space : 20;
 
@@ -282,18 +279,19 @@ function product_widget($atts)
     $spv_desktop = get_field('slidesperview_desktop', $id);
     $spv_desktop = is_numeric($spv_desktop) ? $spv_desktop : 4;
 
-
     if ($products) {
-        // Generate a unique identifier for this specific shortcode instance
         $unique_id = 'product--widget-' . uniqid();
 
+        // Enforce basic structural CSS to prevent FOUC while JS is deferred
+        echo '<style>
+            #' . esc_attr($unique_id) . ' { overflow: hidden; }
+            #' . esc_attr($unique_id) . ' .swiper-wrapper { display: flex; transition-property: transform; }
+            #' . esc_attr($unique_id) . ' .swiper-slide { flex-shrink: 0; width: 100%; position: relative; transition-property: transform; }
+        </style>';
+
         echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
-        if (!$hide_title) {
-
-            echo '<h2>' . get_the_title($id) . '</h2>';
-        }
-
-        // Hardcode Swiper classes directly into the DOM to prevent FOUC and calculation errors.
+        echo '<h2>' . get_the_title($id) . '</h2>';
+        
         echo '<div class="product-widget--outer swiper swiper--product-widget" id="' . esc_attr($unique_id) . '" ';
         echo 'data-nav="' . esc_attr($navigation) . '" ';
         echo 'data-pag="' . esc_attr($pagination) . '" ';
@@ -302,12 +300,14 @@ function product_widget($atts)
         echo 'data-spv-mobile="' . esc_attr($spv_mobile) . '" ';
         echo 'data-spv-tablet="' . esc_attr($spv_tablet) . '" ';
         echo 'data-spv-desktop="' . esc_attr($spv_desktop) . '">';
-
+        
         echo '<div class="product-widget--inner swiper-wrapper">';
         foreach ($products as $product) {
             $product_obj = wc_get_product($product);
+            
+            if (!$product_obj) continue; // Guard against deleted products
+
             if ($product_obj->is_type('external')) {
-                // Handle external product link configuration
                 $url = $product_obj->get_product_url();
                 $button_text = $product_obj->get_button_text();
             } else {
@@ -318,26 +318,22 @@ function product_widget($atts)
             $_external_product_currency = get_post_meta($product, '_external_product_currency', true);
 
             if ($_external_product_currency) {
-                $price = '<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">' . $_external_product_currency . '</span>' . $product_obj->get_regular_price() . ' </bdi></span>';
+                $price = '<span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">' . esc_html($_external_product_currency) . '</span>' . $product_obj->get_regular_price() . ' </bdi></span>';
             } else {
                 $price = $product_obj->get_price_html();
             }
 
-            echo '<div class="product-widget--box swiper-slide">'; // Include swiper-slide natively
-
+            echo '<div class="product-widget--box swiper-slide">';
             echo '<div class="product-widget--image"><a href="' . esc_url($url) . '"> ' . $product_obj->get_image() . '</a></div>';
-
             echo '<div class="product-widget--content">';
             echo '<div class="product-price">' . $price . '</div>';
             echo '<h3>' . $product_obj->get_name() . '</h3>';
             echo '<div><a href="' . esc_url($url) . '"> ' . esc_html($button_text) . ' </a></div>';
             echo '</div>';
-
-            echo '</div>'; // End product-widget--box
+            echo '</div>'; 
         }
-        echo '</div>'; // End product-widget--inner
+        echo '</div>'; 
 
-        // Conditionally output navigation and pagination nodes
         if ($pagination === 'true') {
             echo '<div class="swiper-pagination"></div>';
         }
@@ -346,72 +342,70 @@ function product_widget($atts)
             echo '<div class="swiper-button-prev"></div>';
         }
 
-        echo '</div>'; // End product-widget--outer
-        echo '</div>'; // End product-widget--holder
+        echo '</div>'; 
+        echo '</div>'; 
 
-        // Isolate JS initialization for this specific unique ID to prevent double-bindings.
-    ?>
+        ?>
         <script>
-            jQuery(document).ready(function($) {
+            document.addEventListener('DOMContentLoaded', function() {
                 var widgetId = '<?php echo $unique_id; ?>';
-                var $outer = $('#' + widgetId);
+                var container = document.getElementById(widgetId);
+                
+                if (!container) return;
 
-                // Prevent multiple initializations if script runs more than once
-                if ($outer.length === 0 || $outer[0].swiper) {
-                    return;
-                }
+                // Recursive polling to handle deferred Swiper.js execution
+                function initProductSwiper() {
+                    if (typeof Swiper !== 'undefined') {
+                        var configLoop = container.getAttribute('data-loop') === 'true';
+                        var configPag = container.getAttribute('data-pag') === 'true';
+                        var configNav = container.getAttribute('data-nav') === 'true';
+                        var configSpace = parseInt(container.getAttribute('data-space'), 10) || 20;
+                        var configMobile = parseInt(container.getAttribute('data-spv-mobile'), 10) || 2;
+                        var configTablet = parseInt(container.getAttribute('data-spv-tablet'), 10) || 3;
+                        var configDesktop = parseInt(container.getAttribute('data-spv-desktop'), 10) || 4;
 
-                // Read data attributes explicitly
-                var configLoop = $outer.attr('data-loop') === 'true';
-                var configPag = $outer.attr('data-pag') === 'true';
-                var configNav = $outer.attr('data-nav') === 'true';
-                var configSpace = parseInt($outer.attr('data-space'), 10) || 20;
-                var configMobile = parseInt($outer.attr('data-spv-mobile'), 10) || 2;
-                var configTablet = parseInt($outer.attr('data-spv-tablet'), 10) || 3;
-                var configDesktop = parseInt($outer.attr('data-spv-desktop'), 10) || 4;
+                        var swiperOptions = {
+                            loop: configLoop,
+                            spaceBetween: configSpace,
+                            autoplay: false,
+                            breakpoints: {
+                                0: { slidesPerView: configMobile },
+                                768: { slidesPerView: configTablet },
+                                992: { slidesPerView: configDesktop }
+                            }
+                        };
 
-                var swiperOptions = {
-                    loop: configLoop,
-                    spaceBetween: configSpace,
-                    autoplay: false,
-                    breakpoints: {
-                        0: {
-                            slidesPerView: configMobile,
-                        },
-                        768: {
-                            slidesPerView: configTablet,
-                        },
-                        992: {
-                            slidesPerView: configDesktop,
-                        },
+                        if (configPag) {
+                            swiperOptions.pagination = {
+                                el: '#' + widgetId + ' .swiper-pagination',
+                                clickable: true
+                            };
+                        }
+
+                        if (configNav) {
+                            swiperOptions.navigation = {
+                                nextEl: '#' + widgetId + ' .swiper-button-next',
+                                prevEl: '#' + widgetId + ' .swiper-button-prev'
+                            };
+                        }
+
+                        new Swiper('#' + widgetId, swiperOptions);
+                    } else {
+                        // Polling threshold (waits 100ms before checking again)
+                        setTimeout(initProductSwiper, 100);
                     }
-                };
-
-
-                if (configPag) {
-                    swiperOptions.pagination = {
-                        el: '#' + widgetId + ' .swiper-pagination',
-                        clickable: true,
-                    };
                 }
 
-                if (configNav) {
-                    swiperOptions.navigation = {
-                        nextEl: '#' + widgetId + ' .swiper-button-next',
-                        prevEl: '#' + widgetId + ' .swiper-button-prev',
-                    };
-                }
-                console.log(swiperOptions);
-
-                new Swiper('#' + widgetId, swiperOptions);
+                initProductSwiper();
             });
         </script>
-    <?php
+        <?php
     }
     return ob_get_clean();
 }
 
 add_shortcode('product_widget', 'product_widget');
+
 
 /**
  * Add a new custom field to the General product data tab for External products.
