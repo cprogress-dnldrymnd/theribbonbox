@@ -173,6 +173,11 @@
         border-bottom: 4px solid transparent !important;
     }
 
+    .nav-tabs.nav-tabs .nav-link:hover {
+        background-color: transparent;
+        opacity: 0.7;
+    }
+
     .nav-tabs.nav-tabs .nav-link.active {
         border-color: var(--trb-wine) !important;
     }
