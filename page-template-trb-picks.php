@@ -208,6 +208,9 @@
         border-bottom: 4px solid transparent !important;
         background-color: transparent;
     }
+    .nav-tabs.nav-tabs .nav-link.trb-petal-color {
+        color: var(--trb-petal) !important;
+    }
 
     .nav-tabs.nav-tabs .nav-link:hover {
         background-color: transparent;
