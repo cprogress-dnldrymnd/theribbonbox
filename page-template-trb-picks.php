@@ -65,6 +65,10 @@
         background-color: #EDF7F6;;
         padding-block: clamp(2rem, 6vw, 115px);
     }
+    .category-navigation-holder {
+        padding-inline: 2rem;
+        max-width: 1000px;
+    }
     .cat-nav-holder {
         display: flex;
         flex-direction: column;
