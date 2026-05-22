@@ -180,7 +180,8 @@
     .nav-tabs-holder {
         border-bottom: 1px solid var(--trb-wine);
         margin-bottom: 2rem;
-
+        max-width: calc(100% - 140px);
+        margin-inline: auto;
     }
 
     .nav-tabs-holder .button-box {
