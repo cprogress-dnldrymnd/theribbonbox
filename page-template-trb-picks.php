@@ -77,6 +77,11 @@
         color: var(--trb-coral);
     }
 
+    .large-heading {
+        font-size: clamp(3rem, 5.5vw, 110px);
+        font-weight: bold;
+    }
+
     .rounded {
         border-radius: 20px;
     }
