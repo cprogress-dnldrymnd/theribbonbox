@@ -661,6 +661,17 @@
             padding-right: 70px;
         }
 
+        .product-widget--holder.style-2 .swiper-pagination .swiper-pagination-bullet {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+        }
+
+        .product-widget--holder.style-2 .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+            background-color: var(--trb-wine);
+            width: 13px;
+        }
+
         .product-widget--holder .swiper-button {
             position: absolute;
             top: 50%;
