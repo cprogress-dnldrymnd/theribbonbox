@@ -153,11 +153,10 @@
         padding-top: 1rem;
     }
 
-    .nav-tabs.nav-tab {
+    .nav-tabs.nav-tabs {
         margin: 0;
         padding: 0;
         margin-bottom: 2rem;
-
     }
 
     .nav-tabs.nav-tabs .nav-link {
