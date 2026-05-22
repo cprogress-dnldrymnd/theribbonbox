@@ -40,6 +40,10 @@
             max-width: 1820px;
         }
     }
+    #trb-page h3 {
+        font-weight: bold;
+        font-size: 2.625rem;
+    }
 
     .trb-mb-large {
         margin-bottom: 6rem;
