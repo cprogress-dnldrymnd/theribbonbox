@@ -262,6 +262,7 @@ function product_widget($atts)
     $hide_title = get_field('hide_title', $id);
 
     if ($products) {
+        $carousel_first_image = get_field('carousel_first_image', $id);
         // Retrieve ACF fields and strictly cast to correct boolean data types
         $nav_val = get_field('navigation', $id);
         $navigation = ($nav_val === true || $nav_val === '1' || $nav_val === 'true') ? true : false;
@@ -313,6 +314,11 @@ function product_widget($atts)
         echo '<div class="product-widget--outer" id="' . $unique_id . '">';
         echo '<div class="product-widget--inner">';
         
+        if ($carousel_first_image) {
+            echo '<div class="product-widget--box swiper-slide">'; 
+            echo '<div class="product-widget--image"><img src="' . esc_url($carousel_first_image['url']) . '" alt="' . esc_attr($carousel_first_image['alt']) . '"></div>';
+            echo '</div>';
+        }
         foreach ($products as $product) {
             $product_obj = wc_get_product($product);
             
