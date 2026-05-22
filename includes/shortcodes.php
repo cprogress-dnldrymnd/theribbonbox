@@ -294,7 +294,7 @@ function product_widget($atts)
         // Generate absolute unique ID for isolated JS targeting
         $unique_id = 'product--widget-' . rand(10000, 99999);
 
-        // Render standard structural HTML (removed syntax error "?>" from original code's class tag)
+      
         echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
         echo '<h2>' . get_the_title($id) . '</h2>';
         echo '<div class="product-widget--outer" id="' . $unique_id . '">';
