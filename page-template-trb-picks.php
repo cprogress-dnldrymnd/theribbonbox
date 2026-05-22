@@ -228,6 +228,7 @@
 
     .carousel-with-nav-width {
         max-width: calc(100% - 140px);
+        margin-inline: auto;
     }
 
     .product-tabs--light .nav-tabs.nav-tabs .nav-link {
