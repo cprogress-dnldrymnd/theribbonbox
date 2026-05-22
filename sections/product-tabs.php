@@ -1,6 +1,6 @@
 <div class="product-tabs trb-my-large">
     <div class="container">
-        <div class="nav-tabs-holder d-flex align-items-center justify-content-center gap-3">
+        <div class="nav-tabs-holder d-flex align-items-center justify-content-between gap-3">
 
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">

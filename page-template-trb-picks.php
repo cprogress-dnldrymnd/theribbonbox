@@ -153,14 +153,22 @@
         padding-top: 1rem;
     }
 
+    .nav-tabs.nav-tab {
+        margin: 0;
+        padding: 0;
+
+    }
+
     .nav-tabs.nav-tabs .nav-link {
         border: none;
         padding: 1rem 0;
         border-radius: 0;
-        color: var(--trb-wine);
-        font-size: 2rem;
+        color: var(--trb-wine) !important;
+        font-size: 2rem !important;
         font-family: 'Playfair Display', sans-serif;
         font-weight: bold;
+        height: auto;
+        text-transform: initial;
     }
 
     .nav-tabs-holder {
