@@ -239,19 +239,6 @@ add_shortcode('display_subscribe', 'display_subscribe');
 /**
  * Product Widget Shortcode
  * Renders a WooCommerce product carousel integrated with Swiper.js and ACF.
- * * @param array $atts Shortcode attributes.
- * @return string Rendered HTML and inline script.
- */
-/**
- * Plugin Name: Product Widget Carousel
- * Description: Render WooCommerce product carousel.
- * Author: Digitally Disruptive - Donald Raymundo
- * Author URI: https://digitallydisruptive.co.uk/
- */
-
-/**
- * Product Widget Shortcode
- * Renders a WooCommerce product carousel integrated with Swiper.js and ACF.
  * Utilizes wp_json_encode for secure PHP-to-JS configuration passing.
  *
  * @param array $atts Shortcode attributes.
@@ -359,13 +346,12 @@ function product_widget($atts)
         if ($pagination) {
             echo '<div class="swiper-pagination"></div>';
         }
-     
-
-        echo '</div>'; // Close product-widget--outer
-           if ($navigation) {
+        if ($navigation) {
             echo '<div class="swiper-button swiper-button-next-trb"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"></circle> <circle cx="26.5" cy="26.5" r="26" fill="none"></circle> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor"></path> </g> </svg></div>';
             echo '<div class="swiper-button swiper-button-prev-trb"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"></circle> <circle cx="26.5" cy="26.5" r="26" fill="none"></circle> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor"></path> </g> </svg></div>';
         }
+
+        echo '</div>'; // Close product-widget--outer
         echo '</div>'; // Close product-widget--holder
 
         // Output isolated JS configuration
