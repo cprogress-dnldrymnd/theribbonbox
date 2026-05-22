@@ -1,4 +1,4 @@
-<div class="product-tabs trb-my-large">
+<div class="product-tabs trb-mt-large trb-mb-medium">
     <div class="container">
         <div class="nav-tabs-holder d-flex align-items-center justify-content-between gap-3">
 

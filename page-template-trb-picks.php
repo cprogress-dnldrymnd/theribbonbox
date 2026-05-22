@@ -53,6 +53,18 @@
         margin-block: 6rem;
     }
 
+    .trb-mb-medium {
+        margin-bottom: 3rem;
+    }
+
+    .trb-mt-medium {
+        margin-top: 3rem;
+    }
+
+    .trb-my-medium {
+        margin-block: 3rem;
+    }
+
     .trb-green-color {
         color: var(--trb-green);
     }
@@ -206,7 +218,9 @@
     <?php get_template_part('sections/page-title') ?>
     <?php get_template_part('sections/category-navigation') ?>
     <?php get_template_part('sections/product-tabs') ?>
-    <div class="container"><hr></div>
+    <div class="container">
+        <hr>
+    </div>
 </main>
 
 <?php get_footer() ?>
