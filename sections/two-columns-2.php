@@ -13,7 +13,7 @@
 <section class="two--columns trb-bg-wine pt-5 pb-5">
     <div class="container">
         <div class="inner">
-            <h2 class="trb-petal-color large-heading mb-5 trb-petal-color">Fertility</h2>
+            <h2 class="trb-petal-color large-heading mb-5 trb-petal-color mt-5">Fertility</h2>
             <div class="row g-3 g-lg-5">
                 <div class="col-lg-7">
                     <div class="image-box">
