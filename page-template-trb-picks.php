@@ -84,7 +84,7 @@
     }
 
     .trb-petal-color {
-        color: var(--trb-petal);
+        color: var(--trb-petal) !important;
     }
 
     .trb-bg-wine {
