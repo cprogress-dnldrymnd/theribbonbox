@@ -156,7 +156,6 @@
     .nav-tabs.nav-tabs {
         margin: 0;
         padding: 0;
-        margin-bottom: 2rem;
     }
 
     .nav-tabs.nav-tabs .nav-link {
@@ -173,6 +172,8 @@
 
     .nav-tabs-holder {
         border-bottom: 1px solid var(--trb-wine);
+        margin-bottom: 2rem;
+
     }
 </style>
 <main id="trb-page">
