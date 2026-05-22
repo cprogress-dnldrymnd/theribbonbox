@@ -1,4 +1,4 @@
-<div class="product-tabs">
+<div class="product-tabs trb-my-large">
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">

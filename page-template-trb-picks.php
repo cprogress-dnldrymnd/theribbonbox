@@ -37,6 +37,18 @@
         }
     }
 
+    .trb-mb-large {
+        margin-bottom: 6rem;
+    }
+
+    .trb-mt-large {
+        margin-top: 6rem;
+    }
+
+    .trb-my-large {
+        margin-block: 6rem;
+    }
+
     .trb-green-color {
         color: var(--trb-green);
     }
