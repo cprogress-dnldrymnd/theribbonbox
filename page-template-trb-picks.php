@@ -10,6 +10,7 @@
         --trb-green: #034146;
         --trb-wine: #3B1527;
         --trb-coral: #F77D67;
+        --trb-petal: #FFDBD1;
     }
 
     #trb-page hr {
@@ -80,6 +81,14 @@
 
     .trb-coral-color {
         color: var(--trb-coral);
+    }
+
+    .trb-petal-color {
+        color: var(--trb-petal);
+    }
+
+    .trb-bg-wine {
+        background-color: var(--trb-wine);
     }
 
     .large-heading {
