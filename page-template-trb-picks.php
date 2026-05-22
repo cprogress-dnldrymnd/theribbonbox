@@ -236,7 +236,7 @@
 
     }
 
-    .nav-tabs.nav-tabs .nav-link.active {
+    .product-tabs--light .nav-tabs.nav-tabs .nav-link.active {
         border-color: var(--trb-petal) !important;
 
     }
