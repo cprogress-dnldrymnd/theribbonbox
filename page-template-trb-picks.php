@@ -14,6 +14,7 @@
 
     #trb-page hr {
         border-color: #E1E1E1;
+        opacity: 1;
     }
 
     @media (min-width: 1500px) {
@@ -205,7 +206,7 @@
     <?php get_template_part('sections/page-title') ?>
     <?php get_template_part('sections/category-navigation') ?>
     <?php get_template_part('sections/product-tabs') ?>
-    <hr>
+    <div class="container"><hr></div>
 </main>
 
 <?php get_footer() ?>
