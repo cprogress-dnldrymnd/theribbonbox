@@ -33,6 +33,8 @@
 
     .page-title h1 {
         font-size: 3rem;
+        font-weight: bold;
+        color: var(--trb-accent-2);
     }
     .page-title .desc {
         font-size: 1.25rem;
