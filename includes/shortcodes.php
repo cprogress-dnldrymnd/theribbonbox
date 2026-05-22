@@ -249,6 +249,14 @@ add_shortcode('display_subscribe', 'display_subscribe');
  * Author URI: https://digitallydisruptive.co.uk/
  */
 
+/**
+ * Product Widget Shortcode
+ * Renders a WooCommerce product carousel integrated with Swiper.js and ACF.
+ * Utilizes wp_json_encode for secure PHP-to-JS configuration passing.
+ *
+ * @param array $atts Shortcode attributes.
+ * @return string Rendered HTML and inline script.
+ */
 function product_widget($atts)
 {
     ob_start();
@@ -260,54 +268,62 @@ function product_widget($atts)
             $atts
         )
     );
-
+    
     $products = get_field('products', $id);
     $carousel_style = get_field('carousel_style', $id);
 
     if ($products) {
-        // Retrieve ACF fields and enforce strict fallback data types. 
-        // This prevents Swiper from crashing if a user "touches" a post but leaves a field blank.
-
+        // Retrieve ACF fields and strictly cast to correct data types
         $nav_val = get_field('navigation', $id);
-        $navigation = (!empty($nav_val)) ? 'true' : 'false';
-
+        $navigation = ($nav_val === true || $nav_val === '1' || $nav_val === 'true') ? true : false;
+        
         $pag_val = get_field('pagination', $id);
-        $pagination = ($pag_val === false || $pag_val === '0' || $pag_val === 0) ? 'false' : 'true';
-
+        $pagination = ($pag_val === false || $pag_val === '0' || $pag_val === 'false' || $pag_val === 0) ? false : true; 
+        
         $loop_val = get_field('loop', $id);
-        $loop = ($loop_val === false || $loop_val === '0' || $loop_val === 0) ? 'false' : 'true';
+        $loop = ($loop_val === false || $loop_val === '0' || $loop_val === 'false' || $loop_val === 0) ? false : true; 
+        
+        $space_val = get_field('spacebetween', $id);
+        $space = (is_numeric($space_val) && $space_val !== '') ? intval($space_val) : 20;
 
-        // Ensure spacing is an integer. Allow 0, but fallback to 20 if null/empty.
-        $space = intval(get_field('spacebetween', $id));
-        $space = ($space >= 0 && get_field('spacebetween', $id) !== '') ? $space : 20;
+        $spv_mobile_val = get_field('slidesperview_mobile', $id);
+        $spv_mobile = (is_numeric($spv_mobile_val) && $spv_mobile_val !== '') ? intval($spv_mobile_val) : 2;
 
-        // Enforce positive integers for Breakpoints to prevent flexbox calculation crashes.
-        $spv_mobile = intval(get_field('slidesperview_mobile', $id));
-        $spv_mobile = ($spv_mobile > 0) ? $spv_mobile : 2;
+        $spv_tablet_val = get_field('slidesperview_tablet', $id);
+        $spv_tablet = (is_numeric($spv_tablet_val) && $spv_tablet_val !== '') ? intval($spv_tablet_val) : 3;
 
-        $spv_tablet = intval(get_field('slidesperview_tablet', $id));
-        $spv_tablet = ($spv_tablet > 0) ? $spv_tablet : 3;
+        $spv_desktop_val = get_field('slidesperview_desktop', $id);
+        $spv_desktop = (is_numeric($spv_desktop_val) && $spv_desktop_val !== '') ? intval($spv_desktop_val) : 4;
 
-        $spv_desktop = intval(get_field('slidesperview_desktop', $id));
-        $spv_desktop = ($spv_desktop > 0) ? $spv_desktop : 4;
+        // Compile the Swiper configuration strictly in PHP to prevent JS syntax breakage
+        $swiper_config = array(
+            'loop'         => $loop,
+            'spaceBetween' => $space,
+            'autoplay'     => false,
+            'observer'     => true,
+            'observeParents' => true,
+            'breakpoints'  => array(
+                0   => array('slidesPerView' => $spv_mobile),
+                768 => array('slidesPerView' => $spv_tablet),
+                992 => array('slidesPerView' => $spv_desktop),
+            )
+        );
 
-        // Generate absolute unique ID for isolated JS targeting
-        $unique_id = 'product--widget-' . rand(10000, 99999);
+        $unique_id = 'product--widget-' . wp_rand(10000, 99999);
 
-
+        // Standard structural HTML output
         echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
         echo '<h2>' . get_the_title($id) . '</h2>';
         echo '<div class="product-widget--outer" id="' . $unique_id . '">';
         echo '<div class="product-widget--inner">';
-
+        
         foreach ($products as $product) {
             $product_obj = wc_get_product($product);
-
-            // Bypass processing if product object fails to load (deleted product)
-            if (!$product_obj) continue;
+            
+            if (!$product_obj) continue; // Bypass processing if product object fails to load
 
             if ($product_obj->is_type('external')) {
-                // This is an external product, so we can get the link
+                // Handle external product link configuration
                 $url = $product_obj->get_product_url();
                 $button_text = $product_obj->get_button_text();
             } else {
@@ -324,24 +340,21 @@ function product_widget($atts)
             }
 
             echo '<div class="product-widget--box">'; //product-widget--box
-
             echo '<div class="product-widget--image"><a href="' . esc_url($url) . '"> ' . $product_obj->get_image() . '</a></div>';
-
             echo '<div class="product-widget--content">';
             echo '<div class="product-price">' . $price . '</div>';
             echo '<h3>' . $product_obj->get_name() . '</h3>';
             echo '<div><a href="' . esc_url($url) . '"> ' . esc_html($button_text) . ' </a></div>';
             echo '</div>';
-
             echo '</div>'; //product-widget--box
         }
         echo '</div>'; // Close product-widget--inner
 
-        // Conditionally render pagination and navigation elements
-        if ($pagination === 'true') {
+        // Conditionally render UI nodes based on ACF strict evaluation
+        if ($pagination) {
             echo '<div class="swiper-pagination"></div>';
         }
-        if ($navigation === 'true') {
+        if ($navigation) {
             echo '<div class="swiper-button-next"></div>';
             echo '<div class="swiper-button-prev"></div>';
         }
@@ -349,57 +362,55 @@ function product_widget($atts)
         echo '</div>'; // Close product-widget--outer
         echo '</div>'; // Close product-widget--holder
 
-        // Output isolated JS configuration mapping. 
-        // Bypassing .each() prevents N*N loop initializations across multiple shortcodes.
-    ?>
+        // Output isolated JS configuration
+        ?>
         <script>
-            jQuery(document).ready(function() {
+            jQuery(document).ready(function($) {
                 var targetId = '<?php echo $unique_id; ?>';
-                var $outer = jQuery('#' + targetId);
+                var $outer = $('#' + targetId);
+                var $holder = $outer.closest('.product-widget--holder');
 
-                // Inject Swiper classes natively to preserve CSS loading sequences
+                // Bail out gracefully if the container dictates a disabled state
+                if ($holder.hasClass('disable-carousel') || $holder.hasClass('grid-layout')) {
+                    return; 
+                }
+
+                // Prevent duplication bugs
+                if ($outer.hasClass('swiper-initialized') || $outer.hasClass('swiper')) {
+                    return; 
+                }
+
+                // Inject CSS classes identically to original logic
                 $outer.addClass('swiper swiper--product-widget');
                 $outer.find('.product-widget--inner').addClass('swiper-wrapper');
                 $outer.find('.product-widget--box').addClass('swiper-slide');
 
-                var swiperOptions = {
-                    loop: <?php echo $loop; ?>,
-                    spaceBetween: <?php echo $space; ?>,
-                    autoplay: false,
-                    breakpoints: {
-                        0: {
-                            slidesPerView: <?php echo $spv_mobile; ?>
-                        },
-                        768: {
-                            slidesPerView: <?php echo $spv_tablet; ?>
-                        },
-                        992: {
-                            slidesPerView: <?php echo $spv_desktop; ?>
-                        },
-                    }
+                // Safely convert PHP array to valid JavaScript object
+                var swiperOptions = <?php echo wp_json_encode($swiper_config); ?>;
+
+                // Conditionally append DOM targeting for pagination
+                <?php if ($pagination) : ?>
+                swiperOptions.pagination = {
+                    el: "#" + targetId + " .swiper-pagination",
+                    clickable: true,
                 };
-
-                // Apply pagination targeting exclusively to this instance
-                <?php if ($pagination === 'true') : ?>
-                    swiperOptions.pagination = {
-                        el: "#" + targetId + " .swiper-pagination",
-                        clickable: true,
-                    };
                 <?php endif; ?>
 
-                // Apply navigation targeting exclusively to this instance
-                <?php if ($navigation === 'true') : ?>
-                    swiperOptions.navigation = {
-                        nextEl: "#" + targetId + " .swiper-button-next",
-                        prevEl: "#" + targetId + " .swiper-button-prev",
-                    };
+                // Conditionally append DOM targeting for navigation
+                <?php if ($navigation) : ?>
+                swiperOptions.navigation = {
+                    nextEl: "#" + targetId + " .swiper-button-next",
+                    prevEl: "#" + targetId + " .swiper-button-prev",
+                };
                 <?php endif; ?>
 
-                // Instantiate Swiper purely on this shortcode's footprint
-                new Swiper('#' + targetId, swiperOptions);
+                // Time-delay to allow browser CSS repaint before Swiper dimension calculation
+                setTimeout(function() {
+                    new Swiper('#' + targetId, swiperOptions);
+                }, 50); 
             });
         </script>
-    <?php
+        <?php
     }
     return ob_get_clean();
 }
