@@ -40,7 +40,7 @@
             max-width: 1820px;
         }
     }
-    #trb-page h3 {
+    #trb-page h3:not(.product-name) {
         font-weight: bold;
         font-size: 2.625rem;
     }
