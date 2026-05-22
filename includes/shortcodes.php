@@ -265,48 +265,46 @@ function product_widget($atts)
     $carousel_style = get_field('carousel_style', $id);
 
     if ($products) {
-        // Fetch ACF fields with robust fallbacks to your original defaults
-        $nav_field   = get_field('navigation', $id);
-        $navigation  = ($nav_field === true || $nav_field === '1') ? 'true' : 'false';
+        // Retrieve ACF fields and enforce strict fallback data types. 
+        // This prevents Swiper from crashing if a user "touches" a post but leaves a field blank.
         
-        $pag_field   = get_field('pagination', $id);
-        $pagination  = ($pag_field === false || $pag_field === '0') ? 'false' : 'true';
+        $nav_val = get_field('navigation', $id);
+        $navigation = (!empty($nav_val)) ? 'true' : 'false';
         
-        $loop_field  = get_field('loop', $id);
-        $loop        = ($loop_field === false || $loop_field === '0') ? 'false' : 'true';
+        $pag_val = get_field('pagination', $id);
+        $pagination = ($pag_val === false || $pag_val === '0' || $pag_val === 0) ? 'false' : 'true';
         
-        $space       = get_field('spacebetween', $id);
-        $space       = is_numeric($space) ? $space : 20;
+        $loop_val = get_field('loop', $id);
+        $loop = ($loop_val === false || $loop_val === '0' || $loop_val === 0) ? 'false' : 'true';
+        
+        // Ensure spacing is an integer. Allow 0, but fallback to 20 if null/empty.
+        $space = intval(get_field('spacebetween', $id));
+        $space = ($space >= 0 && get_field('spacebetween', $id) !== '') ? $space : 20; 
 
-        $spv_mobile  = get_field('slidesperview_mobile', $id);
-        $spv_mobile  = is_numeric($spv_mobile) ? $spv_mobile : 2;
+        // Enforce positive integers for Breakpoints to prevent flexbox calculation crashes.
+        $spv_mobile = intval(get_field('slidesperview_mobile', $id));
+        $spv_mobile = ($spv_mobile > 0) ? $spv_mobile : 2;
 
-        $spv_tablet  = get_field('slidesperview_tablet', $id);
-        $spv_tablet  = is_numeric($spv_tablet) ? $spv_tablet : 3;
+        $spv_tablet = intval(get_field('slidesperview_tablet', $id));
+        $spv_tablet = ($spv_tablet > 0) ? $spv_tablet : 3;
 
-        $spv_desktop = get_field('slidesperview_desktop', $id);
-        $spv_desktop = is_numeric($spv_desktop) ? $spv_desktop : 4;
+        $spv_desktop = intval(get_field('slidesperview_desktop', $id));
+        $spv_desktop = ($spv_desktop > 0) ? $spv_desktop : 4;
 
-        $unique_id = 'product--widget-' . wp_rand();
+        // Generate absolute unique ID for isolated JS targeting
+        $unique_id = 'product--widget-' . rand(10000, 99999);
 
-        // Exact original HTML structure to maintain Theme CSS compatibility
+        // Render standard structural HTML (removed syntax error "?>" from original code's class tag)
         echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
         echo '<h2>' . get_the_title($id) . '</h2>';
-        
-        // Inject ACF data attributes into the outer wrapper for JS to read later
-        echo '<div class="product-widget--outer" id="' . esc_attr($unique_id) . '" ';
-        echo 'data-nav="' . esc_attr($navigation) . '" ';
-        echo 'data-pag="' . esc_attr($pagination) . '" ';
-        echo 'data-loop="' . esc_attr($loop) . '" ';
-        echo 'data-space="' . esc_attr($space) . '" ';
-        echo 'data-spv-mobile="' . esc_attr($spv_mobile) . '" ';
-        echo 'data-spv-tablet="' . esc_attr($spv_tablet) . '" ';
-        echo 'data-spv-desktop="' . esc_attr($spv_desktop) . '">';
-        
+        echo '<div class="product-widget--outer" id="' . $unique_id . '">';
         echo '<div class="product-widget--inner">';
+        
         foreach ($products as $product) {
             $product_obj = wc_get_product($product);
-            if (!$product_obj) continue;
+            
+            // Bypass processing if product object fails to load (deleted product)
+            if (!$product_obj) continue; 
 
             if ($product_obj->is_type('external')) {
                 // This is an external product, so we can get the link
@@ -337,9 +335,9 @@ function product_widget($atts)
 
             echo '</div>'; //product-widget--box
         }
-        echo '</div>'; 
-        
-        // Conditionally add pagination and navigation directly inside outer wrapper
+        echo '</div>'; // Close product-widget--inner
+
+        // Conditionally render pagination and navigation elements
         if ($pagination === 'true') {
             echo '<div class="swiper-pagination"></div>';
         }
@@ -347,72 +345,58 @@ function product_widget($atts)
             echo '<div class="swiper-button-next"></div>';
             echo '<div class="swiper-button-prev"></div>';
         }
-        
-        echo '</div>'; 
-        echo '</div>'; 
-        
-        // Output JS inside the condition so it only runs if products exist
+
+        echo '</div>'; // Close product-widget--outer
+        echo '</div>'; // Close product-widget--holder
+
+        // Output isolated JS configuration mapping. 
+        // Bypassing .each() prevents N*N loop initializations across multiple shortcodes.
         ?>
         <script>
             jQuery(document).ready(function() {
-                jQuery('.product-widget--holder').each(function() {
-                    var $holder = jQuery(this);
-                    var $outer = $holder.find('.product-widget--outer');
-                    var $id = $outer.attr('id');
-                    
-                    // Critical Fix: Prevent double-initialization when multiple shortcodes exist
-                    if ($outer.hasClass('swiper-initialized') || $outer.hasClass('swiper')) {
-                        return; 
+                var targetId = '<?php echo $unique_id; ?>';
+                var $outer = jQuery('#' + targetId);
+                
+                // Inject Swiper classes natively to preserve CSS loading sequences
+                $outer.addClass('swiper swiper--product-widget');
+                $outer.find('.product-widget--inner').addClass('swiper-wrapper');
+                $outer.find('.product-widget--box').addClass('swiper-slide');
+
+                var swiperOptions = {
+                    loop: <?php echo $loop; ?>,
+                    spaceBetween: <?php echo $space; ?>,
+                    autoplay: false,
+                    breakpoints: {
+                        0: { slidesPerView: <?php echo $spv_mobile; ?> },
+                        768: { slidesPerView: <?php echo $spv_tablet; ?> },
+                        992: { slidesPerView: <?php echo $spv_desktop; ?> },
                     }
+                };
 
-                    // Add classes dynamically via JS (matches your original working method)
-                    $outer.addClass('swiper swiper--product-widget');
-                    $holder.find('.product-widget--inner').addClass('swiper-wrapper');
-                    $holder.find('.product-widget--box').addClass('swiper-slide');
+                // Apply pagination targeting exclusively to this instance
+                <?php if ($pagination === 'true') : ?>
+                swiperOptions.pagination = {
+                    el: "#" + targetId + " .swiper-pagination",
+                    clickable: true,
+                };
+                <?php endif; ?>
 
-                    // Read ACF variables from data attributes
-                    var configLoop = $outer.attr('data-loop') === 'true';
-                    var configPag = $outer.attr('data-pag') === 'true';
-                    var configNav = $outer.attr('data-nav') === 'true';
-                    var configSpace = parseInt($outer.attr('data-space')) || 20;
-                    var configMobile = parseInt($outer.attr('data-spv-mobile')) || 2;
-                    var configTablet = parseInt($outer.attr('data-spv-tablet')) || 3;
-                    var configDesktop = parseInt($outer.attr('data-spv-desktop')) || 4;
+                // Apply navigation targeting exclusively to this instance
+                <?php if ($navigation === 'true') : ?>
+                swiperOptions.navigation = {
+                    nextEl: "#" + targetId + " .swiper-button-next",
+                    prevEl: "#" + targetId + " .swiper-button-prev",
+                };
+                <?php endif; ?>
 
-                    var swiperOptions = {
-                        loop: configLoop,
-                        spaceBetween: configSpace,
-                        autoplay: false,
-                        breakpoints: {
-                            0: { slidesPerView: configMobile },
-                            768: { slidesPerView: configTablet },
-                            992: { slidesPerView: configDesktop },
-                        }
-                    };
-
-                    if (configPag) {
-                        swiperOptions.pagination = {
-                            el: "#" + $id + " .swiper-pagination",
-                            clickable: true,
-                        };
-                    }
-
-                    if (configNav) {
-                        swiperOptions.navigation = {
-                            nextEl: "#" + $id + " .swiper-button-next",
-                            prevEl: "#" + $id + " .swiper-button-prev",
-                        };
-                    }
-
-                    new Swiper('#' + $id, swiperOptions);
-                });
+                // Instantiate Swiper purely on this shortcode's footprint
+                new Swiper('#' + targetId, swiperOptions);
             });
         </script>
         <?php
     }
     return ob_get_clean();
 }
-
 
 add_shortcode('product_widget', 'product_widget');
 
