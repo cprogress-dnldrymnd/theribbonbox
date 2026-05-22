@@ -12,7 +12,7 @@
 </style>
 <section class="two--columns trb-bg-wine pt-5 pb-5">
     <div class="container">
-        <div class="inner">
+        <div class="inner carousel-with-nav-width">
             <h2 class="trb-petal-color large-heading mb-5 trb-petal-color mt-5">Fertility</h2>
             <div class="row g-3 g-lg-5">
                 <div class="col-lg-7">
@@ -34,7 +34,7 @@
     <div class="container position-relative">
         <div class="nav-tabs-holder">
 
-            <div class="nav-tabs-holder-inner d-flex align-items-center justify-content-between gap-3">
+            <div class="nav-tabs-holder-inner carousel-with-nav-width d-flex align-items-center justify-content-between gap-3">
                 <ul class="nav nav-tabs gap-2 gap-lg-5" id="tabFeatured" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="Discounts-tab" data-bs-toggle="tab" data-bs-target="#Discounts" type="button" role="tab" aria-controls="Discounts" aria-selected="true">Discounts</button>

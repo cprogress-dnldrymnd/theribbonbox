@@ -3,7 +3,7 @@
         <div class="nav-tabs-holder">
             <h3 class="trb-wine-color mb-4"><i>Featured</i> Picks</h3>
 
-            <div class="nav-tabs-holder-inner d-flex align-items-center justify-content-between gap-3">
+            <div class="nav-tabs-holder-inner carousel-with-nav-width d-flex align-items-center justify-content-between gap-3">
                 <ul class="nav nav-tabs gap-2 gap-lg-5" id="tabFeatured" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="Discounts-tab" data-bs-toggle="tab" data-bs-target="#Discounts" type="button" role="tab" aria-controls="Discounts" aria-selected="true">Discounts</button>

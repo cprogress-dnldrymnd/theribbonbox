@@ -222,9 +222,12 @@
     .nav-tabs-holder-inner {
         border-bottom: 1px solid var(--trb-wine);
         margin-bottom: 2rem;
-        max-width: calc(100% - 140px);
         margin-inline: auto;
         line-height: 1;
+    }
+
+    .carousel-with-nav-width {
+        max-width: calc(100% - 140px);
     }
 
     .product-tabs--light .nav-tabs.nav-tabs .nav-link {
