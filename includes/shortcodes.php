@@ -239,7 +239,8 @@ add_shortcode('display_subscribe', 'display_subscribe');
 /**
  * Product Widget Shortcode
  * Renders a WooCommerce product carousel integrated with Swiper.js and ACF.
- * Utilizes wp_json_encode for secure PHP-to-JS configuration passing.
+ * Utilizes wp_json_encode for secure PHP-to-JS configuration passing and 
+ * supports external DOM targeting for Swiper navigation UI.
  *
  * @param array $atts Shortcode attributes.
  * @return string Rendered HTML and inline script.
@@ -261,7 +262,7 @@ function product_widget($atts)
     $hide_title = get_field('hide_title', $id);
 
     if ($products) {
-        // Retrieve ACF fields and strictly cast to correct data types
+        // Retrieve ACF fields and strictly cast to correct boolean data types
         $nav_val = get_field('navigation', $id);
         $navigation = ($nav_val === true || $nav_val === '1' || $nav_val === 'true') ? true : false;
         
@@ -271,6 +272,7 @@ function product_widget($atts)
         $loop_val = get_field('loop', $id);
         $loop = ($loop_val === false || $loop_val === '0' || $loop_val === 'false' || $loop_val === 0) ? false : true; 
         
+        // Retrieve responsive breakpoints and enforce strict integer types
         $space_val = get_field('spacebetween', $id);
         $space = (is_numeric($space_val) && $space_val !== '') ? intval($space_val) : 20;
 
@@ -282,8 +284,6 @@ function product_widget($atts)
 
         $spv_desktop_val = get_field('slidesperview_desktop', $id);
         $spv_desktop = (is_numeric($spv_desktop_val) && $spv_desktop_val !== '') ? intval($spv_desktop_val) : 4;
-
-
 
         // Compile the Swiper configuration strictly in PHP to prevent JS syntax breakage
         $swiper_config = array(
@@ -299,13 +299,17 @@ function product_widget($atts)
             )
         );
 
+        // Generate absolute unique ID for isolated DOM targeting
         $unique_id = 'product--widget-' . wp_rand(10000, 99999);
 
         // Standard structural HTML output
         echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
+        
         if (!$hide_title) {
             echo '<h2>' . get_the_title($id) . '</h2>';
         }
+        
+        // Begin Swiper Container
         echo '<div class="product-widget--outer" id="' . $unique_id . '">';
         echo '<div class="product-widget--inner">';
         
@@ -331,27 +335,32 @@ function product_widget($atts)
                 $price = $product_obj->get_price_html();
             }
 
-            echo '<div class="product-widget--box">'; //product-widget--box
+            echo '<div class="product-widget--box">'; 
             echo '<div class="product-widget--image"><a href="' . esc_url($url) . '"> ' . $product_obj->get_image() . '</a></div>';
             echo '<div class="product-widget--content">';
             echo '<div class="product-price">' . $price . '</div>';
             echo '<h3>' . $product_obj->get_name() . '</h3>';
             echo '<div><a href="' . esc_url($url) . '"> ' . esc_html($button_text) . ' </a></div>';
             echo '</div>';
-            echo '</div>'; //product-widget--box
+            echo '</div>'; 
         }
-        echo '</div>'; // Close product-widget--inner
+        echo '</div>'; // Close product-widget--inner (swiper-wrapper)
 
-        // Conditionally render UI nodes based on ACF strict evaluation
+        // Conditionally render pagination inside the overflow wrapper
         if ($pagination) {
             echo '<div class="swiper-pagination"></div>';
         }
+
+        echo '</div>'; // Close product-widget--outer (swiper container)
+
+        // Conditionally render navigation OUTSIDE the overflow wrapper.
+        // Elements are bound with isolated IDs to guarantee accurate JS targeting.
         if ($navigation) {
-            echo '<div class="swiper-button swiper-button-next-trb"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"></circle> <circle cx="26.5" cy="26.5" r="26" fill="none"></circle> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor"></path> </g> </svg></div>';
-            echo '<div class="swiper-button swiper-button-prev-trb"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"></circle> <circle cx="26.5" cy="26.5" r="26" fill="none"></circle> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor"></path> </g> </svg></div>';
+            echo '<div id="' . $unique_id . '-next" class="swiper-button swiper-button-next-trb"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"></circle> <circle cx="26.5" cy="26.5" r="26" fill="none"></circle> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor"></path> </g> </svg></div>';
+            
+            echo '<div id="' . $unique_id . '-prev" class="swiper-button swiper-button-prev-trb"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"></circle> <circle cx="26.5" cy="26.5" r="26" fill="none"></circle> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor"></path> </g> </svg></div>';
         }
 
-        echo '</div>'; // Close product-widget--outer
         echo '</div>'; // Close product-widget--holder
 
         // Output isolated JS configuration
@@ -388,11 +397,11 @@ function product_widget($atts)
                 };
                 <?php endif; ?>
 
-                // Conditionally append DOM targeting for navigation
+                // Conditionally append DOM targeting for navigation using the newly bound IDs
                 <?php if ($navigation) : ?>
                 swiperOptions.navigation = {
-                    nextEl: "#" + targetId + " .swiper-button-next-trb",
-                    prevEl: "#" + targetId + " .swiper-button-prev-trb",
+                    nextEl: "#" + targetId + "-next",
+                    prevEl: "#" + targetId + "-prev",
                 };
                 <?php endif; ?>
 
