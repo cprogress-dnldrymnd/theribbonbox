@@ -203,6 +203,7 @@
         margin-bottom: 2rem;
         max-width: calc(100% - 140px);
         margin-inline: auto;
+        line-height: 1;
     }
 
     .nav-tabs-holder .button-box {
