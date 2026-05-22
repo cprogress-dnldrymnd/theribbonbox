@@ -169,6 +169,11 @@
         font-weight: bold;
         height: auto;
         text-transform: initial;
+        border-bottom: 4px solid transparent;
+    }
+
+    .nav-tabs.nav-tabs .nav-link.active {
+        border-color: var(--trb-wine);
     }
 
     .nav-tabs-holder {
