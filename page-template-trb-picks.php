@@ -111,7 +111,7 @@
     .category-navigation .inner {
         background-color: #EDF7F6;
         ;
-        padding-block: clamp(2rem, 6vw, 115px);
+        padding-block: clamp(2rem, 4vw, 76px);
     }
 
     .category-navigation-holder {
