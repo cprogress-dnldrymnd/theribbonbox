@@ -45,6 +45,9 @@
         text-align: center;
         margin-bottom: 1.5rem;
     }
+    .post-main-content p, p.text, .expert-inner p, .category-inner-pop-text p, .desc p, .post-excerpt, .bbp-forum-content, .bbp-reply-content p, .bio p, .activity-item p, .blog-l-text p {
+        font-size: 1rem;
+    }
 </style>
 <?php get_template_part('sections/navigation') ?>
 <?php get_template_part('sections/page-title') ?>
