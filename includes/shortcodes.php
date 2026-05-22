@@ -352,7 +352,53 @@ function product_widget($atts)
         // Output isolated JS configuration mapping. 
         // Bypassing .each() prevents N*N loop initializations across multiple shortcodes.
     ?>
-       
+        <script>
+            jQuery(document).ready(function() {
+                var targetId = '<?php echo $unique_id; ?>';
+                var $outer = jQuery('#' + targetId);
+
+                // Inject Swiper classes natively to preserve CSS loading sequences
+                $outer.addClass('swiper swiper--product-widget');
+                $outer.find('.product-widget--inner').addClass('swiper-wrapper');
+                $outer.find('.product-widget--box').addClass('swiper-slide');
+
+                var swiperOptions = {
+                    loop: <?php echo $loop; ?>,
+                    spaceBetween: <?php echo $space; ?>,
+                    autoplay: false,
+                    breakpoints: {
+                        0: {
+                            slidesPerView: <?php echo $spv_mobile; ?>
+                        },
+                        768: {
+                            slidesPerView: <?php echo $spv_tablet; ?>
+                        },
+                        992: {
+                            slidesPerView: <?php echo $spv_desktop; ?>
+                        },
+                    }
+                };
+
+                // Apply pagination targeting exclusively to this instance
+                <?php if ($pagination === 'true') : ?>
+                    swiperOptions.pagination = {
+                        el: "#" + targetId + " .swiper-pagination",
+                        clickable: true,
+                    };
+                <?php endif; ?>
+
+                // Apply navigation targeting exclusively to this instance
+                <?php if ($navigation === 'true') : ?>
+                    swiperOptions.navigation = {
+                        nextEl: "#" + targetId + " .swiper-button-next",
+                        prevEl: "#" + targetId + " .swiper-button-prev",
+                    };
+                <?php endif; ?>
+
+                // Instantiate Swiper purely on this shortcode's footprint
+                new Swiper('#' + targetId, swiperOptions);
+            });
+        </script>
     <?php
     }
     return ob_get_clean();
