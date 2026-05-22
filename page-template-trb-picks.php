@@ -12,6 +12,9 @@
         --trb-coral: #F77D67;
     }
 
+    #trb-page hr {
+        border-color: #E1E1E1;
+    }
 
     @media (min-width: 1500px) {
         #trb-page .container {
@@ -202,6 +205,7 @@
     <?php get_template_part('sections/page-title') ?>
     <?php get_template_part('sections/category-navigation') ?>
     <?php get_template_part('sections/product-tabs') ?>
+    <hr>
 </main>
 
 <?php get_footer() ?>
