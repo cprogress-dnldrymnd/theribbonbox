@@ -2,7 +2,7 @@
     <div class="container">
         <div class="inner">
             <h2 class="trb-wine-color large-heading mb-5">Wellbeing</h2>
-            <div class="row gap-3 gap-lg-5">
+            <div class="row g-3 g-lg-5">
                 <div class="col-lg-7">
                     <div class="image-box">
                         <img src="https://theribbonbox.com/wp-content/uploads/2026/05/Path-21.png" alt="">
