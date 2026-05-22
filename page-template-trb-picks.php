@@ -12,6 +12,30 @@
         --trb-coral: #F77D67;
     }
 
+    @media (min-width: 1800px) {
+        #trb-page .container {
+            max-width: 1820px;
+        }
+    }
+
+    @media (min-width: 1700px) {
+        #trb-page .container {
+            max-width: 1620px;
+        }
+    }
+
+    @media (min-width: 1600px) {
+        #trb-page .container {
+            max-width: 1520px;
+        }
+    }
+
+    @media (min-width: 1500px) {
+        #trb-page .container {
+            max-width: 1420px;
+        }
+    }
+
     .trb-green-color {
         color: var(--trb-green);
     }
@@ -112,8 +136,10 @@
         padding-top: 1rem;
     }
 </style>
-<?php get_template_part('sections/navigation') ?>
-<?php get_template_part('sections/page-title') ?>
-<?php get_template_part('sections/category-navigation') ?>
+<main id="trb-page">
+    <?php get_template_part('sections/navigation') ?>
+    <?php get_template_part('sections/page-title') ?>
+    <?php get_template_part('sections/category-navigation') ?>
+</main>
 
 <?php get_footer() ?>
