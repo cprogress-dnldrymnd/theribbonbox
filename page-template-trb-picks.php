@@ -156,6 +156,7 @@
     .nav-tabs.nav-tabs {
         margin: 0;
         padding: 0;
+        border: none;
     }
 
     .nav-tabs.nav-tabs .nav-link {
