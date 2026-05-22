@@ -3,9 +3,9 @@
         <div class="inner">
             <div class="row">
                 <div class="col">
-                    <a href="">
-                        <span class="cat-decor">JUMP TO</span>
-                        <div class="cat-text">Wellbeing</div>
+                    <a href="" class="cat-nav-holder">
+                        <span class="cat-decor trb-coral-color text-uppercase">JUMP TO</span>
+                        <div class="cat-text trb-green-color">Wellbeing</div>
                     </a>
                 </div>
             </div>

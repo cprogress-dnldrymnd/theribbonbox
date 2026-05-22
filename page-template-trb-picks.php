@@ -6,8 +6,19 @@
 ?>
 <?php get_header() ?>
 <style>
-    .trb-accent-2 {
-        color: var(--trb-accent-2);
+    :root {
+        --trb-green: #034146;
+        --trb-wine: #3B1527;
+        --trb-coral: #F77D67;
+    }
+    .trb-green-color {
+        color: var(--trb-green);
+    }
+    .trb-wine-color {
+        color: var(--trb-wine);
+    }
+    .trb-coral-color {
+        color: var(--trb-coral);
     }
     .trb-picks-nav {
         padding-top: 1rem;
@@ -50,7 +61,28 @@
     .post-main-content p, p.text, .expert-inner p, .category-inner-pop-text p, .desc p, .post-excerpt, .bbp-forum-content, .bbp-reply-content p, .bio p, .activity-item p, .blog-l-text p {
         font-size: 1rem !important;
     }
+
+    .category-navigation .inner {
+        background-color: #EDF7F6;;
+    }
+    .cat-nav-holder {
+        display: flex;
+        flex-direction: column;
+    }
+    .cat-decor {
+        font-weight: 600;
+        padding-bottom: 1rem;
+    }
+    .cat-text {
+        font-family: Playfair Display, serif;
+        font-size: 2rem;
+        font-weight: bold;
+        border-top: 1px solid;
+        padding-top: 1rem;
+    }
 </style>
 <?php get_template_part('sections/navigation') ?>
 <?php get_template_part('sections/page-title') ?>
+<?php get_template_part('sections/category-navigation') ?>
+
 <?php get_footer() ?>
