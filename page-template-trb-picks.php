@@ -157,6 +157,7 @@
         margin: 0;
         padding: 0;
         border: none;
+        margin-bottom: 1px;
     }
 
     .nav-tabs.nav-tabs .nav-link {
@@ -169,11 +170,11 @@
         font-weight: bold;
         height: auto;
         text-transform: initial;
-        border-bottom: 4px solid transparent;
+        border-bottom: 4px solid transparent !important;
     }
 
     .nav-tabs.nav-tabs .nav-link.active {
-        border-color: var(--trb-wine);
+        border-color: var(--trb-wine) !important;
     }
 
     .nav-tabs-holder {
