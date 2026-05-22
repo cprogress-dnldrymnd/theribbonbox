@@ -64,6 +64,7 @@
 
     .category-navigation .inner {
         background-color: #EDF7F6;;
+        padding-block: clamp(2rem, 6vw, 115px);
     }
     .cat-nav-holder {
         display: flex;
