@@ -10,7 +10,7 @@
         right: 0;
     }
 </style>
-<section class="two-columns trb-bg-wine">
+<section class="two--columns trb-bg-wine">
     <div class="container">
         <div class="inner">
             <h2 class="trb-petal-color large-heading mb-5 trb-petal-color">Fertility</h2>
