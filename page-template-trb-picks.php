@@ -152,6 +152,14 @@
         border-top: 1px solid var(--trb-green);
         padding-top: 1rem;
     }
+
+    .nav-tabs {
+        
+    }
+
+    .nav-tabs-holder {
+        border-bottom: 1px solid var(--trb-wine);
+    }
 </style>
 <main id="trb-page">
     <?php get_template_part('sections/navigation') ?>
