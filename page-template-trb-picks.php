@@ -156,6 +156,7 @@
     .nav-tabs.nav-tab {
         margin: 0;
         padding: 0;
+        margin-bottom: 2rem;
 
     }
 
