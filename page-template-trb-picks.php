@@ -187,6 +187,10 @@
     .nav-tabs-holder .button-box {
         padding-bottom: 1rem;
     }
+
+    .nav-tabs-holder .button-box a {
+        color: var(--trb-wine)
+    }
 </style>
 <main id="trb-page">
     <?php get_template_part('sections/navigation') ?>
