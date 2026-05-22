@@ -271,6 +271,7 @@ function product_widget($atts)
     
     $products = get_field('products', $id);
     $carousel_style = get_field('carousel_style', $id);
+    $hide_title = get_field('hide_title', $id);
 
     if ($products) {
         // Retrieve ACF fields and strictly cast to correct data types
@@ -295,6 +296,8 @@ function product_widget($atts)
         $spv_desktop_val = get_field('slidesperview_desktop', $id);
         $spv_desktop = (is_numeric($spv_desktop_val) && $spv_desktop_val !== '') ? intval($spv_desktop_val) : 4;
 
+
+
         // Compile the Swiper configuration strictly in PHP to prevent JS syntax breakage
         $swiper_config = array(
             'loop'         => $loop,
@@ -313,7 +316,9 @@ function product_widget($atts)
 
         // Standard structural HTML output
         echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
-        echo '<h2>' . get_the_title($id) . '</h2>';
+        if (!$hide_title) {
+            echo '<h2>' . get_the_title($id) . '</h2>';
+        }
         echo '<div class="product-widget--outer" id="' . $unique_id . '">';
         echo '<div class="product-widget--inner">';
         
