@@ -5,7 +5,7 @@
                 <a class="trb-picks-nav-title">TRB Picks</a>
             </div>
             <div class="col-lg-6 text-center">
-                <nav class="trb-picks-nav-menu">
+                <nav class="trb-picks-nav-menu text-white">
                     <ul class="d-flex align-items-center m-0">
                         <li><a href="#">All</a></li>
                         <li><a href="#">Movies</a></li>
