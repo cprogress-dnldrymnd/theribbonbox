@@ -1,4 +1,4 @@
-<section class="two-columns trb-bg-wine">
+<section class="two--columns trb-bg-wine">
     <div class="container">
         <div class="inner">
             <h2 class="trb-wine-color large-heading mb-5 ">Wellbeing</h2>
