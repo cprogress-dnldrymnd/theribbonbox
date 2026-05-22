@@ -316,8 +316,8 @@ function product_widget($atts)
         
         if ($carousel_first_image) {
             $carousel_first_image_url = wp_get_attachment_image_url($carousel_first_image, 'large');
-            echo '<div class="product-widget--box swiper-slide">'; 
-            echo '<div class="product-widget--image"><img src="' . esc_url($carousel_first_image_url) . '" alt="' . esc_attr($carousel_first_image['alt']) . '"></div>';
+            echo '<div class="product-widget--box product-widget-image swiper-slide">'; 
+            echo '<img src="' . esc_url($carousel_first_image_url) . '" alt="' . esc_attr($carousel_first_image['alt']) . '">';
             echo '</div>';
         }
         foreach ($products as $product) {
