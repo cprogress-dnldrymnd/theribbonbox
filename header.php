@@ -652,6 +652,26 @@
             background-color: var(--bg-color);
         }
 
+        .product-widget--holder {
+            position: relative;
+        }
+
+        .product-widget--holder .swiper-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            color: var(--trb-winte);
+        }
+
+        .product-widget--holder .swiper-button.swiper-button-next-trb {
+            right: 0;
+        }
+
+        .product-widget--holder .swiper-button.swiper-button-prev-trb {
+            left: 0;
+        }
+
         /*responsive*/
 
         @media(min-width: 1001px) {
