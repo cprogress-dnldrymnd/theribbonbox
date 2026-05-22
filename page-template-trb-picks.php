@@ -19,6 +19,8 @@
 
     .trb-picks-nav nav ul {
         font-family: Work Sans, sans-serif;
+        font-size: 15px;
+        text-transform: uppercase;
     }
 
     .picks-nav-title {
