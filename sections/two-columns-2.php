@@ -10,7 +10,7 @@
         right: 0;
     }
 </style>
-<section class="two--columns trb-bg-wine pt-5">
+<section class="two--columns trb-bg-wine pt-5 pb-5">
     <div class="container">
         <div class="inner">
             <h2 class="trb-petal-color large-heading mb-5 trb-petal-color">Fertility</h2>
@@ -30,7 +30,7 @@
         </div>
     </div>
 </section>
-<div class="product-tabs product-tabs--light pt- product-tabs-fertility pt-5 trb-mb-medium position-relative">
+<div class="product-tabs product-tabs--light pt- product-tabs-fertility trb-mb-medium position-relative">
     <div class="container position-relative">
         <div class="nav-tabs-holder">
 
