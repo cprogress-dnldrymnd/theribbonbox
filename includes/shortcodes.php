@@ -346,7 +346,7 @@ function product_widget($atts)
             echo '<div class="product-widget--image"><a href="' . esc_url($url) . '"> ' . $product_obj->get_image() . '</a></div>';
             echo '<div class="product-widget--content">';
             echo '<div class="product-price">' . $price . '</div>';
-            echo '<h3>' . $product_obj->get_name() . '</h3>';
+            echo '<h3 class="product-name">' . $product_obj->get_name() . '</h3>';
             echo '<div><a href="' . esc_url($url) . '"> ' . esc_html($button_text) . ' </a></div>';
             echo '</div>';
             echo '</div>'; 
