@@ -90,6 +90,10 @@
         padding-bottom: 5rem;
     }
 
+    .page-title .inner {
+        max-width: 1050px;
+    }
+
     .page-title h1 {
         font-size: 3rem;
         font-weight: bold;
