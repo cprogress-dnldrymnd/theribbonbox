@@ -256,7 +256,7 @@ function product_widget($atts)
             $atts
         )
     );
-    
+
     $products = get_field('products', $id);
     $carousel_style = get_field('carousel_style', $id);
     $hide_title = get_field('hide_title', $id);
@@ -266,13 +266,13 @@ function product_widget($atts)
         // Retrieve ACF fields and strictly cast to correct boolean data types
         $nav_val = get_field('navigation', $id);
         $navigation = ($nav_val === true || $nav_val === '1' || $nav_val === 'true') ? true : false;
-        
+
         $pag_val = get_field('pagination', $id);
-        $pagination = ($pag_val === false || $pag_val === '0' || $pag_val === 'false' || $pag_val === 0) ? false : true; 
-        
+        $pagination = ($pag_val === false || $pag_val === '0' || $pag_val === 'false' || $pag_val === 0) ? false : true;
+
         $loop_val = get_field('loop', $id);
-        $loop = ($loop_val === false || $loop_val === '0' || $loop_val === 'false' || $loop_val === 0) ? false : true; 
-        
+        $loop = ($loop_val === false || $loop_val === '0' || $loop_val === 'false' || $loop_val === 0) ? false : true;
+
         // Retrieve responsive breakpoints and enforce strict integer types
         $space_val = get_field('spacebetween', $id);
         $space = (is_numeric($space_val) && $space_val !== '') ? intval($space_val) : 20;
@@ -305,24 +305,24 @@ function product_widget($atts)
 
         // Standard structural HTML output
         echo '<div class="product-widget--holder ' . esc_attr($carousel_style) . '">';
-        
+
         if (!$hide_title) {
             echo '<h2>' . get_the_title($id) . '</h2>';
         }
-        
+
         // Begin Swiper Container
         echo '<div class="product-widget--outer" id="' . $unique_id . '">';
         echo '<div class="product-widget--inner">';
-        
+
         if ($carousel_first_image) {
             $carousel_first_image_url = wp_get_attachment_image_url($carousel_first_image, 'large');
-            echo '<div class="product-widget--box product-widget-image swiper-slide">'; 
+            echo '<div class="product-widget--box product-widget-image swiper-slide">';
             echo '<img src="' . esc_url($carousel_first_image_url) . '" alt="' . esc_attr($carousel_first_image['alt']) . '">';
             echo '</div>';
         }
         foreach ($products as $product) {
             $product_obj = wc_get_product($product);
-            
+
             if (!$product_obj) continue; // Bypass processing if product object fails to load
 
             if ($product_obj->is_type('external')) {
@@ -342,14 +342,14 @@ function product_widget($atts)
                 $price = $product_obj->get_price_html();
             }
 
-            echo '<div class="product-widget--box">'; 
+            echo '<div class="product-widget--box">';
             echo '<div class="product-widget--image"><a href="' . esc_url($url) . '"> ' . $product_obj->get_image() . '</a></div>';
             echo '<div class="product-widget--content">';
             echo '<div class="product-price">' . $price . '</div>';
             echo '<h3 class="product-name">' . $product_obj->get_name() . '</h3>';
             echo '<div><a href="' . esc_url($url) . '"> ' . esc_html($button_text) . ' </a></div>';
             echo '</div>';
-            echo '</div>'; 
+            echo '</div>';
         }
         echo '</div>'; // Close product-widget--inner (swiper-wrapper)
 
@@ -364,14 +364,14 @@ function product_widget($atts)
         // Elements are bound with isolated IDs to guarantee accurate JS targeting.
         if ($navigation) {
             echo '<div id="' . $unique_id . '-next" class="swiper-button swiper-button-next-trb"><svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_41" data-name="Group 41" transform="translate(-871 -4259)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"></circle> <circle cx="26.5" cy="26.5" r="26" fill="none"></circle> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor"></path> </g> </svg></div>';
-            
+
             echo '<div id="' . $unique_id . '-prev" class="swiper-button swiper-button-prev-trb"><svg xmlns="http://www.w3.org/2000/svg" id="Component_3_1" data-name="Component 3 – 1" width="53" height="53" viewBox="0 0 53 53"> <g id="Group_42" data-name="Group 42" transform="translate(924 4312) rotate(180)"> <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(871 4259)" fill="none" stroke="currentColor" stroke-width="1"> <circle cx="26.5" cy="26.5" r="26.5" stroke="none"></circle> <circle cx="26.5" cy="26.5" r="26" fill="none"></circle> </g> <path id="Path_28" data-name="Path 28" d="M4756.17,1529.5l12.3,12.3-12.3,12.3" transform="translate(-3862.67 2743.696)" fill="currentColor"></path> </g> </svg></div>';
         }
 
         echo '</div>'; // Close product-widget--holder
 
         // Output isolated JS configuration
-        ?>
+    ?>
         <script>
             jQuery(document).ready(function($) {
                 var targetId = '<?php echo $unique_id; ?>';
@@ -380,12 +380,12 @@ function product_widget($atts)
 
                 // Bail out gracefully if the container dictates a disabled state
                 if ($holder.hasClass('disable-carousel') || $holder.hasClass('grid-layout')) {
-                    return; 
+                    return;
                 }
 
                 // Prevent duplication bugs
                 if ($outer.hasClass('swiper-initialized') || $outer.hasClass('swiper')) {
-                    return; 
+                    return;
                 }
 
                 // Inject CSS classes identically to original logic
@@ -398,27 +398,27 @@ function product_widget($atts)
 
                 // Conditionally append DOM targeting for pagination
                 <?php if ($pagination) : ?>
-                swiperOptions.pagination = {
-                    el: "#" + targetId + " .swiper-pagination",
-                    clickable: true,
-                };
+                    swiperOptions.pagination = {
+                        el: "#" + targetId + " .swiper-pagination",
+                        clickable: true,
+                    };
                 <?php endif; ?>
 
                 // Conditionally append DOM targeting for navigation using the newly bound IDs
                 <?php if ($navigation) : ?>
-                swiperOptions.navigation = {
-                    nextEl: "#" + targetId + "-next",
-                    prevEl: "#" + targetId + "-prev",
-                };
+                    swiperOptions.navigation = {
+                        nextEl: "#" + targetId + "-next",
+                        prevEl: "#" + targetId + "-prev",
+                    };
                 <?php endif; ?>
 
                 // Time-delay to allow browser CSS repaint before Swiper dimension calculation
                 setTimeout(function() {
                     new Swiper('#' + targetId, swiperOptions);
-                }, 50); 
+                }, 50);
             });
         </script>
-        <?php
+    <?php
     }
     return ob_get_clean();
 }
@@ -690,83 +690,84 @@ function giveaway_list_swiper($attr)
         )
     ));
     $wp_unique_id = wp_unique_id();
-                    
+    if ($recent_posts) {
     ?>
 
-    <div class="giveaways-carousel trb-px ">
-        <div class="giveaways-carousel-inner">
-            <h2>Giveaways</h2>
-            <div class="swiper swiper-post-slider-v2">
-                <div class="swiper-wrapper">
-                    <?php
-                    foreach ($recent_posts as $post) {
-                        $select_competition_date = get_field("select_competition_date", $post['ID']);
-                        $date = $select_competition_date;
-                        $time = strtotime($date);
-                        $displayformatB = date('j M Y', $time);
-                        $categories = get_the_category($post['ID']);
-                        $currentcat = $categories[0]->cat_ID;
-                        $currentcatname = $categories[0]->cat_name;
-                        $display_form_on_homepage = get_field('display_form_on_homepage', $post['ID']);
+        <div class="giveaways-carousel trb-px ">
+            <div class="giveaways-carousel-inner">
+                <h2>Giveaways</h2>
+                <div class="swiper swiper-post-slider-v2">
+                    <div class="swiper-wrapper">
+                        <?php
+                        foreach ($recent_posts as $post) {
+                            $select_competition_date = get_field("select_competition_date", $post['ID']);
+                            $date = $select_competition_date;
+                            $time = strtotime($date);
+                            $displayformatB = date('j M Y', $time);
+                            $categories = get_the_category($post['ID']);
+                            $currentcat = $categories[0]->cat_ID;
+                            $currentcatname = $categories[0]->cat_name;
+                            $display_form_on_homepage = get_field('display_form_on_homepage', $post['ID']);
 
-                    ?>
+                        ?>
 
-                        <div class="swiper-slide">
-                            <div class="row g-0">
-                                <div class="col-lg-6">
-                                    <div class="giveaway-details">
-                                        <div class="giveaway-details-inner">
-                                            <h3><?= get_the_title($post['ID']) ?></h3>
+                            <div class="swiper-slide">
+                                <div class="row g-0">
+                                    <div class="col-lg-6">
+                                        <div class="giveaway-details">
+                                            <div class="giveaway-details-inner">
+                                                <h3><?= get_the_title($post['ID']) ?></h3>
 
-                                            <?php if (isDatePast($displayformatB) != false) { ?>
-                                                <?php if ($display_form_on_homepage) { ?>
-                                                    <div class="giveaway-form-email">
-                                                        <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
-                                                    </div>
+                                                <?php if (isDatePast($displayformatB) != false) { ?>
+                                                    <?php if ($display_form_on_homepage) { ?>
+                                                        <div class="giveaway-form-email">
+                                                            <?= do_shortcode('[wpforms id="40566" title="false"]') ?>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="button-box button-box-v2 button-accent">
+                                                            <a href="<?= get_the_permalink($post['ID']) ?>">Enter Now</a>
+                                                        </div>
+                                                    <?php } ?>
                                                 <?php } else { ?>
                                                     <div class="button-box button-box-v2 button-accent">
-                                                        <a href="<?= get_the_permalink($post['ID']) ?>">Enter Now</a>
+                                                        <a href="<?= get_the_permalink($post['ID']) ?>">Giveaway Closed</a>
                                                     </div>
                                                 <?php } ?>
-                                            <?php } else { ?>
-                                                <div class="button-box button-box-v2 button-accent">
-                                                    <a href="<?= get_the_permalink($post['ID']) ?>">Giveaway Closed</a>
-                                                </div>
-                                            <?php } ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="post-image image-box">
+                                            <a href="<?= get_the_permalink($post['ID']) ?>">
+                                                <?= get_the_post_thumbnail($post['ID'], 'large') ?>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="post-image image-box">
-                                        <a href="<?= get_the_permalink($post['ID']) ?>">
-                                            <?= get_the_post_thumbnail($post['ID'], 'large') ?>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                    <?php
-                    }
-                    wp_reset_query();
-                    ?>
+                        <?php
+                        }
+                        wp_reset_query();
+                        ?>
+                    </div>
+                    <?= swiper_navigation($wp_unique_id) ?>
                 </div>
-                <?= swiper_navigation($wp_unique_id) ?>
             </div>
         </div>
-    </div>
 
-    <script>
-        var swiper = new Swiper(".swiper-post-slider-v2", {
-            slidesPerView: 1,
+        <script>
+            var swiper = new Swiper(".swiper-post-slider-v2", {
+                slidesPerView: 1,
 
-            navigation: {
-                nextEl: ".swiper-button-next-<?= $wp_unique_id ?>",
-                prevEl: ".swiper-button-prev-<?= $wp_unique_id ?>",
-            },
-        });
-    </script>
+                navigation: {
+                    nextEl: ".swiper-button-next-<?= $wp_unique_id ?>",
+                    prevEl: ".swiper-button-prev-<?= $wp_unique_id ?>",
+                },
+            });
+        </script>
 
-<?php
+    <?php
+    }
     return ob_get_clean();
 }
 add_shortcode('giveaway_list_swiper', 'giveaway_list_swiper');
@@ -788,7 +789,7 @@ function swiper_navigation($class)
 function become_insider()
 {
     ob_start();
-?>
+    ?>
     <div class="become-insider">
         <div class="become-insider-inner trb-px mw-large">
             <div class="row g-3 g-lg-5 justify-content-between align-items-center">
