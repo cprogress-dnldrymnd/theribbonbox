@@ -159,6 +159,15 @@ function get_socials_function($atts)
 add_shortcode('get_socials', 'get_socials_function');
 
 
+/**
+ * Retrieves and formats recent events, giveaways, or offers based on shortcode attributes.
+ * Determines if the event is active by comparing the competition/offer date against the current date,
+ * dynamically adjusting labels and button text accordingly.
+ *
+ * @author Digitally Disruptive - Donald Raymundo <https://digitallydisruptive.co.uk/>
+ * @param array $attr Shortcode attributes (categoryid, limit, format, post_type, post_id, style_format).
+ * @return string Formatted HTML output for the event or giveaway section.
+ */
 function get_giveaway_event_function($attr)
 {
 
@@ -222,9 +231,8 @@ function get_giveaway_event_function($attr)
     }
 
 
-
     $rtn = '<div class="white-event-section event-giveaway-outer ' . $style_format . '">';
-    $rtn .= '<div class="event-giveaway-inner xx2">';
+    $rtn .= '<div class="event-giveaway-inner">';
 
     foreach ($recent_posts as $post) :
         $categories = get_the_category($post["ID"]);
@@ -316,7 +324,19 @@ function get_giveaway_event_function($attr)
             if (!empty($offer_expired_text)):
                 $date_txt = $offer_expired_text . " ";
             endif;
-
+            
+            // Override the button text if the event/offer has expired
+            if (!$live_post) {
+                if ($post_type == "giveaway-items") {
+                    $button_text = "Giveaway Closed";
+                } elseif ($post_type == "events") {
+                    $button_text = "Event Ended";
+                } elseif ($post_type == "offer-items") {
+                    $button_text = "Offer Expired";
+                } else {
+                    $button_text = "Closed";
+                }
+            }
 
             //$ex_txt = '<h3 class="date-giveaways">'.$date_txt.$displayformat . '</h3>';ENTRIES CLOSE
             $ex_txt = '<h3 class="date-giveaways">ENTRIES CLOSE ' . $displayformatB . '</h3>';
