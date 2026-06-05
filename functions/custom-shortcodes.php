@@ -224,7 +224,7 @@ function get_giveaway_event_function($attr)
 
 
     $rtn = '<div class="white-event-section event-giveaway-outer ' . $style_format . '">';
-    $rtn .= '<div class="event-giveaway-inner">';
+    $rtn .= '<div class="event-giveaway-inner xx2">';
 
     foreach ($recent_posts as $post) :
         $categories = get_the_category($post["ID"]);
