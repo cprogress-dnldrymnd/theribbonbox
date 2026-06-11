@@ -51,6 +51,7 @@
 #trb-page-builder h3:not(.product-name) {
     font-weight: bold;
     font-size: 2.625rem;
+    color: inherit;
 }
 
 #trb-page-builder .trb-mb-large {
@@ -100,6 +101,7 @@
 #trb-page-builder .large-heading {
     font-size: clamp(3rem, 5.5vw, 110px);
     font-weight: bold;
+    color: inherit;
 }
 
 #trb-page-builder .rounded {
@@ -197,7 +199,7 @@
 }
 
 #trb-page-builder .nav-tabs-holder-inner {
-    border-bottom: 1px solid var(--trb-wine);
+    border-bottom: 1px solid currentColor;
     margin-bottom: 2rem;
     margin-inline: auto;
     line-height: 1;
