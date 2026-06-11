@@ -64,7 +64,7 @@ function trb_offer_items_taxonomies() {
         list( $singular, $plural ) = $names;
 
         register_taxonomy( $slug, 'offer-items', array(
-            'hierarchical'      => false, // tags-style
+            'hierarchical'      => true, 
             'labels'            => array(
                 'name'                       => $plural,
                 'singular_name'              => $singular,

@@ -19,6 +19,8 @@ $description = $section['description'] ?? '';
 $per_page    = max(1, absint($section['per_page'] ?? 15));
 $top_banner  = absint($section['top_banner'] ?? 0);
 $top_banner_link = $section['top_banner_link'] ?? '';
+$bottom_banner = absint($section['bottom_banner'] ?? 0);
+$bottom_banner_link = $section['bottom_banner_link'] ?? '';
 
 $sidebar_ads = isset($section['sidebar_ads']) && is_array($section['sidebar_ads']) ? $section['sidebar_ads'] : array();
 $grid_ads    = isset($section['grid_ads']) && is_array($section['grid_ads']) ? $section['grid_ads'] : array();
@@ -204,6 +206,10 @@ $js_config = array(
                     </div>
                     <div class="offer-filter-loading" hidden><span class="offer-filter-spinner"></span></div>
                 </div>
+
+                <?php if ($bottom_banner) :
+                    echo trb_render_offer_ad($bottom_banner, $bottom_banner_link, 'large', 'offer-filter-ad offer-filter-ad--banner'); ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>

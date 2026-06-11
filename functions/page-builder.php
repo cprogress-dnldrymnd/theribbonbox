@@ -276,6 +276,15 @@ function trb_builder_section_types()
                     'type' => 'text',
                     'label' => 'Top Banner Link (optional)',
                 ),
+                'bottom_banner' => array(
+                    'type' => 'image',
+                    'label' => 'Bottom Banner Ad (optional)',
+                    'help' => 'Wide sponsored image shown below the results grid.',
+                ),
+                'bottom_banner_link' => array(
+                    'type' => 'text',
+                    'label' => 'Bottom Banner Link (optional)',
+                ),
                 'sidebar_ads' => array(
                     'type' => 'repeater',
                     'label' => 'Sidebar Sponsored Images',
