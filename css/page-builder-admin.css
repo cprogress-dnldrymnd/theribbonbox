@@ -2,11 +2,18 @@
 /* TRB Page Builder — admin meta box styles
 /*-----------------------------------------------------------------------------------*/
 
+#trb-builder .trb-builder-intro {
+    margin: 0 0 14px;
+}
+
+/* ----------------------------------------------------------------------- cards */
+
 #trb-builder .trb-builder-card {
-    border: 1px solid #dcdcde;
+    border: 1px solid #c3c4c7;
     background: #fff;
-    margin-bottom: 10px;
-    border-radius: 4px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 #trb-builder .trb-builder-card-header {
@@ -16,6 +23,12 @@
     padding: 10px 12px;
     background: #f6f7f7;
     border-bottom: 1px solid #dcdcde;
+    border-radius: 6px 6px 0 0;
+}
+
+#trb-builder .trb-builder-card.is-collapsed .trb-builder-card-header {
+    border-bottom: none;
+    border-radius: 6px;
 }
 
 #trb-builder .trb-builder-drag {
@@ -24,27 +37,68 @@
 }
 
 #trb-builder .trb-builder-card-title {
-    flex: 1;
+    flex: 0 0 auto;
+    font-size: 13px;
+}
+
+#trb-builder .trb-builder-card-summary {
+    flex: 1 1 auto;
+    color: #646970;
+    font-style: italic;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #trb-builder .trb-builder-card-actions {
     display: flex;
-    gap: 12px;
+    gap: 4px;
+    flex: 0 0 auto;
 }
 
-#trb-builder .trb-builder-card-actions .button-link-delete {
+#trb-builder .trb-builder-card-actions .button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    color: #50575e;
+    text-decoration: none;
+}
+
+#trb-builder .trb-builder-card-actions .button-link:hover {
+    background: #e9eaeb;
+}
+
+#trb-builder .trb-builder-card-actions .trb-builder-remove:hover {
     color: #b32d2e;
 }
 
-#trb-builder .trb-builder-card-body {
-    padding: 12px;
+#trb-builder .trb-builder-card-actions .dashicons {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    transition: transform 0.15s ease;
 }
+
+#trb-builder .trb-builder-card.is-collapsed .trb-builder-toggle .dashicons {
+    transform: rotate(180deg);
+}
+
+#trb-builder .trb-builder-card-body {
+    padding: 14px 14px 4px;
+}
+
+/* ---------------------------------------------------------------------- fields */
 
 #trb-builder .trb-builder-field {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
-#trb-builder .trb-builder-field label {
+#trb-builder .trb-builder-field-label,
+#trb-builder .trb-builder-field > label:not(.trb-builder-checkbox-label) {
     display: block;
     font-weight: 600;
     margin-bottom: 4px;
@@ -54,29 +108,128 @@
     font-weight: 600;
 }
 
+#trb-builder .trb-builder-help {
+    display: block;
+    margin-top: 4px;
+    color: #646970;
+}
+
+#trb-builder .trb-builder-select {
+    min-width: 240px;
+    max-width: 100%;
+}
+
 #trb-builder .trb-builder-image-preview img {
     display: block;
     margin-bottom: 8px;
     max-width: 150px;
     height: auto;
     border: 1px solid #dcdcde;
+    border-radius: 4px;
 }
 
 #trb-builder .trb-builder-card.is-collapsed .trb-builder-card-body {
     display: none;
 }
 
+/* select2 / selectWoo inside the meta box */
+#trb-builder .select2-container {
+    max-width: 100%;
+}
+
+/* ------------------------------------------------------------------- repeater */
+
+#trb-builder .trb-builder-repeater-rows {
+    margin-bottom: 8px;
+}
+
+#trb-builder .trb-builder-repeater-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px;
+    background: #f6f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 6px;
+}
+
+#trb-builder .trb-builder-repeater-drag {
+    cursor: grab;
+    color: #a7aaad;
+    margin-top: 6px;
+}
+
+#trb-builder .trb-builder-repeater-cols {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#trb-builder .trb-builder-repeater-col {
+    flex: 1 1 160px;
+    display: block;
+    font-weight: 400;
+}
+
+#trb-builder .trb-builder-repeater-col > span {
+    display: block;
+    font-size: 11px;
+    color: #646970;
+    margin-bottom: 2px;
+}
+
+#trb-builder .trb-builder-repeater-col input {
+    width: 100%;
+}
+
+#trb-builder .trb-builder-repeater-remove {
+    flex: 0 0 auto;
+    border: none;
+    background: transparent;
+    color: #b32d2e;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+#trb-builder .trb-builder-repeater-remove:hover {
+    background: #fcebec;
+}
+
+/* ------------------------------------------------------------------- sortable */
+
 #trb-builder .trb-builder-card-placeholder {
     border: 2px dashed #c3c4c7;
     background: #f0f0f1;
-    margin-bottom: 10px;
-    border-radius: 4px;
+    margin-bottom: 12px;
+    border-radius: 6px;
     height: 50px;
+}
+
+/* -------------------------------------------------------------------- toolbar */
+
+#trb-builder .trb-builder-empty {
+    padding: 16px;
+    background: #f6f7f7;
+    border: 1px dashed #c3c4c7;
+    border-radius: 6px;
+    color: #646970;
+    text-align: center;
 }
 
 #trb-builder .trb-builder-toolbar {
     margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e0e0e0;
     display: flex;
     gap: 8px;
     align-items: center;
+}
+
+#trb-builder .trb-builder-toolbar select {
+    min-width: 220px;
 }

@@ -7,6 +7,22 @@
 
 /**
  * Registry of available section types and their editable fields.
+ *
+ * Field schema keys:
+ *   type       text | textarea | checkbox | select | number | image | post_select | term_select | repeater
+ *   label      Field label shown to the editor.
+ *   help       Optional helper text shown under the field.
+ *   rows       (textarea) number of rows.
+ *   options    (select) value => label map.
+ *   default    Default value.
+ *   allow_html (text/textarea) keep safe HTML instead of stripping it.
+ *   post_type  (post_select) which post type to list.
+ *   taxonomy   (term_select) which taxonomy to list.
+ *   sub_fields (repeater) nested field schema.
+ *   button     (repeater) "Add" button label.
+ *   summary    If true, the field's value is shown in the collapsed card header.
+ *   show_when  array('field' => slug, 'value' => x) — only show this field when another
+ *              field in the same section equals the given value.
  */
 function trb_builder_section_types()
 {
@@ -16,9 +32,11 @@ function trb_builder_section_types()
             'fields' => array(
                 'heading' => array(
                     'type' => 'textarea',
-                    'label' => 'Heading (HTML allowed, e.g. <i>italic</i>)',
+                    'label' => 'Heading',
                     'rows' => 2,
                     'allow_html' => true,
+                    'summary' => true,
+                    'help' => 'Basic HTML allowed, e.g. <i>italic</i>.',
                 ),
                 'description' => array(
                     'type' => 'textarea',
@@ -36,9 +54,13 @@ function trb_builder_section_types()
             'label' => 'Category Jump Navigation',
             'fields' => array(
                 'links' => array(
-                    'type' => 'textarea',
-                    'label' => 'Links — one per line as: Label | #anchor-id',
-                    'rows' => 5,
+                    'type' => 'repeater',
+                    'label' => 'Jump Links',
+                    'button' => 'Add Link',
+                    'sub_fields' => array(
+                        'label' => array('type' => 'text', 'label' => 'Label'),
+                        'anchor' => array('type' => 'text', 'label' => 'Anchor (e.g. #section-id)'),
+                    ),
                 ),
             ),
         ),
@@ -52,6 +74,7 @@ function trb_builder_section_types()
                 'heading' => array(
                     'type' => 'text',
                     'label' => 'Large Heading',
+                    'summary' => true,
                 ),
                 'subheading' => array(
                     'type' => 'text',
@@ -87,13 +110,14 @@ function trb_builder_section_types()
                 ),
             ),
         ),
-        'product_tabs' => array(
-            'label' => 'Product Tabs',
+        'offer_slider' => array(
+            'label' => 'Offer Slider',
             'fields' => array(
                 'title' => array(
                     'type' => 'text',
-                    'label' => 'Section Title (optional, HTML allowed)',
+                    'label' => 'Section Title (optional)',
                     'allow_html' => true,
+                    'summary' => true,
                 ),
                 'style' => array(
                     'type' => 'select',
@@ -104,18 +128,47 @@ function trb_builder_section_types()
                     ),
                     'default' => 'default',
                 ),
-                'tabs' => array(
-                    'type' => 'textarea',
-                    'label' => 'Tabs — one per line as: Label | Product Widget ID',
-                    'rows' => 5,
+                'source_mode' => array(
+                    'type' => 'select',
+                    'label' => 'Choose offers by',
+                    'options' => array(
+                        'manual' => 'Picking offers manually',
+                        'category' => 'Category',
+                    ),
+                    'default' => 'manual',
                 ),
-                'button_text' => array(
-                    'type' => 'text',
-                    'label' => 'Button Text',
+                'manual_items' => array(
+                    'type' => 'post_select',
+                    'label' => 'Select Offers',
+                    'post_type' => 'offer-items',
+                    'help' => 'Search by name. Slides appear in the order shown here.',
+                    'show_when' => array('field' => 'source_mode', 'value' => 'manual'),
                 ),
-                'button_link' => array(
-                    'type' => 'text',
-                    'label' => 'Button Link',
+                'category' => array(
+                    'type' => 'term_select',
+                    'label' => 'Offer Category',
+                    'taxonomy' => 'category',
+                    'show_when' => array('field' => 'source_mode', 'value' => 'category'),
+                ),
+                'count' => array(
+                    'type' => 'number',
+                    'label' => 'Number of offers to show',
+                    'default' => 8,
+                    'show_when' => array('field' => 'source_mode', 'value' => 'category'),
+                ),
+                'first_image' => array(
+                    'type' => 'image',
+                    'label' => 'Custom First Slide Image (optional)',
+                    'help' => 'Shown as the first slide before the offers.',
+                ),
+                'buttons' => array(
+                    'type' => 'repeater',
+                    'label' => 'Buttons (optional)',
+                    'button' => 'Add Button',
+                    'sub_fields' => array(
+                        'text' => array('type' => 'text', 'label' => 'Button Text'),
+                        'link' => array('type' => 'text', 'label' => 'Button Link'),
+                    ),
                 ),
                 'decorative_bar' => array(
                     'type' => 'checkbox',
@@ -135,6 +188,7 @@ function trb_builder_section_types()
                     'label' => 'Content (HTML allowed)',
                     'rows' => 6,
                     'allow_html' => true,
+                    'summary' => true,
                 ),
             ),
         ),
@@ -155,6 +209,187 @@ function trb_get_builder_sections($post_id)
 }
 
 /**
+ * Render a single input control (no label / wrapper) for a field.
+ */
+function trb_render_control($field_def, $name, $id, $value)
+{
+    switch ($field_def['type']) {
+        case 'textarea':
+            ?>
+            <textarea id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" rows="<?php echo esc_attr($field_def['rows'] ?? 3); ?>" class="widefat"><?php echo esc_textarea($value); ?></textarea>
+            <?php
+            break;
+
+        case 'select':
+            ?>
+            <select id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" class="trb-builder-select">
+                <?php foreach ($field_def['options'] as $opt_value => $opt_label) : ?>
+                    <option value="<?php echo esc_attr($opt_value); ?>" <?php selected($value, $opt_value); ?>><?php echo esc_html($opt_label); ?></option>
+                <?php endforeach; ?>
+            </select>
+            <?php
+            break;
+
+        case 'number':
+            $num = ($value === '' || $value === null) ? ($field_def['default'] ?? '') : $value;
+            ?>
+            <input type="number" min="1" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($num); ?>" class="small-text">
+            <?php
+            break;
+
+        case 'image':
+            $attachment_id = absint($value);
+            ?>
+            <div class="trb-builder-image-field">
+                <div class="trb-builder-image-preview"><?php if ($attachment_id) {
+                    echo wp_get_attachment_image($attachment_id, 'medium');
+                } ?></div>
+                <input type="hidden" class="trb-builder-image-id" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($attachment_id); ?>">
+                <button type="button" class="button trb-builder-image-select">Select Image</button>
+                <button type="button" class="button trb-builder-image-remove" <?php echo $attachment_id ? '' : 'style="display:none;"'; ?>>Remove</button>
+            </div>
+            <?php
+            break;
+
+        case 'post_select':
+            $selected = is_array($value) ? array_map('absint', $value) : array_filter(array_map('absint', explode(',', (string) $value)));
+            $posts = get_posts(array(
+                'post_type' => $field_def['post_type'] ?? 'post',
+                'numberposts' => -1,
+                'orderby' => 'title',
+                'order' => 'ASC',
+                'post_status' => 'publish',
+            ));
+            // Keep manually-selected items in their saved order, then append the rest.
+            $ordered = array();
+            foreach ($selected as $sel_id) {
+                foreach ($posts as $p) {
+                    if ((int) $p->ID === (int) $sel_id) {
+                        $ordered[$sel_id] = $p;
+                    }
+                }
+            }
+            foreach ($posts as $p) {
+                if (!isset($ordered[$p->ID])) {
+                    $ordered[$p->ID] = $p;
+                }
+            }
+            ?>
+            <select multiple class="trb-builder-postselect widefat" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>[]" data-placeholder="Search and select offers…">
+                <?php foreach ($ordered as $p) : ?>
+                    <option value="<?php echo esc_attr($p->ID); ?>" <?php selected(in_array((int) $p->ID, $selected, true)); ?>><?php echo esc_html($p->post_title); ?></option>
+                <?php endforeach; ?>
+            </select>
+            <?php
+            break;
+
+        case 'term_select':
+            $terms = get_terms(array(
+                'taxonomy' => $field_def['taxonomy'] ?? 'category',
+                'hide_empty' => false,
+            ));
+            ?>
+            <select class="trb-builder-termselect" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" data-placeholder="Select a category…">
+                <option value="">— Select a category —</option>
+                <?php if (!is_wp_error($terms)) :
+                    foreach ($terms as $t) : ?>
+                        <option value="<?php echo esc_attr($t->term_id); ?>" <?php selected((int) $value, (int) $t->term_id); ?>><?php echo esc_html($t->name); ?></option>
+                    <?php endforeach;
+                endif; ?>
+            </select>
+            <?php
+            break;
+
+        default: // text
+            ?>
+            <input type="text" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" value="<?php echo esc_attr($value); ?>" class="widefat">
+            <?php
+    }
+}
+
+/**
+ * Render one repeater row.
+ */
+function trb_render_repeater_row($field_key, $field_def, $index, $subindex, $row_values = array())
+{
+    $prefix = "trb_builder[{$index}][{$field_key}][{$subindex}]";
+    ?>
+    <div class="trb-builder-repeater-row">
+        <span class="trb-builder-repeater-drag dashicons dashicons-menu" title="Drag to reorder"></span>
+        <div class="trb-builder-repeater-cols">
+            <?php foreach ($field_def['sub_fields'] as $sub_key => $sub_def) :
+                $sub_id = 'trb-rb-' . $field_key . '-' . $index . '-' . $subindex . '-' . $sub_key;
+                $sub_name = $prefix . "[{$sub_key}]";
+                $sub_value = array_key_exists($sub_key, $row_values) ? $row_values[$sub_key] : ($sub_def['default'] ?? '');
+                ?>
+                <label class="trb-builder-repeater-col">
+                    <span><?php echo esc_html($sub_def['label']); ?></span>
+                    <?php trb_render_control($sub_def, $sub_name, $sub_id, $sub_value); ?>
+                </label>
+            <?php endforeach; ?>
+        </div>
+        <button type="button" class="trb-builder-repeater-remove" title="Remove" aria-label="Remove">&times;</button>
+    </div>
+    <?php
+}
+
+/**
+ * Render a full field (label + wrapper + control) inside a section card.
+ */
+function trb_render_section_field($field_key, $field_def, $index, $values = array())
+{
+    $field_id = 'trb-builder-' . $index . '-' . $field_key;
+    $field_name = "trb_builder[{$index}][{$field_key}]";
+    $value = array_key_exists($field_key, $values) ? $values[$field_key] : ($field_def['default'] ?? '');
+
+    $wrapper_classes = 'trb-builder-field trb-builder-field-' . $field_def['type'];
+    $show_attrs = '';
+    if (!empty($field_def['show_when'])) {
+        $show_attrs = ' data-show-when-field="' . esc_attr($field_def['show_when']['field']) . '" data-show-when-value="' . esc_attr($field_def['show_when']['value']) . '"';
+    }
+    ?>
+    <div class="<?php echo esc_attr($wrapper_classes); ?>"<?php echo $show_attrs; ?>>
+        <?php if ($field_def['type'] === 'checkbox') : ?>
+            <label class="trb-builder-checkbox-label">
+                <input type="checkbox" id="<?php echo esc_attr($field_id); ?>" name="<?php echo esc_attr($field_name); ?>" value="1" <?php checked(!empty($value)); ?>>
+                <?php echo esc_html($field_def['label']); ?>
+            </label>
+
+        <?php elseif ($field_def['type'] === 'repeater') :
+            $rows = is_array($value) ? $value : array(); ?>
+            <label class="trb-builder-field-label"><?php echo esc_html($field_def['label']); ?></label>
+            <div class="trb-builder-repeater" data-field="<?php echo esc_attr($field_key); ?>">
+                <div class="trb-builder-repeater-rows">
+                    <?php foreach ($rows as $sub_i => $row_values) : ?>
+                        <?php trb_render_repeater_row($field_key, $field_def, $index, $sub_i, (array) $row_values); ?>
+                    <?php endforeach; ?>
+                </div>
+                <template class="trb-builder-repeater-tmpl"><?php trb_render_repeater_row($field_key, $field_def, $index, '__SUBINDEX__', array()); ?></template>
+                <button type="button" class="button trb-builder-repeater-add"><?php echo esc_html($field_def['button'] ?? 'Add Row'); ?></button>
+            </div>
+
+        <?php else : ?>
+            <label class="trb-builder-field-label" for="<?php echo esc_attr($field_id); ?>"><?php echo esc_html($field_def['label']); ?></label>
+            <?php
+            if (!empty($field_def['summary'])) {
+                // mark the summary control after render via a wrapper data attribute
+                echo '<span class="trb-builder-summary-src" style="display:contents;">';
+            }
+            trb_render_control($field_def, $field_name, $field_id, $value);
+            if (!empty($field_def['summary'])) {
+                echo '</span>';
+            }
+            ?>
+        <?php endif; ?>
+
+        <?php if (!empty($field_def['help'])) : ?>
+            <span class="description trb-builder-help"><?php echo wp_kses_post($field_def['help']); ?></span>
+        <?php endif; ?>
+    </div>
+    <?php
+}
+
+/**
  * Render a single section "card" in the admin meta box.
  *
  * @param string $type   Section type slug.
@@ -171,11 +406,12 @@ function trb_render_section_card($type, $index, $values = array())
     ?>
     <div class="trb-builder-card" data-type="<?php echo esc_attr($type); ?>">
         <div class="trb-builder-card-header">
-            <span class="trb-builder-drag dashicons dashicons-move" title="Drag to reorder"></span>
+            <span class="trb-builder-drag dashicons dashicons-menu" title="Drag to reorder"></span>
             <strong class="trb-builder-card-title"><?php echo esc_html($def['label']); ?></strong>
+            <span class="trb-builder-card-summary"></span>
             <span class="trb-builder-card-actions">
-                <button type="button" class="button-link trb-builder-toggle">Toggle</button>
-                <button type="button" class="button-link-delete trb-builder-remove">Remove</button>
+                <button type="button" class="button-link trb-builder-toggle" aria-label="Collapse / expand"><span class="dashicons dashicons-arrow-up-alt2"></span></button>
+                <button type="button" class="button-link trb-builder-remove" aria-label="Remove section"><span class="dashicons dashicons-trash"></span></button>
             </span>
         </div>
         <div class="trb-builder-card-body">
@@ -183,47 +419,8 @@ function trb_render_section_card($type, $index, $values = array())
             <?php if (empty($def['fields'])) : ?>
                 <p class="description">No options for this section.</p>
             <?php endif; ?>
-            <?php foreach ($def['fields'] as $field_key => $field_def) :
-                $field_id = 'trb-builder-' . $type . '-' . $index . '-' . $field_key;
-                $field_name = "trb_builder[{$index}][{$field_key}]";
-                $value = array_key_exists($field_key, $values) ? $values[$field_key] : ($field_def['default'] ?? '');
-                ?>
-                <p class="trb-builder-field trb-builder-field-<?php echo esc_attr($field_def['type']); ?>">
-                    <?php if ($field_def['type'] === 'checkbox') : ?>
-                        <label class="trb-builder-checkbox-label">
-                            <input type="checkbox" id="<?php echo esc_attr($field_id); ?>" name="<?php echo esc_attr($field_name); ?>" value="1" <?php checked(!empty($value)); ?>>
-                            <?php echo esc_html($field_def['label']); ?>
-                        </label>
-                    <?php else : ?>
-                        <label for="<?php echo esc_attr($field_id); ?>"><?php echo esc_html($field_def['label']); ?></label>
-                        <?php switch ($field_def['type']) :
-                            case 'textarea': ?>
-                                <textarea id="<?php echo esc_attr($field_id); ?>" name="<?php echo esc_attr($field_name); ?>" rows="<?php echo esc_attr($field_def['rows'] ?? 3); ?>" class="widefat"><?php echo esc_textarea($value); ?></textarea>
-                                <?php break;
-                            case 'select': ?>
-                                <select id="<?php echo esc_attr($field_id); ?>" name="<?php echo esc_attr($field_name); ?>">
-                                    <?php foreach ($field_def['options'] as $opt_value => $opt_label) : ?>
-                                        <option value="<?php echo esc_attr($opt_value); ?>" <?php selected($value, $opt_value); ?>><?php echo esc_html($opt_label); ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <?php break;
-                            case 'image':
-                                $attachment_id = absint($value);
-                                ?>
-                                <div class="trb-builder-image-field">
-                                    <div class="trb-builder-image-preview"><?php if ($attachment_id) {
-                                        echo wp_get_attachment_image($attachment_id, 'medium');
-                                    } ?></div>
-                                    <input type="hidden" class="trb-builder-image-id" id="<?php echo esc_attr($field_id); ?>" name="<?php echo esc_attr($field_name); ?>" value="<?php echo esc_attr($attachment_id); ?>">
-                                    <button type="button" class="button trb-builder-image-select">Select Image</button>
-                                    <button type="button" class="button trb-builder-image-remove" <?php echo $attachment_id ? '' : 'style="display:none;"'; ?>>Remove</button>
-                                </div>
-                                <?php break;
-                            default: ?>
-                                <input type="text" id="<?php echo esc_attr($field_id); ?>" name="<?php echo esc_attr($field_name); ?>" value="<?php echo esc_attr($value); ?>" class="widefat">
-                        <?php endswitch; ?>
-                    <?php endif; ?>
-                </p>
+            <?php foreach ($def['fields'] as $field_key => $field_def) : ?>
+                <?php trb_render_section_field($field_key, $field_def, $index, $values); ?>
             <?php endforeach; ?>
         </div>
     </div>
@@ -240,8 +437,9 @@ function trb_render_page_builder_metabox($post)
     wp_nonce_field('trb_page_builder_save', 'trb_page_builder_nonce');
     ?>
     <div id="trb-builder">
-        <p class="description">
-            These sections render on the front end only when the <strong>Page Builder</strong> page template is selected (Page Attributes &rarr; Template).
+        <p class="description trb-builder-intro">
+            Build the page by adding sections below and dragging them into order. These render on the front end only when the
+            <strong>Page Builder</strong> template is selected (Page Attributes &rarr; Template).
         </p>
         <div id="trb-builder-sections">
             <?php foreach ($sections as $index => $section) :
@@ -252,13 +450,16 @@ function trb_render_page_builder_metabox($post)
                 trb_render_section_card($type, $index, $section);
             endforeach; ?>
         </div>
+        <?php if (empty($sections)) : ?>
+            <p class="trb-builder-empty">No sections yet. Pick a section type below and click <strong>Add Section</strong>.</p>
+        <?php endif; ?>
         <div class="trb-builder-toolbar">
             <select id="trb-builder-add-type">
                 <?php foreach ($types as $slug => $def) : ?>
                     <option value="<?php echo esc_attr($slug); ?>"><?php echo esc_html($def['label']); ?></option>
                 <?php endforeach; ?>
             </select>
-            <button type="button" class="button button-primary" id="trb-builder-add">Add Section</button>
+            <button type="button" class="button button-primary button-hero" id="trb-builder-add">+ Add Section</button>
         </div>
         <div class="trb-builder-templates" style="display:none;">
             <?php foreach ($types as $slug => $def) : ?>
@@ -282,6 +483,31 @@ function trb_add_page_builder_metabox()
         'normal',
         'high'
     );
+}
+
+/**
+ * Sanitize a single scalar value against its field definition.
+ */
+function trb_sanitize_scalar($field_def, $raw)
+{
+    $allow = !empty($field_def['allow_html']);
+    switch ($field_def['type']) {
+        case 'textarea':
+            return $allow ? wp_kses_post($raw) : sanitize_textarea_field($raw);
+        case 'checkbox':
+            return !empty($raw) ? 1 : 0;
+        case 'image':
+            return absint($raw);
+        case 'number':
+            return max(1, absint($raw));
+        case 'term_select':
+            return absint($raw);
+        case 'select':
+            $options = array_keys($field_def['options'] ?? array());
+            return in_array($raw, $options, true) ? $raw : ($field_def['default'] ?? ($options[0] ?? ''));
+        default:
+            return $allow ? wp_kses_post($raw) : sanitize_text_field($raw);
+    }
 }
 
 /**
@@ -315,25 +541,38 @@ function trb_save_page_builder_sections($post_id)
         foreach ($types[$type]['fields'] as $field_key => $field_def) {
             $raw_value = $raw_section[$field_key] ?? '';
 
-            $allow_html = !empty($field_def['allow_html']);
-
-            switch ($field_def['type']) {
-                case 'textarea':
-                    $clean[$field_key] = $allow_html ? wp_kses_post($raw_value) : sanitize_textarea_field($raw_value);
-                    break;
-                case 'checkbox':
-                    $clean[$field_key] = !empty($raw_value) ? 1 : 0;
-                    break;
-                case 'image':
-                    $clean[$field_key] = absint($raw_value);
-                    break;
-                case 'select':
-                    $options = array_keys($field_def['options'] ?? array());
-                    $clean[$field_key] = in_array($raw_value, $options, true) ? $raw_value : ($field_def['default'] ?? ($options[0] ?? ''));
-                    break;
-                default:
-                    $clean[$field_key] = $allow_html ? wp_kses_post($raw_value) : sanitize_text_field($raw_value);
+            if ($field_def['type'] === 'post_select') {
+                $ids = is_array($raw_value) ? $raw_value : array();
+                $clean[$field_key] = array_values(array_filter(array_map('absint', $ids)));
+                continue;
             }
+
+            if ($field_def['type'] === 'repeater') {
+                $rows = is_array($raw_value) ? $raw_value : array();
+                $clean_rows = array();
+                foreach ($rows as $row) {
+                    if (!is_array($row)) {
+                        continue;
+                    }
+                    $clean_row = array();
+                    $has_content = false;
+                    foreach ($field_def['sub_fields'] as $sub_key => $sub_def) {
+                        $sub_raw = $row[$sub_key] ?? '';
+                        $clean_val = trb_sanitize_scalar($sub_def, $sub_raw);
+                        if ($clean_val !== '' && $clean_val !== 0) {
+                            $has_content = true;
+                        }
+                        $clean_row[$sub_key] = $clean_val;
+                    }
+                    if ($has_content) {
+                        $clean_rows[] = $clean_row;
+                    }
+                }
+                $clean[$field_key] = $clean_rows;
+                continue;
+            }
+
+            $clean[$field_key] = trb_sanitize_scalar($field_def, $raw_value);
         }
 
         $sanitized[] = $clean;
@@ -355,7 +594,9 @@ function trb_render_builder_sections($post_id)
         if (!isset($types[$type])) {
             continue;
         }
-        $template = get_theme_file_path("template-parts/builder/section-{$type}.php");
+        // Section type slugs use underscores; partial filenames use hyphens.
+        $file_slug = str_replace('_', '-', $type);
+        $template = get_theme_file_path("template-parts/builder/section-{$file_slug}.php");
         if (file_exists($template)) {
             include $template;
         }
@@ -378,7 +619,7 @@ function trb_builder_frontend_assets()
 /**
  * Admin assets — only loaded on the page edit screen.
  */
-add_action('admin_enqueue_scripts', 'trb_builder_admin_assets');
+add_action('admin_enqueue_scripts', 'trb_builder_admin_assets', 20);
 function trb_builder_admin_assets($hook)
 {
     if (!in_array($hook, array('post.php', 'post-new.php'), true)) {
@@ -392,9 +633,21 @@ function trb_builder_admin_assets($hook)
     wp_enqueue_media();
     wp_enqueue_script('jquery-ui-sortable');
 
+    // Searchable multi-select (provided by WooCommerce). Fall back gracefully if absent.
+    $select_deps = array('jquery');
+    if (wp_script_is('selectWoo', 'registered')) {
+        wp_enqueue_script('selectWoo');
+        wp_enqueue_style('select2');
+        $select_deps[] = 'selectWoo';
+    } elseif (wp_script_is('select2', 'registered')) {
+        wp_enqueue_script('select2');
+        wp_enqueue_style('select2');
+        $select_deps[] = 'select2';
+    }
+
     $css_path = '/css/page-builder-admin.css';
     $js_path = '/js/page-builder-admin.js';
 
     wp_enqueue_style('trb-page-builder-admin', get_stylesheet_directory_uri() . $css_path, array(), filemtime(get_stylesheet_directory() . $css_path));
-    wp_enqueue_script('trb-page-builder-admin', get_stylesheet_directory_uri() . $js_path, array('jquery', 'jquery-ui-sortable'), filemtime(get_stylesheet_directory() . $js_path), true);
+    wp_enqueue_script('trb-page-builder-admin', get_stylesheet_directory_uri() . $js_path, array_merge(array('jquery', 'jquery-ui-sortable'), array_slice($select_deps, 1)), filemtime(get_stylesheet_directory() . $js_path), true);
 }

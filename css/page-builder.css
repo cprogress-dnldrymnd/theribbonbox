@@ -220,7 +220,59 @@
     color: var(--trb-wine);
 }
 
-/* Decorative background bar (e.g. product tabs following a Wine two-column section) */
+/* ---------------------------------------------------------------- Offer slider */
+#trb-page-builder .offer-slider-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--trb-wine);
+    line-height: 1;
+}
+
+#trb-page-builder .product-tabs--light .offer-slider-title {
+    color: var(--trb-petal);
+}
+
+#trb-page-builder .offer-slider-buttons .button-box {
+    padding-bottom: 0;
+}
+
+#trb-page-builder .offer-slider-buttons .button-box a {
+    color: var(--trb-wine);
+}
+
+#trb-page-builder .product-tabs--light .offer-slider-buttons .button-box a {
+    color: var(--trb-petal);
+}
+
+#trb-page-builder .offer-slider .product-cat {
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    margin-top: 15px;
+    margin-bottom: 4px;
+}
+
+#trb-page-builder .offer-slider .product-name {
+    font-family: 'Playfair Display', serif;
+    margin-top: 0;
+}
+
+#trb-page-builder .offer-slider .product-name a {
+    text-decoration: none;
+    color: var(--trb-wine);
+}
+
+#trb-page-builder .product-tabs--light .offer-slider .product-cat,
+#trb-page-builder .product-tabs--light .offer-slider .product-name a {
+    color: var(--trb-petal);
+}
+
+#trb-page-builder .offer-slider .product-widget--cta a {
+    color: var(--trb-green);
+}
+
+/* Decorative background bar (e.g. offer slider following a Wine two-column section) */
 #trb-page-builder .trb-decor-bar {
     position: relative;
 }

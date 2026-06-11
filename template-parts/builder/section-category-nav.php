@@ -1,13 +1,17 @@
 <?php
 /**
  * Builder section: Category Jump Navigation.
- * Expects $section (array) in scope. Each line of "links" is "Label | #anchor-id".
+ * Expects $section (array) in scope. "links" is a repeater of { label, anchor }.
  */
 
-$links_raw = $section['links'] ?? '';
-$lines = array_filter(array_map('trim', explode("\n", $links_raw)));
+$links = isset($section['links']) && is_array($section['links']) ? $section['links'] : array();
 
-if (empty($lines)) {
+// Keep only rows that have a label.
+$links = array_values(array_filter($links, function ($row) {
+    return is_array($row) && !empty(trim($row['label'] ?? ''));
+}));
+
+if (empty($links)) {
     return;
 }
 ?>
@@ -16,12 +20,11 @@ if (empty($lines)) {
         <div class="inner">
             <div class="category-navigation-holder mx-auto">
                 <div class="row g-3">
-                    <?php foreach ($lines as $line) :
-                        $parts = array_map('trim', explode('|', $line, 2));
-                        $label = $parts[0] ?? '';
-                        $anchor = $parts[1] ?? '#';
-                        if ($label === '') {
-                            continue;
+                    <?php foreach ($links as $link) :
+                        $label = trim($link['label'] ?? '');
+                        $anchor = trim($link['anchor'] ?? '');
+                        if ($anchor === '') {
+                            $anchor = '#';
                         }
                         ?>
                         <div class="col">
