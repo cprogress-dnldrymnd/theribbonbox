@@ -13,6 +13,7 @@
     --trb-black: #000000;
     --trb-mint: #CCFBCA;
     --trb-forest: #008242;
+    color: var(--trb-wine);
 }
 
 /* Per-section background / text color chosen in the builder */
