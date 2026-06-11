@@ -733,7 +733,9 @@
     position: relative;
     margin-top: 1.25rem;
 }
-
+#trb-page-builder .offer-filter-ad a {
+    width: 100%;
+}
 #trb-page-builder .offer-filter-ad img {
     width: 100% !important;
     height: auto;
