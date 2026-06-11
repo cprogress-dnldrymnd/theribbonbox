@@ -452,10 +452,9 @@
 }
 
 #trb-page-builder .promo-banner-eyebrow {
-    font-weight: 600;
-    font-size: 0.875rem;
-    letter-spacing: 0.08em;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
 }
 
 #trb-page-builder .promo-banner-heading {
@@ -463,16 +462,12 @@
     font-weight: bold;
     font-size: clamp(2rem, 3vw, 2.75rem);
     line-height: 1.2;
-    margin-bottom: 1rem;
+    margin-block: 2rem;
     color: inherit;
 }
 
 #trb-page-builder .promo-banner-box .desc {
     margin-bottom: 1.5rem;
-}
-
-#trb-page-builder .promo-banner-button-box {
-    margin-top: auto;
 }
 
 #trb-page-builder .promo-banner-button {
