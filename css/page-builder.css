@@ -549,18 +549,18 @@
 }
 
 #trb-page-builder .offer-filter-mobile-close {
-    display: none;
+       display: none;
     align-items: center;
     justify-content: center;
     width: 2.25rem;
     height: 2.25rem;
     flex: 0 0 auto;
-    background: var(--trb-petal);
+    background: var(--trb-petal) !important;
     border: 0;
     border-radius: 50%;
     padding: 0;
     cursor: pointer;
-    color: var(--trb-wine);
+    color: var(--trb-wine) !important;
     line-height: 1;
     transition: background .15s ease, color .15s ease;
 }
@@ -960,8 +960,14 @@
 
 /* Mobile: sidebar becomes a slide-out drawer triggered by a button. */
 @media (max-width: 767px) {
+    #trb-page-builder .offer-filter-sidebar-title {
+        margin-bottom: 0;
+    }
     #trb-page-builder .offer-filter-mobile-toggle {
         display: flex;
+    }
+     #trb-page-builder .offer-filter-sidebar-header{
+        margin-bottom: 1rem;
     }
 
     #trb-page-builder .offer-filter-mobile-close {
