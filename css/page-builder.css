@@ -159,15 +159,15 @@
 }
 
 #trb-page-builder .trb-green-color {
-    color: var(--trb-green);
+    color: var(--trb-green) !important;
 }
 
 #trb-page-builder .trb-wine-color {
-    color: var(--trb-wine);
+    color: var(--trb-wine) !important;
 }
 
 #trb-page-builder .trb-coral-color {
-    color: var(--trb-coral);
+    color: var(--trb-coral) !important;
 }
 
 #trb-page-builder .trb-petal-color {
@@ -353,7 +353,7 @@
 #trb-page-builder .offer-slider .product-cat {
     font-weight: 600;
     font-size: 0.875rem;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
     margin-top: 15px;
     margin-bottom: 4px;
 }
@@ -375,7 +375,8 @@
 }
 
 #trb-page-builder .offer-slider .product-widget--cta a {
-    color: var(--trb-green);
+    color: var(--trb-coral);
+    font-size: 1rem;
 }
 
 

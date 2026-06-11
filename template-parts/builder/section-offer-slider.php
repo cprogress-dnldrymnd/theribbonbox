@@ -155,6 +155,9 @@ if ($decorative_bar) {
                         // ACF true/false flags shown as badges on the card.
                         $badges = array();
                         if (function_exists('get_field')) {
+                             if (get_field('featured', $offer_id)) {
+                                $badges[] = array('label' => 'Featured', 'class' => 'offer-badge--featured');
+                            }
                             if (get_field('all_natural', $offer_id)) {
                                 $badges[] = array('label' => 'All Natural', 'class' => 'offer-badge--natural');
                             }
@@ -171,7 +174,7 @@ if ($decorative_bar) {
                             <?php endif; ?>
                             <div class="product-widget--content">
                                 <?php if ($cat_name) : ?>
-                                    <div class="product-cat trb-coral-color text-uppercase"><?php echo esc_html($cat_name); ?></div>
+                                    <div class="product-cat"><?php echo esc_html($cat_name); ?></div>
                                 <?php endif; ?>
                                 <h3 class="product-name"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo esc_html(get_the_title($offer_id)); ?></a></h3>
                                  <?php if (!empty($badges)) : ?>
