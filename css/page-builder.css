@@ -284,6 +284,7 @@
     margin-bottom: 2rem;
     margin-inline: auto;
     line-height: 1;
+    padding-bottom: 10px;
 }
 
 #trb-page-builder .product-widget--holder.style-2 {
@@ -377,14 +378,6 @@
     color: var(--trb-green);
 }
 
-/* When a section Text Color is chosen, let it cascade over the fixed colors */
-#trb-page-builder .trb-section-design.has-text .offer-slider-title,
-#trb-page-builder .trb-section-design.has-text .offer-slider-buttons .button-box a,
-#trb-page-builder .trb-section-design.has-text .offer-slider .product-cat,
-#trb-page-builder .trb-section-design.has-text .offer-slider .product-name a,
-#trb-page-builder .trb-section-design.has-text .offer-slider .product-widget--cta a {
-    color: var(--trb-wine);
-}
 
 /* All Natural / Eco Friendly badges on offer cards */
 #trb-page-builder .offer-slider .product-widget--image {
