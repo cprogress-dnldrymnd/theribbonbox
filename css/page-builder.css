@@ -224,6 +224,7 @@
 #trb-page-builder .category-navigation .inner {
     background-color: #EDF7F6;
     padding-block: clamp(2rem, 4vw, 76px);
+    border-radius: 20px;
 }
 
 #trb-page-builder .category-navigation-holder {
