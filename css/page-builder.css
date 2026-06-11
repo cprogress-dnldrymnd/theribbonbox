@@ -16,11 +16,6 @@
     color: var(--trb-wine);
 }
 
-/* Per-section background / text color chosen in the builder */
-#trb-page-builder .trb-section-design.has-bg {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-}
 
 /* Per-section spacing presets (Margin/Padding Top & Bottom) chosen in the builder */
 #trb-page-builder .trb-section-design.trb-mt-none {
