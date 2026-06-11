@@ -104,6 +104,76 @@ function trb_builder_section_types()
                 ),
             ),
         ),
+        'promo_banner' => array(
+            'label' => 'Promo Banner (Image + Button)',
+            'fields' => array(
+                'anchor_id' => array(
+                    'type' => 'text',
+                    'label' => 'Anchor ID (optional, no #, used by jump links)',
+                ),
+                'eyebrow' => array(
+                    'type' => 'text',
+                    'label' => 'Eyebrow Text (optional)',
+                    'help' => 'Small label shown above the heading, e.g. "Partner with TRB".',
+                ),
+                'heading' => array(
+                    'type' => 'text',
+                    'label' => 'Heading',
+                    'summary' => true,
+                ),
+                'description' => array(
+                    'type' => 'textarea',
+                    'label' => 'Description',
+                    'rows' => 4,
+                    'allow_html' => true,
+                ),
+                'image' => array(
+                    'type' => 'image',
+                    'label' => 'Image',
+                ),
+                'image_position' => array(
+                    'type' => 'select',
+                    'label' => 'Image Position',
+                    'options' => array(
+                        'left' => 'Left',
+                        'right' => 'Right',
+                    ),
+                    'default' => 'left',
+                ),
+                'box_bg_color' => array(
+                    'type' => 'select',
+                    'label' => 'Content Box Background Color',
+                    'options' => trb_builder_color_options(false),
+                    'default' => 'wine',
+                ),
+                'box_text_color' => array(
+                    'type' => 'select',
+                    'label' => 'Content Box Text Color',
+                    'options' => trb_builder_color_options(false),
+                    'default' => 'petal',
+                ),
+                'button_text' => array(
+                    'type' => 'text',
+                    'label' => 'Button Text (optional)',
+                ),
+                'button_link' => array(
+                    'type' => 'text',
+                    'label' => 'Button Link',
+                ),
+                'button_bg_color' => array(
+                    'type' => 'select',
+                    'label' => 'Button Background Color',
+                    'options' => trb_builder_color_options(false),
+                    'default' => 'coral',
+                ),
+                'button_text_color' => array(
+                    'type' => 'select',
+                    'label' => 'Button Text Color',
+                    'options' => trb_builder_color_options(false),
+                    'default' => 'white',
+                ),
+            ),
+        ),
         'offer_slider' => array(
             'label' => 'Offer Slider',
             'fields' => array(
@@ -121,6 +191,7 @@ function trb_builder_section_types()
                         'category' => 'Category',
                     ),
                     'default' => 'manual',
+                    'disable_when' => array('field' => 'featured_only', 'value' => '1'),
                 ),
                 'manual_items' => array(
                     'type' => 'post_select',
@@ -128,23 +199,26 @@ function trb_builder_section_types()
                     'post_type' => 'offer-items',
                     'help' => 'Search by name. Slides appear in the order shown here.',
                     'show_when' => array('field' => 'source_mode', 'value' => 'manual'),
+                    'disable_when' => array('field' => 'featured_only', 'value' => '1'),
                 ),
                 'category' => array(
                     'type' => 'term_select',
                     'label' => 'Offer Category',
                     'taxonomy' => 'category',
                     'show_when' => array('field' => 'source_mode', 'value' => 'category'),
+                    'disable_when' => array('field' => 'featured_only', 'value' => '1'),
                 ),
                 'count' => array(
                     'type' => 'number',
                     'label' => 'Number of offers to show',
                     'default' => 8,
                     'show_when' => array('field' => 'source_mode', 'value' => 'category'),
+                    'disable_when' => array('field' => 'featured_only', 'value' => '1'),
                 ),
                 'featured_only' => array(
                     'type' => 'checkbox',
                     'label' => 'Show featured offers only',
-                    'help' => 'Only include offers whose "Featured" field is on.',
+                    'help' => 'Only include offers whose "Featured" field is on. When enabled, the offers are pulled from all featured items and the choices above are disabled.',
                 ),
                 'first_image' => array(
                     'type' => 'image',
@@ -247,21 +321,6 @@ function trb_builder_spacing_options()
         'large' => 'Large',
         'xlarge' => 'Extra Large',
     );
-}
-
-/**
- * Map a spacing slug to a CSS length. Empty string means "no override".
- */
-function trb_builder_spacing_css($slug)
-{
-    $map = array(
-        'none' => '0',
-        'small' => '1.5rem',
-        'medium' => '3rem',
-        'large' => '6rem',
-        'xlarge' => '9rem',
-    );
-    return $map[$slug] ?? '';
 }
 
 /**
@@ -449,6 +508,9 @@ function trb_render_section_field($field_key, $field_def, $index, $values = arra
     $show_attrs = '';
     if (!empty($field_def['show_when'])) {
         $show_attrs = ' data-show-when-field="' . esc_attr($field_def['show_when']['field']) . '" data-show-when-value="' . esc_attr($field_def['show_when']['value']) . '"';
+    }
+    if (!empty($field_def['disable_when'])) {
+        $show_attrs .= ' data-disable-when-field="' . esc_attr($field_def['disable_when']['field']) . '" data-disable-when-value="' . esc_attr($field_def['disable_when']['value']) . '"';
     }
     ?>
     <div class="<?php echo esc_attr($wrapper_classes); ?>"<?php echo $show_attrs; ?>>
@@ -739,17 +801,16 @@ function trb_render_builder_sections($post_id)
         $bg = trb_builder_color_css($section['bg_color'] ?? '');
         $text = trb_builder_color_css($section['text_color'] ?? '');
 
-        $spacing = array(
-            'margin-top' => trb_builder_spacing_css($section['margin_top'] ?? ''),
-            'margin-bottom' => trb_builder_spacing_css($section['margin_bottom'] ?? ''),
-            'padding-top' => trb_builder_spacing_css($section['padding_top'] ?? ''),
-            'padding-bottom' => trb_builder_spacing_css($section['padding_bottom'] ?? ''),
-        );
-        $spacing = array_filter($spacing, function ($v) {
-            return $v !== '';
-        });
+        $spacing_slugs = array('none', 'small', 'medium', 'large', 'xlarge');
+        $spacing_classes = array();
+        foreach (array('margin_top' => 'mt', 'margin_bottom' => 'mb', 'padding_top' => 'pt', 'padding_bottom' => 'pb') as $field => $prefix) {
+            $slug = $section[$field] ?? '';
+            if (in_array($slug, $spacing_slugs, true)) {
+                $spacing_classes[] = 'trb-' . $prefix . '-' . $slug;
+            }
+        }
 
-        if ($bg === '' && $text === '' && empty($spacing)) {
+        if ($bg === '' && $text === '' && empty($spacing_classes)) {
             echo $html;
             continue;
         }
@@ -761,9 +822,6 @@ function trb_render_builder_sections($post_id)
         if ($text !== '') {
             $styles[] = 'color: ' . $text;
         }
-        foreach ($spacing as $prop => $val) {
-            $styles[] = $prop . ': ' . $val;
-        }
 
         $classes = array('trb-section-design');
         if ($bg !== '') {
@@ -772,8 +830,11 @@ function trb_render_builder_sections($post_id)
         if ($text !== '') {
             $classes[] = 'has-text';
         }
+        $classes = array_merge($classes, $spacing_classes);
 
-        echo '<div class="' . esc_attr(implode(' ', $classes)) . '" style="' . esc_attr(implode('; ', $styles)) . '">';
+        $style_attr = !empty($styles) ? ' style="' . esc_attr(implode('; ', $styles)) . '"' : '';
+
+        echo '<div class="' . esc_attr(implode(' ', $classes)) . '"' . $style_attr . '>';
         echo $html;
         echo '</div>';
     }

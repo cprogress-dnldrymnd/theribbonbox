@@ -97,11 +97,31 @@
         });
     }
 
+    function applyDisableConditional($card) {
+        $card.find('> .trb-builder-card-body > .trb-builder-field[data-disable-when-field]').each(function () {
+            var $f = $(this);
+            var ctrlName = $f.data('disable-when-field');
+            var want = String($f.data('disable-when-value'));
+            var $ctrl = $card.find('> .trb-builder-card-body [name$="[' + ctrlName + ']"]').filter('select, input').first();
+            var val;
+            if ($ctrl.is(':checkbox')) {
+                val = $ctrl.is(':checked') ? ($ctrl.val() || '1') : '';
+            } else {
+                val = $ctrl.length ? String($ctrl.val()) : '';
+            }
+            // Visual/interactive disable only — keep the fields in the form
+            // submission so previously saved values aren't lost while hidden.
+            $f.toggleClass('is-disabled', val === want);
+        });
+    }
+
     function bindConditional($card) {
         $card.find('> .trb-builder-card-body > .trb-builder-field select, > .trb-builder-card-body > .trb-builder-field input').on('change.trbcond', function () {
             applyConditional($card);
+            applyDisableConditional($card);
         });
         applyConditional($card);
+        applyDisableConditional($card);
     }
 
     /* ------------------------------------------------------------------- repeater */

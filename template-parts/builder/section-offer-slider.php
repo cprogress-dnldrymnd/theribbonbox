@@ -21,7 +21,17 @@ $featured_meta = $featured_only ? array(
 ) : array();
 
 // Resolve which offer-items to show.
-if ($source_mode === 'category') {
+if ($featured_only) {
+    // "Featured only" overrides the manual/category choice entirely.
+    $offers = get_posts(array(
+        'post_type' => 'offer-items',
+        'posts_per_page' => -1,
+        'post_status' => 'publish',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'meta_query' => $featured_meta,
+    ));
+} elseif ($source_mode === 'category') {
     $term_id = absint($section['category'] ?? 0);
     $count = max(1, absint($section['count'] ?? 8));
     $query_args = array(
@@ -34,25 +44,18 @@ if ($source_mode === 'category') {
     if ($term_id) {
         $query_args['cat'] = $term_id;
     }
-    if ($featured_meta) {
-        $query_args['meta_query'] = $featured_meta;
-    }
     $offers = get_posts($query_args);
 } else {
     $ids = isset($section['manual_items']) && is_array($section['manual_items']) ? array_filter(array_map('absint', $section['manual_items'])) : array();
     $offers = array();
     if (!empty($ids)) {
-        $query_args = array(
+        $offers = get_posts(array(
             'post_type' => 'offer-items',
             'post__in' => $ids,
             'orderby' => 'post__in',
             'posts_per_page' => count($ids),
             'post_status' => 'publish',
-        );
-        if ($featured_meta) {
-            $query_args['meta_query'] = $featured_meta;
-        }
-        $offers = get_posts($query_args);
+        ));
     }
 }
 
@@ -163,13 +166,6 @@ if ($decorative_bar) {
                             <?php if ($img_html) : ?>
                                 <div class="product-widget--image">
                                     <a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo $img_html; ?></a>
-                                    <?php if (!empty($badges)) : ?>
-                                        <div class="offer-badges">
-                                            <?php foreach ($badges as $badge) : ?>
-                                                <span class="offer-badge <?php echo esc_attr($badge['class']); ?>"><?php echo esc_html($badge['label']); ?></span>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    <?php endif; ?>
                                 </div>
                             <?php endif; ?>
                             <div class="product-widget--content">
@@ -177,6 +173,13 @@ if ($decorative_bar) {
                                     <div class="product-cat trb-coral-color text-uppercase"><?php echo esc_html($cat_name); ?></div>
                                 <?php endif; ?>
                                 <h3 class="product-name"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo esc_html(get_the_title($offer_id)); ?></a></h3>
+                                 <?php if (!empty($badges)) : ?>
+                                        <div class="offer-badges">
+                                            <?php foreach ($badges as $badge) : ?>
+                                                <span class="offer-badge <?php echo esc_attr($badge['class']); ?>"><?php echo esc_html($badge['label']); ?></span>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
                                 <div class="product-widget--cta"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>>Visit Offer</a></div>
                             </div>
                         </div>

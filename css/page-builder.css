@@ -19,6 +19,31 @@
     padding-bottom: 3rem;
 }
 
+/* Per-section spacing presets (Margin/Padding Top & Bottom) chosen in the builder */
+#trb-page-builder .trb-section-design.trb-mt-none { margin-top: 0; }
+#trb-page-builder .trb-section-design.trb-mt-small { margin-top: 1.5rem; }
+#trb-page-builder .trb-section-design.trb-mt-medium { margin-top: 3rem; }
+#trb-page-builder .trb-section-design.trb-mt-large { margin-top: 6rem; }
+#trb-page-builder .trb-section-design.trb-mt-xlarge { margin-top: 9rem; }
+
+#trb-page-builder .trb-section-design.trb-mb-none { margin-bottom: 0; }
+#trb-page-builder .trb-section-design.trb-mb-small { margin-bottom: 1.5rem; }
+#trb-page-builder .trb-section-design.trb-mb-medium { margin-bottom: 3rem; }
+#trb-page-builder .trb-section-design.trb-mb-large { margin-bottom: 6rem; }
+#trb-page-builder .trb-section-design.trb-mb-xlarge { margin-bottom: 9rem; }
+
+#trb-page-builder .trb-section-design.trb-pt-none { padding-top: 0; }
+#trb-page-builder .trb-section-design.trb-pt-small { padding-top: 1.5rem; }
+#trb-page-builder .trb-section-design.trb-pt-medium { padding-top: 3rem; }
+#trb-page-builder .trb-section-design.trb-pt-large { padding-top: 6rem; }
+#trb-page-builder .trb-section-design.trb-pt-xlarge { padding-top: 9rem; }
+
+#trb-page-builder .trb-section-design.trb-pb-none { padding-bottom: 0; }
+#trb-page-builder .trb-section-design.trb-pb-small { padding-bottom: 1.5rem; }
+#trb-page-builder .trb-section-design.trb-pb-medium { padding-bottom: 3rem; }
+#trb-page-builder .trb-section-design.trb-pb-large { padding-bottom: 6rem; }
+#trb-page-builder .trb-section-design.trb-pb-xlarge { padding-bottom: 9rem; }
+
 #trb-page-builder hr {
     border-color: #E1E1E1;
     opacity: 1;
@@ -52,6 +77,7 @@
     font-weight: bold;
     font-size: 2.625rem;
     color: inherit;
+    margin-top: 0;
 }
 
 #trb-page-builder .trb-mb-large {
@@ -353,4 +379,68 @@
     left: 0;
     top: 0;
     right: 0;
+}
+
+/* ---------------------------------------------------------------- Promo banner */
+#trb-page-builder .promo-banner .image-box {
+    height: 100%;
+    overflow: hidden;
+}
+
+#trb-page-builder .promo-banner .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#trb-page-builder .promo-banner-box {
+    height: 100%;
+    padding: clamp(2rem, 4vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#trb-page-builder .promo-banner-eyebrow {
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+}
+
+#trb-page-builder .promo-banner-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: inherit;
+}
+
+#trb-page-builder .promo-banner-box .desc {
+    margin-bottom: 1.5rem;
+}
+
+#trb-page-builder .promo-banner-button-box {
+    margin-top: auto;
+}
+
+#trb-page-builder .promo-banner-button {
+    display: inline-block;
+    padding: 1rem 2.25rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: var(--trb-coral);
+    color: var(--trb-white);
+    transition: opacity 0.15s ease;
+}
+
+#trb-page-builder .promo-banner-button:hover {
+    opacity: 0.85;
 }
