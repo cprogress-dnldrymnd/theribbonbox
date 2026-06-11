@@ -98,17 +98,18 @@ function trb_render_offer_card($offer_id, $args = array())
     $cats     = get_the_category($offer_id);
     $cat_name = !empty($cats) ? $cats[0]->name : '';
 
-    // ACF true/false flags shown as badges on the card.
+    // Badges shown on the card: the "featured" ACF flag plus "lifestyle" terms.
     $badges = array();
-    if ($has_acf) {
-        if (get_field('featured', $offer_id)) {
-            $badges[] = array('label' => 'Featured', 'class' => 'offer-badge--featured');
-        }
-        if (get_field('all_natural', $offer_id)) {
-            $badges[] = array('label' => 'All Natural', 'class' => 'offer-badge--natural');
-        }
-        if (get_field('eco_friendly', $offer_id)) {
-            $badges[] = array('label' => 'Eco Friendly', 'class' => 'offer-badge--eco');
+    if ($has_acf && get_field('featured', $offer_id)) {
+        $badges[] = array('label' => 'Featured', 'class' => 'offer-badge--featured');
+    }
+    $lifestyle_terms = get_the_terms($offer_id, 'lifestyle');
+    if ($lifestyle_terms && !is_wp_error($lifestyle_terms)) {
+        foreach ($lifestyle_terms as $term) {
+            $badges[] = array(
+                'label' => $term->name,
+                'class' => 'offer-badge--lifestyle offer-badge--' . $term->slug,
+            );
         }
     }
 
