@@ -536,10 +536,11 @@
 }
 
 #trb-page-builder .offer-filter-group-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
+    font-family: 'Work Sans', serif;
+    font-size: 1.5rem;
     color: var(--trb-wine);
     margin: 0 0 .75rem;
+    font-weight: 600;
 }
 
 #trb-page-builder .offer-filter-cat-list {
@@ -710,15 +711,23 @@
     display: flex;
     align-items: center;
     gap: .5rem;
-    font-size: .9rem;
+    font-size: 1rem;
+    color: var(--trb-wine);
+    font-weight: 600;
+}
+
+#trb-page-builder .offer-filter-sort .offer-filter-sort-label {
+    white-space: nowrap;
 }
 
 #trb-page-builder .offer-filter-sort-select {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: .45rem .75rem;
-    font-size: .9rem;
+    font-size: 1rem;
 }
+
+    {}
 
 #trb-page-builder .offer-filter-results {
     position: relative;
