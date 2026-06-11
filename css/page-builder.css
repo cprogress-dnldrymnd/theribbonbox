@@ -526,7 +526,7 @@
     padding: .65rem 1rem;
     border: 1px solid #ddd;
     border-radius: 999px;
-    font-size: .95rem;
+    font-size: 1rem;
 }
 
 #trb-page-builder .offer-filter-group {
@@ -557,15 +557,15 @@
     justify-content: space-between;
     gap: .5rem;
     text-decoration: none;
-    color: var(--trb-wine);
-    font-size: .95rem;
+    font-size: 1rem;
     padding: .15rem 0;
+    opacity: 0.7;
+    font-weight: 500;
 }
 
 #trb-page-builder .offer-filter-cat:hover,
 #trb-page-builder .offer-filter-cat.is-active {
-    color: var(--trb-coral);
-    font-weight: 600;
+    opacity: 1;
 }
 
 #trb-page-builder .offer-filter-cat-count {
@@ -588,9 +588,11 @@
     border: 0;
     padding: 0;
     cursor: pointer;
-    font-size: 1.05rem;
     font-weight: 600;
-    color: var(--trb-wine);
+    color: var(--trb-wine) !important;
+    font-size: 1.25rem !important;
+    letter-spacing: 0;
+    text-transform: capitalize;
 }
 
 #trb-page-builder .offer-filter-tax-chevron {
@@ -625,10 +627,11 @@
     display: flex;
     align-items: center;
     gap: .55rem;
-    font-size: .92rem;
-    color: #444;
     margin-bottom: .45rem;
     cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--trb-wine);
 }
 
 #trb-page-builder .offer-filter-check input {
@@ -649,6 +652,10 @@
     letter-spacing: .05em;
     cursor: pointer;
     transition: background .15s ease, color .15s ease;
+}
+
+#trb-page-builder .offer-filter-check span {
+    opacity: 0.7;
 }
 
 #trb-page-builder .offer-filter-reset:hover {
@@ -695,8 +702,7 @@
 }
 
 #trb-page-builder .offer-filter-count {
-    font-size: .95rem;
-    color: #555;
+    font-size: 1rem;
 }
 
 #trb-page-builder .offer-filter-sort {
@@ -862,5 +868,94 @@
 @media (max-width: 575px) {
     #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ================================================ Responsive: builder sections */
+
+/* Headings are set with !important on desktop; scale them down on phones so a
+   long title doesn't blow out the layout. */
+@media (max-width: 767px) {
+    #trb-page-builder h3:not(.product-name) {
+        font-size: 1.75rem !important;
+    }
+}
+
+/* ---------------------------------------------------------------- Hero / title */
+@media (max-width: 767px) {
+    #trb-page-builder .page-title {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+
+    #trb-page-builder .page-title h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    #trb-page-builder .page-title .desc {
+        font-size: 1.1rem;
+    }
+}
+
+/* -------------------------------------------------------------- Category nav */
+/* Cards wrap to 2-up (xs) / 3-up (md) via the column classes; shrink the jump
+   label so it stays readable in the narrower cards. */
+@media (max-width: 991px) {
+    #trb-page-builder .category-navigation-holder {
+        padding-inline: 1rem;
+    }
+
+    #trb-page-builder .cat-text {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 575px) {
+    #trb-page-builder .cat-text {
+        font-size: 1.25rem;
+    }
+}
+
+/* -------------------------------------------------------------- Offer slider */
+/* The desktop layout reserves 70px gutters either side (here + the global
+   .style-2 padding) for the nav arrows. On small screens that padding crushes
+   the slides, so collapse it and let swipe + pagination dots do the work. */
+@media (max-width: 767px) {
+    #trb-page-builder .product-tabs {
+        --nav-offset: 0px;
+    }
+
+    #trb-page-builder .product-widget--holder.style-2 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #trb-page-builder .offer-slider .swiper-button-prev-trb,
+    #trb-page-builder .offer-slider .swiper-button-next-trb {
+        display: none;
+    }
+
+    #trb-page-builder .trb-decor-bar:before {
+        height: 160px;
+    }
+}
+
+/* -------------------------------------------------------------- Promo banner */
+/* When the two columns stack, give the image a sensible height so a short
+   content box can't squash it to a sliver, and tighten the box padding. */
+@media (max-width: 991px) {
+    #trb-page-builder .promo-banner .image-box {
+        min-height: 240px;
+    }
+
+    #trb-page-builder .promo-banner-box {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* --------------------------------------------------------------- Two column */
+@media (max-width: 575px) {
+    #trb-page-builder .large-heading {
+        font-size: clamp(2.25rem, 10vw, 3rem);
     }
 }

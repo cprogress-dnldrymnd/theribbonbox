@@ -60,7 +60,7 @@ function trb_offer_filter_sort_options()
  *
  * @param int   $offer_id Offer post ID.
  * @param array $args {
- *     @type string $cta_text      CTA link label. Default 'Visit Offer'.
+ *     @type string $cta_text      CTA link label. Default 'Claim Discount'.
  *     @type bool   $show_discount Show the "X% Off" line (from the ACF percentage field).
  *     @type string $image_size    Thumbnail size. Default 'medium'.
  *     @type string $extra_class   Extra class added to .product-widget--box.
@@ -70,7 +70,7 @@ function trb_offer_filter_sort_options()
 function trb_render_offer_card($offer_id, $args = array())
 {
     $args = wp_parse_args($args, array(
-        'cta_text'      => 'Visit Offer',
+        'cta_text'      => 'Claim Discount',
         'show_discount' => false,
         'image_size'    => 'medium',
         'extra_class'   => '',

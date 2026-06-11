@@ -27,7 +27,7 @@ if (empty($links)) {
                             $anchor = '#';
                         }
                         ?>
-                        <div class="col">
+                        <div class="col-6 col-md-4 col-lg">
                             <a href="<?php echo esc_attr($anchor); ?>" class="cat-nav-holder">
                                 <span class="cat-decor trb-coral-color text-uppercase">JUMP TO</span>
                                 <div class="cat-text trb-green-color"><?php echo esc_html($label); ?></div>
