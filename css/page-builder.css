@@ -405,15 +405,12 @@
     background: var(--trb-coral);
 }
 
-#trb-page-builder .offer-slider .offer-badge--natural {
+#trb-page-builder .offer-slider .offer-badge--lifestyle {
     background: var(--trb-mint);
     color: var(--trb-forest);
 }
 
-#trb-page-builder .offer-slider .offer-badge--eco {
-    background: var(--trb-mint);
-    color: var(--trb-forest);
-}
+
 
 /* Decorative background bar (e.g. offer slider following a Wine two-column section) */
 #trb-page-builder .trb-decor-bar {
@@ -553,18 +550,30 @@
 
 #trb-page-builder .offer-filter-mobile-close {
     display: none;
-    background: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex: 0 0 auto;
+    background: var(--trb-petal);
     border: 0;
+    border-radius: 50%;
     padding: 0;
     cursor: pointer;
     color: var(--trb-wine);
     line-height: 1;
+    transition: background .15s ease, color .15s ease;
+}
+
+#trb-page-builder .offer-filter-mobile-close:hover {
+    background: var(--trb-wine);
+    color: var(--trb-white);
 }
 
 #trb-page-builder .offer-filter-mobile-close .dashicons {
-    font-size: 1.75rem;
-    width: 1.75rem;
-    height: 1.75rem;
+    font-size: 1.4rem;
+    width: 1.4rem;
+    height: 1.4rem;
 }
 
 /* Mobile trigger button (hidden on desktop) */
@@ -733,9 +742,11 @@
     position: relative;
     margin-top: 1.25rem;
 }
+
 #trb-page-builder .offer-filter-ad a {
     width: 100%;
 }
+
 #trb-page-builder .offer-filter-ad img {
     width: 100% !important;
     height: auto;
@@ -991,6 +1002,11 @@
     /* Prevent body scroll-bleed when the drawer is open. */
     body.offer-filter-drawer-open {
         overflow: hidden;
+    }
+
+    body.offer-filter-drawer-open #header-v2 {
+        opacity: 0;
+        visibility: hidden;
     }
 }
 
