@@ -399,7 +399,7 @@
     text-transform: uppercase;
     padding: 4px 5px;
     border-radius: 0;
-    color: #fff;
+    color: var(--trb-white);
     line-height: 1.2;
     background: var(--trb-coral);
 }
@@ -648,13 +648,14 @@
     width: 100%;
     padding: .7rem 1rem;
     background: transparent;
-    border: 1px solid var(--trb-wine);
-    color: var(--trb-wine);
+    border: 1px solid var(--trb-wine) !important;
+    color: var(--trb-wine) !important;
     border-radius: 4px;
-    font-size: .85rem;
-    letter-spacing: .05em;
+    font-size: 1rem !important;
     cursor: pointer;
     transition: background .15s ease, color .15s ease;
+    height: auto;
+    letter-spacing: 0.75px;
 }
 
 #trb-page-builder .offer-filter-check span {
@@ -663,7 +664,7 @@
 
 #trb-page-builder .offer-filter-reset:hover {
     background: var(--trb-wine);
-    color: #fff;
+    color: var(--trb-white) !important;
 }
 
 /* Sponsored ads */
@@ -673,7 +674,7 @@
 }
 
 #trb-page-builder .offer-filter-ad img {
-    width: 100%;
+    width: 100% !important;
     height: auto;
     display: block;
 }
@@ -683,8 +684,8 @@
     top: 8px;
     right: 8px;
     background: rgba(255, 255, 255, .85);
-    color: #555;
-    font-size: .65rem;
+    color: #3A3A3A;
+    font-size: .0.875rem;
     padding: 2px 6px;
     border-radius: 3px;
     z-index: 2;
@@ -809,7 +810,7 @@
 #trb-page-builder .offer-filter-page--number.is-current {
     background: var(--trb-wine);
     border-color: var(--trb-wine);
-    color: #fff;
+    color: var(--trb-white);
     font-weight: 600;
 }
 
