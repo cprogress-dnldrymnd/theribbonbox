@@ -760,6 +760,9 @@
     justify-content: center;
     gap: .5rem;
     margin-top: 2rem;
+    float: none;
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 
 #trb-page-builder .offer-filter-page,
@@ -772,7 +775,7 @@
     padding: 0 .5rem;
     text-decoration: none;
     color: var(--trb-wine);
-    font-size: .95rem;
+    font-size: 1rem;
 }
 
 #trb-page-builder a.offer-filter-page:hover {
@@ -814,7 +817,9 @@
 }
 
 @keyframes trb-offer-spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* ---------------------------------------------------------------- Responsive */
@@ -822,6 +827,7 @@
     #trb-page-builder .offer-filter-layout {
         grid-template-columns: 1fr;
     }
+
     #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
         grid-template-columns: repeat(2, 1fr);
     }
