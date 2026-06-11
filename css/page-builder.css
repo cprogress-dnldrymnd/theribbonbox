@@ -301,7 +301,7 @@
 #trb-page-builder .trb-decor-bar:before {
     content: '';
     position: absolute;
-    background-color: var(--trb-wine);
+    background-color: var(--trb-decor-color, var(--trb-wine));
     height: 250px;
     left: 0;
     top: 0;

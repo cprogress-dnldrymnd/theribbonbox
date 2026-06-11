@@ -65,14 +65,19 @@ $swiper_config = array(
 );
 
 $wrapper_classes = 'product-tabs offer-slider trb-mt-large trb-mb-medium';
+$wrapper_style = '';
 if ($is_light) {
     $wrapper_classes .= ' product-tabs--light position-relative';
 }
 if ($decorative_bar) {
     $wrapper_classes .= ' trb-decor-bar';
+    $decor_color = $section['decor_color'] ?? 'wine';
+    if ($decor_color !== '') {
+        $wrapper_style = ' style="--trb-decor-color: var(--trb-' . esc_attr($decor_color) . ');"';
+    }
 }
 ?>
-<div class="<?php echo esc_attr($wrapper_classes); ?>">
+<div class="<?php echo esc_attr($wrapper_classes); ?>"<?php echo $wrapper_style; ?>>
     <div class="container<?php echo $decorative_bar ? ' position-relative' : ''; ?>">
         <?php if ($title || !empty($buttons)) : ?>
             <div class="nav-tabs-holder">

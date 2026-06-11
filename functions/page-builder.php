@@ -99,15 +99,6 @@ function trb_builder_section_types()
                     ),
                     'default' => 'left',
                 ),
-                'style' => array(
-                    'type' => 'select',
-                    'label' => 'Background Style',
-                    'options' => array(
-                        'default' => 'Default (Light)',
-                        'wine' => 'Dark (Wine)',
-                    ),
-                    'default' => 'default',
-                ),
             ),
         ),
         'offer_slider' => array(
@@ -172,7 +163,14 @@ function trb_builder_section_types()
                 ),
                 'decorative_bar' => array(
                     'type' => 'checkbox',
-                    'label' => 'Show decorative background bar above (use after a Wine two-column section)',
+                    'label' => 'Show decorative background bar above',
+                ),
+                'decor_color' => array(
+                    'type' => 'select',
+                    'label' => 'Decorative Bar Color',
+                    'options' => trb_builder_color_options(false),
+                    'default' => 'wine',
+                    'show_when' => array('field' => 'decorative_bar', 'value' => '1'),
                 ),
             ),
         ),
@@ -199,10 +197,9 @@ function trb_builder_section_types()
  * Available colors — keys map to CSS custom properties (--trb-{key}) defined in
  * css/page-builder.css :root, so editors choose from the theme palette.
  */
-function trb_builder_color_options()
+function trb_builder_color_options($include_none = true)
 {
-    return array(
-        '' => '— None —',
+    $colors = array(
         'green' => 'Green',
         'wine' => 'Wine',
         'coral' => 'Coral',
@@ -210,6 +207,10 @@ function trb_builder_color_options()
         'white' => 'White',
         'black' => 'Black',
     );
+    if ($include_none) {
+        $colors = array('' => '— None —') + $colors;
+    }
+    return $colors;
 }
 
 /**

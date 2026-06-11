@@ -87,7 +87,12 @@
             var ctrlName = $f.data('show-when-field');
             var want = String($f.data('show-when-value'));
             var $ctrl = $card.find('> .trb-builder-card-body [name$="[' + ctrlName + ']"]').filter('select, input').first();
-            var val = $ctrl.length ? String($ctrl.val()) : '';
+            var val;
+            if ($ctrl.is(':checkbox')) {
+                val = $ctrl.is(':checked') ? ($ctrl.val() || '1') : '';
+            } else {
+                val = $ctrl.length ? String($ctrl.val()) : '';
+            }
             $f.toggle(val === want);
         });
     }
