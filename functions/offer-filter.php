@@ -361,27 +361,45 @@ function trb_offer_filter_pagination($current, $max_pages, $args)
             . ($aria ? ' aria-label="' . esc_attr($aria) . '"' : '') . '>' . $label . '</a>';
     };
 
+    // Windowed page list: first, last, and one page either side of the current,
+    // with ellipses bridging the gaps (e.g. 1 … 4 5 6 … 12).
+    $window = 1;
+    $pages = array();
+    for ($p = 1; $p <= $max_pages; $p++) {
+        if ($p === 1 || $p === $max_pages || ($p >= $current - $window && $p <= $current + $window)) {
+            $pages[] = $p;
+        }
+    }
+
     ob_start();
     echo '<nav class="offer-filter-pagination" aria-label="Offer results pages">';
 
-    // Home icon (back to page 1) to mirror the design.
-    echo $link(1, '<span class="dashicons dashicons-admin-home" aria-hidden="true"></span>', 'offer-filter-page--home', 'First page');
-
     // Prev
     if ($current > 1) {
-        echo $link($current - 1, '&lsaquo;', 'offer-filter-page--prev', 'Previous page');
+        echo $link($current - 1, '&lsaquo; Prev', 'offer-filter-page--prev', 'Previous page');
     } else {
-        echo '<span class="offer-filter-page offer-filter-page--prev is-disabled">&lsaquo;</span>';
+        echo '<span class="offer-filter-page offer-filter-page--prev is-disabled">&lsaquo; Prev</span>';
     }
 
-    // "X of Y"
-    echo '<span class="offer-filter-page-status">' . (int) $current . ' of ' . (int) $max_pages . '</span>';
+    // Numbered pages with ellipses.
+    $prev_page = 0;
+    foreach ($pages as $p) {
+        if ($prev_page && $p - $prev_page > 1) {
+            echo '<span class="offer-filter-page-ellipsis">…</span>';
+        }
+        if ($p === $current) {
+            echo '<span class="offer-filter-page offer-filter-page--number is-current" aria-current="page">' . (int) $p . '</span>';
+        } else {
+            echo $link($p, (string) $p, 'offer-filter-page--number', 'Page ' . $p);
+        }
+        $prev_page = $p;
+    }
 
     // Next
     if ($current < $max_pages) {
-        echo $link($current + 1, '&rsaquo;', 'offer-filter-page--next', 'Next page');
+        echo $link($current + 1, 'Next &rsaquo;', 'offer-filter-page--next', 'Next page');
     } else {
-        echo '<span class="offer-filter-page offer-filter-page--next is-disabled">&rsaquo;</span>';
+        echo '<span class="offer-filter-page offer-filter-page--next is-disabled">Next &rsaquo;</span>';
     }
 
     echo '</nav>';

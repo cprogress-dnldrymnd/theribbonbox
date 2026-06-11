@@ -766,19 +766,45 @@
 }
 
 #trb-page-builder .offer-filter-page,
-#trb-page-builder .offer-filter-page-status {
+#trb-page-builder .offer-filter-page-ellipsis {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 34px;
-    height: 34px;
-    padding: 0 .5rem;
+    height: 40px;
     text-decoration: none;
     color: var(--trb-wine);
     font-size: 1rem;
 }
 
-#trb-page-builder a.offer-filter-page:hover {
+/* Numbered page buttons: boxed squares */
+#trb-page-builder .offer-filter-page--number {
+    min-width: 40px;
+    padding: 0 .5rem;
+    border: 1px solid #d9d2d6;
+    border-radius: 6px;
+}
+
+#trb-page-builder a.offer-filter-page--number:hover {
+    border-color: var(--trb-wine);
+    color: var(--trb-wine);
+}
+
+#trb-page-builder .offer-filter-page--number.is-current {
+    background: var(--trb-wine);
+    border-color: var(--trb-wine);
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Prev / Next text links */
+#trb-page-builder .offer-filter-page--prev,
+#trb-page-builder .offer-filter-page--next {
+    text-decoration: underline;
+    padding: 0 .25rem;
+}
+
+#trb-page-builder a.offer-filter-page--prev:hover,
+#trb-page-builder a.offer-filter-page--next:hover {
     color: var(--trb-coral);
 }
 
@@ -787,8 +813,8 @@
     pointer-events: none;
 }
 
-#trb-page-builder .offer-filter-page-status {
-    font-weight: 600;
+#trb-page-builder .offer-filter-page-ellipsis {
+    color: #b9b1b6;
 }
 
 /* Loading state */
