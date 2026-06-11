@@ -130,7 +130,7 @@
 #trb-page-builder h3:not(.product-name) {
     font-weight: bold;
     font-size: 2.625rem;
-    color: inherit;
+    color: inherit !important;
     margin-top: 0;
 }
 
@@ -478,10 +478,10 @@
 #trb-page-builder .promo-banner-button {
     display: inline-block;
     padding: 1rem 2.25rem;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 0.875rem;
-    letter-spacing: 0.04em;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1.125;
+    letter-spacing: 0.9px;
     text-transform: uppercase;
     text-decoration: none;
     background-color: var(--trb-coral);
@@ -491,4 +491,349 @@
 
 #trb-page-builder .promo-banner-button:hover {
     opacity: 0.85;
+}
+
+/* ================================================================ Offer Filter */
+#trb-page-builder .offer-filter {
+    padding-block: 1rem;
+}
+
+#trb-page-builder .offer-filter-intro {
+    margin-bottom: 1.5rem;
+}
+
+#trb-page-builder .offer-filter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--trb-wine);
+    margin: 0 0 .5rem;
+}
+
+#trb-page-builder .offer-filter-layout {
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* ---------------------------------------------------------------- Sidebar */
+#trb-page-builder .offer-filter-sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--trb-wine);
+    margin: 0 0 1rem;
+}
+
+#trb-page-builder .offer-filter-search-input {
+    width: 100%;
+    padding: .65rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    font-size: .95rem;
+}
+
+#trb-page-builder .offer-filter-group {
+    margin-top: 1.5rem;
+    border-top: 1px solid #eee;
+    padding-top: 1.25rem;
+}
+
+#trb-page-builder .offer-filter-group-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--trb-wine);
+    margin: 0 0 .75rem;
+}
+
+#trb-page-builder .offer-filter-cat-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#trb-page-builder .offer-filter-cat-list li {
+    margin-bottom: .35rem;
+}
+
+#trb-page-builder .offer-filter-cat {
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+    text-decoration: none;
+    color: var(--trb-wine);
+    font-size: .95rem;
+    padding: .15rem 0;
+}
+
+#trb-page-builder .offer-filter-cat:hover,
+#trb-page-builder .offer-filter-cat.is-active {
+    color: var(--trb-coral);
+    font-weight: 600;
+}
+
+#trb-page-builder .offer-filter-cat-count {
+    color: #999;
+    font-weight: 400;
+}
+
+/* Taxonomy filter groups */
+#trb-page-builder .offer-filter-tax {
+    border-bottom: 1px solid #eee;
+    padding-block: .85rem;
+}
+
+#trb-page-builder .offer-filter-tax-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--trb-wine);
+}
+
+#trb-page-builder .offer-filter-tax-chevron {
+    transition: transform .2s ease;
+}
+
+#trb-page-builder .offer-filter-tax.is-open .offer-filter-tax-chevron {
+    transform: rotate(180deg);
+}
+
+#trb-page-builder .offer-filter-tax-label {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--trb-wine);
+    margin-bottom: .6rem;
+}
+
+#trb-page-builder .offer-filter-tax-body {
+    padding-top: .6rem;
+}
+
+#trb-page-builder .offer-filter-tax--accordion .offer-filter-tax-body {
+    display: none;
+}
+
+#trb-page-builder .offer-filter-tax--accordion.is-open .offer-filter-tax-body {
+    display: block;
+}
+
+#trb-page-builder .offer-filter-check {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    font-size: .92rem;
+    color: #444;
+    margin-bottom: .45rem;
+    cursor: pointer;
+}
+
+#trb-page-builder .offer-filter-check input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--trb-wine);
+}
+
+#trb-page-builder .offer-filter-reset {
+    margin-top: 1.25rem;
+    width: 100%;
+    padding: .7rem 1rem;
+    background: transparent;
+    border: 1px solid var(--trb-wine);
+    color: var(--trb-wine);
+    border-radius: 4px;
+    font-size: .85rem;
+    letter-spacing: .05em;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+}
+
+#trb-page-builder .offer-filter-reset:hover {
+    background: var(--trb-wine);
+    color: #fff;
+}
+
+/* Sponsored ads */
+#trb-page-builder .offer-filter-ad {
+    position: relative;
+    margin-top: 1.25rem;
+}
+
+#trb-page-builder .offer-filter-ad img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#trb-page-builder .offer-filter-sponsored {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, .85);
+    color: #555;
+    font-size: .65rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    z-index: 2;
+}
+
+#trb-page-builder .offer-filter-ad--banner {
+    margin: 0 0 1.5rem;
+}
+
+/* ---------------------------------------------------------------- Results */
+#trb-page-builder .offer-filter-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+}
+
+#trb-page-builder .offer-filter-count {
+    font-size: .95rem;
+    color: #555;
+}
+
+#trb-page-builder .offer-filter-sort {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .9rem;
+}
+
+#trb-page-builder .offer-filter-sort-select {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: .45rem .75rem;
+    font-size: .9rem;
+}
+
+#trb-page-builder .offer-filter-results {
+    position: relative;
+}
+
+#trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+#trb-page-builder .offer-filter-grid .product-widget--box {
+    width: auto;
+    margin: 0;
+}
+
+#trb-page-builder .offer-filter-grid .product-discount {
+    font-weight: 700;
+    color: var(--trb-wine);
+    font-size: 1.05rem;
+    margin: .5rem 0;
+}
+
+#trb-page-builder .offer-filter-grid .product-widget--cta a {
+    color: var(--trb-coral);
+}
+
+#trb-page-builder .offer-filter-ad--grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background: #f6f6f6;
+}
+
+#trb-page-builder .offer-filter-empty {
+    grid-column: 1 / -1;
+    padding: 2rem 0;
+    color: #777;
+}
+
+/* Pagination */
+#trb-page-builder .offer-filter-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: 2rem;
+}
+
+#trb-page-builder .offer-filter-page,
+#trb-page-builder .offer-filter-page-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 .5rem;
+    text-decoration: none;
+    color: var(--trb-wine);
+    font-size: .95rem;
+}
+
+#trb-page-builder a.offer-filter-page:hover {
+    color: var(--trb-coral);
+}
+
+#trb-page-builder .offer-filter-page.is-disabled {
+    color: #ccc;
+    pointer-events: none;
+}
+
+#trb-page-builder .offer-filter-page-status {
+    font-weight: 600;
+}
+
+/* Loading state */
+#trb-page-builder .offer-filter.is-loading .offer-filter-grid-inner {
+    opacity: .5;
+    pointer-events: none;
+    transition: opacity .15s ease;
+}
+
+#trb-page-builder .offer-filter-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 4rem;
+}
+
+#trb-page-builder .offer-filter-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid #ddd;
+    border-top-color: var(--trb-wine);
+    border-radius: 50%;
+    animation: trb-offer-spin .8s linear infinite;
+}
+
+@keyframes trb-offer-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ---------------------------------------------------------------- Responsive */
+@media (max-width: 991px) {
+    #trb-page-builder .offer-filter-layout {
+        grid-template-columns: 1fr;
+    }
+    #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575px) {
+    #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
+        grid-template-columns: 1fr;
+    }
 }

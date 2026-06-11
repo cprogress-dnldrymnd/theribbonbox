@@ -130,64 +130,11 @@ if ($decorative_bar) {
                     <?php endif; ?>
 
                     <?php foreach ($offers as $offer) :
-                        $offer_id = $offer->ID;
-
-                        // Link: external website_link (new tab) or the post permalink.
-                        $website_link = function_exists('get_field') ? get_field('website_link', $offer_id) : '';
-                        $url = $website_link ?: get_permalink($offer_id);
-                        $target = $website_link ? ' target="_blank" rel="noopener"' : '';
-
-                        // Image: featured image, else the ACF large image, else nothing.
-                        $img_html = '';
-                        if (has_post_thumbnail($offer_id)) {
-                            $img_html = get_the_post_thumbnail($offer_id, 'medium');
-                        } else {
-                            $acf_img = function_exists('get_field') ? get_field('post_large_image', $offer_id) : '';
-                            $acf_url = is_array($acf_img) ? ($acf_img['url'] ?? '') : $acf_img;
-                            if ($acf_url) {
-                                $img_html = '<img src="' . esc_url($acf_url) . '" alt="' . esc_attr(get_the_title($offer_id)) . '">';
-                            }
+                        // Shared card markup (see functions/offer-filter.php).
+                        if (function_exists('trb_render_offer_card')) {
+                            echo trb_render_offer_card($offer->ID, array('cta_text' => 'Visit Offer'));
                         }
-
-                        $cats = get_the_category($offer_id);
-                        $cat_name = !empty($cats) ? $cats[0]->name : '';
-
-                        // ACF true/false flags shown as badges on the card.
-                        $badges = array();
-                        if (function_exists('get_field')) {
-                             if (get_field('featured', $offer_id)) {
-                                $badges[] = array('label' => 'Featured', 'class' => 'offer-badge--featured');
-                            }
-                            if (get_field('all_natural', $offer_id)) {
-                                $badges[] = array('label' => 'All Natural', 'class' => 'offer-badge--natural');
-                            }
-                            if (get_field('eco_friendly', $offer_id)) {
-                                $badges[] = array('label' => 'Eco Friendly', 'class' => 'offer-badge--eco');
-                            }
-                        }
-                        ?>
-                        <div class="product-widget--box">
-                            <?php if ($img_html) : ?>
-                                <div class="product-widget--image">
-                                    <a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo $img_html; ?></a>
-                                </div>
-                            <?php endif; ?>
-                            <div class="product-widget--content">
-                                <?php if ($cat_name) : ?>
-                                    <div class="product-cat"><?php echo esc_html($cat_name); ?></div>
-                                <?php endif; ?>
-                                <h3 class="product-name"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo esc_html(get_the_title($offer_id)); ?></a></h3>
-                                 <?php if (!empty($badges)) : ?>
-                                        <div class="offer-badges">
-                                            <?php foreach ($badges as $badge) : ?>
-                                                <span class="offer-badge <?php echo esc_attr($badge['class']); ?>"><?php echo esc_html($badge['label']); ?></span>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    <?php endif; ?>
-                                <div class="product-widget--cta"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>>Visit Offer</a></div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                    endforeach; ?>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>

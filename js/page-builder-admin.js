@@ -35,6 +35,11 @@
     }
 
     function bindImageField($field) {
+        if ($field.data('trb-image-init')) {
+            return;
+        }
+        $field.data('trb-image-init', true);
+
         var $select = $field.find('.trb-builder-image-select');
         var $remove = $field.find('.trb-builder-image-remove');
         var $input = $field.find('.trb-builder-image-id');
@@ -120,6 +125,12 @@
     function bindRepeaterRow($row) {
         $row.find('> .trb-builder-repeater-remove').on('click', function () {
             $row.remove();
+        });
+
+        // Bind any media-picker fields inside the row (e.g. image sub-fields on a
+        // newly added ad row), which bindCard's initial pass can't reach.
+        $row.find('.trb-builder-image-field').each(function () {
+            bindImageField($(this));
         });
     }
 

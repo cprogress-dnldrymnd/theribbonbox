@@ -55,14 +55,14 @@ ob_start();
 $content_box = ob_get_clean();
 ?>
 <section class="two--columns promo-banner"<?php echo $anchor_id ? ' id="' . esc_attr($anchor_id) . '"' : ''; ?>>
-    <div class="container">
-        <div class="inner">
-            <div class="row g-3 g-lg-3 align-items-stretch">
+    <div class="inner">
+        <div class="container">
+            <div class="row g-0 align-items-stretch">
                 <?php if ($image_position === 'left') : ?>
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <div class="image-box rounded h-100"><?php echo $image_html; ?></div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
                         <?php echo $content_box; ?>
                     </div>
                 <?php else : ?>
