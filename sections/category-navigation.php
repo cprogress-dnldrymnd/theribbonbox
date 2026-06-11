@@ -1,6 +1,6 @@
 <section class="category-navigation">
+    <div class="inner">
     <div class="container">
-        <div class="inner">
             <div class="category-navigation-holder mx-auto">
                 <div class="row g-3">
                     <div class="col">
