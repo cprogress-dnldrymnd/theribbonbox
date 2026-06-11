@@ -97,11 +97,6 @@
     margin-bottom: 14px;
 }
 
-#trb-builder .trb-builder-field.is-disabled {
-    opacity: 0.5;
-    pointer-events: none;
-}
-
 #trb-builder .trb-builder-field-label,
 #trb-builder .trb-builder-field > label:not(.trb-builder-checkbox-label) {
     display: block;

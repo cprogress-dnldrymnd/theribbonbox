@@ -26,6 +26,8 @@ if ( ! defined( 'TRB_BUILDER_VERSION' ) ) {
  *   summary    If true, the field's value is shown in the collapsed card header.
  *   show_when  array('field' => slug, 'value' => x) — only show this field when another
  *              field in the same section equals the given value.
+ *   hide_when  array('field' => slug, 'value' => x) — hide this field when another
+ *              field in the same section equals the given value (overrides show_when).
  */
 function trb_builder_section_types()
 {
@@ -183,6 +185,11 @@ function trb_builder_section_types()
                     'allow_html' => true,
                     'summary' => true,
                 ),
+                'featured_only' => array(
+                    'type' => 'checkbox',
+                    'label' => 'Show featured offers only',
+                    'help' => 'Only include offers whose "Featured" field is on. When enabled, the choices below are hidden and offers are pulled from all featured items (limited by "Number of offers to show").',
+                ),
                 'source_mode' => array(
                     'type' => 'select',
                     'label' => 'Choose offers by',
@@ -191,7 +198,7 @@ function trb_builder_section_types()
                         'category' => 'Category',
                     ),
                     'default' => 'manual',
-                    'disable_when' => array('field' => 'featured_only', 'value' => '1'),
+                    'hide_when' => array('field' => 'featured_only', 'value' => '1'),
                 ),
                 'manual_items' => array(
                     'type' => 'post_select',
@@ -199,26 +206,19 @@ function trb_builder_section_types()
                     'post_type' => 'offer-items',
                     'help' => 'Search by name. Slides appear in the order shown here.',
                     'show_when' => array('field' => 'source_mode', 'value' => 'manual'),
-                    'disable_when' => array('field' => 'featured_only', 'value' => '1'),
+                    'hide_when' => array('field' => 'featured_only', 'value' => '1'),
                 ),
                 'category' => array(
                     'type' => 'term_select',
                     'label' => 'Offer Category',
                     'taxonomy' => 'category',
                     'show_when' => array('field' => 'source_mode', 'value' => 'category'),
-                    'disable_when' => array('field' => 'featured_only', 'value' => '1'),
+                    'hide_when' => array('field' => 'featured_only', 'value' => '1'),
                 ),
                 'count' => array(
                     'type' => 'number',
                     'label' => 'Number of offers to show',
                     'default' => 8,
-                    'show_when' => array('field' => 'source_mode', 'value' => 'category'),
-                    'disable_when' => array('field' => 'featured_only', 'value' => '1'),
-                ),
-                'featured_only' => array(
-                    'type' => 'checkbox',
-                    'label' => 'Show featured offers only',
-                    'help' => 'Only include offers whose "Featured" field is on. When enabled, the offers are pulled from all featured items and the choices above are disabled.',
                 ),
                 'first_image' => array(
                     'type' => 'image',
@@ -279,6 +279,8 @@ function trb_builder_color_options($include_none = true)
         'petal' => 'Petal',
         'white' => 'White',
         'black' => 'Black',
+        'mint' => 'Mint',
+        'forest' => 'Forest Green',
     );
     if ($include_none) {
         $colors = array('' => '— None —') + $colors;
@@ -509,8 +511,8 @@ function trb_render_section_field($field_key, $field_def, $index, $values = arra
     if (!empty($field_def['show_when'])) {
         $show_attrs = ' data-show-when-field="' . esc_attr($field_def['show_when']['field']) . '" data-show-when-value="' . esc_attr($field_def['show_when']['value']) . '"';
     }
-    if (!empty($field_def['disable_when'])) {
-        $show_attrs .= ' data-disable-when-field="' . esc_attr($field_def['disable_when']['field']) . '" data-disable-when-value="' . esc_attr($field_def['disable_when']['value']) . '"';
+    if (!empty($field_def['hide_when'])) {
+        $show_attrs .= ' data-hide-when-field="' . esc_attr($field_def['hide_when']['field']) . '" data-hide-when-value="' . esc_attr($field_def['hide_when']['value']) . '"';
     }
     ?>
     <div class="<?php echo esc_attr($wrapper_classes); ?>"<?php echo $show_attrs; ?>>

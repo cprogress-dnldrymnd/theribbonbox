@@ -81,47 +81,38 @@
 
     /* ----------------------------------------------------------- conditional fields */
 
-    function applyConditional($card) {
-        $card.find('> .trb-builder-card-body > .trb-builder-field[data-show-when-field]').each(function () {
-            var $f = $(this);
-            var ctrlName = $f.data('show-when-field');
-            var want = String($f.data('show-when-value'));
-            var $ctrl = $card.find('> .trb-builder-card-body [name$="[' + ctrlName + ']"]').filter('select, input').first();
-            var val;
-            if ($ctrl.is(':checkbox')) {
-                val = $ctrl.is(':checked') ? ($ctrl.val() || '1') : '';
-            } else {
-                val = $ctrl.length ? String($ctrl.val()) : '';
-            }
-            $f.toggle(val === want);
-        });
+    function getFieldValue($card, ctrlName) {
+        var $ctrl = $card.find('> .trb-builder-card-body [name$="[' + ctrlName + ']"]').filter('select, input').first();
+        if ($ctrl.is(':checkbox')) {
+            return $ctrl.is(':checked') ? ($ctrl.val() || '1') : '';
+        }
+        return $ctrl.length ? String($ctrl.val()) : '';
     }
 
-    function applyDisableConditional($card) {
-        $card.find('> .trb-builder-card-body > .trb-builder-field[data-disable-when-field]').each(function () {
+    function applyConditional($card) {
+        $card.find('> .trb-builder-card-body > .trb-builder-field[data-show-when-field], > .trb-builder-card-body > .trb-builder-field[data-hide-when-field]').each(function () {
             var $f = $(this);
-            var ctrlName = $f.data('disable-when-field');
-            var want = String($f.data('disable-when-value'));
-            var $ctrl = $card.find('> .trb-builder-card-body [name$="[' + ctrlName + ']"]').filter('select, input').first();
-            var val;
-            if ($ctrl.is(':checkbox')) {
-                val = $ctrl.is(':checked') ? ($ctrl.val() || '1') : '';
-            } else {
-                val = $ctrl.length ? String($ctrl.val()) : '';
+            var visible = true;
+
+            if ($f.data('show-when-field')) {
+                visible = getFieldValue($card, $f.data('show-when-field')) === String($f.data('show-when-value'));
             }
-            // Visual/interactive disable only — keep the fields in the form
-            // submission so previously saved values aren't lost while hidden.
-            $f.toggleClass('is-disabled', val === want);
+
+            if (visible && $f.data('hide-when-field')) {
+                if (getFieldValue($card, $f.data('hide-when-field')) === String($f.data('hide-when-value'))) {
+                    visible = false;
+                }
+            }
+
+            $f.toggle(visible);
         });
     }
 
     function bindConditional($card) {
         $card.find('> .trb-builder-card-body > .trb-builder-field select, > .trb-builder-card-body > .trb-builder-field input').on('change.trbcond', function () {
             applyConditional($card);
-            applyDisableConditional($card);
         });
         applyConditional($card);
-        applyDisableConditional($card);
     }
 
     /* ------------------------------------------------------------------- repeater */

@@ -11,6 +11,8 @@
     --trb-petal: #FFDBD1;
     --trb-white: #FFFFFF;
     --trb-black: #000000;
+    --trb-mint: #CCFBCA;
+    --trb-forest: #008242;
 }
 
 /* Per-section background / text color chosen in the builder */
@@ -367,6 +369,7 @@
 #trb-page-builder .offer-slider .product-name a {
     text-decoration: none;
     color: var(--trb-wine);
+    font-size: 1.375rem;
 }
 
 #trb-page-builder .product-tabs--light .offer-slider .product-cat,
@@ -384,7 +387,7 @@
 #trb-page-builder .trb-section-design.has-text .offer-slider .product-cat,
 #trb-page-builder .trb-section-design.has-text .offer-slider .product-name a,
 #trb-page-builder .trb-section-design.has-text .offer-slider .product-widget--cta a {
-    color: inherit;
+    color: var(--trb-wine);
 }
 
 /* All Natural / Eco Friendly badges on offer cards */
@@ -412,11 +415,13 @@
 }
 
 #trb-page-builder .offer-slider .offer-badge--natural {
-    background: var(--trb-green);
+    background: var(--trb-mint);
+    color: var(--trb-forest);
 }
 
 #trb-page-builder .offer-slider .offer-badge--eco {
-    background: var(--trb-green);
+    background: var(--trb-mint);
+    color: var(--trb-forest);
 }
 
 /* Decorative background bar (e.g. offer slider following a Wine two-column section) */

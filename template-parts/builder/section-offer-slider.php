@@ -23,9 +23,10 @@ $featured_meta = $featured_only ? array(
 // Resolve which offer-items to show.
 if ($featured_only) {
     // "Featured only" overrides the manual/category choice entirely.
+    $count = max(1, absint($section['count'] ?? 8));
     $offers = get_posts(array(
         'post_type' => 'offer-items',
-        'posts_per_page' => -1,
+        'posts_per_page' => $count,
         'post_status' => 'publish',
         'orderby' => 'date',
         'order' => 'DESC',
