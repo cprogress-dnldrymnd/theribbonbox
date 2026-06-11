@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'TRB_BUILDER_VERSION' ) ) {
+    define( 'TRB_BUILDER_VERSION', '1.0.0' );
+}
 /*-----------------------------------------------------------------------------------*/
 /* TRB Page Builder
 /* A lightweight, ACF-free section builder for the "Page Builder" page template.
@@ -778,6 +781,7 @@ function trb_render_builder_sections($post_id)
 
 /**
  * Front-end assets — only loaded on pages using the Page Builder template.
+ * Validates file existence before utilizing filemtime() to prevent cache-busting failure.
  */
 add_action('wp_enqueue_scripts', 'trb_builder_frontend_assets');
 function trb_builder_frontend_assets()
@@ -785,12 +789,19 @@ function trb_builder_frontend_assets()
     if (!is_page_template('page-template-builder.php')) {
         return;
     }
+    
     $path = '/css/page-builder.css';
-    wp_enqueue_style('trb-page-builder', get_stylesheet_directory_uri() . $path, array(), filemtime(get_stylesheet_directory() . $path));
+    $absolute_path = get_stylesheet_directory() . $path;
+    
+    // Resolve dynamic cache-busting version or fallback to defined constant
+    $version = file_exists( $absolute_path ) ? filemtime( $absolute_path ) : TRB_BUILDER_VERSION;
+
+    wp_enqueue_style('trb-page-builder', get_stylesheet_directory_uri() . $path, array(), $version);
 }
 
 /**
  * Admin assets — only loaded on the page edit screen.
+ * Validates file existence before utilizing filemtime() to prevent cache-busting failure.
  */
 add_action('admin_enqueue_scripts', 'trb_builder_admin_assets', 20);
 function trb_builder_admin_assets($hook)
@@ -820,7 +831,14 @@ function trb_builder_admin_assets($hook)
 
     $css_path = '/css/page-builder-admin.css';
     $js_path = '/js/page-builder-admin.js';
+    
+    $absolute_css_path = get_stylesheet_directory() . $css_path;
+    $absolute_js_path  = get_stylesheet_directory() . $js_path;
 
-    wp_enqueue_style('trb-page-builder-admin', get_stylesheet_directory_uri() . $css_path, array(), filemtime(get_stylesheet_directory() . $css_path));
-    wp_enqueue_script('trb-page-builder-admin', get_stylesheet_directory_uri() . $js_path, array_merge(array('jquery', 'jquery-ui-sortable'), array_slice($select_deps, 1)), filemtime(get_stylesheet_directory() . $js_path), true);
+    // Resolve dynamic cache-busting versions or fallback to defined constant
+    $css_version = file_exists( $absolute_css_path ) ? filemtime( $absolute_css_path ) : TRB_BUILDER_VERSION;
+    $js_version  = file_exists( $absolute_js_path ) ? filemtime( $absolute_js_path ) : TRB_BUILDER_VERSION;
+
+    wp_enqueue_style('trb-page-builder-admin', get_stylesheet_directory_uri() . $css_path, array(), $css_version);
+    wp_enqueue_script('trb-page-builder-admin', get_stylesheet_directory_uri() . $js_path, array_merge(array('jquery', 'jquery-ui-sortable'), array_slice($select_deps, 1)), $js_version, true);
 }

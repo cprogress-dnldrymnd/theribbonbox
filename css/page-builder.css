@@ -102,6 +102,7 @@
     font-size: clamp(3rem, 5.5vw, 110px);
     font-weight: bold;
     color: inherit;
+    margin-top: 0;
 }
 
 #trb-page-builder .rounded {
