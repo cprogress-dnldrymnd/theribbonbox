@@ -1,0 +1,82 @@
+/*-----------------------------------------------------------------------------------*/
+/* TRB Page Builder — admin meta box styles
+/*-----------------------------------------------------------------------------------*/
+
+#trb-builder .trb-builder-card {
+    border: 1px solid #dcdcde;
+    background: #fff;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+#trb-builder .trb-builder-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #f6f7f7;
+    border-bottom: 1px solid #dcdcde;
+}
+
+#trb-builder .trb-builder-drag {
+    cursor: grab;
+    color: #787c82;
+}
+
+#trb-builder .trb-builder-card-title {
+    flex: 1;
+}
+
+#trb-builder .trb-builder-card-actions {
+    display: flex;
+    gap: 12px;
+}
+
+#trb-builder .trb-builder-card-actions .button-link-delete {
+    color: #b32d2e;
+}
+
+#trb-builder .trb-builder-card-body {
+    padding: 12px;
+}
+
+#trb-builder .trb-builder-field {
+    margin-bottom: 12px;
+}
+
+#trb-builder .trb-builder-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+#trb-builder .trb-builder-checkbox-label {
+    font-weight: 600;
+}
+
+#trb-builder .trb-builder-image-preview img {
+    display: block;
+    margin-bottom: 8px;
+    max-width: 150px;
+    height: auto;
+    border: 1px solid #dcdcde;
+}
+
+#trb-builder .trb-builder-card.is-collapsed .trb-builder-card-body {
+    display: none;
+}
+
+#trb-builder .trb-builder-card-placeholder {
+    border: 2px dashed #c3c4c7;
+    background: #f0f0f1;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    height: 50px;
+}
+
+#trb-builder .trb-builder-toolbar {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}

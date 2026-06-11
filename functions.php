@@ -43,6 +43,7 @@ include 'functions/b2b-content.php';
 include 'functions/landing-page-header.php';
 include 'functions/e-guides.php';
 include 'functions/b2b-discounts.php';
+include 'functions/page-builder.php';
 //include 'functions/experts-slide.php';
 include 'shortcodes/member-login-button.php';
 

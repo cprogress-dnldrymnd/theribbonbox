@@ -1,0 +1,236 @@
+/*-----------------------------------------------------------------------------------*/
+/* TRB Page Builder — front-end styles
+/* Used only on pages with the "Page Builder" template (#trb-page-builder).
+/* Adapted from page-template-trb-picks.php so builder pages match that look.
+/*-----------------------------------------------------------------------------------*/
+
+#trb-page-builder {
+    --trb-green: #034146;
+    --trb-wine: #3B1527;
+    --trb-coral: #F77D67;
+    --trb-petal: #FFDBD1;
+}
+
+#trb-page-builder hr {
+    border-color: #E1E1E1;
+    opacity: 1;
+}
+
+@media (min-width: 1500px) {
+    #trb-page-builder .container {
+        max-width: 1420px;
+    }
+}
+
+@media (min-width: 1600px) {
+    #trb-page-builder .container {
+        max-width: 1520px;
+    }
+}
+
+@media (min-width: 1700px) {
+    #trb-page-builder .container {
+        max-width: 1620px;
+    }
+}
+
+@media (min-width: 1800px) {
+    #trb-page-builder .container {
+        max-width: 1820px;
+    }
+}
+
+#trb-page-builder h3:not(.product-name) {
+    font-weight: bold;
+    font-size: 2.625rem;
+}
+
+#trb-page-builder .trb-mb-large {
+    margin-bottom: 6rem;
+}
+
+#trb-page-builder .trb-mt-large {
+    margin-top: 6rem;
+}
+
+#trb-page-builder .trb-my-large {
+    margin-block: 6rem;
+}
+
+#trb-page-builder .trb-mb-medium {
+    margin-bottom: 3rem;
+}
+
+#trb-page-builder .trb-mt-medium {
+    margin-top: 3rem;
+}
+
+#trb-page-builder .trb-my-medium {
+    margin-block: 3rem;
+}
+
+#trb-page-builder .trb-green-color {
+    color: var(--trb-green);
+}
+
+#trb-page-builder .trb-wine-color {
+    color: var(--trb-wine);
+}
+
+#trb-page-builder .trb-coral-color {
+    color: var(--trb-coral);
+}
+
+#trb-page-builder .trb-petal-color {
+    color: var(--trb-petal) !important;
+}
+
+#trb-page-builder .trb-bg-wine {
+    background-color: var(--trb-wine);
+}
+
+#trb-page-builder .large-heading {
+    font-size: clamp(3rem, 5.5vw, 110px);
+    font-weight: bold;
+}
+
+#trb-page-builder .rounded {
+    border-radius: 20px;
+}
+
+#trb-page-builder .page-title {
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+#trb-page-builder .page-title .inner {
+    max-width: 1050px;
+}
+
+#trb-page-builder .page-title h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#trb-page-builder .page-title .desc {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#trb-page-builder .page-title .woocommerce-breadcrumb {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#trb-page-builder .post-main-content p,
+#trb-page-builder p.text,
+#trb-page-builder .desc p,
+#trb-page-builder .trb-richtext p {
+    font-size: 1rem !important;
+}
+
+#trb-page-builder .category-navigation .inner {
+    background-color: #EDF7F6;
+    padding-block: clamp(2rem, 4vw, 76px);
+}
+
+#trb-page-builder .category-navigation-holder {
+    padding-inline: 2rem;
+    max-width: 1500px;
+}
+
+#trb-page-builder .cat-nav-holder {
+    display: flex;
+    flex-direction: column;
+}
+
+#trb-page-builder .cat-decor {
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+#trb-page-builder .cat-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: bold;
+    border-top: 1px solid var(--trb-green);
+    padding-top: 1rem;
+}
+
+#trb-page-builder .nav-tabs.nav-tabs {
+    margin: 0;
+    padding: 0;
+    border: none;
+    margin-bottom: 1px;
+}
+
+#trb-page-builder .nav-tabs.nav-tabs .nav-link {
+    border: none;
+    padding: 1rem 0;
+    border-radius: 0;
+    color: var(--trb-wine) !important;
+    font-size: 2rem !important;
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: bold;
+    height: auto;
+    text-transform: initial;
+    border-bottom: 4px solid transparent !important;
+    background-color: transparent;
+}
+
+#trb-page-builder .nav-tabs.nav-tabs .nav-link:hover {
+    background-color: transparent;
+    opacity: 0.7;
+}
+
+#trb-page-builder .nav-tabs.nav-tabs .nav-link.active {
+    border-color: var(--trb-wine) !important;
+}
+
+#trb-page-builder .nav-tabs-holder-inner {
+    border-bottom: 1px solid var(--trb-wine);
+    margin-bottom: 2rem;
+    margin-inline: auto;
+    line-height: 1;
+}
+
+#trb-page-builder .carousel-with-nav-width {
+    max-width: calc(100% - 140px);
+    margin-inline: auto;
+}
+
+#trb-page-builder .product-tabs--light .nav-tabs.nav-tabs .nav-link {
+    color: var(--trb-petal) !important;
+}
+
+#trb-page-builder .product-tabs--light .nav-tabs-holder-inner {
+    border-color: var(--trb-petal);
+}
+
+#trb-page-builder .product-tabs--light .nav-tabs.nav-tabs .nav-link.active {
+    border-color: var(--trb-petal) !important;
+}
+
+#trb-page-builder .nav-tabs-holder .button-box {
+    padding-bottom: 1rem;
+}
+
+#trb-page-builder .nav-tabs-holder .button-box a {
+    color: var(--trb-wine);
+}
+
+/* Decorative background bar (e.g. product tabs following a Wine two-column section) */
+#trb-page-builder .trb-decor-bar {
+    position: relative;
+}
+
+#trb-page-builder .trb-decor-bar:before {
+    content: '';
+    position: absolute;
+    background-color: var(--trb-wine);
+    height: 250px;
+    left: 0;
+    top: 0;
+    right: 0;
+}
