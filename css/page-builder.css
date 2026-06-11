@@ -800,7 +800,8 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: .45rem .75rem;
-    font-size: 1rem;
+    font-size: 1rem !important;
+    padding-right: 2rem;
 }
 
 
