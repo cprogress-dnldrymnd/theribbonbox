@@ -807,7 +807,7 @@
 
 #trb-page-builder .offer-filter-results {
     position: relative;
-    margin-top: 1.5rem;
+    margin-block: 1.5rem;
 }
 
 #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
@@ -1098,4 +1098,35 @@
     #trb-page-builder .large-heading {
         font-size: clamp(2.25rem, 10vw, 3rem);
     }
+}
+
+/* ----------------------------------------------- Spacing presets (per section) */
+/* The medium/large/xlarge margin + padding presets are tuned for desktop and
+   leave huge gaps on a phone, so scale them down. (none/small stay as-is.) */
+@media (max-width: 767px) {
+    #trb-page-builder .trb-section-design.trb-mt-medium { margin-top: 2rem; }
+    #trb-page-builder .trb-section-design.trb-mt-large { margin-top: 3rem; }
+    #trb-page-builder .trb-section-design.trb-mt-xlarge { margin-top: 4rem; }
+
+    #trb-page-builder .trb-section-design.trb-mb-medium { margin-bottom: 2rem; }
+    #trb-page-builder .trb-section-design.trb-mb-large { margin-bottom: 3rem; }
+    #trb-page-builder .trb-section-design.trb-mb-xlarge { margin-bottom: 4rem; }
+
+    #trb-page-builder .trb-section-design.trb-pt-medium { padding-top: 2rem; }
+    #trb-page-builder .trb-section-design.trb-pt-large { padding-top: 3rem; }
+    #trb-page-builder .trb-section-design.trb-pt-xlarge { padding-top: 4rem; }
+
+    #trb-page-builder .trb-section-design.trb-pb-medium { padding-bottom: 2rem; }
+    #trb-page-builder .trb-section-design.trb-pb-large { padding-bottom: 3rem; }
+    #trb-page-builder .trb-section-design.trb-pb-xlarge { padding-bottom: 4rem; }
+
+    /* Standalone spacing utilities used by a few sections (e.g. rich text). */
+    #trb-page-builder .trb-mt-large,
+    #trb-page-builder .trb-my-large { margin-top: 3rem; }
+    #trb-page-builder .trb-mb-large,
+    #trb-page-builder .trb-my-large { margin-bottom: 3rem; }
+    #trb-page-builder .trb-mt-medium,
+    #trb-page-builder .trb-my-medium { margin-top: 2rem; }
+    #trb-page-builder .trb-mb-medium,
+    #trb-page-builder .trb-my-medium { margin-bottom: 2rem; }
 }
