@@ -507,7 +507,7 @@
 
 #trb-page-builder .offer-filter-layout {
     display: grid;
-    grid-template-columns: 270px 1fr;
+    grid-template-columns: 380px 1fr;
     gap: 2.5rem;
     align-items: start;
 }
@@ -718,7 +718,7 @@
 }
 
 #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
-    display: grid;
+    display: grid !important;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
