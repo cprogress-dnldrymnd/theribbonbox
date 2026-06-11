@@ -29,7 +29,7 @@ function trb_offer_filter_taxonomies()
 {
     return array(
         'health-goal'    => array('label' => 'Health Goal', 'control' => 'accordion'),
-        'lifestyle'      => array('label' => 'Lifestyle', 'control' => 'checkbox'),
+        'lifestyle'      => array('label' => 'Lifestyle', 'control' => 'accordion'),
         'life-stage'     => array('label' => 'Life Stage', 'control' => 'accordion'),
         'discount-level' => array('label' => 'Discount Level', 'control' => 'accordion'),
     );
