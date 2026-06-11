@@ -790,10 +790,10 @@
     font-size: 1rem;
 }
 
-    {}
 
 #trb-page-builder .offer-filter-results {
     position: relative;
+    margin-top: 1.5rem;
 }
 
 #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
