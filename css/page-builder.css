@@ -20,29 +20,85 @@
 }
 
 /* Per-section spacing presets (Margin/Padding Top & Bottom) chosen in the builder */
-#trb-page-builder .trb-section-design.trb-mt-none { margin-top: 0; }
-#trb-page-builder .trb-section-design.trb-mt-small { margin-top: 1.5rem; }
-#trb-page-builder .trb-section-design.trb-mt-medium { margin-top: 3rem; }
-#trb-page-builder .trb-section-design.trb-mt-large { margin-top: 6rem; }
-#trb-page-builder .trb-section-design.trb-mt-xlarge { margin-top: 9rem; }
+#trb-page-builder .trb-section-design.trb-mt-none {
+    margin-top: 0;
+}
 
-#trb-page-builder .trb-section-design.trb-mb-none { margin-bottom: 0; }
-#trb-page-builder .trb-section-design.trb-mb-small { margin-bottom: 1.5rem; }
-#trb-page-builder .trb-section-design.trb-mb-medium { margin-bottom: 3rem; }
-#trb-page-builder .trb-section-design.trb-mb-large { margin-bottom: 6rem; }
-#trb-page-builder .trb-section-design.trb-mb-xlarge { margin-bottom: 9rem; }
+#trb-page-builder .trb-section-design.trb-mt-small {
+    margin-top: 1.5rem;
+}
 
-#trb-page-builder .trb-section-design.trb-pt-none { padding-top: 0; }
-#trb-page-builder .trb-section-design.trb-pt-small { padding-top: 1.5rem; }
-#trb-page-builder .trb-section-design.trb-pt-medium { padding-top: 3rem; }
-#trb-page-builder .trb-section-design.trb-pt-large { padding-top: 6rem; }
-#trb-page-builder .trb-section-design.trb-pt-xlarge { padding-top: 9rem; }
+#trb-page-builder .trb-section-design.trb-mt-medium {
+    margin-top: 3rem;
+}
 
-#trb-page-builder .trb-section-design.trb-pb-none { padding-bottom: 0; }
-#trb-page-builder .trb-section-design.trb-pb-small { padding-bottom: 1.5rem; }
-#trb-page-builder .trb-section-design.trb-pb-medium { padding-bottom: 3rem; }
-#trb-page-builder .trb-section-design.trb-pb-large { padding-bottom: 6rem; }
-#trb-page-builder .trb-section-design.trb-pb-xlarge { padding-bottom: 9rem; }
+#trb-page-builder .trb-section-design.trb-mt-large {
+    margin-top: 6rem;
+}
+
+#trb-page-builder .trb-section-design.trb-mt-xlarge {
+    margin-top: 9rem;
+}
+
+#trb-page-builder .trb-section-design.trb-mb-none {
+    margin-bottom: 0;
+}
+
+#trb-page-builder .trb-section-design.trb-mb-small {
+    margin-bottom: 1.5rem;
+}
+
+#trb-page-builder .trb-section-design.trb-mb-medium {
+    margin-bottom: 3rem;
+}
+
+#trb-page-builder .trb-section-design.trb-mb-large {
+    margin-bottom: 6rem;
+}
+
+#trb-page-builder .trb-section-design.trb-mb-xlarge {
+    margin-bottom: 9rem;
+}
+
+#trb-page-builder .trb-section-design.trb-pt-none {
+    padding-top: 0;
+}
+
+#trb-page-builder .trb-section-design.trb-pt-small {
+    padding-top: 1.5rem;
+}
+
+#trb-page-builder .trb-section-design.trb-pt-medium {
+    padding-top: 3rem;
+}
+
+#trb-page-builder .trb-section-design.trb-pt-large {
+    padding-top: 6rem;
+}
+
+#trb-page-builder .trb-section-design.trb-pt-xlarge {
+    padding-top: 9rem;
+}
+
+#trb-page-builder .trb-section-design.trb-pb-none {
+    padding-bottom: 0;
+}
+
+#trb-page-builder .trb-section-design.trb-pb-small {
+    padding-bottom: 1.5rem;
+}
+
+#trb-page-builder .trb-section-design.trb-pb-medium {
+    padding-bottom: 3rem;
+}
+
+#trb-page-builder .trb-section-design.trb-pb-large {
+    padding-bottom: 6rem;
+}
+
+#trb-page-builder .trb-section-design.trb-pb-xlarge {
+    padding-bottom: 9rem;
+}
 
 #trb-page-builder hr {
     border-color: #E1E1E1;
@@ -337,29 +393,26 @@
 }
 
 #trb-page-builder .offer-slider .offer-badges {
-    position: absolute;
-    top: 10px;
-    left: 10px;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    max-width: calc(100% - 20px);
+    margin-block: 1rem;
 }
 
 #trb-page-builder .offer-slider .offer-badge {
-    font-size: 0.72rem;
+    font-size: 0.875;
     font-weight: 600;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 999px;
+    padding: 4px 5px;
+    border-radius: 0;
     color: #fff;
     line-height: 1.2;
-    background: var(--trb-green);
+    background: var(--trb-coral);
 }
 
 #trb-page-builder .offer-slider .offer-badge--natural {
-    background: var(--trb-coral);
+    background: var(--trb-green);
 }
 
 #trb-page-builder .offer-slider .offer-badge--eco {
