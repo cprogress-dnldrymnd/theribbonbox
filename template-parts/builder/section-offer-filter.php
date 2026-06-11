@@ -81,13 +81,25 @@ $js_config = array(
             </div>
         <?php endif; ?>
 
+        <!-- Mobile trigger: opens the sidebar as a slide-out drawer (≤767px). -->
+        <button type="button" class="offer-filter-mobile-toggle">
+            <span class="dashicons dashicons-filter" aria-hidden="true"></span>
+            Search &amp; Filter
+        </button>
+
         <div class="offer-filter-layout">
             <!-- ------------------------------------------------------- Sidebar -->
             <aside class="offer-filter-sidebar">
                 <form class="offer-filter-form" onsubmit="return false;">
-                    <h3 class="offer-filter-sidebar-title">Search &amp; Filter</h3>
+                    <div class="offer-filter-sidebar-header">
+                        <h3 class="offer-filter-sidebar-title">Search &amp; Filter</h3>
+                        <button type="button" class="offer-filter-mobile-close" aria-label="Close filters">
+                            <span class="dashicons dashicons-no-alt" aria-hidden="true"></span>
+                        </button>
+                    </div>
 
                     <div class="offer-filter-search">
+                        <span class="offer-filter-search-icon dashicons dashicons-search" aria-hidden="true"></span>
                         <input type="search" name="of_s" class="offer-filter-search-input"
                                value="<?php echo esc_attr($args['search']); ?>" placeholder="Search…" autocomplete="off">
                     </div>
@@ -159,6 +171,9 @@ $js_config = array(
                     } ?>
                 </form>
             </aside>
+
+            <!-- Dimmed backdrop behind the mobile drawer. -->
+            <div class="offer-filter-overlay" hidden></div>
 
             <!-- ----------------------------------------------------- Results -->
             <div class="offer-filter-main">

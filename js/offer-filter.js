@@ -26,6 +26,8 @@
         var $gridInner = $root.find('.offer-filter-grid-inner');
         var $pagination = $root.find('.offer-filter-pagination-wrap');
         var $loading = $root.find('.offer-filter-loading');
+        var $sidebar = $root.find('.offer-filter-sidebar');
+        var $overlay = $root.find('.offer-filter-overlay');
 
         var activeCategory = parseInt($root.find('.offer-filter-cat.is-active').data('cat'), 10) || 0;
         var currentPage = 1;
@@ -132,6 +134,28 @@
                 xhr = null;
             });
         }
+
+        /* ---------------------------------------------------- mobile drawer */
+
+        function openDrawer() {
+            $sidebar.addClass('is-open');
+            $overlay.prop('hidden', false);
+            $('body').addClass('offer-filter-drawer-open');
+        }
+
+        function closeDrawer() {
+            $sidebar.removeClass('is-open');
+            $overlay.prop('hidden', true);
+            $('body').removeClass('offer-filter-drawer-open');
+        }
+
+        $root.on('click', '.offer-filter-mobile-toggle', openDrawer);
+        $root.on('click', '.offer-filter-mobile-close', closeDrawer);
+        $overlay.on('click', closeDrawer);
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape') { closeDrawer(); }
+        });
 
         /* ---------------------------------------------------- events */
 
