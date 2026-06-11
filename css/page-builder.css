@@ -195,9 +195,22 @@
     line-height: 1;
 }
 
-#trb-page-builder .carousel-with-nav-width {
-    max-width: calc(100% - 140px);
-    margin-inline: auto;
+#trb-page-builder .product-widget--holder.style-2 {
+    padding: 0;
+}
+
+#trb-page-builder .product-tabs {
+    --nav-offset: 70px;
+    padding-left: var(--nav-offset);
+    padding-right: var(--nav-offset);
+}
+
+#trb-page-builder .product-tabs .swiper-button-prev-trb {
+    left: calc(var(--nav-offset) - var(--nav-offset) - var(--nav-offset));
+}
+
+#trb-page-builder .product-tabs .swiper-button-next-trb {
+    right: calc(var(--nav-offset) - var(--nav-offset) - var(--nav-offset));
 }
 
 #trb-page-builder .product-tabs--light .nav-tabs.nav-tabs .nav-link {
