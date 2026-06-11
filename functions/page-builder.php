@@ -110,15 +110,6 @@ function trb_builder_section_types()
                     'allow_html' => true,
                     'summary' => true,
                 ),
-                'style' => array(
-                    'type' => 'select',
-                    'label' => 'Style',
-                    'options' => array(
-                        'default' => 'Default',
-                        'light' => 'Light (on dark background)',
-                    ),
-                    'default' => 'default',
-                ),
                 'source_mode' => array(
                     'type' => 'select',
                     'label' => 'Choose offers by',
@@ -146,6 +137,11 @@ function trb_builder_section_types()
                     'label' => 'Number of offers to show',
                     'default' => 8,
                     'show_when' => array('field' => 'source_mode', 'value' => 'category'),
+                ),
+                'featured_only' => array(
+                    'type' => 'checkbox',
+                    'label' => 'Show featured offers only',
+                    'help' => 'Only include offers whose "Featured" field is on.',
                 ),
                 'first_image' => array(
                     'type' => 'image',
@@ -214,9 +210,9 @@ function trb_builder_color_options($include_none = true)
 }
 
 /**
- * Fields shared by every section (background + text color).
+ * Color fields shared by every section (background + text color).
  */
-function trb_builder_common_fields()
+function trb_builder_color_fields()
 {
     $colors = trb_builder_color_options();
     return array(
@@ -233,6 +229,58 @@ function trb_builder_common_fields()
             'default' => '',
         ),
     );
+}
+
+/**
+ * Spacing preset options (label) keyed by slug; values map to rem in CSS below.
+ */
+function trb_builder_spacing_options()
+{
+    return array(
+        '' => 'Default',
+        'none' => 'None',
+        'small' => 'Small',
+        'medium' => 'Medium',
+        'large' => 'Large',
+        'xlarge' => 'Extra Large',
+    );
+}
+
+/**
+ * Map a spacing slug to a CSS length. Empty string means "no override".
+ */
+function trb_builder_spacing_css($slug)
+{
+    $map = array(
+        'none' => '0',
+        'small' => '1.5rem',
+        'medium' => '3rem',
+        'large' => '6rem',
+        'xlarge' => '9rem',
+    );
+    return $map[$slug] ?? '';
+}
+
+/**
+ * Spacing fields shared by every section (margins + paddings).
+ */
+function trb_builder_spacing_fields()
+{
+    $opts = trb_builder_spacing_options();
+    return array(
+        'margin_top' => array('type' => 'select', 'label' => 'Margin Top', 'options' => $opts, 'default' => ''),
+        'margin_bottom' => array('type' => 'select', 'label' => 'Margin Bottom', 'options' => $opts, 'default' => ''),
+        'padding_top' => array('type' => 'select', 'label' => 'Padding Top', 'options' => $opts, 'default' => ''),
+        'padding_bottom' => array('type' => 'select', 'label' => 'Padding Bottom', 'options' => $opts, 'default' => ''),
+    );
+}
+
+/**
+ * All common (color + spacing) fields — used by the save handler.
+ */
+function trb_builder_common_fields()
+{
+    return array_merge(trb_builder_color_fields(), trb_builder_spacing_fields());
 }
 
 /**
@@ -480,7 +528,16 @@ function trb_render_section_card($type, $index, $values = array(), $collapsed = 
             <div class="trb-builder-design">
                 <span class="trb-builder-design-title">Colors (optional)</span>
                 <div class="trb-builder-design-fields">
-                    <?php foreach (trb_builder_common_fields() as $field_key => $field_def) : ?>
+                    <?php foreach (trb_builder_color_fields() as $field_key => $field_def) : ?>
+                        <?php trb_render_section_field($field_key, $field_def, $index, $values); ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <div class="trb-builder-design">
+                <span class="trb-builder-design-title">Spacing (optional)</span>
+                <div class="trb-builder-design-fields">
+                    <?php foreach (trb_builder_spacing_fields() as $field_key => $field_def) : ?>
                         <?php trb_render_section_field($field_key, $field_def, $index, $values); ?>
                     <?php endforeach; ?>
                 </div>
@@ -679,7 +736,17 @@ function trb_render_builder_sections($post_id)
         $bg = trb_builder_color_css($section['bg_color'] ?? '');
         $text = trb_builder_color_css($section['text_color'] ?? '');
 
-        if ($bg === '' && $text === '') {
+        $spacing = array(
+            'margin-top' => trb_builder_spacing_css($section['margin_top'] ?? ''),
+            'margin-bottom' => trb_builder_spacing_css($section['margin_bottom'] ?? ''),
+            'padding-top' => trb_builder_spacing_css($section['padding_top'] ?? ''),
+            'padding-bottom' => trb_builder_spacing_css($section['padding_bottom'] ?? ''),
+        );
+        $spacing = array_filter($spacing, function ($v) {
+            return $v !== '';
+        });
+
+        if ($bg === '' && $text === '' && empty($spacing)) {
             echo $html;
             continue;
         }
@@ -691,9 +758,19 @@ function trb_render_builder_sections($post_id)
         if ($text !== '') {
             $styles[] = 'color: ' . $text;
         }
-        $wrapper_class = 'trb-section-design' . ($bg !== '' ? ' has-bg' : '');
+        foreach ($spacing as $prop => $val) {
+            $styles[] = $prop . ': ' . $val;
+        }
 
-        echo '<div class="' . esc_attr($wrapper_class) . '" style="' . esc_attr(implode('; ', $styles)) . '">';
+        $classes = array('trb-section-design');
+        if ($bg !== '') {
+            $classes[] = 'has-bg';
+        }
+        if ($text !== '') {
+            $classes[] = 'has-text';
+        }
+
+        echo '<div class="' . esc_attr(implode(' ', $classes)) . '" style="' . esc_attr(implode('; ', $styles)) . '">';
         echo $html;
         echo '</div>';
     }

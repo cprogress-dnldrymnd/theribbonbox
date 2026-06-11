@@ -9,11 +9,16 @@
  */
 
 $title = $section['title'] ?? '';
-$is_light = ($section['style'] ?? 'default') === 'light';
 $source_mode = $section['source_mode'] ?? 'manual';
 $first_image = absint($section['first_image'] ?? 0);
 $buttons = isset($section['buttons']) && is_array($section['buttons']) ? $section['buttons'] : array();
 $decorative_bar = !empty($section['decorative_bar']);
+$featured_only = !empty($section['featured_only']);
+
+// When "featured only" is on, restrict to offers whose ACF "featured" field is true.
+$featured_meta = $featured_only ? array(
+    array('key' => 'featured', 'value' => '1', 'compare' => '='),
+) : array();
 
 // Resolve which offer-items to show.
 if ($source_mode === 'category') {
@@ -29,18 +34,25 @@ if ($source_mode === 'category') {
     if ($term_id) {
         $query_args['cat'] = $term_id;
     }
+    if ($featured_meta) {
+        $query_args['meta_query'] = $featured_meta;
+    }
     $offers = get_posts($query_args);
 } else {
     $ids = isset($section['manual_items']) && is_array($section['manual_items']) ? array_filter(array_map('absint', $section['manual_items'])) : array();
     $offers = array();
     if (!empty($ids)) {
-        $offers = get_posts(array(
+        $query_args = array(
             'post_type' => 'offer-items',
             'post__in' => $ids,
             'orderby' => 'post__in',
             'posts_per_page' => count($ids),
             'post_status' => 'publish',
-        ));
+        );
+        if ($featured_meta) {
+            $query_args['meta_query'] = $featured_meta;
+        }
+        $offers = get_posts($query_args);
     }
 }
 
@@ -66,9 +78,6 @@ $swiper_config = array(
 
 $wrapper_classes = 'product-tabs offer-slider trb-mt-large trb-mb-medium';
 $wrapper_style = '';
-if ($is_light) {
-    $wrapper_classes .= ' product-tabs--light position-relative';
-}
 if ($decorative_bar) {
     $wrapper_classes .= ' trb-decor-bar';
     $decor_color = $section['decor_color'] ?? 'wine';
@@ -138,10 +147,30 @@ if ($decorative_bar) {
 
                         $cats = get_the_category($offer_id);
                         $cat_name = !empty($cats) ? $cats[0]->name : '';
+
+                        // ACF true/false flags shown as badges on the card.
+                        $badges = array();
+                        if (function_exists('get_field')) {
+                            if (get_field('all_natural', $offer_id)) {
+                                $badges[] = array('label' => 'All Natural', 'class' => 'offer-badge--natural');
+                            }
+                            if (get_field('eco_friendly', $offer_id)) {
+                                $badges[] = array('label' => 'Eco Friendly', 'class' => 'offer-badge--eco');
+                            }
+                        }
                         ?>
                         <div class="product-widget--box">
                             <?php if ($img_html) : ?>
-                                <div class="product-widget--image"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo $img_html; ?></a></div>
+                                <div class="product-widget--image">
+                                    <a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo $img_html; ?></a>
+                                    <?php if (!empty($badges)) : ?>
+                                        <div class="offer-badges">
+                                            <?php foreach ($badges as $badge) : ?>
+                                                <span class="offer-badge <?php echo esc_attr($badge['class']); ?>"><?php echo esc_html($badge['label']); ?></span>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
                             <?php endif; ?>
                             <div class="product-widget--content">
                                 <?php if ($cat_name) : ?>

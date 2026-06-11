@@ -295,6 +295,50 @@
     color: var(--trb-green);
 }
 
+/* When a section Text Color is chosen, let it cascade over the fixed colors */
+#trb-page-builder .trb-section-design.has-text .offer-slider-title,
+#trb-page-builder .trb-section-design.has-text .offer-slider-buttons .button-box a,
+#trb-page-builder .trb-section-design.has-text .offer-slider .product-cat,
+#trb-page-builder .trb-section-design.has-text .offer-slider .product-name a,
+#trb-page-builder .trb-section-design.has-text .offer-slider .product-widget--cta a {
+    color: inherit;
+}
+
+/* All Natural / Eco Friendly badges on offer cards */
+#trb-page-builder .offer-slider .product-widget--image {
+    position: relative;
+}
+
+#trb-page-builder .offer-slider .offer-badges {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: calc(100% - 20px);
+}
+
+#trb-page-builder .offer-slider .offer-badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    color: #fff;
+    line-height: 1.2;
+    background: var(--trb-green);
+}
+
+#trb-page-builder .offer-slider .offer-badge--natural {
+    background: var(--trb-coral);
+}
+
+#trb-page-builder .offer-slider .offer-badge--eco {
+    background: var(--trb-green);
+}
+
 /* Decorative background bar (e.g. offer slider following a Wine two-column section) */
 #trb-page-builder .trb-decor-bar {
     position: relative;
