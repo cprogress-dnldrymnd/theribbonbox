@@ -9,6 +9,14 @@
     --trb-wine: #3B1527;
     --trb-coral: #F77D67;
     --trb-petal: #FFDBD1;
+    --trb-white: #FFFFFF;
+    --trb-black: #000000;
+}
+
+/* Per-section background / text color chosen in the builder */
+#trb-page-builder .trb-section-design.has-bg {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 #trb-page-builder hr {

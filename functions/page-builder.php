@@ -196,6 +196,57 @@ function trb_builder_section_types()
 }
 
 /**
+ * Available colors — keys map to CSS custom properties (--trb-{key}) defined in
+ * css/page-builder.css :root, so editors choose from the theme palette.
+ */
+function trb_builder_color_options()
+{
+    return array(
+        '' => '— None —',
+        'green' => 'Green',
+        'wine' => 'Wine',
+        'coral' => 'Coral',
+        'petal' => 'Petal',
+        'white' => 'White',
+        'black' => 'Black',
+    );
+}
+
+/**
+ * Fields shared by every section (background + text color).
+ */
+function trb_builder_common_fields()
+{
+    $colors = trb_builder_color_options();
+    return array(
+        'bg_color' => array(
+            'type' => 'select',
+            'label' => 'Background Color',
+            'options' => $colors,
+            'default' => '',
+        ),
+        'text_color' => array(
+            'type' => 'select',
+            'label' => 'Text Color',
+            'options' => $colors,
+            'default' => '',
+        ),
+    );
+}
+
+/**
+ * Map a color slug to its CSS value (a theme custom property).
+ */
+function trb_builder_color_css($slug)
+{
+    $options = trb_builder_color_options();
+    if ($slug === '' || !isset($options[$slug])) {
+        return '';
+    }
+    return 'var(--trb-' . $slug . ')';
+}
+
+/**
  * Get the saved, sanitized list of builder sections for a post.
  */
 function trb_get_builder_sections($post_id)
@@ -396,32 +447,43 @@ function trb_render_section_field($field_key, $field_def, $index, $values = arra
  * @param mixed  $index  Array index (int for existing sections, '__INDEX__' for JS templates).
  * @param array  $values Saved field values for this section.
  */
-function trb_render_section_card($type, $index, $values = array())
+function trb_render_section_card($type, $index, $values = array(), $collapsed = false)
 {
     $types = trb_builder_section_types();
     if (!isset($types[$type])) {
         return;
     }
     $def = $types[$type];
+    $card_classes = 'trb-builder-card' . ($collapsed ? ' is-collapsed' : '');
     ?>
-    <div class="trb-builder-card" data-type="<?php echo esc_attr($type); ?>">
+    <div class="<?php echo esc_attr($card_classes); ?>" data-type="<?php echo esc_attr($type); ?>">
         <div class="trb-builder-card-header">
             <span class="trb-builder-drag dashicons dashicons-menu" title="Drag to reorder"></span>
             <strong class="trb-builder-card-title"><?php echo esc_html($def['label']); ?></strong>
             <span class="trb-builder-card-summary"></span>
             <span class="trb-builder-card-actions">
-                <button type="button" class="button-link trb-builder-toggle" aria-label="Collapse / expand"><span class="dashicons dashicons-arrow-up-alt2"></span></button>
-                <button type="button" class="button-link trb-builder-remove" aria-label="Remove section"><span class="dashicons dashicons-trash"></span></button>
+                <button type="button" class="button-link trb-builder-duplicate" aria-label="Duplicate section" title="Duplicate"><span class="dashicons dashicons-admin-page"></span></button>
+                <button type="button" class="button-link trb-builder-toggle" aria-label="Collapse / expand" title="Collapse / expand"><span class="dashicons dashicons-arrow-up-alt2"></span></button>
+                <button type="button" class="button-link trb-builder-remove" aria-label="Remove section" title="Remove"><span class="dashicons dashicons-trash"></span></button>
             </span>
         </div>
         <div class="trb-builder-card-body">
             <input type="hidden" name="trb_builder[<?php echo esc_attr($index); ?>][type]" value="<?php echo esc_attr($type); ?>">
             <?php if (empty($def['fields'])) : ?>
-                <p class="description">No options for this section.</p>
+                <p class="description">No content options for this section.</p>
             <?php endif; ?>
             <?php foreach ($def['fields'] as $field_key => $field_def) : ?>
                 <?php trb_render_section_field($field_key, $field_def, $index, $values); ?>
             <?php endforeach; ?>
+
+            <div class="trb-builder-design">
+                <span class="trb-builder-design-title">Colors (optional)</span>
+                <div class="trb-builder-design-fields">
+                    <?php foreach (trb_builder_common_fields() as $field_key => $field_def) : ?>
+                        <?php trb_render_section_field($field_key, $field_def, $index, $values); ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
     </div>
     <?php
@@ -447,19 +509,19 @@ function trb_render_page_builder_metabox($post)
                 if (!isset($types[$type])) {
                     continue;
                 }
-                trb_render_section_card($type, $index, $section);
+                trb_render_section_card($type, $index, $section, true);
             endforeach; ?>
         </div>
         <?php if (empty($sections)) : ?>
-            <p class="trb-builder-empty">No sections yet. Pick a section type below and click <strong>Add Section</strong>.</p>
+            <p class="trb-builder-empty">No sections yet. Click <strong>+ Add Section</strong> and pick a section type.</p>
         <?php endif; ?>
         <div class="trb-builder-toolbar">
-            <select id="trb-builder-add-type">
+            <button type="button" class="button button-primary button-hero" id="trb-builder-add" aria-expanded="false">+ Add Section</button>
+            <div class="trb-builder-add-menu" id="trb-builder-add-menu" hidden>
                 <?php foreach ($types as $slug => $def) : ?>
-                    <option value="<?php echo esc_attr($slug); ?>"><?php echo esc_html($def['label']); ?></option>
+                    <button type="button" class="trb-builder-add-option" data-type="<?php echo esc_attr($slug); ?>"><?php echo esc_html($def['label']); ?></button>
                 <?php endforeach; ?>
-            </select>
-            <button type="button" class="button button-primary button-hero" id="trb-builder-add">+ Add Section</button>
+            </div>
         </div>
         <div class="trb-builder-templates" style="display:none;">
             <?php foreach ($types as $slug => $def) : ?>
@@ -538,7 +600,9 @@ function trb_save_page_builder_sections($post_id)
 
         $clean = array('type' => $type);
 
-        foreach ($types[$type]['fields'] as $field_key => $field_def) {
+        $fields = array_merge($types[$type]['fields'], trb_builder_common_fields());
+
+        foreach ($fields as $field_key => $field_def) {
             $raw_value = $raw_section[$field_key] ?? '';
 
             if ($field_def['type'] === 'post_select') {
@@ -597,9 +661,40 @@ function trb_render_builder_sections($post_id)
         // Section type slugs use underscores; partial filenames use hyphens.
         $file_slug = str_replace('_', '-', $type);
         $template = get_theme_file_path("template-parts/builder/section-{$file_slug}.php");
-        if (file_exists($template)) {
-            include $template;
+        if (!file_exists($template)) {
+            continue;
         }
+
+        // Capture the section markup so we can skip empty sections and wrap it
+        // with optional background / text colors chosen by the editor.
+        ob_start();
+        include $template;
+        $html = ob_get_clean();
+
+        if (trim($html) === '') {
+            continue;
+        }
+
+        $bg = trb_builder_color_css($section['bg_color'] ?? '');
+        $text = trb_builder_color_css($section['text_color'] ?? '');
+
+        if ($bg === '' && $text === '') {
+            echo $html;
+            continue;
+        }
+
+        $styles = array();
+        if ($bg !== '') {
+            $styles[] = 'background-color: ' . $bg;
+        }
+        if ($text !== '') {
+            $styles[] = 'color: ' . $text;
+        }
+        $wrapper_class = 'trb-section-design' . ($bg !== '' ? ' has-bg' : '');
+
+        echo '<div class="' . esc_attr($wrapper_class) . '" style="' . esc_attr(implode('; ', $styles)) . '">';
+        echo $html;
+        echo '</div>';
     }
 }
 

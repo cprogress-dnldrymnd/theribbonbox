@@ -164,17 +164,114 @@
             }
         });
 
+        $card.find('> .trb-builder-card-header .trb-builder-duplicate').on('click', function () {
+            duplicateCard($card);
+        });
+
         $card.find('.trb-builder-image-field').each(function () {
             bindImageField($(this));
         });
 
-        $card.find('> .trb-builder-card-body > .trb-builder-field-repeater .trb-builder-repeater').each(function () {
+        $card.find('.trb-builder-repeater').each(function () {
             bindRepeater($(this));
         });
 
         initSearchSelects($card.find('.trb-builder-postselect, .trb-builder-termselect'));
         bindConditional($card);
         bindSummary($card);
+    }
+
+    /* -------------------------------------------------------------- duplicate card */
+
+    // Push current field values into attributes so a DOM clone keeps them.
+    function freezeValues($scope) {
+        $scope.find('input').each(function () {
+            if (this.type === 'checkbox' || this.type === 'radio') {
+                if (this.checked) {
+                    this.setAttribute('checked', 'checked');
+                } else {
+                    this.removeAttribute('checked');
+                }
+            } else {
+                this.setAttribute('value', this.value);
+            }
+        });
+        $scope.find('textarea').each(function () {
+            this.textContent = this.value;
+        });
+        $scope.find('select').each(function () {
+            $(this.options).each(function () {
+                if (this.selected) {
+                    this.setAttribute('selected', 'selected');
+                } else {
+                    this.removeAttribute('selected');
+                }
+            });
+        });
+    }
+
+    function duplicateCard($card) {
+        freezeValues($card);
+
+        var $clone = $card.clone();
+
+        // Strip any select2 / selectWoo rendering so it re-initialises cleanly.
+        $clone.find('.select2-container').remove();
+        $clone.find('select')
+            .removeClass('select2-hidden-accessible')
+            .removeAttr('data-select2-id aria-hidden tabindex style');
+        $clone.find('option[data-select2-id]').removeAttr('data-select2-id');
+
+        // Work out the original index from the hidden "type" input and re-key everything.
+        var oldName = $clone.find('> .trb-builder-card-body > input[name$="[type]"]').attr('name') || '';
+        var match = oldName.match(/^trb_builder\[(.+?)\]\[type\]$/);
+        if (!match) {
+            return;
+        }
+        var oldPrefix = 'trb_builder[' + match[1] + ']';
+        var newIndex = 'new-' + uid();
+        var newPrefix = 'trb_builder[' + newIndex + ']';
+
+        $clone.find('[name]').each(function () {
+            this.setAttribute('name', this.getAttribute('name').split(oldPrefix).join(newPrefix));
+        });
+        // Keep label/input ids unique so labels keep focusing the right field.
+        $clone.find('[id]').each(function () {
+            this.id = this.id + '-' + newIndex;
+        });
+        $clone.find('label[for]').each(function () {
+            this.setAttribute('for', this.getAttribute('for') + '-' + newIndex);
+        });
+        // Repeater row templates live inside <template> (inert to find) — fix by hand.
+        $clone.find('.trb-builder-repeater-tmpl').each(function () {
+            this.innerHTML = this.innerHTML.split(oldPrefix).join(newPrefix);
+        });
+
+        $clone.removeClass('is-collapsed');
+        $clone.find('> .trb-builder-card-body').show();
+
+        $card.after($clone);
+        bindCard($clone);
+
+        $('html, body').animate({ scrollTop: $clone.offset().top - 60 }, 200);
+    }
+
+    /* ------------------------------------------------------------------ add section */
+
+    function addSection(type) {
+        var $tmpl = $('#trb-tmpl-' + type);
+        if (!$tmpl.length) {
+            return;
+        }
+
+        var html = $tmpl.html().split('__INDEX__').join('new-' + uid());
+        var $card = $('<div>').html($.trim(html)).children('.trb-builder-card').first();
+
+        $('#trb-builder-sections').append($card);
+        $('.trb-builder-empty').remove();
+        bindCard($card);
+
+        $('html, body').animate({ scrollTop: $card.offset().top - 60 }, 200);
     }
 
     /* ----------------------------------------------------------------------- ready */
@@ -193,24 +290,30 @@
             items: '> .trb-builder-card'
         });
 
-        $('#trb-builder-add').on('click', function (e) {
+        var $addBtn = $('#trb-builder-add');
+        var $addMenu = $('#trb-builder-add-menu');
+
+        $addBtn.on('click', function (e) {
             e.preventDefault();
+            e.stopPropagation();
+            var show = $addMenu.prop('hidden');
+            $addMenu.prop('hidden', !show);
+            $addBtn.attr('aria-expanded', show ? 'true' : 'false');
+        });
 
-            var type = $('#trb-builder-add-type').val();
-            var $tmpl = $('#trb-tmpl-' + type);
+        $addMenu.on('click', '.trb-builder-add-option', function (e) {
+            e.preventDefault();
+            addSection($(this).data('type'));
+            $addMenu.prop('hidden', true);
+            $addBtn.attr('aria-expanded', 'false');
+        });
 
-            if (!$tmpl.length) {
-                return;
+        // Close the menu when clicking elsewhere.
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('.trb-builder-toolbar').length) {
+                $addMenu.prop('hidden', true);
+                $addBtn.attr('aria-expanded', 'false');
             }
-
-            var html = $tmpl.html().split('__INDEX__').join('new-' + uid());
-            var $card = $('<div>').html($.trim(html)).children('.trb-builder-card').first();
-
-            $list.append($card);
-            $('.trb-builder-empty').remove();
-            bindCard($card);
-
-            $('html, body').animate({ scrollTop: $card.offset().top - 60 }, 200);
         });
     });
 })(jQuery);

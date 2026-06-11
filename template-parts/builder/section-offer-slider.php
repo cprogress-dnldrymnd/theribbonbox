@@ -101,7 +101,7 @@ if ($decorative_bar) {
             </div>
         <?php endif; ?>
 
-        <div class="product-widget--holder">
+        <div class="product-widget--holder style-2">
             <div class="product-widget--outer" id="<?php echo esc_attr($unique_id); ?>">
                 <div class="product-widget--inner">
                     <?php if ($first_image) :
