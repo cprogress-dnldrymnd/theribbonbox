@@ -823,7 +823,7 @@
 
 #trb-page-builder .offer-filter-grid .product-discount {
     font-weight: 700;
-    color: var(--trb-wine);
+    color: var(--trb-green);
     font-size: 1.05rem;
     margin: .5rem 0;
 }
