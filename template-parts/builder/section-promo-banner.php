@@ -35,7 +35,7 @@ $btn_style = trim(
 
 ob_start();
 ?>
-<div class="promo-banner-box h-100"<?php echo $promo-banner-box ? ' style="' . esc_attr($box_style) . '"' : ''; ?>>
+<div class="promo-banner-box h-100"<?php echo $box_style ? ' style="' . esc_attr($box_style) . '"' : ''; ?>>
     <?php if ($eyebrow) : ?>
         <div class="promo-banner-eyebrow text-uppercase"><?php echo esc_html($eyebrow); ?></div>
     <?php endif; ?>
