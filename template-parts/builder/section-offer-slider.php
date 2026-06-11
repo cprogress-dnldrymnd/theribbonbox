@@ -76,7 +76,7 @@ $swiper_config = array(
     ),
 );
 
-$wrapper_classes = 'product-tabs offer-slider trb-mt-large trb-mb-medium';
+$wrapper_classes = 'product-tabs offer-slider';
 $wrapper_style = '';
 if ($decorative_bar) {
     $wrapper_classes .= ' trb-decor-bar';
