@@ -352,12 +352,12 @@
 }
 
 #trb-page-builder .offer-slider .product-cat {
-    font-weight: 600;
     font-size: 0.875rem;
-    letter-spacing: 0;
-    margin-top: 15px;
     margin-bottom: 4px;
     color: var(--trb-wine);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 #trb-page-builder .offer-slider .product-name {
@@ -550,7 +550,7 @@
 }
 
 #trb-page-builder .offer-filter-mobile-close {
-       display: none;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 2.25rem;
@@ -839,8 +839,8 @@
     display: flex;
     align-items: stretch;
     margin-top: .85rem;
-    border: 1px solid #e4d7d7 !important;
-    border-radius: 4px;
+    border: 1px dashed var(--trb-wine);
+    border-radius: 5px;
     overflow: hidden;
     background: var(--trb-white);
     margin-bottom: 10px;
@@ -1039,25 +1039,28 @@
         grid-template-columns: 1fr;
     }
 
+    #trb-page-builder .offer-slider .product-name a {
+        font-size: 1rem;
+    }
+
     #trb-page-builder .offer-filter-grid .product-widget--box {
         display: flex;
-        align-items: stretch;
+        align-items: flex-start;
         gap: 1rem;
     }
 
     #trb-page-builder .offer-filter-grid .product-widget--image {
-        flex: 0 0 38%;
-        max-width: 140px;
+        flex: 0 0 46%;
+        max-width: 175px;
     }
 
-    #trb-page-builder .offer-filter-grid .product-widget--image,
-    #trb-page-builder .offer-filter-grid .product-widget--image a,
-    #trb-page-builder .offer-filter-grid .product-widget--image img {
-        height: 100%;
+    #trb-page-builder .offer-filter-grid .product-widget--image a {
+        display: block;
     }
 
     #trb-page-builder .offer-filter-grid .product-widget--image img {
         width: 100%;
+        height: 140px;
         object-fit: cover;
     }
 
@@ -1081,10 +1084,12 @@
     #trb-page-builder .offer-filter-sidebar-title {
         margin-bottom: 0;
     }
+
     #trb-page-builder .offer-filter-mobile-toggle {
         display: flex;
     }
-     #trb-page-builder .offer-filter-sidebar-header{
+
+    #trb-page-builder .offer-filter-sidebar-header {
         margin-bottom: 1rem;
     }
 
@@ -1228,29 +1233,72 @@
 /* The medium/large/xlarge margin + padding presets are tuned for desktop and
    leave huge gaps on a phone, so scale them down. (none/small stay as-is.) */
 @media (max-width: 767px) {
-    #trb-page-builder .trb-section-design.trb-mt-medium { margin-top: 2rem; }
-    #trb-page-builder .trb-section-design.trb-mt-large { margin-top: 3rem; }
-    #trb-page-builder .trb-section-design.trb-mt-xlarge { margin-top: 4rem; }
+    #trb-page-builder .trb-section-design.trb-mt-medium {
+        margin-top: 2rem;
+    }
 
-    #trb-page-builder .trb-section-design.trb-mb-medium { margin-bottom: 2rem; }
-    #trb-page-builder .trb-section-design.trb-mb-large { margin-bottom: 3rem; }
-    #trb-page-builder .trb-section-design.trb-mb-xlarge { margin-bottom: 4rem; }
+    #trb-page-builder .trb-section-design.trb-mt-large {
+        margin-top: 3rem;
+    }
 
-    #trb-page-builder .trb-section-design.trb-pt-medium { padding-top: 2rem; }
-    #trb-page-builder .trb-section-design.trb-pt-large { padding-top: 3rem; }
-    #trb-page-builder .trb-section-design.trb-pt-xlarge { padding-top: 4rem; }
+    #trb-page-builder .trb-section-design.trb-mt-xlarge {
+        margin-top: 4rem;
+    }
 
-    #trb-page-builder .trb-section-design.trb-pb-medium { padding-bottom: 2rem; }
-    #trb-page-builder .trb-section-design.trb-pb-large { padding-bottom: 3rem; }
-    #trb-page-builder .trb-section-design.trb-pb-xlarge { padding-bottom: 4rem; }
+    #trb-page-builder .trb-section-design.trb-mb-medium {
+        margin-bottom: 2rem;
+    }
+
+    #trb-page-builder .trb-section-design.trb-mb-large {
+        margin-bottom: 3rem;
+    }
+
+    #trb-page-builder .trb-section-design.trb-mb-xlarge {
+        margin-bottom: 4rem;
+    }
+
+    #trb-page-builder .trb-section-design.trb-pt-medium {
+        padding-top: 2rem;
+    }
+
+    #trb-page-builder .trb-section-design.trb-pt-large {
+        padding-top: 3rem;
+    }
+
+    #trb-page-builder .trb-section-design.trb-pt-xlarge {
+        padding-top: 4rem;
+    }
+
+    #trb-page-builder .trb-section-design.trb-pb-medium {
+        padding-bottom: 2rem;
+    }
+
+    #trb-page-builder .trb-section-design.trb-pb-large {
+        padding-bottom: 3rem;
+    }
+
+    #trb-page-builder .trb-section-design.trb-pb-xlarge {
+        padding-bottom: 4rem;
+    }
 
     /* Standalone spacing utilities used by a few sections (e.g. rich text). */
     #trb-page-builder .trb-mt-large,
-    #trb-page-builder .trb-my-large { margin-top: 3rem; }
+    #trb-page-builder .trb-my-large {
+        margin-top: 3rem;
+    }
+
     #trb-page-builder .trb-mb-large,
-    #trb-page-builder .trb-my-large { margin-bottom: 3rem; }
+    #trb-page-builder .trb-my-large {
+        margin-bottom: 3rem;
+    }
+
     #trb-page-builder .trb-mt-medium,
-    #trb-page-builder .trb-my-medium { margin-top: 2rem; }
+    #trb-page-builder .trb-my-medium {
+        margin-top: 2rem;
+    }
+
     #trb-page-builder .trb-mb-medium,
-    #trb-page-builder .trb-my-medium { margin-bottom: 2rem; }
+    #trb-page-builder .trb-my-medium {
+        margin-bottom: 2rem;
+    }
 }
