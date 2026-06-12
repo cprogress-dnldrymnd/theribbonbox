@@ -787,7 +787,12 @@
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
 }
-
+@media (max-width: 767px) {
+    #trb-page-builder .offer-filter-check input:checked + .offer-filter-box::after {
+        left: 6px;
+        top: 2px;
+    }
+}
 #trb-page-builder .offer-filter-reset {
     margin-top: 1.25rem;
     width: 100%;
