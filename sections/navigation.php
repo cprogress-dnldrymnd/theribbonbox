@@ -1,3 +1,24 @@
+<style>
+    .trb-picks-nav {
+        padding-block: 1rem;
+    }
+
+    .trb-picks-nav nav {
+        float: none;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .trb-picks-nav nav ul {
+        font-family: Work Sans, sans-serif;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+
+    .picks-nav-title {
+        color: #FFDBD1;
+    }
+</style>
 <section class="trb-picks-nav trb-bg-accent-2">
     <div class="container">
         <div class="row g-3 align-items-center">

@@ -96,7 +96,20 @@ function trb_render_offer_card($offer_id, $args = array())
     }
 
     $cats     = get_the_category($offer_id);
-    $cat_name = !empty($cats) ? $cats[0]->name : '';
+    $cat_term = !empty($cats) ? $cats[0] : null;
+    $cat_name = $cat_term ? $cat_term->name : '';
+    $cat_url  = $cat_term ? trb_offer_category_url($cat_term) : '';
+
+    // The offer title may carry light inline formatting (e.g. "<i>code name</i>");
+    // allow a small whitelist so it renders instead of showing the literal tags.
+    $title_allowed = array(
+        'i'      => array(),
+        'em'     => array(),
+        'b'      => array(),
+        'strong' => array(),
+        'span'   => array('class' => array()),
+        'br'     => array(),
+    );
 
     // Badges shown on the card: the "featured" ACF flag plus "lifestyle" terms.
     $badges = array();
@@ -140,9 +153,15 @@ function trb_render_offer_card($offer_id, $args = array())
         <?php endif; ?>
         <div class="product-widget--content">
             <?php if ($cat_name) : ?>
-                <div class="product-cat"><?php echo esc_html($cat_name); ?></div>
+                <div class="product-cat">
+                    <?php if ($cat_url) : ?>
+                        <a href="<?php echo esc_url($cat_url); ?>"><?php echo esc_html($cat_name); ?></a>
+                    <?php else : ?>
+                        <?php echo esc_html($cat_name); ?>
+                    <?php endif; ?>
+                </div>
             <?php endif; ?>
-            <h3 class="product-name"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo esc_html(get_the_title($offer_id)); ?></a></h3>
+            <h3 class="product-name"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo wp_kses(get_the_title($offer_id), $title_allowed); ?></a></h3>
             <?php if (!empty($badges)) : ?>
                 <div class="offer-badges">
                     <?php foreach ($badges as $badge) : ?>
@@ -171,6 +190,30 @@ function trb_render_offer_card($offer_id, $args = array())
     </div>
     <?php
     return ob_get_clean();
+}
+
+/**
+ * URL for an offer card's clickable category chip: the Offer Filter page filtered
+ * by that category (pretty /{page-path}/{slug}/ URL) when such a page exists, else
+ * the standard category archive as a fallback.
+ *
+ * @param WP_Term $term Category term.
+ * @return string
+ */
+function trb_offer_category_url($term)
+{
+    if (!$term || is_wp_error($term) || empty($term->slug)) {
+        return '';
+    }
+    $host_ids = trb_offer_filter_host_page_ids();
+    if (!empty($host_ids)) {
+        $base = get_permalink($host_ids[0]);
+        if ($base) {
+            return trailingslashit($base) . $term->slug . '/';
+        }
+    }
+    $link = get_category_link($term->term_id);
+    return is_wp_error($link) ? '' : $link;
 }
 
 /**

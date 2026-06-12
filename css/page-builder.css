@@ -250,6 +250,19 @@
     padding-top: 1rem;
 }
 
+/* Hover feedback on the "JUMP TO" anchor-nav cards. */
+#trb-page-builder .cat-nav-holder {
+    transition: opacity .15s ease;
+}
+
+#trb-page-builder .cat-nav-holder:hover {
+    opacity: .75;
+}
+
+#trb-page-builder .cat-nav-holder:hover .cat-text {
+    text-decoration: underline;
+}
+
 #trb-page-builder .nav-tabs.nav-tabs {
     margin: 0;
     padding: 0;
@@ -349,6 +362,25 @@
 
 #trb-page-builder .product-tabs--light .offer-slider-buttons .button-box a {
     color: var(--trb-petal);
+}
+
+/* Bordered "ALL … DISCOUNTS" buttons: fill on hover for clear feedback. */
+#trb-page-builder .offer-slider-buttons .button-box.button-bordered a,
+#trb-page-builder .nav-tabs-holder .button-box.button-bordered a {
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+#trb-page-builder .offer-slider-buttons .button-box.button-bordered a:hover,
+#trb-page-builder .nav-tabs-holder .button-box.button-bordered a:hover {
+    background-color: var(--trb-green) !important;
+    border-color: var(--trb-green) !important;
+    color: var(--trb-white) !important;
+}
+
+#trb-page-builder .product-tabs--light .offer-slider-buttons .button-box.button-bordered a:hover {
+    background-color: var(--trb-petal) !important;
+    border-color: var(--trb-petal) !important;
+    color: var(--trb-wine) !important;
 }
 
 #trb-page-builder .offer-slider .product-cat {
@@ -819,6 +851,13 @@
     gap: 1.5rem;
 }
 
+/* 4 per row on large screens (client request). */
+@media (min-width: 1200px) {
+    #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 #trb-page-builder .offer-filter-grid .product-widget--box {
     width: auto;
     margin: 0;
@@ -838,6 +877,28 @@
     aspect-ratio: 1/1;
     display: block;
     width: 100%;
+}
+
+/* No frame/border on offer card images (client request). */
+#trb-page-builder .product-widget--image img {
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Underline the card title when its image OR the title itself is hovered. */
+#trb-page-builder .product-widget--image:hover ~ .product-widget--content .product-name a,
+#trb-page-builder .product-name a:hover {
+    text-decoration: underline;
+}
+
+/* Clickable category chip on the card. */
+#trb-page-builder .product-cat a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#trb-page-builder .product-cat a:hover {
+    text-decoration: underline;
 }
 /* ----------------------------------------- Card bottom alignment */
 /* Make each card a full-height column so the code box + "Claim Discount" CTA
@@ -1163,6 +1224,106 @@
     body.offer-filter-drawer-open #header-main-site {
         opacity: 0;
         visibility: hidden;
+    }
+}
+
+/* Mobile: dial down the oversized offer cards + filter drawer (client: "too big
+   on mobile" / "MASSIVE"). Don't be afraid of going small on phones. */
+@media (max-width: 767px) {
+    /* ---- Cards (slider + filter grid share the .offer-slider class) ---- */
+    #trb-page-builder .offer-slider .product-cat {
+        font-size: .72rem;
+        letter-spacing: .5px;
+        margin-bottom: 2px;
+    }
+
+    #trb-page-builder .offer-slider .product-name a {
+        font-size: .95rem;
+    }
+
+    #trb-page-builder .offer-slider .offer-badges {
+        margin-block: 6px;
+    }
+
+    #trb-page-builder .offer-slider .offer-badge {
+        font-size: .7rem;
+        padding: 2px 6px;
+    }
+
+    #trb-page-builder .offer-filter-grid .product-discount {
+        font-size: .85rem;
+        margin-bottom: 6px;
+    }
+
+    #trb-page-builder .product-code-value {
+        font-size: .78rem;
+        padding: .5rem .55rem;
+        letter-spacing: .04em;
+    }
+
+    #trb-page-builder .product-code-copy {
+        width: 50px;
+        flex: 0 0 50px;
+        padding: 0 .5rem;
+    }
+
+    #trb-page-builder .offer-slider .product-widget--cta a,
+    #trb-page-builder .offer-filter-grid .product-widget--cta a {
+        font-size: .85rem;
+    }
+
+    #trb-page-builder .offer-filter-grid .product-widget--image {
+        flex: 0 0 40%;
+        max-width: 150px;
+    }
+
+    /* ---- Results toolbar ---- */
+    #trb-page-builder .offer-filter-count,
+    #trb-page-builder .offer-filter-sort {
+        font-size: .85rem;
+    }
+
+    #trb-page-builder .offer-filter-sort-select {
+        font-size: .85rem !important;
+    }
+
+    /* ---- Filter drawer typography ("MASSIVE") ---- */
+    #trb-page-builder .offer-filter-sidebar-title {
+        font-size: 1.2rem;
+    }
+
+    #trb-page-builder .offer-filter-group-title {
+        font-size: 1.1rem;
+    }
+
+    #trb-page-builder .offer-filter-tax-toggle {
+        font-size: 1rem !important;
+    }
+
+    #trb-page-builder .offer-filter-tax-label {
+        font-size: 1rem;
+    }
+
+    #trb-page-builder .offer-filter-check {
+        font-size: .9rem;
+    }
+
+    #trb-page-builder .offer-filter-check input {
+        width: 18px;
+        height: 18px;
+    }
+
+    #trb-page-builder .offer-filter-cat {
+        font-size: .9rem;
+        padding: .1rem 0;
+    }
+
+    #trb-page-builder .offer-filter-search-input {
+        font-size: .9rem;
+    }
+
+    #trb-page-builder .offer-filter-reset {
+        font-size: .9rem !important;
     }
 }
 
