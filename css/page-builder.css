@@ -875,6 +875,9 @@
 #trb-page-builder .offer-filter-grid .product-widget--cta a {
     color: var(--trb-coral);
 }
+#trb-page-builder .product-widget--holder .product-widget--image {
+    border: none !important;
+}
 #trb-page-builder .product-widget--holder .product-widget--image a {
     aspect-ratio: 1/1;
     display: block;
