@@ -875,6 +875,7 @@
     color: var(--trb-white);
     cursor: pointer;
     transition: background-color .2s ease;
+    height: auto;
 }
 
 #trb-page-builder .product-code-copy:hover {
