@@ -84,7 +84,7 @@ if ($title === '' && !$logo_id && trim((string) $nav_html) === '') {
                     </nav>
                 <?php endif; ?>
             </div>
-            <div class="col-12 col-lg-3"></div>
+            <div class="col-12 col-lg-3 d-none d-lg-block"></div>
         </div>
     </div>
 </section>

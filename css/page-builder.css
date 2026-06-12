@@ -1539,6 +1539,7 @@
     float: none;
     background-color: transparent !important;
     box-shadow: none !important;
+    border: none !important;
 }
 
 #trb-page-builder .trb-picks-nav nav ul {
