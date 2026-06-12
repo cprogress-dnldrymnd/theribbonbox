@@ -829,10 +829,16 @@
     border: 0;
     border-radius: 4px;
     color: var(--trb-white) !important;
-    font-size: 1rem;
+    font-size: 0.75rem !important;
     font-weight: 600;
     letter-spacing: 0.75px;
     cursor: pointer;
+    height: auto;
+    padding-block: 1px;
+}
+
+#trb-page-builder .offer-filter-apply:hover {
+    background: var(--trb-green);
 }
 
 /* Sponsored ads */
