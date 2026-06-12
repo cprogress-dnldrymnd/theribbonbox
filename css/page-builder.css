@@ -675,6 +675,10 @@
     opacity: 1;
 }
 
+#trb-page-builder .offer-filter-cat.is-active {
+    font-weight: bold;
+}
+
 #trb-page-builder .offer-filter-cat-count {
     color: #999;
     font-weight: 400;
@@ -842,7 +846,7 @@
     border-radius: 4px;
     padding: 0.45rem 0.75rem;
     font-size: 1rem !important;
-    padding-right: 2rem !important;;
+    padding-right: 2rem !important;
 }
 
 #trb-page-builder .offer-filter-results {
