@@ -1245,13 +1245,13 @@
 @media (max-width: 767px) {
     /* ---- Cards (slider + filter grid share the .offer-slider class) ---- */
     #trb-page-builder .offer-slider .product-cat {
-        font-size: 0.72rem;
+        font-size: 0.5rem;
         letter-spacing: 0.5px;
         margin-bottom: 2px;
     }
 
     #trb-page-builder .offer-slider .product-name a {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     #trb-page-builder .offer-slider .offer-badges {
@@ -1264,7 +1264,7 @@
     }
 
     #trb-page-builder .offer-filter-grid .product-discount {
-        font-size: 0.85rem;
+        font-size: 0.65rem;
         margin-bottom: 6px;
     }
 
@@ -1286,7 +1286,7 @@
 
     #trb-page-builder .offer-slider .product-widget--cta a,
     #trb-page-builder .offer-filter-grid .product-widget--cta a {
-        font-size: 0.85rem;
+        font-size: 0.70rem;
     }
 
     #trb-page-builder .offer-filter-grid .product-widget--image {
@@ -1509,4 +1509,30 @@
     #trb-page-builder .trb-my-medium {
         margin-bottom: 2rem;
     }
+}
+
+/* Navigation section (section-navigation.php) */
+#trb-page-builder .trb-bg-accent-2 {
+    background-color: var(--trb-wine);
+}
+
+#trb-page-builder .trb-picks-nav {
+    padding-block: 1rem;
+}
+
+#trb-page-builder .trb-picks-nav nav {
+    float: none;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+#trb-page-builder .trb-picks-nav nav ul {
+    list-style: none;
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+#trb-page-builder .trb-picks-nav-title {
+    color: var(--trb-petal);
 }

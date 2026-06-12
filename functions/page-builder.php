@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'TRB_BUILDER_VERSION' ) ) {
-    define( 'TRB_BUILDER_VERSION', '1.3.0' );
+    define( 'TRB_BUILDER_VERSION', '1.4.0' );
 }
 /*-----------------------------------------------------------------------------------*/
 /* TRB Page Builder
@@ -65,6 +65,26 @@ function trb_builder_section_types()
                     'sub_fields' => array(
                         'label' => array('type' => 'text', 'label' => 'Label'),
                         'anchor' => array('type' => 'text', 'label' => 'Anchor (e.g. #section-id)'),
+                    ),
+                ),
+            ),
+        ),
+        'navigation' => array(
+            'label' => 'Navigation',
+            'fields' => array(
+                'title' => array(
+                    'type' => 'text',
+                    'label' => 'Title',
+                    'default' => 'TRB Picks',
+                    'summary' => true,
+                ),
+                'links' => array(
+                    'type' => 'repeater',
+                    'label' => 'Menu Links',
+                    'button' => 'Add Link',
+                    'sub_fields' => array(
+                        'label' => array('type' => 'text', 'label' => 'Label'),
+                        'link' => array('type' => 'text', 'label' => 'Link (URL)'),
                     ),
                 ),
             ),
