@@ -314,6 +314,10 @@
     right: calc(var(--nav-offset) - var(--nav-offset) - var(--nav-offset));
 }
 
+#trb-page-builder .product-tabs .swiper-button-next-trb svg {
+    color: var(--trb-wine);
+}
+
 #trb-page-builder .product-tabs--light .nav-tabs.nav-tabs .nav-link {
     color: var(--trb-petal) !important;
 }
