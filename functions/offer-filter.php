@@ -125,6 +125,8 @@ function trb_render_offer_card($offer_id, $args = array())
             );
         }
     }
+    // Show at most two badges per offer (Featured takes priority, added first).
+    $badges = array_slice($badges, 0, 2);
 
     // Discount line, e.g. "10% Off".
     $discount = '';

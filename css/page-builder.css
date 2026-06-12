@@ -537,7 +537,7 @@
 
 #trb-page-builder .offer-filter-layout {
     display: grid;
-    grid-template-columns: 380px 1fr;
+    grid-template-columns: clamp(200px, 19vw, 364px) 1fr;
     gap: 2.5rem;
     align-items: start;
 }
@@ -857,11 +857,13 @@
 }
 
 /* 4 per row on large screens (client request). */
-@media (min-width: 1200px) {
+@media (min-width: 1440px) {
     #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+
 
 #trb-page-builder .offer-filter-grid .product-widget--box {
     width: auto;

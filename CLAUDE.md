@@ -123,6 +123,9 @@ post meta.
   (`trb_offer_filter_host_page_ids()`) filtered by that category, falling back to the
   standard category archive; the offer title is rendered with `wp_kses()` against a
   small inline-formatting whitelist (`i`, `em`, `b`, `strong`, `span[class]`, `br`).
+  Card badges (`offer-badge--featured` from the ACF `featured` flag, plus
+  `offer-badge--lifestyle offer-badge--{slug}` per `lifestyle` term) are capped at two
+  per card via `array_slice()`, with "Featured" taking priority since it's added first.
 - [js/offer-filter.js](js/offer-filter.js) — filter drawer + category navigation. When
   the drawer is open it hides `#header-main-site` (the current header id — older
   `#header-v2` is no longer used here).
