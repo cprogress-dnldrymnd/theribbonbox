@@ -92,7 +92,7 @@ post meta.
 
 - Core: [functions/page-builder.php](functions/page-builder.php) — section registry is
   `trb_builder_section_types()`; assets are cache-busted via `TRB_BUILDER_VERSION`
-  (constant near top of the file, currently `1.6.3`) with a `filemtime()` fallback for
+  (constant near top of the file, currently `1.6.4`) with a `filemtime()` fallback for
   local edits.
 - Section markup: [template-parts/builder/](template-parts/builder/) — one
   `section-*.php` per section type (hero, category-nav, divider, promo-banner,
@@ -120,6 +120,10 @@ post meta.
   `grid-column: 1 / -1`. Conditional `show_when`/`hide_when` field toggling
   (`applyConditional`/`bindConditional` in `js/page-builder-admin.js`) scopes its
   selectors to `> .trb-builder-card-body > .trb-builder-card-fields > .trb-builder-field`.
+  Below the fields grid, each card renders two `.trb-builder-design` blocks ("Colors
+  (optional)" and "Spacing (optional)"); CSS groups them into one visual "options"
+  zone — only the first gets the top divider/spacing, the second
+  (`.trb-builder-design + .trb-builder-design`) sits flush beneath it.
 - Front-end styles: [css/page-builder.css](css/page-builder.css).
 
 ### Offer filter / offer slider
