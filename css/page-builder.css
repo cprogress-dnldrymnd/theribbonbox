@@ -251,15 +251,11 @@
 
 /* Hover feedback on the "JUMP TO" anchor-nav cards. */
 #trb-page-builder .cat-nav-holder {
-    transition: opacity 0.15s ease;
-}
-
-#trb-page-builder .cat-nav-holder:hover {
-    opacity: 0.75;
+    transition: 300ms;
 }
 
 #trb-page-builder .cat-nav-holder:hover .cat-text {
-    text-decoration: underline;
+    font-style: italic;
 }
 
 #trb-page-builder .nav-tabs.nav-tabs {
@@ -1570,11 +1566,8 @@
     }
 }
 
-
-
 @media (max-width: 480px) {
     #trb-page-builder .trb-picks-nav .row {
         flex-direction: column;
     }
-   
 }
