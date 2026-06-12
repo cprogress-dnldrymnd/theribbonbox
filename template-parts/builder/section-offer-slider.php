@@ -11,6 +11,7 @@
 $title = $section['title'] ?? '';
 $source_mode = $section['source_mode'] ?? 'manual';
 $first_image = absint($section['first_image'] ?? 0);
+$first_image_link = $section['first_image_link'] ?? '';
 $buttons = isset($section['buttons']) && is_array($section['buttons']) ? $section['buttons'] : array();
 $decorative_bar = !empty($section['decorative_bar']);
 $featured_only = !empty($section['featured_only']);
@@ -125,7 +126,14 @@ if ($decorative_bar) {
                     <?php if ($first_image) :
                         $first_image_url = wp_get_attachment_image_url($first_image, 'large'); ?>
                         <div class="product-widget--box product-widget-image swiper-slide">
-                            <img src="<?php echo esc_url($first_image_url); ?>" alt="">
+                            <span class="offer-filter-sponsored">Sponsored</span>
+                            <?php if ($first_image_link) : ?>
+                                <a href="<?php echo esc_url($first_image_link); ?>" target="_blank" rel="noopener nofollow">
+                                    <img src="<?php echo esc_url($first_image_url); ?>" alt="">
+                                </a>
+                            <?php else : ?>
+                                <img src="<?php echo esc_url($first_image_url); ?>" alt="">
+                            <?php endif; ?>
                         </div>
                     <?php endif; ?>
 

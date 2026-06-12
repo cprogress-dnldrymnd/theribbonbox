@@ -402,6 +402,10 @@
     font-size: 1.375rem;
 }
 
+#trb-page-builder .offer-slider .product-name + .offer-badges {
+    margin-top: 5px !important;
+}
+
 #trb-page-builder .product-tabs--light .offer-slider .product-cat,
 #trb-page-builder .product-tabs--light .offer-slider .product-name a {
     color: var(--trb-petal);

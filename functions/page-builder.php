@@ -271,7 +271,12 @@ function trb_builder_section_types()
                 'first_image' => array(
                     'type' => 'image',
                     'label' => 'Custom First Slide Image (optional)',
-                    'help' => 'Shown as the first slide before the offers.',
+                    'help' => 'Shown as the first slide before the offers. Displays a "Sponsored" tag.',
+                ),
+                'first_image_link' => array(
+                    'type' => 'text',
+                    'label' => 'Custom First Slide Link (optional)',
+                    'help' => 'Where the first slide ad links to.',
                 ),
                 'buttons' => array(
                     'type' => 'repeater',
