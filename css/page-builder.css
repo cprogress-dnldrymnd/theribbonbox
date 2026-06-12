@@ -1286,7 +1286,7 @@
 
     #trb-page-builder .offer-slider .product-widget--cta a,
     #trb-page-builder .offer-filter-grid .product-widget--cta a {
-        font-size: 0.70rem;
+        font-size: 0.7rem;
     }
 
     #trb-page-builder .offer-filter-grid .product-widget--image {
@@ -1520,6 +1520,9 @@
 #trb-page-builder .trb-picks-nav {
     padding-block: 1rem;
 }
+#trb-page-builder .trb-picks-nav img {
+    display: none;
+}
 
 #trb-page-builder .trb-picks-nav nav {
     float: none;
@@ -1536,6 +1539,10 @@
 
 #trb-page-builder .trb-picks-nav-menu a {
     color: var(--trb-white);
+    opacity: 0.5;
+}
+#trb-page-builder .trb-picks-nav-menu li.current-menu-item a {
+    color: var(--trb-coral);
 }
 
 #trb-page-builder .trb-picks-nav-title {
