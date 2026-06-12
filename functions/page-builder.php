@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'TRB_BUILDER_VERSION' ) ) {
-    define( 'TRB_BUILDER_VERSION', '1.5.0' );
+    define( 'TRB_BUILDER_VERSION', '1.5.2' );
 }
 /*-----------------------------------------------------------------------------------*/
 /* TRB Page Builder
@@ -77,6 +77,11 @@ function trb_builder_section_types()
                     'label' => 'Title',
                     'default' => 'TRB Picks',
                     'summary' => true,
+                ),
+                'logo' => array(
+                    'type' => 'image',
+                    'label' => 'Logo Image (optional)',
+                    'help' => 'Shown in place of the title text.',
                 ),
                 'source' => array(
                     'type' => 'select',

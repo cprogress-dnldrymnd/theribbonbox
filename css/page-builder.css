@@ -1526,6 +1526,13 @@
 #trb-page-builder .trb-picks-nav img {
     display: none;
 }
+/* The title logo opts back in (the rule above hides any other nav imagery). */
+#trb-page-builder .trb-picks-nav img.trb-picks-nav-logo {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 50px;
+}
 
 #trb-page-builder .trb-picks-nav nav {
     float: none;
