@@ -832,7 +832,9 @@
 #trb-page-builder .offer-filter-grid .product-widget--cta a {
     color: var(--trb-coral);
 }
-
+#trb-page-builder .product-widget--holder .product-widget--image a {
+    aspect-ratio: 1/1;
+}
 /* ----------------------------------------- Card bottom alignment */
 /* Make each card a full-height column so the code box + "Claim Discount" CTA
    sit on the bottom edge and line up across cards of different content height.
