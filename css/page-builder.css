@@ -1089,11 +1089,6 @@
         display: block;
     }
 
-    #trb-page-builder .offer-filter-grid .product-widget--image img {
-        width: 100%;
-        height: 140px;
-        object-fit: cover;
-    }
 
     #trb-page-builder .offer-filter-grid .product-widget--content {
         flex: 1 1 auto;
