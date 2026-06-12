@@ -6,16 +6,15 @@
 
 #trb-page-builder {
     --trb-green: #034146;
-    --trb-wine: #3B1527;
-    --trb-coral: #F77D67;
-    --trb-petal: #FFDBD1;
-    --trb-white: #FFFFFF;
+    --trb-wine: #3b1527;
+    --trb-coral: #f77d67;
+    --trb-petal: #ffdbd1;
+    --trb-white: #ffffff;
     --trb-black: #000000;
-    --trb-mint: #CCFBCA;
+    --trb-mint: #ccfbca;
     --trb-forest: #008242;
     color: var(--trb-wine);
 }
-
 
 /* Per-section spacing presets (Margin/Padding Top & Bottom) chosen in the builder */
 #trb-page-builder .trb-section-design.trb-mt-none {
@@ -99,7 +98,7 @@
 }
 
 #trb-page-builder hr {
-    border-color: #E1E1E1;
+    border-color: #e1e1e1;
     opacity: 1;
 }
 
@@ -222,7 +221,7 @@
 }
 
 #trb-page-builder .category-navigation .inner {
-    background-color: #EDF7F6;
+    background-color: #edf7f6;
     padding-block: clamp(2rem, 4vw, 76px);
     border-radius: 20px;
 }
@@ -243,7 +242,7 @@
 }
 
 #trb-page-builder .cat-text {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 2rem;
     font-weight: bold;
     border-top: 1px solid var(--trb-green);
@@ -252,11 +251,11 @@
 
 /* Hover feedback on the "JUMP TO" anchor-nav cards. */
 #trb-page-builder .cat-nav-holder {
-    transition: opacity .15s ease;
+    transition: opacity 0.15s ease;
 }
 
 #trb-page-builder .cat-nav-holder:hover {
-    opacity: .75;
+    opacity: 0.75;
 }
 
 #trb-page-builder .cat-nav-holder:hover .cat-text {
@@ -276,7 +275,7 @@
     border-radius: 0;
     color: var(--trb-wine) !important;
     font-size: 2rem !important;
-    font-family: 'Playfair Display', sans-serif;
+    font-family: "Playfair Display", sans-serif;
     font-weight: bold;
     height: auto;
     text-transform: initial;
@@ -341,7 +340,7 @@
 
 /* ---------------------------------------------------------------- Offer slider */
 #trb-page-builder .offer-slider-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 2rem;
     font-weight: bold;
     color: var(--trb-wine);
@@ -367,7 +366,10 @@
 /* Bordered "ALL … DISCOUNTS" buttons: fill on hover for clear feedback. */
 #trb-page-builder .offer-slider-buttons .button-box.button-bordered a,
 #trb-page-builder .nav-tabs-holder .button-box.button-bordered a {
-    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 #trb-page-builder .offer-slider-buttons .button-box.button-bordered a:hover,
@@ -393,9 +395,9 @@
 }
 
 #trb-page-builder .offer-slider .product-name {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 #trb-page-builder .offer-slider .product-name a {
@@ -413,7 +415,6 @@
     color: var(--trb-coral);
     font-size: 1rem;
 }
-
 
 /* All Natural / Eco Friendly badges on offer cards */
 #trb-page-builder .offer-slider .product-widget--image {
@@ -445,15 +446,13 @@
     color: var(--trb-forest);
 }
 
-
-
 /* Decorative background bar (e.g. offer slider following a Wine two-column section) */
 #trb-page-builder .trb-decor-bar {
     position: relative;
 }
 
 #trb-page-builder .trb-decor-bar:before {
-    content: '';
+    content: "";
     position: absolute;
     background-color: var(--trb-decor-color, var(--trb-wine));
     height: 250px;
@@ -491,7 +490,7 @@
 }
 
 #trb-page-builder .promo-banner-heading {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-weight: bold;
     font-size: clamp(2rem, 3vw, 2.75rem);
     line-height: 1.2;
@@ -531,11 +530,11 @@
 }
 
 #trb-page-builder .offer-filter-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-size: 2rem;
     font-weight: bold;
     color: var(--trb-wine);
-    margin: 0 0 .5rem;
+    margin: 0 0 0.5rem;
 }
 
 #trb-page-builder .offer-filter-layout {
@@ -547,7 +546,7 @@
 
 /* ---------------------------------------------------------------- Sidebar */
 #trb-page-builder .offer-filter-sidebar-title {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-style: italic;
     font-size: 1.6rem;
     color: var(--trb-wine);
@@ -569,7 +568,7 @@
 
 #trb-page-builder .offer-filter-search-input {
     width: 100%;
-    padding: .65rem 1rem .65rem 2.75rem;
+    padding: 0.65rem 1rem 0.65rem 2.75rem;
     border: 1px solid #ddd;
     border-radius: 999px;
     font-size: 1rem;
@@ -597,7 +596,9 @@
     cursor: pointer;
     color: var(--trb-wine) !important;
     line-height: 1;
-    transition: background .15s ease, color .15s ease;
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
 }
 
 #trb-page-builder .offer-filter-mobile-close:hover {
@@ -616,17 +617,17 @@
     display: none;
     align-items: center;
     justify-content: center;
-    gap: .5rem;
+    gap: 0.5rem;
     width: 100%;
     margin-bottom: 1.25rem;
-    padding: .75rem 1rem;
+    padding: 0.75rem 1rem;
     background: var(--trb-wine);
     border: 0;
     border-radius: 4px;
     color: var(--trb-white);
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
     cursor: pointer;
 }
 
@@ -641,10 +642,10 @@
 }
 
 #trb-page-builder .offer-filter-group-title {
-    font-family: 'Work Sans', serif;
+    font-family: "Work Sans", serif;
     font-size: 1.5rem;
     color: var(--trb-wine);
-    margin: 0 0 .75rem;
+    margin: 0 0 0.75rem;
     font-weight: 600;
 }
 
@@ -655,16 +656,16 @@
 }
 
 #trb-page-builder .offer-filter-cat-list li {
-    margin-bottom: .35rem;
+    margin-bottom: 0.35rem;
 }
 
 #trb-page-builder .offer-filter-cat {
     display: flex;
     justify-content: space-between;
-    gap: .5rem;
+    gap: 0.5rem;
     text-decoration: none;
     font-size: 1.125rem;
-    padding: .15rem 0;
+    padding: 0.15rem 0;
     opacity: 0.7;
     font-weight: 500;
     font-family: Work Sans;
@@ -684,7 +685,7 @@
 /* Taxonomy filter groups */
 #trb-page-builder .offer-filter-tax {
     border-bottom: 1px solid #eee;
-    padding-block: .85rem;
+    padding-block: 0.85rem;
 }
 
 #trb-page-builder .offer-filter-tax-toggle {
@@ -704,7 +705,7 @@
 }
 
 #trb-page-builder .offer-filter-tax-chevron {
-    transition: transform .2s ease;
+    transition: transform 0.2s ease;
 }
 
 #trb-page-builder .offer-filter-tax.is-open .offer-filter-tax-chevron {
@@ -716,11 +717,11 @@
     font-size: 1.05rem;
     font-weight: 600;
     color: var(--trb-wine);
-    margin-bottom: .6rem;
+    margin-bottom: 0.6rem;
 }
 
 #trb-page-builder .offer-filter-tax-body {
-    padding-top: .6rem;
+    padding-top: 0.6rem;
 }
 
 #trb-page-builder .offer-filter-tax--accordion .offer-filter-tax-body {
@@ -734,8 +735,8 @@
 #trb-page-builder .offer-filter-check {
     display: flex;
     align-items: center;
-    gap: .55rem;
-    margin-bottom: .45rem;
+    gap: 0.55rem;
+    margin-bottom: 0.45rem;
     cursor: pointer;
     font-weight: 500;
     font-size: 1.125rem;
@@ -751,14 +752,16 @@
 #trb-page-builder .offer-filter-reset {
     margin-top: 1.25rem;
     width: 100%;
-    padding: .7rem 1rem;
+    padding: 0.7rem 1rem;
     background: transparent;
     border: 1px solid var(--trb-wine) !important;
     color: var(--trb-wine) !important;
     border-radius: 4px;
     font-size: 1rem !important;
     cursor: pointer;
-    transition: background .15s ease, color .15s ease;
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
     height: auto;
     letter-spacing: 0.75px;
 }
@@ -792,9 +795,9 @@
     position: absolute;
     top: 8px;
     right: 8px;
-    background: rgba(255, 255, 255, .85);
-    color: #3A3A3A;
-    font-size: .0.875rem;
+    background: rgba(255, 255, 255, 0.85);
+    color: #3a3a3a;
+    font-size: 0.875rem;
     padding: 2px 6px;
     border-radius: 3px;
     z-index: 2;
@@ -821,7 +824,7 @@
 #trb-page-builder .offer-filter-sort {
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: 0.5rem;
     font-size: 1rem;
     color: var(--trb-wine);
     font-weight: 600;
@@ -834,11 +837,10 @@
 #trb-page-builder .offer-filter-sort-select {
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: .45rem .75rem;
+    padding: 0.45rem 0.75rem;
     font-size: 1rem !important;
     padding-right: 2rem;
 }
-
 
 #trb-page-builder .offer-filter-results {
     position: relative;
@@ -936,12 +938,12 @@
 }
 
 #trb-page-builder .product-code-value {
-       flex: 1 1 auto;
+    flex: 1 1 auto;
     min-width: 0;
-    padding: .65rem .9rem;
+    padding: 0.65rem 0.9rem;
     font-weight: 600;
-    font-size: .95rem;
-    letter-spacing: .08em;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
     text-align: center;
     color: var(--trb-wine);
     text-transform: uppercase;
@@ -954,18 +956,18 @@
 }
 
 #trb-page-builder .product-code-copy {
-   position: relative;
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 71px;
     flex: 0 0 71px;
-    padding: 0 .75rem;
+    padding: 0 0.75rem;
     border: none;
     border-left: 1px solid #e4d7d7 !important;
     background: var(--trb-wine);
     cursor: pointer;
-    transition: background-color .2s ease;
+    transition: background-color 0.2s ease;
     height: auto;
 }
 
@@ -984,9 +986,9 @@
     display: none;
     align-items: center;
     justify-content: center;
-    font-size: .7rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: .02em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
     background: var(--trb-green, #2e7d32);
 }
@@ -1011,6 +1013,15 @@
     background: #f6f6f6;
 }
 
+/* Desktop: pin the grid ad to the last column of the first row. The ad is
+   rendered last in the DOM (so it falls last on mobile, see the single-column
+   block below); explicit grid placement pulls it up into row 1 here, and the
+   auto-placed cards flow around the reserved cell. Works for 2/3/4 columns. */
+#trb-page-builder .offer-filter-grid .offer-filter-ad--grid {
+    grid-column: -2 / -1;
+    grid-row: 1 / 2;
+}
+
 #trb-page-builder .offer-filter-empty {
     grid-column: 1 / -1;
     padding: 2rem 0;
@@ -1022,7 +1033,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .5rem;
+    gap: 0.5rem;
     margin-top: 2rem;
     float: none;
     background-color: transparent !important;
@@ -1043,7 +1054,7 @@
 /* Numbered page buttons: boxed squares */
 #trb-page-builder .offer-filter-page--number {
     min-width: 40px;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     border: 1px solid #d9d2d6;
     border-radius: 6px;
 }
@@ -1064,7 +1075,7 @@
 #trb-page-builder .offer-filter-page--prev,
 #trb-page-builder .offer-filter-page--next {
     text-decoration: underline;
-    padding: 0 .25rem;
+    padding: 0 0.25rem;
 }
 
 #trb-page-builder a.offer-filter-page--prev:hover,
@@ -1083,9 +1094,9 @@
 
 /* Loading state */
 #trb-page-builder .offer-filter.is-loading .offer-filter-grid-inner {
-    opacity: .5;
+    opacity: 0.5;
     pointer-events: none;
-    transition: opacity .15s ease;
+    transition: opacity 0.15s ease;
 }
 
 #trb-page-builder .offer-filter-loading {
@@ -1103,7 +1114,7 @@
     border: 3px solid #ddd;
     border-top-color: var(--trb-wine);
     border-radius: 50%;
-    animation: trb-offer-spin .8s linear infinite;
+    animation: trb-offer-spin 0.8s linear infinite;
 }
 
 @keyframes trb-offer-spin {
@@ -1150,7 +1161,6 @@
         display: block;
     }
 
-
     #trb-page-builder .offer-filter-grid .product-widget--content {
         flex: 1 1 auto;
         min-width: 0;
@@ -1160,9 +1170,12 @@
         margin-top: 0;
     }
 
-    /* Keep the ad cards full-width in the single-column grid. */
+    /* Keep the ad cards full-width in the single-column grid, and drop the
+       desktop first-row pin so the ad falls last (its DOM position). */
     #trb-page-builder .offer-filter-grid .offer-filter-ad--grid {
         display: flex;
+        grid-column: auto;
+        grid-row: auto;
     }
 }
 
@@ -1177,7 +1190,7 @@
     }
 
     #trb-page-builder .offer-filter-sidebar-header {
-        margin-bottom: 1rem;
+        margin-bottom: 10px;
     }
 
     #trb-page-builder .offer-filter-mobile-close {
@@ -1197,8 +1210,8 @@
         padding: 1.5rem;
         overflow-y: auto;
         transform: translateX(-100%);
-        transition: transform .3s ease;
-        box-shadow: 2px 0 16px rgba(0, 0, 0, .15);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 16px rgba(0, 0, 0, 0.15);
     }
 
     #trb-page-builder .offer-filter-sidebar.is-open {
@@ -1209,7 +1222,7 @@
         position: fixed;
         inset: 0;
         z-index: 9999;
-        background: rgba(0, 0, 0, .5);
+        background: rgba(0, 0, 0, 0.5);
     }
 
     #trb-page-builder .offer-filter-overlay:not([hidden]) {
@@ -1232,13 +1245,13 @@
 @media (max-width: 767px) {
     /* ---- Cards (slider + filter grid share the .offer-slider class) ---- */
     #trb-page-builder .offer-slider .product-cat {
-        font-size: .72rem;
-        letter-spacing: .5px;
+        font-size: 0.72rem;
+        letter-spacing: 0.5px;
         margin-bottom: 2px;
     }
 
     #trb-page-builder .offer-slider .product-name a {
-        font-size: .95rem;
+        font-size: 0.95rem;
     }
 
     #trb-page-builder .offer-slider .offer-badges {
@@ -1246,30 +1259,34 @@
     }
 
     #trb-page-builder .offer-slider .offer-badge {
-        font-size: .7rem;
+        font-size: 0.7rem;
         padding: 2px 6px;
     }
 
     #trb-page-builder .offer-filter-grid .product-discount {
-        font-size: .85rem;
+        font-size: 0.85rem;
         margin-bottom: 6px;
     }
 
     #trb-page-builder .product-code-value {
-        font-size: .78rem;
-        padding: .5rem .55rem;
-        letter-spacing: .04em;
+        font-size: 0.65rem;
+        padding: 0.25rem 0.35rem;
+        letter-spacing: 0.04em;
+    }
+
+    #trb-page-builder .product-code + .product-widget--cta {
+        margin-top: 5px;
     }
 
     #trb-page-builder .product-code-copy {
         width: 50px;
         flex: 0 0 50px;
-        padding: 0 .5rem;
+        padding: 0 0.5rem;
     }
 
     #trb-page-builder .offer-slider .product-widget--cta a,
     #trb-page-builder .offer-filter-grid .product-widget--cta a {
-        font-size: .85rem;
+        font-size: 0.85rem;
     }
 
     #trb-page-builder .offer-filter-grid .product-widget--image {
@@ -1280,11 +1297,11 @@
     /* ---- Results toolbar ---- */
     #trb-page-builder .offer-filter-count,
     #trb-page-builder .offer-filter-sort {
-        font-size: .85rem;
+        font-size: 0.85rem;
     }
 
     #trb-page-builder .offer-filter-sort-select {
-        font-size: .85rem !important;
+        font-size: 0.85rem !important;
     }
 
     /* ---- Filter drawer typography ("MASSIVE") ---- */
@@ -1297,15 +1314,18 @@
     }
 
     #trb-page-builder .offer-filter-tax-toggle {
-        font-size: 1rem !important;
+        font-size: 0.85rem !important;
     }
 
     #trb-page-builder .offer-filter-tax-label {
-        font-size: 1rem;
+        font-size: 0.85rem;
+    }
+    #trb-page-builder .offer-filter-tax {
+        padding-block: 5px;
     }
 
     #trb-page-builder .offer-filter-check {
-        font-size: .9rem;
+        font-size: 0.85rem;
     }
 
     #trb-page-builder .offer-filter-check input {
@@ -1314,16 +1334,17 @@
     }
 
     #trb-page-builder .offer-filter-cat {
-        font-size: .9rem;
-        padding: .1rem 0;
+        font-size: 0.85rem;
+        padding: 0.1rem 0;
     }
 
     #trb-page-builder .offer-filter-search-input {
-        font-size: .9rem;
+        font-size: 0.85rem;
     }
 
     #trb-page-builder .offer-filter-reset {
-        font-size: .9rem !important;
+        font-size: 0.75rem !important;
+        padding-block: 0;
     }
 }
 
@@ -1333,7 +1354,7 @@
    long title doesn't blow out the layout. */
 @media (max-width: 767px) {
     #trb-page-builder h3:not(.product-name) {
-        font-size: 1.75rem !important;
+        font-size: 1.25rem !important;
     }
 }
 

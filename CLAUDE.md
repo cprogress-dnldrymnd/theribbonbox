@@ -51,8 +51,15 @@ in `js/`, `css/`, `sass/`, and reusable markup in `template-parts/`, `sections/`
   - `commerce.php`, `products.php`, `hide-shippen-when-free.php` — WooCommerce helpers.
   - `core.php` — session start, `set_trb_message()` flash messages, misc setup.
   - `ARCHIVED.php` — not included; dead code kept for reference.
-- `sections/`, `components/`, `template-parts/` — reusable markup partials (page
-  builder sections, post/pagination components, header/footer/navigation parts).
+- `page-template-trb-picks.php` — separate "TRB Picks" page template (own inline
+  `<style>` block defining `--trb-*` color vars and layout helpers), built from
+  `sections/*.php` parts (`navigation`, `page-title`, `category-navigation`,
+  `product-tabs`, `product-tabs-2`, `two-columns`, `two-columns-2`) — not part of the
+  Page Builder.
+- `template-parts/` — Page Builder section markup lives in `template-parts/builder/`
+  (see below); other subdirs (`header`, `footer`, `navigation`, `page`, `post`) hold
+  header/footer/navigation/post partials. `components/` holds post/pagination
+  components.
 - `shortcodes/` — `[blog_filter]` (see "Listing pages"), expert list, member login button.
 - `woocommerce/` — WooCommerce template overrides (theme root `woocommerce.php` is the
   WooCommerce Classic-theme integration entry point).
@@ -114,7 +121,11 @@ post meta.
   underline the card title/category and fill bordered "...DISCOUNTS" buttons. A
   `max-width: 767px` block in `css/page-builder.css` scales down offer-card text/badges
   and the filter-drawer typography (client feedback: cards/drawer were "too big" /
-  "MASSIVE" on mobile).
+  "MASSIVE" on mobile). The grid ad (`.offer-filter-ad--grid`, rendered last in the
+  DOM) is explicitly placed into the last column of row 1 on desktop via
+  `grid-column`/`grid-row`; the `max-width: 767px` block resets that placement to
+  `auto` so it falls back to its natural (last) position in the single-column mobile
+  layout.
 
 ## Conventions / gotchas
 
