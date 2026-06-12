@@ -92,7 +92,7 @@ post meta.
 
 - Core: [functions/page-builder.php](functions/page-builder.php) — section registry is
   `trb_builder_section_types()`; assets are cache-busted via `TRB_BUILDER_VERSION`
-  (constant near top of the file, currently `1.5.2`) with a `filemtime()` fallback for
+  (constant near top of the file, currently `1.5.4`) with a `filemtime()` fallback for
   local edits.
 - Section markup: [template-parts/builder/](template-parts/builder/) — one
   `section-*.php` per section type (hero, category-nav, divider, promo-banner,
@@ -104,13 +104,14 @@ post meta.
   the trb-picks page template. An optional `logo` image field, when set, renders via
   `wp_get_attachment_image()` (`.trb-picks-nav-logo`) in place of the title text in the
   `.trb-picks-nav-title` slot — `css/page-builder.css` hides nav `img`s generally but
-  opts the logo back in (`max-height: 50px`). A `source` select (`menu` default /
-  `manual`) chooses between a WordPress menu (`menu` field, `term_select` on the
-  `nav_menu` taxonomy, rendered via `wp_nav_menu()`) or a `repeater` of manual
-  `{label, link}` links; admin-side `show_when: {field, value}` toggles which field is
-  shown. Legacy sections saved before `source` existed fall back to the menu if set,
-  else the manual links. The `term_select` admin control supports an optional
-  `placeholder` to override the default "Select a category" text.
+  opts the logo back in (`max-height: 50px`). An optional `logo_link` text field, when
+  set, makes the title/logo slot a link (`esc_url()`) to that URL. A `source` select
+  (`menu` default / `manual`) chooses between a WordPress menu (`menu` field,
+  `term_select` on the `nav_menu` taxonomy, rendered via `wp_nav_menu()`) or a
+  `repeater` of manual `{label, link}` links; admin-side `show_when: {field, value}`
+  toggles which field is shown. Legacy sections saved before `source` existed fall back
+  to the menu if set, else the manual links. The `term_select` admin control supports
+  an optional `placeholder` to override the default "Select a category" text.
 - Admin UI: `js/page-builder-admin.js`, `css/page-builder-admin.css`.
 - Front-end styles: [css/page-builder.css](css/page-builder.css).
 

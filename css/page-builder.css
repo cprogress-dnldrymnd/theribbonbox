@@ -1522,6 +1522,7 @@
 
 #trb-page-builder .trb-picks-nav {
     padding-block: 1rem;
+    border: none !important;
 }
 #trb-page-builder .trb-picks-nav img {
     display: none;

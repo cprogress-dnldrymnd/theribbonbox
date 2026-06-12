@@ -11,6 +11,7 @@
 
 $title  = trim($section['title'] ?? '');
 $logo_id = absint($section['logo'] ?? 0);
+$logo_link = trim($section['logo_link'] ?? '');
 $source = $section['source'] ?? 'menu';
 $menu_id = absint($section['menu'] ?? 0);
 
@@ -64,10 +65,10 @@ if ($title === '' && !$logo_id && trim((string) $nav_html) === '') {
 ?>
 <section class="trb-picks-nav trb-bg-accent-2">
     <div class="container">
-        <div class="row g-3 align-items-center">
-            <div class="col-lg-3">
+        <div class="row g-3 align-items-center justify-content-between">
+            <div class="col-auto col-sm-3">
                 <?php if ($logo_id || $title !== '') : ?>
-                    <a class="trb-picks-nav-title">
+                    <a class="trb-picks-nav-title"<?php echo $logo_link !== '' ? ' href="' . esc_url($logo_link) . '"' : ''; ?>>
                         <?php if ($logo_id) : ?>
                             <?php echo wp_get_attachment_image($logo_id, 'medium', false, array('alt' => $title, 'class' => 'trb-picks-nav-logo')); ?>
                         <?php else : ?>
@@ -76,7 +77,7 @@ if ($title === '' && !$logo_id && trim((string) $nav_html) === '') {
                     </a>
                 <?php endif; ?>
             </div>
-            <div class="col-lg-6 text-center">
+            <div class="col-auto col-sm-3 text-center">
                 <?php if (trim((string) $nav_html) !== '') : ?>
                     <nav class="trb-picks-nav-menu">
                         <?php echo $nav_html; ?>
