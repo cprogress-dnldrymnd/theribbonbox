@@ -833,12 +833,34 @@
     color: var(--trb-coral);
 }
 
+/* ----------------------------------------- Card bottom alignment */
+/* Make each card a full-height column so the code box + "Claim Discount" CTA
+   sit on the bottom edge and line up across cards of different content height.
+   Shared by the offer slider and the offer filter grid. */
+#trb-page-builder .product-widget--box {
+    display: flex;
+    flex-direction: column;
+}
+#trb-page-builder .product-widget--content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+/* Pin the trailing block (code box, or CTA when there's no code) to the bottom. */
+#trb-page-builder .product-code,
+#trb-page-builder .product-widget--cta {
+    margin-top: auto;
+}
+/* When a code box is present, the CTA hugs it instead of pushing down again. */
+#trb-page-builder .product-code + .product-widget--cta {
+    margin-top: 12px;
+}
+
 /* ----------------------------------------- Discount code + copy button (card) */
 /* Shared by the offer slider and the offer filter grid. */
 #trb-page-builder .product-code {
     display: flex;
     align-items: stretch;
-    margin-top: .85rem;
     border-radius: 5px;
     overflow: hidden;
     background: var(--trb-white);
