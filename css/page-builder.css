@@ -385,6 +385,7 @@
 /* All Natural / Eco Friendly badges on offer cards */
 #trb-page-builder .offer-slider .product-widget--image {
     position: relative;
+    margin-bottom: 1rem;
 }
 
 #trb-page-builder .offer-slider .offer-badges {
@@ -842,6 +843,7 @@
 #trb-page-builder .product-widget--box {
     display: flex;
     flex-direction: column;
+    height: auto;
 }
 #trb-page-builder .product-widget--content {
     display: flex;
@@ -1070,6 +1072,7 @@
 
     #trb-page-builder .offer-filter-grid .product-widget--box {
         display: flex;
+        flex-direction: row;
         align-items: flex-start;
         gap: 1rem;
     }
@@ -1159,7 +1162,7 @@
         overflow: hidden;
     }
 
-    body.offer-filter-drawer-open #header-v2 {
+    body.offer-filter-drawer-open #header-main-site {
         opacity: 0;
         visibility: hidden;
     }
