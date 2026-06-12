@@ -1292,6 +1292,7 @@
     #trb-page-builder .offer-filter-grid .product-widget--image {
         flex: 0 0 40%;
         max-width: 150px;
+        margin-bottom: 0;
     }
 
     /* ---- Results toolbar ---- */
