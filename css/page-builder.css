@@ -1553,6 +1553,7 @@
 }
 #trb-page-builder .trb-picks-nav-menu li.current-menu-item a {
     color: var(--trb-coral);
+    opacity: 1;
 }
 
 #trb-page-builder .trb-picks-nav-title {

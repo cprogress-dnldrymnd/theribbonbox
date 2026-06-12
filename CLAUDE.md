@@ -92,22 +92,25 @@ post meta.
 
 - Core: [functions/page-builder.php](functions/page-builder.php) — section registry is
   `trb_builder_section_types()`; assets are cache-busted via `TRB_BUILDER_VERSION`
-  (constant near top of the file, currently `1.5.0`) with a `filemtime()` fallback for
+  (constant near top of the file, currently `1.5.2`) with a `filemtime()` fallback for
   local edits.
 - Section markup: [template-parts/builder/](template-parts/builder/) — one
   `section-*.php` per section type (hero, category-nav, divider, promo-banner,
   richtext, two-column, offer-filter, offer-slider, navigation). The section file is
   resolved as `template-parts/builder/section-{$file_slug}.php`.
 - `navigation` section ([section-navigation.php](template-parts/builder/section-navigation.php))
-  renders a title plus a menu as a horizontal bar (`.trb-picks-nav`), styled in
+  renders a title (or logo) plus a menu as a horizontal bar (`.trb-picks-nav`), styled in
   `css/page-builder.css` using the `--trb-wine` / `--trb-petal` color vars shared with
-  the trb-picks page template. A `source` select (`menu` default / `manual`) chooses
-  between a WordPress menu (`menu` field, `term_select` on the `nav_menu` taxonomy,
-  rendered via `wp_nav_menu()`) or a `repeater` of manual `{label, link}` links;
-  admin-side `show_when: {field, value}` toggles which field is shown. Legacy sections
-  saved before `source` existed fall back to the menu if set, else the manual links.
-  The `term_select` admin control supports an optional `placeholder` to override the
-  default "Select a category" text.
+  the trb-picks page template. An optional `logo` image field, when set, renders via
+  `wp_get_attachment_image()` (`.trb-picks-nav-logo`) in place of the title text in the
+  `.trb-picks-nav-title` slot — `css/page-builder.css` hides nav `img`s generally but
+  opts the logo back in (`max-height: 50px`). A `source` select (`menu` default /
+  `manual`) chooses between a WordPress menu (`menu` field, `term_select` on the
+  `nav_menu` taxonomy, rendered via `wp_nav_menu()`) or a `repeater` of manual
+  `{label, link}` links; admin-side `show_when: {field, value}` toggles which field is
+  shown. Legacy sections saved before `source` existed fall back to the menu if set,
+  else the manual links. The `term_select` admin control supports an optional
+  `placeholder` to override the default "Select a category" text.
 - Admin UI: `js/page-builder-admin.js`, `css/page-builder-admin.css`.
 - Front-end styles: [css/page-builder.css](css/page-builder.css).
 
