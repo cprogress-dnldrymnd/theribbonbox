@@ -871,7 +871,7 @@
     border-radius: 5px;
     overflow: hidden;
     background: var(--trb-white);
-    margin: 0;
+    margin-top: auto;
 }
 
 #trb-page-builder .product-code-value {
