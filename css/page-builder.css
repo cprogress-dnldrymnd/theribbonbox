@@ -344,7 +344,7 @@
 }
 
 #trb-page-builder .offer-slider-buttons .button-box a {
-    color: var(--trb-wine);
+    color: currentColor;
 }
 
 #trb-page-builder .product-tabs--light .offer-slider-buttons .button-box a {
