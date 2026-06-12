@@ -132,7 +132,7 @@ if ($decorative_bar) {
                     <?php foreach ($offers as $offer) :
                         // Shared card markup (see functions/offer-filter.php).
                         if (function_exists('trb_render_offer_card')) {
-                            echo trb_render_offer_card($offer->ID, array('cta_text' => ''));
+                            echo trb_render_offer_card($offer->ID, array('cta_text' => 'Claim Discount'));
                         }
                     endforeach; ?>
                 </div>
