@@ -395,11 +395,11 @@
 }
 
 #trb-page-builder .offer-slider .offer-badge {
-    font-size: 0.875;
-    font-weight: 600;
+    font-size: 0.875rem;
+    font-weight: 400;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    padding: 4px 5px;
+    padding: 4px 8px;
     border-radius: 0;
     color: var(--trb-white);
     line-height: 1.2;
