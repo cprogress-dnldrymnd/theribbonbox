@@ -842,7 +842,7 @@
     border-radius: 4px;
     padding: 0.45rem 0.75rem;
     font-size: 1rem !important;
-    padding-right: 2rem;
+    padding-right: 2rem !important;;
 }
 
 #trb-page-builder .offer-filter-results {
