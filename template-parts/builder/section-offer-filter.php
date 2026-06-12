@@ -145,7 +145,8 @@ $js_config = array(
                                             <input type="checkbox" name="of_tax[<?php echo esc_attr($slug); ?>][]"
                                                    value="<?php echo esc_attr($term->term_id); ?>"
                                                    <?php checked(in_array((int) $term->term_id, array_map('intval', $selected), true)); ?>>
-                                            <span><?php echo esc_html($term->name); ?></span>
+                                            <span class="offer-filter-box" aria-hidden="true"></span>
+                                            <span class="offer-filter-check-label"><?php echo esc_html($term->name); ?></span>
                                         </label>
                                     <?php endforeach; ?>
                                 </div>
