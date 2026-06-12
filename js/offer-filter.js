@@ -18,6 +18,9 @@
         var config = $root.data('config') || {};
         var perPage = config.perPage || 15;
         var gridAds = config.gridAds || [];
+        // Base path for pretty category URLs, e.g. "/offers/". Category filtering
+        // pushes /offers/{slug}/ to the address bar instead of ?of_cat=ID.
+        var baseUrl = config.baseUrl || window.location.pathname;
 
         var $form = $root.find('.offer-filter-form');
         var $search = $root.find('.offer-filter-search-input');
@@ -29,7 +32,9 @@
         var $sidebar = $root.find('.offer-filter-sidebar');
         var $overlay = $root.find('.offer-filter-overlay');
 
-        var activeCategory = parseInt($root.find('.offer-filter-cat.is-active').data('cat'), 10) || 0;
+        var $activeCat = $root.find('.offer-filter-cat.is-active');
+        var activeCategory = parseInt($activeCat.data('cat'), 10) || 0;
+        var activeCategorySlug = $activeCat.attr('data-cat-slug') || '';
         var currentPage = 1;
         var searchTimer = null;
         var xhr = null;
@@ -55,6 +60,7 @@
             return {
                 search: $.trim($search.val()),
                 category: activeCategory,
+                categorySlug: activeCategorySlug,
                 sort: $sort.val() || 'date_desc',
                 tax: collectTax(),
                 paged: page || 1
@@ -63,10 +69,11 @@
 
         /* ---------------------------------------------------- URL syncing */
 
+        // Everything except the category lives in the query string; the category
+        // is carried by the path (/{base}/{slug}/), so it's not added here.
         function stateToParams(state) {
             var params = {};
             if (state.search) { params.of_s = state.search; }
-            if (state.category) { params.of_cat = state.category; }
             if (state.sort && state.sort !== 'date_desc') { params.of_sort = state.sort; }
             if (state.paged > 1) { params.of_paged = state.paged; }
             $.each(state.tax, function (slug, vals) {
@@ -82,6 +89,10 @@
             if (!window.history || !window.history.pushState) {
                 return;
             }
+            var path = baseUrl;
+            if (state.category && state.categorySlug) {
+                path += state.categorySlug + '/';
+            }
             var parts = [];
             $.each(stateToParams(state), function (key, val) {
                 if ($.isArray(val)) {
@@ -92,8 +103,8 @@
                     parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(val));
                 }
             });
-            var qs = parts.length ? '?' + parts.join('&') : window.location.pathname;
-            window.history.pushState({ offerFilter: true }, '', qs + '#offer-filter');
+            var qs = parts.length ? '?' + parts.join('&') : '';
+            window.history.pushState({ offerFilter: true }, '', path + qs + '#offer-filter');
         }
 
         /* ---------------------------------------------------- fetch */
@@ -171,11 +182,18 @@
         // Category links (single-select toggle).
         $root.on('click', '.offer-filter-cat', function (e) {
             e.preventDefault();
-            var cat = parseInt($(this).data('cat'), 10) || 0;
-            activeCategory = (activeCategory === cat) ? 0 : cat;
+            var $cat = $(this);
+            var cat = parseInt($cat.data('cat'), 10) || 0;
+            if (activeCategory === cat) {
+                activeCategory = 0;
+                activeCategorySlug = '';
+            } else {
+                activeCategory = cat;
+                activeCategorySlug = $cat.attr('data-cat-slug') || '';
+            }
             $root.find('.offer-filter-cat').removeClass('is-active');
             if (activeCategory) {
-                $(this).addClass('is-active');
+                $cat.addClass('is-active');
             }
             fetch(1);
         });
@@ -195,6 +213,7 @@
             $search.val('');
             $sort.val('date_desc');
             activeCategory = 0;
+            activeCategorySlug = '';
             $root.find('.offer-filter-cat').removeClass('is-active');
             $root.find('.offer-filter-tax input[type=checkbox]').prop('checked', false);
             fetch(1);
@@ -222,7 +241,30 @@
             $search.val(params.get('of_s') || '');
             $sort.val(params.get('of_sort') || 'date_desc');
 
-            activeCategory = parseInt(params.get('of_cat'), 10) || 0;
+            // Category lives in the path: {baseUrl}{slug}/. Fall back to a legacy
+            // ?of_cat=ID query param for old links.
+            activeCategory = 0;
+            activeCategorySlug = '';
+            var path = window.location.pathname;
+            if (baseUrl && path.indexOf(baseUrl) === 0) {
+                var rest = path.slice(baseUrl.length).replace(/^\/+|\/+$/g, '');
+                var slug = rest ? rest.split('/')[0] : '';
+                if (slug) {
+                    var $bySlug = $root.find('.offer-filter-cat[data-cat-slug="' + slug + '"]');
+                    if ($bySlug.length) {
+                        activeCategory = parseInt($bySlug.data('cat'), 10) || 0;
+                        activeCategorySlug = slug;
+                    }
+                }
+            }
+            if (!activeCategory) {
+                var legacy = parseInt(params.get('of_cat'), 10) || 0;
+                if (legacy) {
+                    activeCategory = legacy;
+                    activeCategorySlug = $root.find('.offer-filter-cat[data-cat="' + legacy + '"]').attr('data-cat-slug') || '';
+                }
+            }
+
             $root.find('.offer-filter-cat').removeClass('is-active');
             if (activeCategory) {
                 $root.find('.offer-filter-cat[data-cat="' + activeCategory + '"]').addClass('is-active');

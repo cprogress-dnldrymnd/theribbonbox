@@ -40,33 +40,19 @@ $sort_options = trb_offer_filter_sort_options();
 $tax_config   = trb_offer_filter_taxonomies();
 
 // Categories shown in the sidebar: top-level categories that have offer-items,
-// with a per-offer-type count.
-$category_terms = get_terms(array(
-    'taxonomy'   => 'category',
-    'parent'     => 0,
-    'hide_empty' => false,
-));
-$category_list = array();
-if (!is_wp_error($category_terms)) {
-    foreach ($category_terms as $term) {
-        $c = new WP_Query(array(
-            'post_type'      => 'offer-items',
-            'post_status'    => 'publish',
-            'posts_per_page' => 1,
-            'fields'         => 'ids',
-            'no_found_rows'  => false,
-            'cat'            => $term->term_id,
-        ));
-        if ($c->found_posts > 0) {
-            $category_list[] = array('term' => $term, 'count' => (int) $c->found_posts);
-        }
-    }
-}
+// with a per-offer-type count (shared/cached helper so the rewrite rules and the
+// sidebar stay in sync).
+$category_list = trb_offer_filter_get_categories();
 
-// Config the script needs to rebuild AJAX requests (per_page + grid ads).
+// Base path for the pretty category URLs, e.g. "/offers/". Category filtering
+// produces /offers/{category-slug}/ instead of ?of_cat=ID.
+$base_path = trailingslashit((string) wp_parse_url(get_permalink(get_the_ID()), PHP_URL_PATH));
+
+// Config the script needs to rebuild AJAX requests + pretty URLs.
 $instance = 'offer-filter-' . absint($section_index ?? 0);
 $js_config = array(
     'perPage' => $per_page,
+    'baseUrl' => $base_path,
     'gridAds' => array_values(array_filter(array_map(function ($ad) {
         $image = absint($ad['image'] ?? 0);
         return $image ? array('image' => $image, 'link' => $ad['link'] ?? '') : null;
@@ -117,10 +103,12 @@ $js_config = array(
                             <ul class="offer-filter-cat-list">
                                 <?php foreach ($category_list as $row) :
                                     $term = $row['term'];
-                                    $active = ((int) $args['category'] === (int) $term->term_id); ?>
+                                    $active = ((int) $args['category'] === (int) $term->term_id);
+                                    $cat_url = esc_url($base_path . $term->slug . '/'); ?>
                                     <li>
-                                        <a href="#" class="offer-filter-cat<?php echo $active ? ' is-active' : ''; ?>"
-                                           data-cat="<?php echo esc_attr($term->term_id); ?>">
+                                        <a href="<?php echo $cat_url; ?>" class="offer-filter-cat<?php echo $active ? ' is-active' : ''; ?>"
+                                           data-cat="<?php echo esc_attr($term->term_id); ?>"
+                                           data-cat-slug="<?php echo esc_attr($term->slug); ?>">
                                             <span class="offer-filter-cat-name"><?php echo esc_html($term->name); ?></span>
                                             <span class="offer-filter-cat-count">(<?php echo (int) $row['count']; ?>)</span>
                                         </a>

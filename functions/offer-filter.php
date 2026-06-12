@@ -227,12 +227,28 @@ function trb_offer_filter_parse_request($raw)
 
     $sort_keys = array_keys(trb_offer_filter_sort_options());
 
+    // Category: an explicit ?of_cat=ID wins; otherwise fall back to the pretty
+    // /{page}/{category-slug}/ URL captured into the of_cat_slug query var.
+    $category      = isset($raw['of_cat']) ? absint($raw['of_cat']) : 0;
+    $cat_from_slug = false;
+    if (!$category) {
+        $cat_slug = get_query_var('of_cat_slug');
+        if ($cat_slug) {
+            $term = get_term_by('slug', sanitize_title($cat_slug), 'category');
+            if ($term && !is_wp_error($term)) {
+                $category      = (int) $term->term_id;
+                $cat_from_slug = true;
+            }
+        }
+    }
+
     return array(
-        'search'   => isset($raw['of_s']) ? sanitize_text_field(wp_unslash($raw['of_s'])) : '',
-        'category' => isset($raw['of_cat']) ? absint($raw['of_cat']) : 0,
-        'tax'      => $tax,
-        'sort'     => (isset($raw['of_sort']) && in_array($raw['of_sort'], $sort_keys, true)) ? $raw['of_sort'] : 'date_desc',
-        'paged'    => isset($raw['of_paged']) ? max(1, absint($raw['of_paged'])) : 1,
+        'search'        => isset($raw['of_s']) ? sanitize_text_field(wp_unslash($raw['of_s'])) : '',
+        'category'      => $category,
+        'cat_from_slug' => $cat_from_slug,
+        'tax'           => $tax,
+        'sort'          => (isset($raw['of_sort']) && in_array($raw['of_sort'], $sort_keys, true)) ? $raw['of_sort'] : 'date_desc',
+        'paged'         => isset($raw['of_paged']) ? max(1, absint($raw['of_paged'])) : 1,
     );
 }
 
@@ -357,10 +373,12 @@ function trb_offer_filter_pagination($current, $max_pages, $args)
     }
     $current = max(1, min($current, $max_pages));
 
-    // Preserve current filter state in the link URLs.
+    // Preserve current filter state in the link URLs. When the category came
+    // from a pretty /{page}/{category-slug}/ URL it already lives in the path,
+    // so we don't add a redundant ?of_cat= back onto the links.
     $base_query = array_filter(array(
         'of_s'    => $args['search'],
-        'of_cat'  => $args['category'] ?: null,
+        'of_cat'  => empty($args['cat_from_slug']) ? ($args['category'] ?: null) : null,
         'of_sort' => $args['sort'] !== 'date_desc' ? $args['sort'] : null,
     ));
     if (!empty($args['tax'])) {
@@ -470,4 +488,228 @@ function trb_offer_filter_register_assets()
         'ajaxurl' => admin_url('admin-ajax.php'),
         'nonce'   => wp_create_nonce('trb_offer_filter'),
     ));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Pretty category URLs:  /{host-page-path}/{category-slug}/                  */
+/* -------------------------------------------------------------------------- */
+
+if (!defined('TRB_OFFER_FILTER_REWRITE_VERSION')) {
+    // Bump to force a one-time rewrite-rule flush after deploying changes here.
+    define('TRB_OFFER_FILTER_REWRITE_VERSION', '1.0.0');
+}
+
+/**
+ * Categories shown in the filter sidebar: top-level categories that have at
+ * least one published offer-item, with a per-offer count.
+ *
+ * Runs a query per term, so the result is cached; the cache is cleared whenever
+ * offers, categories or builder pages change (see trb_offer_filter_clear_caches()).
+ *
+ * @return array[] List of array('term' => WP_Term, 'count' => int).
+ */
+function trb_offer_filter_get_categories()
+{
+    $cached = get_transient('trb_offer_filter_categories');
+    if (is_array($cached)) {
+        return $cached;
+    }
+
+    $list  = array();
+    $terms = get_terms(array(
+        'taxonomy'   => 'category',
+        'parent'     => 0,
+        'hide_empty' => false,
+    ));
+    if (!is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            $c = new WP_Query(array(
+                'post_type'      => 'offer-items',
+                'post_status'    => 'publish',
+                'posts_per_page' => 1,
+                'fields'         => 'ids',
+                'no_found_rows'  => false,
+                'cat'            => $term->term_id,
+            ));
+            if ($c->found_posts > 0) {
+                $list[] = array('term' => $term, 'count' => (int) $c->found_posts);
+            }
+        }
+    }
+
+    set_transient('trb_offer_filter_categories', $list, DAY_IN_SECONDS);
+    return $list;
+}
+
+/**
+ * IDs of pages that render an Offer Filter section (Page Builder template + a
+ * saved "offer_filter" section). Cached; see trb_offer_filter_clear_caches().
+ *
+ * @return int[]
+ */
+function trb_offer_filter_host_page_ids()
+{
+    $cached = get_transient('trb_offer_filter_host_pages');
+    if (is_array($cached)) {
+        return $cached;
+    }
+
+    $ids = get_posts(array(
+        'post_type'      => 'page',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'fields'         => 'ids',
+        'meta_query'     => array(
+            'relation' => 'AND',
+            array(
+                'key'   => '_wp_page_template',
+                'value' => 'page-template-builder.php',
+            ),
+            array(
+                'key'     => '_trb_page_builder_sections',
+                'value'   => '"type":"offer_filter"',
+                'compare' => 'LIKE',
+            ),
+        ),
+    ));
+
+    $ids = array_map('intval', (array) $ids);
+    set_transient('trb_offer_filter_host_pages', $ids, DAY_IN_SECONDS);
+    return $ids;
+}
+
+/**
+ * Whether the given page renders an Offer Filter section.
+ */
+function trb_offer_filter_is_host_page($post_id)
+{
+    return in_array((int) $post_id, trb_offer_filter_host_page_ids(), true);
+}
+
+/**
+ * Whitelist the of_cat_slug query var so WordPress carries it through the query.
+ */
+add_filter('query_vars', 'trb_offer_filter_query_vars');
+function trb_offer_filter_query_vars($vars)
+{
+    $vars[] = 'of_cat_slug';
+    return $vars;
+}
+
+/**
+ * Map  {host-page-path}/{category-slug}/  to the host page with the category
+ * preselected. One rule per host page; the trailing segment is constrained to
+ * the known offer-category slugs so genuine child pages are not hijacked.
+ */
+add_action('init', 'trb_offer_filter_add_rewrite_rules', 10);
+function trb_offer_filter_add_rewrite_rules()
+{
+    $page_ids = trb_offer_filter_host_page_ids();
+    if (empty($page_ids)) {
+        return;
+    }
+
+    $slugs = array();
+    foreach (trb_offer_filter_get_categories() as $row) {
+        $slug = sanitize_title($row['term']->slug);
+        if ($slug !== '') {
+            $slugs[] = preg_quote($slug, '#');
+        }
+    }
+    if (empty($slugs)) {
+        return;
+    }
+    $slug_regex = implode('|', $slugs);
+
+    foreach ($page_ids as $page_id) {
+        $uri = trim((string) get_page_uri($page_id), '/');
+        if ($uri === '') {
+            continue;
+        }
+        add_rewrite_rule(
+            '^' . preg_quote($uri, '#') . '/(' . $slug_regex . ')/?$',
+            'index.php?pagename=' . $uri . '&of_cat_slug=$matches[1]',
+            'top'
+        );
+    }
+}
+
+/**
+ * Keep WordPress from canonical-redirecting our pretty category URLs back to the
+ * bare page permalink.
+ */
+add_filter('redirect_canonical', 'trb_offer_filter_allow_pretty_urls', 10, 2);
+function trb_offer_filter_allow_pretty_urls($redirect_url, $requested_url)
+{
+    if (get_query_var('of_cat_slug')) {
+        return false;
+    }
+    return $redirect_url;
+}
+
+/**
+ * 301-redirect legacy ?of_cat=ID requests on a host page to the pretty
+ * /{page}/{category-slug}/ URL, preserving any other filter params.
+ */
+add_action('template_redirect', 'trb_offer_filter_legacy_cat_redirect');
+function trb_offer_filter_legacy_cat_redirect()
+{
+    if (is_admin() || wp_doing_ajax() || !is_page()) {
+        return;
+    }
+    if (empty($_GET['of_cat']) || get_query_var('of_cat_slug')) {
+        return;
+    }
+    $post_id = get_queried_object_id();
+    if (!$post_id || !trb_offer_filter_is_host_page($post_id)) {
+        return;
+    }
+    $term = get_term(absint($_GET['of_cat']), 'category');
+    if (!$term || is_wp_error($term)) {
+        return;
+    }
+
+    $target = trailingslashit(get_permalink($post_id)) . $term->slug . '/';
+    $extra  = wp_unslash($_GET);
+    unset($extra['of_cat']);
+    if (!empty($extra)) {
+        $target = add_query_arg($extra, $target);
+    }
+
+    wp_safe_redirect($target . '#offer-filter', 301);
+    exit;
+}
+
+/**
+ * Clear cached host-page / category data and flag the rewrite rules to be
+ * flushed on the next request. Rules are (re)built at `init`, so we can't safely
+ * flush during the same request that changed the underlying data.
+ */
+function trb_offer_filter_clear_caches()
+{
+    delete_transient('trb_offer_filter_categories');
+    delete_transient('trb_offer_filter_host_pages');
+    update_option('trb_offer_filter_flush_needed', 1, false);
+}
+add_action('save_post_page', 'trb_offer_filter_clear_caches');
+add_action('save_post_offer-items', 'trb_offer_filter_clear_caches');
+add_action('created_category', 'trb_offer_filter_clear_caches');
+add_action('edited_category', 'trb_offer_filter_clear_caches');
+add_action('delete_category', 'trb_offer_filter_clear_caches');
+add_action('after_switch_theme', 'trb_offer_filter_clear_caches');
+
+/**
+ * Flush rewrite rules once after this code is deployed (version bump) or after a
+ * change flagged a flush. Runs after the rules are registered at init:10.
+ */
+add_action('init', 'trb_offer_filter_maybe_flush', 11);
+function trb_offer_filter_maybe_flush()
+{
+    $needs_flush = get_option('trb_offer_filter_flush_needed')
+        || get_option('trb_offer_filter_rewrite_version') !== TRB_OFFER_FILTER_REWRITE_VERSION;
+    if ($needs_flush) {
+        flush_rewrite_rules(false);
+        delete_option('trb_offer_filter_flush_needed');
+        update_option('trb_offer_filter_rewrite_version', TRB_OFFER_FILTER_REWRITE_VERSION, false);
+    }
 }
