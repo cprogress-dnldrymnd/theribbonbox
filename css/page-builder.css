@@ -1560,3 +1560,21 @@
 #trb-page-builder .trb-picks-nav-title {
     color: var(--trb-petal);
 }
+
+@media (max-width: 575px) {
+    #trb-page-builder .trb-picks-nav nav ul {
+        gap: 7px !important;
+    }
+    #trb-page-builder .trb-picks-nav-menu a {
+        font-size: 12px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    #trb-page-builder .trb-picks-nav .row {
+        flex-direction: column;
+    }
+   
+}
