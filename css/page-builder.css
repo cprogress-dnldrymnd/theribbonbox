@@ -828,7 +828,7 @@
     font-weight: 700;
     color: var(--trb-green);
     font-size: 1.05rem;
-    margin: 0;
+    margin-bottom: 10px;
 }
 
 #trb-page-builder .offer-filter-grid .product-widget--cta a {
