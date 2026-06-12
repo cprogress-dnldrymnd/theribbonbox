@@ -314,7 +314,7 @@
     right: calc(var(--nav-offset) - var(--nav-offset) - var(--nav-offset));
 }
 
-#trb-page-builder .product-tabs .swiper-button-next-trb svg {
+#trb-page-builder .product-tabs .swiper-button svg {
     color: var(--trb-wine);
 }
 
