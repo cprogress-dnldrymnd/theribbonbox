@@ -357,6 +357,7 @@
     letter-spacing: 0;
     margin-top: 15px;
     margin-bottom: 4px;
+    color: var(--trb-wine);
 }
 
 #trb-page-builder .offer-slider .product-name {
