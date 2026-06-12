@@ -156,6 +156,9 @@ $js_config = array(
 
                     <button type="button" class="offer-filter-reset">RESET ALL</button>
 
+                    <!-- Mobile only: applies the current search/filters and closes the drawer. -->
+                    <button type="button" class="offer-filter-apply">Search</button>
+
                     <?php // Second sidebar sponsored ad.
                     if (!empty($sidebar_ads[1]['image'])) {
                         echo trb_render_offer_ad($sidebar_ads[1]['image'], $sidebar_ads[1]['link'] ?? '', 'medium', 'offer-filter-ad offer-filter-ad--sidebar');

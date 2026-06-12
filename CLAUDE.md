@@ -165,6 +165,19 @@ post meta.
   own tag directly in
   `section-offer-slider.php`. Both rely on an ancestor with `position: relative`
   (`.offer-filter-ad`, or `.offer-slider .product-widget-image`) for anchoring.
+- Filter-drawer taxonomy checkboxes (`section-offer-filter.php`) use a custom-styled
+  box: the native `<input type="checkbox">` is visually hidden
+  (`.offer-filter-check input { display: none }`), with a sibling
+  `<span class="offer-filter-box" aria-hidden="true">` rendering the visible
+  box/checkmark via `:checked + .offer-filter-box` and a
+  `<span class="offer-filter-check-label">` for the term name, dimmed via `opacity`
+  until `:checked ~ .offer-filter-check-label`.
+- The filter drawer's `.offer-filter-apply` ("Search") button
+  (`section-offer-filter.php`, after the reset button) is mobile-only
+  (`display: none`, shown via `display: block` in the `max-width: 767px` block in
+  `css/page-builder.css`); `js/offer-filter.js` runs the filter immediately
+  (clearing the debounce `searchTimer` and calling `fetch(1)`) and closes the drawer
+  on click.
 
 ## Conventions / gotchas
 

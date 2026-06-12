@@ -771,8 +771,8 @@
 #trb-page-builder .offer-filter-check input:checked + .offer-filter-box::after {
     content: "";
     position: absolute;
-    left: 6px;
-    top: 2px;
+    left: 7px;
+    top: 3px;
     width: 5px;
     height: 10px;
     border: solid #fff;
@@ -809,6 +809,22 @@
 #trb-page-builder .offer-filter-reset:hover {
     background: var(--trb-wine);
     color: var(--trb-white) !important;
+}
+
+/* Mobile-only "Search" button inside the drawer (applies filters + closes). */
+#trb-page-builder .offer-filter-apply {
+    display: none;
+    width: 100%;
+    margin-top: 0.75rem;
+    padding: 0.8rem 1rem;
+    background: var(--trb-wine);
+    border: 0;
+    border-radius: 4px;
+    color: var(--trb-white) !important;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.75px;
+    cursor: pointer;
 }
 
 /* Sponsored ads */
@@ -1230,6 +1246,10 @@
     #trb-page-builder .offer-filter-mobile-close {
         display: inline-flex;
         align-items: center;
+    }
+
+    #trb-page-builder .offer-filter-apply {
+        display: block;
     }
 
     #trb-page-builder .offer-filter-sidebar {

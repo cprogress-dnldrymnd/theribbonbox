@@ -164,6 +164,13 @@
         $root.on('click', '.offer-filter-mobile-close', closeDrawer);
         $overlay.on('click', closeDrawer);
 
+        // Mobile "Search" button: run the filter now and close the drawer.
+        $root.on('click', '.offer-filter-apply', function () {
+            clearTimeout(searchTimer);
+            fetch(1);
+            closeDrawer();
+        });
+
         $(document).on('keydown', function (e) {
             if (e.key === 'Escape') { closeDrawer(); }
         });
