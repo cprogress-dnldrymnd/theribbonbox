@@ -1534,6 +1534,10 @@
     text-transform: uppercase;
 }
 
+#trb-page-builder .trb-picks-nav-menu a {
+    color: var(--trb-white);
+}
+
 #trb-page-builder .trb-picks-nav-title {
     color: var(--trb-petal);
 }

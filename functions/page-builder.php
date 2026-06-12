@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'TRB_BUILDER_VERSION' ) ) {
-    define( 'TRB_BUILDER_VERSION', '1.4.0' );
+    define( 'TRB_BUILDER_VERSION', '1.5.0' );
 }
 /*-----------------------------------------------------------------------------------*/
 /* TRB Page Builder
@@ -78,6 +78,23 @@ function trb_builder_section_types()
                     'default' => 'TRB Picks',
                     'summary' => true,
                 ),
+                'source' => array(
+                    'type' => 'select',
+                    'label' => 'Menu Links Source',
+                    'options' => array(
+                        'menu' => 'WordPress Menu',
+                        'manual' => 'Manual Links',
+                    ),
+                    'default' => 'menu',
+                ),
+                'menu' => array(
+                    'type' => 'term_select',
+                    'label' => 'WordPress Menu',
+                    'taxonomy' => 'nav_menu',
+                    'placeholder' => 'Select a menu',
+                    'help' => 'Pick a menu created under Appearance → Menus.',
+                    'show_when' => array('field' => 'source', 'value' => 'menu'),
+                ),
                 'links' => array(
                     'type' => 'repeater',
                     'label' => 'Menu Links',
@@ -86,6 +103,7 @@ function trb_builder_section_types()
                         'label' => array('type' => 'text', 'label' => 'Label'),
                         'link' => array('type' => 'text', 'label' => 'Link (URL)'),
                     ),
+                    'show_when' => array('field' => 'source', 'value' => 'manual'),
                 ),
             ),
         ),
@@ -532,9 +550,10 @@ function trb_render_control($field_def, $name, $id, $value)
                 'taxonomy' => $field_def['taxonomy'] ?? 'category',
                 'hide_empty' => false,
             ));
+            $placeholder = !empty($field_def['placeholder']) ? $field_def['placeholder'] : 'Select a category';
             ?>
-            <select class="trb-builder-termselect" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" data-placeholder="Select a category…">
-                <option value="">— Select a category —</option>
+            <select class="trb-builder-termselect" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>" data-placeholder="<?php echo esc_attr($placeholder); ?>…">
+                <option value="">— <?php echo esc_html($placeholder); ?> —</option>
                 <?php if (!is_wp_error($terms)) :
                     foreach ($terms as $t) : ?>
                         <option value="<?php echo esc_attr($t->term_id); ?>" <?php selected((int) $value, (int) $t->term_id); ?>><?php echo esc_html($t->name); ?></option>
