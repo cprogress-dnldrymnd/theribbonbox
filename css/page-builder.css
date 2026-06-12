@@ -832,6 +832,84 @@
     color: var(--trb-coral);
 }
 
+/* ----------------------------------------- Discount code + copy button (card) */
+/* Shared by the offer slider and the offer filter grid. */
+#trb-page-builder .product-code {
+    display: flex;
+    align-items: stretch;
+    margin-top: .85rem;
+    max-width: 280px;
+    border: 1px solid #e4d7d7;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--trb-white);
+}
+
+#trb-page-builder .product-code-value {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: .65rem .9rem;
+    font-weight: 600;
+    font-size: .95rem;
+    letter-spacing: .08em;
+    text-align: center;
+    color: var(--trb-wine);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#trb-page-builder .product-code-copy {
+    position: relative;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 46px;
+    padding: 0 .75rem;
+    border: none;
+    border-left: 1px solid #e4d7d7;
+    background: var(--trb-wine);
+    color: var(--trb-white);
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+
+#trb-page-builder .product-code-copy:hover {
+    background: var(--trb-coral);
+}
+
+#trb-page-builder .product-code-copy svg {
+    display: block;
+}
+
+/* "Copied!" confirmation: hidden until the JS adds .is-copied to the button. */
+#trb-page-builder .product-code-copy-done {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    background: var(--trb-green, #2e7d32);
+}
+
+#trb-page-builder .product-code-copy.is-copied {
+    background: var(--trb-green, #2e7d32);
+}
+
+#trb-page-builder .product-code-copy.is-copied .product-code-copy-icon {
+    visibility: hidden;
+}
+
+#trb-page-builder .product-code-copy.is-copied .product-code-copy-done {
+    display: flex;
+}
+
 #trb-page-builder .offer-filter-ad--grid {
     display: flex;
     align-items: center;
@@ -952,9 +1030,47 @@
     }
 }
 
-@media (max-width: 575px) {
+/* Mobile: single column of horizontal cards — image on the left, details
+   (category, title, discount, code) stacked on the right. */
+@media (max-width: 767px) {
     #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
         grid-template-columns: 1fr;
+    }
+
+    #trb-page-builder .offer-filter-grid .product-widget--box {
+        display: flex;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    #trb-page-builder .offer-filter-grid .product-widget--image {
+        flex: 0 0 38%;
+        max-width: 140px;
+    }
+
+    #trb-page-builder .offer-filter-grid .product-widget--image,
+    #trb-page-builder .offer-filter-grid .product-widget--image a,
+    #trb-page-builder .offer-filter-grid .product-widget--image img {
+        height: 100%;
+    }
+
+    #trb-page-builder .offer-filter-grid .product-widget--image img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    #trb-page-builder .offer-filter-grid .product-widget--content {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    #trb-page-builder .offer-filter-grid .product-widget--content .product-cat {
+        margin-top: 0;
+    }
+
+    /* Keep the ad cards full-width in the single-column grid. */
+    #trb-page-builder .offer-filter-grid .offer-filter-ad--grid {
+        display: flex;
     }
 }
 

@@ -915,11 +915,17 @@ function trb_builder_frontend_assets()
     
     $path = '/css/page-builder.css';
     $absolute_path = get_stylesheet_directory() . $path;
-    
+
     // Resolve dynamic cache-busting version or fallback to defined constant
     $version = file_exists( $absolute_path ) ? filemtime( $absolute_path ) : TRB_BUILDER_VERSION;
 
     wp_enqueue_style('trb-page-builder', get_stylesheet_directory_uri() . $path, array(), $version);
+
+    // Copy-to-clipboard for offer discount codes (slider + filter grid cards).
+    $copy_path = '/js/offer-copy-code.js';
+    $copy_abs  = get_stylesheet_directory() . $copy_path;
+    $copy_ver  = file_exists($copy_abs) ? filemtime($copy_abs) : TRB_BUILDER_VERSION;
+    wp_enqueue_script('trb-offer-copy-code', get_stylesheet_directory_uri() . $copy_path, array(), $copy_ver, true);
 }
 
 /**

@@ -122,6 +122,9 @@ function trb_render_offer_card($offer_id, $args = array())
         }
     }
 
+    // Discount code shown in a copy-to-clipboard box (js/offer-copy-code.js).
+    $code = $has_acf ? trim((string) get_field('apply__code', $offer_id)) : '';
+
     $box_class = 'product-widget--box';
     if ($args['extra_class'] !== '') {
         $box_class .= ' ' . $args['extra_class'];
@@ -150,7 +153,20 @@ function trb_render_offer_card($offer_id, $args = array())
             <?php if ($discount !== '') : ?>
                 <div class="product-discount"><?php echo esc_html($discount); ?></div>
             <?php endif; ?>
-            <div class="product-widget--cta"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo esc_html($args['cta_text']); ?></a></div>
+            <?php if ($code !== '') : ?>
+                <div class="product-code">
+                    <span class="product-code-value"><?php echo esc_html($code); ?></span>
+                    <button type="button" class="product-code-copy" data-code="<?php echo esc_attr($code); ?>" aria-label="Copy discount code <?php echo esc_attr($code); ?>">
+                        <span class="product-code-copy-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </span>
+                        <span class="product-code-copy-done" aria-hidden="true">Copied!</span>
+                    </button>
+                </div>
+            <?php endif; ?>
+            <?php if ($args['cta_text'] !== '') : ?>
+                <div class="product-widget--cta"><a href="<?php echo esc_url($url); ?>"<?php echo $target; ?>><?php echo esc_html($args['cta_text']); ?></a></div>
+            <?php endif; ?>
         </div>
     </div>
     <?php
