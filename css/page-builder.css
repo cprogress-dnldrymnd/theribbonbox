@@ -391,7 +391,7 @@
 #trb-page-builder .offer-slider .product-name {
     font-family: "Playfair Display", serif;
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 #trb-page-builder .offer-slider .product-name a {
@@ -401,7 +401,7 @@
 }
 
 #trb-page-builder .offer-slider .product-name + .offer-badges {
-    margin-top: 5px !important;
+    margin-top: auto !important;
 }
 
 #trb-page-builder .product-tabs--light .offer-slider .product-cat,
@@ -853,7 +853,7 @@
 #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
     display: grid !important;
     gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
 #trb-page-builder .offer-filter-grid .product-widget--box {
@@ -948,6 +948,7 @@
     border: 1px dashed var(--trb-wine);
     border-right: none;
     border-radius: 5px 0 0 5px;
+    display: block;
 }
 
 #trb-page-builder .product-code-copy {

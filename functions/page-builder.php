@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'TRB_BUILDER_VERSION' ) ) {
-    define( 'TRB_BUILDER_VERSION', '1.6.2' );
+    define( 'TRB_BUILDER_VERSION', '1.6.3' );
 }
 /*-----------------------------------------------------------------------------------*/
 /* TRB Page Builder
