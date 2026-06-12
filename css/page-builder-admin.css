@@ -88,7 +88,7 @@
 }
 
 #trb-builder .trb-builder-card-body {
-    padding: 14px 14px 4px;
+    padding: 16px;
 }
 
 /* ----------------------------------------------------------------- fields grid */
@@ -297,9 +297,16 @@
 /* -------------------------------------------------------------- colors (design) */
 
 #trb-builder .trb-builder-design {
-    margin-top: 4px;
-    padding-top: 12px;
-    border-top: 1px dashed #dcdcde;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #e6e7e8;
+}
+
+/* Colors + Spacing read as one grouped "options" zone — only the first gets a divider. */
+#trb-builder .trb-builder-design + .trb-builder-design {
+    margin-top: 14px;
+    padding-top: 0;
+    border-top: none;
 }
 
 #trb-builder .trb-builder-design-title {
