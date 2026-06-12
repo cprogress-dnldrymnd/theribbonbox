@@ -382,12 +382,10 @@
 }
 
 #trb-page-builder .offer-slider .product-cat {
-    font-size: 0.875rem;
+    font-size: 00.75rem;
     margin-bottom: 4px;
     color: var(--trb-wine);
     font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 #trb-page-builder .offer-slider .product-name {

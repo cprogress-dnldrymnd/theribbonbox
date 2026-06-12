@@ -144,8 +144,9 @@ post meta.
 - "Sponsored" tags (`.offer-filter-sponsored`, absolutely positioned top-right) mark
   paid placements: `trb_render_offer_ad()` wraps sidebar/grid/banner ad images
   (`sidebar_ads`, `grid_ads`, `top_banner`, `bottom_banner` fields on `offer_filter`),
-  and the offer-slider's optional "Custom First Slide" (`first_image`/`first_image_link`
-  fields on `offer_slider`) renders its own tag directly in
+  and the offer-slider's optional "Ad Image" (`first_image`/`first_image_link`
+  fields on `offer_slider`, shown as the first slide before the offers) renders its
+  own tag directly in
   `section-offer-slider.php`. Both rely on an ancestor with `position: relative`
   (`.offer-filter-ad`, or `.offer-slider .product-widget-image`) for anchoring.
 
