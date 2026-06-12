@@ -839,7 +839,6 @@
     display: flex;
     align-items: stretch;
     margin-top: .85rem;
-    border: 1px dashed var(--trb-wine);
     border-radius: 5px;
     overflow: hidden;
     background: var(--trb-white);
@@ -847,7 +846,7 @@
 }
 
 #trb-page-builder .product-code-value {
-    flex: 1 1 auto;
+       flex: 1 1 auto;
     min-width: 0;
     padding: .65rem .9rem;
     font-weight: 600;
@@ -859,20 +858,22 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    border: 1px dashed var(--trb-wine);
+    border-right: none;
+    border-radius: 5px 0 0 5px;
 }
 
 #trb-page-builder .product-code-copy {
-    position: relative;
-    flex: 0 0 auto;
+   position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 46px;
+    width: 71px;
+    flex: 0 0 71px;
     padding: 0 .75rem;
     border: none;
     border-left: 1px solid #e4d7d7 !important;
     background: var(--trb-wine);
-    color: var(--trb-white);
     cursor: pointer;
     transition: background-color .2s ease;
     height: auto;

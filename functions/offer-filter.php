@@ -290,47 +290,47 @@ function trb_offer_filter_get_results($args, $settings = array())
     // ---- Grid markup ----
     ob_start();
     if ($query->have_posts()) {
-        // Spread the configured grid ads evenly across the page.
-        $ads = array();
-        foreach ($grid_ads as $ad) {
-            if (!empty($ad['image'])) {
-                $ads[] = $ad;
-            }
-        }
-        $card_count = $query->post_count;
-        $step = !empty($ads) ? max(1, (int) ceil($card_count / (count($ads) + 1))) : 0;
-
-        $i = 0;
-        $ad_idx = 0;
         while ($query->have_posts()) {
             $query->the_post();
             echo trb_render_offer_card(get_the_ID(), array(
                 'cta_text'      => 'Claim Discount',
                 'show_discount' => true,
             ));
-            $i++;
-            // Insert an ad after every $step cards (but not trailing).
-            if ($step && $ad_idx < count($ads) && $i % $step === 0 && $i < $card_count) {
+        }
+        wp_reset_postdata();
+
+        // Grid ads sit at the end of the grid, on the first page only.
+        if ((int) $args['paged'] === 1) {
+            foreach ($grid_ads as $ad) {
+                if (empty($ad['image'])) {
+                    continue;
+                }
                 echo trb_render_offer_ad(
-                    $ads[$ad_idx]['image'],
-                    $ads[$ad_idx]['link'] ?? '',
+                    $ad['image'],
+                    $ad['link'] ?? '',
                     'medium',
                     'product-widget--box offer-filter-ad offer-filter-ad--grid'
                 );
-                $ad_idx++;
             }
         }
-        wp_reset_postdata();
     } else {
         echo '<p class="offer-filter-empty">No offers match your filters. Try adjusting your search.</p>';
     }
     $grid = ob_get_clean();
 
     // ---- Count text ----
+    // Show the range of results on the current page, e.g. "Displaying 16–30 of
+    // 35 results", so pages beyond the first read correctly.
     $total     = (int) $query->found_posts;
     $displayed = (int) $query->post_count;
-    if ($total > 0) {
-        $count = sprintf('Displaying %d of %d result%s', $displayed, $total, $total === 1 ? '' : 's');
+    if ($total > 0 && $displayed > 0) {
+        $start = ($args['paged'] - 1) * $per_page + 1;
+        $end   = $start + $displayed - 1;
+        if ($start === $end) {
+            $count = sprintf('Displaying %d of %d result%s', $start, $total, $total === 1 ? '' : 's');
+        } else {
+            $count = sprintf('Displaying %d–%d of %d results', $start, $end, $total);
+        }
     } else {
         $count = 'No results found';
     }
