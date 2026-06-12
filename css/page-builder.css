@@ -856,8 +856,6 @@
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-
-
 #trb-page-builder .offer-filter-grid .product-widget--box {
     width: auto;
     margin: 0;
@@ -1550,6 +1548,12 @@
 #trb-page-builder .trb-picks-nav-menu a {
     color: var(--trb-white);
     opacity: 0.5;
+}
+
+#trb-page-builder .trb-picks-nav-menu a:hover,
+#trb-page-builder .trb-picks-nav-menu a:active,
+#trb-page-builder .trb-picks-nav-menu a:focus {
+    opacity: 1;
 }
 #trb-page-builder .trb-picks-nav-menu li.current-menu-item a {
     color: var(--trb-coral);
