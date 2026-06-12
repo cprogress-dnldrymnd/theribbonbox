@@ -128,7 +128,7 @@
 
 #trb-page-builder h3:not(.product-name) {
     font-weight: bold;
-    font-size: 2.625rem;
+    font-size: clamp(2rem, 2vw, 2.625rem);
     color: inherit !important;
     margin-top: 0;
 }
@@ -866,6 +866,7 @@
     color: var(--trb-green);
     font-size: 1.05rem;
     margin-bottom: 10px;
+    margin-top: auto;
 }
 
 #trb-page-builder .offer-filter-grid .product-widget--cta a {
@@ -915,11 +916,7 @@
     flex-direction: column;
     flex: 1 1 auto;
 }
-/* Pin the trailing block (code box, or CTA when there's no code) to the bottom. */
-#trb-page-builder .product-code,
-#trb-page-builder .product-widget--cta {
-    margin-top: auto;
-}
+
 /* When a code box is present, the CTA hugs it instead of pushing down again. */
 #trb-page-builder .product-code + .product-widget--cta {
     margin-top: 12px;
@@ -933,7 +930,6 @@
     border-radius: 5px;
     overflow: hidden;
     background: var(--trb-white);
-    margin-top: auto;
 }
 
 #trb-page-builder .product-code-value {

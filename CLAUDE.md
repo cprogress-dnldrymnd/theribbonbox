@@ -92,7 +92,7 @@ post meta.
 
 - Core: [functions/page-builder.php](functions/page-builder.php) — section registry is
   `trb_builder_section_types()`; assets are cache-busted via `TRB_BUILDER_VERSION`
-  (constant near top of the file, currently `1.5.7`) with a `filemtime()` fallback for
+  (constant near top of the file, currently `1.6.2`) with a `filemtime()` fallback for
   local edits.
 - Section markup: [template-parts/builder/](template-parts/builder/) — one
   `section-*.php` per section type (hero, category-nav, divider, promo-banner,
@@ -112,7 +112,14 @@ post meta.
   toggles which field is shown. Legacy sections saved before `source` existed fall back
   to the menu if set, else the manual links. The `term_select` admin control supports
   an optional `placeholder` to override the default "Select a category" text.
-- Admin UI: `js/page-builder-admin.js`, `css/page-builder-admin.css`.
+- Admin UI: `js/page-builder-admin.js`, `css/page-builder-admin.css`. Each section
+  card's fields render inside a `.trb-builder-card-fields` grid
+  (`trb_render_section_card()` in `functions/page-builder.php`) — a 2-column layout
+  that collapses to 1 column at `<=960px`; wide controls (`textarea`, `image`,
+  `repeater`, `post_select` field types) span the full row via
+  `grid-column: 1 / -1`. Conditional `show_when`/`hide_when` field toggling
+  (`applyConditional`/`bindConditional` in `js/page-builder-admin.js`) scopes its
+  selectors to `> .trb-builder-card-body > .trb-builder-card-fields > .trb-builder-field`.
 - Front-end styles: [css/page-builder.css](css/page-builder.css).
 
 ### Offer filter / offer slider
@@ -132,8 +139,10 @@ post meta.
 - [js/offer-copy-code.js](js/offer-copy-code.js) — copy-discount-code button on cards.
 - Offer cards live in `.offer-filter-grid` (filter) and `.offer-slider` (slider); card
   layout/alignment is tuned in `css/page-builder.css`. Filter-grid cards pin the
-  product code box + "Claim Discount" CTA to the card bottom (`margin-top: auto`) and
-  force square product images (`aspect-ratio: 1/1`, no border/shadow); on large screens
+  "Claim Discount" CTA (`.product-widget--cta`, `margin-top: auto`) to the card
+  bottom; when a product code box precedes it, `.product-code + .product-widget--cta`
+  hugs the code box (`margin-top: 12px`) instead. Cards also force square product
+  images (`aspect-ratio: 1/1`, no border/shadow); on large screens
   (`>=1200px`) the filter grid shows 4 columns; on mobile, filter cards lay out image +
   content side-by-side (`.product-widget--box { flex-direction: row }`). Hover states
   underline the card title/category and fill bordered "...DISCOUNTS" buttons. A

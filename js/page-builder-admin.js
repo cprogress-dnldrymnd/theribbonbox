@@ -95,7 +95,7 @@
     }
 
     function applyConditional($card) {
-        $card.find('> .trb-builder-card-body > .trb-builder-field[data-show-when-field], > .trb-builder-card-body > .trb-builder-field[data-hide-when-field]').each(function () {
+        $card.find('> .trb-builder-card-body > .trb-builder-card-fields > .trb-builder-field[data-show-when-field], > .trb-builder-card-body > .trb-builder-card-fields > .trb-builder-field[data-hide-when-field]').each(function () {
             var $f = $(this);
             var visible = true;
 
@@ -114,7 +114,7 @@
     }
 
     function bindConditional($card) {
-        $card.find('> .trb-builder-card-body > .trb-builder-field select, > .trb-builder-card-body > .trb-builder-field input').on('change.trbcond', function () {
+        $card.find('> .trb-builder-card-body > .trb-builder-card-fields > .trb-builder-field select, > .trb-builder-card-body > .trb-builder-card-fields > .trb-builder-field input').on('change.trbcond', function () {
             applyConditional($card);
         });
         applyConditional($card);

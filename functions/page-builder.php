@@ -1,6 +1,6 @@
 <?php
 if ( ! defined( 'TRB_BUILDER_VERSION' ) ) {
-    define( 'TRB_BUILDER_VERSION', '1.6.1' );
+    define( 'TRB_BUILDER_VERSION', '1.6.2' );
 }
 /*-----------------------------------------------------------------------------------*/
 /* TRB Page Builder
@@ -701,10 +701,13 @@ function trb_render_section_card($type, $index, $values = array(), $collapsed = 
             <input type="hidden" name="trb_builder[<?php echo esc_attr($index); ?>][type]" value="<?php echo esc_attr($type); ?>">
             <?php if (empty($def['fields'])) : ?>
                 <p class="description">No content options for this section.</p>
+            <?php else : ?>
+                <div class="trb-builder-card-fields">
+                    <?php foreach ($def['fields'] as $field_key => $field_def) : ?>
+                        <?php trb_render_section_field($field_key, $field_def, $index, $values); ?>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
-            <?php foreach ($def['fields'] as $field_key => $field_def) : ?>
-                <?php trb_render_section_field($field_key, $field_def, $index, $values); ?>
-            <?php endforeach; ?>
 
             <div class="trb-builder-design">
                 <span class="trb-builder-design-title">Colors (optional)</span>
