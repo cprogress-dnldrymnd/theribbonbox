@@ -360,19 +360,19 @@ function trb_offer_filter_get_results($args, $settings = array())
         }
         wp_reset_postdata();
 
-        // Grid ads sit at the end of the grid, on the first page only.
-        if ((int) $args['paged'] === 1) {
-            foreach ($grid_ads as $ad) {
-                if (empty($ad['image'])) {
-                    continue;
-                }
-                echo trb_render_offer_ad(
-                    $ad['image'],
-                    $ad['link'] ?? '',
-                    'medium',
-                    'product-widget--box offer-filter-ad offer-filter-ad--grid'
-                );
+        // Grid ads sit at the end of the grid on every page: pinned to the last
+        // cell of row 1 (see css/page-builder.css), they fill the slot that
+        // would otherwise be left empty by a partial row on inner pages.
+        foreach ($grid_ads as $ad) {
+            if (empty($ad['image'])) {
+                continue;
             }
+            echo trb_render_offer_ad(
+                $ad['image'],
+                $ad['link'] ?? '',
+                'medium',
+                'product-widget--box offer-filter-ad offer-filter-ad--grid'
+            );
         }
     } else {
         echo '<p class="offer-filter-empty">No offers match your filters. Try adjusting your search.</p>';

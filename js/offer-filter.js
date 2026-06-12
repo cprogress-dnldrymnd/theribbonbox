@@ -38,6 +38,8 @@
         var currentPage = 1;
         var searchTimer = null;
         var xhr = null;
+        var reqId = 0;
+        var lastColumns = 0;
 
         /* ---------------------------------------------------- gather state */
 
@@ -107,16 +109,43 @@
             window.history.pushState({ offerFilter: true }, '', path + qs + '#offer-filter');
         }
 
+        /* ---------------------------------------------------- column-aware sizing */
+
+        // Number of columns the results grid is actually rendering. The grid uses
+        // a flexible `auto-fill` track list, so the count varies with screen width;
+        // getComputedStyle resolves it to one value per generated track.
+        function getColumns() {
+            if (!$gridInner.length) { return 1; }
+            var tpl = window.getComputedStyle($gridInner[0]).gridTemplateColumns || '';
+            if (!tpl || tpl === 'none') { return 1; }
+            var cols = tpl.split(' ').filter(function (v) { return v && v !== '0px'; }).length;
+            return cols > 0 ? cols : 1;
+        }
+
+        // How many cards to request so the grid always ends on a complete row at
+        // the current column count: the smallest count >= the section's per_page
+        // where (cards + grid ads) divides evenly by the column count. The extra
+        // cards are the ones that would otherwise start the next page — i.e. we
+        // "pull them forward" so there's never a trailing gap.
+        function rowFilledPerPage() {
+            var cols = getColumns();
+            var rem = (perPage + gridAds.length) % cols;
+            return rem === 0 ? perPage : perPage + (cols - rem);
+        }
+
         /* ---------------------------------------------------- fetch */
 
         function fetch(page, updateUrl) {
             var state = collectState(page);
             currentPage = state.paged;
+            var eff = rowFilledPerPage();
+            lastColumns = getColumns();
+            var myReq = ++reqId;
 
             var data = {
                 action: 'trb_offer_filter',
                 nonce: TRB_OFFER_FILTER.nonce,
-                per_page: perPage,
+                per_page: eff,
                 of_s: state.search,
                 of_cat: state.category,
                 of_sort: state.sort,
@@ -130,7 +159,15 @@
             $root.addClass('is-loading');
 
             xhr = $.post(TRB_OFFER_FILTER.ajaxurl, data, function (resp) {
-                if (!resp || !resp.success) {
+                if (myReq !== reqId || !resp || !resp.success) {
+                    return;
+                }
+                // A larger (row-filled) page size can push a deep-linked page past
+                // the last page (e.g. ?of_paged=3 when the rows now fit in 2 pages);
+                // clamp to the last real page and re-fetch.
+                var maxPages = Math.max(1, Math.ceil((resp.data.total || 0) / eff));
+                if (state.paged > maxPages) {
+                    fetch(maxPages, updateUrl);
                     return;
                 }
                 $gridInner.html(resp.data.grid);
@@ -140,6 +177,7 @@
                     pushUrl(state);
                 }
             }).always(function () {
+                if (myReq !== reqId) { return; }
                 $loading.prop('hidden', true);
                 $root.removeClass('is-loading');
                 xhr = null;
@@ -240,6 +278,18 @@
             fetch(currentPage, false);
         });
 
+        // Re-fill when the window crosses a breakpoint and the column count
+        // changes, so resizing doesn't open a new partial row.
+        var resizeTimer = null;
+        $(window).on('resize.offerFilter', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                if (getColumns() !== lastColumns) {
+                    fetch(currentPage, false);
+                }
+            }, 250);
+        });
+
         /* ---------------------------------------------------- read URL -> form */
 
         function syncFromUrl() {
@@ -286,6 +336,17 @@
             });
 
             currentPage = parseInt(params.get('of_paged'), 10) || 1;
+        }
+
+        /* ---------------------------------------------------- initial fill */
+
+        // The first render is server-side with the section's plain per_page, so it
+        // can show a partial last row at this column count. Pick up any deep-linked
+        // page and, if the row-filled size differs, re-fetch to top up the grid.
+        lastColumns = getColumns();
+        currentPage = parseInt(new URLSearchParams(window.location.search).get('of_paged'), 10) || 1;
+        if (rowFilledPerPage() !== perPage) {
+            fetch(currentPage, false);
         }
     }
 

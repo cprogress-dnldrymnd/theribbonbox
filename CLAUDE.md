@@ -92,7 +92,7 @@ post meta.
 
 - Core: [functions/page-builder.php](functions/page-builder.php) — section registry is
   `trb_builder_section_types()`; assets are cache-busted via `TRB_BUILDER_VERSION`
-  (constant near top of the file, currently `1.6.4`) with a `filemtime()` fallback for
+  (constant near top of the file, currently `1.7.1`) with a `filemtime()` fallback for
   local edits.
 - Section markup: [template-parts/builder/](template-parts/builder/) — one
   `section-*.php` per section type (hero, category-nav, divider, promo-banner,
@@ -139,7 +139,16 @@ post meta.
   per card via `array_slice()`, with "Featured" taking priority since it's added first.
 - [js/offer-filter.js](js/offer-filter.js) — filter drawer + category navigation. When
   the drawer is open it hides `#header-main-site` (the current header id — older
-  `#header-v2` is no longer used here).
+  `#header-v2` is no longer used here). To keep the grid (results + grid ads, which
+  now render on every page — see offer-filter.php below) always ending on a complete
+  row, `getColumns()` reads the resolved `grid-template-columns` track count from
+  `.offer-filter-grid-inner`, and `rowFilledPerPage()` rounds the section's `per_page`
+  up to the next multiple of that column count. AJAX fetches request this row-filled
+  count instead of the raw `per_page`; a `reqId` counter discards stale responses, and
+  a deep-linked `of_paged` past the resulting last page is clamped and re-fetched. A
+  debounced `resize` handler re-fetches when the column count changes (e.g. crossing a
+  breakpoint), and on init the page re-fetches if the server-rendered `per_page`
+  doesn't match the row-filled count.
 - [js/offer-copy-code.js](js/offer-copy-code.js) — copy-discount-code button on cards.
 - Offer cards live in `.offer-filter-grid` (filter) and `.offer-slider` (slider); card
   layout/alignment is tuned in `css/page-builder.css`. Filter-grid cards pin the
@@ -153,10 +162,10 @@ post meta.
   `max-width: 767px` block in `css/page-builder.css` scales down offer-card text/badges
   and the filter-drawer typography (client feedback: cards/drawer were "too big" /
   "MASSIVE" on mobile). The grid ad (`.offer-filter-ad--grid`, rendered last in the
-  DOM) is explicitly placed into the last column of row 1 on desktop via
-  `grid-column`/`grid-row`; the `max-width: 767px` block resets that placement to
-  `auto` so it falls back to its natural (last) position in the single-column mobile
-  layout.
+  DOM, on every paginated page) is explicitly placed into the last column of row 1 on
+  desktop via `grid-column`/`grid-row`; the `max-width: 767px` block resets that
+  placement to `auto` so it falls back to its natural (last) position in the
+  single-column mobile layout.
 - "Sponsored" tags (`.offer-filter-sponsored`, absolutely positioned top-right) mark
   paid placements: `trb_render_offer_ad()` wraps sidebar/grid/banner ad images
   (`sidebar_ads`, `grid_ads`, `top_banner`, `bottom_banner` fields on `offer_filter`),
