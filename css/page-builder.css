@@ -853,13 +853,7 @@
 #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
     display: grid !important;
     gap: 1.5rem;
-}
-
-/* 4 per row on large screens (client request). */
-@media (min-width: 1440px) {
-    #trb-page-builder .offer-filter-grid .offer-filter-grid-inner {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 
