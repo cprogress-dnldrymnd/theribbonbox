@@ -803,6 +803,11 @@
     z-index: 2;
 }
 
+/* Anchor the "Sponsored" tag on the offer-slider's custom first slide ad. */
+#trb-page-builder .offer-slider .product-widget-image {
+    position: relative;
+}
+
 #trb-page-builder .offer-filter-ad--banner {
     margin: 0 0 1.5rem;
 }

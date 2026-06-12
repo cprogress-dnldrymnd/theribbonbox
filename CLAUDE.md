@@ -92,7 +92,7 @@ post meta.
 
 - Core: [functions/page-builder.php](functions/page-builder.php) — section registry is
   `trb_builder_section_types()`; assets are cache-busted via `TRB_BUILDER_VERSION`
-  (constant near top of the file, currently `1.5.4`) with a `filemtime()` fallback for
+  (constant near top of the file, currently `1.5.7`) with a `filemtime()` fallback for
   local edits.
 - Section markup: [template-parts/builder/](template-parts/builder/) — one
   `section-*.php` per section type (hero, category-nav, divider, promo-banner,
@@ -141,6 +141,13 @@ post meta.
   `grid-column`/`grid-row`; the `max-width: 767px` block resets that placement to
   `auto` so it falls back to its natural (last) position in the single-column mobile
   layout.
+- "Sponsored" tags (`.offer-filter-sponsored`, absolutely positioned top-right) mark
+  paid placements: `trb_render_offer_ad()` wraps sidebar/grid/banner ad images
+  (`sidebar_ads`, `grid_ads`, `top_banner`, `bottom_banner` fields on `offer_filter`),
+  and the offer-slider's optional "Custom First Slide" (`first_image`/`first_image_link`
+  fields on `offer_slider`) renders its own tag directly in
+  `section-offer-slider.php`. Both rely on an ancestor with `position: relative`
+  (`.offer-filter-ad`, or `.offer-slider .product-widget-image`) for anchoring.
 
 ## Conventions / gotchas
 
