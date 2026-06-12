@@ -839,11 +839,11 @@
     display: flex;
     align-items: stretch;
     margin-top: .85rem;
-    max-width: 280px;
-    border: 1px solid #e4d7d7;
+    border: 1px solid #e4d7d7 !important;
     border-radius: 4px;
     overflow: hidden;
     background: var(--trb-white);
+    margin-bottom: 10px;
 }
 
 #trb-page-builder .product-code-value {
@@ -870,7 +870,7 @@
     min-width: 46px;
     padding: 0 .75rem;
     border: none;
-    border-left: 1px solid #e4d7d7;
+    border-left: 1px solid #e4d7d7 !important;
     background: var(--trb-wine);
     color: var(--trb-white);
     cursor: pointer;
