@@ -66,7 +66,7 @@ if ($title === '' && !$logo_id && trim((string) $nav_html) === '') {
 <section class="trb-picks-nav trb-bg-accent-2">
     <div class="container">
         <div class="row g-3 align-items-center justify-content-between">
-            <div class="col-auto col-sm-3">
+            <div class="col-auto col-lg-3">
                 <?php if ($logo_id || $title !== '') : ?>
                     <a class="trb-picks-nav-title"<?php echo $logo_link !== '' ? ' href="' . esc_url($logo_link) . '"' : ''; ?>>
                         <?php if ($logo_id) : ?>
@@ -77,14 +77,14 @@ if ($title === '' && !$logo_id && trim((string) $nav_html) === '') {
                     </a>
                 <?php endif; ?>
             </div>
-            <div class="col-auto col-sm-3 text-center">
+            <div class="col-auto col-lg-3 text-center">
                 <?php if (trim((string) $nav_html) !== '') : ?>
                     <nav class="trb-picks-nav-menu">
                         <?php echo $nav_html; ?>
                     </nav>
                 <?php endif; ?>
             </div>
-            <div class="col-12 col-sm-3"></div>
+            <div class="col-12 col-lg-3"></div>
         </div>
     </div>
 </section>
