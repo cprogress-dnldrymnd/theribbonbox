@@ -404,6 +404,10 @@
     margin-top: auto !important;
 }
 
+#trb-page-builder .offer-slider .product-name + .product-code {
+    margin-top: auto;
+}
+
 #trb-page-builder .product-tabs--light .offer-slider .product-cat,
 #trb-page-builder .product-tabs--light .offer-slider .product-name a {
     color: var(--trb-petal);
