@@ -23,7 +23,6 @@ $bottom_banner = absint($section['bottom_banner'] ?? 0);
 $bottom_banner_link = $section['bottom_banner_link'] ?? '';
 
 $sidebar_ads = isset($section['sidebar_ads']) && is_array($section['sidebar_ads']) ? $section['sidebar_ads'] : array();
-$grid_ads    = isset($section['grid_ads']) && is_array($section['grid_ads']) ? $section['grid_ads'] : array();
 
 // Enqueue the AJAX script (registered in functions/offer-filter.php) and the
 // Dashicons used by the accordion chevron + pagination (not loaded on the front
@@ -33,6 +32,36 @@ wp_enqueue_style('dashicons');
 
 // Parse the current request so a direct URL (?of_paged=2&of_cat=…) renders correctly.
 $args     = trb_offer_filter_parse_request($_GET);
+
+/**
+ * Dynamically fetch grid ads from the "trb-picks-ad" post type based on the active category.
+ * If no category is set, the array remains empty and no ads are displayed within the grid.
+ */
+$grid_ads         = array();
+$current_category = !empty($args['category']) ? (int) $args['category'] : 0;
+
+if ($current_category) {
+    $trb_ads_query = get_posts(array(
+        'post_type'      => 'trb-picks-ad',
+        'posts_per_page' => -1, // Fetch all applicable ads
+        'post_status'    => 'publish',
+        'cat'            => $current_category,
+    ));
+
+    foreach ($trb_ads_query as $ad) {
+        $ad_link     = function_exists('get_field') ? get_field('ad_url', $ad->ID) : '';
+        $ad_image_id = get_post_thumbnail_id($ad->ID);
+
+        // Only append to the grid if a valid image ID is returned
+        if ($ad_image_id) {
+            $grid_ads[] = array(
+                'image' => $ad_image_id,
+                'link'  => $ad_link,
+            );
+        }
+    }
+}
+
 $settings = array('per_page' => $per_page, 'grid_ads' => $grid_ads);
 $results  = trb_offer_filter_get_results($args, $settings);
 
@@ -69,14 +98,12 @@ $js_config = array(
             </div>
         <?php endif; ?>
 
-        <!-- Mobile trigger: opens the sidebar as a slide-out drawer (≤767px). -->
         <button type="button" class="offer-filter-mobile-toggle">
             <span class="dashicons dashicons-filter" aria-hidden="true"></span>
             Search &amp; Filter
         </button>
 
         <div class="offer-filter-layout">
-            <!-- ------------------------------------------------------- Sidebar -->
             <aside class="offer-filter-sidebar">
                 <form class="offer-filter-form" onsubmit="return false;">
                     <div class="offer-filter-sidebar-header">
@@ -156,7 +183,6 @@ $js_config = array(
 
                     <button type="button" class="offer-filter-reset">RESET ALL</button>
 
-                    <!-- Mobile only: applies the current search/filters and closes the drawer. -->
                     <button type="button" class="offer-filter-apply">Search</button>
 
                     <?php // Second sidebar sponsored ad.
@@ -166,10 +192,8 @@ $js_config = array(
                 </form>
             </aside>
 
-            <!-- Dimmed backdrop behind the mobile drawer. -->
             <div class="offer-filter-overlay" hidden></div>
 
-            <!-- ----------------------------------------------------- Results -->
             <div class="offer-filter-main">
                 <div class="offer-filter-toolbar">
                     <span class="offer-filter-count"><?php echo esc_html($results['count']); ?></span>
