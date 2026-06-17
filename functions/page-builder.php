@@ -311,44 +311,6 @@ function trb_builder_section_types()
                     'label' => 'Results per page',
                     'default' => 15,
                 ),
-                'top_banner' => array(
-                    'type' => 'image',
-                    'label' => 'Top Banner Ad (optional)',
-                    'help' => 'Wide sponsored image shown above the results grid.',
-                ),
-                'top_banner_link' => array(
-                    'type' => 'text',
-                    'label' => 'Top Banner Link (optional)',
-                ),
-                'bottom_banner' => array(
-                    'type' => 'image',
-                    'label' => 'Bottom Banner Ad (optional)',
-                    'help' => 'Wide sponsored image shown below the results grid.',
-                ),
-                'bottom_banner_link' => array(
-                    'type' => 'text',
-                    'label' => 'Bottom Banner Link (optional)',
-                ),
-                'sidebar_ads' => array(
-                    'type' => 'repeater',
-                    'label' => 'Sidebar Sponsored Images',
-                    'button' => 'Add Sidebar Ad',
-                    'help' => 'Up to two images shown in the filter sidebar.',
-                    'sub_fields' => array(
-                        'image' => array('type' => 'image', 'label' => 'Image'),
-                        'link'  => array('type' => 'text', 'label' => 'Link (optional)'),
-                    ),
-                ),
-                'grid_ads' => array(
-                    'type' => 'repeater',
-                    'label' => 'In-Grid Sponsored Images',
-                    'button' => 'Add Grid Ad',
-                    'help' => 'Sponsored cards spread evenly through the results grid.',
-                    'sub_fields' => array(
-                        'image' => array('type' => 'image', 'label' => 'Image'),
-                        'link'  => array('type' => 'text', 'label' => 'Link (optional)'),
-                    ),
-                ),
             ),
         ),
         'divider' => array(

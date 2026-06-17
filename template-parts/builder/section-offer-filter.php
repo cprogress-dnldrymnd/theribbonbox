@@ -86,8 +86,8 @@ $js_config = array(
                                value="<?php echo esc_attr($args['search']); ?>" placeholder="Search…" autocomplete="off">
                     </div>
 
-                    <div class="offer-filter-ad-sidebar-wrap">
-                        <?php echo function_exists('trb_render_picks_ad') ? trb_render_picks_ad($category_id, 'sidebar', 'medium', 'offer-filter-ad offer-filter-ad--sidebar') : ''; ?>
+                    <div class="offer-filter-ad-top-sidebar-wrap">
+                        <?php echo function_exists('trb_render_picks_ad') ? trb_render_picks_ad($category_id, 'top_sidebar', 'medium', 'offer-filter-ad offer-filter-ad--sidebar') : ''; ?>
                     </div>
 
                     <?php if (!empty($category_list)) : ?>
@@ -151,6 +151,9 @@ $js_config = array(
 
                     <button type="button" class="offer-filter-apply">Search</button>
 
+                    <div class="offer-filter-ad-bottom-sidebar-wrap">
+                        <?php echo function_exists('trb_render_picks_ad') ? trb_render_picks_ad($category_id, 'bottom_sidebar', 'medium', 'offer-filter-ad offer-filter-ad--sidebar') : ''; ?>
+                    </div>
                 </form>
             </aside>
 

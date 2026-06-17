@@ -257,12 +257,12 @@ function trb_render_offer_ad($image_id, $link = '', $size = 'medium', $wrap_clas
  * Returns null if no ad with a featured image exists for that location.
  *
  * @param int    $category_id WP category term ID (0 = no category filter).
- * @param string $location    grid | sidebar | above_result | below_result
+ * @param string $location    grid | top_sidebar | bottom_sidebar | above_result | below_result
  * @return array|null { image: int, link: string } or null.
  */
 function trb_get_picks_ad($category_id, $location)
 {
-    $valid = array('grid', 'sidebar', 'above_result', 'below_result');
+    $valid = array('grid', 'top_sidebar', 'bottom_sidebar', 'above_result', 'below_result');
     if (!in_array($location, $valid, true)) {
         return null;
     }
@@ -330,7 +330,7 @@ function trb_picks_ad_to_array($post)
  * Returns '' if no matching ad is found.
  *
  * @param int    $category_id
- * @param string $location    grid | sidebar | above_result | below_result
+ * @param string $location    grid | top_sidebar | bottom_sidebar | above_result | below_result
  * @param string $size        Image size passed to wp_get_attachment_image().
  * @param string $wrap_class  CSS class(es) for the wrapper div.
  * @return string
@@ -603,10 +603,11 @@ function trb_offer_filter_ajax()
     $results = trb_offer_filter_get_results($args, $settings);
 
     // Return rendered HTML for the non-grid ad locations so JS can update them.
-    $results['sidebar_ad']  = trb_render_picks_ad($category_id, 'sidebar', 'medium', 'offer-filter-ad offer-filter-ad--sidebar');
-    $results['above_ad']    = trb_render_picks_ad($category_id, 'above_result', 'large', 'offer-filter-ad offer-filter-ad--banner');
-    $results['below_ad']    = trb_render_picks_ad($category_id, 'below_result', 'large', 'offer-filter-ad offer-filter-ad--banner');
-    $results['has_grid_ad'] = $grid_ad !== null;
+    $results['top_sidebar_ad']  = trb_render_picks_ad($category_id, 'top_sidebar', 'medium', 'offer-filter-ad offer-filter-ad--sidebar');
+    $results['bottom_sidebar_ad'] = trb_render_picks_ad($category_id, 'bottom_sidebar', 'medium', 'offer-filter-ad offer-filter-ad--sidebar');
+    $results['above_ad']        = trb_render_picks_ad($category_id, 'above_result', 'large', 'offer-filter-ad offer-filter-ad--banner');
+    $results['below_ad']        = trb_render_picks_ad($category_id, 'below_result', 'large', 'offer-filter-ad offer-filter-ad--banner');
+    $results['has_grid_ad']     = $grid_ad !== null;
 
     wp_send_json_success($results);
 }

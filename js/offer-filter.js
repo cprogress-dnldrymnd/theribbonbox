@@ -173,8 +173,11 @@
                 $count.text(resp.data.count);
 
                 // Update all ad locations from the server response.
-                if (resp.data.sidebar_ad !== undefined) {
-                    $root.find('.offer-filter-ad-sidebar-wrap').html(resp.data.sidebar_ad);
+                if (resp.data.top_sidebar_ad !== undefined) {
+                    $root.find('.offer-filter-ad-top-sidebar-wrap').html(resp.data.top_sidebar_ad);
+                }
+                if (resp.data.bottom_sidebar_ad !== undefined) {
+                    $root.find('.offer-filter-ad-bottom-sidebar-wrap').html(resp.data.bottom_sidebar_ad);
                 }
                 if (resp.data.above_ad !== undefined) {
                     $root.find('.offer-filter-ad-above-wrap').html(resp.data.above_ad);
