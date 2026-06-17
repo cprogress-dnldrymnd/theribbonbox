@@ -17,7 +17,7 @@
     function init($root) {
         var config = $root.data('config') || {};
         var perPage = config.perPage || 15;
-        var gridAds = config.gridAds || [];
+        var hasGridAd = !!config.hasGridAd;
         // Base path for pretty category URLs, e.g. "/offers/". Category filtering
         // pushes /offers/{slug}/ to the address bar instead of ?of_cat=ID.
         var baseUrl = config.baseUrl || window.location.pathname;
@@ -124,12 +124,11 @@
 
         // How many cards to request so the grid always ends on a complete row at
         // the current column count: the smallest count >= the section's per_page
-        // where (cards + grid ads) divides evenly by the column count. The extra
-        // cards are the ones that would otherwise start the next page — i.e. we
-        // "pull them forward" so there's never a trailing gap.
+        // where (cards + grid ad slot) divides evenly by the column count.
         function rowFilledPerPage() {
             var cols = getColumns();
-            var rem = (perPage + gridAds.length) % cols;
+            var adCount = hasGridAd ? 1 : 0;
+            var rem = (perPage + adCount) % cols;
             return rem === 0 ? perPage : perPage + (cols - rem);
         }
 
@@ -150,8 +149,7 @@
                 of_cat: state.category,
                 of_sort: state.sort,
                 of_paged: state.paged,
-                of_tax: state.tax,
-                grid_ads: gridAds
+                of_tax: state.tax
             };
 
             if (xhr) { xhr.abort(); }
@@ -173,6 +171,21 @@
                 $gridInner.html(resp.data.grid);
                 $pagination.html(resp.data.pagination);
                 $count.text(resp.data.count);
+
+                // Update all ad locations from the server response.
+                if (resp.data.sidebar_ad !== undefined) {
+                    $root.find('.offer-filter-ad-sidebar-wrap').html(resp.data.sidebar_ad);
+                }
+                if (resp.data.above_ad !== undefined) {
+                    $root.find('.offer-filter-ad-above-wrap').html(resp.data.above_ad);
+                }
+                if (resp.data.below_ad !== undefined) {
+                    $root.find('.offer-filter-ad-below-wrap').html(resp.data.below_ad);
+                }
+                if (resp.data.has_grid_ad !== undefined) {
+                    hasGridAd = !!resp.data.has_grid_ad;
+                }
+
                 if (updateUrl !== false) {
                     pushUrl(state);
                 }

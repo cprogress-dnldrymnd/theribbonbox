@@ -17,12 +17,6 @@ if (!function_exists('trb_offer_filter_get_results')) {
 $title       = $section['title'] ?? '';
 $description = $section['description'] ?? '';
 $per_page    = max(1, absint($section['per_page'] ?? 15));
-$top_banner  = absint($section['top_banner'] ?? 0);
-$top_banner_link = $section['top_banner_link'] ?? '';
-$bottom_banner = absint($section['bottom_banner'] ?? 0);
-$bottom_banner_link = $section['bottom_banner_link'] ?? '';
-
-$sidebar_ads = isset($section['sidebar_ads']) && is_array($section['sidebar_ads']) ? $section['sidebar_ads'] : array();
 
 // Enqueue the AJAX script (registered in functions/offer-filter.php) and the
 // Dashicons used by the accordion chevron + pagination (not loaded on the front
@@ -31,38 +25,14 @@ wp_enqueue_script('trb-offer-filter');
 wp_enqueue_style('dashicons');
 
 // Parse the current request so a direct URL (?of_paged=2&of_cat=…) renders correctly.
-$args     = trb_offer_filter_parse_request($_GET);
+$args        = trb_offer_filter_parse_request($_GET);
+$category_id = $args['category'];
 
-/**
- * Dynamically fetch grid ads from the "trb-picks-ad" post type based on the active category.
- * If no category is set, the array remains empty and no ads are displayed within the grid.
- */
-$grid_ads         = array();
-$current_category = !empty($args['category']) ? (int) $args['category'] : 0;
+// Ads come from the trb-picks-ad CPT, routed by the ad_location field.
+// Each location gets one random ad: category-specific first, random fallback.
+$grid_ad = function_exists('trb_get_picks_ad') ? trb_get_picks_ad($category_id, 'grid') : null;
 
-if ($current_category) {
-    $trb_ads_query = get_posts(array(
-        'post_type'      => 'trb-picks-ad',
-        'posts_per_page' => -1, // Fetch all applicable ads
-        'post_status'    => 'publish',
-        'cat'            => $current_category,
-    ));
-
-    foreach ($trb_ads_query as $ad) {
-        $ad_link     = function_exists('get_field') ? get_field('ad_url', $ad->ID) : '';
-        $ad_image_id = get_post_thumbnail_id($ad->ID);
-
-        // Only append to the grid if a valid image ID is returned
-        if ($ad_image_id) {
-            $grid_ads[] = array(
-                'image' => $ad_image_id,
-                'link'  => $ad_link,
-            );
-        }
-    }
-}
-
-$settings = array('per_page' => $per_page, 'grid_ads' => $grid_ads);
+$settings = array('per_page' => $per_page, 'grid_ad' => $grid_ad);
 $results  = trb_offer_filter_get_results($args, $settings);
 
 $sort_options = trb_offer_filter_sort_options();
@@ -80,12 +50,9 @@ $base_path = trailingslashit((string) wp_parse_url(get_permalink(get_the_ID()), 
 // Config the script needs to rebuild AJAX requests + pretty URLs.
 $instance = 'offer-filter-' . absint($section_index ?? 0);
 $js_config = array(
-    'perPage' => $per_page,
-    'baseUrl' => $base_path,
-    'gridAds' => array_values(array_filter(array_map(function ($ad) {
-        $image = absint($ad['image'] ?? 0);
-        return $image ? array('image' => $image, 'link' => $ad['link'] ?? '') : null;
-    }, $grid_ads))),
+    'perPage'   => $per_page,
+    'baseUrl'   => $base_path,
+    'hasGridAd' => $grid_ad !== null,
 );
 ?>
 <div class="offer-filter" id="offer-filter"
@@ -119,10 +86,9 @@ $js_config = array(
                                value="<?php echo esc_attr($args['search']); ?>" placeholder="Search…" autocomplete="off">
                     </div>
 
-                    <?php // First sidebar sponsored ad.
-                    if (!empty($sidebar_ads[0]['image'])) {
-                        echo trb_render_offer_ad($sidebar_ads[0]['image'], $sidebar_ads[0]['link'] ?? '', 'medium', 'offer-filter-ad offer-filter-ad--sidebar');
-                    } ?>
+                    <div class="offer-filter-ad-sidebar-wrap">
+                        <?php echo function_exists('trb_render_picks_ad') ? trb_render_picks_ad($category_id, 'sidebar', 'medium', 'offer-filter-ad offer-filter-ad--sidebar') : ''; ?>
+                    </div>
 
                     <?php if (!empty($category_list)) : ?>
                         <div class="offer-filter-group offer-filter-categories">
@@ -185,10 +151,6 @@ $js_config = array(
 
                     <button type="button" class="offer-filter-apply">Search</button>
 
-                    <?php // Second sidebar sponsored ad.
-                    if (!empty($sidebar_ads[1]['image'])) {
-                        echo trb_render_offer_ad($sidebar_ads[1]['image'], $sidebar_ads[1]['link'] ?? '', 'medium', 'offer-filter-ad offer-filter-ad--sidebar');
-                    } ?>
                 </form>
             </aside>
 
@@ -207,9 +169,9 @@ $js_config = array(
                     </label>
                 </div>
 
-                <?php if ($top_banner) :
-                    echo trb_render_offer_ad($top_banner, $top_banner_link, 'large', 'offer-filter-ad offer-filter-ad--banner'); ?>
-                <?php endif; ?>
+                <div class="offer-filter-ad-above-wrap">
+                    <?php echo function_exists('trb_render_picks_ad') ? trb_render_picks_ad($category_id, 'above_result', 'large', 'offer-filter-ad offer-filter-ad--banner') : ''; ?>
+                </div>
 
                 <div class="offer-filter-results">
                     <div class="product-widget--holder style-2 offer-slider offer-filter-grid">
@@ -223,9 +185,9 @@ $js_config = array(
                     <div class="offer-filter-loading" hidden><span class="offer-filter-spinner"></span></div>
                 </div>
 
-                <?php if ($bottom_banner) :
-                    echo trb_render_offer_ad($bottom_banner, $bottom_banner_link, 'large', 'offer-filter-ad offer-filter-ad--banner'); ?>
-                <?php endif; ?>
+                <div class="offer-filter-ad-below-wrap">
+                    <?php echo function_exists('trb_render_picks_ad') ? trb_render_picks_ad($category_id, 'below_result', 'large', 'offer-filter-ad offer-filter-ad--banner') : ''; ?>
+                </div>
             </div>
         </div>
     </div>

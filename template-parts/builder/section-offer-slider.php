@@ -61,27 +61,11 @@ if ($featured_only) {
     }
 }
 
-/**
- * Retrieve current ads from the 'trb-picks-ad' post type.
- * Ads are filtered by the selected category to dynamically populate the repeater elements.
- */
-$ad_query_args = array(
-    'post_type'      => 'trb-picks-ad',
-    'posts_per_page' => -1, // Fetch all applicable ads
-    'post_status'    => 'publish',
-    'orderby'        => 'date',
-    'order'          => 'DESC',
-);
+// One grid ad from trb-picks-ad (ad_location=grid), category-specific or random fallback.
+$slider_ad = function_exists('trb_get_picks_ad') ? trb_get_picks_ad($term_id, 'grid') : null;
 
-// Apply category filter if one is set in the section configuration
-if ($term_id) {
-    $ad_query_args['cat'] = $term_id;
-}
-
-$trb_ads = get_posts($ad_query_args);
-
-// Nothing to show and no ads available — skip the section entirely.
-if (empty($offers) && empty($trb_ads)) {
+// Nothing to show — skip the section entirely.
+if (empty($offers) && !$slider_ad) {
     return;
 }
 
@@ -143,32 +127,21 @@ if ($decorative_bar) {
             <div class="product-widget--outer" id="<?php echo esc_attr($unique_id); ?>">
                 <div class="product-widget--inner">
 
-                    <?php
-                    /**
-                     * Loop through the retrieved 'trb-picks-ad' posts.
-                     * Extracts 'first_image' and 'first_image_link' from each ad to populate the slider.
-                     */
-                    foreach ($trb_ads as $ad) :
-                        // Retrieve custom fields, falling back to WP standard fields if missing
-                        $ad_link     = function_exists('get_field') ? get_field('ad_url', $ad->ID) : '';
-                        $ad_image_id = get_post_thumbnail_id($ad->ID);
-
-
-                        $ad_image_url = $ad_image_id ? wp_get_attachment_image_url($ad_image_id, 'large') : '';
-
+                    <?php if ($slider_ad) :
+                        $ad_image_url = wp_get_attachment_image_url($slider_ad['image'], 'large');
                         if ($ad_image_url) : ?>
                             <div class="product-widget--box product-widget-image swiper-slide">
                                 <span class="offer-filter-sponsored">Sponsored</span>
-                                <?php if ($ad_link) : ?>
-                                    <a href="<?php echo esc_url($ad_link); ?>" target="_blank" rel="noopener nofollow">
-                                        <img src="<?php echo esc_url($ad_image_url); ?>" alt="<?php echo esc_attr(get_the_title($ad->ID)); ?>">
+                                <?php if (!empty($slider_ad['link'])) : ?>
+                                    <a href="<?php echo esc_url($slider_ad['link']); ?>" target="_blank" rel="noopener nofollow">
+                                        <img src="<?php echo esc_url($ad_image_url); ?>" alt="Sponsored">
                                     </a>
                                 <?php else : ?>
-                                    <img src="<?php echo esc_url($ad_image_url); ?>" alt="<?php echo esc_attr(get_the_title($ad->ID)); ?>">
+                                    <img src="<?php echo esc_url($ad_image_url); ?>" alt="Sponsored">
                                 <?php endif; ?>
                             </div>
                     <?php endif;
-                    endforeach; ?>
+                    endif; ?>
 
                     <?php foreach ($offers as $offer) :
                         // Shared card markup (see functions/offer-filter.php).

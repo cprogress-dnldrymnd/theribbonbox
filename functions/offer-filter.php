@@ -247,6 +247,104 @@ function trb_render_offer_ad($image_id, $link = '', $size = 'medium', $wrap_clas
 }
 
 /* -------------------------------------------------------------------------- */
+/* trb-picks-ad helpers                                                       */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Fetch one trb-picks-ad post for the given location and category.
+ * Tries category-specific ads first; falls back to any published ad for that
+ * location if none match the category (or if no category is given).
+ * Returns null if no ad with a featured image exists for that location.
+ *
+ * @param int    $category_id WP category term ID (0 = no category filter).
+ * @param string $location    grid | sidebar | above_result | below_result
+ * @return array|null { image: int, link: string } or null.
+ */
+function trb_get_picks_ad($category_id, $location)
+{
+    $valid = array('grid', 'sidebar', 'above_result', 'below_result');
+    if (!in_array($location, $valid, true)) {
+        return null;
+    }
+
+    $base_args = array(
+        'post_type'      => 'trb-picks-ad',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+        'meta_query'     => array(
+            array(
+                'key'     => 'ad_location',
+                'value'   => $location,
+                'compare' => '=',
+            ),
+        ),
+    );
+
+    // Try category-specific first.
+    if ($category_id) {
+        $cat_args        = $base_args;
+        $cat_args['cat'] = (int) $category_id;
+        $posts           = get_posts($cat_args);
+        if (!empty($posts)) {
+            $ad = trb_picks_ad_to_array($posts[array_rand($posts)]);
+            if ($ad) {
+                return $ad;
+            }
+        }
+    }
+
+    // Fallback: any ad for this location.
+    $posts = get_posts($base_args);
+    if (empty($posts)) {
+        return null;
+    }
+    shuffle($posts);
+    foreach ($posts as $post) {
+        $ad = trb_picks_ad_to_array($post);
+        if ($ad) {
+            return $ad;
+        }
+    }
+    return null;
+}
+
+/**
+ * Convert a trb-picks-ad post to the { image, link } array expected by trb_render_offer_ad().
+ * Returns null if the post has no featured image.
+ *
+ * @param WP_Post $post
+ * @return array|null
+ */
+function trb_picks_ad_to_array($post)
+{
+    $image_id = (int) get_post_thumbnail_id($post->ID);
+    if (!$image_id) {
+        return null;
+    }
+    $link = function_exists('get_field') ? (string) get_field('ad_url', $post->ID) : '';
+    return array('image' => $image_id, 'link' => $link);
+}
+
+/**
+ * Render the HTML for a trb-picks-ad at the given location and category.
+ * Returns '' if no matching ad is found.
+ *
+ * @param int    $category_id
+ * @param string $location    grid | sidebar | above_result | below_result
+ * @param string $size        Image size passed to wp_get_attachment_image().
+ * @param string $wrap_class  CSS class(es) for the wrapper div.
+ * @return string
+ */
+function trb_render_picks_ad($category_id, $location, $size = 'medium', $wrap_class = 'offer-filter-ad')
+{
+    $ad = trb_get_picks_ad((int) $category_id, $location);
+    if (!$ad) {
+        return '';
+    }
+    return trb_render_offer_ad($ad['image'], $ad['link'], $size, $wrap_class);
+}
+
+/* -------------------------------------------------------------------------- */
 /* Query + render results                                                     */
 /* -------------------------------------------------------------------------- */
 
@@ -307,7 +405,7 @@ function trb_offer_filter_parse_request($raw)
 function trb_offer_filter_get_results($args, $settings = array())
 {
     $per_page = max(1, absint($settings['per_page'] ?? 15));
-    $grid_ads = isset($settings['grid_ads']) && is_array($settings['grid_ads']) ? $settings['grid_ads'] : array();
+    $grid_ad  = isset($settings['grid_ad']) && is_array($settings['grid_ad']) ? $settings['grid_ad'] : null;
 
     $sort_options = trb_offer_filter_sort_options();
     $sort = $sort_options[$args['sort']] ?? $sort_options['date_desc'];
@@ -360,16 +458,11 @@ function trb_offer_filter_get_results($args, $settings = array())
         }
         wp_reset_postdata();
 
-        // Grid ads sit at the end of the grid on every page: pinned to the last
-        // cell of row 1 (see css/page-builder.css), they fill the slot that
-        // would otherwise be left empty by a partial row on inner pages.
-        foreach ($grid_ads as $ad) {
-            if (empty($ad['image'])) {
-                continue;
-            }
+        // Single grid ad pinned to the last cell of row 1 (css/page-builder.css).
+        if ($grid_ad && !empty($grid_ad['image'])) {
             echo trb_render_offer_ad(
-                $ad['image'],
-                $ad['link'] ?? '',
+                $grid_ad['image'],
+                $grid_ad['link'] ?? '',
                 'medium',
                 'product-widget--box offer-filter-ad offer-filter-ad--grid'
             );
@@ -496,21 +589,26 @@ function trb_offer_filter_ajax()
 {
     check_ajax_referer('trb_offer_filter', 'nonce');
 
-    $args = trb_offer_filter_parse_request($_POST);
+    $args        = trb_offer_filter_parse_request($_POST);
+    $category_id = $args['category'];
+
+    // Query all ad locations server-side so ads update on every category change.
+    $grid_ad = trb_get_picks_ad($category_id, 'grid');
+
     $settings = array(
         'per_page' => isset($_POST['per_page']) ? absint($_POST['per_page']) : 15,
-        'grid_ads' => array(),
+        'grid_ad'  => $grid_ad,
     );
-    if (!empty($_POST['grid_ads']) && is_array($_POST['grid_ads'])) {
-        foreach ($_POST['grid_ads'] as $ad) {
-            $settings['grid_ads'][] = array(
-                'image' => absint($ad['image'] ?? 0),
-                'link'  => esc_url_raw($ad['link'] ?? ''),
-            );
-        }
-    }
 
-    wp_send_json_success(trb_offer_filter_get_results($args, $settings));
+    $results = trb_offer_filter_get_results($args, $settings);
+
+    // Return rendered HTML for the non-grid ad locations so JS can update them.
+    $results['sidebar_ad']  = trb_render_picks_ad($category_id, 'sidebar', 'medium', 'offer-filter-ad offer-filter-ad--sidebar');
+    $results['above_ad']    = trb_render_picks_ad($category_id, 'above_result', 'large', 'offer-filter-ad offer-filter-ad--banner');
+    $results['below_ad']    = trb_render_picks_ad($category_id, 'below_result', 'large', 'offer-filter-ad offer-filter-ad--banner');
+    $results['has_grid_ad'] = $grid_ad !== null;
+
+    wp_send_json_success($results);
 }
 
 /* -------------------------------------------------------------------------- */
