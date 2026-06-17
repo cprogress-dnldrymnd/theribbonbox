@@ -280,11 +280,18 @@ function trb_get_picks_ad($category_id, $location)
         ),
     );
 
-    // Try category-specific first.
+    // Try category-specific first (exact match only — exclude child categories).
     if ($category_id) {
-        $cat_args        = $base_args;
-        $cat_args['cat'] = (int) $category_id;
-        $posts           = get_posts($cat_args);
+        $cat_args = $base_args;
+        $cat_args['tax_query'] = array(
+            array(
+                'taxonomy'         => 'category',
+                'field'            => 'term_id',
+                'terms'            => array((int) $category_id),
+                'include_children' => false,
+            ),
+        );
+        $posts = get_posts($cat_args);
         if (!empty($posts)) {
             $ad = trb_picks_ad_to_array($posts[array_rand($posts)]);
             if ($ad) {
