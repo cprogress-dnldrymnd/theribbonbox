@@ -268,16 +268,7 @@ function trb_builder_section_types()
                     'label' => 'Number of offers to show',
                     'default' => 8,
                 ),
-                'first_image' => array(
-                    'type' => 'image',
-                    'label' => 'Ad Image (optional)',
-                    'help' => 'Shown as the first slide before the offers. Displays a "Sponsored" tag.',
-                ),
-                'first_image_link' => array(
-                    'type' => 'text',
-                    'label' => 'Ad Image Link (optional)',
-                    'help' => 'Where the ad image links to.',
-                ),
+           
                 'buttons' => array(
                     'type' => 'repeater',
                     'label' => 'Buttons (optional)',

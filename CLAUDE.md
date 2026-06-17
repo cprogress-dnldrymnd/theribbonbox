@@ -92,7 +92,7 @@ post meta.
 
 - Core: [functions/page-builder.php](functions/page-builder.php) — section registry is
   `trb_builder_section_types()`; assets are cache-busted via `TRB_BUILDER_VERSION`
-  (constant near top of the file, currently `1.7.1`) with a `filemtime()` fallback for
+  (constant near top of the file, currently `1.7.2`) with a `filemtime()` fallback for
   local edits.
 - Section markup: [template-parts/builder/](template-parts/builder/) — one
   `section-*.php` per section type (hero, category-nav, divider, promo-banner,
