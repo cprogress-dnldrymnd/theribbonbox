@@ -434,6 +434,11 @@ function trb_get_builder_sections($post_id)
     if (!$raw) {
         return array();
     }
+    // New format: PHP array (stored via WordPress serialize).
+    if (is_array($raw)) {
+        return $raw;
+    }
+    // Legacy format: JSON string.
     $sections = json_decode($raw, true);
     return is_array($sections) ? $sections : array();
 }
@@ -837,7 +842,7 @@ function trb_save_page_builder_sections($post_id)
         $sanitized[] = $clean;
     }
 
-    update_post_meta($post_id, '_trb_page_builder_sections', wp_slash(wp_json_encode($sanitized)));
+    update_post_meta($post_id, '_trb_page_builder_sections', $sanitized);
 }
 
 /**
