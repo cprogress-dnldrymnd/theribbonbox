@@ -837,7 +837,7 @@ function trb_save_page_builder_sections($post_id)
         $sanitized[] = $clean;
     }
 
-    update_post_meta($post_id, '_trb_page_builder_sections', wp_json_encode($sanitized));
+    update_post_meta($post_id, '_trb_page_builder_sections', wp_slash(wp_json_encode($sanitized)));
 }
 
 /**
