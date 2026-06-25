@@ -131,8 +131,18 @@ array in post meta (WordPress serializes it automatically).
 - [functions/offer-filter.php](functions/offer-filter.php) — query + AJAX, grid ads,
   pagination, slug-based category URLs, shared `trb_render_offer_card()`. The card's
   category chip links via `trb_offer_category_url()` to the offer-filter page
-  (`trb_offer_filter_host_page_ids()`) filtered by that category, falling back to the
-  standard category archive; the offer title is rendered with `wp_kses()` against a
+  (`trb_offer_filter_host_page_ids()`) filtered by that category. The pretty
+  `/{host-page}/{category-slug}/` URLs are served by rewrite rules
+  (`trb_offer_filter_add_rewrite_rules()`) whose slug whitelist comes from
+  `trb_offer_filter_get_offer_category_slugs()` — **every** category (any depth,
+  not just the top-level sidebar categories from `trb_offer_filter_get_categories()`)
+  attached to a published offer. The chip URL and the rewrite whitelist must stay
+  built from this same set: if a linked slug has no rule, WordPress 404-guesses the
+  URL back to the article landing page (`/{slug}/`). `trb_offer_category_url()` only
+  emits the pretty URL for a whitelisted slug, otherwise falling back to the
+  unfiltered discounts hub (and, if there's no host page at all, the category
+  archive). Bump `TRB_OFFER_FILTER_REWRITE_VERSION` to force a rewrite flush when
+  this changes. The offer title is rendered with `wp_kses()` against a
   small inline-formatting whitelist (`i`, `em`, `b`, `strong`, `span[class]`, `br`).
   Card badges (`offer-badge--featured` from the ACF `featured` flag, plus
   `offer-badge--lifestyle offer-badge--{slug}` per `lifestyle` term) are capped at two

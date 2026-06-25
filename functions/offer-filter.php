@@ -211,7 +211,16 @@ function trb_offer_category_url($term)
     if (!empty($host_ids)) {
         $base = get_permalink($host_ids[0]);
         if ($base) {
-            return trailingslashit($base) . $term->slug . '/';
+            // Only emit the pretty /{host}/{slug}/ URL when a matching rewrite
+            // rule exists for this slug (i.e. the category has published offers).
+            // Otherwise the URL has no rule and WordPress 404-guesses it back to
+            // the article landing page, so fall back to the unfiltered discounts
+            // hub rather than the category archive.
+            $known = trb_offer_filter_get_offer_category_slugs();
+            if (in_array($term->slug, $known, true)) {
+                return trailingslashit($base) . $term->slug . '/';
+            }
+            return trailingslashit($base);
         }
     }
     $link = get_category_link($term->term_id);
@@ -647,7 +656,7 @@ function trb_offer_filter_register_assets()
 
 if (!defined('TRB_OFFER_FILTER_REWRITE_VERSION')) {
     // Bump to force a one-time rewrite-rule flush after deploying changes here.
-    define('TRB_OFFER_FILTER_REWRITE_VERSION', '1.0.0');
+    define('TRB_OFFER_FILTER_REWRITE_VERSION', '1.1.0');
 }
 
 /**
@@ -690,6 +699,50 @@ function trb_offer_filter_get_categories()
 
     set_transient('trb_offer_filter_categories', $list, DAY_IN_SECONDS);
     return $list;
+}
+
+/**
+ * Slugs of every category (any depth, not just top-level sidebar categories)
+ * attached to at least one published offer-item. This is exactly the set of
+ * slugs that can appear in an offer card's category chip / "All … discounts"
+ * link (trb_offer_category_url()), so the pretty-URL rewrite rules are built
+ * from this list to keep the two in sync — otherwise a subcategory link to
+ * /{host}/{slug}/ has no matching rule and WordPress redirects it to the
+ * article landing page.
+ *
+ * Cached; the transient is cleared in trb_offer_filter_clear_caches().
+ *
+ * @return array<int,string> term_id => slug
+ */
+function trb_offer_filter_get_offer_category_slugs()
+{
+    $cached = get_transient('trb_offer_filter_offer_cat_slugs');
+    if (is_array($cached)) {
+        return $cached;
+    }
+
+    $slugs     = array();
+    $offer_ids = get_posts(array(
+        'post_type'      => 'offer-items',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'fields'         => 'ids',
+        'no_found_rows'  => true,
+    ));
+    if (!empty($offer_ids)) {
+        $terms = wp_get_object_terms($offer_ids, 'category');
+        if (!is_wp_error($terms)) {
+            foreach ($terms as $term) {
+                $slug = sanitize_title($term->slug);
+                if ($slug !== '') {
+                    $slugs[(int) $term->term_id] = $slug;
+                }
+            }
+        }
+    }
+
+    set_transient('trb_offer_filter_offer_cat_slugs', $slugs, DAY_IN_SECONDS);
+    return $slugs;
 }
 
 /**
@@ -761,8 +814,7 @@ function trb_offer_filter_add_rewrite_rules()
     }
 
     $slugs = array();
-    foreach (trb_offer_filter_get_categories() as $row) {
-        $slug = sanitize_title($row['term']->slug);
+    foreach (trb_offer_filter_get_offer_category_slugs() as $slug) {
         if ($slug !== '') {
             $slugs[] = preg_quote($slug, '#');
         }
@@ -770,7 +822,7 @@ function trb_offer_filter_add_rewrite_rules()
     if (empty($slugs)) {
         return;
     }
-    $slug_regex = implode('|', $slugs);
+    $slug_regex = implode('|', array_unique($slugs));
 
     foreach ($page_ids as $page_id) {
         $uri = trim((string) get_page_uri($page_id), '/');
@@ -839,6 +891,7 @@ function trb_offer_filter_legacy_cat_redirect()
 function trb_offer_filter_clear_caches()
 {
     delete_transient('trb_offer_filter_categories');
+    delete_transient('trb_offer_filter_offer_cat_slugs');
     delete_transient('trb_offer_filter_host_pages');
     update_option('trb_offer_filter_flush_needed', 1, false);
 }
