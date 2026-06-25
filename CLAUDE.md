@@ -131,7 +131,13 @@ array in post meta (WordPress serializes it automatically).
 - [functions/offer-filter.php](functions/offer-filter.php) — query + AJAX, grid ads,
   pagination, slug-based category URLs, shared `trb_render_offer_card()`. The card's
   category chip links via `trb_offer_category_url()` to the offer-filter page
-  (`trb_offer_filter_host_page_ids()`) filtered by that category. The pretty
+  (`trb_offer_filter_host_page_ids()`) filtered by that category.
+  `trb_offer_filter_host_page_ids()` finds host pages by fetching all pages using the
+  Builder template and parsing their sections via `trb_get_builder_sections()` — **not**
+  a meta_query LIKE on the section type, because sections are stored as PHP serialized
+  arrays and a JSON-style LIKE (`'"type":"offer_filter"'`) silently matches nothing once
+  a page has been saved in the current format. Like the slug cache, the host-page
+  transient is only written when the result is non-empty. The pretty
   `/{host-page}/{category-slug}/` URLs are served by rewrite rules
   (`trb_offer_filter_add_rewrite_rules()`) whose slug whitelist comes from
   `trb_offer_filter_get_offer_category_slugs()` — **every** category (any depth,
@@ -156,10 +162,15 @@ array in post meta (WordPress serializes it automatically).
   `trb_offer_filter_resolve_pretty_request()` (a `request` filter) resolves the same
   `/{host-page}/{slug}/` → `pagename` + `of_cat_slug` mapping directly from the parsed
   query vars on every front-end request, so the pretty URLs work even when the rewrite
-  rule was never flushed. A **temporary diagnostic endpoint** (`trb_offer_filter_diag`,
-  hooked to `init`) dumps JSON state (host pages, slug list, stored rewrite rules,
-  version strings) when `?trb_of_diag=1` is appended to any URL — **remove this
-  function once the pretty-URL redirect issue is confirmed resolved on the live site**. The offer title is rendered with `wp_kses()` against a
+  rule was never flushed. `trb_offer_filter_host_page_ids()` detects the host page(s) by
+  loading each Page Builder page's parsed sections via `trb_get_builder_sections()` and
+  checking for an `offer_filter` section — it must NOT use a meta `LIKE '"type":"offer_filter"'`,
+  since sections are stored as a native PHP serialized array (not JSON), so that
+  JSON-style match silently returns nothing once a page is saved and breaks the whole
+  feature (empty host list → no rewrite rule, no resolver match → pretty URLs
+  404-redirect to the article page). It also ignores/avoids caching an empty result so a
+  transient miss can't get stuck for the cache TTL. The offer title is rendered with
+  `wp_kses()` against a
   small inline-formatting whitelist (`i`, `em`, `b`, `strong`, `span[class]`, `br`).
   Card badges (`offer-badge--featured` from the ACF `featured` flag, plus
   `offer-badge--lifestyle offer-badge--{slug}` per `lifestyle` term) are capped at two

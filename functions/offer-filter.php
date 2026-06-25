@@ -954,53 +954,6 @@ function trb_offer_filter_resolve_pretty_request($query_vars)
 }
 
 /**
- * TEMPORARY diagnostic — remove once the pretty-URL redirect issue is resolved.
- * Visit any URL with ?trb_of_diag=1 to dump (as JSON) exactly which version of
- * this code is live on the server and the state of the rewrite/host data, so the
- * pretty-URL behaviour can be debugged remotely. Exposes only public theme config
- * (slugs, page IDs, version strings) — no secrets.
- */
-add_action('init', 'trb_offer_filter_diag', 99);
-function trb_offer_filter_diag()
-{
-    if (!isset($_GET['trb_of_diag'])) {
-        return;
-    }
-
-    $rules         = get_option('rewrite_rules');
-    $matching_rule = array();
-    if (is_array($rules)) {
-        foreach ($rules as $pattern => $target) {
-            if (strpos((string) $target, 'of_cat_slug') !== false) {
-                $matching_rule[$pattern] = $target;
-            }
-        }
-    }
-
-    $hosts = array();
-    foreach (trb_offer_filter_host_page_ids() as $hid) {
-        $hosts[$hid] = get_page_uri($hid);
-    }
-
-    $out = array(
-        'code_marker'            => 'hostfix-v3',
-        'rewrite_version_const'  => defined('TRB_OFFER_FILTER_REWRITE_VERSION') ? TRB_OFFER_FILTER_REWRITE_VERSION : null,
-        'rewrite_version_option' => get_option('trb_offer_filter_rewrite_version'),
-        'resolver_exists'        => function_exists('trb_offer_filter_resolve_pretty_request'),
-        'slug_helper_exists'     => function_exists('trb_offer_filter_get_offer_category_slugs'),
-        'host_pages'             => $hosts,
-        'offer_cat_slugs'        => function_exists('trb_offer_filter_get_offer_category_slugs')
-            ? array_values(trb_offer_filter_get_offer_category_slugs())
-            : 'n/a',
-        'flushed_offer_rules'    => $matching_rule,
-    );
-
-    header('Content-Type: application/json');
-    echo wp_json_encode($out);
-    exit;
-}
-
-/**
  * Keep WordPress from canonical-redirecting our pretty category URLs back to the
  * bare page permalink.
  */
