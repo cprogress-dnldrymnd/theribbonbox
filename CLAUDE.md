@@ -136,13 +136,24 @@ array in post meta (WordPress serializes it automatically).
   (`trb_offer_filter_add_rewrite_rules()`) whose slug whitelist comes from
   `trb_offer_filter_get_offer_category_slugs()` — **every** category (any depth,
   not just the top-level sidebar categories from `trb_offer_filter_get_categories()`)
-  attached to a published offer. The chip URL and the rewrite whitelist must stay
-  built from this same set: if a linked slug has no rule, WordPress 404-guesses the
-  URL back to the article landing page (`/{slug}/`). `trb_offer_category_url()` only
-  emits the pretty URL for a whitelisted slug, otherwise falling back to the
-  unfiltered discounts hub (and, if there's no host page at all, the category
-  archive). Bump `TRB_OFFER_FILTER_REWRITE_VERSION` to force a rewrite flush when
-  this changes. The offer title is rendered with `wp_kses()` against a
+  attached to a published offer, **plus all their ancestors** (via `get_ancestors()`).
+  Ancestors are included because filtering by a parent category (`WP_Query 'cat'`)
+  returns child-category offers, so parent slugs like `/fertility/` need rewrite rules
+  even when offers are only assigned to subcategories. The chip URL and the rewrite
+  whitelist must stay built from this same set: if a slug has no rule, WordPress
+  404-redirects it to the article landing page (`/{slug}/`). `trb_offer_category_url()`
+  only emits the pretty URL for a whitelisted slug, otherwise falling back to the
+  unfiltered discounts hub (and, if there's no host page at all, the category archive).
+  Bump `TRB_OFFER_FILTER_REWRITE_VERSION` to force a rewrite flush when this changes.
+  `trb_offer_filter_maybe_flush()` only records the version as "done" when rules were
+  actually registered that request (host page exists + at least one offer category
+  present) — a flush in a bare context won't permanently lock in the version and block
+  future retries. Because that flush is inherently fragile (the pretty URLs 404-redirect
+  to `/{slug}/` whenever the rewrite rule isn't in the stored `rewrite_rules` option),
+  `trb_offer_filter_resolve_pretty_request()` (a `request` filter) resolves the same
+  `/{host-page}/{slug}/` → `pagename` + `of_cat_slug` mapping directly from the parsed
+  query vars on every front-end request, so the pretty URLs work even when the rewrite
+  rule was never flushed. The offer title is rendered with `wp_kses()` against a
   small inline-formatting whitelist (`i`, `em`, `b`, `strong`, `span[class]`, `br`).
   Card badges (`offer-badge--featured` from the ACF `featured` flag, plus
   `offer-badge--lifestyle offer-badge--{slug}` per `lifestyle` term) are capped at two

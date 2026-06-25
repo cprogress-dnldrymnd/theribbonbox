@@ -760,7 +760,12 @@ function trb_offer_filter_get_offer_category_slugs()
         }
     }
 
-    set_transient('trb_offer_filter_offer_cat_slugs', $slugs, DAY_IN_SECONDS);
+    // Only cache a non-empty result. Caching an empty array (e.g. from a transient
+    // query glitch) for a full day would lock out both the rewrite rule and the
+    // request-filter safety net until the cache expired.
+    if (!empty($slugs)) {
+        set_transient('trb_offer_filter_offer_cat_slugs', $slugs, DAY_IN_SECONDS);
+    }
     return $slugs;
 }
 
@@ -854,6 +859,67 @@ function trb_offer_filter_add_rewrite_rules()
             'top'
         );
     }
+}
+
+/**
+ * Flush-independent resolver for the pretty /{host-page}/{category-slug}/ URLs.
+ *
+ * The rewrite rule above only takes effect once it has been flushed into the
+ * stored `rewrite_rules` option. In practice that flush is fragile (it relies on
+ * flush_rewrite_rules() running in the right context after deploy, and a stale
+ * flush can lock itself out), and when it hasn't run WordPress treats the pretty
+ * URL as a 404 and "guesses" it to the /{slug}/ article landing page.
+ *
+ * This filter resolves the same URL directly from the parsed query vars on every
+ * request, so the pretty URLs work whether or not the rewrite rule was flushed.
+ * For an unmatched path WordPress sets pagename to the full path
+ * (e.g. "trb-picks/discounts/fertility"); we split off the last segment and, when
+ * the prefix is a known host page and the last segment is a known offer-category
+ * slug, rewrite the request to the host page with of_cat_slug set.
+ */
+add_filter('request', 'trb_offer_filter_resolve_pretty_request');
+function trb_offer_filter_resolve_pretty_request($query_vars)
+{
+    if (is_admin()) {
+        return $query_vars;
+    }
+    // Already resolved (e.g. by a flushed rewrite rule), or not a nested path.
+    if (!empty($query_vars['of_cat_slug'])) {
+        return $query_vars;
+    }
+    if (empty($query_vars['pagename']) || strpos($query_vars['pagename'], '/') === false) {
+        return $query_vars;
+    }
+
+    $pagename = trim((string) $query_vars['pagename'], '/');
+    $slash    = strrpos($pagename, '/');
+    if ($slash === false) {
+        return $query_vars;
+    }
+    $prefix = substr($pagename, 0, $slash);
+    $last   = substr($pagename, $slash + 1);
+    if ($prefix === '' || $last === '') {
+        return $query_vars;
+    }
+
+    // The trailing segment must be a known offer-category slug (same whitelist as
+    // the rewrite rule) so genuine child pages are not hijacked.
+    $slugs = trb_offer_filter_get_offer_category_slugs();
+    if (!in_array($last, $slugs, true)) {
+        return $query_vars;
+    }
+
+    // The prefix must be one of the offer-filter host pages.
+    $host_ids = trb_offer_filter_host_page_ids();
+    foreach ($host_ids as $hid) {
+        if (trim((string) get_page_uri($hid), '/') === $prefix) {
+            $query_vars['pagename']    = $prefix;
+            $query_vars['of_cat_slug'] = $last;
+            return $query_vars;
+        }
+    }
+
+    return $query_vars;
 }
 
 /**
