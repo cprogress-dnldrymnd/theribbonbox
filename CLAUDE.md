@@ -8,7 +8,7 @@ and [DEVNOTES.md](DEVNOTES.md) (per-device handoff log, newest on top).
 `lighttheme` — the custom WordPress theme for [The Ribbon Box](https://theribbonbox.com/),
 a fertility-focused content site with a WooCommerce shop, a BuddyPress
 community/forum, and a B2B partner section. The repo is the theme directory itself
-(deployed via FTP — see "Deployment" below), not a full WordPress install.
+(deployed via cPanel Git Version Control — see "Deployment" below), not a full WordPress install.
 
 Standard WP theme layout: top-level `*.php` templates (`header.php`, `footer.php`,
 `homepage.php`, `single*`, `page-template-*.php`, `woocommerce.php`/`woocommerce/`),
@@ -156,7 +156,10 @@ array in post meta (WordPress serializes it automatically).
   `trb_offer_filter_resolve_pretty_request()` (a `request` filter) resolves the same
   `/{host-page}/{slug}/` → `pagename` + `of_cat_slug` mapping directly from the parsed
   query vars on every front-end request, so the pretty URLs work even when the rewrite
-  rule was never flushed. The offer title is rendered with `wp_kses()` against a
+  rule was never flushed. A **temporary diagnostic endpoint** (`trb_offer_filter_diag`,
+  hooked to `init`) dumps JSON state (host pages, slug list, stored rewrite rules,
+  version strings) when `?trb_of_diag=1` is appended to any URL — **remove this
+  function once the pretty-URL redirect issue is confirmed resolved on the live site**. The offer title is rendered with `wp_kses()` against a
   small inline-formatting whitelist (`i`, `em`, `b`, `strong`, `span[class]`, `br`).
   Card badges (`offer-badge--featured` from the ACF `featured` flag, plus
   `offer-badge--lifestyle offer-badge--{slug}` per `lifestyle` term) are capped at two
