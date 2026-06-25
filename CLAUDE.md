@@ -139,7 +139,10 @@ array in post meta (WordPress serializes it automatically).
   attached to a published offer, **plus all their ancestors** (via `get_ancestors()`).
   Ancestors are included because filtering by a parent category (`WP_Query 'cat'`)
   returns child-category offers, so parent slugs like `/fertility/` need rewrite rules
-  even when offers are only assigned to subcategories. The chip URL and the rewrite
+  even when offers are only assigned to subcategories. The slug list is cached via
+  `set_transient()` for one day, but only when non-empty — caching an empty result
+  (e.g. from a transient query glitch) would suppress both the rewrite rule and the
+  request-filter resolver for the full TTL. The chip URL and the rewrite
   whitelist must stay built from this same set: if a slug has no rule, WordPress
   404-redirects it to the article landing page (`/{slug}/`). `trb_offer_category_url()`
   only emits the pretty URL for a whitelisted slug, otherwise falling back to the
