@@ -261,15 +261,20 @@ function trb_render_offer_ad($image_id, $link = '', $size = 'medium', $wrap_clas
 
 /**
  * Fetch one trb-picks-ad post for the given location and category.
- * Tries category-specific ads first; falls back to any published ad for that
- * location if none match the category (or if no category is given).
+ * Tries category-specific ads first. When $allow_fallback is true (the default,
+ * used by the result grid/sidebar/banner ads) it falls back to any published ad
+ * for that location if none match the category (or if no category is given).
+ * When $allow_fallback is false (used by the offer slider) it only returns an ad
+ * assigned to that exact category — an empty category yields no ad rather than a
+ * random unrelated one.
  * Returns null if no ad with a featured image exists for that location.
  *
- * @param int    $category_id WP category term ID (0 = no category filter).
- * @param string $location    grid | top_sidebar | bottom_sidebar | above_result | below_result
+ * @param int    $category_id    WP category term ID (0 = no category filter).
+ * @param string $location       grid | top_sidebar | bottom_sidebar | above_result | below_result
+ * @param bool   $allow_fallback Whether to fall back to ads from other categories.
  * @return array|null { image: int, link: string } or null.
  */
-function trb_get_picks_ad($category_id, $location)
+function trb_get_picks_ad($category_id, $location, $allow_fallback = true)
 {
     $valid = array('grid', 'top_sidebar', 'bottom_sidebar', 'above_result', 'below_result');
     if (!in_array($location, $valid, true)) {
@@ -302,11 +307,20 @@ function trb_get_picks_ad($category_id, $location)
         );
         $posts = get_posts($cat_args);
         if (!empty($posts)) {
-            $ad = trb_picks_ad_to_array($posts[array_rand($posts)]);
-            if ($ad) {
-                return $ad;
+            shuffle($posts);
+            foreach ($posts as $post) {
+                $ad = trb_picks_ad_to_array($post);
+                if ($ad) {
+                    return $ad;
+                }
             }
         }
+    }
+
+    // Fallback to ads from other categories is opt-out: the offer slider passes
+    // false so a category with no ads simply shows none.
+    if (!$allow_fallback) {
+        return null;
     }
 
     // Fallback: any ad for this location.

@@ -61,8 +61,10 @@ if ($featured_only) {
     }
 }
 
-// One grid ad from trb-picks-ad (ad_location=grid), category-specific or random fallback.
-$slider_ad = function_exists('trb_get_picks_ad') ? trb_get_picks_ad($term_id, 'grid') : null;
+// One grid ad from trb-picks-ad (ad_location=grid). Category-specific only — no
+// fallback to other categories' ads (pass false), so a category with no ad of its
+// own simply shows no slider ad rather than a random unrelated one.
+$slider_ad = function_exists('trb_get_picks_ad') ? trb_get_picks_ad($term_id, 'grid', false) : null;
 
 // Nothing to show — skip the section entirely.
 if (empty($offers) && !$slider_ad) {

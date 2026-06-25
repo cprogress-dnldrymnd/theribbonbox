@@ -211,17 +211,22 @@ array in post meta (WordPress serializes it automatically).
   paid placements. All ads come from the `trb-picks-ad` CPT: each post has an ACF
   `ad_location` field (`grid` | `top_sidebar` | `bottom_sidebar` | `above_result` | `below_result`), an
   `ad_url` field, and a featured image. Three helpers in `offer-filter.php` handle
-  selection and rendering: `trb_get_picks_ad($category_id, $location)` picks one
-  random ad (category-specific exact match first — `tax_query` with
+  selection and rendering: `trb_get_picks_ad($category_id, $location, $allow_fallback = true)`
+  picks one random ad (category-specific exact match first — `tax_query` with
   `include_children: false`, so child-category pages don't bleed into parent ads —
-  falls back to any published ad for that location), `trb_picks_ad_to_array()`
-  converts a post to `{image, link}`, and
+  then, when `$allow_fallback` is true, falls back to any published ad for that
+  location), `trb_picks_ad_to_array()` converts a post to `{image, link}`, and
   `trb_render_picks_ad()` renders the final HTML via `trb_render_offer_ad()`. The
+  result grid / sidebar / banner ads use the default `$allow_fallback = true`, so a
+  category with no ad of its own still shows a random ad from another category. The
   AJAX handler queries all four locations server-side and returns `top_sidebar_ad`,
   `bottom_sidebar_ad`, `above_ad`, `below_ad`, `has_grid_ad` in the response so ads
-  change with each category filter. The offer-slider also uses `trb_get_picks_ad($term_id, 'grid')`
-  for a single ad slide. Both rely on an ancestor with `position: relative`
-  (`.offer-filter-ad`, or `.offer-slider .product-widget-image`) for anchoring.
+  change with each category filter. The offer-slider, by contrast, calls
+  `trb_get_picks_ad($term_id, 'grid', false)` — fallback disabled — so the slider ad
+  is **only ever** that category's own ad and a category with no ad shows no slider ad
+  (rather than a random unrelated one). Both rely on an ancestor with
+  `position: relative` (`.offer-filter-ad`, or `.offer-slider .product-widget-image`)
+  for anchoring.
 - Filter-drawer taxonomy checkboxes (`section-offer-filter.php`) use a custom-styled
   box: the native `<input type="checkbox">` is visually hidden
   (`.offer-filter-check input { display: none }`), with a sibling
