@@ -423,6 +423,7 @@
 
 #trb-page-builder .offer-slider .product-name + .product-code {
     margin-top: auto;
+
 }
 
 #trb-page-builder .product-tabs--light .offer-slider .product-cat,
@@ -1016,6 +1017,7 @@
     border-radius: 5px;
     overflow: hidden;
     background: var(--trb-white);
+    padding-top: 2px;
 }
 
 #trb-page-builder .product-code-value {
