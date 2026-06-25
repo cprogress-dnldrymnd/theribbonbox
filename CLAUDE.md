@@ -87,8 +87,8 @@ e.g. `[blog_filter format='post-page' add_ad='Yes' categoryid='1164']`.
 ## TRB Page Builder
 
 A lightweight, ACF-free section builder for the "Page Builder" page template
-(`page-template-builder.php`). Sections (type + fields) are stored as ordered JSON in
-post meta.
+(`page-template-builder.php`). Sections (type + fields) are stored as a native PHP
+array in post meta (WordPress serializes it automatically).
 
 - Core: [functions/page-builder.php](functions/page-builder.php) — section registry is
   `trb_builder_section_types()`; assets are cache-busted via `TRB_BUILDER_VERSION`
@@ -139,16 +139,19 @@ post meta.
   per card via `array_slice()`, with "Featured" taking priority since it's added first.
 - [js/offer-filter.js](js/offer-filter.js) — filter drawer + category navigation. When
   the drawer is open it hides `#header-main-site` (the current header id — older
-  `#header-v2` is no longer used here). To keep the grid (results + grid ads, which
-  now render on every page — see offer-filter.php below) always ending on a complete
+  `#header-v2` is no longer used here). To keep the grid always ending on a complete
   row, `getColumns()` reads the resolved `grid-template-columns` track count from
   `.offer-filter-grid-inner`, and `rowFilledPerPage()` rounds the section's `per_page`
-  up to the next multiple of that column count. AJAX fetches request this row-filled
-  count instead of the raw `per_page`; a `reqId` counter discards stale responses, and
-  a deep-linked `of_paged` past the resulting last page is clamped and re-fetched. A
-  debounced `resize` handler re-fetches when the column count changes (e.g. crossing a
-  breakpoint), and on init the page re-fetches if the server-rendered `per_page`
-  doesn't match the row-filled count.
+  up to the next multiple of that column count, accounting for the grid ad slot
+  (`hasGridAd` boolean from the PHP config / AJAX response). AJAX fetches request this
+  row-filled count instead of the raw `per_page`; a `reqId` counter discards stale
+  responses, and a deep-linked `of_paged` past the resulting last page is clamped and
+  re-fetched. A debounced `resize` handler re-fetches when the column count changes
+  (e.g. crossing a breakpoint), and on init the page re-fetches if the server-rendered
+  `per_page` doesn't match the row-filled count. After each AJAX fetch the JS swaps the
+  HTML of `.offer-filter-ad-top-sidebar-wrap`, `.offer-filter-ad-bottom-sidebar-wrap`,
+  `.offer-filter-ad-above-wrap`, and `.offer-filter-ad-below-wrap` from the server
+  response so all ad slots update on every category change.
 - [js/offer-copy-code.js](js/offer-copy-code.js) — copy-discount-code button on cards.
 - Offer cards live in `.offer-filter-grid` (filter) and `.offer-slider` (slider); card
   layout/alignment is tuned in `css/page-builder.css`. Filter-grid cards pin the
@@ -167,12 +170,19 @@ post meta.
   placement to `auto` so it falls back to its natural (last) position in the
   single-column mobile layout.
 - "Sponsored" tags (`.offer-filter-sponsored`, absolutely positioned top-right) mark
-  paid placements: `trb_render_offer_ad()` wraps sidebar/grid/banner ad images
-  (`sidebar_ads`, `grid_ads`, `top_banner`, `bottom_banner` fields on `offer_filter`),
-  and the offer-slider's optional "Ad Image" (`first_image`/`first_image_link`
-  fields on `offer_slider`, shown as the first slide before the offers) renders its
-  own tag directly in
-  `section-offer-slider.php`. Both rely on an ancestor with `position: relative`
+  paid placements. All ads come from the `trb-picks-ad` CPT: each post has an ACF
+  `ad_location` field (`grid` | `top_sidebar` | `bottom_sidebar` | `above_result` | `below_result`), an
+  `ad_url` field, and a featured image. Three helpers in `offer-filter.php` handle
+  selection and rendering: `trb_get_picks_ad($category_id, $location)` picks one
+  random ad (category-specific exact match first — `tax_query` with
+  `include_children: false`, so child-category pages don't bleed into parent ads —
+  falls back to any published ad for that location), `trb_picks_ad_to_array()`
+  converts a post to `{image, link}`, and
+  `trb_render_picks_ad()` renders the final HTML via `trb_render_offer_ad()`. The
+  AJAX handler queries all four locations server-side and returns `top_sidebar_ad`,
+  `bottom_sidebar_ad`, `above_ad`, `below_ad`, `has_grid_ad` in the response so ads
+  change with each category filter. The offer-slider also uses `trb_get_picks_ad($term_id, 'grid')`
+  for a single ad slide. Both rely on an ancestor with `position: relative`
   (`.offer-filter-ad`, or `.offer-slider .product-widget-image`) for anchoring.
 - Filter-drawer taxonomy checkboxes (`section-offer-filter.php`) use a custom-styled
   box: the native `<input type="checkbox">` is visually hidden
@@ -193,6 +203,11 @@ post meta.
 - Bump `TRB_BUILDER_VERSION` in `functions/page-builder.php` when Page Builder
   CSS/JS changes need to bust caches (the `filemtime()` fallback covers most local
   edits, but bump it for clarity on releases).
+- Page Builder sections are stored as a native PHP array in post meta (WordPress
+  serializes it via `maybe_serialize()` automatically). `trb_get_builder_sections()`
+  handles both the current array format and a legacy JSON-string format for backward
+  compatibility. Do not wrap the value in `wp_json_encode()` / `wp_slash()` — passing
+  a plain array to `update_post_meta()` is correct.
 - `DEVNOTES.md` is a running, newest-first handoff log used for cross-device work —
   check it for the latest in-progress focus area, and add an entry when handing off
   non-trivial work.
