@@ -299,6 +299,7 @@
 @media (max-width: 575px) {
     #trb-page-builder .cat-decor {
         padding-bottom: 10px;
+        line-height: 1;
     }
     #trb-page-builder .cat-text {
         padding-top: 10px;

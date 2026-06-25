@@ -78,7 +78,7 @@ $swiper_config = array(
     'observer'       => true,
     'observeParents' => true,
     'breakpoints'    => array(
-        0   => array('slidesPerView' => 1.2),
+        0   => array('slidesPerView' => 1.4),
         768 => array('slidesPerView' => 3),
         992 => array('slidesPerView' => 4),
     ),
