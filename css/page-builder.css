@@ -1364,7 +1364,7 @@
         padding: 0.25rem 20px;
         letter-spacing: 0.04em;
         flex: 0 0 auto;
-        min-width: 120px;
+        min-width: 80px;
     }
 
     #trb-page-builder .product-code + .product-widget--cta {
