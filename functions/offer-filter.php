@@ -656,7 +656,7 @@ function trb_offer_filter_register_assets()
 
 if (!defined('TRB_OFFER_FILTER_REWRITE_VERSION')) {
     // Bump to force a one-time rewrite-rule flush after deploying changes here.
-    define('TRB_OFFER_FILTER_REWRITE_VERSION', '1.1.0');
+    define('TRB_OFFER_FILTER_REWRITE_VERSION', '1.2.0');
 }
 
 /**
@@ -702,11 +702,11 @@ function trb_offer_filter_get_categories()
 }
 
 /**
- * Slugs of every category (any depth, not just top-level sidebar categories)
- * attached to at least one published offer-item. This is exactly the set of
- * slugs that can appear in an offer card's category chip / "All … discounts"
- * link (trb_offer_category_url()), so the pretty-URL rewrite rules are built
- * from this list to keep the two in sync — otherwise a subcategory link to
+ * Slugs of every category (any depth) attached to a published offer-item, PLUS
+ * the ancestors of those categories. This is the set of slugs that can appear in
+ * an offer card's category chip / "All … discounts" link (trb_offer_category_url())
+ * or be used as a parent-category filter, so the pretty-URL rewrite rules are
+ * built from this list to keep the two in sync — otherwise a link to
  * /{host}/{slug}/ has no matching rule and WordPress redirects it to the
  * article landing page.
  *
@@ -733,9 +733,28 @@ function trb_offer_filter_get_offer_category_slugs()
         $terms = wp_get_object_terms($offer_ids, 'category');
         if (!is_wp_error($terms)) {
             foreach ($terms as $term) {
-                $slug = sanitize_title($term->slug);
-                if ($slug !== '') {
-                    $slugs[(int) $term->term_id] = $slug;
+                // Include the term itself AND its ancestors. Filtering by a parent
+                // category (WP_Query 'cat') includes offers from its child
+                // categories, so a parent like "fertility" must get a rewrite rule
+                // even when offers are only assigned to its subcategories —
+                // otherwise /{host}/fertility/ has no rule and 404-redirects to
+                // the article landing page.
+                $branch = array_merge(
+                    array((int) $term->term_id),
+                    get_ancestors((int) $term->term_id, 'category')
+                );
+                foreach ($branch as $tid) {
+                    $tid = (int) $tid;
+                    if (isset($slugs[$tid])) {
+                        continue;
+                    }
+                    $branch_term = ($tid === (int) $term->term_id) ? $term : get_term($tid, 'category');
+                    if ($branch_term && !is_wp_error($branch_term)) {
+                        $slug = sanitize_title($branch_term->slug);
+                        if ($slug !== '') {
+                            $slugs[$tid] = $slug;
+                        }
+                    }
                 }
             }
         }
@@ -905,15 +924,29 @@ add_action('after_switch_theme', 'trb_offer_filter_clear_caches');
 /**
  * Flush rewrite rules once after this code is deployed (version bump) or after a
  * change flagged a flush. Runs after the rules are registered at init:10.
+ *
+ * The version is only recorded as "done" once our rules were actually registered
+ * this request (host page + at least one offer category present). Otherwise a
+ * flush that happened to run in a context with no host page / no categories would
+ * lock in the version and permanently disable future retries, leaving the pretty
+ * category URLs 404-redirecting to the article landing pages.
  */
 add_action('init', 'trb_offer_filter_maybe_flush', 11);
 function trb_offer_filter_maybe_flush()
 {
     $needs_flush = get_option('trb_offer_filter_flush_needed')
         || get_option('trb_offer_filter_rewrite_version') !== TRB_OFFER_FILTER_REWRITE_VERSION;
-    if ($needs_flush) {
-        flush_rewrite_rules(false);
-        delete_option('trb_offer_filter_flush_needed');
+    if (!$needs_flush) {
+        return;
+    }
+
+    $rules_registered = !empty(trb_offer_filter_host_page_ids())
+        && !empty(trb_offer_filter_get_offer_category_slugs());
+
+    flush_rewrite_rules(false);
+    delete_option('trb_offer_filter_flush_needed');
+
+    if ($rules_registered) {
         update_option('trb_offer_filter_rewrite_version', TRB_OFFER_FILTER_REWRITE_VERSION, false);
     }
 }
