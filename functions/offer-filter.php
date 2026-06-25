@@ -777,32 +777,52 @@ function trb_offer_filter_get_offer_category_slugs()
  */
 function trb_offer_filter_host_page_ids()
 {
+    // Treat an empty cached array as a miss and recompute: the old detection query
+    // cached empty results for a day, so a previously-broken lookup must not stay
+    // stuck until the transient expires.
     $cached = get_transient('trb_offer_filter_host_pages');
-    if (is_array($cached)) {
+    if (is_array($cached) && !empty($cached)) {
         return $cached;
     }
 
-    $ids = get_posts(array(
+    // Find every Page Builder page, then check its actual parsed sections for an
+    // "offer_filter" section. We deliberately do NOT meta_query for the section
+    // type: sections are stored as a native PHP serialized array
+    // (s:4:"type";s:12:"offer_filter";), so a JSON-style LIKE '"type":"offer_filter"'
+    // silently matches nothing once a page is saved in the current format —
+    // trb_get_builder_sections() handles both the array and legacy JSON formats.
+    $builder_ids = get_posts(array(
         'post_type'      => 'page',
         'post_status'    => 'publish',
         'posts_per_page' => -1,
         'fields'         => 'ids',
         'meta_query'     => array(
-            'relation' => 'AND',
             array(
                 'key'   => '_wp_page_template',
                 'value' => 'page-template-builder.php',
             ),
-            array(
-                'key'     => '_trb_page_builder_sections',
-                'value'   => '"type":"offer_filter"',
-                'compare' => 'LIKE',
-            ),
         ),
     ));
 
-    $ids = array_map('intval', (array) $ids);
-    set_transient('trb_offer_filter_host_pages', $ids, DAY_IN_SECONDS);
+    $ids = array();
+    foreach ((array) $builder_ids as $pid) {
+        $sections = function_exists('trb_get_builder_sections')
+            ? trb_get_builder_sections($pid)
+            : array();
+        foreach ((array) $sections as $section) {
+            if (is_array($section) && isset($section['type']) && $section['type'] === 'offer_filter') {
+                $ids[] = (int) $pid;
+                break;
+            }
+        }
+    }
+
+    // Only cache a positive result. Caching an empty array (e.g. before the page
+    // exists, or a transient glitch) would suppress the rewrite rule + resolver for
+    // a full day — the same lockout that broke the pretty category URLs before.
+    if (!empty($ids)) {
+        set_transient('trb_offer_filter_host_pages', $ids, DAY_IN_SECONDS);
+    }
     return $ids;
 }
 
@@ -963,7 +983,7 @@ function trb_offer_filter_diag()
     }
 
     $out = array(
-        'code_marker'            => 'resolver-v2-wp-request',
+        'code_marker'            => 'hostfix-v3',
         'rewrite_version_const'  => defined('TRB_OFFER_FILTER_REWRITE_VERSION') ? TRB_OFFER_FILTER_REWRITE_VERSION : null,
         'rewrite_version_option' => get_option('trb_offer_filter_rewrite_version'),
         'resolver_exists'        => function_exists('trb_offer_filter_resolve_pretty_request'),
