@@ -246,6 +246,13 @@ array in post meta (WordPress serializes it automatically).
 
 ## Deployment
 
-Deploy is FTP-based (`.ftp-deploy-sync-state.json`, `.ftpquota` present) — there is no
-CI/build pipeline beyond the local SASS compile. Compile `css/trb.css` before deploying
+Deploy via **cPanel Git Version Control → "Update from Remote"** (a server-side `git pull`
+into the theme directory). `git push` alone does NOT update the live site — the cPanel
+step must be run explicitly for each push. After pulling, also purge LiteSpeed Cache +
+OPcache, since the server can keep running stale PHP after the pull.
+
+(`.ftp-deploy-sync-state.json` / `.ftpquota` are present from an old FTP workflow — they
+are not part of the current deploy process.)
+
+No CI/build pipeline beyond the local SASS compile. Compile `css/trb.css` before deploying
 if SASS sources changed.

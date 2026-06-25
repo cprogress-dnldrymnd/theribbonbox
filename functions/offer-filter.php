@@ -870,12 +870,12 @@ function trb_offer_filter_add_rewrite_rules()
  * flush can lock itself out), and when it hasn't run WordPress treats the pretty
  * URL as a 404 and "guesses" it to the /{slug}/ article landing page.
  *
- * This filter resolves the same URL directly from the parsed query vars on every
+ * This filter resolves the same URL directly from the raw request path on every
  * request, so the pretty URLs work whether or not the rewrite rule was flushed.
- * For an unmatched path WordPress sets pagename to the full path
- * (e.g. "trb-picks/discounts/fertility"); we split off the last segment and, when
- * the prefix is a known host page and the last segment is a known offer-category
- * slug, rewrite the request to the host page with of_cat_slug set.
+ * We split the last segment off the requested path (e.g.
+ * "trb-picks/discounts/fertility") and, when the prefix is a known host page and
+ * the last segment is a known offer-category slug, rewrite the request to the
+ * host page with of_cat_slug set.
  */
 add_filter('request', 'trb_offer_filter_resolve_pretty_request');
 function trb_offer_filter_resolve_pretty_request($query_vars)
@@ -883,21 +883,29 @@ function trb_offer_filter_resolve_pretty_request($query_vars)
     if (is_admin()) {
         return $query_vars;
     }
-    // Already resolved (e.g. by a flushed rewrite rule), or not a nested path.
+    // Already resolved (e.g. by a flushed rewrite rule).
     if (!empty($query_vars['of_cat_slug'])) {
         return $query_vars;
     }
-    if (empty($query_vars['pagename']) || strpos($query_vars['pagename'], '/') === false) {
+
+    // Use the raw matched request path ($wp->request) as the source of truth — it
+    // is reliable regardless of which rewrite rule (or none) matched, unlike the
+    // parsed 'pagename', which differs between verbose and non-verbose page rules.
+    $path = '';
+    if (isset($GLOBALS['wp']) && isset($GLOBALS['wp']->request)) {
+        $path = (string) $GLOBALS['wp']->request;
+    }
+    if ($path === '' && !empty($query_vars['pagename'])) {
+        $path = (string) $query_vars['pagename'];
+    }
+    $path = trim($path, '/');
+    if ($path === '' || strpos($path, '/') === false) {
         return $query_vars;
     }
 
-    $pagename = trim((string) $query_vars['pagename'], '/');
-    $slash    = strrpos($pagename, '/');
-    if ($slash === false) {
-        return $query_vars;
-    }
-    $prefix = substr($pagename, 0, $slash);
-    $last   = substr($pagename, $slash + 1);
+    $slash  = strrpos($path, '/');
+    $prefix = substr($path, 0, $slash);
+    $last   = substr($path, $slash + 1);
     if ($prefix === '' || $last === '') {
         return $query_vars;
     }
@@ -913,6 +921,9 @@ function trb_offer_filter_resolve_pretty_request($query_vars)
     $host_ids = trb_offer_filter_host_page_ids();
     foreach ($host_ids as $hid) {
         if (trim((string) get_page_uri($hid), '/') === $prefix) {
+            // Drop anything WP guessed from the unmatched path, then resolve to the
+            // host page with the category preselected.
+            unset($query_vars['error'], $query_vars['name'], $query_vars['page'], $query_vars['attachment']);
             $query_vars['pagename']    = $prefix;
             $query_vars['of_cat_slug'] = $last;
             return $query_vars;
@@ -920,6 +931,53 @@ function trb_offer_filter_resolve_pretty_request($query_vars)
     }
 
     return $query_vars;
+}
+
+/**
+ * TEMPORARY diagnostic — remove once the pretty-URL redirect issue is resolved.
+ * Visit any URL with ?trb_of_diag=1 to dump (as JSON) exactly which version of
+ * this code is live on the server and the state of the rewrite/host data, so the
+ * pretty-URL behaviour can be debugged remotely. Exposes only public theme config
+ * (slugs, page IDs, version strings) — no secrets.
+ */
+add_action('init', 'trb_offer_filter_diag', 99);
+function trb_offer_filter_diag()
+{
+    if (!isset($_GET['trb_of_diag'])) {
+        return;
+    }
+
+    $rules         = get_option('rewrite_rules');
+    $matching_rule = array();
+    if (is_array($rules)) {
+        foreach ($rules as $pattern => $target) {
+            if (strpos((string) $target, 'of_cat_slug') !== false) {
+                $matching_rule[$pattern] = $target;
+            }
+        }
+    }
+
+    $hosts = array();
+    foreach (trb_offer_filter_host_page_ids() as $hid) {
+        $hosts[$hid] = get_page_uri($hid);
+    }
+
+    $out = array(
+        'code_marker'            => 'resolver-v2-wp-request',
+        'rewrite_version_const'  => defined('TRB_OFFER_FILTER_REWRITE_VERSION') ? TRB_OFFER_FILTER_REWRITE_VERSION : null,
+        'rewrite_version_option' => get_option('trb_offer_filter_rewrite_version'),
+        'resolver_exists'        => function_exists('trb_offer_filter_resolve_pretty_request'),
+        'slug_helper_exists'     => function_exists('trb_offer_filter_get_offer_category_slugs'),
+        'host_pages'             => $hosts,
+        'offer_cat_slugs'        => function_exists('trb_offer_filter_get_offer_category_slugs')
+            ? array_values(trb_offer_filter_get_offer_category_slugs())
+            : 'n/a',
+        'flushed_offer_rules'    => $matching_rule,
+    );
+
+    header('Content-Type: application/json');
+    echo wp_json_encode($out);
+    exit;
 }
 
 /**
