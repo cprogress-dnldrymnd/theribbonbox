@@ -50,6 +50,11 @@ in `js/`, `css/`, `sass/`, and reusable markup in `template-parts/`, `sections/`
     section (`is_b2b_page()` / `is_b2b_user()` / `user_get_partner()` in `functions.php`).
   - `commerce.php`, `products.php`, `hide-shippen-when-free.php` — WooCommerce helpers.
   - `core.php` — session start, `set_trb_message()` flash messages, misc setup.
+    Also hides password-protected posts from every front-end listing/feed in one
+    place: a `parse_query` hook sets `has_password = false` (which core honours even
+    though listings query with `suppress_filters=true`), skipping admin screens
+    (except front-end AJAX), REST requests, and singular queries (so a protected
+    post's own page still shows its password form).
   - `ARCHIVED.php` — not included; dead code kept for reference.
 - `page-template-trb-picks.php` — separate "TRB Picks" page template (own inline
   `<style>` block defining `--trb-*` color vars and layout helpers), built from
