@@ -28,11 +28,21 @@ if (!defined('ABSPATH')) {
 function trb_offer_filter_taxonomies()
 {
     return array(
-        'offer-type'     => array('label' => 'Offer Type', 'control' => 'accordion'),
         'health-goal'    => array('label' => 'Health Goal', 'control' => 'accordion'),
         'lifestyle'      => array('label' => 'Lifestyle', 'control' => 'accordion'),
         'life-stage'     => array('label' => 'Life Stage', 'control' => 'accordion'),
         'discount-level' => array('label' => 'Discount Level', 'control' => 'accordion'),
+    );
+}
+
+/**
+ * ACF offer_type choices shown in the sidebar filter (value => label).
+ */
+function trb_offer_type_choices()
+{
+    return array(
+        'Discounts'     => 'Discounts',
+        'Non-discounts' => 'Non-discounts',
     );
 }
 
@@ -54,18 +64,37 @@ function trb_offer_filter_sort_options()
 /* -------------------------------------------------------------------------- */
 
 /**
- * Whether an offer is tagged with the "Non-Discounts" Offer Type.
+ * ACF offer_type value for an offer post.
+ *
+ * @param int $offer_id Offer post ID.
+ * @return string
+ */
+function trb_offer_get_type($offer_id)
+{
+    $offer_id = (int) $offer_id;
+    if (!$offer_id) {
+        return '';
+    }
+    $value = function_exists('get_field') ? get_field('offer_type', $offer_id) : '';
+    if ($value === '' || $value === null || $value === false) {
+        $value = get_post_meta($offer_id, 'offer_type', true);
+    }
+    if (is_array($value)) {
+        $value = reset($value);
+    }
+    return is_string($value) ? trim($value) : '';
+}
+
+/**
+ * Whether an offer's ACF offer_type is Non-discounts.
  *
  * @param int $offer_id Offer post ID.
  * @return bool
  */
 function trb_offer_is_non_discount($offer_id)
 {
-    $offer_id = (int) $offer_id;
-    if (!$offer_id || !taxonomy_exists('offer-type')) {
-        return false;
-    }
-    return has_term(array('non-discounts', 'non-discount'), 'offer-type', $offer_id);
+    $type = strtolower(trb_offer_get_type($offer_id));
+    return in_array($type, array('non-discounts', 'non-discount', 'non discounts'), true);
 }
 
 /**
@@ -409,7 +438,7 @@ function trb_render_picks_ad($category_id, $location, $size = 'medium', $wrap_cl
  * Normalise filter arguments from a raw request-style array.
  *
  * @param array $raw Usually $_GET or the AJAX payload.
- * @return array Clean args: search, category, tax (slug => int[] term ids), sort, paged.
+ * @return array Clean args: search, category, tax (slug => int[] term ids), offer_type (string[]), sort, paged.
  */
 function trb_offer_filter_parse_request($raw)
 {
@@ -424,6 +453,20 @@ function trb_offer_filter_parse_request($raw)
             }
         }
     }
+
+    $offer_type = array();
+    $raw_type   = isset($raw['of_type']) ? $raw['of_type'] : array();
+    if (!is_array($raw_type)) {
+        $raw_type = explode(',', (string) $raw_type);
+    }
+    $allowed = array_keys(trb_offer_type_choices());
+    foreach ($raw_type as $val) {
+        $val = sanitize_text_field(wp_unslash($val));
+        if (in_array($val, $allowed, true)) {
+            $offer_type[] = $val;
+        }
+    }
+    $offer_type = array_values(array_unique($offer_type));
 
     $sort_keys = array_keys(trb_offer_filter_sort_options());
 
@@ -447,6 +490,7 @@ function trb_offer_filter_parse_request($raw)
         'category'      => $category,
         'cat_from_slug' => $cat_from_slug,
         'tax'           => $tax,
+        'offer_type'    => $offer_type,
         'sort'          => (isset($raw['of_sort']) && in_array($raw['of_sort'], $sort_keys, true)) ? $raw['of_sort'] : 'date_desc',
         'paged'         => isset($raw['of_paged']) ? max(1, absint($raw['of_paged'])) : 1,
     );
@@ -499,6 +543,16 @@ function trb_offer_filter_get_results($args, $settings = array())
     }
     if ($tax_query) {
         $query_args['tax_query'] = $tax_query;
+    }
+
+    if (!empty($args['offer_type'])) {
+        $query_args['meta_query'] = array(
+            array(
+                'key'     => 'offer_type',
+                'value'   => $args['offer_type'],
+                'compare' => 'IN',
+            ),
+        );
     }
 
     $query = new WP_Query($query_args);
@@ -578,6 +632,9 @@ function trb_offer_filter_pagination($current, $max_pages, $args)
     ));
     if (!empty($args['tax'])) {
         $base_query['of_tax'] = $args['tax'];
+    }
+    if (!empty($args['offer_type'])) {
+        $base_query['of_type'] = $args['offer_type'];
     }
 
     $link = function ($page, $label, $class = '', $aria = '') use ($base_query) {

@@ -113,6 +113,30 @@ $js_config = array(
 
                     <div class="offer-filter-group offer-filter-filters">
                         <h4 class="offer-filter-group-title">Filters</h4>
+                        <?php
+                        $offer_types    = function_exists('trb_offer_type_choices') ? trb_offer_type_choices() : array();
+                        $selected_types = $args['offer_type'] ?? array();
+                        $type_open      = !empty($selected_types);
+                        if (!empty($offer_types)) : ?>
+                            <div class="offer-filter-tax offer-filter-tax--accordion<?php echo $type_open ? ' is-open' : ''; ?>"
+                                 data-filter="offer_type">
+                                <button type="button" class="offer-filter-tax-toggle">
+                                    Offer Type
+                                    <span class="offer-filter-tax-chevron dashicons dashicons-arrow-down-alt2" aria-hidden="true"></span>
+                                </button>
+                                <div class="offer-filter-tax-body">
+                                    <?php foreach ($offer_types as $value => $label) : ?>
+                                        <label class="offer-filter-check">
+                                            <input type="checkbox" name="of_type[]"
+                                                   value="<?php echo esc_attr($value); ?>"
+                                                   <?php checked(in_array($value, $selected_types, true)); ?>>
+                                            <span class="offer-filter-box" aria-hidden="true"></span>
+                                            <span class="offer-filter-check-label"><?php echo esc_html($label); ?></span>
+                                        </label>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                         <?php foreach ($tax_config as $slug => $cfg) :
                             $terms = get_terms(array('taxonomy' => $slug, 'hide_empty' => false));
                             if (is_wp_error($terms) || empty($terms)) {

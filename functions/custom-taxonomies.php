@@ -54,7 +54,6 @@ function experiences_taxonomy() {
 add_action( 'init', 'trb_offer_items_taxonomies' );
 function trb_offer_items_taxonomies() {
     $taxonomies = array(
-        'offer-type'     => array( 'Offer Type', 'Offer Types' ),
         'health-goal'    => array( 'Health Goal', 'Health Goals' ),
         'lifestyle'      => array( 'Lifestyle', 'Lifestyles' ),
         'life-stage'     => array( 'Life Stage', 'Life Stages' ),

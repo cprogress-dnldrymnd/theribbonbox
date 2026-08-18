@@ -45,7 +45,7 @@
 
         function collectTax() {
             var tax = {};
-            $root.find('.offer-filter-tax').each(function () {
+            $root.find('.offer-filter-tax[data-taxonomy]').each(function () {
                 var slug = $(this).data('taxonomy');
                 var vals = [];
                 $(this).find('input[type=checkbox]:checked').each(function () {
@@ -58,6 +58,14 @@
             return tax;
         }
 
+        function collectOfferType() {
+            var vals = [];
+            $root.find('input[name="of_type[]"]:checked').each(function () {
+                vals.push($(this).val());
+            });
+            return vals;
+        }
+
         function collectState(page) {
             return {
                 search: $.trim($search.val()),
@@ -65,6 +73,7 @@
                 categorySlug: activeCategorySlug,
                 sort: $sort.val() || 'date_desc',
                 tax: collectTax(),
+                offerType: collectOfferType(),
                 paged: page || 1
             };
         }
@@ -78,6 +87,9 @@
             if (state.search) { params.of_s = state.search; }
             if (state.sort && state.sort !== 'date_desc') { params.of_sort = state.sort; }
             if (state.paged > 1) { params.of_paged = state.paged; }
+            if (state.offerType && state.offerType.length) {
+                params['of_type[]'] = state.offerType;
+            }
             $.each(state.tax, function (slug, vals) {
                 $.each(vals, function (i, v) {
                     params['of_tax[' + slug + '][]'] = params['of_tax[' + slug + '][]'] || [];
@@ -149,7 +161,8 @@
                 of_cat: state.category,
                 of_sort: state.sort,
                 of_paged: state.paged,
-                of_tax: state.tax
+                of_tax: state.tax,
+                of_type: state.offerType
             };
 
             if (xhr) { xhr.abort(); }
@@ -349,6 +362,10 @@
                 if (m) {
                     $root.find('.offer-filter-tax[data-taxonomy="' + m[1] + '"] input[value="' + value + '"]').prop('checked', true);
                 }
+            });
+            var types = params.getAll('of_type[]').concat(params.getAll('of_type'));
+            types.forEach(function (value) {
+                $root.find('input[name="of_type[]"][value="' + value + '"]').prop('checked', true);
             });
 
             currentPage = parseInt(params.get('of_paged'), 10) || 1;
