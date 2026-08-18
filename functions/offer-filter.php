@@ -41,8 +41,8 @@ function trb_offer_filter_taxonomies()
 function trb_offer_type_choices()
 {
     return array(
-        'Discounts'     => 'Discounts',
-        'Non-discounts' => 'Non-discounts',
+        'Discount'     => 'Discount',
+        'Non-discount' => 'Non-discount',
     );
 }
 
@@ -86,7 +86,7 @@ function trb_offer_get_type($offer_id)
 }
 
 /**
- * Whether an offer's ACF offer_type is Non-discounts.
+ * Whether an offer's ACF offer_type is Non-discount.
  *
  * @param int $offer_id Offer post ID.
  * @return bool
