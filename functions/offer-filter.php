@@ -28,6 +28,7 @@ if (!defined('ABSPATH')) {
 function trb_offer_filter_taxonomies()
 {
     return array(
+        'offer-type'     => array('label' => 'Offer Type', 'control' => 'accordion'),
         'health-goal'    => array('label' => 'Health Goal', 'control' => 'accordion'),
         'lifestyle'      => array('label' => 'Lifestyle', 'control' => 'accordion'),
         'life-stage'     => array('label' => 'Life Stage', 'control' => 'accordion'),
