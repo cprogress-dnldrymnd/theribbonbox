@@ -3385,10 +3385,12 @@ button.accordion-button.accordion-button:after {
 	border: 1px solid #f7b5a8;
 	border-radius: 12px;
 	padding: 2rem 2.25rem;
-	margin: 0 0 2.5rem;
+	margin-left: -15px;
+	margin-right: -15px;
+	margin-bottom: 2.5rem;
 }
 .post--summary__heading {
-	font-family: 'Playfair Display', Georgia, serif !important;
+	font-family: "Playfair Display", Georgia, serif !important;
 	font-size: 28px !important;
 	font-weight: 700 !important;
 	color: #034146 !important;
@@ -3433,11 +3435,11 @@ button.accordion-button.accordion-button:after {
 	line-height: 1;
 }
 .post--summary__text.post--summary__text {
-    font-size: 14px !important;
-    color: #000 !important;
-    margin: 0.15rem 0 0 !important;
-    text-align: left !important;
-    line-height: 1.2;
+	font-size: 14px !important;
+	color: #000 !important;
+	margin: 0.15rem 0 0 !important;
+	text-align: left !important;
+	line-height: 1.2;
 }
 @media (max-width: 767px) {
 	.post--summary {
