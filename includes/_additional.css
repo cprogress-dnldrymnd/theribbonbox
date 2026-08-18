@@ -3391,7 +3391,7 @@ button.accordion-button.accordion-button:after {
 	font-family: 'Playfair Display', Georgia, serif !important;
 	font-size: 28px !important;
 	font-weight: 700 !important;
-	color: #222 !important;
+	color: #034146 !important;
 	margin: 0 0 1rem !important;
 	text-align: left !important;
 	line-height: 1.25 !important;
@@ -3404,7 +3404,7 @@ button.accordion-button.accordion-button:after {
 	margin: 0 0 1.5rem !important;
 	text-align: left !important;
 }
-.post--summary__list {
+.post--summary__list.post--summary__list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -3427,24 +3427,23 @@ button.accordion-button.accordion-button:after {
 	background: #034146;
 	color: #fff;
 	border-radius: 6px;
-	font-family: 'Arimo', Arial, sans-serif;
+
 	font-size: 15px;
 	font-weight: 700;
 	line-height: 1;
 }
-.post--summary__text {
-	font-family: 'Arimo', Arial, sans-serif !important;
-	font-size: 16px !important;
-	line-height: 1.5 !important;
-	color: #333 !important;
-	margin: 0.15rem 0 0 !important;
-	text-align: left !important;
+.post--summary__text.post--summary__text {
+    font-size: 14px !important;
+    color: #000 !important;
+    margin: 0.15rem 0 0 !important;
+    text-align: left !important;
+    line-height: 1.2;
 }
 @media (max-width: 767px) {
 	.post--summary {
 		padding: 1.35rem 1.25rem;
 	}
 	.post--summary__heading {
-		font-size: 22px !important;
+		font-size: 20px !important;
 	}
 }
