@@ -3395,6 +3395,7 @@ button.accordion-button.accordion-button:after {
 	margin: 0 0 1rem !important;
 	text-align: left !important;
 	line-height: 1.25 !important;
+	margin-bottom: 2rem !important;
 }
 .post--summary__description {
 	font-size: 16px !important;
