@@ -45,6 +45,7 @@ include 'functions/e-guides.php';
 include 'functions/b2b-discounts.php';
 include 'functions/page-builder.php';
 include 'functions/offer-filter.php';
+include 'functions/post-summary.php';
 //include 'functions/experts-slide.php';
 include 'shortcodes/member-login-button.php';
 

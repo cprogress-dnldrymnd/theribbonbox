@@ -3379,3 +3379,72 @@ button.accordion-button.accordion-button:after {
 /*end of home-section*/
 
 /*revamp sections*/
+
+.post-summary {
+	background: #ffdbd1;
+	border: 1px solid #f7b5a8;
+	border-radius: 12px;
+	padding: 2rem 2.25rem;
+	margin: 0 0 2.5rem;
+}
+.post-summary__heading {
+	font-family: 'Playfair Display', Georgia, serif !important;
+	font-size: 28px !important;
+	font-weight: 700 !important;
+	color: #222 !important;
+	margin: 0 0 1rem !important;
+	text-align: left !important;
+	line-height: 1.25 !important;
+}
+.post-summary__description {
+	font-family: 'Arimo', Arial, sans-serif !important;
+	font-size: 16px !important;
+	line-height: 1.55 !important;
+	color: #333 !important;
+	margin: 0 0 1.5rem !important;
+	text-align: left !important;
+}
+.post-summary__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+.post-summary__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.85rem;
+}
+.post-summary__badge {
+	flex: 0 0 32px;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #034146;
+	color: #fff;
+	border-radius: 6px;
+	font-family: 'Arimo', Arial, sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1;
+}
+.post-summary__text {
+	font-family: 'Arimo', Arial, sans-serif !important;
+	font-size: 16px !important;
+	line-height: 1.5 !important;
+	color: #333 !important;
+	margin: 0.15rem 0 0 !important;
+	text-align: left !important;
+}
+@media (max-width: 767px) {
+	.post-summary {
+		padding: 1.35rem 1.25rem;
+	}
+	.post-summary__heading {
+		font-size: 22px !important;
+	}
+}

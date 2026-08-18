@@ -126,6 +126,9 @@ echo '
             }
 
             echo '<div class="post-main-content '.$pagep.'">';
+            if ($post_type == 'post') {
+                trb_render_post_summary($post->ID);
+            }
             the_content();
 
             // get and echo previous and next post in the same category
