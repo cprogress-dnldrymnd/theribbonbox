@@ -1010,6 +1010,11 @@
     margin-top: 12px;
 }
 
+/* Non-discount cards hide the code/percentage, so pin the CTA to the card bottom. */
+#trb-page-builder .offer-card--non-discount .product-widget--cta {
+    margin-top: auto;
+}
+
 /* ----------------------------------------- Discount code + copy button (card) */
 /* Shared by the offer slider and the offer filter grid. */
 #trb-page-builder .product-code {

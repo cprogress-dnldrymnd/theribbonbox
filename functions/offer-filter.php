@@ -54,6 +54,21 @@ function trb_offer_filter_sort_options()
 /* -------------------------------------------------------------------------- */
 
 /**
+ * Whether an offer is tagged with the "Non-Discounts" Offer Type.
+ *
+ * @param int $offer_id Offer post ID.
+ * @return bool
+ */
+function trb_offer_is_non_discount($offer_id)
+{
+    $offer_id = (int) $offer_id;
+    if (!$offer_id || !taxonomy_exists('offer-type')) {
+        return false;
+    }
+    return has_term(array('non-discounts', 'non-discount'), 'offer-type', $offer_id);
+}
+
+/**
  * Render a single offer as a ".product-widget--box" card and return the HTML.
  *
  * Shared by the Offer Slider carousel and the Offer Filter grid so the card
@@ -62,6 +77,7 @@ function trb_offer_filter_sort_options()
  * @param int   $offer_id Offer post ID.
  * @param array $args {
  *     @type string $cta_text      CTA link label. Default 'Claim Discount'.
+ *                                 Non-discount offer types always use 'Claim Offer'.
  *     @type bool   $show_discount Show the "X% Off" line (from the ACF percentage field).
  *     @type string $image_size    Thumbnail size. Default 'medium'.
  *     @type string $extra_class   Extra class added to .product-widget--box.
@@ -76,6 +92,12 @@ function trb_render_offer_card($offer_id, $args = array())
         'image_size'    => 'medium',
         'extra_class'   => '',
     ));
+
+    $is_non_discount = trb_offer_is_non_discount($offer_id);
+    if ($is_non_discount) {
+        $args['show_discount'] = false;
+        $args['cta_text']      = 'Claim Offer';
+    }
 
     $has_acf = function_exists('get_field');
 
@@ -139,9 +161,13 @@ function trb_render_offer_card($offer_id, $args = array())
     }
 
     // Discount code shown in a copy-to-clipboard box (js/offer-copy-code.js).
-    $code = $has_acf ? trim((string) get_field('apply__code', $offer_id)) : '';
+    // Non-discount offer types hide both the code and the percentage line.
+    $code = (!$is_non_discount && $has_acf) ? trim((string) get_field('apply__code', $offer_id)) : '';
 
     $box_class = 'product-widget--box';
+    if ($is_non_discount) {
+        $box_class .= ' offer-card--non-discount';
+    }
     if ($args['extra_class'] !== '') {
         $box_class .= ' ' . $args['extra_class'];
     }

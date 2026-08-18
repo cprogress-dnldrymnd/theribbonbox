@@ -7,8 +7,9 @@ $ext = "";
 $title = get_the_title();
 
 $location = get_field("location", $post->ID);
-$percentage_0ff = get_field("percentage-0ff", $post->ID);
-$apply__code = get_field("apply__code", $post->ID);
+$is_non_discount = function_exists('trb_offer_is_non_discount') ? trb_offer_is_non_discount($post->ID) : false;
+$percentage_0ff = $is_non_discount ? '' : get_field("percentage-0ff", $post->ID);
+$apply__code = $is_non_discount ? '' : get_field("apply__code", $post->ID);
 $offer_expired_text = get_field("offer-expired-text", $post->ID);
 $offer_expiry_date = get_field("offer_expiry_date", $post->ID);
 $website_link = get_field("website_link", $post->ID);
