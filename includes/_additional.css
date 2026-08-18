@@ -3380,14 +3380,14 @@ button.accordion-button.accordion-button:after {
 
 /*revamp sections*/
 
-.post-summary {
+.post--summary {
 	background: #ffdbd1;
 	border: 1px solid #f7b5a8;
 	border-radius: 12px;
 	padding: 2rem 2.25rem;
 	margin: 0 0 2.5rem;
 }
-.post-summary__heading {
+.post--summary__heading {
 	font-family: 'Playfair Display', Georgia, serif !important;
 	font-size: 28px !important;
 	font-weight: 700 !important;
@@ -3396,7 +3396,7 @@ button.accordion-button.accordion-button:after {
 	text-align: left !important;
 	line-height: 1.25 !important;
 }
-.post-summary__description {
+.post--summary__description {
 	font-family: 'Arimo', Arial, sans-serif !important;
 	font-size: 16px !important;
 	line-height: 1.55 !important;
@@ -3404,7 +3404,7 @@ button.accordion-button.accordion-button:after {
 	margin: 0 0 1.5rem !important;
 	text-align: left !important;
 }
-.post-summary__list {
+.post--summary__list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -3412,12 +3412,12 @@ button.accordion-button.accordion-button:after {
 	flex-direction: column;
 	gap: 1.25rem;
 }
-.post-summary__item {
+.post--summary__item {
 	display: flex;
 	align-items: flex-start;
 	gap: 0.85rem;
 }
-.post-summary__badge {
+.post--summary__badge {
 	flex: 0 0 32px;
 	width: 32px;
 	height: 32px;
@@ -3432,7 +3432,7 @@ button.accordion-button.accordion-button:after {
 	font-weight: 700;
 	line-height: 1;
 }
-.post-summary__text {
+.post--summary__text {
 	font-family: 'Arimo', Arial, sans-serif !important;
 	font-size: 16px !important;
 	line-height: 1.5 !important;
@@ -3441,10 +3441,10 @@ button.accordion-button.accordion-button:after {
 	text-align: left !important;
 }
 @media (max-width: 767px) {
-	.post-summary {
+	.post--summary {
 		padding: 1.35rem 1.25rem;
 	}
-	.post-summary__heading {
+	.post--summary__heading {
 		font-size: 22px !important;
 	}
 }

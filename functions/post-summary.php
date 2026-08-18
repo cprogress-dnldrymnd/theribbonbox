@@ -199,27 +199,27 @@ function trb_render_post_summary($post_id = null)
         return;
     }
 
-    echo '<div class="post-summary">';
+    echo '<div class="post--summary">';
 
     if ($heading) {
-        echo '<h2 class="post-summary__heading">' . esc_html($heading) . '</h2>';
+        echo '<h2 class="post--summary__heading">' . esc_html($heading) . '</h2>';
     }
 
     if ($description) {
-        echo '<p class="post-summary__description">' . nl2br(esc_html($description)) . '</p>';
+        echo '<p class="post--summary__description">' . nl2br(esc_html($description)) . '</p>';
     }
 
     if ($has_items) {
-        echo '<ol class="post-summary__list">';
+        echo '<ol class="post--summary__list">';
         $n = 1;
         foreach ($items as $row) {
             $text = isset($row['text']) ? trim((string) $row['text']) : '';
             if ($text === '') {
                 continue;
             }
-            echo '<li class="post-summary__item">';
-            echo '<span class="post-summary__badge" aria-hidden="true">' . esc_html((string) $n) . '</span>';
-            echo '<p class="post-summary__text">' . nl2br(esc_html($text)) . '</p>';
+            echo '<li class="post--summary__item">';
+            echo '<span class="post--summary__badge" aria-hidden="true">' . esc_html((string) $n) . '</span>';
+            echo '<p class="post--summary__text">' . nl2br(esc_html($text)) . '</p>';
             echo '</li>';
             $n++;
         }
