@@ -106,7 +106,7 @@ function trb_offer_is_non_discount($offer_id)
  * @param int   $offer_id Offer post ID.
  * @param array $args {
  *     @type string $cta_text      CTA link label. Default 'Claim Discount'.
- *                                 Non-discount offer types always use 'Claim Offer'.
+ *                                 Non-discount offer types always use 'Shop Now'.
  *     @type bool   $show_discount Show the "X% Off" line (from the ACF percentage field).
  *     @type string $image_size    Thumbnail size. Default 'medium'.
  *     @type string $extra_class   Extra class added to .product-widget--box.
@@ -125,7 +125,7 @@ function trb_render_offer_card($offer_id, $args = array())
     $is_non_discount = trb_offer_is_non_discount($offer_id);
     if ($is_non_discount) {
         $args['show_discount'] = false;
-        $args['cta_text']      = 'Claim Offer';
+        $args['cta_text']      = 'Shop Now';
     }
 
     $has_acf = function_exists('get_field');
